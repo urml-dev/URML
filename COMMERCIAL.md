@@ -38,6 +38,27 @@ Research, teaching, evaluation, development, testing, simulation and personal pr
 | **Enterprise lifetime** | **$225,000 one time**, plus **$10,000 per year** support | Perpetual license: unlimited robots and sites, every future version, audited policy files, SLA, named engineer |
 | **OEM** | Per unit, on request | Robot and controller makers: redistribution rights in shipped products, directory listing |
 
+## How to buy
+
+**You don't need a license to try URML.** Evaluate it, build the proof of concept, run it in simulation, test it on your own robots in the lab. You need a license once URML runs robots in production.
+
+**Not sure your use counts as production?** Email sales@urml.dev and describe it before you buy.
+
+### Production
+
+1. Email sales@urml.dev with your company name, the number of robots that will run URML, and where they operate.
+2. You receive an order form and an invoice.
+3. Once the invoice is paid, you receive a signed license letter naming your company and the number of robots it covers.
+4. When your fleet grows or shrinks, email the new count. You pay only for robots in service.
+
+### Enterprise lifetime
+
+Enterprise lifetime is a signed contract rather than an order form. Email sales@urml.dev with your company name and the sites you plan to cover.
+
+### OEM
+
+OEM pricing depends on the product and the volume. Email sales@urml.dev with the product that will ship URML and the number of units you expect to ship each year.
+
 ## Other commercial offerings
 
 - **URML-Certified** conformance program and mark (planned; see [`TRADEMARK.md`](TRADEMARK.md)).

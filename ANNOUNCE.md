@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  A small, opinionated, human-readable language for describing robot intent.
+  The standard language for robot intent.
 </p>
 
 <p align="center">
@@ -12,87 +12,70 @@
 
 ---
 
-# URML — a verification layer between language models and robots
+# URML is now commercially licensed
 
-**An LLM can propose a robot action. URML statically refuses the unsafe ones
-before a single actuator moves — and hands back a structured error precise
-enough for the model to correct itself.**
-
-That sentence is the whole project. Everything below is how it's real.
-
-## The problem
-
-"Let an LLM drive the robot" is one prompt-injection or one confident
-hallucination away from a machine doing something dangerous. The usual answer —
-"add guardrails in the prompt" — is not a safety boundary; it's a suggestion.
+Starting with v0.5.0, URML is licensed under the Business Source License 1.1, with a commercial license for production use. The source stays public. Learning, research, evaluation, development and simulation stay free. Running URML on robots in production now needs a commercial license, which starts at $4 per robot per month.
 
 ## What URML is
 
-A small, opinionated, human-readable language for robot **intent**, plus a
-five-pass static validator that sits *above* the substrate (ROS 2, PX4,
-vendor SDKs) and *below* the language model. The model proposes; the validator
-verifies against the robot's declared capabilities, the active safety envelope,
-and a deployment compliance policy. Only a program that passes all five passes
-is allowed to reach an actuator. Proposal and verification are separated, and
-the verifier is not optional.
+URML is a small, human-readable language for robot intent. You write down what should happen, and URML checks the program against what the robot can actually do before anything moves. Ask a 100 N gripper for a 250 N grasp, or send a waypoint outside the geofence, and the program is refused on paper. The error that comes back is specific enough for a language model to fix its own program.
 
-URML is a **specification** plus **reference implementations**, source-available
-under BSL 1.1 (see `LICENSING.md`). It is not a robot operating
-system; it targets the ones that exist.
+URML sits above ROS 2, PX4, OPC UA and vendor SDKs, and runs on whichever one your robot already uses.
 
-## Why it's credible, not vapor
+## What changed
 
-- **Five-pass validator** — argument typing → capability → safety envelope
-  (incl. geofence, 3D altitude bands, people-occupancy zones) → variable +
-  cross-primitive type analysis → compliance policy. 242 tests.
-- **Fourteen reference runtimes** — `RclpyAdapter` (ROS 2, `rclpy`/Nav2),
-  `PX4Adapter` (MAVLink, no ROS), a `CompositeAdapter` across both, plus
-  marine, industrial-arm (16 brands), legged, humanoid, mobile, and the
-  zero-ROS OPC UA / native-cobot (8 brands) / MuJoCo / NVIDIA Isaac Sim /
-  serial-MCU / educational-platform (VEX, LEGO SPIKE, Thymio) / AUTOSAR
-  Adaptive runtimes. The runtime contract is defined normatively in RFC-0014
-  (zero-ROS acid test as a gate). Autoware ships manifest+spec only pending
-  RFC-0020.
-- **End-to-end verified** — a conformance fixture drives a *simulated
-  TurtleBot 4* through Nav2 via the real adapter: the `gazebo-e2e` CI job
-  passed three times (runs 25953413044/25953936578/25954097635; the workflow
-  badge is red on the first two from an unrelated pre-calibration job — the
-  *adapter's* job is green ×3, verifiable with `gh run view --json jobs`).
-  The other thirteen runtimes' hermetic suites are green; their live e2e is
-  gated, calibration-staged CI — not a hardware claim.
-- **Compliance is enforced, not documented** — the bundled default policy
-  encodes US-federal procurement rules (NDAA §889/FY26, FCC Covered List, EO
-  14307, ASRA); a covered-foreign-country component is rejected *at validation
-  time*. Override is one flag for other jurisdictions.
-- **706 tests across 16 packages** (+28 gated-skipped), all green. Every
-  front-page claim is mapped to a file and a passing run in
-  [`docs/launch/claims-audit.md`](docs/launch/claims-audit.md).
+| | Up to v0.4.x | v0.5.0 and later |
+|---|---|---|
+| License | Apache 2.0 | BSL 1.1 |
+| Source code | Public | Public |
+| Research, teaching, evaluation, development, simulation | Free | Free |
+| Production use by a business | Free | Commercial license |
+| Becomes Apache 2.0 | Already is | Two years after each release |
 
-## See it in 90 seconds
+Every release up to v0.4.x stays Apache 2.0 permanently. If you depend on one of them, nothing changes for you.
 
-- **The safety story:** [`docs/demos/safety-rejection.md`](docs/demos/safety-rejection.md)
-  — an LLM-shaped drone program that would fly over a spectator area; URML
-  refuses it pre-flight, returns the machine-readable error, the re-routed
-  program passes. Every command's output is pasted verbatim.
-- **The compliance story:** [`docs/demos/compliance-walkthrough.md`](docs/demos/compliance-walkthrough.md)
-  — the same program, three manifests, the covered-component rejection, the override.
+The repository also moved, from `URML-MARS/URML` to [`urml-dev/URML`](https://github.com/urml-dev/URML).
+
+## Why
+
+URML has one maintainer: me. The companies that get the most out of it are robot makers and fleet operators running it in production, and what they run is the core: the validator, the reference runtimes and the compliance policy. Charging those companies for production use is the most direct way to keep that core maintained.
+
+This breaks a promise. The Core Commitment said the spec, the validator, the ROS 2 and PX4 runtimes and the default policy would stay Apache 2.0 forever. For new releases, that is no longer true. [RFC-0703](docs/rfcs/0703-bsl-relicense.md) records the decision, the alternatives I rejected and the trust it costs. Two things limit the damage: earlier releases keep their Apache license, and every new release turns into Apache 2.0 two years after it ships.
+
+I also looked at AGPL with a commercial option. Robot makers ship embedded software, and AGPL obligations would stop them from adopting URML at all. Going fully proprietary would end public review of the validator, and URML's safety claims depend on that review.
+
+## Do you need a license?
+
+If you operate robots with URML in a commercial or business setting, ship URML inside a product, or offer it as a service: yes.
+
+If you are learning, teaching, researching, evaluating, building a proof of concept, testing, simulating, or running a personal robot you don't sell: no. The full table is in [`LICENSING.md`](LICENSING.md).
+
+| Tier | Price |
+|---|---|
+| Production | $4 per robot per month, counting only robots in service |
+| Enterprise lifetime | $225,000 once, plus $10,000 per year for support |
+| OEM | Per unit, on request |
+
+[How to buy](COMMERCIAL.md#how-to-buy) is a short email to sales@urml.dev.
 
 ## Try it
 
+No license, no API key, no robot:
+
 ```bash
-git clone https://github.com/urml-dev/URML.git && cd URML
-python bootstrap.py
-make demo            # → Validation passed
+python3 -m venv .venv && . .venv/bin/activate
+pip install urml-validator urml-llm-bridge
+urml init my-robot --profile home && cd my-robot
+urml validate program.urml.yaml \
+    --manifest manifest.yaml --envelope envelope.yaml --profile home --no-policy
 ```
 
-One command, any OS, fully reversible. The full case is in
-[`MANIFESTO.md`](MANIFESTO.md); the design history is the numbered RFCs in
-[`docs/rfcs/`](docs/rfcs/).
+`--no-policy` skips the US-federal compliance pass so you see the language on its own. Drop the flag to turn the compliance pass back on.
 
-## What this is not
+## Contributing
 
-Passing the validator is a static guarantee about *declared* capabilities and
-the *declared* envelope — not a substitute for real flight authorization,
-airspace deconfliction, or counsel review. URML refuses programs that violate
-the declared envelope; it cannot verify the declared envelope matches the
-world. That boundary is the deployer's, and we say so on every demo.
+Contributions now come in under a [Contributor License Agreement](CLA.md), which you sign once. It lets the project offer both the BSL and commercial licenses. Everything else in [`CONTRIBUTING.md`](CONTRIBUTING.md) is unchanged.
+
+Questions about the change go in [GitHub Discussions](https://github.com/urml-dev/URML/discussions). Questions about a license go to sales@urml.dev.
+
+Ido Yahalomi
