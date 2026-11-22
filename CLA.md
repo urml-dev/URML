@@ -4,7 +4,7 @@ Version 1.0, effective 2026-11-22.
 
 Thank you for contributing to URML. This agreement makes clear the rights you grant when you contribute, so that URML can be offered under both the Business Source License 1.1 and commercial licenses. You keep the copyright in your contribution.
 
-"Licensor" means Ido Yahalomi and any entity to which the Licensor assigns URML. "Contribution" means any work you submit to the URML repositories, including code, documentation, specifications and tests. "You" means the individual signing this agreement.
+"Licensor" means Yahalomik Ltd., to which Ido Yahalomi assigned URML ([RFC-0704](docs/rfcs/0704-licensor-yahalomik.md)), and any entity to which the Licensor assigns URML. Agreements signed before that assignment cover Yahalomik Ltd. as assignee. "Contribution" means any work you submit to the URML repositories, including code, documentation, specifications and tests. "You" means the individual signing this agreement.
 
 1. **Copyright license.** You grant the Licensor, and recipients of software distributed by the Licensor, a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare derivative works of, publicly display, publicly perform, sublicense and distribute your Contributions and such derivative works, under any license terms, including proprietary and commercial terms.
 

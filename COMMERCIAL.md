@@ -15,7 +15,7 @@
 # URML Commercial Licensing
 
 Status: in force from 2026-11-22.
-Authority: [RFC-0703](docs/rfcs/0703-bsl-relicense.md). Summarizes [`LICENSE`](LICENSE) and [`LICENSING.md`](LICENSING.md) for companies. `LICENSE` controls.
+Authority: [RFC-0703](docs/rfcs/0703-bsl-relicense.md), [RFC-0704](docs/rfcs/0704-licensor-yahalomik.md). Commercial licenses are granted by Yahalomik Ltd. (Israel). Summarizes [`LICENSE`](LICENSE) and [`LICENSING.md`](LICENSING.md) for companies. `LICENSE` controls.
 
 ## Who needs a commercial license
 

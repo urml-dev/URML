@@ -107,7 +107,7 @@ The founder anticipates eventually being affiliated with a commercial entity tha
 - The maintainer's commercial activities are disclosed in this file as soon as they exist.
 - Once a steering committee exists, conflicted RFCs (those that would benefit a maintainer's commercial entity) require approval from at least one non-conflicted committee member.
 
-**Current disclosed affiliations (as of 2026-11-22):** the maintainer, Ido Yahalomi, is the Licensor of URML under the Business Source License 1.1 and sells commercial licenses (see [`COMMERCIAL.md`](COMMERCIAL.md)). When this changes, this section is updated in the same PR that creates the change.
+**Current disclosed affiliations (as of 2026-11-22):** URML's Licensor under the Business Source License 1.1 is Yahalomik Ltd. ([RFC-0704](docs/rfcs/0704-licensor-yahalomik.md)), which sells commercial licenses. The maintainer, Ido Yahalomi, is a director and shareholder of Yahalomik Ltd. (see [`COMMERCIAL.md`](COMMERCIAL.md)). When this changes, this section is updated in the same PR that creates the change.
 
 ## How to Reach the Maintainer
 
