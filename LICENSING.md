@@ -31,7 +31,7 @@ URML is source-available under the **Business Source License 1.1** (BSL). The bi
 | Ship URML inside a robot, controller, or product you sell | **Yes** (OEM) |
 | Offer URML as a hosted or managed service | **Yes** |
 
-Commercial licenses: **sales@urml.dev**
+Commercial licenses are granted by Yahalomik Ltd., URML's Licensor: **sales@urml.dev**
 
 ## Every release opens up after two years
 

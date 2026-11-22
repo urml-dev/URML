@@ -2,15 +2,15 @@ Business Source License 1.1
 
 Parameters
 
-Licensor:             Ido Yahalomi
+Licensor:             Yahalomik Ltd.
 
-Licensed Work:        URML (Universal Robot Markup Language): the
+Licensed Work:        URML (Universal Robot Language): the
                       specification, reference runtimes, validator, LLM
                       bridge, MCP server, conformance suite, tools and
                       examples in this repository, in every version
                       released after 0.4.x and in all source published
                       here on or after 2026-11-22.
-                      The Licensed Work is (c) 2026 Ido Yahalomi.
+                      The Licensed Work is (c) 2026 Yahalomik Ltd.
 
                       Releases up to and including 0.4.x, and source
                       published before 2026-11-22, were released under
