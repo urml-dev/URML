@@ -28,15 +28,15 @@ Research, teaching, evaluation, development, testing, simulation and personal pr
 - The right to run URML in production on the robots and sites the license covers.
 - The validator, every reference runtime, the LLM bridge and MCP server, and the conformance suite.
 - The bundled US-federal default compliance policy.
-- Email support, with SLA options on Enterprise.
+- Email support. Enterprise lifetime adds an SLA and a named engineer.
 
 ## Tiers
 
-| Tier | For | Adds |
+| Tier | Price | Includes |
 |---|---|---|
-| **Startup** | A first production deployment | Production rights up to an agreed robot count |
-| **Enterprise** | Multi-site fleets, regulated and federal buyers | Unlimited robots, audited policy files, SLA, named engineer |
-| **OEM** | Robot and controller makers | Redistribution rights in shipped products, per-unit pricing, directory listing |
+| **Production** | **$4 per robot per month** | Any company running URML on robots in production. Only robots in service count. Email support |
+| **Enterprise lifetime** | **$225,000 one time**, plus **$10,000 per year** support | Perpetual license: unlimited robots and sites, every future version, audited policy files, SLA, named engineer |
+| **OEM** | Per unit, on request | Robot and controller makers: redistribution rights in shipped products, directory listing |
 
 ## Other commercial offerings
 
