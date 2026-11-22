@@ -87,6 +87,17 @@ touches real PyPI. TestPyPI is the rehearsal: it catches metadata,
 dependency-order, and data-file bugs without burning a permanent real
 version number.
 
+## New package names: 4 per day
+
+PyPI lets a personal account create about four new projects per day, on a
+moving window. Uploads to a new name past that fail with `429 Too many new
+projects created`. Waiting an hour does not help. Adding a new package to
+the family therefore takes a day per four names. The release workflow
+uploads one file at a time, packages already on PyPI first, then new names
+in the priority order set in `.github/workflows/release.yml`; re-run its
+publish job 24 hours after the last new project was created. The 0.5.0
+release (2026-11-22) needed three days for twelve new names.
+
 ## Step by step
 
 ```bash
