@@ -18,4 +18,4 @@ Thank you for contributing to URML. This agreement makes clear the rights you gr
 
 6. **Notice.** You agree to notify the Licensor if any of the statements above becomes inaccurate.
 
-Contributors sign this agreement electronically through the CLA check on their first pull request.
+Contributors sign this agreement electronically at [cla-assistant.io/urml-dev/URML](https://cla-assistant.io/urml-dev/URML), or through the CLA check on their first pull request.
