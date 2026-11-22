@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "urml-ros2-runtime"
-version = "0.4.0"
+version = "0.5.0"
 description = "ROS 2 reference runtime for URML — Universal Robot Language."
 readme = "README.md"
 license = { text = "BUSL-1.1" }
@@ -24,7 +24,7 @@ classifiers = [
 dependencies = [
   "pydantic>=2.6,<3",
   "PyYAML>=6.0,<7",
-  "urml-validator>=0.4.0",
+  "urml-validator>=0.5.0",
 ]
 
 [project.optional-dependencies]
