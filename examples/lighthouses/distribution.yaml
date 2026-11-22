@@ -37,7 +37,7 @@
   submitted_at: ""
   posted_url: ""
   response: none
-  notes: "gh skill publish from a URML-MARS/URML checkout; installable via npx skills add urml-robot-intent. Playbook: .github/skills/SUBMISSIONS.md."
+  notes: "gh skill publish from a urml-dev/URML checkout; installable via npx skills add urml-robot-intent. Playbook: .github/skills/SUBMISSIONS.md."
 
 - slug: agentskills-io
   track: skill
@@ -60,12 +60,12 @@
 
 - slug: mcp-registry
   track: mcp
-  venue: "Official MCP registry (name io.github.urml-mars/urml)"
+  venue: "Official MCP registry (name io.github.urml-dev/urml)"
   artifact: "reference/mcp-server/server.json"
   submitted_at: ""
   posted_url: ""
   response: none
-  notes: "mcp-publisher publish; GitHub login verifies the io.github.urml-mars namespace. Needs the PyPI package live first."
+  notes: "mcp-publisher publish; GitHub login verifies the io.github.urml-dev namespace. Needs the PyPI package live first."
 
 - slug: smithery
   track: mcp

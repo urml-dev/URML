@@ -37,13 +37,13 @@ Two seams, both honest: (1) URML lowers to a tree -- a validated URML program's 
 
 Two real questions: (1) Which seam is more natural -- URML compiling to a BT.CPP tree, or a BT leaf node that dispatches a validated URML primitive? (2) Does URML's sequence/parallel/branch/retry map cleanly onto BT.CPP control nodes (Sequence/Parallel/Fallback/RetryUntilSuccessful), or are there mismatches?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0470-behaviortree-cpp-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0470-behaviortree-cpp-outreach.md
 
 Thanks for BehaviorTree.CPP; the de-facto robotics BT engine is exactly where this Layer-3 interop question should be asked.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -64,13 +64,13 @@ Two seams: (1) URML lowers to a py_trees composite -- Sequence / Parallel / Sele
 
 Two real questions: (1) Which seam is more natural -- URML compiling to a py_trees composite, or a py_trees behaviour that dispatches a validated URML primitive? (2) Does URML's sequence/parallel/branch/retry map cleanly onto py_trees composites + decorators?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0471-py-trees-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0471-py-trees-outreach.md
 
 Thanks for py_trees; a clean, well-introspected Python BT library is a great place for this.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -91,13 +91,13 @@ Two seams: (1) URML lowers to states/transitions -- sequence -> states in series
 
 Two real questions: (1) Which seam is more natural -- URML lowering to a SMACC2 state machine, or a SMACC2 client-behavior that dispatches a validated URML primitive? (2) Does URML's sequence/parallel/branch/retry map onto SMACC2 states, orthogonal lines, and transitions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0472-smacc2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0472-smacc2-outreach.md
 
 Thanks for SMACC2; an actively-developed event-driven ROS 2 state-machine library is a great place to think about validated intent over states.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -118,13 +118,13 @@ The lowering: a validated URML program's control flow maps to a transitions mach
 
 Two real questions: (1) Is "URML validated program -> a transitions FSM" a sensible lowering, and does the hierarchical (HSM) variant cover URML's nested sequence/branch? (2) What callback shape (on_enter per state) is idiomatic for dispatching a validated action?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0473-transitions-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0473-transitions-outreach.md
 
 Thanks for transitions; the canonical Python FSM is a natural lowering target for a robot-intent language, and I wanted to ask before assuming the mapping.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -145,13 +145,13 @@ Two seams: (1) URML lowers to a FlexBE state machine -- control flow maps to sta
 
 Two real questions: (1) Which seam is more natural -- URML lowering to a FlexBE state machine, or a FlexBE state that dispatches a validated URML primitive? (2) Could the validation verdict (accepted / refused + reason) surface in the FlexBE operator UI before a state runs?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0474-flexbe-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0474-flexbe-outreach.md
 
 Thanks for FlexBE; an operator-in-the-loop FSM is a great place to pair human supervision with a static validate-before-actuate gate.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -172,13 +172,13 @@ The alignment: a URML primitive (move_to / grasp / set_output, with capability p
 
 Two real questions: (1) How close is a URML primitive (typed args + capability/envelope precondition) to a SkiROS2 skill (parameters + world-model conditions) -- and could one drive the other? (2) Could URML's capability/envelope checks serve as (or feed) SkiROS2 skill preconditions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0475-skiros2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0475-skiros2-outreach.md
 
 Thanks for SkiROS2; a skill-based platform with explicit pre/post-conditions is the nearest neighbour to what URML is trying to do, and I'd value your read.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -199,11 +199,11 @@ Two complementary pieces: (1) ROSPlan plans, URML validates + dispatches -- ROSP
 
 Two real questions: (1) Is "ROSPlan plans -> URML validates + dispatches each action" a sensible division, and where would the plan-to-primitive lowering live (the plan-dispatch layer)? (2) Could a URML primitive's capability/envelope precondition be expressed as a PDDL action precondition, so planning and validation share a surface?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0476-rosplan-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0476-rosplan-outreach.md
 
 Thanks for ROSPlan; a long-running open PDDL task-planning framework is the right place to think about where planning ends and validated dispatch begins.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

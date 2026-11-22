@@ -110,7 +110,7 @@ RFC-0028 ships as a single PR with the RFC + new `fanuc_cell.yaml` manifest + ne
 
 URML public Discussions (per [RFC-0008](0008-community-discussions.md)):
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Or open an Issue on `FANUC-CORPORATION/fanuc_driver` linking back. Private channel via `MAINTAINERS.md`.
 

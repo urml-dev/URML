@@ -57,7 +57,7 @@ arc-length arithmetic error disappears.
 ## Motivation
 
 The motivating case is concrete and current. In
-[Discussion #572](https://github.com/URML-MARS/URML/discussions/572), an active
+[Discussion #572](https://github.com/urml-dev/URML/discussions/572), an active
 user (the GoPiGo3 power user from RFC-0630, running a local `qwen3.5:9b` on the
 robot) asked for a prompt that would make "orbit 180 degrees with a 5 cm radius"
 drive a 5 cm-radius arc. The robot orbited at 10 cm instead, twice the requested

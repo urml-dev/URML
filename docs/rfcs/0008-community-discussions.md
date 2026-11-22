@@ -50,7 +50,7 @@ either open a misfiled issue or do not engage at all.
 "the project moves under its permanent GitHub organization" and Phase 1. Two
 facts make deferral the wrong call now:
 
-1. Discussions is already enabled on `URML-MARS/URML` (verified: the repository
+1. Discussions is already enabled on `urml-dev/URML` (verified: the repository
    reports `hasDiscussionsEnabled: true` with the six GitHub default categories
    and zero discussions). The platform toggle is done; only the tailoring and
    the documentation wiring are missing.

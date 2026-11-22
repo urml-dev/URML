@@ -27,7 +27,7 @@ Voice: founder posts under his GitHub identity. Each post opens with "Hi <team>"
 **Disclosure paragraph (reused verbatim at the bottom of every post body):**
 
 ```
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 **Identity-load-bearing framing.** URML's substrate-neutral claim has been implicit in prior moves; Move #16 makes it explicit by engaging the substrate maintainers themselves.
@@ -62,7 +62,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 outreach (substrate-spine wave, 16 engageable RFCs across drone autopilot + ROS 2 + DDS + SLAM upstreams). Move #16 makes URML's substrate-neutral claim explicit by engaging the substrate maintainers themselves; PX4 / Dronecode-direct engagement is RFC-0196's anchor — the opening RFC of the wave.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0196-px4-autopilot-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0196-px4-autopilot-outreach.md
 
 URML's planned `px4_multirotor_cell.yaml` fixture declares PX4 as the autopilot substrate. URML's drone profile (RFC-0008) dispatches the mobility primitives (`take_off`, `move_to`, `land`) onto PX4 via MAVLink. The engagement is foundation-direct at the Linux Foundation Dronecode layer to cover upstream PX4 and downstream commercial distributions in one conversation.
 
@@ -80,7 +80,7 @@ Happy to scope down, deepen, or shelve as fits. Thanks for the patient build ove
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -97,7 +97,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Sibling RFCs cover PX4 (RFC-0196 autopilot substrate) and MAVSDK (RFC-0198 high-level SDK).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0197-mavlink-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0197-mavlink-outreach.md
 
 URML's manifest declares MAVLink as the autopilot-control protocol class for drone deployments. The LGPL-3.0 protocol-grammar layer plus the MIT generated-code exception makes URML's adapter pattern clean: URML composes against the generated bindings (MIT) at the API boundary, and the protocol-grammar surface (LGPL-3.0) is referenced rather than embedded.
 
@@ -115,7 +115,7 @@ Thanks for the protocol that lets the entire drone ecosystem talk.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -132,7 +132,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Sibling RFCs cover PX4 (RFC-0196) and MAVLink protocol (RFC-0197); MAVSDK is the SDK layer where URML's drone-adapter naturally composes.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0198-mavsdk-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0198-mavsdk-outreach.md
 
 URML's manifest declares MAVSDK as the SDK substrate. URML's planned `reference/drone-runtime/` composes against the MAVSDK API surface — BSD-3-Clause makes this a clean Apache-2.0 fit at the source level.
 
@@ -151,7 +151,7 @@ Thanks for the SDK that makes cross-vendor drone control real.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -168,7 +168,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). DroneCAN is one of three protocol-substrate engagements in Batch 1 (PX4 RFC-0196 autopilot, MAVLink RFC-0197 default protocol, DroneCAN RFC-0199 embedded protocol).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0199-dronecan-libcanard-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0199-dronecan-libcanard-outreach.md
 
 URML's manifest declares `protocol.embedded_class: dronecan` for CAN-bus drone deployments. The MIT license on libcanard makes the URML adapter posture clean. The engagement is at the protocol-grammar layer (DSDL message definitions) and the embedded-network topology declaration.
 
@@ -187,7 +187,7 @@ Thanks for keeping the embedded-network protocol open and active.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -206,7 +206,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). **RFC-0200 is the most identity-load-bearing engagement in Move-16** — URML's substrate-neutral claim is only credible if engaged explicitly with the primary substrate's maintainers themselves.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0200-ros2-core-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0200-ros2-core-outreach.md
 
 URML's manifest declares `substrate.class: ros2` plus distro + RMW implementation. The reference runtime already exists; this RFC formalizes the engagement-channel upstream at the foundation layer rather than adding new code.
 
@@ -227,7 +227,7 @@ Thanks for the middleware that makes modern robotics composable.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -244,7 +244,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Sibling RFCs cover ROS 2 core (RFC-0200) and MoveIt 2 (RFC-0202).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0201-nav2-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0201-nav2-outreach.md
 
 URML's manifest declares `mobility.dispatch: nav2` plus planner / controller / costmap / recovery plugin sets. Nav2's behavior-tree-driven planning composes cleanly with URML's manifest-validated dispatch: URML validates intent before dispatch; Nav2 plans the trajectory and recovers from failure.
 
@@ -262,7 +262,7 @@ Thanks for the navigation stack that lets mobile robots actually navigate.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -279,7 +279,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Sibling RFCs cover ROS 2 core (RFC-0200) and Nav2 (RFC-0201).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0202-moveit2-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0202-moveit2-outreach.md
 
 URML's manifest declares `manipulation.dispatch: moveit2` plus planning pipeline + planner ID + SRDF reference + collision-object scene. URML's industrial profile (RFC-0013) defines `pick_from` / `place_at` / `swap_tool`; MoveIt 2 is the natural dispatcher.
 
@@ -298,7 +298,7 @@ Thanks for the manipulation stack that makes ROS 2 arms productive.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -317,7 +317,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Sibling RFCs cover Cyclone DDS (RFC-0204), Zenoh (RFC-0209), and iceoryx (RFC-0210) — the parallel middleware engagements.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0203-fast-dds-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0203-fast-dds-outreach.md
 
 URML's manifest will declare `substrate.rmw_implementation: rmw_fastrtps_cpp` plus QoS profile fields (reliability / durability / history / deadline / lifespan). The Fast DDS team is the right group to validate URML's QoS-field shape against the OMG DDS specification.
 
@@ -335,7 +335,7 @@ Thanks for the DDS implementation that powers most production ROS 2 deployments.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -352,7 +352,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Cyclone DDS is one of three Eclipse Foundation engagements in Move-16 (Cyclone DDS + Zenoh RFC-0209 + iceoryx RFC-0210); the conversation may converge to a Foundation-level discussion.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0204-cyclone-dds-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0204-cyclone-dds-outreach.md
 
 URML's EPL-2.0 → cross-citation framing at the API boundary: URML's Apache-2.0 adapter source does not embed Cyclone DDS source; URML composes at the RMW boundary cleanly.
 
@@ -371,7 +371,7 @@ Thanks for the Eclipse Foundation DDS implementation.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -390,7 +390,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Sibling RFCs cover ORB-SLAM3 (RFC-0206 visual-SLAM) and RTAB-Map (RFC-0207 visual-inertial); together they define URML's `perception.slam_substrate` enum.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0205-cartographer-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0205-cartographer-outreach.md
 
 URML's manifest will declare `perception.slam_substrate: cartographer` plus 2D vs 3D mode, Lua-configuration reference, sub-map publish cadence, and optimization budget hints.
 
@@ -409,7 +409,7 @@ Thanks for the SLAM reference everyone ends up benchmarking against.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -426,7 +426,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Sibling RFCs cover Cartographer (RFC-0205 lidar SLAM) and RTAB-Map (RFC-0207 visual-inertial).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0206-orb-slam3-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0206-orb-slam3-outreach.md
 
 URML's manifest will declare `perception.slam_substrate: orb_slam3` plus the five operation modes (monocular / stereo / RGB-D / monocular-inertial / stereo-inertial), camera-calibration YAML reference, and ORB vocabulary file reference.
 
@@ -445,7 +445,7 @@ Thanks for the canonical visual-SLAM reference everyone learns from.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -462,7 +462,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Sibling RFCs cover Cartographer (RFC-0205), ORB-SLAM3 (RFC-0206), and Stella VSLAM (RFC-0211 community-fork).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0207-rtabmap-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0207-rtabmap-outreach.md
 
 URML's manifest will declare `perception.slam_substrate: rtabmap` plus sensor-topology mode, database path, loop-closure threshold, and feature-detector selection. The license-clarification ask is gating: the repo is GitHub-classified as Other (mixed LGPL/BSD per README); URML adapter posture depends on per-module license clarity.
 
@@ -481,7 +481,7 @@ Thanks for the visual-inertial SLAM that people actually deploy.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -500,7 +500,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). QGC joins PX4 (RFC-0196), MAVLink (RFC-0197), and MAVSDK (RFC-0198) as the fourth Linux Foundation Dronecode engagement in Move-16. Cross-citation only — URML's runtime doesn't embed QGC; the engagement is at manifest-declaration layer.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0208-qgroundcontrol-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0208-qgroundcontrol-outreach.md
 
 URML's manifest will declare `operator_control_surface: qgroundcontrol` plus MAVLink message subset, `.plan` mission-file format, telemetry subset, and manual-override channel availability.
 
@@ -519,7 +519,7 @@ Thanks for the ground-station that makes drone deployments operable.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -536,7 +536,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Zenoh joins Cyclone DDS (RFC-0204) and iceoryx (RFC-0210) as the second of three Eclipse Foundation engagements in Move-16.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0209-zenoh-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0209-zenoh-outreach.md
 
 URML's manifest will declare `substrate.rmw_implementation: rmw_zenoh_cpp` plus a first-class `substrate.maturity_tier: emerging` field, Zenoh topology mode, and multi-protocol-bridge declaration (MQTT / Kafka / WebSocket).
 
@@ -555,7 +555,7 @@ Thanks for the next-generation pub-sub that the ROS 2 community is actively eval
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -572,7 +572,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). iceoryx joins Cyclone DDS (RFC-0204) and Zenoh (RFC-0209) as the third of three Eclipse Foundation engagements in Move-16.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0210-iceoryx-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0210-iceoryx-outreach.md
 
 URML's manifest will declare `substrate.ipc_substrate: iceoryx` plus generation (iceoryx1 vs iceoryx2), shared-memory pool budget hints, pub/sub count budgets, and RouDi runtime name.
 
@@ -591,7 +591,7 @@ Thanks for the zero-copy IPC that makes high-throughput ROS 2 possible.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -608,7 +608,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #16 substrate-spine wave (16 engageable RFCs). Sibling SLAM RFCs cover Cartographer (RFC-0205), ORB-SLAM3 (RFC-0206), and RTAB-Map (RFC-0207).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0211-stella-vslam-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0211-stella-vslam-outreach.md
 
 URML's manifest will declare `perception.slam_substrate: stella_vslam` plus a first-class `lineage: openvslam` field (URML's first lineage-declaration field, capturing community-fork provenance). License clarification on the repo classification is the gating fact — the repo is GitHub-classified as Other, and the OpenVSLAM archive history was license-driven, so explicit OSI declaration would unlock URML's adapter posture.
 
@@ -627,7 +627,7 @@ Thanks for keeping the OpenVSLAM continuation maintained.
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 

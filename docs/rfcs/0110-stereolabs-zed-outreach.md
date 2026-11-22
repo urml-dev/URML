@@ -109,7 +109,7 @@ For the `stereolabs/zed-ros2-wrapper` maintainers:
 1. **Native detection / body-tracking / spatial-mapping declaration.** ZED SDK ships bundled vision-AI. How should URML's manifest declare the supported detection classes + tracking modes so URML's `query_detection` primitive validates against the camera's actual capability set?
 2. **Color + per-point attributes on point clouds.** Same question raised by RFC-0035 (Zivid) and RFC-0109 (RealSense). What's the right manifest shape from Stereolabs's perspective?
 3. **Closed-SDK substrate boundary.** URML's manifest reasons about the open wrapper only. Is there a way the manifest could carry version pinning of the underlying SDK binary, or is that better left out?
-4. **Adapter home.** When the URML-side `ZedAdapter` ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `stereolabs/zed-urml` repo, or external in URML-MARS/URML only? URML's default assumption is the URML repo unless invited otherwise.
+4. **Adapter home.** When the URML-side `ZedAdapter` ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `stereolabs/zed-urml` repo, or external in urml-dev/URML only? URML's default assumption is the URML repo unless invited otherwise.
 5. **Conformance listing.** Would the Stereolabs team consider a README link to URML's compatible-runtimes registry once a working adapter ships? (Per [RFC-0014](0014-substrate-conformance.md), self-reported tier, no continuous obligation.)
 6. **Anything else.**
 

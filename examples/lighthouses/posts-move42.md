@@ -36,13 +36,13 @@ Two seams: (1) shared-autonomy handoff -- the operator stays in control by defau
 
 Two real questions: (1) Is a validated shared-autonomy handoff interesting on a GELLO rig? (2) Is labelling demonstration segments with a typed URML primitive useful for the data you collect -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0479-gello-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0479-gello-outreach.md
 
 Thanks for GELLO; a low-cost, widely-used teleop rig is exactly where this kind of validated-handoff / typed-demo question should be asked.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -63,13 +63,13 @@ The idea: a mapped controller action ("grip -> grasp the detected object", "A ->
 
 Two real questions: (1) Is mapping a controller action to a validated URML intent (vs raw pose streaming) interesting for VR teleop built on oculus_reader? (2) Is recording the typed intent per button useful for the demonstrations collected through it?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0480-oculus-reader-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0480-oculus-reader-outreach.md
 
 Thanks for oculus_reader; a clean Quest input bridge is a natural place to attach validated, named intents to controller actions.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -90,13 +90,13 @@ A retargeted grasp still has to be something the declared hand can actually do -
 
 Two real questions: (1) Is wrapping a retargeted hand pose in a validated manipulation intent (capability + envelope check before hardware) interesting for AnyTeleop-style rigs? (2) What should a URML capability manifest declare to describe a dexterous hand honestly so a retargeted grasp can be checked (DOF, joint limits, graspable classes)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0481-dex-retargeting-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0481-dex-retargeting-outreach.md
 
 Thanks for dex-retargeting; the retargeting layer most VR teleop rigs depend on is the right place to think about a validated bound on the result.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -117,13 +117,13 @@ Two seams: (1) shared-autonomy handoff -- inside the immersive session the opera
 
 Two real questions: (1) Is a validated shared-autonomy handoff interesting inside an immersive teleop session? (2) Is labelling demonstrations with typed URML intent (including bimanual) useful for the data collected -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0482-televison-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0482-televison-outreach.md
 
 Thanks for Open-TeleVision; an immersive bimanual teleop system is a great place to think about validated handoffs and typed demonstrations.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -144,13 +144,13 @@ Two ideas: (1) each UMI demonstration is labelled with the URML primitive(s) it 
 
 Two real questions: (1) Is labelling UMI demonstrations with a typed URML primitive useful, as structured supervision and as a manifest-checkable record? (2) Is wrapping a UMI-trained policy in a validated intent + envelope at deployment interesting -- and where's the cleaner seam, annotation at collection or a wrapper at deployment?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0483-umi-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0483-umi-outreach.md
 
 Thanks for UMI; an in-the-wild handheld data-collection interface is a great place to think about typed, checkable demonstration intent.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -171,11 +171,11 @@ Two ideas: (1) each DexCap demonstration is labelled with the URML primitive(s) 
 
 Two real questions: (1) Is labelling DexCap demonstrations with a typed URML primitive useful as structured, manifest-checkable supervision? (2) What should a URML capability manifest declare to describe the target dexterous hand so a captured grasp can be checked?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0484-dexcap-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0484-dexcap-outreach.md
 
 Thanks for DexCap; a portable in-the-wild dexterous-mocap rig is a great place to think about typed, checkable demonstration intent.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

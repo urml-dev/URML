@@ -37,13 +37,13 @@ URML is not ROS-bound; it dispatches to whatever a substrate exposes. FarmBot ex
 
 Two real questions: (1) Is binding FarmBot sequences via call_program (sequence name + typed args) the right granularity to drive FarmBot from an outside intent layer, or is the Web App REST/MQTT API a better seam? (2) What should a URML capability manifest declare to describe a FarmBot honestly — bed/work-area geometry, mounted tools (seeder, waterer, weeder, sensor), plant/crop vocabulary, coordinate bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0404-farmbot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0404-farmbot-outreach.md
 
 Thanks for FarmBot; an open-source CNC farming robot is one of the best on-ramps in robotics.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -64,13 +64,13 @@ A URML drive / navigation intent ("drive the east row at 1 m/s and record") lowe
 
 Two real questions: (1) Is the ROS bridge or the gRPC surface the better seam for an external validated-intent layer above the Amiga? (2) What should a URML capability manifest declare to describe an Amiga-class ag rover honestly — drive type, speed/turn limits, implement interfaces, GNSS/positioning, field-boundary / geofence constraints?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0405-farm-ng-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0405-farm-ng-outreach.md
 
 Thanks for the Amiga and the open dev kit; an open developer surface on a real ag platform is a great thing for the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -91,13 +91,13 @@ A URML field-robot program (drive rows, detect, measure, report) runs against a 
 
 Two real questions: (1) Is a validated natural-language intent layer above CropCraft interesting as a demonstration / teaching surface for field-robot scenarios? (2) What should a URML manifest declare to describe a field-robot deployment honestly — drive type, row/area geometry, implement set, crop vocabulary, GNSS — and is the broader Romea middleware a natural integration point?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0406-cropcraft-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0406-cropcraft-outreach.md
 
 Thanks for CropCraft; a permissive, procedural crop-field generator is a real asset for ag-robotics simulation.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -118,13 +118,13 @@ In URML, a detect step binds a target and an actuation step consumes it — the 
 
 Two real questions: (1) Is a validated intent layer above OWL's detect-then-spray loop interesting, or does the existing configuration already cover that need? (2) What should a URML manifest declare to describe a spot-sprayer honestly — detection classes, nozzle/relay configuration, application-rate limits, no-spray exclusion zones?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0407-openweedlocator-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0407-openweedlocator-outreach.md
 
 Thanks for OWL; a low-cost open weed-detection-and-spray device is a genuinely useful contribution.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -145,13 +145,13 @@ URML's ROS 2 runtime targets the aoc_tomato_farm digital twin and the lab's robo
 
 Two real questions: (1) Is a validated natural-language intent layer above the Agri-OpenCore stack interesting for the lab's glasshouse / field robotics? (2) What should a URML capability manifest declare to describe a glasshouse or field agri-robot honestly — drive type, row/bench geometry, crop vocabulary, manipulator reach for harvesting, GNSS?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0408-agri-opencore-lcas-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0408-agri-opencore-lcas-outreach.md
 
 Thanks for Agri-OpenCore; an open, active academic agri-robotics ecosystem is exactly where this kind of layer should be designed with input rather than guessed.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -172,13 +172,13 @@ URML's ROS 2 runtime meets farmbot-ros on its action/service surface; "seed bed 
 
 Two real questions: (1) Does URML's typed intent map cleanly onto the interfaces message contracts, and where should it target them rather than a generic ROS surface? (2) What should a URML capability manifest declare to describe a FarmBot-class gantry in ROS 2 — bed geometry, tool set, plant vocabulary, coordinate bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0409-farmbot-ros2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0409-farmbot-ros2-outreach.md
 
 Thanks for FarmBot-ROS2; a clean modular ROS 2 take on FarmBot control is great to see.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -199,13 +199,13 @@ URML's ROS 2 runtime targets the AgriBot's ROS surface; "survey the field and re
 
 Two real questions: (1) What should a URML capability manifest declare to describe an agricultural field robot honestly — drive type, row/field geometry, sensor suite, GNSS/positioning? (2) Where is the cleanest seam — URML above the navigation/recording interface, or composing with the lab's perception/mapping outputs as detect sources?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0410-prbonn-agribot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0410-prbonn-agribot-outreach.md
 
 Thanks for AgriBot and the lab's ag-perception work; it is some of the most credible research in the area.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -226,11 +226,11 @@ URML's move_to lowers onto smart_diffbot's Nav2 navigation (Nav2 is already a UR
 
 Two real questions: (1) Is URML's move_to-onto-Nav2 mapping the right seam for an outdoor GNSS rover? (2) What should a URML manifest declare to describe an outdoor GNSS diff-drive robot honestly — drive type, speed limits, GNSS frame, geofence / field boundaries?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0411-smart-diffbot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0411-smart-diffbot-outreach.md
 
 Thanks for smart_diffbot; a clean open ROS 2 + Nav2 outdoor GNSS rover is a nice, approachable platform.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

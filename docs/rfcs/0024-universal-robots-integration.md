@@ -168,7 +168,7 @@ If you are a maintainer of `UniversalRobots/Universal_Robots_ROS2_Driver`, `Univ
 
 Open a thread in the URML public Discussions (per [RFC-0008](0008-community-discussions.md)):
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Categories that fit best: **Q&A** (factual corrections), **Ideas** (proposals for URML primitives UR needs that v0.1 lacks), **Builders & Makers** (runtime authorship / conformance listing). Substantive spec changes go through a follow-on RFC per [RFC-0001](0001-rfc-process.md).
 

@@ -154,7 +154,7 @@ RFC-0076 ships as a single RFC document PR. No adapter code in this PR. Research
 
 `open-dynamic-robot-initiative/master-board` is the most actively maintained core repo (133 stars, last commit 2026-05-07; verified 2026-05-24). URML's planned channel: open a single Issue on `master-board` labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

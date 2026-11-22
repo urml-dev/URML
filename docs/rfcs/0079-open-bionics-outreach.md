@@ -144,7 +144,7 @@ General: items 6–7.
 - **Academic surface:** open a single Issue on `OpenBionics/Prosthetic-Hands` labelled with the closest `question` equivalent, pointing to this RFC. Acknowledge the dormancy and ask for any maintainer redirect.
 - **Commercial surface:** founder to choose between `info@openbionics.com`, LinkedIn outreach to Open Bionics Ltd's product team, or the company's public contact form. URML records this as a courtesy notice rather than a substantive ask.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

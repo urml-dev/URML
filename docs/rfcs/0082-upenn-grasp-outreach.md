@@ -103,7 +103,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `KumarRobotics/msckf_vio` is the highest-visibility repo at 1.9k stars (verified 2026-05-25). URML's planned channel: open a single Issue on a more lab-cross-cutting repo. `KumarRobotics/kr_autonomous_flight` (771 stars) or `KumarRobotics/MOCHA` (38 stars, multi-robot). Labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email via the GRASP Lab contact page at `grasp.upenn.edu`.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

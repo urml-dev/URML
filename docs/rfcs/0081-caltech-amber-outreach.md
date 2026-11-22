@@ -104,7 +104,7 @@ Items 1–6 from "Unresolved questions" above.
 
 `Caltech-AMBER/obelisk` has Issues enabled (53 open at time of writing; verified 2026-05-25). URML's planned channel: open a single Issue on `Caltech-AMBER/obelisk` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Ames via the contact listed on `bipedalrobotics.com`.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

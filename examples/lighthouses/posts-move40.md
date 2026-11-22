@@ -37,13 +37,13 @@ A URML runtime emits one audit event per step: the typed intent, the validation 
 
 Two real questions: (1) Is URML's validated-intent audit stream a useful data source / panel for Lichtblick? (2) What is the cleanest seam — a custom data-source plugin, an MCAP recording, or a live foxglove-protocol stream — and what fields would a "validated intent" panel want (intent, pass/verdict, substrate call, timing)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0463-lichtblick-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0463-lichtblick-outreach.md
 
 Thanks for Lichtblick; an open, actively-developed robotics viz platform is exactly where this kind of integration should be designed with input.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -64,13 +64,13 @@ A URML runtime logs one entity per step: the typed intent, the validation verdic
 
 Two real questions: (1) Is URML's validated-intent audit stream a useful thing to log to a Rerun timeline? (2) What's the idiomatic Rerun shape for "intent + verdict + dispatch" events (a custom archetype, scalars + text, a structured log) — and is there interest in a small reference logger that emits URML audit records as Rerun entities?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0464-rerun-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0464-rerun-outreach.md
 
 Thanks for Rerun; a fast multimodal timeline is a great place to make validated intent visible alongside everything else a robot logs.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -91,13 +91,13 @@ A URML runtime can expose timestamped series a PlotJuggler streaming plugin cons
 
 Two real questions: (1) Is URML's validated-intent / envelope-margin stream a useful streaming source for PlotJuggler? (2) Is a custom streaming plugin the right seam, or is replaying a recorded log (CSV / MCAP) the cleaner first step — and what scalar/event shape would a "validated intent" series want?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0465-plotjuggler-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0465-plotjuggler-outreach.md
 
 Thanks for PlotJuggler; a fast, plugin-friendly time-series tool is the natural place to make envelope margins reviewable.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -118,13 +118,13 @@ A URML runtime writes one MCAP channel of audit messages: per step, the typed in
 
 Two real questions: (1) Is recording URML's validated-intent audit trail as a dedicated MCAP channel the right pattern (schema-encoded messages on their own channel)? (2) Should the audit schema be advertised as JSON Schema or protobuf for best cross-tool support, and are there conventions for an "intent + verdict" channel that would make it idiomatic for MCAP readers?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0466-mcap-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0466-mcap-outreach.md
 
 Thanks for MCAP; a serialization-agnostic open logging format is exactly the right place to make a validated-intent trail portable.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -145,13 +145,13 @@ A URML runtime publishes its audit records on a topic; rosboard could render the
 
 Two real questions: (1) Is a "validated intent" panel (intent / verdict / dispatch) a useful addition to rosboard's topic tiles? (2) Is publishing audit records on a ROS topic the right seam, or a dedicated rosboard data type — and what would a glanceable validated-intent tile most want to show?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0467-rosboard-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0467-rosboard-outreach.md
 
 Thanks for rosboard; a no-install web dashboard is a great place to surface why a robot did (or didn't) act.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -172,11 +172,11 @@ A URML runtime could use rviz_visual_tools to draw what it just validated: the t
 
 Two real questions: (1) Is drawing a validated intent's target/envelope (pose, workspace bound, geofence, trajectory) a natural use of rviz_visual_tools? (2) Are the existing marker primitives sufficient, or would a small "intent/envelope" helper layer be worth it, and any conventions for distinguishing accepted vs. refused intent visually?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0468-rviz-visual-tools-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0468-rviz-visual-tools-outreach.md
 
 Thanks for rviz_visual_tools; a clean marker API is the natural place to make a robot's intended-and-allowed envelope visible.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

@@ -39,7 +39,7 @@ This is proposal-only. No plugin code has been written yet, since the wrapper-vs
 
 Full RFC with proposed package layout, primitive-to-policy-output mapping, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0040-hugging-face-lerobot.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0040-hugging-face-lerobot.md
 
 ## Feedback we'd value
 
@@ -75,7 +75,7 @@ This is proposal-only. No bridge code yet, since the Outputs-class-vs-wrapper qu
 
 Full RFC with proposed package layout, primitive-to-action mapping, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0045-physical-intelligence-openpi.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0045-physical-intelligence-openpi.md
 
 ## Feedback we'd value
 
@@ -114,7 +114,7 @@ The proposal is additive: episodes without the urml_program field continue to wo
 
 Full RFC with the proposed schema, annotation paths, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0046-open-x-embodiment.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0046-open-x-embodiment.md
 
 Feedback I'd value most:
 
@@ -144,7 +144,7 @@ Cross-reference to the email sent to `open-x-embodiment@googlegroups.com` on $TO
 
 URML is an Apache 2.0 spec at [urml.dev](https://urml.dev). Move #2 is URML's outreach program to AI / ML-layer projects.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0046-open-x-embodiment.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0046-open-x-embodiment.md
 
 Posting here for visibility to anyone watching `google-deepmind/open_x_embodiment`. The substantive discussion is happening on the Google Group.
 
@@ -172,7 +172,7 @@ URML is an Apache 2.0 specification for substrate-neutral robot intent at urml.d
 
 This is proposal-only. No bridge code yet, since the wrapper shape and especially the bimanual-coordination primitive question are worth Ai2 input first.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0047-allen-institute-molmoact.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0047-allen-institute-molmoact.md
 
 ## Feedback we'd value
 
@@ -202,7 +202,7 @@ I'm Ido Yahalomi, the maintainer of URML (Universal Robot Language), an Apache 2
 
 The full RFC is on URML's repo:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0047-allen-institute-molmoact.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0047-allen-institute-molmoact.md
 
 A cross-reference Issue is open on allenai/molmoact for repo visibility. The questions most relevant to the MolmoAct team are about the bridge home (Ai2-side contributed example vs. standalone PyPI), the preview-and-correct semantics, and the bimanual-coordination primitive question.
 
@@ -243,7 +243,7 @@ This is proposal-only. No server code yet, since the tool surface (granularity, 
 
 Full RFC with proposed tool surface, resource surface, alternatives, and the parallel Agent Skills integration vector:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0048-anthropic-mcp-and-agent-skills.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0048-anthropic-mcp-and-agent-skills.md
 
 ## Feedback we'd value
 
@@ -298,7 +298,7 @@ This is proposal-only. No Skill folder yet, since the skill-scope (inline gramma
 
 Full RFC with the MCP-server companion vector:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0048-anthropic-mcp-and-agent-skills.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0048-anthropic-mcp-and-agent-skills.md
 
 ## Feedback we'd value
 
@@ -335,7 +335,7 @@ Proposal-only. No bridge code yet, since the action-conditioning encoding (Q1) a
 
 Full RFC with proposed schema, action-conditioning mapping, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0052-meta-fair-vjepa2.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0052-meta-fair-vjepa2.md
 
 ## Feedback we'd value
 
@@ -373,7 +373,7 @@ Proposal-only. No bridge code yet, since the DataParams contract (Q1) and the in
 
 The TRI plus Boston Dynamics partnership (October 2024) targets Atlas with LBMs. URML already ships `SpotAdapter` (RFC-0043 on BD's quadruped) and a future humanoid-runtime extension would close the loop on Atlas-via-LBM deployment.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0054-tri-large-behavior-models.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0054-tri-large-behavior-models.md
 
 ## Feedback we'd value
 
@@ -409,7 +409,7 @@ Proposal-only. No bridge code yet, since the constrained-decoding integration pa
 
 Full RFC with proposed prompt templates, mapping table, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0055-nvidia-cosmos-reason.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0055-nvidia-cosmos-reason.md
 
 ## Feedback we'd value
 
@@ -452,7 +452,7 @@ The result of either path feeds downstream training (LeRobot, openpi, MolmoAct, 
 
 Proposal-only. No bridge code yet, since the labelling UX (Q1) and the bimanual-coordination primitive question (Q2) are worth ALOHA-maintainer input first.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0056-stanford-aloha.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0056-stanford-aloha.md
 
 ## Feedback we'd value
 
@@ -482,7 +482,7 @@ Cross-reference to the URML / ALOHA integration proposal filed on MarkFzp/mobile
 
 URML is an Apache 2.0 spec at [urml.dev](https://urml.dev). The data shape converges on LeRobotDataset v3 plus the `urml_program` sidecar (RFCs 0040 / 0046).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0056-stanford-aloha.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0056-stanford-aloha.md
 
 Primary thread: https://github.com/MarkFzp/mobile-aloha/issues/$N (link after that thread is opened)
 
@@ -509,7 +509,7 @@ URML is an Apache 2.0 specification for substrate-neutral robot intent.
 
 Proposal-only. No bridge code yet, since the URML-to-prompt encoding (Q1) and the closed-loop infrastructure question (Q5) are worth NVIDIA input first.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0057-nvidia-cosmos-predict.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0057-nvidia-cosmos-predict.md
 
 ## Feedback we'd value
 
@@ -550,7 +550,7 @@ The integration patterns URML has documented for other targets:
 
 When OpenAI publishes a robotics SDK, model, or API, URML's integration follows whichever shape fits. URML's `reference/llm-bridge/` already supports OpenAI's general-purpose LLM API; the robotics-specific extension is the forward-declared piece this RFC names.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0058-openai-robotics.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0058-openai-robotics.md
 
 ## Asks (low expectation of immediate answer)
 
@@ -586,7 +586,7 @@ URML is an Apache 2.0 specification for substrate-neutral robot intent at [urml.
 
 Proposal-only. No bridge code yet, since the substrate-adapter shape (Q1) and the verification surface scope (Q2) are worth Drake-maintainer input first.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0059-drake-model-based-robotics.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0059-drake-model-based-robotics.md
 
 ## Feedback we'd value
 
@@ -620,7 +620,7 @@ Posting this as a substantive integration proposal. URML already ships a `refere
 
 URML is an Apache 2.0 specification for substrate-neutral robot intent at [urml.dev](https://urml.dev). The RFC is honest about the stub-to-full gap: "URML supports MuJoCo" (currently claimed) is closer to "URML's MuJoCo adapter is feature-complete" (not yet true).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0060-mujoco-integration.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0060-mujoco-integration.md
 
 ## Feedback we'd value
 

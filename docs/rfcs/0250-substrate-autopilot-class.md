@@ -158,7 +158,7 @@ All five land in a single PR to preserve atomicity. The downstream Spec RFCs in 
 
 ## How to respond
 
-This is a Spec RFC. Comments belong in the RFC's PR thread on `URML-MARS/URML`. Implementation tracks in the same PR.
+This is a Spec RFC. Comments belong in the RFC's PR thread on `urml-dev/URML`. Implementation tracks in the same PR.
 
 ## Self-review (Phase 0)
 

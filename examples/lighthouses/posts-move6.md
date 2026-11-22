@@ -38,7 +38,7 @@ URML proposes alignment with AUTOLAB on three vectors: (a) URML primitive vocabu
 
 This is proposal-only, part of URML's **Move #6** outreach (US-friendly university robotics labs). Twelve labs in this wave, all research-collab framing.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0080-uc-berkeley-autolab-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0080-uc-berkeley-autolab-outreach.md
 
 ## Feedback we'd value
 
@@ -67,13 +67,13 @@ Hi AMBER Lab,
 
 Posting this as a research-collaboration proposal to Prof. Aaron Ames and the AMBER team. I'm Ido Yahalomi, maintainer of [URML](https://urml.dev), an Apache 2.0 specification for substrate-neutral robot intent.
 
-AMBER's nonlinear control + hybrid-systems + bipedal-locomotion + prosthetics research is the strongest formal-methods alignment URML has encountered across six outreach moves. URML's capability manifest schema can encode joint limits, contact constraints, hybrid-systems mode-switch boundaries. Exactly the formal surfaces AMBER's papers reason over. URML's static-verification path ([RFC-0014 Draft](https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0014-substrate-conformance.md)) sits one layer above that.
+AMBER's nonlinear control + hybrid-systems + bipedal-locomotion + prosthetics research is the strongest formal-methods alignment URML has encountered across six outreach moves. URML's capability manifest schema can encode joint limits, contact constraints, hybrid-systems mode-switch boundaries. Exactly the formal surfaces AMBER's papers reason over. URML's static-verification path ([RFC-0014 Draft](https://github.com/urml-dev/URML/blob/main/docs/rfcs/0014-substrate-conformance.md)) sits one layer above that.
 
 `obelisk` is interesting: it's "a stable generic robot control interface" with explicit overlap to URML's substrate-Protocol abstraction. The two should compose, not compete. URML's RFC asks whether obelisk + URML composition is the right shape.
 
 This is proposal-only, part of URML's **Move #6** outreach (US-friendly university robotics labs). No URML adapter against AMBER code in this RFC.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0081-caltech-amber-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0081-caltech-amber-outreach.md
 
 ## Feedback we'd value
 
@@ -109,7 +109,7 @@ The unresolved URML question this RFC surfaces: **multi-agent coordination primi
 
 This is proposal-only, part of URML's **Move #6** outreach. No URML adapter against GRASP code in this RFC.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0082-upenn-grasp-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0082-upenn-grasp-outreach.md
 
 ## Feedback we'd value
 
@@ -146,7 +146,7 @@ Name disambiguation worth flagging: URML's outreach addresses the UW Personal Ro
 
 This is proposal-only, part of URML's **Move #6** outreach. No URML adapter against UW PRL code in this RFC.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0083-uw-personal-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0083-uw-personal-robotics-outreach.md
 
 ## Feedback we'd value
 
@@ -182,7 +182,7 @@ CURLY (Computational Autonomy and Robotics Laboratory, Ghaffari) is the lab-leve
 
 This is proposal-only, part of URML's **Move #6** outreach. No URML adapter against UMich Robotics code in this RFC.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0084-umich-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0084-umich-robotics-outreach.md
 
 ## Feedback we'd value
 
@@ -223,7 +223,7 @@ License note: MurpheyLab is GPL-3.0 predominant; URML reference/ is Apache-2.0. 
 
 This is proposal-only, part of URML's **Move #6** outreach.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0085-northwestern-crb-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0085-northwestern-crb-outreach.md
 
 ## Feedback we'd value
 
@@ -260,7 +260,7 @@ Disambiguation: ETH ASL (Siegwart) is distinct from ETH RSL (Marco Hutter, ANYma
 
 This is proposal-only, part of URML's **Move #6** outreach.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0086-eth-asl-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0086-eth-asl-outreach.md
 
 ## Feedback we'd value
 
@@ -294,7 +294,7 @@ TU Delft CoR anchors bio-inspired locomotion + energy-efficient design + dextero
 
 This is proposal-only, part of URML's **Move #6** outreach.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0087-tu-delft-cognitive-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0087-tu-delft-cognitive-robotics-outreach.md
 
 ## Feedback we'd value
 
@@ -334,7 +334,7 @@ A few things URML would value your input on:
 
 The full RFC is on URML's repo:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0088-imperial-personal-robotics-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0088-imperial-personal-robotics-outreach.md
 
 No specific ask in this email; the RFC is the substantive document. If a future conversation about URML's accessibility / HRI identity is of interest to your team, my contact is in the RFC.
 
@@ -363,7 +363,7 @@ Honest note on surface: URML's verification found only 2 public repos in `oxford
 
 This is proposal-only, part of URML's **Move #6** outreach.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0089-oxford-ori-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0089-oxford-ori-outreach.md
 
 ## Feedback we'd value
 
@@ -403,7 +403,7 @@ JSK is **the** longest-running academic ROS contributor in Asia: `jsk_recognitio
 
 This is proposal-only, part of URML's **Move #6** outreach.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0090-utokyo-jsk-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0090-utokyo-jsk-outreach.md
 
 Note on language: URML's RFC body is English. Substantive technical discussion is welcome in Japanese or English. Whichever the JSK team prefers.
 
@@ -442,7 +442,7 @@ A speculative ask: would a future edition of *Robotics, Vision and Control* cons
 
 This is proposal-only, part of URML's **Move #6** outreach (US-friendly university robotics labs). Twelfth and final RFC; closes the wave.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0091-qut-centre-for-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0091-qut-centre-for-robotics-outreach.md
 
 ## Feedback we'd value
 

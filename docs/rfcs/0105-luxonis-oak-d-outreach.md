@@ -121,7 +121,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `luxonis/depthai-python` has Discussions enabled (verified 2026-05-26). URML's planned channel: open a single Discussion on `luxonis/depthai-python` (Discussions surface preferred over Issues for research-collab framing), pointing to this RFC. Optional cross-thread on `depthai-ros` if Luxonis prefers a ROS 2-specific surface.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

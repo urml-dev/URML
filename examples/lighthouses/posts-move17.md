@@ -31,7 +31,7 @@ Voice: founder posts under his GitHub identity. Each post opens with "Hi <team>"
 **Disclosure paragraph (reused verbatim at the bottom of every post body):**
 
 ```
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 **Wave-17 framing notes:**
@@ -57,7 +57,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #17 outreach (government-rep wave: standards bodies + open-source foundations + US federal agencies + allied governments, 22 engageable Tier-A targets). URML's Sub-wave A targets cross-citation engagements with foundations that strengthen URML's safe-by-construction narrative without being direct foundation-home candidates. SDV is one such — URML proposes cross-citation rather than embedding.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0212-eclipse-sdv-blueprints-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0212-eclipse-sdv-blueprints-outreach.md
 
 This is URML's fourth Eclipse Foundation engagement after Move-16 (Cyclone DDS / Zenoh / iceoryx); URML is open to a Foundation-level conversation if maintainers prefer that to per-project Issue threads.
 
@@ -75,7 +75,7 @@ Thanks for the safe-vehicle-software composition patterns the SDV WG has been bu
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -92,7 +92,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #17 outreach (government-rep wave). Sub-wave A engages cross-citation candidates that strengthen URML's safe-by-construction narrative.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0213-elisa-wg-automotive-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0213-elisa-wg-automotive-outreach.md
 
 URML's manifest-validated dispatch + validator static-verification stage is one concrete pattern for declaring the safe-construction boundary explicitly; ELISA's body of work is the broader framework URML composes within.
 
@@ -110,7 +110,7 @@ Thanks for the safety-Linux framework that makes safe-by-construction tractable 
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -127,7 +127,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #17 outreach (government-rep wave). The OPC UA Robotics Companion Spec is the standards-side recognized industrial-robotics surface URML's industrial profile (RFC-0013) composes against.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0214-opc-foundation-ua-nodeset-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0214-opc-foundation-ua-nodeset-outreach.md
 
 URML's Layer-1 HAL capability manifest declares what the robot can do; the OPC UA Robotics NodeSet declares what the OPC UA server exposes. These are structurally close. Cross-citation may surface mapping opportunities (URML manifest field ↔ OPC UA NodeSet attribute).
 
@@ -145,7 +145,7 @@ Thanks for the OPC UA Robotics Companion Spec that gives industrial robotics a s
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -162,7 +162,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #17 outreach (government-rep wave). Sibling RFC-0216 covers OpenSSF Scorecard; together they form URML's OpenSSF tooling adoption layer.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0215-openssf-slsa-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0215-openssf-slsa-outreach.md
 
 URML's manifest could declare a future `provenance.slsa_level` field for the substrate; the validator can enforce manifest-vs-attestation at validate time. The field design benefits from SLSA-maintainer review before URML commits to the manifest shape.
 
@@ -180,7 +180,7 @@ Thanks for the supply-chain-provenance framework that makes federal-procurement-
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -197,7 +197,7 @@ URML (urml.dev) is a small, opinionated, human-readable language for describing 
 
 This is a **proposal-only** RFC, posted as part of URML's Move #17 outreach (government-rep wave). Sibling RFC-0215 covers SLSA; together they cover URML's OpenSSF tooling adoption layer + federal-procurement narrative.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0216-openssf-scorecard-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0216-openssf-scorecard-outreach.md
 
 URML's plan is to (a) adopt the Scorecard GitHub Action on the URML main repo + reference-runtime companion repos and publish the badge in README, (b) propose a future `provenance.scorecard_min_score` manifest field for substrate-quality-gating.
 
@@ -216,7 +216,7 @@ Thanks for the health-scoring tool that makes open-source security posture publi
 
 Ido Yahalomi (URML maintainer, urml.dev, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 

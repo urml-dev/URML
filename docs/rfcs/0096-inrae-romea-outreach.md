@@ -110,7 +110,7 @@ Items 1–8 from "Unresolved questions" above.
 
 `Romea/cropcraft` is the most-visible repo at 105 stars (verified 2026-05-26). URML's planned channel: open a single Issue on `Romea/cropcraft` or `romea-ros2-mobile-base` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional cross-reference on `romea-ros2-localisation-imu-plugin` if maintainers prefer to thread there.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

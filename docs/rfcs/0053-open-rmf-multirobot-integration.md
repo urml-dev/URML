@@ -173,7 +173,7 @@ Shared:
 
 `open-rmf/rmf_demos` has both Issues and Discussions enabled, which is the right surface for architectural conversations. `open-rmf/rmf` is the meta-repository entry point. URML's planned channel: a Discussion on `open-rmf/rmf_demos` (Ideas or Show & Tell) pointing to this RFC for the broad architectural conversation, optionally cross-referenced from a scoped Issue on `open-rmf/rmf` labelled `enhancement` if the Discussion needs Issue visibility.
 
-URML public Discussions for the broader conversation: https://github.com/URML-MARS/URML/discussions.
+URML public Discussions for the broader conversation: https://github.com/urml-dev/URML/discussions.
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

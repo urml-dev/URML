@@ -41,13 +41,13 @@ Let me be honest about the fit, because soft robots are not rigid manipulators. 
 
 Two real questions: (1) is a typed, validated subtask-intent layer (declare goal + envelope, validate, consume the computed actuation) useful above your inverse control? (2) Does a soft robot's operating envelope map onto a capability manifest + safety envelope cleanly enough to be worth sharing?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0605-softrobots-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0605-softrobots-outreach.md
 
 Thanks for SoftRobots; FEM-based inverse control of soft structures is genuinely hard work, and the narrow question is only where a declared envelope sits relative to it.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -68,13 +68,13 @@ Two seams, and the second is the more interesting. First: URML can declare a sof
 
 Two real questions: (1) is a typed declaration of a control goal + envelope useful above PyElastica / gym-softrobot, or already implicit in the environment definition? (2) Could a gym-softrobot-trained policy declare a training/operating envelope a URML intent is checked against?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0606-pyelastica-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0606-pyelastica-outreach.md
 
 Thanks for PyElastica; Cosserat-rod simulation is a lovely foundation, and the policy-envelope question is exactly where sim-trained soft control meets the real world.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -95,13 +95,13 @@ The boundary: LibEMG turns muscle activity into a control decision; URML's role 
 
 Two real questions: (1) is a typed, validated action layer downstream of a decoded EMG intent (the action checked against the device's capabilities + envelope, then dispatched) useful for assistive-device research? (2) Does a decoded LibEMG control decision map cleanly onto a recognized-intent input to such a layer?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0607-libemg-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0607-libemg-outreach.md
 
 Thanks for LibEMG; making myoelectric control accessible and reproducible is real work, and the action-validation step downstream of the decoder seemed worth asking you about.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -122,13 +122,13 @@ The mapping: Bottango owns the authoring, the timeline, and the device drivers. 
 
 Two real questions: (1) is a typed, validated intent layer (an animatronic action checked against the rig's declared effectors and limits, then dispatched over the REST API) useful above Bottango? (2) Does a rig's effector configuration map onto a capability manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0608-bottango-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0608-bottango-outreach.md
 
 Thanks for Bottango; animatronics is a delightful corner of robotics, and a portable typed-intent layer over the REST API seemed like a natural thing to float with you.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -149,11 +149,11 @@ The mapping: a PAM soft-robot subtask is a goal plus hard operating bounds (pres
 
 Two real questions: (1) is a typed, validated intent layer (a subtask checked against the PAM robot's declared limits, then dispatched) useful above o80? (2) Do a PAM robot's operating bounds (pressure, rate, range) map onto a URML safety envelope cleanly?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0609-o80-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0609-o80-outreach.md
 
 Thanks for o80; real-time PAM control is a sharp, well-scoped piece of work, and the envelope-check question fits the safety-critical nature of pneumatic muscles.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

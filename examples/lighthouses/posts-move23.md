@@ -68,7 +68,7 @@ A bonus question if you have patience for it: is gz_ros2_control (or mock_compon
 
 This thread is also the home for the ros-controls family in general (ros2_controllers, control_toolbox, realtime_tools, control_msgs, kinematics_interface); I did not want to open five Issues at one org. If any of those deserves its own thread, point me and I will move it.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0319-ros2-control-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0319-ros2-control-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id for the repo at our verification time. Is it Apache-2.0?
 
@@ -76,7 +76,7 @@ Thanks for ros2_control. It is the piece of the ROS 2 stack that made this mappi
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -101,7 +101,7 @@ URML deliberately does not model bus wiring. EtherCAT topology, slave addresses,
 
 The honest reason EtherCAT matters to URML: it is the hardest, most real-time-sensitive end of the substrate spectrum, so a clean mapping here is the strongest evidence our abstraction is not accidentally ROS-shaped. I am tracking SOEM as the master library underneath; this thread covers it unless you would rather route the master-lib layer separately.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0320-ethercat-driver-ros2-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0320-ethercat-driver-ros2-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is the driver Apache-2.0?
 
@@ -109,7 +109,7 @@ Thanks for keeping an open EtherCAT hardware interface alive for ros2_control.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -134,7 +134,7 @@ Nothing here asks the project to change or maintain anything. Two real questions
 
 With EtherCAT and CANopen both mapped under one ros2_control framing, URML gets a two-buses-one-abstraction data point, which is exactly the kind of evidence our substrate-neutrality claim needs. I am tracking CANopenNode as the protocol stack underneath; this thread covers it unless you would rather route that layer separately.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0321-ros2-canopen-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0321-ros2-canopen-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is ros2_canopen Apache-2.0?
 
@@ -142,5 +142,5 @@ Thanks for bringing CANopen drives cleanly into ros2_control.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

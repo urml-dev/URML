@@ -39,13 +39,13 @@ To be clear about what URML is not: it does not fly the aircraft, does not touch
 
 So two honest questions for people who live in this firmware: does that validation belong above the firmware at all, or does the relevant safety reasoning already sit in Betaflight and the configurator where it can see the real state? And if a craft's operating envelope were written down separately, would it line up with how Betaflight already describes a craft's limits, or would the two drift apart?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0576-betaflight-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0576-betaflight-outreach.md
 
 Thanks for Betaflight; it flies an enormous fleet, which is exactly why I wanted to ask the people who know its limits best.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -64,13 +64,13 @@ The mapping is direct: URML declares the mission as intent plus bounds, validate
 
 Two questions: does a declared, validated mission intent fit how INAV missions are actually defined and uploaded? And do INAV's existing geofence and failsafe bounds correspond closely enough to a written-down safety envelope that a shared representation would be worth anything?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0577-inav-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0577-inav-outreach.md
 
 Thanks for INAV; autonomous missions are where a declared, checkable intent earns its keep, and INAV is the clearest place in this firmware family to ask.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -89,13 +89,13 @@ URML does not generate steps and does not move the machine. It sits above FluidN
 
 Two questions: is a validated job-intent layer useful above FluidNC, or is the machine config plus FluidNC's own checks already where that reasoning belongs? And does FluidNC's machine configuration map onto an external capability description closely enough to be worth sharing rather than duplicating?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0578-fluidnc-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0578-fluidnc-outreach.md
 
 Thanks for FluidNC; a clean ESP32 motion firmware with explicit machine limits is a natural place to test whether a job-level intent check pulls its weight.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -116,13 +116,13 @@ I will keep the honest caveat visible: URML sits well above an OS, so this is a 
 
 Two questions: does a language-level capability manifest meaningfully correspond to Tock's OS-level capabilities, or are they different enough animals that lining them up buys nothing? And is a small, statically-validated intent executor a sensible shape for a Tock app at all?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0579-tock-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0579-tock-outreach.md
 
 Thanks for Tock; the capability model is genuinely interesting, and the overlap with a capability-checked intent layer felt worth thinking through with you.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -141,13 +141,13 @@ The one place the two actually touch is execution. After validation, what reache
 
 Two questions, both about the device side: for a constrained target, is a small pre-validated intent executor a sensible thing to run as a FreeRTOS task, and are there primitives or patterns you would point it toward? And is "validate off the MCU, execute a checked plan on it" a reasonable discipline for keeping an intent layer honest about RTOS constraints?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0580-freertos-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0580-freertos-outreach.md
 
 Thanks for FreeRTOS; it is the substrate half the embedded world runs on, so it is the right place to sanity-check whether the execution shape is realistic.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -166,13 +166,13 @@ The seam is execution. A minimal URML executor (RFC-0018, our constrained-target
 
 Two questions: does NuttX's POSIX compatibility make it a natural host for a small pre-validated intent executor on constrained targets? And given the existing PX4-on-NuttX path, is that the right concrete place to examine this, rather than a generic NuttX integration?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0581-nuttx-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0581-nuttx-outreach.md
 
 Thanks for NuttX; the POSIX discipline is exactly what makes hosting a small executor tractable, and the PX4 connection makes it more than theoretical.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -191,13 +191,13 @@ Two layers to the seam. On a single node that drives an actuator, a minimal URML
 
 Two questions: for a RIOT node acting as a networked actuator, is a small pre-validated intent executor a sensible component? And does the idea of addressing a set of networked nodes as a validated fleet map onto how RIOT deployments are actually structured?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0582-riot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0582-riot-outreach.md
 
 Thanks for RIOT; the networked-node focus is what made the fleet angle feel like the honest one to lead with here.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -216,13 +216,13 @@ Where they do touch is narrow. If a Contiki-NG node also actuates, a minimal URM
 
 So, genuinely asking rather than pitching: in deployments where a Contiki-NG node actuates and does not only sense, is a small pre-validated intent executor a sensible component? Or is the sensor-data-as-an-input-fact framing the only connection that actually makes sense for a sensing-first OS?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0583-contiki-ng-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0583-contiki-ng-outreach.md
 
 Thanks for Contiki-NG; even if the answer is "the seam is too thin to bother," that is useful for me to hear from the people who know the platform.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -241,13 +241,13 @@ The pairing feels natural for two reasons. First, the executor wants an ergonomi
 
 Two questions, both practical: is a small, pre-validated intent executor (async, constrained targets) a sensible thing to build on Embassy? And are there Embassy patterns you would steer it toward, particularly around timing and peripheral access?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0584-embassy-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0584-embassy-outreach.md
 
 Thanks for Embassy; modern async embedded Rust is exactly the foundation a small typed executor wants to stand on.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -266,11 +266,11 @@ The seam is concrete. URML says, in effect, "this intent needs a 10 ms cycle wit
 
 Two questions: can declared cyclic-timing requirements map onto an RTIC task set in a way that makes the claim checkable? And is a small, pre-validated intent executor with timing requirements a sensible thing to express in RTIC?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0585-rtic-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0585-rtic-outreach.md
 
 Thanks for RTIC; predictable real-time scheduling is what turns a declared timing requirement from a wish into something you can check, which is why I wanted your read.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

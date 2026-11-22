@@ -143,7 +143,7 @@ RFC-0037 ships as a single RFC document PR. **No adapter code in this PR.** The 
 
 URML public Discussions:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Or open Discussions on `gazebosim/gz-sim` linking back, or post on the Gazebo Community forum / robotics.stackexchange.
 

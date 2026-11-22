@@ -174,7 +174,7 @@ Provisional pending Anthropic feedback:
 2. **Resource surface.** Should the primitive vocabulary be exposed as an MCP Resource, an MCP Prompt, or both?
 3. **Skill scope.** How much of the URML grammar should the Skill inline vs. defer to the spec via the MCP Resource? The trade-off is Skill weight vs. self-containment.
 4. **Server distribution.** Should URML publish the MCP server to the emerging MCP registry, or rely on PyPI distribution only at first?
-5. **Skill distribution.** PR to `anthropics/skills` for the canonical channel, mirror in `URML-MARS/URML` for ownership, both?
+5. **Skill distribution.** PR to `anthropics/skills` for the canonical channel, mirror in `urml-dev/URML` for ownership, both?
 6. **MCP SEP if any.** If the URML MCP server surfaces a need for a spec extension (e.g., richer telemetry-stream semantics), is the SEP process at `modelcontextprotocol/specification/seps` the right channel?
 7. **Anything else.**
 
@@ -201,7 +201,7 @@ Two surfaces, two channels:
 
 URML's own public Discussions for the broader Move #2 conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

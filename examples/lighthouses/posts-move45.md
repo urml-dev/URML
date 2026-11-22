@@ -42,13 +42,13 @@ Two seams: (1) validate, then transport -- URML does the decide-then-do (turns i
 
 Two real questions: (1) is URML-validated intent dispatched over Robot Raconteur a sensible composition (URML validates; RR transports)? (2) Could a service's advertised members inform a URML capability manifest -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0501-robotraconteur-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0501-robotraconteur-outreach.md
 
 Thanks for Robot Raconteur; a transport-agnostic, typed-member framework is a natural place to ask where a validated-intent layer sits.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -69,13 +69,13 @@ The mapping: the robot mc_rtc controls declares its kinematic structure and stab
 
 Two real questions: (1) does a URML `whole_body` manifest fit how mc_rtc models a robot's structure and limits? (2) Is a validated-intent layer that hands goals to the QP/FSM interesting, or already covered by the FSM-state interface -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0502-mc-rtc-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0502-mc-rtc-outreach.md
 
 Thanks for mc_rtc; a real-time whole-body controller is exactly the do layer a validated-intent gate wants to sit above.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -96,13 +96,13 @@ The mapping: the humanoid's kinematic structure and stability limits (center-of-
 
 Two real questions: (1) does a URML `whole_body` manifest match how this framework models the humanoid? (2) Is a validated-intent layer that hands locomotion goals to the MPC/WBC interesting -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0503-bipedal-locomotion-framework-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0503-bipedal-locomotion-framework-outreach.md
 
 Thanks for the framework; the MPC-plus-whole-body-control layer is exactly where a validated locomotion intent would hand off.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -123,13 +123,13 @@ The mapping: a URML program declares a goal and the constraints it must satisfy;
 
 Two real questions: (1) does the declare-goal-plus-constraints / consume-trajectory split fit how a caller drives hpp-core? (2) Could a URML capability manifest be a useful, validatable source for the planning constraints -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0504-hpp-core-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0504-hpp-core-outreach.md
 
 Thanks for HPP; a clean planning core is exactly what URML wants to declare a problem to and consume a trajectory from.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -150,13 +150,13 @@ Two directions: (1) lower URML composition onto a ros2_ros_bt_py tree; or (2) a 
 
 Two real questions: (1) is lowering URML composition to a tree the more natural direction, or is BT-leaf-dispatches-a-validated-URML-primitive cleaner? (2) Is a static capability/envelope check on the actions a tree dispatches useful to your users -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0505-ros2-ros-bt-py-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0505-ros2-ros-bt-py-outreach.md
 
 Thanks for ros2_ros_bt_py; the web-GUI BT plus a clean node model is a natural place to ask where a validated-intent layer fits.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -177,13 +177,13 @@ The layering: URML's Layer-1 hardware abstraction sits above the bus. Once an ac
 
 Two real questions: (1) is "URML validates intent, then dispatches to a Cyphal node" a sensible description of the layering? (2) Could Cyphal's typed DSDL interfaces inform a URML manifest for an actuator node -- and is the protocol the right altitude to engage, or is the integrator level the better seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0506-libcyphal-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0506-libcyphal-outreach.md
 
 Thanks for Cyphal; the versioned, typed interface model is exactly the kind of declarative substrate a capability manifest likes to reference.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -204,13 +204,13 @@ The layering: URML's actuation primitives are validated statically (pre-dispatch
 
 Two real questions: (1) is "URML validates actuation intent above, KickCAT carries it to the drives over EtherCAT" an accurate description? (2) Is a fieldbus master the right altitude to engage, or is the integrator / ros2_control layer the better seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0507-kickcat-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0507-kickcat-outreach.md
 
 Thanks for KickCAT; an open EtherCAT master is a clean reference point for where the validated-intent layer ends and the deterministic bus begins.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -231,13 +231,13 @@ The mapping: Panther / Lynx mobility (drive type, velocity limits) and the deplo
 
 Two real questions: (1) does mapping a Panther / Lynx UGV (mobility, velocity limits, locations) onto a URML manifest read right? (2) Is an English-to-validated-`move_to` front door above husarion_ugv_ros interesting -- and which is the cleaner first seam, the manifest mapping or a HusarionAdapter?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0508-husarion-ugv-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0508-husarion-ugv-outreach.md
 
 Thanks for husarion_ugv_ros; a clean ROS 2 stack for a real UGV is a great fit for the English-front-door path.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -258,11 +258,11 @@ The division of labor: a URML safety envelope declares clearance volumes and spa
 
 Two real questions: (1) is "URML declares the clearance / spatial constraint, FCL is the geometric query that enforces it" an accurate and useful division of labor? (2) Is a collision library the right altitude to describe this, or is the seam better drawn at a planner / MoveIt-style layer that already wraps FCL?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0509-fcl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0509-fcl-outreach.md
 
 Thanks for FCL; it is the geometric-query layer beneath much of this ecosystem, which is exactly why the clearances-versus-check division is worth naming.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

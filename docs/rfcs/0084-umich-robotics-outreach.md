@@ -103,7 +103,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `UMich-CURLY/drift` is the highest-visibility CURLY repo at 176 stars (verified 2026-05-25). URML's planned channel: open a single Issue on `UMich-CURLY/drift` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Ghaffari + Prof. Grizzle via `robotics.umich.edu`. Department-level coursework discussion may need a separate thread to the ROB 101 / 102 instructor team.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

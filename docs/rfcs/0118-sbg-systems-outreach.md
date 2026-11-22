@@ -104,7 +104,7 @@ For the `SBG-Systems/sbg_ros2_driver` maintainers:
 2. **INS fusion declaration.** Quanta-N / Apogee-N emit GNSS-fused pose with vendor EKF. Should URML's manifest declare "this device emits GNSS-aided INS pose" as a first-class fact?
 3. **RTK / NTRIP-correction declaration.** Is "this INS accepts NTRIP corrections from constellations X / Y / Z" something the manifest should carry?
 4. **Product-line coverage.** Should URML ship one adapter per product line (Ellipse / Quanta / Apogee), or one `SbgInsAdapter` parameterized by product? Your maintenance preference matters more than URML's instinct here.
-5. **Adapter home.** When the URML-side adapter ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `SBG-Systems/sbg-urml` repo, or external in URML-MARS/URML only? URML's default assumption is the URML repo unless invited otherwise.
+5. **Adapter home.** When the URML-side adapter ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `SBG-Systems/sbg-urml` repo, or external in urml-dev/URML only? URML's default assumption is the URML repo unless invited otherwise.
 6. **Conformance listing.** Would the SBG team consider a README link to URML's compatible-runtimes registry once a working adapter ships and a real-hardware run is recorded? (Per [RFC-0014](0014-substrate-conformance.md), self-reported tier, no continuous obligation.)
 7. **Anything else.**
 
@@ -120,7 +120,7 @@ Items 1–7 from Unresolved questions above.
 
 `SBG-Systems/sbg_ros2_driver` has Issues enabled. URML's planned channel: open a single Issue labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

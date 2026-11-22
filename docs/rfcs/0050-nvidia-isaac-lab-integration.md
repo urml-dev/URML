@@ -188,7 +188,7 @@ Shared:
 
 `isaac-sim/IsaacLab` has both Issues and Discussions enabled with a Show & Tell category, which is the right surface for the Isaac Lab vector's design conversation. `NVIDIA/Isaac-GR00T` has Issues enabled (Discussions disabled), which is the right surface for the GR00T vector. URML's planned channel: a Discussion on `isaac-sim/IsaacLab` (Show & Tell or Ideas) pointing to this RFC for the Isaac Lab vector, and a scoped Issue on `NVIDIA/Isaac-GR00T` narrowed to Q5 and Q6 for the GR00T vector. Optional cross-post on the NVIDIA Developer Forum Isaac Sim subforum (`forums.developer.nvidia.com/c/omniverse/simulation/69`).
 
-URML public Discussions for the broader conversation: https://github.com/URML-MARS/URML/discussions.
+URML public Discussions for the broader conversation: https://github.com/urml-dev/URML/discussions.
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

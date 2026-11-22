@@ -27,7 +27,7 @@ Voice: founder posts under his GitHub identity. Each post opens with "Hi <team>"
 **Disclosure paragraph (reused verbatim at the bottom of every post body):**
 
 ```
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 **Schema-extension flags.** Move #13 surfaces multiple v0.1 schema gaps that should be opened as Spec RFCs in parallel (not bundled into the per-target outreach RFCs):
@@ -81,7 +81,7 @@ ODrive is the Layer-0 actuator-controller substrate URML's manifest declares per
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (open-source actuators + embedded / maker substrate, 15 engageable RFCs). No bridge in URML's repo yet; a bridge would ship engagement-driven.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0169-odrive-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0169-odrive-robotics-outreach.md
 
 Questions worth `odriverobotics` maintainer input on:
 
@@ -96,7 +96,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -122,7 +122,7 @@ Moteus is the high-bandwidth (>1kHz position control) brushless-servo substrate 
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0170-mjbots-moteus-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0170-mjbots-moteus-outreach.md
 
 Questions worth `mjbots` maintainer input on:
 
@@ -137,7 +137,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -163,7 +163,7 @@ TMC chips sit at the **chip-class layer** — one layer below the host-side cont
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0171-trinamic-tmc-api-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0171-trinamic-tmc-api-outreach.md
 
 Questions worth `Trinamic` maintainer input on:
 
@@ -178,7 +178,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -206,7 +206,7 @@ URML's `microbit_edu` manifest fixture has been the canonical URML pattern for t
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0172-microbit-foundation-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0172-microbit-foundation-outreach.md
 
 Questions worth `microbit-foundation` maintainer input on:
 
@@ -221,7 +221,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -247,7 +247,7 @@ Arduino is the world's largest hobbyist MCU platform; URML's manifest declares A
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0173-arduino-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0173-arduino-outreach.md
 
 Questions worth `arduino` maintainer input on:
 
@@ -262,7 +262,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -288,7 +288,7 @@ CircuitPython runs on 400+ board variants spanning RP2040, SAMD21/51, nRF52, STM
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0174-adafruit-circuitpython-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0174-adafruit-circuitpython-outreach.md
 
 Questions worth `adafruit/CircuitPython` maintainer input on:
 
@@ -304,7 +304,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -330,7 +330,7 @@ RP2040 / RP2350 are the rising default MCUs for hobbyist robotics, drone flight-
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0175-raspberry-pi-pico-sdk-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0175-raspberry-pi-pico-sdk-outreach.md
 
 Questions worth `pico-sdk` maintainer input on:
 
@@ -346,7 +346,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -372,7 +372,7 @@ PlatformIO is the cross-board IDE / build pipeline spanning 900+ MCU board varia
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0176-platformio-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0176-platformio-outreach.md
 
 Questions worth `platformio` maintainer input on:
 
@@ -387,7 +387,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -415,7 +415,7 @@ micro-ROS is the structural bridge URML's substrate story needs at the MCU edge.
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0177-micro-ros-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0177-micro-ros-outreach.md
 
 Questions worth `micro-ROS` maintainer input on:
 
@@ -431,7 +431,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -457,7 +457,7 @@ Zephyr is the industrial-grade RTOS substrate URML's manifest declares for MCU-c
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0178-zephyr-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0178-zephyr-outreach.md
 
 Questions worth `zephyrproject-rtos` maintainer input on:
 
@@ -473,7 +473,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -501,7 +501,7 @@ SimpleFOC is the community FOC implementation library URML's manifest can declar
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0179-simplefoc-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0179-simplefoc-outreach.md
 
 Questions worth `simplefoc` maintainer input on:
 
@@ -516,7 +516,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -542,7 +542,7 @@ VESC is the open-source brushless ESC widely deployed in e-bikes, e-scooters, e-
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0180-vesc-bldc-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0180-vesc-bldc-outreach.md
 
 Questions worth maintainer input on:
 
@@ -557,7 +557,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -583,7 +583,7 @@ URML's drone profile (RFC-0008) + multirotor mobility class compose naturally wi
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0181-bitcraze-crazyflie-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0181-bitcraze-crazyflie-outreach.md
 
 Questions worth `bitcraze` maintainer input on:
 
@@ -599,7 +599,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -625,7 +625,7 @@ STM32 is one of the two most-deployed MCU families in robotics; URML's manifest 
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0182-stmicroelectronics-stm32cube-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0182-stmicroelectronics-stm32cube-outreach.md
 
 Questions worth `STMicroelectronics` maintainer input on:
 
@@ -641,7 +641,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -667,7 +667,7 @@ TinyGo brings the Go language to MCU substrates spanning RP2040, SAMD21/51, nRF5
 
 This is **proposal-only**, posted as part of URML's Move #13 outreach (15 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0183-tinygo-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0183-tinygo-outreach.md
 
 Questions worth `tinygo-org` maintainer input on:
 
@@ -682,7 +682,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---

@@ -62,7 +62,7 @@ The manifest declares the walking policy as an RFC-0383 `learned_policy` block (
 
 ## How to respond
 
-`pollen-robotics/microduck` accepts public Issues. URML's own Discussions: https://github.com/URML-MARS/URML/discussions. Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
+`pollen-robotics/microduck` accepts public Issues. URML's own Discussions: https://github.com/urml-dev/URML/discussions. Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 
 ## Self-review (Phase 1)
 

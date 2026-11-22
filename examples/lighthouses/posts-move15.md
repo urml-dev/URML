@@ -27,7 +27,7 @@ Voice: founder posts under his GitHub identity. Each post opens with "Hi <team>"
 **Disclosure paragraph (reused verbatim at the bottom of every post body):**
 
 ```
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 **Vertical-firsts:**
@@ -70,7 +70,7 @@ The CISST custom permissive license is functionally Apache-2.0-friendly but isn'
 
 This is **proposal-only**, posted as part of URML's Move #15 outreach (niche verticals, 5 engageable RFCs). No bridge in URML's repo yet; a bridge would ship engagement-driven.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0191-jhu-dvrk-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0191-jhu-dvrk-outreach.md
 
 Questions worth `jhu-dvrk` maintainer input on:
 
@@ -86,7 +86,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -112,7 +112,7 @@ This is URML's first medical-research-humanoid engagement. URML's prior humanoid
 
 This is **proposal-only**, posted as part of URML's Move #15 outreach (5 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0192-iit-icub-main-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0192-iit-icub-main-outreach.md
 
 Questions worth `robotology` iCub maintainer input on:
 
@@ -128,7 +128,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -154,7 +154,7 @@ Proposing a URML v0.1 capability-manifest mapping for the sidewalk-delivery clas
 
 This is **proposal-only**, posted as part of URML's Move #15 outreach (5 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0193-starship-technologies-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0193-starship-technologies-outreach.md
 
 Questions worth `starship-technologies` maintainer input on:
 
@@ -170,7 +170,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -200,7 +200,7 @@ URML's substrate-neutral claim depends on declaring more than one substrate. URM
 
 This is **proposal-only**, posted as part of URML's Move #15 outreach (5 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0194-iit-yarp-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0194-iit-yarp-outreach.md
 
 Questions worth `robotology` YARP maintainer input on:
 
@@ -215,7 +215,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -241,7 +241,7 @@ URML's manifest needs to declare the sidewalk-delivery class (Spec RFC shared wi
 
 This is **proposal-only**, posted as part of URML's Move #15 outreach (5 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0195-serve-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0195-serve-robotics-outreach.md
 
 Questions worth `serve-robotics` maintainer input on:
 
@@ -256,7 +256,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---

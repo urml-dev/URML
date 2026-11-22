@@ -37,13 +37,13 @@ URML's existing ROS 2 runtime targets Space-ROS directly; move_to / detect / mea
 
 Three real questions: (1) Is a validated, human-readable intent layer above Space-ROS interesting, or does existing tooling already cover it? (2) What should a capability manifest declare to honestly describe a space robot beyond mobility/manipulation/perception — radiation or thermal limits, comms-window / light-time constraints, power budgets? (3) Where is the right seam for a demonstration: one of the space-ros/demos robots, or a fresh minimal manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0388-space-ros-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0388-space-ros-outreach.md
 
 Thanks for Space-ROS; a safety-hardened open ROS 2 for space is exactly the kind of substrate a neutral intent layer should sit above honestly.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -64,13 +64,13 @@ When a substrate exposes named operations, URML binds them to its call_program v
 
 Two real questions: (1) Is a declared program plus a command binding (component / opcode / typed args) the right granularity to name an F´ command from an outside intent layer, or is a different handle more natural? (2) Would the command dictionary be the right source for those binding declarations?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0389-fprime-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0389-fprime-outreach.md
 
 Thanks for F´; a permissively-licensed, component-driven flight-software framework is a genuinely good substrate to reason about.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -91,13 +91,13 @@ URML binds named substrate operations to its call_program verb rather than addin
 
 Two real questions: (1) Is a declared program plus a command binding (app / command code / typed message) the right granularity to name a cFS command from an outside intent layer? (2) Would the command/telemetry database be the right source for those binding declarations?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0390-cfs-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0390-cfs-outreach.md
 
 Thanks for cFS; a generic, reusable flight-software architecture flown across so many missions is a great thing to have in the open.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -118,13 +118,13 @@ ROSA turns language into ROS calls; URML is the typed-intent, capability-manifes
 
 Two real questions: (1) Is a typed validate-before-dispatch layer between an LLM agent and ROS useful in your view, or does ROSA's own tool-call validation already cover it? (2) Where would the seam sit — URML validating ROSA's proposed ROS calls, or ROSA targeting URML primitives as its tool surface? And is there interest in a small joint demo (language -> ROSA -> URML validation -> a ROS 2 / Space-ROS robot)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0391-rosa-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0391-rosa-outreach.md
 
 Thanks for ROSA; an open LLM-for-ROS agent is exactly the kind of thing a validation layer wants to sit beneath.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -145,13 +145,13 @@ URML's ROS runtime targets Astrobee's ROS surface; navigation, perception, and r
 
 Two real questions: (1) What should a URML capability manifest declare to honestly describe a free-flyer — keep-out zones, propulsion / speed limits, docking-state preconditions, bay constraints? (2) Is a validated natural-language intent layer above Astrobee's stack interesting for ground-side ops or research/education, and where is the right seam for a demonstration in the simulator?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0392-astrobee-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0392-astrobee-outreach.md
 
 Thanks for Astrobee; free-flying robots on the ISS, in the open, are a wonderful thing to be able to point a language layer at.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -172,13 +172,13 @@ A URML program would drive an OmniLRS lunar rover via the simulator's existing R
 
 Two real questions: (1) Is a validated natural-language intent layer above OmniLRS interesting as a teaching / demonstration surface for lunar-rover scenarios? (2) What should a URML manifest declare to describe a lunar deployment honestly — terrain/regolith class, slope and traction limits, lighting / thermal constraints — and where is the cleanest seam via the ROS 2 / Space-ROS bridge?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0393-omnilrs-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0393-omnilrs-outreach.md
 
 Thanks for OmniLRS; an open, high-fidelity lunar simulator that already speaks Space-ROS is a great place to demonstrate honest, validated intent.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -199,13 +199,13 @@ The validation step is itself a teaching moment: the manifest makes "what can th
 
 Two real questions: (1) Is a validated natural-language intent layer interesting as a teaching add-on for the rover community? (2) What would make a URML manifest for the rover most useful in a classroom — a ready-made example manifest, a tutorial, a "one sentence drives the rover" community example?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0394-jpl-open-source-rover-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0394-jpl-open-source-rover-outreach.md
 
 Thanks for the Open Source Rover; a build-it-yourself JPL rover in the open is one of the best on-ramps in robotics.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -226,11 +226,11 @@ URML's validation results, dispatched-intent audit trail, and safety-envelope st
 
 Two real questions: (1) Would a URML validated-intent / safety-envelope telemetry source be a sensible Open MCT integration, or is that outside the framework's intended scope? (2) What is the cleanest way to expose an external operational-state source to Open MCT — the telemetry adapter / plugin API — and is there interest in a small example plugin?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0395-openmct-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0395-openmct-outreach.md
 
 Thanks for Open MCT; an open mission-control framework is a great place for a validation layer's state to become visible.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

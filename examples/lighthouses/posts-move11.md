@@ -27,7 +27,7 @@ Voice: founder posts under his GitHub identity. Each post opens with "Hi <team>"
 **Disclosure paragraph (reused verbatim at the bottom of every post body):**
 
 ```
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 **Schema-extension flags.** Move #11 surfaces multiple v0.1 schema gaps that should be opened as Spec RFCs in parallel (not bundled into the per-target outreach RFCs):
@@ -73,7 +73,7 @@ OpenVLA is the foundational open 7B generalist VLA. URML's natural composition s
 
 **This is proposal-only**, part of URML's Move #11 outreach (net-new VLA / foundation-model targets that URML's prior AI/ML wave did not touch — 15 RFCs in this wave).
 
-Full RFC with manifest mapping, three alternatives, and the validator-boundary design discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0138-openvla-outreach.md
+Full RFC with manifest mapping, three alternatives, and the validator-boundary design discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0138-openvla-outreach.md
 
 Questions worth maintainer input on:
 
@@ -88,7 +88,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -116,7 +116,7 @@ Acknowledging `octo-models/octo` has been quiet on GitHub for `>22 months`. Enga
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC with the manifest mapping and three alternatives: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0139-octo-outreach.md
+Full RFC with the manifest mapping and three alternatives: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0139-octo-outreach.md
 
 Questions worth maintainer input on:
 
@@ -130,7 +130,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -156,7 +156,7 @@ Spherical-DP's SE(3)-equivariance contribution is the distinct schema-extension 
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0140-amazon-spherical-diffusion-policy-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0140-amazon-spherical-diffusion-policy-outreach.md
 
 Questions worth maintainer input on:
 
@@ -170,7 +170,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -196,7 +196,7 @@ MoDE's mixture-of-experts routing contribution is the distinct schema-extension 
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0141-intuitive-robots-mode-diffusion-policy-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0141-intuitive-robots-mode-diffusion-policy-outreach.md
 
 Questions worth maintainer input on:
 
@@ -210,7 +210,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -238,7 +238,7 @@ Acknowledging `real-stanford/diffusion_policy` has been quiet for `>17 months`. 
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0142-stanford-diffusion-policy-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0142-stanford-diffusion-policy-outreach.md
 
 Questions worth maintainer input on:
 
@@ -252,7 +252,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -278,7 +278,7 @@ smolagents's distinguishing feature is that agents emit **executable Python code
 
 This is **proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0143-huggingface-smolagents-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0143-huggingface-smolagents-outreach.md
 
 Questions worth maintainer input on:
 
@@ -292,7 +292,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -318,7 +318,7 @@ MuJoCo Playground is the GPU-accelerated env layer above the MuJoCo physics core
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0144-deepmind-mujoco-playground-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0144-deepmind-mujoco-playground-outreach.md
 
 Questions worth maintainer input on:
 
@@ -332,7 +332,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -358,7 +358,7 @@ Gemini Robotics is a multimodal VLA that emits tool-calls; URML's primitive voca
 
 This is **proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave). The integration is the **highest-leverage URML-side touchpoint** in this wave.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0145-deepmind-gemini-robotics-sdk-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0145-deepmind-gemini-robotics-sdk-outreach.md
 
 Questions worth maintainer input on:
 
@@ -373,7 +373,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -399,7 +399,7 @@ The structural fit is clean: OpenMind ships the mobile-humanoid **runtime** (OS 
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0146-openmind-om1-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0146-openmind-om1-outreach.md
 
 Questions worth maintainer input on:
 
@@ -414,7 +414,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -442,7 +442,7 @@ AI2-THOR is the natural simulation harness for URML's home-runtime profile (the 
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0147-allenai-ai2thor-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0147-allenai-ai2thor-outreach.md
 
 Questions worth maintainer input on:
 
@@ -456,7 +456,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -484,7 +484,7 @@ Theia is a vision foundation model for robotics; URML's manifest declares which 
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0148-rai-theia-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0148-rai-theia-outreach.md
 
 Questions worth maintainer input on:
 
@@ -498,7 +498,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -524,7 +524,7 @@ URML's mobility primitives (`move_to`, `dock`, `scan`) compose with VLM-based fr
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0149-rai-vlfm-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0149-rai-vlfm-outreach.md
 
 Questions worth maintainer input on:
 
@@ -538,7 +538,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -566,7 +566,7 @@ The URML-fit framing is **temporal-streams substrate declaration**. URML's manif
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0150-microsoft-psi-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0150-microsoft-psi-outreach.md
 
 Questions worth maintainer input on:
 
@@ -580,7 +580,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -606,7 +606,7 @@ CogACT's cognition-action joint-architecture is the distinct contribution URML's
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0151-microsoft-cogact-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0151-microsoft-cogact-outreach.md
 
 Questions worth maintainer input on:
 
@@ -620,7 +620,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -648,7 +648,7 @@ This is URML's **first soft-robotics outreach RFC**. Soft-body is a structural U
 
 **This is proposal-only**, part of URML's Move #11 outreach (15 net-new VLA / foundation-model RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0152-nus-octopi-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0152-nus-octopi-outreach.md
 
 Questions worth maintainer input on:
 
@@ -663,7 +663,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---

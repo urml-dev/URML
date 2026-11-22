@@ -54,7 +54,7 @@ implemented yet.
 
 The motivation is a live design conversation with an active user building on a
 GoPiGo3 and a TurtleBot4 clone
-([Discussion #526](https://github.com/URML-MARS/URML/discussions/526)). Three
+([Discussion #526](https://github.com/urml-dev/URML/discussions/526)). Three
 needs surfaced, in his words:
 
 > Is there a mechanism to pause/resume and a mechanism to cancel mid-urml-sequence

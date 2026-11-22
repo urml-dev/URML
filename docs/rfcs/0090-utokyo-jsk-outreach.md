@@ -106,7 +106,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `jsk-ros-pkg/jsk_recognition` has Issues enabled with 70 open at time of writing (last commit 2026-02-20; verified 2026-05-25). URML's planned channel: open a single Issue on `jsk-ros-pkg/jsk_recognition` or `jsk_visualization` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Inaba + Prof. Okada via `jsk.t.u-tokyo.ac.jp`.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

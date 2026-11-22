@@ -104,7 +104,7 @@ Items 1–6 from "Unresolved questions" above.
 
 URML's planned channel: courtesy email to Prof. Demiris via `y.demiris@imperial.ac.uk` per the lab website at `imperial.ac.uk/personal-robotics`. If the lab maintains a public engagement surface URML did not surface during verification, the founder can pivot to that. The courtesy email is best-effort; no URML public GitHub Issue.
 
-URML's own public Discussions for the broader Move #6 conversation: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions for the broader Move #6 conversation: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

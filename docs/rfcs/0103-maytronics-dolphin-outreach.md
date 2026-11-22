@@ -172,7 +172,7 @@ Items 1–8 from "Unresolved questions" above.
 
 `sh00t2kill/dolphin-robot` has Issues enabled (6 open, verified 2026-05-26). URML's planned channel: open a single Issue on `sh00t2kill/dolphin-robot` labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC. Optional courtesy email to Maytronics dev relations.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

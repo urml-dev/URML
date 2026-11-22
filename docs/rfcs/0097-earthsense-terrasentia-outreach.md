@@ -107,7 +107,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `TerraSentia/livox_ros_driver2` is the most-recently-updated repo (last commit 2026-05-06, verified 2026-05-26). URML's planned channel: open a single Issue on `TerraSentia/livox_ros_driver2` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to the EarthSense Inc. team via earthsense.co.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

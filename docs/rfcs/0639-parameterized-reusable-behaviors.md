@@ -52,7 +52,7 @@ leave instantiation to the autonomy layer.
 ## Motivation
 
 From the same live design conversation that produced RFC-0638
-([Discussion #526](https://github.com/URML-MARS/URML/discussions/526)), an active
+([Discussion #526](https://github.com/urml-dev/URML/discussions/526)), an active
 user building a real TurtleBot4-clone patrol described his tour and then asked,
 in his words:
 

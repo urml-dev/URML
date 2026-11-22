@@ -148,7 +148,7 @@ RFC-0075 ships as a single RFC document PR. No adapter code in this PR. Research
 
 `stanfordroboticsclub/StanfordQuadruped` has Issues enabled (21 open; verified 2026-05-24). URML's planned channel: open a single Issue on `stanfordroboticsclub/StanfordQuadruped` labelled with the closest `enhancement` or `discussion` equivalent, pointing to this RFC. If the club prefers a different surface (a Stanford-internal mailing list, a course wiki, a v3 repo), the thread will follow their preference.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

@@ -169,7 +169,7 @@ Pre-v1.0. Purely additive when implemented. Zero URML code lands in this RFC.
 
 For the `nasa-jpl/rosa` maintainers (@RobRoyce and the JPL AI Group):
 
-1. **Bridge home.** Should the URML bridge live as (a) an example folder inside `nasa-jpl/rosa` (e.g. `examples/urml-bridge/`), (b) a separately-maintained `nasa-jpl/rosa-urml-bridge` repo under the same org, or (c) external in `URML-MARS/URML` only? URML's default assumption is (c) until invited otherwise.
+1. **Bridge home.** Should the URML bridge live as (a) an example folder inside `nasa-jpl/rosa` (e.g. `examples/urml-bridge/`), (b) a separately-maintained `nasa-jpl/rosa-urml-bridge` repo under the same org, or (c) external in `urml-dev/URML` only? URML's default assumption is (c) until invited otherwise.
 2. **Execution path.** Should the bridge return execution to ROSA's existing tool layer (URML as pre-flight check only), or hand off to URML's substrate adapter (URML as execution layer)? Either is implementable; the choice depends on how cleanly the ROSA team wants URML factored into the existing model.
 3. **LLM reuse.** Should the bridge reuse ROSA's `llm` parameter for the NL-to-URML translation step (one LLM, two completions per request), or hold a separate LLM handle URML provides (cleaner separation, two LLMs)?
 4. **Manifest seeding.** Does ROSA's planner benefit from URML's compact manifest-seed pattern (50 to 200 tokens summarizing supported primitives), or is the LLM better served by reading a full URML manifest as plain context like documentation?
@@ -189,7 +189,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `nasa-jpl/rosa` has both Issues and Discussions enabled; the upstream CONTRIBUTING.md names Discussions as the preferred surface for design discussion (Issues are for concrete scoped bugs or features). URML's planned channel: open a single Discussion on `nasa-jpl/rosa` pointing at this RFC, with a one-paragraph authoring disclosure per [AGENTS.md L67](../../AGENTS.md#L67) + [VIBE.md](../../VIBE.md).
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

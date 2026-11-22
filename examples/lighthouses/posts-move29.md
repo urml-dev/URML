@@ -69,13 +69,13 @@ Nothing here asks ToddlerBot to change or maintain anything. This is a request f
 
 URML's capability manifest describes mobility with a fixed set of drive types (wheeled, tracked, multirotor, and so on). A bipedal humanoid with arms fits none of them, and URML has no whole-body shape yet. So: what should a minimal but honest bipedal-humanoid capability declaration contain, from the perspective of someone who built one? A legged mobility class, whole-body kinematic structure, balance or stability constraints, the split between locomotion and manipulation? And where should the boundary sit between a URML intent (go to the kitchen, pick that up) and ToddlerBot's own policy stack?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0372-toddlerbot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0372-toddlerbot-outreach.md
 
 Thanks for making a real humanoid something a lab or a person can actually build.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -94,13 +94,13 @@ Nothing here asks Open Duck Mini to change or maintain anything. This is a reque
 
 Two real questions. First, the walk is a learned policy, so where is the line between what URML declares as capability (the platform can locomote, within these limits) and what the policy owns (how it steps)? URML would bound a navigation-level intent and let the policy realize it, but I want to get that division right rather than assume it. Second, URML has no legged mobility class today (its drive types are all wheeled or flying); what would a small-biped capability declaration most need to carry to be useful rather than decorative?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0373-open-duck-mini-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0373-open-duck-mini-outreach.md
 
 Thanks for Open Duck Mini; an open BDX-style biped people can actually build is a real contribution.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -119,13 +119,13 @@ Nothing here asks K-Scale to change or maintain anything. This is a request for 
 
 Two real questions. First, where would a validated-intent layer naturally sit relative to kos as the runtime: above it, handing kos validated, in-capability commands? Second, could a URML capability manifest align with, or be derived from, a K-Scale robot definition, so the declaration and the real robot cannot drift? Underlying both: URML has no legged or whole-body capability class yet, and a humanoid stack like yours is exactly where I would want to design that with input rather than guess. ksim or kos, whichever is the right surface for this, point me.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0374-kscale-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0374-kscale-outreach.md
 
 Thanks for building the humanoid stack in the open; very few are.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -144,13 +144,13 @@ Nothing here asks PAL to change or maintain anything. This is a request for comm
 
 URML composes above a robot's ROS stack: it validates an in-capability, in-envelope request, then dispatches to the controllers. For TALOS that runs into a gap: URML's mobility model has no legged class and no whole-body (legs plus arms, balance) shape. Two real questions. First, what should a URML manifest declare for a full-size torque-controlled humanoid so a request can be validated honestly (legged mobility, whole-body limits, balance constraints)? Second, where should the boundary sit between a URML intent and PAL's whole-body controller, so URML stays the intent layer and does not duplicate control?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0375-pal-talos-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0375-pal-talos-outreach.md
 
 Thanks for keeping TALOS's stack open; a full-size humanoid you can actually program against is rare.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -169,13 +169,13 @@ Nothing here asks legged_gym to change or maintain anything. This is a request f
 
 Two real questions. First, what is the right URML granularity above a velocity-tracking locomotion policy: navigation-level commands (go to X, walk at velocity V, turn), or something finer? Second, URML has no legged mobility class today; for a platform whose locomotion is a legged_gym-trained policy, what should the manifest declare as capability versus leave to the policy? I am reaching the rsl_rl maintainers separately about the library underneath.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0376-legged-gym-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0376-legged-gym-outreach.md
 
 Thanks for legged_gym; it is the on-ramp for a huge amount of legged-locomotion work.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -194,13 +194,13 @@ Nothing here asks rsl_rl to change or maintain anything. This is a request for c
 
 A policy trained with rsl_rl was trained under assumptions: command ranges, velocity and torque limits, terrain. Those are exactly what URML's capability manifest and safety envelope try to declare on the outside. So the real question: would it be sensible and feasible for a trained policy to carry, or export, the capability and limits it was trained under, so a URML manifest can stay consistent with what the policy will actually do safely, rather than a human restating it and drifting? And where, if anywhere, is the natural place for that metadata to live?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0377-rsl-rl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0377-rsl-rl-outreach.md
 
 Thanks for rsl_rl; fast, clean on-policy RL for legged robots is load-bearing for the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -219,13 +219,13 @@ Nothing here asks DIAL-MPC to change or maintain anything. This is a request for
 
 Two real questions. First, what is the cleanest boundary for "URML intent plus capability -> a DIAL-MPC task or cost", and how would URML's declared limits become constraints the controller respects? Second, from your point of view, does a training-free MPC change what URML should declare compared to a learned policy (no training-time assumptions to carry, but tuning and cost structure instead)? For context, I am also reaching OCS2 about general switched-system MPC and legged_gym about the learned-policy side.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0378-dial-mpc-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0378-dial-mpc-outreach.md
 
 Thanks for DIAL-MPC; training-free real-time whole-body control is a genuinely refreshing direction.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -244,13 +244,13 @@ Nothing here asks legged_control to change or maintain anything. This is a reque
 
 Two real questions. First, what is the cleanest boundary for "URML navigation intent plus capability -> the MPC+WBC stack", and how should URML's declared limits map onto the controller's constraints? Second, since you build on OCS2 (which I engaged separately), where would you draw the line for a URML integration: at legged_control's higher-level interface, or lower? URML has no legged mobility class yet, and a complete stack like yours is a good place to figure out what the manifest should carry.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0379-legged-control-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0379-legged-control-outreach.md
 
 Thanks for legged_control; a complete, readable MPC+WBC stack lowered the barrier for a lot of people.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -269,13 +269,13 @@ Nothing here asks rl_games to change or maintain anything. This is a boundary ch
 
 The question is the same one I am asking rsl_rl: a policy trained with rl_games was trained under command ranges and limits that are exactly what URML's capability manifest and safety envelope try to declare from the outside. Would it be feasible for a trained policy (or its config) to carry those assumptions in a readable form, so a URML manifest can stay consistent with what the policy will actually do, instead of a human transcribing and drifting? I am genuinely unsure where that metadata best lives, and you have the clearest view of the training side.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0380-rl-games-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0380-rl-games-outreach.md
 
 Thanks for rl_games; the throughput it unlocked changed what is trainable.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---

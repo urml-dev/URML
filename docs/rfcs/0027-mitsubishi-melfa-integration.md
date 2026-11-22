@@ -117,7 +117,7 @@ Asking you for:
 
 URML public Discussions (per [RFC-0008](0008-community-discussions.md)):
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Categories: **Q&A**, **Ideas**, **Builders & Makers**. Private channel via `MAINTAINERS.md`.
 

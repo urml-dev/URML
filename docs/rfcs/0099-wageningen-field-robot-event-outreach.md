@@ -108,7 +108,7 @@ Items 1–7 from "Unresolved questions" above.
 
 URML's planned channel: post on the FRE 2026 Discord (linked from `fieldrobotevent.eu`) introducing URML and pointing at this RFC. If the FRE organising committee prefers a different surface (email, separate forum, GitHub org), URML's outreach pivots accordingly.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

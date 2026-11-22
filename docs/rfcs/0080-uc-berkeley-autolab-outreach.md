@@ -96,7 +96,7 @@ Items 1–5 from "Unresolved questions" above.
 
 `BerkeleyAutomation` org has 183 public repos and 241 followers (verified 2026-05-25). The most-active manipulation-research repos are `dex-net`, `gqcnn`, and `autolab_core`. URML's planned channel: open a single Issue on `BerkeleyAutomation/autolab_core` (the cross-cutting utility repo, most-likely-to-be-read by lab leadership) labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Goldberg via the `goldberg@berkeley.edu` address on `autolab.berkeley.edu`.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

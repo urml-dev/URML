@@ -45,14 +45,14 @@ Proposing a Langchain tool that ROSA's agent could register alongside its existi
 
 Of every repo URML has surveyed across its outreach, **ROSA's natural-language-to-ROS-tool-call loop is the closest single-repo semantic overlap with URML's reason for existing.** ROSA owns the LLM, the prompt orchestration, the tool registration, and the ROS execution path. URML owns the typed primitive vocabulary, the manifest, and the validator. Plugged together: ROSA's planner emits a URML program via one new tool, URML's validator gates it against the active manifest, the program either executes (via URML's substrate adapter, ROSA's own ROS layer, or both) or returns a typed reason ("manifest declares `gripper: none`") that ROSA's planner can re-plan against. Natural-language interaction plus static safety before publish; neither side gives up its strengths.
 
-This is **proposal-only**, posted as URML's first Move #9 outreach (the NASA-robotics wave, URML's first dedicated NASA engagement). No bridge code in URML's repo yet; the bridge ships engagement-driven, on the precedent set by URML's [Robotical Marty engagement (RFC-0073)](https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0073-robotical-marty-outreach.md). The Langchain tool shape, the URML-vs-ROSA execution-path choice, the manifest-seed pattern, and the alignment with NASA's SLIM framework are observable design points worth your input before any code lands.
+This is **proposal-only**, posted as URML's first Move #9 outreach (the NASA-robotics wave, URML's first dedicated NASA engagement). No bridge code in URML's repo yet; the bridge ships engagement-driven, on the precedent set by URML's [Robotical Marty engagement (RFC-0073)](https://github.com/urml-dev/URML/blob/main/docs/rfcs/0073-robotical-marty-outreach.md). The Langchain tool shape, the URML-vs-ROSA execution-path choice, the manifest-seed pattern, and the alignment with NASA's SLIM framework are observable design points worth your input before any code lands.
 
 Full RFC, with the proposed tool sketch, the URML / ROSA role split, the manifest-seed pattern, and all alternatives considered:
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0108-nasa-jpl-rosa-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0108-nasa-jpl-rosa-outreach.md
 
 Seven questions worth `nasa-jpl/rosa` maintainer input on:
 
-1. **Bridge home.** Should the URML bridge live as (a) an example folder inside `nasa-jpl/rosa`, (b) a separately-maintained `nasa-jpl/rosa-urml-bridge` repo under the same org, or (c) external in `URML-MARS/URML` only? URML's default assumption is (c) until invited otherwise.
+1. **Bridge home.** Should the URML bridge live as (a) an example folder inside `nasa-jpl/rosa`, (b) a separately-maintained `nasa-jpl/rosa-urml-bridge` repo under the same org, or (c) external in `urml-dev/URML` only? URML's default assumption is (c) until invited otherwise.
 2. **Execution path.** Should the bridge return execution to ROSA's existing tool layer (URML as pre-flight check only), or hand off to URML's substrate adapter (URML as execution layer)?
 3. **LLM reuse.** Should the bridge reuse ROSA's `llm` parameter for the NL-to-URML translation step (one LLM, two completions per request), or hold a separate LLM handle URML provides?
 4. **Manifest seeding.** Does ROSA's planner benefit from URML's compact manifest-seed pattern (50–200 tokens summarizing supported primitives), or is the LLM better served by reading a full URML manifest as plain context like documentation?
@@ -70,5 +70,5 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

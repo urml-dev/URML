@@ -27,7 +27,7 @@ Voice: founder posts under his GitHub identity. Each post opens with "Hi <team>"
 **Disclosure paragraph (reused verbatim at the bottom of every post body):**
 
 ```
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 **Schema-extension flags.** Move #12 surfaces multiple v0.1 schema gaps that should be opened as Spec RFCs in parallel (not bundled into the per-target outreach RFCs):
@@ -75,7 +75,7 @@ Whisper is the reference multilingual STT. URML's Layer-2 `listen` primitive con
 
 **This is proposal-only**, the first RFC of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, three alternatives, and the inference-runtime fragmentation discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0153-whisper-outreach.md
+Full RFC with manifest mapping, three alternatives, and the inference-runtime fragmentation discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0153-whisper-outreach.md
 
 Questions worth maintainer input on:
 
@@ -90,7 +90,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -116,7 +116,7 @@ faster-whisper is the CTranslate2-accelerated Whisper inference engine that clos
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, three alternatives, and the runtime-fragmentation design discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0154-faster-whisper-outreach.md
+Full RFC with manifest mapping, three alternatives, and the runtime-fragmentation design discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0154-faster-whisper-outreach.md
 
 Questions worth maintainer input on:
 
@@ -131,7 +131,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -157,7 +157,7 @@ whisper.cpp is the embedded substrate that closes URML's Layer-2 `listen` primit
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, three alternatives, and the no-Python deployment design discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0155-whisper-cpp-outreach.md
+Full RFC with manifest mapping, three alternatives, and the no-Python deployment design discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0155-whisper-cpp-outreach.md
 
 Questions worth maintainer input on:
 
@@ -172,7 +172,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -198,7 +198,7 @@ This is URML's first TTS RFC. URML's Layer-2 `speak` primitive renders text outp
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, three alternatives, and the voice-clone-reference design discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0156-openvoice-outreach.md
+Full RFC with manifest mapping, three alternatives, and the voice-clone-reference design discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0156-openvoice-outreach.md
 
 Questions worth maintainer input on:
 
@@ -213,7 +213,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -239,7 +239,7 @@ This is URML's first translation RFC. URML's Layer-4 reserves multilingual struc
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, three alternatives, and the HuggingFace-URI scheme discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0157-opus-mt-train-outreach.md
+Full RFC with manifest mapping, three alternatives, and the HuggingFace-URI scheme discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0157-opus-mt-train-outreach.md
 
 Questions worth maintainer input on:
 
@@ -255,7 +255,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -281,7 +281,7 @@ URML's reference runtimes execute fully offline once validated (no cloud depende
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, three alternatives, and the no-cloud invariant discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0158-argos-translate-outreach.md
+Full RFC with manifest mapping, three alternatives, and the no-cloud invariant discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0158-argos-translate-outreach.md
 
 Questions worth maintainer input on:
 
@@ -296,7 +296,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -324,7 +324,7 @@ One housekeeping ask: GitHub reports `licenseInfo: Other` on the repo. URML's ad
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, four alternatives, and the runtime-side declaration discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0159-marian-dev-outreach.md
+Full RFC with manifest mapping, four alternatives, and the runtime-side declaration discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0159-marian-dev-outreach.md
 
 Questions worth maintainer input on:
 
@@ -339,7 +339,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -365,7 +365,7 @@ This is URML's first robot-command-library RFC. URML's Layer-3 (behavior composi
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, four alternatives, and the BT-XML schema-versioning discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0160-behaviortree-cpp-outreach.md
+Full RFC with manifest mapping, four alternatives, and the BT-XML schema-versioning discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0160-behaviortree-cpp-outreach.md
 
 Questions worth maintainer input on:
 
@@ -380,7 +380,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -408,7 +408,7 @@ One housekeeping ask: GitHub reports `licenseInfo: Other` on the repo. URML's ad
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, three alternatives, and the two-language-coverage discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0161-py-trees-outreach.md
+Full RFC with manifest mapping, three alternatives, and the two-language-coverage discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0161-py-trees-outreach.md
 
 Questions worth maintainer input on:
 
@@ -423,7 +423,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -449,7 +449,7 @@ This is URML's first industrial-manipulation-substrate RFC. The mapping is concr
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, four alternatives, and the concrete primitive-to-stage decomposition table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0162-moveit-task-constructor-outreach.md
+Full RFC with manifest mapping, four alternatives, and the concrete primitive-to-stage decomposition table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0162-moveit-task-constructor-outreach.md
 
 Questions worth maintainer input on:
 
@@ -464,7 +464,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -492,7 +492,7 @@ Two housekeeping notes: (1) GitHub reports `licenseInfo: Other` on the repo — 
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, four alternatives, and the knowledge-graph-substrate design discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0163-skiros2-outreach.md
+Full RFC with manifest mapping, four alternatives, and the knowledge-graph-substrate design discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0163-skiros2-outreach.md
 
 Questions worth maintainer input on:
 
@@ -508,7 +508,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -534,7 +534,7 @@ LangGraph is one of two distinct agent-execution patterns URML's manifest needs 
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, five alternatives, and the execution-model enumeration discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0164-langgraph-outreach.md
+Full RFC with manifest mapping, five alternatives, and the execution-model enumeration discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0164-langgraph-outreach.md
 
 Questions worth maintainer input on:
 
@@ -550,7 +550,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -578,7 +578,7 @@ Porcupine closes a real gap in URML's speech-input story: full STT engines are t
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer). Framing as open-source-tier composition; commercial-tier deployment inherits Picovoice's commercial-license obligations directly.
 
-Full RFC with manifest mapping, three alternatives, and the license-tier expression discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0165-porcupine-outreach.md
+Full RFC with manifest mapping, three alternatives, and the license-tier expression discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0165-porcupine-outreach.md
 
 Questions worth maintainer input on:
 
@@ -594,7 +594,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -620,7 +620,7 @@ Piper is the surviving open neural-TTS substrate after the Coqui shutdown and is
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, five alternatives, and the IPC-boundary discussion: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0166-piper1-gpl-outreach.md
+Full RFC with manifest mapping, five alternatives, and the IPC-boundary discussion: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0166-piper1-gpl-outreach.md
 
 Questions worth maintainer input on:
 
@@ -636,7 +636,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -664,7 +664,7 @@ URML's primary ask here is the **successor-surface question**: with `facebookres
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, four alternatives, and the model-license declaration design: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0167-fairseq-outreach.md
+Full RFC with manifest mapping, four alternatives, and the model-license declaration design: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0167-fairseq-outreach.md
 
 Questions worth maintainer input on:
 
@@ -679,7 +679,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -705,7 +705,7 @@ LibreTranslate is interesting to URML because of the deployment shape: operators
 
 **This is proposal-only**, part of URML's Move #12 outreach (16 RFCs covering speech / translation / robot-command-library substrates for URML's NL layer).
 
-Full RFC with manifest mapping, four alternatives, and the AGPL-network-boundary design: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0168-libretranslate-outreach.md
+Full RFC with manifest mapping, four alternatives, and the AGPL-network-boundary design: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0168-libretranslate-outreach.md
 
 Questions worth maintainer input on:
 
@@ -721,7 +721,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---

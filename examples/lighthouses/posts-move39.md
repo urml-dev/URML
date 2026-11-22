@@ -37,13 +37,13 @@ A robot description carries kinematics, joint limits, and geometry; a URML manif
 
 Two real questions: (1) Which capability-manifest fields can be derived honestly from a URDF/MJCF/USD description, and which are genuinely separate? (2) Would a thin adapter from a robot_descriptions.py entry to a URML manifest skeleton be useful — and where should the line sit between robot description and robot capability + safety declaration?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0455-robot-descriptions-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0455-robot-descriptions-outreach.md
 
 Thanks for robot_descriptions.py; a cross-format description aggregator is exactly the right vantage point for this question.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -64,13 +64,13 @@ An SDFormat file carries links, joints, limits, sensors, and physics; a URML man
 
 Two real questions: (1) Which URML capability-manifest fields map cleanly onto SDFormat elements, and which are genuinely outside SDFormat's scope? (2) Where should the boundary sit between robot description (SDFormat) and robot capability + safety declaration?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0456-sdformat-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0456-sdformat-outreach.md
 
 Thanks for SDFormat; a long-standing open robot-description format is the right place to think about where description ends and capability declaration begins.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -91,13 +91,13 @@ A URDF (parsed by urdfdom, generated via xacro) carries links, joints, limits, a
 
 Two real questions: (1) Which URML capability-manifest fields can be derived honestly from URDF, and which are genuinely separate? (2) Would a thin adapter from a urdfdom-parsed model to a URML manifest skeleton be useful — and where should the boundary sit between URDF and capability + safety declaration?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0457-urdfdom-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0457-urdfdom-outreach.md
 
 Thanks for the URDF tooling; the most widely-used robot-description format is the natural place for this question.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -118,13 +118,13 @@ iDynTree computes kinematics/dynamics from a description; a URML manifest declar
 
 Two real questions: (1) Which URML capability-manifest fields (reachable workspace, joint/velocity limits, payload) can be derived honestly from an iDynTree model, and which are genuinely separate? (2) Would a thin iDynTree → URML manifest-skeleton adapter be useful for floating-base / humanoid robots?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0458-idyntree-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0458-idyntree-outreach.md
 
 Thanks for iDynTree; a floating-base kinematics/dynamics library is exactly the right vantage point for the derive-vs-declare question.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -145,13 +145,13 @@ urdf-loaders renders a URDF; a URML manifest declares capabilities and a safety 
 
 Two real questions: (1) Is visualizing a robot's declared capabilities / safety envelope alongside the URDF interesting for the web-robotics use case? (2) Which manifest fields can be read directly from the loaded URDF, and where should the boundary sit between visualized description and capability + safety declaration?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0459-urdf-loaders-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0459-urdf-loaders-outreach.md
 
 Thanks for urdf-loaders; web URDF visualization is a great surface for making a robot's allowed envelope visible.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -172,13 +172,13 @@ yourdfpy parses a URDF in Python; a URML manifest declares capabilities and a sa
 
 Two real questions: (1) Would a thin yourdfpy → URML manifest-skeleton adapter be useful, and what URDF fields map cleanly? (2) Which capability-manifest fields are genuinely outside URDF (payload, graspable classes, safety envelope), and where should the boundary sit?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0460-yourdfpy-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0460-yourdfpy-outreach.md
 
 Thanks for yourdfpy; a clean Python URDF parser is a great foundation for this kind of adapter.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -199,13 +199,13 @@ KDL builds chains from a URDF and computes FK/IK and joint limits; a URML manife
 
 Two real questions: (1) Which URML capability-manifest fields (reach, joint limits, reachable workspace) can be derived honestly from a KDL chain, and which are genuinely separate? (2) Would cross-checking a manifest's declared workspace against KDL-computed reach be useful, and where should the boundary sit?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0461-orocos-kdl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0461-orocos-kdl-outreach.md
 
 Thanks for KDL; a classic open kinematics library is a great reference point for the derive-vs-declare question.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -226,11 +226,11 @@ urchin parses a URDF and computes forward kinematics in Python; a URML manifest 
 
 Two real questions: (1) Would a thin urchin → URML manifest-skeleton adapter be useful, and what URDF/FK fields map cleanly? (2) Which capability-manifest fields are genuinely outside URDF (payload, graspable classes, safety envelope), and where should the boundary sit?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0462-urchin-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0462-urchin-outreach.md
 
 Thanks for urchin; keeping a clean URDF + FK Python library alive is a real service, and a great foundation for this kind of adapter.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

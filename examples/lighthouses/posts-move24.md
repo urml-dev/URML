@@ -63,7 +63,7 @@ Nothing here asks Genesis to change or maintain anything. This is a request for 
 
 Two real questions. First, what is the cleanest boundary for "URML primitive -> Genesis entity command", the Python control API directly, or via an imported robot (URDF/MJCF) and its actuators? Second, would Genesis find value in being a documented hermetic-demo target for a natural-language front end, or does that overlap your own roadmap?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0322-genesis-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0322-genesis-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is Genesis Apache-2.0?
 
@@ -71,7 +71,7 @@ Thanks for how far Genesis has pushed open, fast robot simulation.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -90,7 +90,7 @@ To be clear about scope: I have a separate, earlier thread with Isaac Lab (RFC-0
 
 Nothing here asks Isaac Sim to change or maintain anything. Two real questions. First, is the ROS 2 bridge the right boundary for "URML primitive -> Isaac Sim", or is there a more idiomatic Action Graph entry point? Second, URML's capability manifest needs to align with a robot description; for Isaac Sim that is USD. What grain of USD robot-description alignment would be most useful from your side?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0323-nvidia-isaac-sim-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0323-nvidia-isaac-sim-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. What is the current license?
 
@@ -98,7 +98,7 @@ Thanks for open-sourcing Isaac Sim. It changes what an open NL-to-sim demo can l
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -117,7 +117,7 @@ Nothing here asks O3DE to change or maintain anything. This is a request for com
 
 Two real questions. First, is the ROS 2 Robotics Gem (in o3de-extras) the right integration surface for "URML primitive -> O3DE simulated robot", and should the Gem-specific follow-up live on o3de-extras rather than here? Second, URML's capability manifest needs to align with an imported robot (URDF) and its spawnable; what grain of alignment would be most useful?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0324-o3de-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0324-o3de-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is O3DE Apache-2.0 / MIT dual-licensed?
 
@@ -125,7 +125,7 @@ Thanks for keeping a fully open, LF-governed engine in the robotics-sim conversa
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -144,7 +144,7 @@ To be honest about scope: CARLA is autonomous-driving, which is a subset of what
 
 Two real questions. First, what is the cleaner boundary for "URML intent -> CARLA actor", the Python API directly or the ROS bridge? Second, would a documented mapping from a small URML mobility/perception subset onto a CARLA vehicle be interesting to you, and is a driving profile something worth URML defining?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0325-carla-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0325-carla-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is CARLA MIT-licensed?
 
@@ -152,7 +152,7 @@ Thanks for the work that made open AV simulation a real thing.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -171,7 +171,7 @@ Before anything else, an honest question: the repo's last push is from late 2024
 
 If it is live: nothing here asks you to change or maintain anything. The one real mapping question is whether ROS-TCP-Connector is the boundary you would expect for "URML primitive -> Unity robot", and at what grain the URDF Importer's output should align with a capability manifest.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0326-unity-robotics-hub-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0326-unity-robotics-hub-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. What is the current license?
 
@@ -179,7 +179,7 @@ Thanks for the ROS-TCP and URDF Importer tooling; it shaped how a lot of people 
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -198,7 +198,7 @@ To be honest about the fit: a Habitat agent is navigation-and-perception-first, 
 
 Two real questions. First, what is the right integration surface, habitat-sim's agent-action API directly, or habitat-lab's task layer? Second, how should a URML capability manifest align with a scene / episode dataset, if at all?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0327-habitat-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0327-habitat-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is Habitat MIT-licensed?
 
@@ -206,7 +206,7 @@ Thanks for Habitat; it set a bar for fast, photorealistic embodied-AI simulation
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -223,7 +223,7 @@ URML (urml.dev) is a small, Apache-2.0 language for describing robot intent: Eng
 
 Nothing here asks Chrono to change or maintain anything. Two real questions. First, is PyChrono the boundary you would expect for "URML primitive -> Chrono model", or is there a ROS path you would point me at? Second, at what grain should a URML capability manifest align with a Chrono vehicle / robot model?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0328-project-chrono-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0328-project-chrono-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is Chrono BSD-3-Clause?
 
@@ -231,7 +231,7 @@ Thanks for the fidelity Chrono brings to open robotics simulation.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -250,7 +250,7 @@ I will be honest that "learned controller as a URML substrate" is newer ground f
 
 Two real questions. First, what is the natural boundary between a URML primitive and a Brax environment's action and observation spaces? Second, given Brax's MJX lineage, how do you see the relationship to MuJoCo (we have a separate MuJoCo thread), and does a thin intent/spec layer above a trained policy resonate or seem out of place?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0329-brax-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0329-brax-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is Brax Apache-2.0?
 
@@ -258,7 +258,7 @@ Thanks for Brax and for making large-scale differentiable physics approachable.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -275,7 +275,7 @@ URML (urml.dev) is a small, Apache-2.0 language for describing robot intent: Eng
 
 Nothing here asks Ditto to change or maintain anything. Two real questions. First, at what grain should a URML capability manifest align with a Ditto Thing and its Features, capability blocks as Features, declared state as Feature properties? Second, Ditto aligns with the W3C Web of Things Thing Description; should URML's manifest align with WoT TD rather than invent its own shape?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0330-eclipse-ditto-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0330-eclipse-ditto-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is Ditto EPL-2.0? To be clear, the fit is cross-citation, not vendoring code in either direction.
 
@@ -283,7 +283,7 @@ Thanks for Ditto, and for keeping open digital twins a real option.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -302,7 +302,7 @@ Two directions seem worth your read. First, a URML-validated policy could expose
 
 Nothing here asks Gymnasium to change or maintain anything. The real question: does a thin intent/spec layer above the env API seem useful to you, or firmly out of scope for what Gymnasium is?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0331-gymnasium-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0331-gymnasium-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is Gymnasium MIT-licensed?
 
@@ -310,5 +310,5 @@ Thanks for stewarding the RL environment API the whole field leans on.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

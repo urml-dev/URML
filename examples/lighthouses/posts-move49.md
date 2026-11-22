@@ -40,13 +40,13 @@ Where the two sit: Buzz expresses the swarm's collective behavior; URML declares
 
 Two real questions: (1) is "Buzz coordinates the swarm, URML validates the per-robot intent it issues" a sensible layering? (2) Does URML's fleet roster + cross-robot deconfliction overlap or complement Buzz's swarm primitives, and which boundary is worth exploring first?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0542-buzz-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0542-buzz-outreach.md
 
 Thanks for Buzz; a purpose-built swarm language is exactly the kind of peer a per-robot intent layer wants to understand its boundary with.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -67,13 +67,13 @@ Where the two sit: ScaFi expresses the aggregate behavior over a field of device
 
 Two real questions: (1) is "ScaFi expresses the aggregate behavior, URML validates the per-device intent" a sensible layering? (2) Does URML's fleet roster + deconfliction complement aggregate computing's field model, and which boundary is worth exploring first?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0543-scafi-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0543-scafi-outreach.md
 
 Thanks for ScaFi; aggregate computing is a genuinely different and elegant take on the collective, and the seam with per-robot validated intent is the interesting part.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -94,13 +94,13 @@ Where the two sit: Protelis expresses computation over a field of devices; URML 
 
 Two real questions: (1) is "Protelis expresses the field computation, URML validates the per-device intent" a sensible layering? (2) Does URML's fleet roster + deconfliction complement field calculus's aggregate model, and which boundary is worth exploring first?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0544-protelis-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0544-protelis-outreach.md
 
 Thanks for Protelis; field calculus is a clean formal foundation, and naming its boundary with per-robot validated intent seems worth doing.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -121,13 +121,13 @@ The mapping: a SCRIMMAGE scenario of N agents maps onto a URML fleet roster -- e
 
 Two real questions: (1) does a URML fleet roster + cross-agent deconfliction fit how SCRIMMAGE scenarios declare many heterogeneous agents? (2) Is a statically-validated multi-agent intent layer above a SCRIMMAGE scenario interesting, and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0545-scrimmage-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0545-scrimmage-outreach.md
 
 Thanks for SCRIMMAGE; a simulator built for large heterogeneous fleets is exactly where fleet-level validated intent is easiest to try.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -148,13 +148,13 @@ The mapping, two seams: (1) DUNE is an onboard runtime in the same role URML's r
 
 Two real questions: (1) is DUNE a sensible non-ROS substrate for URML-validated intent to dispatch to? (2) Does URML's fleet roster + deconfliction complement Neptus's fleet C2, and which is the cleaner first seam -- DUNE (substrate) or Neptus (fleet)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0546-lsts-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0546-lsts-outreach.md
 
 Thanks for DUNE and Neptus; a real networked-UV stack with both an onboard runtime and fleet C2 is an unusually complete place to test substrate-neutral validated intent.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -175,13 +175,13 @@ The mapping: URML validates an intent against the robot's declared capabilities 
 
 Two real questions: (1) is "URML validates intent, then dispatches to RT-Middleware (RTC) components" a sensible substrate mapping? (2) Could an RTC's declared ports inform a URML capability manifest, and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0547-openrtm-aist-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0547-openrtm-aist-outreach.md
 
 Thanks for OpenRTM-aist; a standards-based non-ROS component middleware with this much history is a good proof that URML's substrate-neutrality is real and not just ROS-shaped.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -202,11 +202,11 @@ The mapping: URML validates an intent against the robot's declared capabilities 
 
 Two real questions: (1) is "URML validates intent, then dispatches to RoboComp components" a sensible substrate mapping? (2) Could RoboComp component interfaces inform a URML capability manifest, and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0548-robocomp-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0548-robocomp-outreach.md
 
 Thanks for RoboComp; a long-running component framework outside the ROS world is exactly the kind of substrate that keeps an intent language honest about its neutrality.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

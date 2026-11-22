@@ -106,7 +106,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `petercorke/robotics-toolbox-python` is the highest-visibility repo at 3.1k stars (verified 2026-05-25). URML's planned channel: open a single Issue on `petercorke/robotics-toolbox-python` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Corke via `petercorke.com` or the QUT Centre's contact page.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

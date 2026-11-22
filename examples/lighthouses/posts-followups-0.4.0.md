@@ -33,7 +33,7 @@ stopped).
 
 ## 1. Discussion #497 (slowrunner) — founder-voiced, founder-posted
 
-Thread: https://github.com/URML-MARS/URML/discussions/497 (closed, not
+Thread: https://github.com/urml-dev/URML/discussions/497 (closed, not
 locked; a new comment works). Keep it short and personal; he prefers human
 replies. No footer.
 
@@ -59,7 +59,7 @@ subprocess/pybind sketch.
 
 > Follow-up with a shipped artifact rather than a proposal.
 >
-> Since posting this, URML shipped a whisper.cpp adapter (RFC-0670, merged on `main` in the 0.4.0 cut): `urml translate --audio request.wav` sends the audio to a running `whisper-server` `/inference` endpoint (multipart, `response_format: json`, optional `language` hint) and feeds the transcript into a validate-before-actuate pipeline, so the resulting robot program is statically checked against a capability manifest before anything moves. whisper-server is the default speech backend. Adapter source: https://github.com/URML-MARS/URML/blob/main/reference/llm-bridge/src/urml_llm_bridge/speech/whisper_cpp.py
+> Since posting this, URML shipped a whisper.cpp adapter (RFC-0670, merged on `main` in the 0.4.0 cut): `urml translate --audio request.wav` sends the audio to a running `whisper-server` `/inference` endpoint (multipart, `response_format: json`, optional `language` hint) and feeds the transcript into a validate-before-actuate pipeline, so the resulting robot program is statically checked against a capability manifest before anything moves. whisper-server is the default speech backend. Adapter source: https://github.com/urml-dev/URML/blob/main/reference/llm-bridge/src/urml_llm_bridge/speech/whisper_cpp.py
 >
 > It differs from the sketch in my original post: instead of a subprocess wrapper around the binary, the adapter speaks HTTP to whisper-server, which keeps the model resident between requests and needs no Python on the inference host.
 >

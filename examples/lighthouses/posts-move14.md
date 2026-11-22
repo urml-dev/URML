@@ -27,7 +27,7 @@ Voice: founder posts under his GitHub identity. Each post opens with "Hi <team>"
 **Disclosure paragraph (reused verbatim at the bottom of every post body):**
 
 ```
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 **Schema-extension flags.** Move #14 surfaces multiple v0.1 schema gaps that should be opened as Spec RFCs in parallel:
@@ -77,7 +77,7 @@ Stretch is the mobile-manipulator class URML's manifest declares for indoor / ho
 
 This is **proposal-only**, posted as part of URML's Move #14 outreach (mobile manipulators + commercial humanoids, 7 engageable RFCs). No bridge in URML's repo yet; a bridge would ship engagement-driven.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0184-hello-robot-stretch-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0184-hello-robot-stretch-outreach.md
 
 Questions worth `hello-robot` maintainer input on:
 
@@ -93,7 +93,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -119,7 +119,7 @@ Franka FR3 is the high-precision research-cobot reference URML's existing cobot-
 
 This is **proposal-only**, posted as part of URML's Move #14 outreach (7 engageable RFCs in this wave). Franka was deferred from URML's Move-13 actuator-vendors wave because cobot OEMs sit at the platform layer, not the actuator-controller layer — Move-14 is the correct placement.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0185-frankaemika-franka-ros2-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0185-frankaemika-franka-ros2-outreach.md
 
 Questions worth `frankaemika` maintainer input on:
 
@@ -134,7 +134,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -162,7 +162,7 @@ Acknowledging the repo has been quiet on GitHub for >1.5 years. Engagement is pa
 
 This is **proposal-only**, posted as part of URML's Move #14 outreach (7 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0186-kinovarobotics-kinova-ros-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0186-kinovarobotics-kinova-ros-outreach.md
 
 Questions worth `Kinovarobotics` maintainer input on:
 
@@ -178,7 +178,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -208,7 +208,7 @@ URML's existing `neo_biped` manifest fixture (per RFC-0009 mobility specializati
 
 This is **proposal-only**, posted as part of URML's Move #14 outreach (7 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0187-1x-technologies-eve-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0187-1x-technologies-eve-outreach.md
 
 Questions worth `1x-technologies` maintainer input on:
 
@@ -224,7 +224,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -257,7 +257,7 @@ Two open questions frame this RFC as cross-citation rather than full manifest ma
 
 This is **proposal-only**, posted as part of URML's Move #14 outreach (7 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0188-fetchrobotics-fetch-ros-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0188-fetchrobotics-fetch-ros-outreach.md
 
 Questions worth maintainer input on:
 
@@ -273,7 +273,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -302,7 +302,7 @@ PAL Robotics is one of Europe's most established robotics OEMs — TIAGo / TALOS
 
 This is **proposal-only**, posted as part of URML's Move #14 outreach (7 engageable RFCs in this wave).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0189-pal-robotics-tiago-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0189-pal-robotics-tiago-outreach.md
 
 Questions worth `pal-robotics` maintainer input on:
 
@@ -318,7 +318,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -346,7 +346,7 @@ The public repo is URDF/mesh-asset-only; the primary HSR robot stack is closed. 
 
 This is **proposal-only**, posted as part of URML's Move #14 outreach (7 engageable RFCs in this wave; completes the Move).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0190-toyota-research-hsr-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0190-toyota-research-hsr-outreach.md
 
 Questions worth maintainer input on:
 
@@ -363,7 +363,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---

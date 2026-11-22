@@ -110,7 +110,7 @@ For the `novatel/novatel_oem7_driver` maintainers:
 3. **SPAN tight-coupling declaration.** SPAN emits GNSS+INS fused pose at a tightly-coupled layer. Is "this device emits SPAN-class fused pose" a manifest declaration URML should carry, vs the loose-coupling INS declaration in RFC-0117 / RFC-0118?
 4. **Adapter shape.** One `NovatelOem7Adapter` covering OEM7 + SPAN parameterized by SPAN-on/off, or two adapters (`NovatelOem7Adapter` + `NovatelSpanAdapter`)? Your maintenance preference matters more than URML's instinct.
 5. **ALIGN dual-antenna heading.** How should URML's manifest declare antenna topology for heading?
-6. **Adapter home.** When the URML-side adapter ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `novatel/novatel-urml` repo, or external in URML-MARS/URML only? URML's default assumption is the URML repo unless invited otherwise.
+6. **Adapter home.** When the URML-side adapter ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `novatel/novatel-urml` repo, or external in urml-dev/URML only? URML's default assumption is the URML repo unless invited otherwise.
 7. **Conformance listing.** Would the NovAtel / Hexagon team consider a README or Discussions link to URML's compatible-runtimes registry once a working adapter ships? (Per [RFC-0014](0014-substrate-conformance.md), self-reported tier, no continuous obligation.)
 8. **Anything else.**
 
@@ -126,7 +126,7 @@ Items 1–8 from Unresolved questions above.
 
 `novatel/novatel_oem7_driver` has both Issues and Discussions enabled. URML's planned channel: open a single Discussion on `novatel/novatel_oem7_driver` (Discussions on means there's a dialogue surface ready), pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

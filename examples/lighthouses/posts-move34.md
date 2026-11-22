@@ -37,13 +37,13 @@ URML's ROS 2 runtime meets Aerostack2 on its behavior/action surface; "take off,
 
 Two real questions: (1) Is the ROS 2 behavior surface the right seam for an external validated-intent layer above Aerostack2, or is the mission level a better fit? (2) What should a URML capability manifest declare to describe an Aerostack2 platform honestly — drive type, altitude/speed limits, geofence, sensor/payload set, single vs multi-robot?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0412-aerostack2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0412-aerostack2-outreach.md
 
 Thanks for Aerostack2; an open ROS 2 framework for autonomous multi-aerial systems is exactly the right place for this kind of layer to be designed with input.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -64,13 +64,13 @@ URML's ROS 2 runtime meets the MRS UAV manager on its control/tracker surface; "
 
 Two real questions: (1) Is the ROS 2 control/tracker surface the right seam for an external validated-intent layer, or is the mission/manager level a better fit? (2) What should a URML capability manifest declare to describe an MRS-class UAV honestly — drive type, control modes, altitude/speed limits, geofence, estimator/positioning, single vs multi?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0413-mrs-uav-system-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0413-mrs-uav-system-outreach.md
 
 Thanks for the MRS UAV System; a complete, real-deployment open aerial stack is a rare and valuable thing.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -91,13 +91,13 @@ URML's fleet model declares a roster of Crazyflies; per-agent aerial intent lowe
 
 Two real questions: (1) Does URML's fleet model (roster + per-agent intent + barrier) map cleanly onto the Crazyswarm2 ROS 2 surface? (2) What should a URML capability manifest declare to describe a Crazyflie swarm honestly — per-drone drive type, arena geometry, altitude/speed limits, swarm size?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0414-crazyswarm2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0414-crazyswarm2-outreach.md
 
 Thanks for Crazyswarm2; an open ROS 2 stack for nano-quad swarms is a great demonstrator and teaching platform.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -118,13 +118,13 @@ A URML aerial program (take off, fly a path, hover, land) drives a RotorPy vehic
 
 Two real questions: (1) Is a validated natural-language intent layer above RotorPy interesting as a teaching / research surface? (2) What should a URML capability manifest declare to describe a simulated multirotor honestly — drive type, altitude/speed limits, control modes — and is the Python control interface the right seam or is a higher-level mission API a better fit?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0415-rotorpy-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0415-rotorpy-outreach.md
 
 Thanks for RotorPy; a clean, hackable Python quad sim is a genuinely useful teaching and research tool.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -145,13 +145,13 @@ URML's aerial drive type and PX4 runtime drive a Pegasus vehicle through PX4 / t
 
 Two real questions: (1) Is the PX4 / ROS 2 bridge the right seam for an external validated-intent layer above Pegasus, given URML already targets PX4? (2) What should a URML capability manifest declare to describe a Pegasus aerial platform honestly — drive type, altitude/speed limits, geofence, payload/sensor set?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0416-pegasus-simulator-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0416-pegasus-simulator-outreach.md
 
 Thanks for Pegasus; an open Isaac Sim + PX4 drone framework is a great sim-to-real bridge.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -172,13 +172,13 @@ The idea is the decide-then-do split applied to learning: a URML aerial intent d
 
 Two real questions: (1) Is wrapping a learned drone controller in a validated intent layer + envelope interesting in the RL-sandbox context? (2) What should a URML capability manifest declare to describe a learned-controller drone honestly — drive type, altitude/speed limits, observation/action assumptions — and is the Gymnasium env interface the right seam or a higher-level mission wrapper?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0417-gym-pybullet-drones-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0417-gym-pybullet-drones-outreach.md
 
 Thanks for gym-pybullet-drones; a clean, popular open drone-RL suite is a great place to think about safety around learned control.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -199,13 +199,13 @@ URML's ROS 2 runtime meets the unified autonomy stack on its ROS 2 surface; an "
 
 Two real questions: (1) Where is the cleanest seam — above the autonomy stack's behavior/planning layer, or wrapping a policy trained in aerial_gym_simulator? (2) What should a URML capability manifest declare to describe an exploration-class aerial robot honestly — drive type, altitude/speed limits, sensor suite, exploration bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0418-ntnu-arl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0418-ntnu-arl-outreach.md
 
 Thanks for the autonomy stack and aerial_gym; the lab's aerial-exploration work is some of the most interesting in the area.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -226,13 +226,13 @@ URML's ROS 2 runtime meets the stack on its ROS surface; "fly to this position t
 
 Two real questions: (1) Is the ROS surface the right seam for an external validated-intent layer above a GPS-denied autonomy stack? (2) What should a URML capability manifest declare to describe such a platform honestly — drive type, altitude/speed limits, positioning source, operating volume?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0419-kr-autonomous-flight-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0419-kr-autonomous-flight-outreach.md
 
 Thanks for kr_autonomous_flight; the lab's GPS-denied flight work is a real benchmark for the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -253,13 +253,13 @@ URML's ROS 2 runtime meets the framework on its module surface; "navigate to the
 
 Two real questions: (1) Does URML's typed intent map cleanly onto the framework's modular ROS surface, and where should it target it? (2) What should a URML capability manifest declare to describe a modular autonomy UAV honestly — drive type, altitude/speed limits, sensor suite, operating bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0420-cerlab-uav-autonomy-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0420-cerlab-uav-autonomy-outreach.md
 
 Thanks for CERLAB UAV Autonomy; a clean modular open UAV autonomy framework is a great reference.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -280,11 +280,11 @@ URML's aerial drive type and PX4 runtime drive an XTDrone vehicle through PX4 / 
 
 Two real questions: (1) Is the PX4 / ROS bridge the right seam for an external validated-intent layer above XTDrone? (2) What should a URML capability manifest declare to describe an XTDrone aerial platform honestly — drive type, altitude/speed limits, sensor set, single vs multi?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0421-xtdrone-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0421-xtdrone-outreach.md
 
 Thanks for XTDrone; a widely-used open PX4 + Gazebo teaching sandbox is a real on-ramp for new drone developers.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

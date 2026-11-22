@@ -104,7 +104,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `cloud.api.bearrobotics.ai` has a developer-portal contact / signup surface (verified 2026-05-26). URML's planned channel: courtesy outreach via the Bear Cloud developer portal Contact form pointing at this RFC. If Bear responds with a public GitHub Issue surface or a specific dev-relations email, URML pivots accordingly.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

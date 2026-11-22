@@ -161,7 +161,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `koalazak/dorita980` has Issues enabled (12 open, verified 2026-05-26). URML's planned channel: open a single Issue on `koalazak/dorita980` labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC. Optional cross-thread on `jeremywillans/ha-rest980-roomba` if maintainers prefer.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

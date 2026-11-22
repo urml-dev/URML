@@ -141,7 +141,7 @@ If you are a member of the Consortium TSC, a regional chapter director (SwRI / F
 
 The natural URML public venue:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Or via the Consortium's standard membership inquiry path (rosindustrial.org). Or directly to URML maintainers via `MAINTAINERS.md` for a private channel.
 

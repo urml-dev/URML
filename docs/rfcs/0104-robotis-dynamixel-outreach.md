@@ -119,7 +119,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `ROBOTIS-GIT/DynamixelSDK` has Issues enabled (14 open, verified 2026-05-26). URML's planned channel: open a single Issue on `ROBOTIS-GIT/DynamixelSDK` labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC. Optional cross-thread on `dynamixel_hardware_interface` if ROBOTIS prefers a ROS 2-specific surface.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

@@ -9,7 +9,7 @@ RFC-0646 epfl-lasa/iiwa_ros, RFC-0647 utra-robosoccer/soccerbot.
 
 **Title:** URML: validating a learning-from-demonstration trajectory against the iiwa envelope
 
-Hi, and a disclosure first: this is AI-assisted prose that I reviewed and approved before posting (background: https://github.com/URML-MARS/URML/blob/main/VIBE.md). Glad to switch to human-only correspondence if you prefer.
+Hi, and a disclosure first: this is AI-assisted prose that I reviewed and approved before posting (background: https://github.com/urml-dev/URML/blob/main/VIBE.md). Glad to switch to human-only correspondence if you prefer.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language whose one job is to check an intended robot motion against the robot's declared capabilities and a safety envelope before it runs.
 
@@ -31,7 +31,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Title:** URML: validating a whole-body kick or step against a declared stability envelope
 
-Hi. Up front: this is AI-assisted prose I reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md); say the word if you would rather correspond human-only.
+Hi. Up front: this is AI-assisted prose I reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md); say the word if you would rather correspond human-only.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language for declaring what a robot can do and checking an intended motion against that declaration before it executes.
 

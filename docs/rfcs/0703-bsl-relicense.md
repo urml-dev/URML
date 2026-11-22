@@ -51,7 +51,7 @@ The BSL keeps the source public, keeps research and evaluation free, and returns
 3. [`COMMERCIAL.md`](../../COMMERCIAL.md) describes the commercial license tiers instead of the earlier open-core boundary (RFC-0672).
 4. Contributions move from DCO-only to a [Contributor License Agreement](../../CLA.md). DCO sign-off remains as a record of provenance.
 5. Package metadata (`pyproject.toml`, `package.xml`, `setup.py`) declares `BUSL-1.1`.
-6. The canonical repository moves from `URML-MARS/URML` to `urml-dev/URML`.
+6. The canonical repository moves from `URML-MARS/URML` (the earlier organization) to `urml-dev/URML`.
 
 ## Alternatives considered
 

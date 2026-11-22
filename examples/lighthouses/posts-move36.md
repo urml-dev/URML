@@ -38,13 +38,13 @@ URML's ROS 2 runtime meets the driver on its ROS 2 action/service surface (and t
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for an external validated-intent layer above the UR driver? (2) What should a URML capability manifest declare to describe a UR-class cobot honestly — reach/DOF, payload, joint/speed limits, gripper + graspable classes, workspace bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0431-universal-robots-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0431-universal-robots-outreach.md
 
 Thanks for the UR ROS 2 driver; the most-deployed open cobot driver is exactly the right place for this kind of layer to be designed with input.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -65,13 +65,13 @@ URML's ROS 2 runtime meets franka_ros2 on its ROS 2 action/service surface (and 
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for an external validated-intent layer above franka_ros2? (2) What should a URML capability manifest declare to describe a Franka-class research arm honestly — reach/DOF, payload, joint/force limits, gripper + graspable classes, workspace bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0432-franka-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0432-franka-outreach.md
 
 Thanks for franka_ros2; the research arm that so much manipulation work runs on is a great platform for this discussion.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -92,13 +92,13 @@ URML's ROS 2 runtime meets motoros2 on its ROS 2 action/service surface; a "pick
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for an external validated-intent layer above motoros2? (2) What should a URML capability manifest declare to describe a Motoman-class industrial arm honestly — reach/DOF, payload, joint/speed limits, end-effector + graspable classes, cell bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0433-yaskawa-motoros2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0433-yaskawa-motoros2-outreach.md
 
 Thanks for motoros2; a first-party ROS 2 driver from a major industrial OEM is a great place for this kind of work.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -119,13 +119,13 @@ URML's ROS 2 runtime meets abb_ros2 on its ROS 2 action/service surface (and the
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for an external validated-intent layer above abb_ros2? (2) What should a URML capability manifest declare to describe an ABB-class industrial arm honestly — reach/DOF, payload, joint/speed limits, end-effector + graspable classes, cell bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0434-abb-ros2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0434-abb-ros2-outreach.md
 
 Thanks for keeping a clean ROS 2 ABB driver alive; it is the natural home for this discussion.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -146,13 +146,13 @@ URML's ROS 2 runtime meets the stack on its ROS 2 / FRI surface (and the ros2_co
 
 Two real questions: (1) Is URML's ROS 2 / FRI surface the right seam for an external validated-intent layer above the LBR iiwa stack? (2) What should a URML capability manifest declare to describe an LBR iiwa honestly — reach/DOF, payload, joint/force limits, gripper + graspable classes, workspace bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0435-kuka-iiwa-lbr-stack-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0435-kuka-iiwa-lbr-stack-outreach.md
 
 Thanks for the lbr-stack; the most active open iiwa stack is a great place to think about force-aware validated intent.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -173,13 +173,13 @@ URML's ROS 2 runtime meets doosan-robot2 on its ROS 2 action/service surface (an
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for an external validated-intent layer above doosan-robot2? (2) What should a URML capability manifest declare to describe a Doosan-class cobot honestly — reach/DOF, payload, joint/speed limits, gripper + graspable classes, workspace bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0436-doosan-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0436-doosan-outreach.md
 
 Thanks for doosan-robot2; a clean vendor-maintained ROS 2 cobot driver is a great platform for this.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -200,13 +200,13 @@ URML's ROS 2 runtime meets tmr_ros2 on its ROS 2 action/service surface; a "find
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for an external validated-intent layer above tmr_ros2? (2) What should a URML capability manifest declare to describe a TM-class cobot honestly — reach/DOF, payload, joint/speed limits, gripper + graspable classes, integrated-vision detection classes, workspace bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0437-techman-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0437-techman-outreach.md
 
 Thanks for tmr_ros2; a vision-integrated cobot is a great fit for a decide-then-do intent layer.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -227,13 +227,13 @@ URML's ROS 2 runtime meets iRC_ROS on its ROS 2 action/service surface (and the 
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for an external validated-intent layer above iRC_ROS? (2) What should a URML capability manifest declare to describe an igus ReBeL-class arm honestly — reach/DOF, payload, joint limits, gripper + graspable classes, workspace bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0438-igus-irc-ros-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0438-igus-irc-ros-outreach.md
 
 Thanks for iRC_ROS; an affordable open cobot stack is a great on-ramp for this kind of layer.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -254,11 +254,11 @@ URML's ROS 2 runtime meets ROS-Industrial driver packages on their ROS surface (
 
 Two real questions: (1) Where should URML target standard ROS-Industrial interfaces rather than a generic or per-vendor ROS surface? (2) What should a URML capability manifest declare to describe an industrial arm honestly across vendors — reach/DOF, payload, joint/speed limits, end-effector + graspable classes, cell bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0439-ros-industrial-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0439-ros-industrial-outreach.md
 
 Thanks for ROS-Industrial; the consortium that standardized industrial robots on ROS is exactly where a cross-vendor intent layer should be discussed.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

@@ -72,13 +72,13 @@ Nothing here asks TRAC-IK to change or maintain anything. This is a request for 
 
 The useful idea: URML can statically check a motion request is admissible (the target is inside the declared reachable workspace, within the safety envelope) before it ever forms an IK query, so TRAC-IK is only asked to solve in-capability problems, and a no-solution result feeds back as a URML validation signal rather than a runtime surprise. Two real questions. First, what is the cleanest boundary for "URML target pose plus reachability -> a TRAC-IK query" (base and tip frames, seed, solve type)? Second, is there a stable way to treat a no-solution or timeout as a capability signal URML should surface to the user?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0352-trac-ik-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0352-trac-ik-outreach.md
 
 Thanks for TRAC-IK; it is the IK a huge number of arms quietly rely on.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -97,13 +97,13 @@ Nothing here asks Pink to change or maintain anything. This is a request for com
 
 Two real questions. First, what is the cleanest way for URML to express a target as a Pink task set (a frame task plus the relevant posture and limit tasks), so URML stays the intent layer and Pink stays the solver? Second, URML declares capability limits (reachable workspace, and with the envelope, joint and velocity limits): how should those map onto Pink's limit configuration so a request URML has validated is one Pink can take as well-posed? For context, I am reaching the MuJoCo-based sibling mink separately, and TRAC-IK for the global pose-to-config case.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0353-pink-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0353-pink-outreach.md
 
 Thanks for Pink, and for how readable the task-based formulation is.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -122,13 +122,13 @@ Nothing here asks mink to change or maintain anything. This is a request for com
 
 Two real questions. First, what is the cleanest way for URML to express a target as a mink task set (a frame task plus posture and limit tasks)? Second, since mink works against a MuJoCo model, how should URML reference the model so a declared reachable workspace and the solver's notion of the same robot stay consistent? For context, Pink is the Pinocchio-based sibling I am reaching in parallel, and TRAC-IK for the global pose-to-config case.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0354-mink-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0354-mink-outreach.md
 
 Thanks for mink; a clean MuJoCo-native differential IK was missing for a while.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -147,13 +147,13 @@ Nothing here asks MPlib to change or maintain anything. This is a request for co
 
 Two real questions. First, what is the cleanest boundary for "URML manipulation intent plus capability -> an MPlib planning call" (planning group, the collision-world source, the goal as a pose or a joint target)? Second, MPlib wraps OMPL, which I am engaging separately at the general planning layer: where would you draw the line between the manipulation-specific convenience MPlib provides and the underlying planner, from a URML integration point of view? URML validates the goal is admissible (in the declared reachable workspace, within the envelope) before the plan call.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0355-mplib-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0355-mplib-outreach.md
 
 Thanks for MPlib; a lightweight manipulation planner with a clean Python API is genuinely useful.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -172,13 +172,13 @@ Nothing here asks GraspNet to change or maintain anything. This is a request for
 
 The shape: GraspNet proposes 6-DoF grasp candidates; URML validates a chosen candidate against the declared gripper (is the width feasible, is the force in range, is the object class accepted) before anything actuates. Two real questions. First, what gripper parameters does URML most need to declare so candidates can be filtered for feasibility (width, approach, force)? Second, does the grasp-pose output have a stable enough interface (poses plus scores plus widths) that a consumer like URML could target it across versions?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0356-graspnet-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0356-graspnet-outreach.md
 
 Thanks for GraspNet and the 1Billion dataset; it set a reference point the field still builds on.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -197,13 +197,13 @@ Nothing here asks LEAP Hand to change or maintain anything. This is genuinely a 
 
 The honest question: what should a minimal-but-useful dexterous-hand capability declaration contain? Per-finger force, named grasp types (power, pinch, tripod) rather than per-joint commands, in-hand-manipulation flags, something else? Today URML can only declare a hand as a coarse gripper (a lower bound it states honestly), and the LEAP API executes the finger commands. I would rather design the richer declaration with input from people who build and use the hand than guess at it.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0357-leap-hand-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0357-leap-hand-outreach.md
 
 Thanks for making a low-cost dexterous hand the whole field can actually get hold of.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -222,13 +222,13 @@ Nothing here asks Shadow Robot to change or maintain anything. This is a request
 
 The honest question: what should a dexterous-hand capability declaration contain so URML can validate a hand request before it runs? Per-finger force and range, named grasp synergies, tactile-feedback availability, coupled-joint structure? Today URML declares the hand as a coarse gripper (a lower bound, stated honestly) and sr_interface executes. I am asking the LEAP Hand maintainers the same question in parallel, since the open dexterous-hand projects are the right people to shape this with.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0358-shadow-robot-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0358-shadow-robot-outreach.md
 
 Thanks for keeping a serious dexterous hand's ROS stack open.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -247,13 +247,13 @@ Nothing here asks RLBench to change or maintain anything. This is a conceptual r
 
 The overlap: an RLBench task (open the drawer, stack the blocks) reads like a URML behavior over validated primitives, and URML could add a capability-and-safety-checked description of each task's actions. Two real questions. First, does an RLBench task <-> URML behavior correspondence sound sound, or do the task definitions carry assumptions that would not survive being expressed as portable validated intent? Second, would a capability-checked, substrate-neutral task description be useful to the benchmark, or is the CoppeliaSim/PyRep grounding too load-bearing to abstract over?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0359-rlbench-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0359-rlbench-outreach.md
 
 Thanks for RLBench; a large shared task set moved the field forward.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -272,13 +272,13 @@ Nothing here asks robomimic to change or maintain anything. I will be upfront th
 
 Two real questions. First, where is the clean boundary between a high-level URML intent and a robomimic policy: does URML hand the policy a validated goal and a bounded action space, or is the policy better treated as the whole skill behind a single primitive? Second, could a demonstration's task carry a portable, capability-checked URML behavior description alongside the trajectories, so the same task is legible across robots? For context, robomimic builds on robosuite, which I have noted separately.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0360-robomimic-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0360-robomimic-outreach.md
 
 Thanks for robomimic; reproducible imitation-learning baselines are harder to build than they look.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -297,11 +297,11 @@ Nothing here asks PlaCo to change or maintain anything. This is a request for co
 
 Two real questions. First, what is the cleanest way for URML to express a target as a PlaCo task and constraint set, so URML stays the intent layer and PlaCo stays the solver? Second, for the whole-body case (a mobile base plus an arm, or a humanoid), how should URML's capability declaration carry the structure PlaCo needs without restating the model? For context, Pink and mink are the single-arm differential-IK siblings I am reaching in parallel.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0361-placo-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0361-placo-outreach.md
 
 Thanks for PlaCo; an approachable whole-body QP library lowers a real barrier.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

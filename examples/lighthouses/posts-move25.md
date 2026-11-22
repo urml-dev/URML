@@ -68,7 +68,7 @@ Nothing here asks robot_localization to change or maintain anything. This is a r
 
 Two real questions. First, for a URML manifest to declare its localization source cleanly, what is the right way to reference a robot_localization output: the fused odometry topic and its frame_id, or something more structured? Second, the filter publishes a covariance; would it be reasonable for URML to treat estimate covariance as an input to a safety envelope (for example, refuse a tight maneuver when the pose covariance is above a threshold), or is that a misuse of the number?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0332-robot-localization-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0332-robot-localization-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is robot_localization BSD-licensed?
 
@@ -76,7 +76,7 @@ Thanks for the package that quietly grounds so many ROS stacks.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -95,7 +95,7 @@ I want to be upfront that GTSAM is the lowest-direct-fit target in this round, a
 
 So one real question, genuinely a question: is there any sensible point of contact between a thin intent/spec layer like URML and a factor-graph optimization backend, or is the right answer that URML should only ever talk to the system built on top of GTSAM (an estimator), never to GTSAM itself? A clear "stay one layer up" is a useful answer.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0333-gtsam-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0333-gtsam-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is GTSAM BSD-licensed?
 
@@ -103,7 +103,7 @@ Thanks for GTSAM; it is foundational to a remarkable amount of robotics.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -122,7 +122,7 @@ To be clear up front on licensing: OpenVINS is GPL-3.0 and URML is Apache-2.0, s
 
 Two real questions. First, for a URML manifest to declare a VIO localization source, what should it reference: the published pose/odometry and its frame, with the camera-IMU calibration treated as your configuration (Layer 0 from URML's view)? Second, would the filter covariance be a reasonable input to a URML safety envelope, or too easy to misread?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0334-openvins-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0334-openvins-outreach.md
 
 Could you also confirm the license is GPL-3.0? The GitHub API did not surface an SPDX id at our verification time.
 
@@ -130,7 +130,7 @@ Thanks for OpenVINS and for how well-documented it is.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -149,7 +149,7 @@ Nothing here asks KISS-ICP to change or maintain anything. This is a request for
 
 KISS-ICP is deliberately odometry-only: no IMU, no loop closure, so the estimate drifts and there is no globally consistent map. That is a feature, but it matters for how URML should declare the source. So two questions. First, how should a URML manifest distinguish a drift-prone odometry-only localization source from a full SLAM source with a consistent map, so a validator can reason about it honestly? Second, is the published odometry topic plus its frame the right thing for URML to reference?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0335-kiss-icp-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0335-kiss-icp-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is KISS-ICP MIT-licensed?
 
@@ -157,7 +157,7 @@ Thanks for showing how far a deliberately simple pipeline goes.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -176,7 +176,7 @@ Nothing here asks GLIM to change or maintain anything. A note on scope: this thr
 
 Two real questions. First, for a URML manifest to declare its localization source, should it reference GLIM's pose output plus its frame, and can the globally-consistent map sensibly back URML's occupancy and named-location checks? Second, contrasted with odometry-only pipelines, GLIM gives global consistency; is there a clean signal a consumer like URML should read to know the map has converged enough to trust for validation?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0336-glim-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0336-glim-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is GLIM MIT-licensed?
 
@@ -184,7 +184,7 @@ Thanks for GLIM, and for keeping hdl_graph_slam around too.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -203,7 +203,7 @@ Nothing here asks OctoMap to change or maintain anything. This is a request for 
 
 Two real questions. First, at what grain is it sensible for a validator like URML to query an octree for a free-space / occupancy check on a planned motion or a named location, and are there pitfalls (unknown space, resolution) you would warn a consumer about? Second, what frame and resolution conventions should URML expect a published OctoMap to follow so a static check is meaningful?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0337-octomap-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0337-octomap-outreach.md
 
 One small thing: I believe the core octomap library is BSD and octovis is GPL; could you confirm? The GitHub API did not surface an SPDX id at our verification time.
 
@@ -211,7 +211,7 @@ Thanks for OctoMap; it is still the default answer for 3D occupancy.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -230,7 +230,7 @@ I will be honest: Ceres is the deepest layer in a round of outreach I am doing o
 
 One real question: is there any meaningful point of contact between a high-level intent/spec layer and Ceres, or is the correct answer simply that URML should talk to the estimator built on Ceres and never to Ceres itself? I expect the latter, and a confirmation is genuinely useful.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0338-ceres-solver-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0338-ceres-solver-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is Ceres BSD-3-Clause?
 
@@ -238,7 +238,7 @@ Thanks for Ceres; it is load-bearing for the whole field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -257,7 +257,7 @@ A scope note: I separately reached Locus Robotics on the warehouse side a while 
 
 Two real questions. First, for a URML manifest to declare its localization source, how would you want fuse referenced relative to robot_localization, since fuse is in many ways its successor, just the published state and frame, or something that captures the graph structure? Second, would a fuse estimate's covariance be a reasonable input to a URML safety envelope?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0339-fuse-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0339-fuse-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is fuse BSD-3-Clause?
 
@@ -265,7 +265,7 @@ Thanks for fuse, and for keeping a modern fusion framework open.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -284,7 +284,7 @@ Nothing here asks DLIO to change or maintain anything. This is a request for com
 
 DLIO is LiDAR-inertial odometry, so it sits between LiDAR-only odometry (drift, simplest) and full SLAM (globally consistent). That distinction matters for how URML declares the source honestly. So: how should a URML manifest describe a LiDAR-inertial odometry source so a validator knows it has good local accuracy but no global loop-closure guarantee, and is the published odometry plus frame the right reference, with IMU-LiDAR extrinsics treated as your configuration (Layer 0)?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0340-dlio-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0340-dlio-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is DLIO MIT-licensed?
 
@@ -292,7 +292,7 @@ Thanks for DLIO; the accuracy-to-footprint ratio is impressive.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -311,7 +311,7 @@ Nothing here asks Kimera to change or maintain anything. This is a request for c
 
 The two fronts. First, the standard one: Kimera's visual-inertial pose grounds URML's frames, same as the rest of this round. Second, the more speculative one I would value your read on: Kimera produces a metric-semantic mesh with per-element labels, and URML has a perception object vocabulary and named locations. Could a semantic label or a semantic region sensibly become, or validate, a URML named location, and at what grain would that be meaningful rather than noise?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0341-kimera-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0341-kimera-outreach.md
 
 One small thing: the GitHub API did not surface an SPDX license id at our verification time. Is Kimera-VIO BSD-licensed?
 
@@ -319,5 +319,5 @@ Thanks for Kimera and the metric-semantic line of work.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

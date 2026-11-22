@@ -93,7 +93,7 @@ For the ROBOTOUS maintainers:
 
 1. **Force/torque measurement_type shape.** URML's v0.1 enum has no `force_torque` type; would a Spec RFC adding it (parallel to RFC-0039's `point_cloud`) be useful from Robotous's perspective, or is the `custom` escape-hatch sufficient for now?
 2. **Transport-protocol declaration.** Should URML's manifest declare UART vs EtherCAT as a transport-class capability for the F/T sensor?
-3. **Adapter home.** When the URML-side `RobotousFtAdapter` ships, should it live in URML's `reference/sensor-runtime/`, in a Robotous-maintained `ROBOTOUS/robotous-urml` repo, or external in URML-MARS/URML only? URML's default assumption is the URML repo.
+3. **Adapter home.** When the URML-side `RobotousFtAdapter` ships, should it live in URML's `reference/sensor-runtime/`, in a Robotous-maintained `ROBOTOUS/robotous-urml` repo, or external in urml-dev/URML only? URML's default assumption is the URML repo.
 4. **Conformance listing.** Would Robotous consider a README link to URML's compatible-runtimes registry once a working adapter ships?
 5. **Anything else.**
 

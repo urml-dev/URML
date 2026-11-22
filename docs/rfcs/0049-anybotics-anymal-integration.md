@@ -159,7 +159,7 @@ URML's planned channel: open a single Issue on `ANYbotics/anymal_c_simple_descri
 
 URML's own public Discussions for the broader conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

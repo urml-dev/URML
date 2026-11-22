@@ -41,13 +41,13 @@ The mapping: URML would map a clean-these-zones / go-to-this-room / spot-clean i
 
 Two real questions: (1) is a typed, validated cleaning-intent layer (checked against a per-model capability manifest, then dispatched over the local REST/MQTT API) useful above Valetudo? (2) Does your per-model capability exposure map cleanly onto such a manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0600-valetudo-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0600-valetudo-outreach.md
 
 Thanks for Valetudo; a cloud-free local control plane with a real API across many models is exactly where a validated-intent layer is both useful and easy to keep honest.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -68,13 +68,13 @@ The mapping, scoped to vacuums: URML validates a cleaning intent (clean these zo
 
 Two real questions: (1) for the robot-vacuum subset, is a typed validated intent layer above python-miio useful? (2) Do miIO/MIoT vacuum feature flags map cleanly toward a capability manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0601-python-miio-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0601-python-miio-outreach.md
 
 Thanks for python-miio; a well-maintained protocol library is exactly the kind of substrate a validated intent layer wants to dispatch through rather than reimplement.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -95,13 +95,13 @@ The mapping: a temi skill orchestrates an interaction; its movement actions are 
 
 Two real questions: (1) is a typed, validated movement-intent layer (a go-to / patrol intent checked against temi's saved locations and capabilities, then dispatched through the SDK) useful? (2) Do temi's saved locations and movement capabilities map onto a capability manifest and declared locations?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0602-robotemi-sdk-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0602-robotemi-sdk-outreach.md
 
 Thanks for the temi SDK; a hospitality robot with a clean movement API is a natural place for a typed, English-friendly intent layer to sit above the interaction logic.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -122,13 +122,13 @@ The mapping: Transitive provides the web-and-cloud framework and the connectivit
 
 Two real questions: (1) is a typed, validated intent layer (a per-robot mission checked against each robot's capabilities, addressed via a fleet roster) a useful thing for a Transitive-built mission-control app to dispatch? (2) Does URML's multi-robot roster map onto how Transitive models a managed fleet?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0603-transitive-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0603-transitive-outreach.md
 
 Thanks for Transitive; an open framework for building fleet mission-control is exactly where a validated multi-robot intent earns its place as the thing that travels over the wire.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -149,11 +149,11 @@ The mapping: URML would map a clean-these-zones / go-to-this-room / spot-clean i
 
 Two real questions: (1) is a typed, validated cleaning-intent layer (checked against a per-model capability manifest, then dispatched over Congatudo's local control) useful for the Conga family? (2) Does Congatudo's per-model capability picture map cleanly onto such a manifest, and would it share a shape with the Valetudo side?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0604-congatudo-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0604-congatudo-outreach.md
 
 Thanks for Congatudo; a second cloud-free cleaning-robot control plane is exactly what makes the "one intent layer, many vendor families" question concrete rather than hypothetical.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

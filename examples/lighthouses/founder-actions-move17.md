@@ -25,7 +25,7 @@ Sub-wave A (5 GitHub-Issue targets: Eclipse SDV, ELISA, OPC, SLSA, Scorecard) is
 **Authoring disclosure.** Each email-shaped artifact ends with the same one-line note:
 
 ```
-*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 For application-form fills (IIA, ASTM, euRobotics, ADRA), the disclosure goes in the cover letter or project-description field, not in structured-data fields.
@@ -50,7 +50,7 @@ Hi OSRA team,
 
 I'm Ido Yahalomi, maintainer of URML (urml.dev). URML is a small, substrate-neutral language for describing robot intent. The Apache-2.0 spec, the ROS 2 reference runtime, the validator, the conformance suite, and the LLM bridge are all open under URML's Core Commitment, which is documented in the repo and not going to move.
 
-URML's plan over time is a structural separation: a non-profit foundation owns the standard, and any commercial surround stays outside the repo. OSRA is the closest existing robotics-native option for that foundation, so I'm writing as orientation, not as a formal candidacy. Background: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0217-osra-foundation-home-outreach.md
+URML's plan over time is a structural separation: a non-profit foundation owns the standard, and any commercial surround stays outside the repo. OSRA is the closest existing robotics-native option for that foundation, so I'm writing as orientation, not as a formal candidacy. Background: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0217-osra-foundation-home-outreach.md
 
 A few things I want to ask:
 
@@ -66,7 +66,7 @@ Thanks. ROS, Gazebo, and Open-RMF are part of why URML can exist at all.
 Ido Yahalomi
 URML maintainer · urml.dev · greenvh@gmail.com
 
-*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -84,7 +84,7 @@ Hi JDF team,
 
 I'm Ido Yahalomi, maintainer of URML (urml.dev). URML is a substrate-neutral language for describing robot intent. The repo's shape is set up the way JDF Projects affiliates look before they form: Apache-2.0 spec under URML's Core Commitment, DCO sign-off on contributions instead of a CLA, trademark in my name and assignable.
 
-URML's roadmap includes a structural separation: a non-profit foundation owns the standard, and the commercial surround stays separate. JDF is the cleanest neutral path I can find. The recent OpenUSD work and OpenChain's ISO/IEC submission via JDF are basically the arc URML eventually wants to walk. Background: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0218-jdf-foundation-home-outreach.md
+URML's roadmap includes a structural separation: a non-profit foundation owns the standard, and the commercial surround stays separate. JDF is the cleanest neutral path I can find. The recent OpenUSD work and OpenChain's ISO/IEC submission via JDF are basically the arc URML eventually wants to walk. Background: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0218-jdf-foundation-home-outreach.md
 
 Questions:
 
@@ -101,7 +101,7 @@ Thanks for the work that makes this path real and not a wish.
 Ido Yahalomi
 URML maintainer · urml.dev · greenvh@gmail.com
 
-*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -118,7 +118,7 @@ URML maintainer · urml.dev · greenvh@gmail.com
 
 Hi IEEE-RAS Standing Committee for Standards,
 
-I've signed up for the P1872.2 Autonomous Robotics Ontology Working Group at sagroups.ieee.org/1872-2. I'm Ido Yahalomi, maintainer of URML (urml.dev), a substrate-neutral robotics-intent language. URML's Layer-2 primitives (`move_to`, `pick_from`, `place_at`, `grasp`, `release`, `swap_tool`, `scan_area`, `query_detection`) and Layer-3 behavior composition map onto IEEE 1872-2015 Core Ontology terms and the P1872.2 AuR extension naturally. I want to monitor the WG and contribute observations where cross-mapping is useful. Background: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0219-ieee-1872-2-wg-outreach.md
+I've signed up for the P1872.2 Autonomous Robotics Ontology Working Group at sagroups.ieee.org/1872-2. I'm Ido Yahalomi, maintainer of URML (urml.dev), a substrate-neutral robotics-intent language. URML's Layer-2 primitives (`move_to`, `pick_from`, `place_at`, `grasp`, `release`, `swap_tool`, `scan_area`, `query_detection`) and Layer-3 behavior composition map onto IEEE 1872-2015 Core Ontology terms and the P1872.2 AuR extension naturally. I want to monitor the WG and contribute observations where cross-mapping is useful. Background: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0219-ieee-1872-2-wg-outreach.md
 
 Questions:
 
@@ -132,7 +132,7 @@ Thanks for the ontology work. IEEE 1872 is exactly the kind of standards-side re
 Ido Yahalomi
 URML maintainer · urml.dev · greenvh@gmail.com
 
-*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -150,13 +150,13 @@ Dr. Schlenoff,
 
 I'm using the NIST EL ISD Robotics Community Feedback channel. Attached is a short memo (about 1.5 pages) on URML (urml.dev). URML is a substrate-neutral robotics-intent language with a manifest-validated dispatch model and a static validator. The memo maps URML's primitive set and capability-manifest model onto NIST EL ISD's published performance categories (agility, manipulation, mobility, perception) and asks three concrete questions about possible alignment, MORT composability, and ARIAC scenario expression in URML language.
 
-Background RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0220-nist-el-isd-feedback-outreach.md
+Background RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0220-nist-el-isd-feedback-outreach.md
 
 Best,
 Ido Yahalomi
 URML maintainer · urml.dev · greenvh@gmail.com
 
-*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 **Attached memo:**
 
@@ -243,7 +243,7 @@ URML is Apache-2.0 forever per its Core Commitment: the spec, conformance suite,
 
 Natural cross-reference shape: F45.04 standardizes the manifest and intent boundary. F45.02, F45.05, and F45.06 standardize the substrate capability classes that the manifest declares. URML's schema is candidate raw material for F45.04 specifically.
 
-**4. Composability with existing standards.** URML composes against ROS 2 (the primary reference runtime, OSRA/OSRF governance), PX4/MAVLink/MAVSDK (drone substrate, Linux Foundation Dronecode governance), OPC UA Robotics Companion Specification (industrial-cell substrate, OPC Foundation governance), MoveIt 2 (manipulation dispatcher, MoveIt Working Group), Nav2 (navigation dispatcher, ROS 2 Navigation Working Group), and Fast DDS / Cyclone DDS (transport, eProsima + Eclipse Foundation governance). URML's outreach to each is documented in [`docs/rfcs/`](https://github.com/URML-MARS/URML/tree/main/docs/rfcs). The substrate-spine wave (RFCs 0196-0211) engaged the substrate maintainers explicitly to make URML's substrate-neutrality concrete and not rhetorical.
+**4. Composability with existing standards.** URML composes against ROS 2 (the primary reference runtime, OSRA/OSRF governance), PX4/MAVLink/MAVSDK (drone substrate, Linux Foundation Dronecode governance), OPC UA Robotics Companion Specification (industrial-cell substrate, OPC Foundation governance), MoveIt 2 (manipulation dispatcher, MoveIt Working Group), Nav2 (navigation dispatcher, ROS 2 Navigation Working Group), and Fast DDS / Cyclone DDS (transport, eProsima + Eclipse Foundation governance). URML's outreach to each is documented in [`docs/rfcs/`](https://github.com/urml-dev/URML/tree/main/docs/rfcs). The substrate-spine wave (RFCs 0196-0211) engaged the substrate maintainers explicitly to make URML's substrate-neutrality concrete and not rhetorical.
 
 **5. Asks for F45.04.**
 
@@ -252,7 +252,7 @@ Natural cross-reference shape: F45.04 standardizes the manifest and intent bound
 3. Is F45.04 interested in scoping a URML-position-paper-driven standards-track document, or does the subcommittee prefer URML contribute to existing F45.04 documents?
 4. What's the typical ASTM-to-ANSI-to-ISO PAS pickup path for F45 standards? URML's planned structural-separation arc would benefit from downstream pickup orientation.
 
-**Background.** Full URML RFC for this submission: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0221-astm-f45-04-outreach.md. URML repo: https://github.com/URML-MARS/URML. The sibling outreach to NIST EL Intelligent Systems Division (RFC-0220) is in flight. The NIST EL ISD plus ASTM F45 engagement pair is the strategic shape: NIST informs the measurement science, ASTM F45 standardizes the outputs.
+**Background.** Full URML RFC for this submission: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0221-astm-f45-04-outreach.md. URML repo: https://github.com/urml-dev/URML. The sibling outreach to NIST EL Intelligent Systems Division (RFC-0220) is in flight. The NIST EL ISD plus ASTM F45 engagement pair is the strategic shape: NIST informs the measurement science, ASTM F45 standardizes the outputs.
 
 *AI-assisted prose, maintainer-reviewed before submission (see VIBE.md in the URML repo). Human-only correspondence available on request.*
 
@@ -291,7 +291,7 @@ For AI-on-systems scope: URML's Layer-4 natural-language interface lets a senten
 2. For the next URML-relevant public-enquiry calendar (2026 robotics-AI prEN drafts), is the cencenelec.eu portal the canonical submission channel, or are there national-mirror routing recommendations?
 3. URML's maintainer is Israel-domiciled. SII national-mirror routing is the natural Phase 2 path for an active TC seat. What's the orientation for non-EU non-mirror submitters on the public-enquiry side?
 
-Full URML RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0222-cen-cenelec-jtc-21-outreach.md. URML repo: https://github.com/URML-MARS/URML.
+Full URML RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0222-cen-cenelec-jtc-21-outreach.md. URML repo: https://github.com/urml-dev/URML.
 
 *AI-assisted prose, maintainer-reviewed before submission (see VIBE.md in the URML repo). Human-only correspondence available on request.*
 
@@ -329,14 +329,14 @@ I'm writing under the roadmap's civil-society invitation. I'm Ido Yahalomi, main
 3. Is the Indo-German bilateral surface a relevant channel, or is roadmap-direct the right entry?
 4. What's the path for an external project to participate in DIN robotics-related committees? Orientation only; URML at Phase 1 is roadmap-contribution-only.
 
-Full URML RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0223-din-dke-ai-roadmap-outreach.md. URML repo: https://github.com/URML-MARS/URML.
+Full URML RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0223-din-dke-ai-roadmap-outreach.md. URML repo: https://github.com/urml-dev/URML.
 
 Thank you for the roadmap and the civil-society invitation.
 
 Ido Yahalomi
 URML maintainer · urml.dev · greenvh@gmail.com
 
-*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -366,14 +366,14 @@ I'm using the Grand Défi AI consultation platform's international-participation
 2. Beyond Grand Défi AI consultation, what's the channel for an external project to feed into the FR national position for JTC 21?
 3. What's the path for an external project to participate in AFNOR robotics-AI committees? Phase 2 orientation question.
 
-Full URML RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0224-afnor-grand-defi-ai-outreach.md. URML repo: https://github.com/URML-MARS/URML.
+Full URML RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0224-afnor-grand-defi-ai-outreach.md. URML repo: https://github.com/urml-dev/URML.
 
 Thank you for the consultation work.
 
 Ido Yahalomi
 URML maintainer · urml.dev · greenvh@gmail.com
 
-*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -413,14 +413,14 @@ URML maintainer · urml.dev · greenvh@gmail.com
 3. What's the orientation for Hub-engaged projects to graduate to BSI national-mirror committee participation for ISO TC 299 (Robotics) and CEN TC 310? Recognizing this is a Phase 2 question.
 4. Is DSIT-side engagement relevant for URML's international-standards posture within UK civilian-standards scope?
 
-Full URML RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0225-bsi-ai-standards-hub-outreach.md. URML repo: https://github.com/URML-MARS/URML.
+Full URML RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0225-bsi-ai-standards-hub-outreach.md. URML repo: https://github.com/urml-dev/URML.
 
 Thank you for the Hub work and the international remit. It's what makes URML's UK-side engagement feasible at Phase 1.
 
 Ido Yahalomi
 URML maintainer · urml.dev · greenvh@gmail.com
 
-*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before sending (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -440,7 +440,7 @@ URML maintainer · urml.dev · greenvh@gmail.com
   URML is a substrate-neutral, declarative, human-readable language for describing robot intent. URML separates capability declaration (Layer 1 hardware abstraction manifest), intent declaration (Layer 2 typed primitives), behavior composition (Layer 3), and natural-language interface (Layer 4, multilingual). A static validator gates execution against the manifest and the active safety envelope before any actuation. The spec, ROS 2 and PX4 reference runtimes, conformance test suite, validator, and LLM-bridge prompt contracts ship under Apache-2.0 forever per URML's Core Commitment. URML's default policy file embeds US-federal alignment (NDAA Section 889, EO 14307, FCC Covered List) for procurement-gated deployments while keeping the spec itself substrate-neutral and multilingual. Roadmap includes structural separation into a US-domiciled non-profit foundation owning the standard.
 
 - **Primary URL:** https://urml.dev
-- **Repository URL:** https://github.com/URML-MARS/URML
+- **Repository URL:** https://github.com/urml-dev/URML
 - **Contact:** Ido Yahalomi · greenvh@gmail.com
 - **OECD AI Principles alignment (if requested):** Transparency (the spec is open, multilingual, and human-readable). Robustness (the validator gates execution statically). Accountability (DCO-signed contributions, trademark-in-maintainer-name-assignable, planned structural separation into a non-profit foundation).
 - **Hiroshima Process alignment (if requested):** URML's open-spec posture and validator-gated execution model align with the Process's open-source-friendly framing of AI integrity for safety-relevant deployments.
@@ -476,7 +476,7 @@ URML (urml.dev) is offered to the OECD AI Policy Observatory catalogue as an ope
 3. Is the AI Wonk community an appropriate channel for URML-related related-art posts?
 4. What's the realistic path for a Phase-1 open-source initiative to engage ONE.AI?
 
-Full URML RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0226-oecd-ai-policy-observatory-outreach.md.
+Full URML RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0226-oecd-ai-policy-observatory-outreach.md.
 
 *AI-assisted prose, maintainer-reviewed before submission (see VIBE.md in the URML repo). Human-only correspondence available on request.*
 

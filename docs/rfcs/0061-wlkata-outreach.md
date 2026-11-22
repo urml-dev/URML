@@ -189,7 +189,7 @@ The `wlkata/WLKATA-Python-SDK-wlkatapython` repo has both Issues and Discussions
 
 URML's own public Discussions for the broader Move #3 conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

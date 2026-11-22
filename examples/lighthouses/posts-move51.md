@@ -41,13 +41,13 @@ The mapping: URML does not define CAN messages and never should -- that is opend
 
 Two real questions: (1) is a typed, statically-validated intent layer above a vehicle actuation HAL useful, or does the safety story already live entirely at the controls layer? (2) Could a vehicle's actuation envelope (as opendbc encodes it per platform) inform a URML Layer-1 capability manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0558-opendbc-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0558-opendbc-outreach.md
 
 Thanks for opendbc; a clean, broad vehicle-actuation HAL is exactly what makes a substrate-neutral intent layer testable on real cars.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -68,13 +68,13 @@ The mapping: a driver-assistance system acts only within an ODD. URML expresses 
 
 Two real questions: (1) is a typed, declarative operating-design-domain check a useful layer in front of an ADAS maneuver? (2) Does URML's capability manifest map onto how sunnypilot reasons about what a given vehicle is allowed to do?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0559-sunnypilot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0559-sunnypilot-outreach.md
 
 Thanks for sunnypilot; an actively-maintained ADAS on real vehicles is exactly where a declarative ODD check has to prove its worth.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -95,13 +95,13 @@ The mapping: a racing task (follow the line, overtake within limits) is a goal p
 
 Two real questions: (1) is a typed, validated intent layer (declare goal + constraints, validate, consume the trajectory) useful on the F1TENTH platform? (2) Does a runtime-neutral intent that targets both the car and the gym fit how F1TENTH is taught and researched?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0560-f1tenth-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0560-f1tenth-outreach.md
 
 Thanks for F1TENTH; a platform that lives in both the classroom and the lab is exactly where a runtime-neutral intent layer is easiest to try.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -122,13 +122,13 @@ The mapping: a racing objective is a goal plus constraints (stay on track, respe
 
 Two real questions: (1) is a typed, validated intent layer (declare goal + constraints, validate admissibility, consume the trajectory) useful above a full racing stack? (2) Does URML's capability + safety-envelope model fit how race_stack bounds a maneuver?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0561-race-stack-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0561-race-stack-outreach.md
 
 Thanks for race_stack; a complete, real racing stack is the honest test of whether a declare-and-validate layer earns its place above the planner.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -149,13 +149,13 @@ The mapping: off-road navigation has hard operating bounds (slope, traversabilit
 
 Two real questions: (1) is a typed, validated intent layer (goal + off-road operating bounds, validated, then consume the path) useful above an off-road stack? (2) Does URML's safety-envelope model map onto how off-road operating bounds like slope and traversability are expressed?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0562-nature-stack-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0562-nature-stack-outreach.md
 
 Thanks for the NATURE stack; unstructured terrain is where an explicit, typed operating envelope is hardest and most worth having.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -176,13 +176,13 @@ The mapping: a navigation task is a goal plus constraints (reach the pose, respe
 
 Two real questions: (1) is a typed, validated intent layer (declare goal + constraints, validate, then navigate) a useful front door to EasyNavigation? (2) Does URML's capability + safety-envelope model fit how EasyNavigation bounds a navigation task?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0563-easynavigation-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0563-easynavigation-outreach.md
 
 Thanks for EasyNavigation; a clean, modular nav framework is exactly the kind of thing a typed intent front door wants to sit above.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -203,13 +203,13 @@ The mapping: a coverage task is a goal (cover this field, follow this pattern) p
 
 Two real questions: (1) is a typed, validated intent layer (declare the field operation + constraints, validate, then guide) useful above AgOpenGPS? (2) Does URML's capability + safety-envelope model fit how a machine and implement's operating bounds are expressed?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0564-agopengps-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0564-agopengps-outreach.md
 
 Thanks for AgOpenGPS; a large, real auto-steer community is exactly where a natural-language-to-validated-field-operation path would be worth getting right.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -230,11 +230,11 @@ The mapping: GEMstack teaches the whole pipeline. URML adds a small, readable la
 
 Two real questions: (1) is a typed, validated intent + ODD layer a useful teaching companion above the GEMstack pipeline? (2) Does showing the natural-language to validated-intent path add pedagogical value in an AV course?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0565-gemstack-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0565-gemstack-outreach.md
 
 Thanks for GEMstack; a teaching stack is exactly where making intent and its bounds explicit pays off for the people learning the pipeline.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

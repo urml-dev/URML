@@ -40,7 +40,7 @@ This is proposal-only, posted as URML's first **Move #3** outreach (the affordab
 
 Full RFC with proposed package layout, per-primitive mapping, manifest sketches, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0061-wlkata-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0061-wlkata-outreach.md
 
 ## Feedback we'd value
 
@@ -77,7 +77,7 @@ Why Petoi specifically: Bittle X at $299 is the smallest-scale, most-shareable l
 
 Full RFC with proposed package layout, primitive-to-skill mapping, manifest sketches, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0062-petoi-bittle-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0062-petoi-bittle-outreach.md
 
 ## Feedback we'd value
 
@@ -113,7 +113,7 @@ This is proposal-only, posted as part of URML's **Move #3** outreach (the afford
 
 Full RFC with proposed per-platform mapping, manifest sketches, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0063-hiwonder-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0063-hiwonder-outreach.md
 
 ## Feedback we'd value
 
@@ -141,7 +141,7 @@ Thanks for the breadth of the Hiwonder ROS 2 catalog and for the English-first d
 **Body:**
 
 ```markdown
-Proposing an `InterbotixAdapter` under URML's [`reference/cobot-runtime/`](https://github.com/URML-MARS/URML/tree/main/reference/cobot-runtime) targeting `interbotix_ros_manipulators` plus the sibling `interbotix_ros_core` and `interbotix_ros_toolboxes`. The adapter routes [URML](https://urml.dev) Layer-2 primitives (`move_to`, `grasp`, `release`, `measure`, `wait_for`, `report`) and the industrial-profile extensions (`pick_from`, `place_at`, `swap_tool`) onto the X-Series joint-trajectory action goals and gripper services across ROS 2 Humble, ROS 2 Rolling, and (optionally) ROS 1 Noetic for the legacy lane.
+Proposing an `InterbotixAdapter` under URML's [`reference/cobot-runtime/`](https://github.com/urml-dev/URML/tree/main/reference/cobot-runtime) targeting `interbotix_ros_manipulators` plus the sibling `interbotix_ros_core` and `interbotix_ros_toolboxes`. The adapter routes [URML](https://urml.dev) Layer-2 primitives (`move_to`, `grasp`, `release`, `measure`, `wait_for`, `report`) and the industrial-profile extensions (`pick_from`, `place_at`, `swap_tool`) onto the X-Series joint-trajectory action goals and gripper services across ROS 2 Humble, ROS 2 Rolling, and (optionally) ROS 1 Noetic for the legacy lane.
 
 URML is an Apache 2.0 specification for substrate-neutral robot intent at [urml.dev](https://urml.dev). Interbotix sits where URML's educational, research, and US-federal-compliant lanes converge: the X-Series is de-facto research-arm hardware in US curricula (Stanford, CMU, MIT, Berkeley) and powers Mobile ALOHA's four-arm bimanual rig via four VX300S units. URML's value-add is the substrate-neutral vocabulary that lets a program written against an Interbotix arm retarget to a UR3, a Franka, or a WLKATA Haro380 without source changes, with static validation as the safety boundary.
 
@@ -151,7 +151,7 @@ This RFC also cross-links to two of URML's Move #2 outreach RFCs: RFC-0040 (Hugg
 
 Full RFC with proposed package layout, per-arm manifest sketches, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0064-trossen-interbotix-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0064-trossen-interbotix-outreach.md
 
 ## Feedback we'd value
 

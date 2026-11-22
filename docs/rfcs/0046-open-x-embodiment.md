@@ -166,7 +166,7 @@ URML's planned channel: send a primary email to `open-x-embodiment@googlegroups.
 
 URML's own public Discussions for the broader Move #2 conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

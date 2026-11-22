@@ -39,13 +39,13 @@ URML's ROS runtime meets the challenge environment on its AMBF/ROS surface; a re
 
 Two real questions: (1) Is a validated intent layer above the challenge sim interesting as a way to express and check surgical-subtask intent in research? (2) What should a URML capability manifest declare to describe a research surgical robot honestly — arms/instruments, reach/DOF, workspace bounds, instrument vocabulary?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0440-surgical-robotics-challenge-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0440-surgical-robotics-challenge-outreach.md
 
 Thanks for the Surgical Robotics Challenge; an open, active research sim for robot-assisted suturing is exactly where this kind of layer should be designed with input.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -66,13 +66,13 @@ A URML research program drives an AMBF-simulated manipulator through the AMBF RO
 
 Two real questions: (1) Is a validated intent layer above AMBF interesting as a research surface for surgical and multi-body robot scenarios? (2) What should a URML capability manifest declare to describe an AMBF-simulated research robot honestly — bodies/arms, reach/DOF, instrument set, workspace bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0441-ambf-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0441-ambf-outreach.md
 
 Thanks for AMBF; a real-time soft-body surgical sim is a genuinely valuable research tool.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -93,13 +93,13 @@ URML's ROS runtime meets the dVRK on its CRTK / ROS surface; a research subtask 
 
 Two real questions: (1) Is URML's CRTK / ROS surface mapping the right seam for a research validated-intent layer above the dVRK? (2) What should a URML capability manifest declare to describe the dVRK honestly — PSM/ECM arms, instrument set, reach/DOF, workspace bounds — and does an arm selector + bimanual primitive map cleanly onto the two patient-side manipulators?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0442-dvrk-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0442-dvrk-outreach.md
 
 Thanks for the dVRK and the cisst/SAW stack; the open research platform that so much surgical-robotics work runs on is the natural place for this discussion.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -120,13 +120,13 @@ The idea is the decide-then-do split applied to learning: a URML research intent
 
 Two real questions: (1) Is wrapping a learned surgical-research policy in a validated intent layer + envelope interesting in the RL/IL-sim context? (2) What should a URML capability manifest declare to describe a simulated surgical robot honestly — arms/instruments, reach/DOF, workspace bounds, observation/action assumptions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0443-orbit-surgical-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0443-orbit-surgical-outreach.md
 
 Thanks for ORBIT-Surgical; a clean open surgical-RL sim on Isaac Lab is a great place to think about safety around learned surgical-research control.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -147,13 +147,13 @@ A URML research-subtask intent drives a sofa_env laparoscopic scenario, or decla
 
 Two real questions: (1) Is a validated research intent layer above sofa_env interesting for laparoscopic-surgery RL/research? (2) What should a URML capability manifest declare to describe a laparoscopic research robot honestly — instruments, reach/DOF, workspace bounds, observation/action assumptions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0444-sofa-env-lapgym-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0444-sofa-env-lapgym-outreach.md
 
 Thanks for LapGym; a permissive deformable-tissue laparoscopic sim is a real asset for surgical-robotics research.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -174,13 +174,13 @@ The idea is the decide-then-do split applied to learning: a URML research intent
 
 Two real questions: (1) Is wrapping a learned surgical-research policy in a validated intent layer + envelope interesting in the GPU-RL-sim context? (2) What should a URML capability manifest declare to describe a simulated PSM/ECM or STAR research robot honestly — arms/instruments, reach/DOF, workspace bounds, observation/action assumptions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0445-surgicalgym-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0445-surgicalgym-outreach.md
 
 Thanks for SurgicalGym; a fast open GPU surgical-RL sandbox is a useful contribution to the research community.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -201,11 +201,11 @@ URML's ROS runtime meets Raven-II on its control/ROS surface; a research subtask
 
 Two real questions: (1) Is a validated research intent layer above Raven-II interesting for the lab's surgical-robotics research? (2) What should a URML capability manifest declare to describe Raven-II honestly — two arms, instruments, reach/DOF, workspace bounds — and does an arm selector + bimanual primitive map cleanly onto its two arms?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0446-raven2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0446-raven2-outreach.md
 
 Thanks for Raven-II; an open-hardware surgical-research robot is a foundational contribution to the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

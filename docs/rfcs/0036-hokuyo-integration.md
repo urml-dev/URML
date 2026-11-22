@@ -118,7 +118,7 @@ RFC-0036 ships as a single RFC document PR. Draft state.
 
 URML public Discussions:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Or Issue on `Hokuyo-aut/urg_node2`. Private via `MAINTAINERS.md`.
 

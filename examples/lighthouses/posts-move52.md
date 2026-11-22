@@ -39,13 +39,13 @@ The mapping: students write op-modes against the SDK. URML adds a small layer at
 
 Two real questions: (1) is a typed, validated intent layer (declare intent, check against the robot's capabilities, optionally from English) a useful teaching companion above an FTC op-mode? (2) Does URML's capability manifest map onto how an FTC robot's configuration is described?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0566-ftc-robotcontroller-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0566-ftc-robotcontroller-outreach.md
 
 Thanks for the FTC SDK; it is one of the largest on-ramps into robotics there is, and that is exactly where making intent explicit could help students most.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -66,13 +66,13 @@ The mapping: a driving task is a goal plus constraints. URML expresses it, valid
 
 Two real questions: (1) is a typed, validated intent layer (declare goal + constraints, validate, consume the path) useful above PathPlanner? (2) Does URML's capability + safety-envelope model fit how an FRC robot's limits are described?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0567-pathplanner-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0567-pathplanner-outreach.md
 
 Thanks for PathPlanner; it is a staple of FRC autonomous, and a typed front door above it could make the intent behind a routine clearer to a team.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -93,13 +93,13 @@ The mapping: PhotonVision delivers a pose or target estimate. URML treats that a
 
 Two real questions: (1) is "PhotonVision produces the estimate, URML consumes it as a fact an intent conditions on" a sensible boundary? (2) Does a typed, validated intent layer that conditions on a vision estimate fit how teams use PhotonVision?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0568-photonvision-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0568-photonvision-outreach.md
 
 Thanks for PhotonVision; it does the hard perception work, and a clean line between the estimate and the intent that uses it seems worth drawing.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -120,13 +120,13 @@ The mapping: URML expresses the goal plus constraints, validates them against th
 
 Two real questions: (1) is a typed, validated intent layer (declare goal + constraints, validate admissibility, consume the optimized trajectory) useful above Choreo? (2) Does URML's capability + safety-envelope model align with the dynamic constraints Choreo already takes?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0569-choreo-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0569-choreo-outreach.md
 
 Thanks for Choreo; time-optimal trajectory generation is exactly the kind of thing an intent layer should sit above and never try to replace.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -147,13 +147,13 @@ The mapping: an autonomous routine is a goal plus constraints. URML expresses it
 
 Two real questions: (1) is a typed, validated intent layer (declare goal + constraints, validate, consume the trajectory) useful above Road Runner? (2) Does URML's capability + safety-envelope model fit how an FTC robot's limits are described?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0570-road-runner-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0570-road-runner-outreach.md
 
 Thanks for Road Runner; it powers a lot of FTC autonomous, and a typed intent front door above it could help students reason about what their routine is really asking for.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -174,13 +174,13 @@ The mapping: students program against libwallaby. URML adds a small layer at the
 
 Two real questions: (1) is a typed, validated intent layer (declare intent, check against capabilities, optionally from English) a useful teaching companion above libwallaby? (2) Does URML's capability manifest map onto how a Wombat/Wallaby robot is configured?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0571-libwallaby-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0571-libwallaby-outreach.md
 
 Thanks for libwallaby; Botball is a great on-ramp, and making intent explicit is the kind of thing that helps newcomers reason about their robot.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -201,13 +201,13 @@ The mapping: the GoPiGo3 has a small, clear set of capabilities (drive, turn, se
 
 Two real questions: (1) is an English-to-validated-intent front door useful for a beginner robot like the GoPiGo3? (2) Does the GoPiGo3's capability set map cleanly onto a URML capability manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0572-gopigo3-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0572-gopigo3-outreach.md
 
 Thanks for the GoPiGo3; an approachable robot with a clean API is exactly where an English front door is easiest to make real.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -228,13 +228,13 @@ Two ways to lower the barrier: Blockly lets a learner assemble a program from bl
 
 Two real questions: (1) for robotics use, is a typed, validated intent representation (with a capability check) a useful compile target for a block palette? (2) Is the block-based / typed-intent boundary an interesting comparison for learner-facing robotics tools?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0573-blockly-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0573-blockly-outreach.md
 
 Thanks for your work on Blockly; block-based programming has opened robotics to a lot of learners, and the seam with a validated intent layer feels worth comparing notes on.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -255,13 +255,13 @@ The idea: a Tank Royale bot is written imperatively against an API. URML's angle
 
 Two real questions: (1) is a declarative, typed intent layer an interesting on-ramp or teaching aid alongside imperative bot programming? (2) Does "declare what the bot should try to do, validated against its capabilities" map onto how Tank Royale bots are written?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0574-tank-royale-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0574-tank-royale-outreach.md
 
 Thanks for Tank Royale; carrying the Robocode tradition forward is great, and the declarative-on-ramp idea felt worth floating with you.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -282,11 +282,11 @@ The mapping: the Create 3 exposes a well-defined set of actions over ROS 2. That
 
 Two real questions: (1) is an English-to-validated-intent front door useful for the Create 3 in an educational setting? (2) Does the Create 3's ROS 2 action set map cleanly onto a URML capability manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0575-create3-docs-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0575-create3-docs-outreach.md
 
 Thanks for the Create 3 docs; a well-documented ROS 2 teaching robot is exactly where an English front door can be both useful and honest about what it does.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

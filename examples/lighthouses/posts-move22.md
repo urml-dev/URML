@@ -40,7 +40,7 @@ Every body frames URML as composing **above** the communication surface, never e
 
 The disclosure line, used verbatim at the end of every body below:
 
-> *AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+> *AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 
 ---
 
@@ -56,13 +56,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent. A user w
 
 One real question: would deriving a URML capability manifest from a rosbridge advertised-type list be useful, and at what grain (topics/services, or full types)? URML validates before anything moves, which feels like the right property for a web-facing bridge.
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0306-rosbridge-suite-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0306-rosbridge-suite-outreach.md
 
 Thanks for keeping the robot web stack open.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -79,13 +79,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: English 
 
 Two things. First, a practical question: webrtc_ros shows license "other" on GitHub, so could you confirm the license? I want to describe the integration boundary correctly. Second, is a validated-intent data-channel producer for teleop interesting, or out of scope?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0307-webrtc-ros-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0307-webrtc-ros-outreach.md
 
 Thanks for the open WebRTC teleop work.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -102,13 +102,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: an Engli
 
 One real question: what grain should a URML manifest use to declare the MCU-tier substrate, just naming micro-ROS, or the agent topology and micro-XRCE-DDS transport?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0308-micro-ros-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0308-micro-ros-outreach.md
 
 Thanks for bringing ROS 2 to microcontrollers.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -125,13 +125,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: English 
 
 One real question: what grain is most useful for a URML manifest to declare eCAL as the deployment transport, and could it align with the eCAL monitoring/registry view of topics and types?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0309-ecal-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0309-ecal-outreach.md
 
 Thanks for the open pub/sub work.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -148,13 +148,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: English 
 
 One real question: what grain should a URML manifest use to declare LCM as the transport (channel namespace, type package)?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0310-lcm-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0310-lcm-outreach.md
 
 Thanks for keeping LCM going.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -171,13 +171,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: English 
 
 One real question: what grain should a URML manifest use to declare an MQTT deployment, just topic namespace and QoS, or also retained / last-will details?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0311-mosquitto-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0311-mosquitto-outreach.md
 
 Thanks for the reference open broker.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -194,13 +194,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: English 
 
 One real question: what grain should a URML manifest use to declare a clustered MQTT deployment (cluster endpoint, topic namespace, QoS)?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0312-emqx-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0312-emqx-outreach.md
 
 Thanks for the high-scale open broker.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -217,13 +217,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: English 
 
 One real question: what grain should a URML manifest use to map onto an address space, importing a nodeset, or a declared method/variable subset?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0313-open62541-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0313-open62541-outreach.md
 
 Thanks for the open OPC UA stack.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -240,13 +240,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: English 
 
 Two questions: is the OPC UA Robotics companion nodeset the right thing for a URML manifest to target, and is the GitHub repo the right channel or should this go to a working group?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0314-ua-dotnet-standard-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0314-ua-dotnet-standard-outreach.md
 
 Thanks for the OPC UA reference work.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -263,13 +263,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: English 
 
 One real question: what grain should a URML manifest use to map onto an address space via Milo (nodeset import, method/variable subset)?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0315-eclipse-milo-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0315-eclipse-milo-outreach.md
 
 Thanks for the open Java OPC UA stack.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -286,13 +286,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: English 
 
 One real question: would a URML OPC UA adapter prototype built on opcua-asyncio be welcome to reference, and what grain should the manifest mapping use?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0316-opcua-asyncio-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0316-opcua-asyncio-outreach.md
 
 Thanks for the actively maintained Python OPC UA stack.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -309,13 +309,13 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent: an Engli
 
 One real question: what grain should a URML manifest use to declare a wake-word front gate, model id plus a confidence threshold, or more?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0317-openwakeword-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0317-openwakeword-outreach.md
 
 Thanks for the open wake-word work.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -332,11 +332,11 @@ URML (urml.dev) is a small open language (Apache-2.0) for robot intent. It is no
 
 One real question: does that division (Rasa owns dialogue state, URML owns validated robot dispatch) match how you would expect robotics users to wire Rasa to a robot?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0318-rasa-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0318-rasa-outreach.md
 
 Thanks for the open dialogue framework.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

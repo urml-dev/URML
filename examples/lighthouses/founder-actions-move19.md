@@ -57,7 +57,7 @@ talk to would be. I am not asking FIRST to adopt or support anything; I am
 asking whether it is interesting.
 
 Lesson and overview:
-https://github.com/URML-MARS/URML/blob/main/docs/tutorials/05-teaching-urml.md
+https://github.com/urml-dev/URML/blob/main/docs/tutorials/05-teaching-urml.md
 
 Thank you for the work FIRST does to bring robotics to students.
 
@@ -65,7 +65,7 @@ Ido Yahalomi
 URML, greenvh@gmail.com
 
 (URML's documentation is AI-assisted and maintainer-reviewed; details at
-https://github.com/URML-MARS/URML/blob/main/VIBE.md. Human-only correspondence
+https://github.com/urml-dev/URML/blob/main/VIBE.md. Human-only correspondence
 available on request.)
 ```
 
@@ -102,7 +102,7 @@ commitment; I am gauging whether it is interesting and who the right person
 would be.
 
 Lesson and overview:
-https://github.com/URML-MARS/URML/blob/main/docs/tutorials/05-teaching-urml.md
+https://github.com/urml-dev/URML/blob/main/docs/tutorials/05-teaching-urml.md
 
 Thank you for the curriculum work RECF does for educators.
 
@@ -110,7 +110,7 @@ Ido Yahalomi
 URML, greenvh@gmail.com
 
 (URML's documentation is AI-assisted and maintainer-reviewed; details at
-https://github.com/URML-MARS/URML/blob/main/VIBE.md. Human-only correspondence
+https://github.com/urml-dev/URML/blob/main/VIBE.md. Human-only correspondence
 available on request.)
 ```
 
@@ -146,14 +146,14 @@ anything; I would just value the community's read on whether it is useful and
 where it might fit.
 
 Lesson and overview:
-https://github.com/URML-MARS/URML/blob/main/docs/tutorials/05-teaching-urml.md
+https://github.com/urml-dev/URML/blob/main/docs/tutorials/05-teaching-urml.md
 
 Thanks for everything RCJ does for student robotics.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
 (URML's docs are AI-assisted and maintainer-reviewed:
-https://github.com/URML-MARS/URML/blob/main/VIBE.md. Happy to correspond
+https://github.com/urml-dev/URML/blob/main/VIBE.md. Happy to correspond
 human-to-human.)
 ```
 
@@ -186,7 +186,7 @@ lesson could fit a CoderDojo session or your learning resources. No adoption ask
 and no commitment; I am gauging interest and the right contact.
 
 Lesson and overview:
-https://github.com/URML-MARS/URML/blob/main/docs/tutorials/05-teaching-urml.md
+https://github.com/urml-dev/URML/blob/main/docs/tutorials/05-teaching-urml.md
 
 Thank you for the Foundation's work making coding accessible to young people.
 
@@ -194,7 +194,7 @@ Ido Yahalomi
 URML, greenvh@gmail.com
 
 (URML's documentation is AI-assisted and maintainer-reviewed; details at
-https://github.com/URML-MARS/URML/blob/main/VIBE.md. Human-only correspondence
+https://github.com/urml-dev/URML/blob/main/VIBE.md. Human-only correspondence
 available on request.)
 ```
 
