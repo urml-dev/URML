@@ -60,7 +60,7 @@ When in doubt about a definition, the precedence order is the same as the rest o
 
 **Profile** — A domain-specific extension to the core (home, drone, industrial, agricultural, ...). A profile may add primitives, constrain core primitives, and declare a profile-specific safety-envelope class. It may not weaken the core's safety guarantees or break the substrate-neutrality acid test.
 
-**Reference runtime** — An open-source implementation, maintained by URML, that translates URML programs into a specific substrate. The ROS 2 reference runtime is the first; the PX4 reference runtime is the second. Both are part of the Core Commitment.
+**Reference runtime** — A source-available implementation, maintained by the URML project, that translates URML programs into a specific substrate. The ROS 2 reference runtime is the first; the PX4 reference runtime is the second. Both are free for non-production use under [`LICENSING.md`](../LICENSING.md).
 
 **RFC** — A numbered proposal in [`docs/rfcs/`](rfcs/) that changes specification semantics. PRs implement RFCs; they don't replace them. Process documented in [`docs/rfcs/0001-rfc-process.md`](rfcs/0001-rfc-process.md).
 

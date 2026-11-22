@@ -41,18 +41,38 @@ Each version of URML converts automatically to the **Apache License 2.0** two ye
 
 URML was released under the Apache License 2.0 up to and including **v0.4.x** (all source published before 2026-11-22). Those releases, and any copy of them, remain under Apache 2.0 permanently. The change applies to new versions only. The reasons are recorded in [RFC-0703](docs/rfcs/0703-bsl-relicense.md).
 
+One correction: `urml-av-runtime` 0.4.0 was published to PyPI on 2026-11-22 with BSL metadata by mistake. Like every 0.4.x release, it is licensed under Apache 2.0. It has been yanked; use 0.5.0.
+
 ## Third-party code
 
 Code contributed by others before the change keeps its original license. `examples/gopigo3/` is Apache 2.0, with its own [`LICENSE`](examples/gopigo3/LICENSE).
 
 URML's optional dependencies (ROS 2, PX4, pymavlink, asyncua and others) keep their own licenses. URML's BSL does not change them.
 
+## What counts as production
+
+Production use is about what the robots do, not who owns them.
+
+| Situation | License needed? |
+|---|---|
+| A pilot of up to 5 robots for up to 90 days in total, even if they do real work | No |
+| A university teaching or research lab | No |
+| Robots doing real work for a company, a non-profit or a public body | Yes |
+| A university hospital's delivery fleet | Yes |
+| An integrator deploying URML on a customer's robots | The customer, who operates the robots |
+| Simulated robots, and spares that never run | Not counted |
+
+**One robot** is one physical machine whose actuators are commanded by a program URML validated, translated or executed. Each drone in a swarm counts. The count is the highest number in production on any day of the month.
+
+Not sure where your use falls? Email sales@urml.dev and describe it before you buy.
+
 ## Commercial license tiers
 
 | Tier | Price | For |
 |---|---|---|
 | **Production** | $4 per robot per month | Any company running URML on robots in production. Only robots in service count. |
-| **Enterprise lifetime** | $225,000 one time, plus $10,000 per year support | Perpetual license for unlimited robots and sites, including every future version and audited policy files |
+| **Enterprise lifetime** | $225,000 one time, plus $10,000 per year support | Perpetual license for up to 1,000 robots in service, extra robots $225 each one time; every release while support is paid; audited policy files |
+| **Enterprise half** | $112,500 one time, plus $5,000 per year support | The same, for up to 500 robots. On request |
 | **OEM** | Per unit, on request | Robot and controller makers embedding URML in products they ship, with redistribution rights |
 
 Licenses: sales@urml.dev.
