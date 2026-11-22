@@ -29,8 +29,8 @@ Kind: Governance. This RFC amends [RFC-0703](0703-bsl-relicense.md). Ido Yahalom
 
 ## Summary
 
-- **New Licensor:** Yahalomik Ltd., incorporated in Israel, company number [to be added at signing].
-- **Mechanism:** a written IP assignment from Ido Yahalomi to Yahalomik Ltd., approved by the company's board under the Israeli Companies Law.
+- **New Licensor:** Yahalomik Ltd., incorporated in Israel, company number 517379111.
+- **Mechanism:** a written IP assignment from Ido Yahalomi to Yahalomik Ltd., approved by its sole director and sole shareholder under the Israeli Companies Law. The assignment is made without payment, as a contribution to the company's capital.
 - **Effective:** on the date the assignment is signed. This RFC stays in Draft until then and moves to Accepted in the PR that records the signing date.
 - **Unchanged:** the BSL parameters from RFC-0703 (non-production use free, two-year Change Date, Apache 2.0 as Change License), the Apache 2.0 status of every release up to v0.4.x, and the prices in [`COMMERCIAL.md`](../../COMMERCIAL.md).
 
