@@ -21,7 +21,7 @@
 
 ---
 
-# URML — Universal Robot Language
+# URML: Universal Robot Language
 
 **One vocabulary for robot intent. Every action checked against what the robot can actually do before it runs. On any substrate.**
 
@@ -90,18 +90,18 @@ Every `✅` below maps to a shipped file and a passing test or recorded CI run; 
 
 | Capability | State |
 |---|---|
-| **Six-pass static validator** — argument typing, capability checks, safety-envelope tightening (incl. geofence, 3D altitude bands, people-occupancy zones), rulebooks for government and company rules (RFC-0702; FAA Part 107 bundled, on by default for drones), variable-binding + cross-primitive type analysis, compliance policy | ✅ Implemented, 1214 unit tests |
-| **24 primitives** — the 12 core (`move_to`, `dock`, `hover`, `wait`, `wait_for`, `grasp`, `release`, `detect`, `scan`, `measure`, `capture`, `report`)<br>plus profile / extension verbs: home (`speak`, `listen`), drone (`take_off`, `land`, `return_to_home`), industrial (`pick_from`, `place_at`, `swap_tool`), `bimanual` (RFC-0010), `set_output` (RFC-0017), and the `av` pair `plan_path` / `follow_trajectory` (RFC-0020) | ✅ Validator + reference-runtime executors for all 24 |
-| **Compliance enforcement** — provenance schema on the manifest, a pluggable YAML policy DSL, and a bundled US-federal default policy (NDAA §889 / FY26, FCC Covered List, EO 14307, ASRA) | ✅ Implemented; `--no-policy` opt-out |
-| **LLM bridge** — provider-agnostic (Anthropic + OpenAI + Ollama + llama.cpp + EchoProvider, all first-class in the CLI); RFC-0670 speech front-end (`--audio`, whisper.cpp default); revision loop with policy-error short-circuit; home / drone / industrial / fleet few-shots | ✅ 282 unit tests |
-| **Conformance suite** — declarative YAML fixtures any URML-compatible runtime must pass; runnable via `urml conformance run`; the runtime contract is normatively defined in [RFC-0014](docs/rfcs/0014-substrate-conformance.md) | ✅ 269 fixtures (home, drone, industrial, biped, quadruped, mobile, warehouse, marine, educational, research, fleet, flexbe, av, manipulation, actuation, language, translation, licensing, compliance, deployment, social, programs, rulebook) |
-| **CLI** — `urml validate`, `urml execute`, `urml schema`, `urml translate`, `urml run`, `urml bench`, `urml emit-prompt`, `urml init`, `urml conformance run` | ✅ All nine subcommands |
-| **Mock reference runtime** — hermetic execution without a robot, used by the conformance suite | ✅ Implemented |
-| **Real ROS 2 adapter** (`RclpyAdapter`) — full ROSAdapter Protocol via `rclpy` (Nav2 / MoveIt 2 / vision_msgs) | ✅ Implemented; the `gazebo-e2e` job (live TurtleBot 4 + Nav2 sim) passed ×3 — [job-level, badge caveat explained](docs/launch/claims-audit.md) |
-| **PX4 / MAVLink reference runtime** (`PX4Adapter`) — full Protocol via `pymavlink`, no ROS dependency | ✅ Implemented; flew the `drone/flight_only_positive` program on PX4 v1.17.0 SITL, confirmed from telemetry by a listen-only witness ([run records](reference/px4-runtime/tests/integration/sitl-runs/); local, not CI, no hardware) |
-| **CompositeAdapter** — one URML program across two substrates: PX4 flight + a ROS 2 companion, per-method routing | ✅ Implemented |
-| **Fifteen further reference runtimes** —<br>`ardupilot` (ArduCopter over MAVLink, no ROS: Pixhawk bench with propellers off, SITL 3 of 3; no free flight on hardware), `av` (Autoware, RFC-0020 `plan_path` / `follow_trajectory`), `marine` (BlueROV2 / ArduSub), `industrial-arm` (ABB / FANUC / KUKA / YASKAWA / UR / Franka / Kawasaki / Stäubli / Comau / Mitsubishi / Denso / Hyundai / Nachi / Epson / Omron / Hanwha = 16 brands),<br>`legged` (Spot / ANYmal), `humanoid` (Digit), `mobile` (Husky / Jackal),<br>and the zero-ROS `opcua` (OPC UA Robotics), `cobot` (8 brands: UR / Franka / Doosan / Techman / Kinova / Mecademic / Neura / Kassow native SDKs), `mujoco` + `isaac` (NVIDIA Sim / Lab, local RTX host) + `chrono` sims, `embedded` (micro:bit / Arduino serial), `edu` (VEX V5 / LEGO SPIKE / Thymio / Robotical Marty / Petoi / CircuitPython / GoPiGo3 / Microduck / Reachy Mini), `autosar` (RFC-0019 scaffold) | ✅ Hermetic suites green; live e2e is gated CI (calibration-staged, **not** a hardware claim) — see [audit](docs/launch/claims-audit.md). |
-| **Run on a real robot (community)** — the validated sentence-to-motion loop, executed on physical hardware by someone who is not us: English → local-LLM translation → validator → wheels, on a GoPiGo3 and a Raspberry Pi, fully offline | ✅ Reproducible: [`examples/gopigo3/`](examples/gopigo3/); the story is in the [field note](https://urml.dev/blog/field-notes-first-robot-runs-urml) |
+| **Six-pass static validator**: argument typing, capability checks, safety-envelope tightening (incl. geofence, 3D altitude bands, people-occupancy zones), rulebooks for government and company rules (RFC-0702; FAA Part 107 bundled, on by default for drones), variable-binding + cross-primitive type analysis, compliance policy | ✅ Implemented, 1214 unit tests |
+| **24 primitives**: the 12 core (`move_to`, `dock`, `hover`, `wait`, `wait_for`, `grasp`, `release`, `detect`, `scan`, `measure`, `capture`, `report`)<br>plus profile / extension verbs: home (`speak`, `listen`), drone (`take_off`, `land`, `return_to_home`), industrial (`pick_from`, `place_at`, `swap_tool`), `bimanual` (RFC-0010), `set_output` (RFC-0017), and the `av` pair `plan_path` / `follow_trajectory` (RFC-0020) | ✅ Validator + reference-runtime executors for all 24 |
+| **Compliance enforcement**: provenance schema on the manifest, a pluggable YAML policy DSL, and a bundled US-federal default policy (NDAA §889 / FY26, FCC Covered List, EO 14307, ASRA) | ✅ Implemented; `--no-policy` opt-out |
+| **LLM bridge**: provider-agnostic (Anthropic + OpenAI + Ollama + llama.cpp + EchoProvider, all first-class in the CLI); RFC-0670 speech front-end (`--audio`, whisper.cpp default); revision loop with policy-error short-circuit; home / drone / industrial / fleet few-shots | ✅ 282 unit tests |
+| **Conformance suite**: declarative YAML fixtures any URML-compatible runtime must pass; runnable via `urml conformance run`; the runtime contract is normatively defined in [RFC-0014](docs/rfcs/0014-substrate-conformance.md) | ✅ 269 fixtures (home, drone, industrial, biped, quadruped, mobile, warehouse, marine, educational, research, fleet, flexbe, av, manipulation, actuation, language, translation, licensing, compliance, deployment, social, programs, rulebook) |
+| **CLI**: `urml validate`, `urml execute`, `urml schema`, `urml translate`, `urml run`, `urml bench`, `urml emit-prompt`, `urml init`, `urml conformance run` | ✅ All nine subcommands |
+| **Mock reference runtime**: hermetic execution without a robot, used by the conformance suite | ✅ Implemented |
+| **Real ROS 2 adapter** (`RclpyAdapter`): full ROSAdapter Protocol via `rclpy` (Nav2 / MoveIt 2 / vision_msgs) | ✅ Implemented; the `gazebo-e2e` job (live TurtleBot 4 + Nav2 sim) passed ×3 ([job-level, badge caveat explained](docs/launch/claims-audit.md)) |
+| **PX4 / MAVLink reference runtime** (`PX4Adapter`): full Protocol via `pymavlink`, no ROS dependency | ✅ Implemented; flew the `drone/flight_only_positive` program on PX4 v1.17.0 SITL, confirmed from telemetry by a listen-only witness ([run records](reference/px4-runtime/tests/integration/sitl-runs/); local, not CI, no hardware) |
+| **CompositeAdapter**: one URML program across two substrates: PX4 flight + a ROS 2 companion, per-method routing | ✅ Implemented |
+| **Fifteen further reference runtimes**:<br>`ardupilot` (ArduCopter over MAVLink, no ROS: Pixhawk bench with propellers off, SITL 3 of 3; no free flight on hardware), `av` (Autoware, RFC-0020 `plan_path` / `follow_trajectory`), `marine` (BlueROV2 / ArduSub), `industrial-arm` (ABB / FANUC / KUKA / YASKAWA / UR / Franka / Kawasaki / Stäubli / Comau / Mitsubishi / Denso / Hyundai / Nachi / Epson / Omron / Hanwha = 16 brands),<br>`legged` (Spot / ANYmal), `humanoid` (Digit), `mobile` (Husky / Jackal),<br>and the zero-ROS `opcua` (OPC UA Robotics), `cobot` (8 brands: UR / Franka / Doosan / Techman / Kinova / Mecademic / Neura / Kassow native SDKs), `mujoco` + `isaac` (NVIDIA Sim / Lab, local RTX host) + `chrono` sims, `embedded` (micro:bit / Arduino serial), `edu` (VEX V5 / LEGO SPIKE / Thymio / Robotical Marty / Petoi / CircuitPython / GoPiGo3 / Microduck / Reachy Mini), `autosar` (RFC-0019 scaffold) | ✅ Hermetic suites green; live e2e is gated CI (calibration-staged, **not** a hardware claim); see [audit](docs/launch/claims-audit.md). |
+| **Run on a real robot (community)**: the validated sentence-to-motion loop, executed on physical hardware by someone who is not us: English → local-LLM translation → validator → wheels, on a GoPiGo3 and a Raspberry Pi, fully offline | ✅ Reproducible: [`examples/gopigo3/`](examples/gopigo3/); the story is in the [field note](https://urml.dev/blog/field-notes-first-robot-runs-urml) |
 
 **In the wild.** The sentence-to-motion loop above runs on a hermetic mock in CI, deliberately, so it stays deterministic and honest. It has also been reproduced on a real robot: a community member ran a validated, LLM-translated URML program on a GoPiGo3 (Raspberry Pi, offline), with a local model doing the English-to-intent translation and the validator gating every action before a wheel turned. The [field note](https://urml.dev/blog/field-notes-first-robot-runs-urml) tells the story, including the actuation-safety bug it surfaced in our own demo and the same-day fix.
 
@@ -154,7 +154,7 @@ See [RFC-0003](docs/rfcs/0003-us-alignment.md) for the strategic decision and tr
 
 ## Status
 
-**Phase 1 (public)** — as of v0.1.0 (2026-05-22). External code contributions are open per [`CONTRIBUTING.md`](CONTRIBUTING.md); the RFC process governs spec changes. The author remains the sole maintainer — the phase flip opens the door; it does not assert contributors have arrived. The artifact under review is the manifesto plus the v0.1 implementation; the decision history is in [`docs/rfcs/`](docs/rfcs/).
+**Phase 1 (public)** since v0.1.0 (2026-05-22). External code contributions are open per [`CONTRIBUTING.md`](CONTRIBUTING.md); the RFC process governs spec changes. The author remains the sole maintainer. The phase flip opens the door; it does not assert contributors have arrived. The artifact under review is the manifesto plus the v0.1 implementation; the decision history is in [`docs/rfcs/`](docs/rfcs/).
 
 What works today is what the table above lists as `✅`. What's planned is in [`MANIFESTO.md`](MANIFESTO.md) §Roadmap Snapshot. The decision history is in [`docs/rfcs/`](docs/rfcs/); 63 Spec RFCs are filed (8 accepted, 48 implemented, 6 draft, 1 open), the latest adding rulebooks for government and company rules (RFC-0702) and the expression block for social robots (RFC-0698).
 
@@ -162,7 +162,7 @@ What works today is what the table above lists as `✅`. What's planned is in [`
 
 ## Vision: multi-robot fleets
 
-The headline is "one English sentence moves a robot." The next step is *one program moves a heterogeneous fleet, in sync* — something no single vendor SDK does across vendors. [RFC-0286](docs/rfcs/0286-multi-robot-fleet-addressing.md) adds the smallest surface that gets there: a Layer-1 **roster** binding several robots under names, and two Layer-3 nodes — `on:` (address one member) and `barrier:` (synchronize members). No new primitive; a single-robot program is unchanged.
+The headline is "one English sentence moves a robot." The next step is *one program moves a heterogeneous fleet, in sync*, something no single vendor SDK does across vendors. [RFC-0286](docs/rfcs/0286-multi-robot-fleet-addressing.md) adds the smallest surface that gets there: a Layer-1 **roster** binding several robots under names, and two Layer-3 nodes: `on:` (address one member) and `barrier:` (synchronize members). No new primitive; a single-robot program is unchanged.
 
 The worked example is a **courier-to-arm handoff**: a mobile base brings a tray to a shared dock; a stationary arm picks a widget and places it on a conveyor; the courier leaves only after the arm has cleared.
 
@@ -185,7 +185,7 @@ behavior:
     - { type: "on", member: courier, body: { move_to: { location: staging } } }
 ```
 
-The point is not the syntax — it is what the validator rejects **before anything moves**: a command sent to a member whose manifest can't do it; two robots driven into the same declared location at the same instant with no `barrier` (`fleet.concurrent_shared_workspace`); a barrier whose members don't declare the `peer_link` role. That cross-robot collision class is the one no single SDK can catch, because no single SDK sees both robots.
+The point is not the syntax. It is what the validator rejects **before anything moves**: a command sent to a member whose manifest can't do it; two robots driven into the same declared location at the same instant with no `barrier` (`fleet.concurrent_shared_workspace`); a barrier whose members don't declare the `peer_link` role. That cross-robot collision class is the one no single SDK can catch, because no single SDK sees both robots.
 
 **Status (honest):** the cross-robot validator (`validate_fleet`), the reference `FleetRuntime`, and the conformance lane are shipped and tested; run the hermetic demo with `python examples/fleet/run_demo.py`. Workspace-collision checking is by declared-location *name* in v0.1; geometric volume overlap is named as future work in the RFC. Fleet-traffic management at building scale composes with Open-RMF ([RFC-0053](docs/rfcs/0053-open-rmf-multirobot-integration.md)), not URML. Walkthrough: [`docs/demos/fleet-coordination.md`](docs/demos/fleet-coordination.md).
 
@@ -222,11 +222,11 @@ The point is not the syntax — it is what the validator rejects **before anythi
 
 URML uses [GitHub Discussions](https://github.com/urml-dev/URML/discussions) as its public question and feedback channel:
 
-- [Q&A](https://github.com/urml-dev/URML/discussions/categories/q-a) — how do I write a manifest, run the validator, integrate a runtime.
-- [Ideas](https://github.com/urml-dev/URML/discussions/categories/ideas) — pre-RFC ideas for primitives, profiles, or tooling; the front of the funnel that leads to a primitive-proposal issue and then an RFC.
-- [Builders & Makers](https://github.com/urml-dev/URML/discussions/categories/builders-makers) — runtime authors and manufacturers: conformance, the registry, the directory, the federal-validation self-report.
-- [Show and tell](https://github.com/urml-dev/URML/discussions/categories/show-and-tell) — what you built on URML.
-- [General](https://github.com/urml-dev/URML/discussions/categories/general) — everything else, including complaints and critique of the strategic posture.
+- [Q&A](https://github.com/urml-dev/URML/discussions/categories/q-a): how do I write a manifest, run the validator, integrate a runtime.
+- [Ideas](https://github.com/urml-dev/URML/discussions/categories/ideas): pre-RFC ideas for primitives, profiles, or tooling; the front of the funnel that leads to a primitive-proposal issue and then an RFC.
+- [Builders & Makers](https://github.com/urml-dev/URML/discussions/categories/builders-makers): runtime authors and manufacturers: conformance, the registry, the directory, the federal-validation self-report.
+- [Show and tell](https://github.com/urml-dev/URML/discussions/categories/show-and-tell): what you built on URML.
+- [General](https://github.com/urml-dev/URML/discussions/categories/general): everything else, including complaints and critique of the strategic posture.
 
 Issues are scoped to reference-runtime bugs and the primitive-proposal funnel. Security and conduct concerns follow the private process in [`SECURITY.md`](SECURITY.md), never a public thread.
 
