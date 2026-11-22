@@ -35,7 +35,7 @@ URML is a **specification** and a set of **reference implementations**, not a ro
 
 ## Try it in three commands
 
-All URML packages are on PyPI at 0.5.0. Install them, scaffold a starter project, validate it. About 30 seconds; no API key, no robot.
+The validator and the LLM bridge are on PyPI at 0.5.0, and they are all this needs. The remaining runtimes reach PyPI by 2026-11-25; until then they install from source (below). Install, scaffold a starter project, validate it. About 30 seconds; no API key, no robot.
 
 ```bash
 python3 -m venv .venv && . .venv/bin/activate   # recommended; required on PEP 668 systems (Ubuntu 26.04, Debian 12+)
