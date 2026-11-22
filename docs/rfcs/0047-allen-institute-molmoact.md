@@ -168,7 +168,7 @@ RFC-0047 ships as a single RFC document PR. No bridge code and no dataset annota
 
 URML's own public Discussions for the broader Move #2 conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

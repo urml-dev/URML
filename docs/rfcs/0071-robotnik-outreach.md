@@ -187,7 +187,7 @@ RFC-0071 ships as a single RFC document PR. No adapter code in this PR. The actu
 
 URML's own public Discussions for the broader Move #5 conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

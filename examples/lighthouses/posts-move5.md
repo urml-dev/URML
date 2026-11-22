@@ -36,7 +36,7 @@ URML is an Apache 2.0 specification for substrate-neutral robot intent at [urml.
 
 This is proposal-only, posted as URML's first **Move #5** outreach (Tier 2 candidates promoted from URML's Move #4 adjacent-niches research pass). No adapter code in this PR. The canonical per-platform repos, the mounted-arm composition design, and the AGVS coordination with URML's RFC-0022 warehouse profile are observable choices worth your input before shipping.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0071-robotnik-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0071-robotnik-outreach.md
 
 ## Feedback we'd value
 
@@ -70,7 +70,7 @@ URML is an Apache 2.0 specification for substrate-neutral robot intent at [urml.
 
 This is proposal-only, posted as part of URML's **Move #5** outreach. No adapter code in this PR. The canonical per-platform repos, the Dingo D/O variant manifests, the post-Rockwell maintenance posture, and the TurtleBot 4 / TurtleBot 3 cross-coordination are observable choices worth your input before shipping.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0072-clearpath-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0072-clearpath-robotics-outreach.md
 
 ## Feedback we'd value
 
@@ -102,7 +102,7 @@ URML is an Apache 2.0 specification for substrate-neutral robot intent at [urml.
 
 This is proposal-only, posted as part of URML's **Move #5** outreach. No adapter code in this PR. The triple-transport priority (serial / WebSocket / BLE), the active-development cadence question (latest release v3.6.6 on 2024-01-12 — is the platform actively developed or in maintenance mode?), and the MartyBlocks-vs-URML positioning are observable choices worth your input before shipping.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0073-robotical-marty-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0073-robotical-marty-outreach.md
 
 ## Feedback we'd value
 
@@ -134,7 +134,7 @@ URML is an Apache 2.0 specification for substrate-neutral robot intent at [urml.
 
 This is proposal-only, posted as part of URML's **Move #5** outreach. No adapter code in this PR. The Lynx S10 portion is forward-declared (SDK pending publication). Beyond Lynx, the adapter family also covers Lite3 (the existing flagship quadruped) and M20 (industrial quadruped).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0074-deep-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0074-deep-robotics-outreach.md
 
 ## Feedback we'd value
 
@@ -170,7 +170,7 @@ This is proposal-only, posted as part of URML's **Move #5** outreach (Tier B res
 
 Two open questions stand out: (a) the canonical Pupper v3 repo location (the StanfordQuadruped README notes v3 development is happening elsewhere), and (b) authoritative v3 manifest values (DOF, mass, height pending confirmation).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0075-stanford-pupper-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0075-stanford-pupper-outreach.md
 
 ## Feedback we'd value
 
@@ -206,7 +206,7 @@ The key open question this RFC raises: **`move_to` semantics on torque-controlle
 
 This is proposal-only, posted as part of URML's **Move #5** outreach (Tier B research-collab). No adapter code in this PR.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0076-open-dynamic-robot-initiative-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0076-open-dynamic-robot-initiative-outreach.md
 
 ## Feedback we'd value
 
@@ -242,7 +242,7 @@ This is proposal-only, posted as part of URML's **Move #5** outreach (Tier B res
 
 Two open questions stand out: (a) ROS 2 timeline (CHAMP is currently ROS 1 only — Kinetic / Melodic / Noetic), and (b) the per-customer-URDF manifest pattern (URML would ship example manifests covering CHAMP's supported URDFs; the deploying user adapts per their setup, mirroring URML's RFC-0070 HEBI per-customer-geometry approach).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0077-mit-champ-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0077-mit-champ-outreach.md
 
 ## Feedback we'd value
 
@@ -281,7 +281,7 @@ The `ros-maritime` working-group canonical contact surface is an open question �
 
 This is proposal-only, posted as part of URML's **Move #5** outreach (Tier B research-collab). No adapter code in this PR; the actual `reference/marine-runtime/README.md` documentation update follows in a later PR after community feedback.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0078-orca4-ros-maritime-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0078-orca4-ros-maritime-outreach.md
 
 ## Feedback we'd value
 
@@ -321,7 +321,7 @@ This is proposal-only, posted as part of URML's **Move #5** outreach (Tier B res
 
 Honest about scope: URML's adapter against a research-grade prosthetic-hand design has no regulatory standing for clinical deployment. URML's posture is education and research, not medical-device certification.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0079-open-bionics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0079-open-bionics-outreach.md
 
 ## Feedback we'd value (if reachable given dormancy)
 
@@ -351,7 +351,7 @@ I'm sending this as a courtesy notice rather than a formal proposal. URML does n
 
 The full RFC documenting URML's accessibility identity placement is on URML's repo:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0079-open-bionics-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0079-open-bionics-outreach.md
 
 If a future conversation about URML's accessibility identity is of interest to your team — at any pace — my contact is in the RFC. No specific ask; this is institutional acknowledgement.
 

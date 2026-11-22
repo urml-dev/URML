@@ -42,13 +42,13 @@ The mapping: an inspection mission is a goal plus constraints (survey this struc
 
 Two real questions: (1) is a typed, validated mission-intent layer (declare goal + inspection envelope, validate, consume the trajectory) useful above the stack? (2) Does a multi-drone inspection map onto a fleet roster + cross-vehicle deconfliction in a way that fits how you run swarms?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0596-aerial-autonomy-stack-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0596-aerial-autonomy-stack-outreach.md
 
 Thanks for the stack; a real perception-driven PX4 swarm framework is exactly where fleet-level validated inspection intent is easiest to try.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -69,13 +69,13 @@ There are two seams, and the second is the more interesting. First, the obvious 
 
 Two real questions: (1) is a typed, validated inspection-intent layer (declare goal + envelope, validate, consume the plan) useful above UNav-Sim? (2) Could the trained planner declare a training/operating envelope a URML intent is checked against?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0597-unav-sim-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0597-unav-sim-outreach.md
 
 Thanks for UNav-Sim; underwater inspection with a learned planner is exactly the setting where stating and checking an operating envelope up front earns its keep.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -96,13 +96,13 @@ The mapping: a subsea inspection is a goal plus constraints (follow this pipelin
 
 Two real questions: (1) is a typed, validated inspection-intent layer (declare goal + envelope, validate, dispatch) useful above the bluerov2 ROS 2 stack? (2) Does URML's marine vehicle capability model fit how this package describes the BlueROV2?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0598-bluerov2-cn-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0598-bluerov2-cn-outreach.md
 
 Thanks for the package; a clean ROS 2 BlueROV2 stack is a good place to test whether a single intent layer can span both routes to a popular vehicle.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -123,11 +123,11 @@ The mapping: URML's decide-then-do split puts a typed, validated intent in front
 
 Two real questions: (1) is a typed, validated intent gate (declare goal + off-road bounds, validate, then let the policy drive) useful above a RoboTerrain-trained policy? (2) Could a trained policy declare a training/operating envelope a URML intent is checked against?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0599-roboterrain-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0599-roboterrain-outreach.md
 
 Thanks for RoboTerrain; off-road inspection is exactly where the gap between a sim-trained policy and a trusted real run is widest, and an explicit envelope check speaks to that gap.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

@@ -46,13 +46,13 @@ I am not proposing any change to Open Roberta, and nothing for you to maintain. 
 
 Two real questions. First, is a plain-English, validated-intent on-ramp that could feed into a NEPO-compatible target interesting to you, or does it overlap your roadmap? Second, could a URML capability manifest sensibly align with, or be derived from, an Open Roberta robot plugin's capability descriptor, and if so at what grain?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0287-open-roberta-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0287-open-roberta-outreach.md
 
 Thanks for keeping classroom robotics open and vendor-neutral.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -71,13 +71,13 @@ Nothing here asks MakeCode to change or maintain anything. It is a request for c
 
 One real question. URML's manifest needs to align with a device definition. Could it map onto a MakeCode target or board definition for the micro:bit-class subset, and what grain would be most useful from your side: just naming the target, or the board-level pin/peripheral detail?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0288-makecode-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0288-makecode-outreach.md
 
 Thanks for how far MakeCode has lowered the bar for classroom programming.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -96,11 +96,11 @@ Snap! is AGPL-3.0, so to be clear up front: I am not proposing to vendor any Sna
 
 Two real questions. Would a short lesson module showing the English-to-validated-intent loop be useful to point students at, or off-scope for the project? And is this repo the right channel, or should it go to the BJC curriculum team?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0289-snap-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0289-snap-outreach.md
 
 Thanks for Snap! and for the CS-education work around it.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

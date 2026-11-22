@@ -165,7 +165,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `burro-robotics/burro-sdk` is the most-likely public engagement surface (2 stars; verified 2026-05-26). URML's planned channel: open a single Issue on `burro-robotics/burro-sdk` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Burro's developer-relations team via burrorobotics.com.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

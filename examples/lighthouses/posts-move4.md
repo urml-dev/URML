@@ -42,7 +42,7 @@ This is proposal-only, posted as URML's first **Move #4** outreach (adjacent nic
 
 Full RFC with proposed package layout, per-primitive mapping, manifest sketches, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0065-robotis-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0065-robotis-outreach.md
 
 ## Feedback we'd value
 
@@ -80,7 +80,7 @@ This is proposal-only, posted as part of URML's **Move #4** outreach (adjacent n
 
 Full RFC with proposed per-platform mapping, manifest sketches, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0066-agilex-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0066-agilex-outreach.md
 
 ## Feedback we'd value
 
@@ -119,7 +119,7 @@ This is proposal-only, posted as part of URML's **Move #4** outreach (adjacent n
 
 Full RFC with proposed package layout, per-primitive mapping, manifest sketches, drawbacks, and alternatives:
 
-https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0067-farmbot-outreach.md
+https://github.com/urml-dev/URML/blob/main/docs/rfcs/0067-farmbot-outreach.md
 
 ## Feedback we'd value
 
@@ -152,7 +152,7 @@ URML is an Apache 2.0 specification for substrate-neutral robot intent at [urml.
 
 This is proposal-only, posted as part of URML's **Move #4** outreach. No adapter code in this PR. The TIAGo variant manifest split (Steel / Iron / Titanium / OMNI / Pro / Pro Head), the safety-field schema (`brake_rated`, `iso_collaborative`), and the bimanual-coordination primitive question are observable choices worth your input before shipping.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0068-pal-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0068-pal-robotics-outreach.md
 
 ## Feedback we'd value
 
@@ -189,7 +189,7 @@ The cross-link worth flagging: URML's existing RFC-0050 outreach to NVIDIA Isaac
 
 This is proposal-only, posted as part of URML's **Move #4** outreach. No adapter code in this PR. The sim-vs-real adapter split, the policy-trained-motion primitive mapping (a `move_to`-to-gait/posture rule similar to URML's existing Petoi RFC-0062), and the authoritative manifest values (DOF / mass / height) are observable choices worth your input before shipping.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0069-berkeley-humanoid-lite-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0069-berkeley-humanoid-lite-outreach.md
 
 ## Feedback we'd value
 
@@ -223,7 +223,7 @@ URML is an Apache 2.0 specification for substrate-neutral robot intent at [urml.
 
 This is proposal-only, posted as part of URML's **Move #4** outreach (adjacent niches). No adapter code in this PR. The kinematic-chain manifest shape, the example manifest set, the ROS 2 vs direct-API default, and the MATLAB-surface scope are observable choices worth your input before shipping.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0070-hebi-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0070-hebi-robotics-outreach.md
 
 ## Feedback we'd value
 

@@ -37,13 +37,13 @@ The idea is the decide-then-do split applied to learning: a URML intent declares
 
 Two real questions: (1) Is wrapping a LeRobot policy in a validated intent layer + safety envelope interesting in the robot-learning context? (2) What should a URML capability manifest declare to describe a LeRobot-driven robot honestly — drive/arm type, reach/DOF, gripper + graspable classes, workspace bounds, observation/action assumptions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0447-lerobot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0447-lerobot-outreach.md
 
 Thanks for LeRobot; an open end-to-end robot-learning hub is exactly where this kind of layer should be designed with input.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -64,13 +64,13 @@ The idea is the decide-then-do split applied to learning: a URML intent declares
 
 Two real questions: (1) Is wrapping a pi0 policy in a validated intent layer + safety envelope interesting? (2) What should a URML capability manifest declare to describe a pi0-driven robot honestly — arm/drive type, reach/DOF, gripper + graspable classes, workspace bounds, observation/action assumptions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0448-openpi-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0448-openpi-outreach.md
 
 Thanks for openpi; an open release of a frontier VLA is a real gift to the field, and a great place for this discussion.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -91,13 +91,13 @@ A URML intent declares the goal and the envelope; a policy trained in ManiSkill 
 
 Two real questions: (1) Is a validated intent layer + envelope above ManiSkill policies interesting for the manipulation-learning community? (2) What should a URML capability manifest declare to describe a ManiSkill task robot honestly — arm/drive type, reach/DOF, gripper + graspable classes, workspace bounds, observation/action assumptions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0449-maniskill-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0449-maniskill-outreach.md
 
 Thanks for ManiSkill; a fast open manipulation benchmark is a great place to think about safety around learned control.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -118,13 +118,13 @@ A URML intent declares the goal and the envelope for a LIBERO task; a learned po
 
 Two real questions: (1) Is a validated intent layer + envelope above LIBERO-benchmarked policies interesting for the lifelong-learning community? (2) What should a URML capability manifest declare to describe a LIBERO task robot honestly — arm type, reach/DOF, gripper + graspable classes, workspace bounds, observation/action assumptions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0450-libero-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0450-libero-outreach.md
 
 Thanks for LIBERO; a widely-used lifelong-learning benchmark is a great place for this discussion.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -145,13 +145,13 @@ The idea is the decide-then-do split applied to learning: a URML intent declares
 
 Two real questions: (1) Is wrapping an OpenVLA-OFT policy in a validated intent layer + envelope interesting? (2) What should a URML capability manifest declare to describe an OFT-driven robot honestly — arm type, reach/DOF, gripper + graspable classes, workspace bounds, observation/action assumptions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0451-openvla-oft-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0451-openvla-oft-outreach.md
 
 Thanks for OpenVLA-OFT; a strong open fine-tuning recipe for VLAs is a great place for this discussion.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -172,13 +172,13 @@ A URML household intent ("put the mug in the sink") drives a RoboCasa task, or d
 
 Two real questions: (1) Is a validated household-intent layer + envelope above RoboCasa interesting for generalist-robot research? (2) What should a URML capability manifest declare to describe a RoboCasa task robot honestly — arm/drive type, reach/DOF, gripper + graspable classes, workspace bounds, object/task vocabulary?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0452-robocasa-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0452-robocasa-outreach.md
 
 Thanks for RoboCasa; a large everyday-task sim is a great place to think about household intent and safety.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -199,13 +199,13 @@ A URML intent expresses a BEHAVIOR activity goal and its envelope; a learned pol
 
 Two real questions: (1) Is a typed, validated intent layer above BEHAVIOR activities interesting for embodied-AI research? (2) What should a URML capability manifest declare to describe a BEHAVIOR task robot honestly — arm/drive type, reach/DOF, gripper + graspable classes, workspace bounds, object/activity vocabulary — and how do BEHAVIOR's activity/predicate definitions relate to URML's typed intent + safety envelope?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0453-behavior-1k-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0453-behavior-1k-outreach.md
 
 Thanks for BEHAVIOR-1K; a thousand-activity embodied-AI benchmark is a fascinating place to compare ways of expressing task intent.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -226,11 +226,11 @@ The idea is the decide-then-do split applied to learning: a URML intent declares
 
 Two real questions: (1) Is wrapping a DROID-trained policy in a validated intent layer + envelope interesting? (2) What should a URML capability manifest declare to describe a DROID-class manipulation robot honestly — arm type, reach/DOF, gripper + graspable classes, workspace bounds, observation/action assumptions?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0454-droid-policy-learning-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0454-droid-policy-learning-outreach.md
 
 Thanks for the DROID policy-learning code; a large in-the-wild manipulation dataset is a real asset for the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

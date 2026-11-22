@@ -101,7 +101,7 @@ Items 1–6 from "Unresolved questions" above.
 
 `agri-cruiser/agri-cruiser` has Issues enabled (2 open at outreach time; verified 2026-05-26). URML's planned channel: open a single Issue on `agri-cruiser/agri-cruiser` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

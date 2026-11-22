@@ -50,7 +50,7 @@ deferred on is now real, his Q4 answer welcome whenever.
 
 **Public, on zivid/zivid-ros#163** (posted under idoco2003, VIBE line, no ask):
 
-> Closing the loop on the schema questions from May: RFC-0682 (https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0682-3d-camera-declaration.md) is on main. It follows the guidance from the email exchange rather than inventing shapes: a 3D camera declares its primary product as a color point cloud with per-point attributes (xyz, rgba, snr, normals), accuracy is never a scalar (the manifest points at the per-model datasheet instead), acquisition modes stay the camera's business, and `pick_from` gained no vision-source field. The one open item that was ours to decide, hand-eye calibration, is a `mount` declaration (eye-in-hand or eye-to-hand against a declared frame, with an opaque reference to the calibration artifact). The Zivid Two cell manifest in the repo demonstrates every field. No ask; corrections welcome.
+> Closing the loop on the schema questions from May: RFC-0682 (https://github.com/urml-dev/URML/blob/main/docs/rfcs/0682-3d-camera-declaration.md) is on main. It follows the guidance from the email exchange rather than inventing shapes: a 3D camera declares its primary product as a color point cloud with per-point attributes (xyz, rgba, snr, normals), accuracy is never a scalar (the manifest points at the per-model datasheet instead), acquisition modes stay the camera's business, and `pick_from` gained no vision-source field. The one open item that was ours to decide, hand-eye calibration, is a `mount` declaration (eye-in-hand or eye-to-hand against a declared frame, with an opaque reference to the calibration artifact). The Zivid Two cell manifest in the repo demonstrates every field. No ask; corrections welcome.
 >
 > AI-assisted prose, maintainer-reviewed before posting (see VIBE.md). Human-only correspondence available on request.
 
@@ -64,7 +64,7 @@ deferred on is now real, his Q4 answer welcome whenever.
 >
 > The one question you left with us, hand-eye calibration, became a small `mount` declaration: eye-in-hand or eye-to-hand against a declared frame, with an opaque reference to the calibration artifact and the geometry riding the frame transforms we already had. No calibration file format invented.
 >
-> The Zivid Two cell manifest in the repo demonstrates every field: https://github.com/URML-MARS/URML/blob/main/reference/validator/tests/fixtures/manifests/zivid_two_cell.yaml
+> The Zivid Two cell manifest in the repo demonstrates every field: https://github.com/urml-dev/URML/blob/main/reference/validator/tests/fixtures/manifests/zivid_two_cell.yaml
 >
 > Nothing to ask. If any of it misrepresents how Zivid thinks about these fields, I would rather fix it than leave it wrong.
 >
@@ -76,10 +76,10 @@ deferred on is now real, his Q4 answer welcome whenever.
 Gate: the harness PR is merged and the blog post is live before anything below goes out. Founder-voiced channels are first person, no AI footer. GitHub posts carry the VIBE line. No public post names any other engaged org. Record each send in `outreach-move71.yaml` and on the commitments page.
 
 Links every draft uses:
-- Harness: https://github.com/URML-MARS/URML/tree/main/examples/physical-ai-safety-eval
-- Positioning: https://github.com/URML-MARS/URML/blob/main/docs/integrations/model-hardware-standard.md
+- Harness: https://github.com/urml-dev/URML/tree/main/examples/physical-ai-safety-eval
+- Positioning: https://github.com/urml-dev/URML/blob/main/docs/integrations/model-hardware-standard.md
 - Blog: https://urml.dev/blog/mhs-and-urml/
-- RFC-0683: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0683-model-hardware-standard-outreach.md
+- RFC-0683: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0683-model-hardware-standard-outreach.md
 
 ### 4.1 Research-preview application (founder submits at modelhardwarestandard.com)
 
@@ -89,7 +89,7 @@ Links every draft uses:
 >
 > Why MHS: MHS answers what a device is and what it refuses per call. URML answers whether the whole program is admissible on that device in this deployment before the first call, and lets a site cap a device below its vendor limits. We would like to build, under Apache 2.0 and during the preview: an importer that reads an MHS reference file into a capability manifest (we ship the same for URDF), an adapter that dispatches validated URML programs through MHS read/write, and conformance fixtures for MHS-driven devices, starting with the two partners we already support.
 >
-> What exists today: a hermetic safety-evaluation harness for agents operating physical equipment, built against a lab cell shaped like the assay in your announcement, reporting refusals with machine-readable reasons, envelope verdicts over rehearsed traces, and the evidence class of every limit relied on: https://github.com/URML-MARS/URML/tree/main/examples/physical-ai-safety-eval
+> What exists today: a hermetic safety-evaluation harness for agents operating physical equipment, built against a lab cell shaped like the assay in your announcement, reporting refusals with machine-readable reasons, envelope verdicts over rehearsed traces, and the evidence class of every limit relied on: https://github.com/urml-dev/URML/tree/main/examples/physical-ai-safety-eval
 >
 > Contact: Ido Yahalomi, greenvh@gmail.com. No ask beyond access to the specification.
 
@@ -153,8 +153,8 @@ Links every draft uses:
 >
 > I applied to the research preview. If you are one of the partners, or you run a lab about to hand an agent a pipetting robot, the harness is the thing to try first.
 >
-> Harness: https://github.com/URML-MARS/URML/tree/main/examples/physical-ai-safety-eval
-> Where URML sits, with the mapping table: https://github.com/URML-MARS/URML/blob/main/docs/integrations/model-hardware-standard.md
+> Harness: https://github.com/urml-dev/URML/tree/main/examples/physical-ai-safety-eval
+> Where URML sits, with the mapping table: https://github.com/urml-dev/URML/blob/main/docs/integrations/model-hardware-standard.md
 > Original post: https://urml.dev/blog/mhs-and-urml/
 
 ### 4.4 Show HN (founder posts; title + first comment)
@@ -270,8 +270,8 @@ others.
 
 Links every draft uses:
 - Blog: https://urml.dev/blog/goalkeeper/
-- Demo: https://github.com/URML-MARS/URML/tree/main/examples/goalkeeper
-- Safety model: https://github.com/URML-MARS/URML/blob/main/docs/safety/safety-model.md
+- Demo: https://github.com/urml-dev/URML/tree/main/examples/goalkeeper
+- Safety model: https://github.com/urml-dev/URML/blob/main/docs/safety/safety-model.md
 
 ### 6.1 LinkedIn post (founder profile; lead with the refusal demo and the before/after numbers; link to the blog)
 

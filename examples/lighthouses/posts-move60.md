@@ -40,13 +40,13 @@ The seam: a single-DoF gripper abstraction cannot describe a multi-DoF hand, so 
 
 Two real questions: (1) is a typed grasp-intent layer useful above the SDK, or does your stack already carry that admissibility reasoning? (2) Does the hand's capability set (DoF, finger count, supported grasp types, in-hand support) map onto URML's dexterity declaration cleanly, or is something missing?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0624-aero-hand-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0624-aero-hand-outreach.md
 
 Thanks for the Aero Hand; an affordable open multi-DoF hand is exactly the kind of end-effector a typed grasp model should be able to describe.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -67,13 +67,13 @@ The seam: URML has a dexterous gripper kind with a dexterity declaration (DoF, f
 
 Two real questions: (1) is a typed grasp-intent layer useful above orca_core? (2) Does the ORCA hand's joint structure and grasp-type set map onto URML's dexterity declaration cleanly, or do the tendon-coupling details need something the manifest does not yet express?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0625-orca-hand-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0625-orca-hand-outreach.md
 
 Thanks for orca_core; an open 17-DoF hand with a clean control core is a great place to test a typed grasp declaration.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -94,13 +94,13 @@ The seam: URML has a dexterous gripper kind with a dexterity declaration (DoF, f
 
 Two real questions: (1) is a typed grasp-intent layer useful above your ROS 2 control modes (PID, Cartesian, shadowing)? (2) Does the hand's DoF and grasp-type set map onto URML's dexterity declaration cleanly, and does the fingertip force sensing line up with a declared grasp-force envelope?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0626-bidexhand-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0626-bidexhand-outreach.md
 
 Thanks for BiDexHand; a cable-driven hand that senses fingertip force is exactly where a declared envelope and a runtime monitor reinforce each other.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -121,13 +121,13 @@ The seam: a close-with-force command on a Hand-E is a typed grasp intent, a targ
 
 Two real questions: (1) is a typed grasp-intent layer useful above a ros2_control gripper driver? (2) Does a Hand-E envelope (aperture range, force limit, speed) map onto a capability manifest cleanly, and does the multi-backend design (fake / serial / UR tool comm) raise anything a layer above it should account for?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0627-robotiq-hande-driver-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0627-robotiq-hande-driver-outreach.md
 
 Thanks for the driver; a clean ros2_control gripper interface is the simplest place to see whether a typed grasp check adds anything.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -148,13 +148,13 @@ The seam: a grasp on an RG2 or RG6 is a typed intent, a target width and a force
 
 Two real questions: (1) is a typed grasp-intent layer useful above the controller? (2) Does an RG2/RG6 envelope (width range, force, speed) map onto a capability manifest cleanly, and would the Isaac Sim path be a good place to demonstrate a validated grasp before running it on hardware?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0628-onrobot-ros2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0628-onrobot-ros2-outreach.md
 
 Thanks for the controller; sim-and-hardware on one interface is exactly where a declare-once-validate-everywhere manifest is worth trying.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -175,11 +175,11 @@ The seam: opening or closing a 2F gripper through your package is a grasp intent
 
 Two real questions: (1) is a typed grasp-intent layer useful above a service-level gripper interface? (2) Would a combined arm-and-gripper manifest (UR motion plus a 2F grasp) be a useful first example to write together?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0629-ros2-robotiqgripper-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0629-ros2-robotiqgripper-outreach.md
 
 Thanks for the package; a 2F-on-UR cell is a natural place to show an arm motion and a gripper grasp validated in one manifest.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

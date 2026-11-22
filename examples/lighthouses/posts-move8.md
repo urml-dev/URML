@@ -45,7 +45,7 @@ URML's value proposition for Roomba via dorita980: a homeowner writes "vacuum th
 
 URML proposes a new `reference/home-runtime/` package with `RoombaAdapter` as the first adapter in it, composing above dorita980 + ha-rest980-roomba without requiring upstream changes.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0100-irobot-roomba-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0100-irobot-roomba-outreach.md
 
 This is proposal-only, part of URML's **Move #8** outreach (home-assistance robotics + parts). Eight targets in this wave (5 vendor-style + 3 research-collab + community), spanning consumer cleaning + outdoor + pool + servo + perception + Home Assistant + voice. URML has sent ~100 RFCs across eight outreach moves to date; single-digit substantive responses (the outreach is real, the language is early).
 
@@ -87,7 +87,7 @@ URML's value proposition for Husqvarna Automower: a homeowner writes "mow the ba
 
 URML proposes the `HusqvarnaAutomowerAdapter` in a new `reference/home-runtime/` package (sibling to the indoor-floor adapter for Roomba and the aquatic adapter for pool cleaners). Same English-language URML program retargets across indoor + outdoor + pool by manifest swap.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0101-husqvarna-automower-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0101-husqvarna-automower-outreach.md
 
 This is proposal-only, part of URML's **Move #8** outreach (home-assistance robotics + parts). Eight targets in this wave. URML has sent ~100 RFCs across eight outreach moves to date; single-digit substantive responses (the outreach is real, the language is early).
 
@@ -129,7 +129,7 @@ URML's value proposition for Bear / Servi: a customer running a mixed-vendor rob
 
 The integration is at the API level. URML's substrate-Protocol sits at the intent layer above Bear Cloud, not inside Servi's proprietary core. URML's Move #8 home-assistance framing includes Servi specifically for the senior-living + assisted-living adjacency (home-assistance continuum).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0102-bear-robotics-servi-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0102-bear-robotics-servi-outreach.md
 
 This is proposal-only, part of URML's **Move #8** outreach (home-assistance robotics + parts). Eight targets in this wave. URML has sent ~100 RFCs across eight outreach moves to date; single-digit substantive responses.
 
@@ -173,7 +173,7 @@ URML proposes the `MaytronicsDolphinAdapter` in a new `reference/home-runtime/` 
 
 License note: GitHub's API does not surface an SPDX license identifier on the dolphin-robot repo at verification time. URML's RFC asks the maintainer to clarify the license posture before any adapter code reuse.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0103-maytronics-dolphin-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0103-maytronics-dolphin-outreach.md
 
 This is proposal-only, part of URML's **Move #8** outreach (home-assistance robotics + parts). Eight targets in this wave. URML has sent ~100 RFCs across eight outreach moves to date; single-digit substantive responses.
 
@@ -218,7 +218,7 @@ License alignment is clean (both Apache-2.0). The proposal is documented cross-c
 
 ROBOTIS Dynamixel is the first servo-vendor RFC in URML's outreach landscape. URML's prior Move #1 touched industrial-component vendors (LiDAR, safety scanners, pneumatics, grippers); ROBOTIS Dynamixel is the home-scale / educational / research counterpart.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0104-robotis-dynamixel-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0104-robotis-dynamixel-outreach.md
 
 This is proposal-only, part of URML's **Move #8** outreach (home-assistance robotics + parts). Eight targets in this wave. URML has sent ~100 RFCs across eight outreach moves to date; single-digit substantive responses.
 
@@ -262,7 +262,7 @@ OAK-D is the de facto affordable 3D-perception module for home / educational / r
 
 License alignment: MIT on depthai-ros + depthai-python composes cleanly with URML's Apache-2.0 `reference/`. The proposal is documented cross-citation + a hermetic DepthAI-conformance test fixture in URML's `conformance/` suite. NOT a stand-alone Luxonis adapter (perception modules sit inside platform adapters, not alongside them).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0105-luxonis-oak-d-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0105-luxonis-oak-d-outreach.md
 
 This is proposal-only, part of URML's **Move #8** outreach (home-assistance robotics + parts). Eight targets in this wave. URML has sent ~100 RFCs across eight outreach moves to date; single-digit substantive responses.
 
@@ -306,7 +306,7 @@ Home Assistant is the strategic anchor for URML's Move #8 home-assistance wave s
 
 A candidate `urml` HACS integration prototype would expose URML compilation as a HA service; documentation lives in URML's `reference/home-runtime/README.md` mapping URML primitives to HA entity actions.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0106-home-assistant-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0106-home-assistant-outreach.md
 
 This is proposal-only, part of URML's **Move #8** outreach (home-assistance robotics + parts). Eight targets in this wave. URML has sent ~100 RFCs across eight outreach moves to date; single-digit substantive responses. The engagement payload here is intentionally light given the HA maintainer-community scale.
 
@@ -353,7 +353,7 @@ License alignment is clean (both Apache-2.0). URML's RFC-0021 on-device LLM brid
 
 This RFC pivoted to OVOS at verification time: the original Move #8 plan named rhasspy3, but rhasspy3 was archived shortly before this RFC drafted. OVOS is the active independent voice-stack trajectory.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0107-openvoiceos-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0107-openvoiceos-outreach.md
 
 This is proposal-only, part of URML's **Move #8** outreach (home-assistance robotics + parts). Eight targets in this wave (closes the wave). URML has sent ~100 RFCs across eight outreach moves to date; single-digit substantive responses.
 

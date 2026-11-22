@@ -41,13 +41,13 @@ The seam: on a device coupled to a person, the safety envelope is the whole poin
 
 Two real questions: (1) is a typed, statically-validated intent layer useful above a CANopen control stack like this, or does your control layer already carry that admissibility reasoning? (2) Do a device's per-joint torque ceilings and position ranges map onto a capability manifest and safety envelope cleanly, for something like the X2 or the ArmMotus arms?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0618-corc-exoskeleton-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0618-corc-exoskeleton-outreach.md
 
 Thanks for CORC; an open CANopen control stack for exo and rehab hardware is exactly where a checked envelope before actuation earns its keep.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -68,13 +68,13 @@ The seam: the SDK knows the leg's joint ranges and torque ceilings; URML turns t
 
 Two real questions: (1) is a static safety-envelope check useful above the device API, or does the SDK already refuse inadmissible commands? (2) Do the leg's declared limits map onto a capability manifest and safety envelope cleanly, or do prosthesis dynamics need something a manifest does not yet express? A single joint (knee or ankle) would be a natural first try.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0619-opensourceleg-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0619-opensourceleg-outreach.md
 
 Thanks for opensourceleg; a widely used open prosthesis SDK is a good place to see whether a typed envelope check adds anything above the device API.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -95,13 +95,13 @@ The seam: a declared limit on actuator torque or speed is a property that can be
 
 Two real questions: (1) is a static pre-dispatch envelope check useful alongside your runtime monitoring, or does the runtime side already cover what a static check would catch? (2) Do per-actuator torque/speed/position limits map onto a capability manifest and safety envelope cleanly for a QDD-over-CAN stack?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0620-epically-powerful-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0620-epically-powerful-outreach.md
 
 Thanks for epically-powerful; building safety in around QDD actuation is the right instinct, and a static check before dispatch may be a useful second layer.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -122,13 +122,13 @@ The seam: a mow job is a goal plus constraints, an area to cover, a boundary not
 
 Two real questions: (1) is a typed, validated job-intent layer useful above your coverage-and-navigation stack, or does OpenMower already gate jobs against the machine's limits? (2) Which constraint (boundary, keep-out, speed, blade-engagement) would be the most valuable to check statically before a job runs?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0621-open-mower-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0621-open-mower-outreach.md
 
 Thanks for OpenMower; an open autonomous mower is a great example of an outdoor machine where a checked job envelope before actuation genuinely matters.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -149,13 +149,13 @@ The seam: URML lifts the platform's drive type (skid-steer), its speed and accel
 
 Two real questions: (1) is a typed capability manifest plus a validated motion intent useful above a vendor platform driver? (2) Do a skid-steer rover's limits (speed, acceleration, turning constraints) map onto a manifest and safety envelope cleanly? A single platform (Rover Zero, say) would be a natural first manifest.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0622-roverrobotics-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0622-roverrobotics-outreach.md
 
 Thanks for the rover driver; a clean vendor platform is exactly where a capability manifest has something concrete to describe.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -176,11 +176,11 @@ The seam: URML declares the rover's drive type, speed limits, and motion envelop
 
 Two real questions: (1) is a typed manifest plus a validated motion intent useful above the Leo Rover driver, in research and in teaching? (2) Would a classroom-facing example (a sentence to a validated rover motion) be worth building together?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0623-leo-rover-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0623-leo-rover-outreach.md
 
 Thanks for the Leo Rover; an accessible research-and-education rover is a natural place to make the intent-to-validated-action loop visible.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

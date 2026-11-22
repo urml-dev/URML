@@ -11,7 +11,7 @@ Context: a two-agent free-range search found the cold-GitHub surface essentially
 
 **Title:** URML: validating a retargeted humanoid trajectory against the target's whole-body envelope
 
-Hi, disclosure first: this is AI-assisted prose I reviewed and approved before posting (background: https://github.com/URML-MARS/URML/blob/main/VIBE.md). Glad to switch to human-only if you prefer.
+Hi, disclosure first: this is AI-assisted prose I reviewed and approved before posting (background: https://github.com/urml-dev/URML/blob/main/VIBE.md). Glad to switch to human-only if you prefer.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language whose one job is to check an intended motion against a robot's declared capabilities and a safety envelope before it runs.
 
@@ -33,7 +33,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Title:** URML: validating the MPC velocity command against the platform envelope before dispatch
 
-Hi. Up front: this is AI-assisted prose I reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md); say the word if you would rather correspond human-only.
+Hi. Up front: this is AI-assisted prose I reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md); say the word if you would rather correspond human-only.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language that checks an intended action against a robot's declared capability manifest and safety envelope before it runs.
 

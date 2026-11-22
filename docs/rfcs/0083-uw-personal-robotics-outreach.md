@@ -104,7 +104,7 @@ Items 1–6 from "Unresolved questions" above.
 
 `personalrobotics/aikido` is the highest-visibility repo at 231 stars (verified 2026-05-25). URML's planned channel: open a single Issue on `personalrobotics/aikido` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Srinivasa via `sidd@cs.washington.edu` per the lab website.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

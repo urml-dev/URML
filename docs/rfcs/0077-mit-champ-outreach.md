@@ -159,7 +159,7 @@ RFC-0077 ships as a single RFC document PR. No adapter code in this PR. Research
 
 `chvmp/champ` has Issues enabled (51 open) and Discussions enabled (community forum). Verified 2026-05-24. URML's planned channel: open a Discussion on `chvmp/champ` (or labelled Issue if maintainers prefer), pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

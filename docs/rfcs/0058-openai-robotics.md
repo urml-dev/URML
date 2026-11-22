@@ -116,7 +116,7 @@ URML's planned channel: file an Issue on `openai/openai-cookbook` referencing th
 
 URML's own public Discussions for the broader Move #2 conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

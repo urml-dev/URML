@@ -120,7 +120,7 @@ Items 1–8 from "Unresolved questions" above.
 
 `home-assistant/core` has both Issues (~4000 open) and the broader GitHub Discussions / community forum (community.home-assistant.io) (verified 2026-05-26). URML's planned channel: open a single Issue on `home-assistant/core` labelled with the closest `question` / `feature_request` equivalent, pointing to this RFC. If HA maintainers redirect to Discussions or the community forum, URML pivots accordingly.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

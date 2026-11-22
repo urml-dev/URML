@@ -102,7 +102,7 @@ For the `LORD-MicroStrain/microstrain_inertial` maintainers:
 2. **IMU measurement-type shape.** URML's v0.1 enum has no `acceleration` / `angular_velocity` / `orientation` types — would a Spec RFC adding these (parallel to RFC-0039's `point_cloud`) be useful from an INS vendor's perspective, or is the `custom` escape-hatch sufficient?
 3. **INS fusion declaration.** 3DM-GQ7 emits fused pose. Should URML's manifest declare "this device emits GNSS-aided INS pose" as a first-class fact, or is that better surfaced through the application layer?
 4. **RTK / NTRIP-correction declaration.** The MicroStrain NTRIP client repo handles correction streams; URML's manifest has no NTRIP declaration today. Is "this INS accepts NTRIP corrections from constellations X / Y / Z" something the manifest should carry?
-5. **Adapter home.** When the URML-side `MicroStrainAdapter` ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `LORD-MicroStrain/microstrain-urml` repo, or external in URML-MARS/URML only? URML's default assumption is the URML repo unless invited otherwise.
+5. **Adapter home.** When the URML-side `MicroStrainAdapter` ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `LORD-MicroStrain/microstrain-urml` repo, or external in urml-dev/URML only? URML's default assumption is the URML repo unless invited otherwise.
 6. **Conformance listing.** Would the MicroStrain team consider a README link to URML's compatible-runtimes registry once a working adapter ships and a real-hardware run is recorded? (Per [RFC-0014](0014-substrate-conformance.md), self-reported tier, no continuous obligation.)
 7. **Anything else.**
 
@@ -118,7 +118,7 @@ Items 1–7 from Unresolved questions above.
 
 `LORD-MicroStrain/microstrain_inertial` has Issues enabled. URML's planned channel: open a single Issue labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

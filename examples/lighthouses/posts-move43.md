@@ -45,13 +45,13 @@ URML has a "LearnedPolicy" declaration: a manifest can say "this capability is s
 
 Two real questions: (1) Does exporting a trained policy's spaces (and VecNormalize bounds) as a declared deployment envelope make sense as an optional artifact? (2) Is a validated-intent gate between an SB3 policy and a real robot interesting, or already covered by something you'd recommend -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0485-stable-baselines3-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0485-stable-baselines3-outreach.md
 
 Thanks for SB3; it's the reference RL library for a huge number of people, which is exactly why the deployment-envelope question is worth asking here first.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -72,13 +72,13 @@ URML has a "LearnedPolicy" declaration for exactly this. Two seams: (1) a single
 
 Two real questions: (1) Would a single-file example that emits a URML deployment envelope alongside a trained policy be a useful reference for the deployment side? (2) Is the validated-deployment gate interesting, or out of scope for a single-file-algorithms project -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0486-cleanrl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0486-cleanrl-outreach.md
 
 Thanks for CleanRL; the single-file philosophy is the reason this would make such a clean worked example.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -99,13 +99,13 @@ URML has a "LearnedPolicy" declaration built for this. Two seams: (1) the sim2re
 
 Two real questions: (1) For a sim2real deployment, is a declared envelope (the simulated training domain a policy must stay within on the real robot) a useful typed artifact to emit alongside a trained skrl agent? (2) Is the validated-deployment gate interesting for the real-robot side of sim2real -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0487-skrl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0487-skrl-outreach.md
 
 Thanks for skrl; the explicit sim2real framing is what makes this a natural fit.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -126,13 +126,13 @@ URML has a "LearnedPolicy" declaration: a manifest can say "this capability is s
 
 Two real questions: (1) Does mapping a policy's TensorSpec specs onto a declared deployment envelope make sense as an optional export? (2) Is the validated-deployment gate interesting for the robot-deployment side of TorchRL -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0488-torchrl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0488-torchrl-outreach.md
 
 Thanks for TorchRL; the primitive-first stance is part of why the mapping feels clean.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -153,13 +153,13 @@ URML has a "LearnedPolicy" declaration: a manifest can say "this capability is s
 
 Two real questions: (1) Does exporting an agent's MDPInfo spaces (plus training-domain bounds) as a declared deployment envelope make sense as an optional artifact? (2) Is the validated-deployment gate interesting, or already covered elsewhere -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0489-mushroom-rl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0489-mushroom-rl-outreach.md
 
 Thanks for MushroomRL; the explicit MDPInfo structure is what makes this mapping straightforward.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -180,11 +180,11 @@ URML has a "LearnedPolicy" declaration for exactly this. Two seams: (1) policy t
 
 Two real questions: (1) Does exporting an RLlib policy's spaces (plus training-domain bounds) as a declared deployment envelope make sense? (2) For an RLlib policy serving a robot, is a validated-intent gate interesting, or already addressed by a pattern you'd recommend -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0490-ray-rllib-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0490-ray-rllib-outreach.md
 
 Thanks for RLlib. To be clear, the ask is scoped to RLlib, not Ray core.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

@@ -40,13 +40,13 @@ The specific question is structural. PyLabRobot abstracts instruments behind a u
 
 Two real questions: (1) is the deck/labware model close enough to a capability manifest that validating a protocol against it before dispatch would be meaningful? (2) Is a typed, statically-validated intent layer above the universal command set useful, or redundant with what PyLabRobot already checks?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0587-pylabrobot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0587-pylabrobot-outreach.md
 
 Thanks for PyLabRobot; a genuinely hardware-agnostic lab SDK is rare, and it is the closest structural cousin to URML I have come across.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -67,13 +67,13 @@ The mapping: MADSci/WEI schedule a workflow across nodes; each node advertises w
 
 Two real questions: (1) does a typed per-node validation step fit how MADSci/WEI dispatch a workflow, or is node-level checking already handled? (2) Does a node's capability advertisement map cleanly toward a capability manifest, and a workcell onto a fleet roster?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0588-ad-sdl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0588-ad-sdl-outreach.md
 
 Thanks for the AD-SDL stack; an open, national-lab workcell-orchestration layer is exactly the kind of peer a per-node intent gate wants to understand its boundary with.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -94,13 +94,13 @@ Where the two might meet is narrow and specific: on the steps that touch a physi
 
 Two real questions: (1) do Aquarium's typed unit operations and URML's typed primitives describe the same kind of thing closely enough that a shared capability check on equipment-facing steps would help? (2) Is a pre-dispatch validation against declared equipment capabilities meaningful in Aquarium's model, or already covered?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0589-aquarium-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0589-aquarium-outreach.md
 
 Thanks for Aquarium; a lab OS built around typed protocols is a thoughtful design, and the typed-operation parallel felt worth comparing notes on.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -121,13 +121,13 @@ The difference URML leans on is an explicit pre-dispatch validation pass: before
 
 Two real questions: (1) is a pre-dispatch validation pass (a plan checked against declared instrument capabilities and limits) a meaningful addition to the plan/run-engine model? (2) Do Bluesky's device abstractions map toward a capability manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0590-bluesky-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0590-bluesky-outreach.md
 
 Thanks for Bluesky; the declarative-plan design is exactly the kind of thing that made me think the validation question was worth asking the people who built it.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -148,13 +148,13 @@ The mapping: AlabOS schedules a task graph across devices. URML's candidate role
 
 Two real questions: (1) is a typed per-task validation step useful in the AlabOS scheduling model, or is device-level checking already handled? (2) Do AlabOS device/task definitions map toward a capability manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0591-alabos-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0591-alabos-outreach.md
 
 Thanks for AlabOS; a real autonomous-materials lab running end to end is exactly where a per-task admissibility check earns or fails to earn its place, and you would know which.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -175,13 +175,13 @@ The mapping: a protocol step, once checked against the configured deck's capabil
 
 Two real questions: (1) is a typed, validated intent layer (a step checked against the configured deck before it becomes PyHamilton calls) useful above PyHamilton? (2) Could a deck/labware configuration serve as the capability manifest the validation checks against?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0592-pyhamilton-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0592-pyhamilton-outreach.md
 
 Thanks for PyHamilton; a widely-used, no-nonsense interface to real liquid handlers is a good honest test of whether a typed intent layer above it pulls its weight.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -202,13 +202,13 @@ The mapping: an acquisition is a declared intent (image this region, at these ch
 
 Two real questions: (1) is a typed, validated instruction layer (an acquisition checked against the scope's declared capabilities before dispatch) useful above Pycro-Manager? (2) Does a microscope's configuration map onto a capability manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0593-pycro-manager-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0593-pycro-manager-outreach.md
 
 Thanks for Pycro-Manager; reproducible scripted acquisition is exactly the setting where stating an instruction's limits up front and checking them might be worth something.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -229,13 +229,13 @@ The angle is the "run it on hardware" step of the loop. URML would declare that 
 
 Two real questions: (1) is a typed, validated intent step (the actuation checked against the rig's declared capabilities) a useful thing to make explicit in a teaching SDL loop? (2) Does showing the natural-language to validated-intent path add pedagogical value here?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0594-self-driving-lab-demo-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0594-self-driving-lab-demo-outreach.md
 
 Thanks for the demo; lowering the barrier to the self-driving-lab loop is genuinely valuable, and making the intent-and-validation step legible feels like it fits that goal.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -256,11 +256,11 @@ The mapping: NIMS-OS decides the next experiment and drives the equipment. URML'
 
 Two real questions: (1) is a typed, validated device action useful in the NIMS-OS loop, or is equipment-level checking already handled? (2) Could a runtime-neutral typed action representation help at the file-exchange boundary to non-Python instruments?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0595-nimsos-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0595-nimsos-outreach.md
 
 Thanks for NIMS-OS; an autonomous-experiment loop that deliberately reaches non-Python instruments is exactly where a neutral typed action representation is most interesting to think about.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

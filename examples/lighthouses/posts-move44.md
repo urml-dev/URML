@@ -43,13 +43,13 @@ The mapping: OpenArm's joints, end-effector, reach, and payload become a URML ca
 
 Two real questions: (1) does mapping OpenArm's single- and dual-arm configs onto a URML manifest (per-arm declaration + a bimanual primitive) read right for how the arms are actually addressed? (2) Is a validated-intent gate above the OpenArm SDK interesting for contact-rich work -- and which is the cleaner first seam, the manifest mapping or the dispatch adapter?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0491-openarm-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0491-openarm-outreach.md
 
 Thanks for OpenArm; an open bimanual platform is exactly where the dual-arm-intent question is worth asking.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -70,13 +70,13 @@ The mapping: Upkie's wheeled-biped mobility and its balance envelope (the limits
 
 Two real questions: (1) does declaring Upkie's mobility plus a `whole_body` balance envelope as a URML manifest read right for a wheeled biped? (2) Is a validated-intent gate above the balancing controller interesting -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0492-upkie-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0492-upkie-outreach.md
 
 Thanks for Upkie; the balancing-controller-plus-high-level-intent split is exactly the seam this asks about.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -97,13 +97,13 @@ The mapping: the base's drive type (differential / mecanum), velocity limits, an
 
 Two real questions: (1) does mapping a linorobot2 base (drive type, velocity limits, named locations) onto a URML manifest read right? (2) Is an English-to-validated-`move_to` front door above the nav stack interesting for the build-your-own audience -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0493-linorobot2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0493-linorobot2-outreach.md
 
 Thanks for linorobot2; "one English sentence makes the base move" is exactly the path a build-your-own platform shows off.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -124,13 +124,13 @@ The mapping: the legged platform BotBrain drives declares its mobility (a legged
 
 Two real questions: (1) does a URML manifest for the legged platform (legged drive type + `whole_body` limits + locations) fit how BotBrain models its robot? (2) Is a validated-intent layer above the nav / teleop modules interesting, or already covered by something in the stack -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0494-botbrain-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0494-botbrain-outreach.md
 
 Thanks for BotBrain; a modular legged-robot brain is a natural place to ask where a validated-intent gate fits.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -151,13 +151,13 @@ The mapping: the arm's joints, reach, payload, and end-effector become a URML ca
 
 Two real questions: (1) does mapping a PAROL6 / Faze4 arm (reach, payload, gripper) onto a URML manifest read right for a desktop arm? (2) Is a validated pick/place intent layer above the controller interesting -- and which platform (PAROL6 or Faze4) is the better place to start?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0495-source-robotics-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0495-source-robotics-outreach.md
 
 Thanks for the PAROL6 and Faze4; widely-built open arms are exactly where this kind of typed-intent layer is worth trying.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -178,13 +178,13 @@ Nothing here asks the project to adopt, host, or maintain anything. This is a re
 
 Two real questions: (1) does a URML manifest for the biped (`whole_body` structure + balance envelope) read right, and does a validated-intent layer above the Python API fit? (2) Is a declared training envelope for the Isaac Lab side useful -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0496-the-bimo-project-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0496-the-bimo-project-outreach.md
 
 Thanks for BiMo; the clean Python API plus the sim-to-real workflow are exactly what makes both seams concrete.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -205,13 +205,13 @@ Nothing here asks the project to adopt, host, or maintain anything. This is a re
 
 Two real questions: (1) does a URML `whole_body` manifest for the humanoid read right? (2) For the RL / sim-to-real side, is a declared training envelope on a deployed policy useful -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0497-zeroth-bot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0497-zeroth-bot-outreach.md
 
 Thanks for Zeroth Bot; a low-cost RL humanoid is exactly where bounding a learned policy by its training envelope matters.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -232,13 +232,13 @@ The mapping: the quadruped's legged drive type and its `whole_body` stability li
 
 Two real questions: (1) does a URML manifest for a quadruped (legged drive type + `whole_body` limits) read right for the robots this stack targets? (2) Is a validated-intent layer that emits goals onto the ros2_control controllers interesting -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0498-quadruped-ros2-control-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0498-quadruped-ros2-control-outreach.md
 
 Thanks for the project; a clean quadruped ros2_control stack is a natural execution layer for a validated-intent gate.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -259,13 +259,13 @@ The mapping: the hexapod's six legs and their degrees of freedom map onto a URML
 
 Two real questions: (1) does mapping the six-leg structure onto a URML `whole_body` declaration read right? (2) Is a typed, validated gait/pose intent layer above the kinematics engine interesting -- for the simulator, or the hexapod-irl real-hardware path -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0499-hexapod-robot-simulator-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0499-hexapod-robot-simulator-outreach.md
 
 Thanks for the hexapod work; the first-principles kinematics make the structure declaration unusually clean.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -286,11 +286,11 @@ The mapping: the Magician's reach, payload, and end-effector become a URML manif
 
 Two real questions: (1) does mapping the Dobot Magician (reach, payload, gripper) onto a URML educational-profile manifest read right? (2) Is an English-to-validated-pick/place front door above magician_ros2 interesting for classroom use -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0500-magician-ros2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0500-magician-ros2-outreach.md
 
 Thanks for magician_ros2; a clean ROS 2 stack for a classroom arm is a great fit for the English-front-door path.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

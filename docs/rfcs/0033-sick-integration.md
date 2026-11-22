@@ -123,7 +123,7 @@ RFC-0033 ships as a single RFC document PR. No code / manifest / fixture change 
 
 URML public Discussions (per [RFC-0008](0008-community-discussions.md)):
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Or open an Issue on `SICKAG/sick_safetyscanners2`. Private channel via `MAINTAINERS.md`.
 

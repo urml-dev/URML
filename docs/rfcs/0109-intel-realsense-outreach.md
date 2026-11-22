@@ -112,7 +112,7 @@ For the `realsenseai/librealsense` maintainers:
 1. **Color-on-point-cloud declaration.** URML's `Sensor.point_cloud` is structurally scalar today; how would you model the RGBA + per-point attribute combination that RealSense produces? Is a separate `measurement_type: color_point_cloud` the right shape, or a per-point attribute list on the existing `point_cloud` type, or something else?
 2. **Inertial fusion semantics.** URML's manifest can declare the raw IMU outputs but not the fused-pose declaration that D435i / T265 emit. Is a `fusion` capability declaration something the manifest should carry, or is that better left to the application layer?
 3. **Cross-stream synchronization.** Hardware-synced multi-stream timing is a real RealSense feature; should URML's manifest carry a `hw_sync: true` declaration so a downstream program can rely on it?
-4. **Adapter home.** When the URML-side `RealSenseAdapter` ships, should it live in URML's `reference/perception-runtime/` (URML repo), in a separately-maintained `realsenseai/realsense-urml` repo under your org, or external in URML-MARS/URML only? URML's default assumption is the URML repo unless invited otherwise.
+4. **Adapter home.** When the URML-side `RealSenseAdapter` ships, should it live in URML's `reference/perception-runtime/` (URML repo), in a separately-maintained `realsenseai/realsense-urml` repo under your org, or external in urml-dev/URML only? URML's default assumption is the URML repo unless invited otherwise.
 5. **Conformance listing.** Would the realsenseai team consider a README or wiki link to URML's compatible-runtimes registry once a working `RealSenseAdapter` ships, basic tests pass, and a real-hardware demonstration is recorded? (Per [RFC-0014](0014-substrate-conformance.md), self-reported tier, no continuous obligation.)
 6. **Object-detection capability declaration.** URML has `query_detection` as a v0.1 primitive (`object_class`, `attributes`, `where_near`, `where_within` → `DetectionResult`). For RealSense specifically: does the librealsense SDK ship a native detection / segmentation / tracking surface that URML's manifest should declare (extending the existing `perception.object_vocabulary` field), or is detection always an application-layer concern (ML model layered on top of the depth + RGB streams)? Confidence-score semantics also worth pinning if there is a native surface.
 7. **Anything else.**
@@ -129,7 +129,7 @@ Items 1–6 from Unresolved questions above.
 
 `realsenseai/librealsense` has both Issues and Discussions enabled with a CONTRIBUTING.md present. URML's planned channel: open a single Issue on `realsenseai/librealsense` labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

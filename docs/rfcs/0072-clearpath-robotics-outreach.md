@@ -174,7 +174,7 @@ RFC-0072 ships as a single RFC document PR. No adapter code in this PR. Ledger e
 
 `clearpathrobotics` org has 314 public repos (verified 2026-05-24). The most-active general repo is `cpr_gazebo` (233 stars). URML's planned channel: open a single Issue on `clearpathrobotics/cpr_gazebo` or `clearpathrobotics/clearpath_common` labelled with the closest `enhancement` equivalent, pointing to this RFC. If maintainers prefer a different per-platform thread, follow their preference.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

@@ -106,7 +106,7 @@ For the `septentrio-gnss/septentrio_gnss_driver` maintainers:
 3. **RTK / NTRIP-correction declaration.** Septentrio receivers accept NTRIP. Is "this receiver accepts NTRIP corrections from network X" something the manifest should carry?
 4. **Dual-antenna heading.** Mosaic-H's heading-from-baseline output — how should URML's manifest declare antenna topology?
 5. **Accuracy declaration.** URML accepted Zivid's framing (RFC-0035 Q2) that single-scalar accuracy misrepresents multi-dimensional reality. Does the same framing apply to GNSS? Per-mode accuracy figures (standalone vs RTK-float vs RTK-fixed) in the manifest, or out-of-band per datasheet?
-6. **Adapter home.** When the URML-side `SeptentrioGnssAdapter` ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `septentrio-gnss/septentrio-urml` repo, or external in URML-MARS/URML only? URML's default assumption is the URML repo unless invited otherwise.
+6. **Adapter home.** When the URML-side `SeptentrioGnssAdapter` ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `septentrio-gnss/septentrio-urml` repo, or external in urml-dev/URML only? URML's default assumption is the URML repo unless invited otherwise.
 7. **Conformance listing.** Would the Septentrio team consider a README link to URML's compatible-runtimes registry once a working adapter ships? (Per [RFC-0014](0014-substrate-conformance.md), self-reported tier, no continuous obligation.)
 8. **Anything else.**
 
@@ -122,7 +122,7 @@ Items 1–8 from Unresolved questions above.
 
 `septentrio-gnss/septentrio_gnss_driver` has Issues enabled. URML's planned channel: open a single Issue labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

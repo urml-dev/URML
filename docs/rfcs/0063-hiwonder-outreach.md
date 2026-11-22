@@ -198,7 +198,7 @@ The `Hiwonder` GitHub org has 36 public repos and 213 followers (verified 2026-0
 
 URML's own public Discussions for the broader Move #3 conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

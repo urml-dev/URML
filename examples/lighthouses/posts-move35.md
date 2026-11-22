@@ -36,13 +36,13 @@ URML's ROS 2 runtime meets Stretch on its ROS 2 action/service surface; "go to t
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for an external validated-intent layer above Stretch? (2) What should a URML capability manifest declare to describe a Stretch-class mobile manipulator honestly — drive type, arm reach/DOF, gripper + graspable classes, navigation bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0422-stretch-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0422-stretch-outreach.md
 
 Thanks for Stretch; an accessible open mobile manipulator is exactly the right place for this kind of layer to be designed with input.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -63,13 +63,13 @@ URML's ROS 2 runtime meets TIAGo on its ROS 2 action/service surface; "go to the
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for an external validated-intent layer above TIAGo? (2) What should a URML capability manifest declare to describe a TIAGo-class mobile manipulator honestly — drive type, torso lift, arm reach/DOF, gripper + graspable classes, navigation bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0423-tiago-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0423-tiago-outreach.md
 
 Thanks for TIAGo; a standard open research mobile manipulator is a great platform for this kind of work.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -90,13 +90,13 @@ The idea is the decide-then-do split applied to learning: a URML intent ("tidy t
 
 Two real questions: (1) Is wrapping a learned mobile-manipulation policy in a validated intent layer + envelope interesting in the robot-learning context? (2) What should a URML capability manifest declare to describe a holonomic mobile manipulator honestly — drive type, arm reach/DOF, gripper + graspable classes, workspace bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0424-tidybot2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0424-tidybot2-outreach.md
 
 Thanks for TidyBot++; an open, affordable mobile manipulator for learning is a real gift to the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -117,13 +117,13 @@ URML's ROS 2 runtime meets the stack on its ROS 2 action/service surface; "drive
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for a validated-intent layer above this platform? (2) What should a URML capability manifest declare to describe a TurtleBot3 + OpenMANIPULATOR honestly — drive type, arm reach/DOF, gripper + graspable classes, navigation bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0425-turtlebot3-manipulation-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0425-turtlebot3-manipulation-outreach.md
 
 Thanks for TurtleBot3 Manipulation; an accessible, well-taught open mobile manipulator is a great teaching surface.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -144,13 +144,13 @@ URML's ROS 2 runtime meets the Interbotix stack on its ROS 2 surface; "drive to 
 
 Two real questions: (1) Is URML's ROS 2 surface the right seam for a validated-intent layer above a LoCoBot-class rover? (2) What should a URML capability manifest declare to describe an Interbotix mobile manipulator honestly — drive type, arm reach/DOF, gripper + graspable classes, navigation bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0426-interbotix-locobot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0426-interbotix-locobot-outreach.md
 
 Thanks for the Interbotix stack; an affordable open mobile manipulator is a great on-ramp for education and research.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -171,13 +171,13 @@ URML's ROS 2 runtime meets tidybot_ros on its ROS 2 action/service surface; a "t
 
 Two real questions: (1) Does URML's typed intent map cleanly onto the tidybot_ros ROS 2 surface, and where should it target it? (2) What should a URML capability manifest declare to describe a holonomic mobile manipulator in ROS 2 honestly — drive type, arm reach/DOF, gripper + graspable classes, workspace bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0427-tidybot-ros-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0427-tidybot-ros-outreach.md
 
 Thanks for tidybot_ros; a clean ROS 2 stack for an open mobile manipulator is great to see.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -198,13 +198,13 @@ URML's ROS 2 runtime meets the cob stack on its ROS surface; "fetch the bottle f
 
 Two real questions: (1) Is URML's ROS surface the right seam for a validated-intent layer above Care-O-bot? (2) What should a URML capability manifest declare to describe a Care-O-bot-class service manipulator honestly — drive type, torso, arm reach/DOF, gripper + graspable classes, navigation bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0428-care-o-bot-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0428-care-o-bot-outreach.md
 
 Thanks for Care-O-bot; one of the foundational open service-robot platforms is a meaningful place for this discussion.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -225,13 +225,13 @@ URML's ROS runtime meets the pr2 stack on its ROS surface; "go to the table and 
 
 Two real questions: (1) Is URML's ROS surface the right seam for a validated-intent layer above PR2? (2) What should a URML capability manifest declare to describe a PR2-class dual-arm mobile manipulator honestly — drive type, two arms + reach/DOF, grippers + graspable classes, navigation bounds?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0429-pr2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0429-pr2-outreach.md
 
 Thanks for keeping PR2 alive; the platform that started "go fetch the mug" is the natural place to talk about a language for exactly that.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -252,11 +252,11 @@ URML's ROS 2 runtime meets ros2_kortex on its ROS 2 action/service surface; a gr
 
 Two real questions: (1) Is URML's ROS 2 action-surface mapping the right seam for a validated manipulation-intent layer above the Gen3 arm? (2) What should a URML capability manifest declare to describe a Kinova arm honestly — reach/DOF, gripper + graspable classes, force limits — and how should that extend when the arm rides a mobile base?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0430-ros2-kortex-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0430-ros2-kortex-outreach.md
 
 Thanks for ros2_kortex; a permissive, vendor-maintained ROS 2 arm driver is a clean place to think about validated intent.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

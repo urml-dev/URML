@@ -151,7 +151,7 @@ If you are a Yaskawa-Global maintainer (or a contributor to `Yaskawa-Global/moto
 
 Open a thread in the URML public Discussions (per [RFC-0008](0008-community-discussions.md)):
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Categories that fit best for this RFC's feedback: **Q&A** (factual corrections of the mapping), **Ideas** (proposals for primitives Yaskawa needs that URML v0.1 lacks), or **Builders & Makers** (runtime authorship / conformance listing). For substantive proposed changes to the URML spec, the canonical channel is a follow-on RFC — Yaskawa contributors are welcome to file one directly, with URML maintainers reviewing per [RFC-0001](0001-rfc-process.md).
 

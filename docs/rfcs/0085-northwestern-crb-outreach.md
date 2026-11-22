@@ -105,7 +105,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `MurpheyLab/MaxDiffRL` is the most-starred repo (84 stars; verified 2026-05-25). URML's planned channel: open a single Issue on `MurpheyLab/MaxDiffRL` or `MurpheyLab/ergodic-control-sandbox` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Murphey + Prof. Lynch via `robotics.northwestern.edu`. HAND ERC outreach goes through ERC leadership separately.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

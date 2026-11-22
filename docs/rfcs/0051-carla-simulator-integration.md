@@ -138,7 +138,7 @@ RFC-0051 ships as a single RFC document PR. No adapter code in this PR. Ledger e
 
 `carla-simulator/carla` accepts public Issues and Discussions. `feature request` and `question` labels exist. URML's planned channel: a single Issue labelled `feature request` pointing to this RFC, with a cross-post on Discussions if the maintainers prefer design conversations there.
 
-URML public Discussions for the broader conversation: https://github.com/URML-MARS/URML/discussions.
+URML public Discussions for the broader conversation: https://github.com/urml-dev/URML/discussions.
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

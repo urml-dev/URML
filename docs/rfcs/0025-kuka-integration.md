@@ -128,7 +128,7 @@ If you maintain `kroshu/kuka_drivers` (or contribute to `kuka_external_control_s
 
 Open a thread in the URML public Discussions (per [RFC-0008](0008-community-discussions.md)):
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Categories that fit best: **Q&A**, **Ideas**, **Builders & Makers**. Substantive spec changes follow a follow-on RFC per [RFC-0001](0001-rfc-process.md).
 

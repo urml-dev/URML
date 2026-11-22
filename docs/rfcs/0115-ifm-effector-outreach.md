@@ -111,7 +111,7 @@ For the `ifm/ifm3d` maintainers:
 1. **On-camera detection / segmentation declaration.** O3R's ODS and per-port perception pipelines emit class labels and obstacle masks. How should URML's manifest declare that a given O3R deployment supports detection classes X / Y / Z, so URML's `query_detection` validates against the camera's actual capability set?
 2. **Per-point intensity / amplitude on point clouds.** URML's `point_cloud` is scalar today; ifm emits XYZ + amplitude per point and (with RGB heads) XYZ + RGB. What's the right manifest shape?
 3. **VPU multi-port topology.** O3R can host 6 heads on one VPU; URML's manifest treats each as a separate Camera entry. Is a shared-VPU declaration something the manifest should carry?
-4. **Adapter home.** When the URML-side `IfmO3RAdapter` ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `ifm/ifm3d-urml` repo under your org, or external in URML-MARS/URML only? URML's default assumption is the URML repo unless invited otherwise.
+4. **Adapter home.** When the URML-side `IfmO3RAdapter` ships, should it live in URML's `reference/perception-runtime/`, in a separately-maintained `ifm/ifm3d-urml` repo under your org, or external in urml-dev/URML only? URML's default assumption is the URML repo unless invited otherwise.
 5. **Conformance listing.** Would the ifm team consider a README or Discussions link to URML's compatible-runtimes registry once a working adapter ships and a real-hardware demonstration is recorded? (Per [RFC-0014](0014-substrate-conformance.md), self-reported tier, no continuous obligation.)
 6. **Cross-link to RFC-0109 / RFC-0035.** The detection-declaration and point-cloud-attributes questions surface across RealSense, Zivid, and now ifm. Is there an industrial-3D-vision consortium-style design pattern you'd suggest, or are vendor-specific manifest blocks the right shape?
 7. **Anything else.**
@@ -128,7 +128,7 @@ Items 1–7 from Unresolved questions above.
 
 `ifm/ifm3d` has both Issues and Discussions enabled. URML's planned channel: open a single Discussion on `ifm/ifm3d` (per the repo's preference for design conversations over Issues), pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

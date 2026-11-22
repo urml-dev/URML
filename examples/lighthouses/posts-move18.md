@@ -61,13 +61,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 One real question. URML's manifest needs a single field that says "this deployment can accept BCI intent over BrainFlow." What grain is most useful from your side: just naming BrainFlow as the substrate, or naming the board class (Cyton, Ganglion, OpenBCI EEG-Cap, etc.), or going to the per-channel level with impedance and filter state? URML defaults to the substrate level for v0.1 and treats per-channel as a future extension, but we want to anchor that decision on what you'd recommend.
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0230-openbci-brainflow-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0230-openbci-brainflow-outreach.md
 
 Thanks for keeping BrainFlow vendor-neutral and open.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -84,13 +84,13 @@ URML (urml.dev) is a small open language for describing robot intent. On a 3D pr
 
 One real question. URML's capability manifest wants to say "this printer is Marlin-driven, with these motion limits and homing strategy." From your end, is there a canonical Configuration.h-derived field set that you'd point a third party at (build-time defines exposed at runtime via M-code, or something similar), or do you treat the manifest as outside the firmware's scope and expect hosts like OctoPrint or Klipper to carry it? URML would rather pull from a source you consider authoritative than hand-roll a list.
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0231-marlin-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0231-marlin-outreach.md
 
 Thanks for keeping Marlin the readable reference.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -107,13 +107,13 @@ URML (urml.dev) is a small open language for describing robot intent. On a CNC m
 
 One real question. URML's manifest wants a single descriptor that says "this is a LinuxCNC-driven 3-axis mill / 4-axis lathe / 6-axis robot arm" with its work envelope and tool changer presence. From the LinuxCNC side, is the canonical source the INI file's [TRAJ] / [EMC] / [KINS] sections, the HAL netlist itself, or a separate machine-config descriptor that maintainers consider authoritative? URML would rather point at what LinuxCNC considers the right source than synthesize one.
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0233-linuxcnc-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0233-linuxcnc-outreach.md
 
 Thanks for the breadth of what LinuxCNC drives.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -130,13 +130,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 One real question. When a third-party tool wants to name a Webots robot model in a manifest, is there a canonical identifier you would point at (the PROTO file name, a URL into webots.cloud, a hash of the proto contents, or something else)? URML's v0.1 default is to use the PROTO name plus version, but we want to anchor on what the Webots side considers stable.
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0234-webots-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0234-webots-outreach.md
 
 Thanks for keeping the simulator both free and open.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -153,13 +153,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 Two short questions, both light. First: the pybricks-micropython repo currently shows "Other" as its license; could you confirm the OSI license, or point at the LICENSE file that should be authoritative? URML's downstream packaging depends on knowing whether this is MIT, BSD, or something else. Second: is pybricks/support the right place to keep that conversation, or do you prefer the forum at pybricks.com for design-shape questions like this?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0235-pybricks-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0235-pybricks-outreach.md
 
 Thanks for keeping Pybricks the cleanest path off the LEGO default firmware.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -176,13 +176,13 @@ URML (urml.dev) is a small open language for describing robot intent. A VRC team
 
 Two short questions, both for the PROS side. First: the repo currently shows "Other" as the license; could you confirm the OSI license or point at LICENSE.md? Second: from the PROS side, is there a manifest-field shape you'd recommend for declaring "this team is on PROS" (the PROS version, the kernel build, the project template), or is the toolchain choice just opaque from URML's perspective and we should default to "PROS, unspecified version"?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0236-pros-vex-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0236-pros-vex-outreach.md
 
 Thanks for keeping the open V5 toolchain alive at Purdue.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -199,13 +199,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 One real question, asked with the cadence slowdown in mind. The repo's last commit is from September 2024. Is ros-naoqi still the canonical engagement point for NAOqi-based deployments in 2026, or has community support migrated somewhere else that URML should anchor on instead? URML would rather point its manifest at the surface that is actually maintained.
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0237-naoqi-driver-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0237-naoqi-driver-outreach.md
 
 Thanks for keeping the NAOqi bridge alive at all.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -222,13 +222,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 One real question. From your side, which layer is the cleaner long-term integration target for a third-party intent compiler: the Python SDK at reachy2-sdk (stable, vendor-blessed API, easier ergonomics) or the ROS 2 nodes underneath (more general, more substrate-neutral)? URML's default for Reachy 2 is to target the SDK and call this out as a deliberate higher-level choice, but if you would rather see third parties anchor on ROS 2 we want to know before shipping.
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0240-reachy-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0240-reachy-outreach.md
 
 Thanks for keeping Reachy 2 open-source-first.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -245,13 +245,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 Two short questions. First: would you welcome a peer-citation footnote in URML's docs that points at Open Interpreter as the general-purpose-computer analog of URML's robot-intent specialization, and is a reciprocal mention something the project would consider? Second, more speculative: is there an interoperability shape worth exploring, where URML emits computer-control intents (file moves, container ops) that Open Interpreter executes for the non-robot half of a deployment?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0241-open-interpreter-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0241-open-interpreter-outreach.md
 
 Thanks for setting the bar on local-first natural-language tooling.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -271,13 +271,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 One real question. URML's manifest wants to declare "this is a Klipper-driven Cartesian / CoreXY / Delta platform with these motion limits and this kinematic." From the Klipper side, is the canonical source the printer.cfg the user already maintains, the host's reported limits over Moonraker, or a higher-level descriptor you would recommend for third-party tooling to anchor on?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0227-klipper-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0227-klipper-outreach.md
 
 Thanks for keeping the host-plus-MCU architecture both fast and readable.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ### RFC-0228 WPILib (Chief Delphi forum)
@@ -291,13 +291,13 @@ URML (urml.dev) is a small open language for describing robot intent. An FRC tea
 
 One real question. URML's manifest wants a single descriptor that says "this is an FRC robot with this drivetrain class (tank / mecanum / swerve), these motor controllers, and these named subsystems." From the WPILib side, is there a config or annotation pattern in the existing template projects that third-party tooling should anchor on, or is the manifest just out of scope from the library's perspective?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0228-wpilib-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0228-wpilib-outreach.md
 
 Thanks for being the on-ramp that gets the next generation of roboticists building.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ### RFC-0229 Crazyflie (Bitcraze Discourse forum)
@@ -311,13 +311,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 One real question. URML's manifest wants to declare "this is a Crazyflie with these decks attached and this positioning setup (Lighthouse, Loco, motion-capture, none)." From the Bitcraze side, is there a canonical place where deck and positioning configuration is already enumerated (a TOML in the firmware repo, the cfclient settings, the cflib API itself), or is this manifest concept outside the existing model and we should pick a reasonable default?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0229-crazyflie-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0229-crazyflie-outreach.md
 
 Thanks for keeping a 27 g research drone real.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ### RFC-0232 OctoPrint (OctoPrint Discourse forum; Discussions disabled on GitHub)
@@ -331,13 +331,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 One real question. URML's manifest wants to declare "this is an OctoPrint-hosted printer with these plugins installed and this firmware underneath (Marlin / Klipper / RepRap)." From the OctoPrint side, is there a settings shape the API already exposes that third-party tooling should mirror, or is this declaration outside the existing model?
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0232-octoprint-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0232-octoprint-outreach.md
 
 Thanks for keeping the snappy web interface snappy.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ### RFC-0239 Poppy (founder-call hold; 4.5-yr stale upstream)
@@ -353,13 +353,13 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 Two short questions, asked with respect for the project's reduced cadence. First: is the project still under active maintenance, and if so where (this repo, poppy-software, somewhere else)? Second: if a third party wants to write an adapter today, which Python entry point is the canonical one (pypot, poppy-creature, poppy-humanoid as a meta-package, or something newer)? The README's library list is several years old and URML would rather anchor on what is current than guess.
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0239-poppy-humanoid-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0239-poppy-humanoid-outreach.md
 
 Thanks for the 3D-printable humanoid being a thing in the world at all.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ### RFC-0242 Viam (Viam Discord; Issues disabled on rdk)
@@ -373,11 +373,11 @@ URML (urml.dev) is a small open language for describing robot intent. A user wri
 
 One real question. From Viam's side, where do you see the cleanest interoperability seam: at the resource-API level (URML's manifest declares Viam-managed resources and validates against Viam's component model), at the intent level (URML emits high-level intent that Viam dispatches into its modular components), or just mutual-citation in each project's docs? URML's default is mutual-citation for v0.1 with the resource-API seam as a later exploration.
 
-Full write-up if useful: https://github.com/URML-MARS/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0242-viam-rdk-outreach.md
+Full write-up if useful: https://github.com/urml-dev/URML/blob/rfc/move18-batches-2to4-complete/docs/rfcs/0242-viam-rdk-outreach.md
 
 Thanks for keeping the modular framework an open conversation.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

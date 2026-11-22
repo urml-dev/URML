@@ -13,7 +13,7 @@ RFC-0641 embodied-CoT, RFC-0642 BAKU, RFC-0643 human2humanoid, RFC-0644 HPT, RFC
 
 **Body:**
 
-Hi, and a disclosure first: this note is AI-assisted prose that I reviewed and approved before posting (background: https://github.com/URML-MARS/URML/blob/main/VIBE.md). Happy to switch to human-only correspondence if you prefer.
+Hi, and a disclosure first: this note is AI-assisted prose that I reviewed and approved before posting (background: https://github.com/urml-dev/URML/blob/main/VIBE.md). Happy to switch to human-only correspondence if you prefer.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language whose one job is to check an intended robot action against the robot's declared capabilities and a safety envelope before it runs.
 
@@ -37,7 +37,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Body:**
 
-Hi. Up front: this is AI-assisted prose I reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md); say the word if you would rather correspond human-only.
+Hi. Up front: this is AI-assisted prose I reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md); say the word if you would rather correspond human-only.
 
 I work on URML (https://urml.dev), an Apache-2.0 language that validates an intended action against a robot's declared capability manifest and safety envelope before it reaches the motors.
 
@@ -61,7 +61,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Body:**
 
-Hello. A disclosure to start: this note is AI-assisted prose, reviewed and approved by me before posting (https://github.com/URML-MARS/URML/blob/main/VIBE.md). I am glad to go human-only if you prefer.
+Hello. A disclosure to start: this note is AI-assisted prose, reviewed and approved by me before posting (https://github.com/urml-dev/URML/blob/main/VIBE.md). I am glad to go human-only if you prefer.
 
 I maintain URML (https://urml.dev), a small open language for declaring what a robot can do and checking an intended motion against that declaration before it executes.
 
@@ -85,7 +85,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Body:**
 
-Hi. First, a disclosure: AI-assisted prose, reviewed by me before posting (https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence is available if you would rather.
+Hi. First, a disclosure: AI-assisted prose, reviewed by me before posting (https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence is available if you would rather.
 
 I maintain URML (https://urml.dev), an Apache-2.0 language built on a premise HPT will recognize from the other side: that the robot-specific surface is a thin declared boundary around a substrate-neutral core. HPT pre-trains a shared trunk and factors the robot-specific part into per-embodiment stems and heads. URML declares a per-robot capability manifest so an intended action can be checked against it before it runs. Same worldview, opposite direction.
 
@@ -107,7 +107,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Body:**
 
-Hi. Disclosure up front: this is AI-assisted prose I reviewed before posting (https://github.com/URML-MARS/URML/blob/main/VIBE.md); happy to switch to human-only.
+Hi. Disclosure up front: this is AI-assisted prose I reviewed before posting (https://github.com/urml-dev/URML/blob/main/VIBE.md); happy to switch to human-only.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language that validates an intended robot motion against a declared capability manifest and safety envelope before it runs. Let me be honest about where it sits relative to RoboPoint, because the relationship is layered, not overlapping.
 

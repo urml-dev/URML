@@ -126,7 +126,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `OpenVoiceOS/ovos-core` has Issues enabled (24 open, verified 2026-05-26). URML's planned channel: open a single Issue on `OpenVoiceOS/ovos-core` labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Maintainer response
 

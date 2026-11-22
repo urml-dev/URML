@@ -42,13 +42,13 @@ Two seams: (1) envelope export -- a RoboHive env defines the obs/action spaces a
 
 Two real questions: (1) does exporting a trained policy's spaces + training-domain bounds as a declared deployment envelope make sense as an optional artifact? (2) Is a validated-intent gate between a RoboHive policy and a real robot interesting -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0510-robohive-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0510-robohive-outreach.md
 
 Thanks for RoboHive; a unified learning framework is a natural place to ask where a deployment envelope and a validation gate fit.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -69,13 +69,13 @@ The mapping: the embodiment, observation/action spaces, and task distribution a 
 
 Two real questions: (1) does declaring a policy's evaluation setup (embodiment + obs/action spaces + task distribution) as a URML deployment envelope make sense? (2) Is a validated-intent gate that checks a deployment matches the eval setup interesting -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0511-simplerenv-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0511-simplerenv-outreach.md
 
 Thanks for SimplerEnv; tying deployment validity back to the eval setup is exactly the gap a declared envelope closes.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -96,13 +96,13 @@ Two seams: (1) typed intent on the language seam -- CALVIN evaluates language-co
 
 Two real questions: (1) is a typed, validatable representation of the language-to-intent step useful alongside a language-conditioned benchmark? (2) Does declaring a trained policy's learned task envelope as a URML LearnedPolicy make sense -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0512-calvin-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0512-calvin-outreach.md
 
 Thanks for CALVIN; language-conditioned long-horizon manipulation is the exact path URML is built around.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -123,13 +123,13 @@ The mapping: RoboEval's per-skill, bimanual structure lines up with URML's manip
 
 Two real questions: (1) do RoboEval's per-skill, bimanual diagnostics map cleanly onto URML's declared capabilities (manipulation.arms + a bimanual primitive)? (2) Is declaring a scored policy's evaluation envelope as a URML LearnedPolicy useful -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0513-roboeval-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0513-roboeval-outreach.md
 
 Thanks for RoboEval; structured per-skill bimanual diagnostics are a clean match for declared capability stages.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -150,13 +150,13 @@ Two seams: (1) env to envelope -- a robo-gym environment defines the obs/action 
 
 Two real questions: (1) does exporting a robo-gym env's spaces + domain bounds as a URML deployment envelope make sense for the real-robot side? (2) Is a validated-intent gate at the sim-to-real boundary interesting -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0514-robo-gym-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0514-robo-gym-outreach.md
 
 Thanks for robo-gym; explicit real-hardware envs make the deployment boundary unusually concrete.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -177,13 +177,13 @@ The mapping: Roboflow Inference produces typed perception outputs (detections, m
 
 Two real questions: (1) is "Roboflow Inference perceives, URML validates the action it conditions" a sensible description of the perception-to-action handoff on a robot? (2) Could a served model's classes inform a URML perception capability declaration -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0515-roboflow-inference-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0515-roboflow-inference-outreach.md
 
 Thanks for Inference; edge perception feeding action is exactly where a validated handoff matters on a robot.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -204,13 +204,13 @@ The layering: a policy deployed to a robot's edge compute runs under ExecuTorch;
 
 Two real questions: (1) is "ExecuTorch runs the policy on-device, URML validates the action before dispatch" a sensible description of the layering for a robot? (2) Is a LearnedPolicy envelope traveling with an on-device model useful for the robotics-deployment case -- and is an inference runtime the right altitude to engage?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0516-executorch-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0516-executorch-outreach.md
 
 Thanks for ExecuTorch; on-device policy inference is exactly the do layer a validated-action gate wants to sit above.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -231,11 +231,11 @@ The connection: openrlbenchmark records the environments, configurations, and re
 
 Two real questions: (1) is there a useful path from the run metadata you track to a URML deployment envelope? (2) Is the shared "a policy is defined by its declared training/eval setup" framing worth a cross-reference for users who go from benchmark to deployment?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0517-openrlbenchmark-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0517-openrlbenchmark-outreach.md
 
 Thanks for openrlbenchmark; the discipline of describing a policy by its declared setup is exactly the one a deployment envelope depends on.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

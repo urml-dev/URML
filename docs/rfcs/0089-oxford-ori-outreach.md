@@ -106,7 +106,7 @@ Items 1–7 from "Unresolved questions" above.
 
 URML's planned channel: open a single Issue on `oxford-robotics-institute/radar-robotcar-dataset-sdk` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Newman via `ori.ox.ac.uk/people/paul-newman`. If the maintainers redirect to a private org or different surface, follow that.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

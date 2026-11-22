@@ -38,13 +38,13 @@ The mapping: a heterogeneous OSGAR fleet maps onto URML's multi-robot roster -- 
 
 Two real questions: (1) does a URML fleet roster (per-robot manifests + cross-robot constraints) fit a heterogeneous SubT-style fleet? (2) Is a validated mission-intent layer above OSGAR's nodes interesting for underground / search work -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0529-osgar-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0529-osgar-outreach.md
 
 Thanks for OSGAR; a real heterogeneous-fleet SubT stack is exactly where fleet-level validated intent earns its keep.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -65,13 +65,13 @@ The layering: a URML program declares the mission intent for a marine vehicle, v
 
 Two real questions: (1) is "URML declares the validated mission intent, the IvP Helm arbitrates the behaviors" a sensible layering for a marine vehicle? (2) Does a URML marine-vehicle manifest fit how MOOS-IvP models a platform -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0530-moos-ivp-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0530-moos-ivp-outreach.md
 
 Thanks for MOOS-IvP; the helm's behavior-arbitration design is exactly the runtime a declarative intent layer wants to sit above.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -92,13 +92,13 @@ The mapping: a URML program declares an ASV survey / transit mission, validated 
 
 Two real questions: (1) does a URML ASV mission program (mobility + operating-area envelope) fit how Project 11's mission manager is driven? (2) Is a validated-intent front door above the mission manager interesting for survey ASVs -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0531-project11-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0531-project11-outreach.md
 
 Thanks for Project 11; the backseat-driver boundary is the cleanest place a validated-mission layer plugs in.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -119,13 +119,13 @@ The mapping: a spacecraft tasking intent (image this target, downlink, recharge)
 
 Two real questions: (1) does URML's capability-manifest + safety-envelope frame extend sensibly to spacecraft tasking / scheduling? (2) Is declaring a trained scheduling policy's envelope useful for the deployment side -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0532-bsk-rl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0532-bsk-rl-outreach.md
 
 Thanks for bsk_rl; spacecraft scheduling under hard constraints is a striking test of a capability-and-envelope intent frame.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -146,13 +146,13 @@ The mapping: URML's PX4 adapter dispatches validated intent to a PX4 autopilot. 
 
 Two real questions: (1) does URML's existing PX4 substrate mapping extend cleanly to a PX4-based free-flyer? (2) What does a free-flyer manifest need that a drone manifest does not (microgravity mobility, attitude / translation constraints) -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0533-px4-space-systems-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0533-px4-space-systems-outreach.md
 
 Thanks for PX4-Space-Systems; a PX4 free-flyer is a great way to test the substrate mapping in an unfamiliar domain.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -173,13 +173,13 @@ The mapping: Feldfreund's mobility (field navigation) and its weeding tool map o
 
 Two real questions: (1) does mapping the Feldfreund platform (field mobility + weeding tool + field-boundary geofence) onto a URML manifest read right? (2) Is an English-to-validated-field-task front door above the ROS 2 stack interesting -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0534-feldfreund-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0534-feldfreund-outreach.md
 
 Thanks for Feldfreund; a real field-weeding platform with a clean ROS 2 stack is a great fit for the field-task front door.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -200,13 +200,13 @@ The mapping: an exoskeleton's assistance configuration (which joint, torque prof
 
 Two real questions: (1) is a typed, envelope-bounded declaration of an assistance configuration useful for an open exoskeleton (research scope)? (2) Does URML's MCU-substrate / actuation model fit the Teensy / Arduino target -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0535-openexo-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0535-openexo-outreach.md
 
 Thanks for OpenExo; an open, MCU-based exoskeleton framework is exactly where an envelope-bounded assistance declaration is worth exploring (research scope).
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -227,13 +227,13 @@ The mapping: the vacuum's mobility and named areas map onto a URML manifest; a c
 
 Two real questions: (1) does mapping a vacuum's mobility + named areas onto a URML manifest fit? (2) Is an English-to-validated-intent front door above CleanIt's autonomy interesting for service robots -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0536-cleanit-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0536-cleanit-outreach.md
 
 Thanks for CleanIt; open Rust autonomy for a common service robot is a clean place to try a validated-intent front door.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -254,13 +254,13 @@ The mapping: Roomi's mobile base and two arms map onto a URML manifest -- mobili
 
 Two real questions: (1) does mapping Roomi (mobile base + dual arms + cameras) onto a URML manifest (mobility + manipulation.arms + bimanual) read right? (2) Is a validated mobile-manipulation intent layer interesting -- and which is the cleaner first seam, the manifest mapping or a RoomiAdapter?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0537-roomi-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0537-roomi-outreach.md
 
 Thanks for Roomi; an open mobile-manipulation housekeeping robot is a natural fit for the bimanual-manipulation model.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -281,13 +281,13 @@ The mapping: OpenAMR's mobility and the deployment's named locations / occupancy
 
 Two real questions: (1) does mapping an OpenAMR onto a URML warehouse-profile manifest read right? (2) Is a validated transport-intent layer (with fleet validation as the RMF complement) interesting for SME intralogistics -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0538-openamr-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0538-openamr-outreach.md
 
 Thanks for OpenAMR; an open intralogistics AMR with Open-RMF is exactly the platform altitude where validated transport intent fits.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -308,13 +308,13 @@ The mapping: a URML program's goal and constraints could compile to a Unified Pl
 
 Two real questions: (1) is a URML-intent-to-Unified-Planning-problem (and plan-back-to-validated-primitives) composition sensible? (2) Is the physical-capability / safety-envelope validation URML adds a useful complement for robot deployment -- and which direction is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0539-unified-planning-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0539-unified-planning-outreach.md
 
 Thanks for the Unified Planning Library; as a fellow declarative-over-many-backends project, you are the closest language peer we have found.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -335,13 +335,13 @@ The mapping: an MTConnect agent reports machine state (availability, mode, condi
 
 Two real questions: (1) is "MTConnect reports equipment state, a URML robot intent conditions on it" a sensible interop boundary on a shop floor? (2) Is there value in a documented URML-beside-MTConnect pattern for robot-plus-machine cells -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0540-mtconnect-cppagent-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0540-mtconnect-cppagent-outreach.md
 
 Thanks for MTConnect; a complementary equipment-interop standard is exactly the kind of boundary worth naming for robot-plus-machine cells.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -362,11 +362,11 @@ Two directions: (1) a URML program lowers onto an AutoAPMS behavior tree; or (2)
 
 Two real questions: (1) is lowering URML composition onto an AutoAPMS BT the more natural direction, or is a skill-dispatches-a-validated-URML-primitive cleaner? (2) Could AutoAPMS skill declarations inform a URML capability manifest -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0541-auto-apms-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0541-auto-apms-outreach.md
 
 Thanks for AutoAPMS; a skill-based BT framework with a deliberation layer is a natural place to ask where a validated-intent layer fits.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

@@ -41,13 +41,13 @@ The seam: a local model is creative and occasionally wrong, and embodied-agents 
 
 Two real questions: (1) is a typed, statically-validated gate between a model's proposed action and ros2_control / MoveIt Servo useful here, or does your action-mapping component already carry that safety reasoning? (2) Could a local VLA/VLM emit URML intent as its action representation?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0610-embodied-agents-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0610-embodied-agents-outreach.md
 
 Thanks for embodied-agents; running these models on-robot and mapping them to control is exactly where a validation gate between intent and actuation is most worth getting right.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -68,13 +68,13 @@ The boundary: a typed URML intent ("pick up the detected mug", "approach the nea
 
 Two real questions: (1) is "yolo_ros produces the detection, URML consumes it as a fact an intent conditions on" a sensible boundary? (2) Do the served detection classes map cleanly toward a URML object vocabulary?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0611-yolo-ros-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0611-yolo-ros-outreach.md
 
 Thanks for yolo_ros; a well-maintained ROS 2 detection wrapper is exactly the kind of estimate source a validated intent layer wants to consume rather than reinvent.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -95,13 +95,13 @@ Two seams. First: Kenning gets the model running efficiently on the device, and 
 
 Two real questions: (1) is a typed, validated action layer downstream of a Kenning-deployed model useful? (2) Could a deployed/optimized model artifact carry an operating envelope a URML intent is checked against?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0612-kenning-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0612-kenning-outreach.md
 
 Thanks for Kenning; the deploy-and-optimize-for-edge step is exactly where the question of "what envelope does this optimized model still hold for" becomes concrete.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -122,13 +122,13 @@ The boundary: the node publishes detections from the accelerator; a typed URML i
 
 Two real questions: (1) is "the Hailo node produces the detection, URML consumes it as a fact an intent conditions on" a sensible boundary for an edge-accelerator perception pipeline? (2) Do the published detection classes map cleanly toward a URML object vocabulary?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0613-hailo-tappas-ros2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0613-hailo-tappas-ros2-outreach.md
 
 Thanks for the package; NPU-accelerated perception on a robot is exactly where a clean line between the estimate and the intent that uses it is worth drawing.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -149,11 +149,11 @@ The boundary: for a robot running an opencv_zoo model on-device, the model's out
 
 Two real questions: (1) for robots using opencv_zoo models on-device, is "the zoo model produces the estimate, URML consumes it as a fact an intent conditions on" a sensible boundary? (2) Does a zoo model's output schema map cleanly toward the perception side of a URML manifest?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0614-opencv-zoo-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0614-opencv-zoo-outreach.md
 
 Thanks for the zoo; edge-deployable models are exactly what a lot of robots run for perception, and a clean line to the intent that uses them seemed worth raising for that subset.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

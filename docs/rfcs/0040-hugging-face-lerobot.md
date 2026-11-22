@@ -206,7 +206,7 @@ The `huggingface/lerobot` repo does not have GitHub Discussions enabled. The mai
 
 URML's planned channel: open a single Issue on `huggingface/lerobot` labelled `enhancement`, pointing to this RFC, and cross-post a short pointer on the HF Discord. URML's own public Discussions for the broader Move #2 conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

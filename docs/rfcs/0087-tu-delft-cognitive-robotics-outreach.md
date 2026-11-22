@@ -101,7 +101,7 @@ Items 1–6 from "Unresolved questions" above.
 
 `tud-cor/FS19_modROS` has Issues enabled (15 total issues, 8 need help; verified 2026-05-25). URML's planned channel: open a single Issue on `tud-cor/FS19_modROS` or another `tud-cor` repo the maintainers identify as canonical, labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Wisse via `M.Wisse@tudelft.nl` or the lab website.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

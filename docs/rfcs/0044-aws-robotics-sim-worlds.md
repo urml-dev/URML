@@ -171,7 +171,7 @@ URML's planned channel: a single Issue on `aws-robotics/aws-robomaker-small-ware
 
 URML's own public Discussions for the broader conversation:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Private channel: [`MAINTAINERS.md`](../../MAINTAINERS.md).
 

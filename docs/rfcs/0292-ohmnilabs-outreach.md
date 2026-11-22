@@ -114,7 +114,7 @@ OhmniLabs' maintained surface is the developer portal at `docs.ohmnilabs.com` an
 
 This RFC and any accompanying outreach are AI-assisted under the maintainer's direction and review; URML's authoring posture is documented in [`VIBE.md`](../../VIBE.md).
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Maintainer response (2026-06-01) — RFC withdrawn
 

@@ -52,7 +52,7 @@ worked example).
 ## Motivation
 
 The motivating case is concrete and current. In
-[Discussion #497](https://github.com/URML-MARS/URML/discussions/497), a user is
+[Discussion #497](https://github.com/urml-dev/URML/discussions/497), a user is
 running URML on a Raspberry Pi GoPiGo3, a two-motor, wheel-encoder, speaker
 robot, and translating natural language to URML with a 986 MB local LLM on the Pi
 itself. The robot is frameless by construction: dead reckoning from encoders, no

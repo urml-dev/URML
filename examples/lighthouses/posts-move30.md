@@ -43,13 +43,13 @@ URML is explicitly research-grade for AV (production_safety_certified: false). I
 
 Three real questions: (1) Is the plan_path -> planning, follow_trajectory -> control mapping faithful to Autoware's architecture, or does it mis-model the mission/behavior/motion split? (2) What should a URML av manifest declare to honestly describe an Autoware deployment's ODD beyond a speed cap and regions? (3) Where is the right seam for a URML -> Autoware adapter: the trajectory ROS 2 interface, or higher?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0386-autoware-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0386-autoware-outreach.md
 
 Thanks for Autoware; an open, production-aimed AV stack is exactly the kind of substrate a neutral intent layer should be able to sit above honestly.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -73,11 +73,11 @@ The mapping I shipped (urml.dev, RFC-0019):
 
 Two real questions: (1) Is call_program plus an ara::com id triple the right granularity to name an S-CORE service method from an outside intent layer, or is a different handle more natural in your model? (2) Does mapping Execution-Management timing onto a descriptive realtime block (period + watchdog, no enforcement claim) read as honest from your side?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0387-eclipse-score-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0387-eclipse-score-outreach.md
 
 Thanks for S-CORE; an open, safety-minded SDV core built in the open is a genuinely good thing for the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

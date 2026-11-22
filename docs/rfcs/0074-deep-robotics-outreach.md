@@ -196,7 +196,7 @@ RFC-0074 ships as a single RFC document PR. No adapter code in this PR. The Lynx
 
 `DeepRoboticsLab` org has 19 public repos and 624 followers (verified 2026-05-24). The most-starred repo `rl_training` (203 stars) has Issues DISABLED. Sibling repos with active Issue surfaces: `Lite3_MotionSDK` (86 stars), `sdk_deploy`, `Lite3_rl_deploy` (123 stars). URML's planned channel: open a single Issue on `DeepRoboticsLab/Lite3_MotionSDK` labelled with the closest `enhancement` equivalent, pointing to this RFC, with optional cross-reference on `Lite3_rl_deploy` if maintainers prefer to thread there.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

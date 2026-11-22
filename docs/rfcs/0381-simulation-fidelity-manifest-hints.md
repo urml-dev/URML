@@ -166,7 +166,7 @@ All land in a single PR to preserve atomicity.
 
 ## How to respond
 
-This is a Spec RFC. Comments belong in the RFC's PR thread on `URML-MARS/URML`.
+This is a Spec RFC. Comments belong in the RFC's PR thread on `urml-dev/URML`.
 
 ## Self-review (Phase 0)
 

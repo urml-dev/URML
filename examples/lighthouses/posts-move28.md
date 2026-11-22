@@ -69,13 +69,13 @@ Nothing here asks RTAMT to change or maintain anything. This is a request for co
 
 URML is static and pre-dispatch: it rejects an inadmissible request before execution. A runtime monitor is the complement: it catches a violation of an envelope property during execution. So two real questions. First, is it sound to express a URML safety-envelope property (a geofence held over time, a velocity bound) as an STL formula that RTAMT monitors, and are there envelope shapes that resist a clean STL encoding? Second, what signal interface does an online RTAMT monitor expect, so URML could emit the right traces from a running program?
 
-Full write-up, with the envelope-to-STL mapping: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0362-rtamt-outreach.md
+Full write-up, with the envelope-to-STL mapping: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0362-rtamt-outreach.md
 
 Thanks for RTAMT; an approachable open STL monitor is exactly the missing piece for a lot of us.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -94,13 +94,13 @@ Nothing here asks Reelay to change or maintain anything. This is a request for c
 
 The division: URML rejects inadmissible intent before dispatch; a Reelay monitor enforces an envelope property at runtime. Two real questions. First, do URML envelope properties (bounds and timing conditions held over execution) map naturally onto Reelay's past-time MTL, or do some need future-time operators that change the deployment story? Second, what is the cleanest boundary for "URML declares the property and emits the signals, Reelay compiles and runs the monitor" on an embedded target?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0363-reelay-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0363-reelay-outreach.md
 
 Thanks for Reelay; efficient header-only monitors are rarer than the need for them.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -119,13 +119,13 @@ Nothing here asks Copilot to change or maintain anything. This is a request for 
 
 The picture: URML is static and pre-dispatch; a Copilot-generated monitor runs alongside the program as a hard-real-time guard on the same properties. Two real questions. First, can a URML safety-envelope property be expressed as a Copilot stream specification cleanly, and which envelope shapes are awkward? Second, for the hard-real-time guarantee to mean something end to end, what would URML need to declare about its signal sources and timing? I am also reaching Ogma separately, since it generates Copilot monitors from requirements.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0364-copilot-rv-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0364-copilot-rv-outreach.md
 
 Thanks for Copilot; deployable, verifiable runtime monitoring is a real contribution.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -144,13 +144,13 @@ Nothing here asks Ogma to change or maintain anything. This is a request for com
 
 The shape: a URML safety envelope is a declared set of properties; Ogma is a path from declared requirements to a generated, framework-integrated monitor. Two real questions. First, what input does Ogma expect (FRET-style structured requirements, a specification file), and could a URML envelope be lowered to that form? Second, given Ogma's ROS integration, how should a generated monitor's verdict feed back into a URML-governed system, so a runtime violation becomes a first-class signal rather than a side channel?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0365-ogma-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0365-ogma-outreach.md
 
 Thanks for Ogma; closing the gap from requirements to deployed monitors is exactly the hard part.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -169,13 +169,13 @@ URML specifies what the robot is meant to do and what it can do. Scenic specifie
 
 Two real questions. First, could a URML behavior serve as the ego/agent specification a Scenic scenario drives, and where would the interface naturally sit? Second, a Scenic scenario makes assumptions about the agent (its dynamics, its sensors); could those stay consistent with a URML capability manifest rather than being restated, so the two specs cannot drift?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0366-scenic-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0366-scenic-outreach.md
 
 Thanks for Scenic; a readable probabilistic scenario language raised the bar for how we talk about test environments.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -194,13 +194,13 @@ Nothing here asks VerifAI to change or maintain anything. This is a request for 
 
 The pairing: URML declares the properties and provides a validated system-under-test; VerifAI searches for scenarios (often via Scenic, which I am also reaching) that falsify those properties; a counterexample feeds back as a tightened envelope or a corrected capability. Two real questions. First, is a URML safety-envelope property usable as a VerifAI specification or monitor as-is, or does it need a transformation? Second, what would a URML-governed system need to expose to act as a VerifAI system-under-test, and what should a falsifying counterexample map back to in URML terms (an envelope change, a capability correction)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0367-verifai-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0367-verifai-outreach.md
 
 Thanks for VerifAI; a usable falsification toolkit for systems with learned components is sorely needed.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -219,13 +219,13 @@ Nothing here asks safe-control-gym to change or maintain anything. This is a req
 
 Two real questions. First, does a URML safety-envelope constraint set map cleanly onto safe-control-gym's constraint specification (state and input constraints, CBF formulations), or is the intent-level declaration too coarse to be useful at the control level? Second, could a benchmarked controller's constraint-satisfaction record sensibly inform a URML capability or envelope (this controller honors these limits, so declare them safe to rely on)?
 
-Full write-up, with the constraint mapping: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0368-safe-control-gym-outreach.md
+Full write-up, with the constraint mapping: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0368-safe-control-gym-outreach.md
 
 Thanks for safe-control-gym; a shared benchmark for safe control and safe RL is exactly what the field needed.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -244,13 +244,13 @@ Nothing here asks OmniSafe to change or maintain anything. This is a request for
 
 Two real questions. First, does a URML safety-envelope constraint correspond to a constrained-MDP cost or constraint in a way that is meaningful, or are the two notions of constraint too different (declared and static vs learned and statistical)? Second, where is the clean boundary between URML's static, pre-dispatch bound and a trained policy's learned constraint-satisfaction, so the two reinforce rather than duplicate each other? For context, I am tracking safety-gymnasium as the environment side of the same conversation.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0369-omnisafe-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0369-omnisafe-outreach.md
 
 Thanks for OmniSafe; a serious infrastructural framework for safe RL is a real service to the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -269,13 +269,13 @@ Nothing here asks esmini to change or maintain anything. This is a request for c
 
 Two real questions. First, what is the cleanest way to wire a URML-governed agent as a controlled entity in an OpenSCENARIO run (an external controller interface, a co-simulation boundary)? Second, OpenSCENARIO's entity and action model is fairly driving-centric; does URML's mobility and perception capability declaration line up with it, or is the scope mismatch large enough that only a subset is meaningful? I am separately exploring Scenic as the probabilistic-scenario-language counterpart to the OpenSCENARIO standard.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0370-esmini-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0370-esmini-outreach.md
 
 Thanks for esmini; a lightweight, genuinely usable OpenSCENARIO player is a gift to anyone testing autonomy.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -294,11 +294,11 @@ Nothing here asks MoonLight to change or maintain anything. This is a request fo
 
 The division: URML declares the spatial-and-temporal envelope and validates intent before dispatch; a MoonLight monitor enforces the property at runtime. Two real questions. First, do URML envelope properties (a geofence, an occupancy region, a cross-robot separation) map onto STREL's reach and escape operators, or are some shapes hard to express? Second, for the multi-robot case (URML has a fleet deconfliction notion built on operational volumes), what spatial-graph and signal interface would a MoonLight monitor expect so the separation property could be checked over a live fleet?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0371-moonlight-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0371-moonlight-outreach.md
 
 Thanks for MoonLight; spatio-temporal monitoring is underserved and you are one of the few clean open tools for it.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

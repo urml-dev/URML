@@ -58,7 +58,7 @@ names**: Account → *Publishing* → *Add a pending publisher* →
 | Field | Value |
 |---|---|
 | PyPI Project Name | (the package name, e.g. `urml-validator`) |
-| Owner | `URML-MARS` |
+| Owner | `urml-dev` |
 | Repository name | `URML` |
 | Workflow name | `release.yml` |
 | Environment name | `pypi-release` for pypi.org; **leave blank** for test.pypi.org |

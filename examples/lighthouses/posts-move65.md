@@ -9,7 +9,7 @@ RFC-0648 dex-teleop, 0649 spot_bt_ros, 0650 vortex-auv, 0651 kalman_robot, 0652 
 
 **Title:** URML: a capability check on a teleoperated arm-and-hand command
 
-Hi, disclosure first: this is AI-assisted prose I reviewed and approved before posting (background: https://github.com/URML-MARS/URML/blob/main/VIBE.md). Glad to go human-only if you prefer.
+Hi, disclosure first: this is AI-assisted prose I reviewed and approved before posting (background: https://github.com/urml-dev/URML/blob/main/VIBE.md). Glad to go human-only if you prefer.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language whose one job is to check an intended motion against a robot's declared capabilities and a safety envelope before it executes.
 
@@ -31,7 +31,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Title:** URML: a per-action admissibility check under each behavior-tree leaf
 
-Hi. Up front: AI-assisted prose I reviewed before posting (https://github.com/URML-MARS/URML/blob/main/VIBE.md); say the word for human-only.
+Hi. Up front: AI-assisted prose I reviewed before posting (https://github.com/urml-dev/URML/blob/main/VIBE.md); say the word for human-only.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language that checks an intended action against a robot's declared capability manifest and safety envelope before it runs.
 
@@ -53,7 +53,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Title:** URML: validating an AUV mission setpoint against the vehicle envelope
 
-Hello. A disclosure to start: AI-assisted prose, reviewed and approved by me before posting (https://github.com/URML-MARS/URML/blob/main/VIBE.md). Glad to go human-only if you prefer.
+Hello. A disclosure to start: AI-assisted prose, reviewed and approved by me before posting (https://github.com/urml-dev/URML/blob/main/VIBE.md). Glad to go human-only if you prefer.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language for declaring what a vehicle can do and checking an intended action against that declaration before it runs.
 
@@ -75,7 +75,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Title:** URML: validating a rover action against drive, reach, and power limits
 
-Hi. Disclosure up front: AI-assisted prose I reviewed before posting (https://github.com/URML-MARS/URML/blob/main/VIBE.md); human-only is fine if you prefer.
+Hi. Disclosure up front: AI-assisted prose I reviewed before posting (https://github.com/urml-dev/URML/blob/main/VIBE.md); human-only is fine if you prefer.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language for declaring what a robot can do and checking an intended action against that declaration before it runs.
 
@@ -97,7 +97,7 @@ Ido Yahalomi (greenvh@gmail.com)
 
 **Title:** URML: validating a helm-and-trim command against the sailing envelope
 
-Hi. Disclosure first: AI-assisted prose I reviewed before posting (https://github.com/URML-MARS/URML/blob/main/VIBE.md); say the word for human-only.
+Hi. Disclosure first: AI-assisted prose I reviewed before posting (https://github.com/urml-dev/URML/blob/main/VIBE.md); say the word for human-only.
 
 I maintain URML (https://urml.dev), a small Apache-2.0 language for declaring what a vehicle can do and checking an intended action against that declaration before it runs.
 

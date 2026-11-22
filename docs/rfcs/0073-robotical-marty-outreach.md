@@ -294,7 +294,7 @@ RFC-0073 ships as a single RFC document PR. No adapter code in this PR. Ledger e
 
 `robotical/martypy` has Issues enabled (2 open at time of writing; verified 2026-05-24). URML's planned channel: open a single Issue on `robotical/martypy` labelled with the closest `enhancement` equivalent, pointing to this RFC.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

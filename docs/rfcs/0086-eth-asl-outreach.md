@@ -102,7 +102,7 @@ Items 1–6 from "Unresolved questions" above.
 
 `ethz-asl/maplab` is the highest-visibility repo at 2.8k stars. `ethzasl_msf` has Issues enabled with 58 open (last commit 2026-01-22; verified 2026-05-25). URML's planned channel: open a single Issue on `ethz-asl/maplab` or `ethzasl_msf` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional courtesy email to Prof. Siegwart via `asl.ethz.ch`.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

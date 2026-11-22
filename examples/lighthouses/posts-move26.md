@@ -68,14 +68,14 @@ Nothing here asks OMPL to change or maintain anything. This is a request for com
 
 The useful idea: URML can statically check that a motion request is admissible (target inside the declared reachable workspace, within the safety envelope) before it ever builds a planning query, so OMPL is only ever asked to solve well-formed, in-capability problems. Two real questions. First, what is the cleanest boundary for "URML goal plus constraints -> an OMPL planning query"? Second, which constraints does URML most need to declare so a query is well-posed for OMPL: state-space bounds, the validity checker inputs, something else?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0342-ompl-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0342-ompl-outreach.md
 
 
 Thanks for OMPL; it is the quiet engine under a lot of robot motion.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -94,14 +94,14 @@ Nothing here asks Ruckig to change or maintain anything. This is a request for c
 
 URML's safety envelope already carries velocity, acceleration, and (where declared) jerk limits. Those are precisely Ruckig's input constraints. So one real question: what is the cleanest way for URML to declare per-axis kinematic limits so they map directly onto a Ruckig input, and should URML treat Ruckig's feasibility result as a validation signal (a request that Ruckig cannot satisfy under the declared limits is a request URML should reject earlier)? A second, smaller one: for the offline time-optimal-parameterization case I am talking to toppra separately; is online generation the boundary you would keep Ruckig to?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0343-ruckig-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0343-ruckig-outreach.md
 
 
 Thanks for Ruckig; jerk-limited online generation done well is rarer than it should be.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -120,14 +120,14 @@ Nothing here asks toppra to change or maintain anything. This is a request for c
 
 In URML's stack, toppra sits after a geometric planner (I am talking to OMPL separately) and is the offline counterpart to online generators like Ruckig. The constraints toppra parameterizes against are exactly what URML declares. So two real questions. First, what is the cleanest way for URML to declare velocity / acceleration / torque limits so they map onto a toppra constraint set? Second, is the input boundary simply "a path plus limits", with the path coming from whatever planner produced it?
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0344-toppra-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0344-toppra-outreach.md
 
 
 Thanks for toppra; time-optimal parameterization with a clean API is genuinely useful.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -146,14 +146,14 @@ I will be honest about layers: URML does not talk to Pinocchio directly, and Pin
 
 The real question: a URML capability declaration (reachability today, joint and dynamic limits later) is making claims that a Pinocchio model already encodes precisely. Should a URML declaration be derivable from, or checked against, a Pinocchio model so the two cannot drift, and if so at what grain? I would rather URML's manifest stay consistent with the model than restate it badly.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0345-pinocchio-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0345-pinocchio-outreach.md
 
 
 Thanks for Pinocchio; the speed and the clean model API are a real gift to the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -172,14 +172,14 @@ Nothing here asks Crocoddyl to change or maintain anything. This is a request fo
 
 Two real questions. First, what is the cleanest boundary for "URML dynamic-motion intent plus constraints -> a Crocoddyl optimal-control problem", the action-model and cost setup, or something higher? Second, what should URML declare so a request is well-posed: the dynamic limits, contact assumptions, the model (you build on Pinocchio, which I am also asking about consistency for)? URML's job is to validate the request is admissible before you are asked to solve it.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0346-crocoddyl-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0346-crocoddyl-outreach.md
 
 
 Thanks for Crocoddyl; fast multi-contact DDP changed what is practical.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -198,14 +198,14 @@ Nothing here asks OCS2 to change or maintain anything. This is a request for com
 
 Two real questions. First, what is the cleanest boundary for "URML intent plus constraints -> an OCS2 MPC problem", and where should the receding-horizon setup live relative to a one-shot intent? Second, which constraints and limits does URML most need to declare so the MPC respects the robot's real capability and the safety envelope as hard constraints? For comparison I am talking to Crocoddyl separately about trajectory optimization, whereas OCS2 is where I would put real-time MPC; please correct that framing if it is wrong.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0347-ocs2-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0347-ocs2-outreach.md
 
 
 Thanks for OCS2; a usable open MPC toolbox for switched systems is a big deal.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -224,14 +224,14 @@ I will be honest: CasADi is the deepest layer in a round of motion-planning outr
 
 One real question: is there any meaningful point of contact between a high-level intent and safety layer like URML and CasADi itself, or is the correct answer simply that URML talks to the controller built on CasADi and never to CasADi directly? I expect the latter, and a confirmation is genuinely useful.
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0348-casadi-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0348-casadi-outreach.md
 
 
 Thanks for CasADi; it is load-bearing for a huge amount of optimal control.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -250,14 +250,14 @@ acados is lower-level than URML, but there is one direct point of contact worth 
 
 So the real question: what is the cleanest way for URML to declare its constraints and limits so they map onto an acados OCP's constraint set, and where should the boundary sit, with URML talking to the MPC node or integration rather than to the solver internals? You are built on CasADi, which I am asking about separately as a pure backend.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0349-acados-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0349-acados-outreach.md
 
 
 Thanks for acados; fast embedded NMPC that people can actually deploy is hard-won.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -276,14 +276,14 @@ Nothing here asks the project to change or maintain anything. This is a request 
 
 URML's manifest declares mobility (drive type, max velocity) and, with the envelope, footprint and limits. Those are the constraints a local planner needs. Two real questions. First, what is the cleanest way for URML to declare a mobile base (kinematic model, footprint, velocity and acceleration limits) so a navigation goal is well-posed for TEB? Second, you also maintain mpc_local_planner; which is the right surface for this kind of integration conversation, or do they share enough that one thread covers both? For context, Nav2 is the navigation hub I have engaged separately.
 
-Full write-up, with the manifest mapping table: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0350-teb-local-planner-outreach.md
+Full write-up, with the manifest mapping table: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0350-teb-local-planner-outreach.md
 
 
 Thanks for teb_local_planner; it has guided a lot of real robots through tight spaces.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -302,12 +302,12 @@ The overlap is striking. PlanSys2 decomposes a goal into a plan of durative PDDL
 
 Two real questions. First, does a PlanSys2 PDDL action <-> URML primitive correspondence sound sound, or do the action models differ in ways that break it? Second, where should the layers divide: task planning (PlanSys2), intent validation (URML), behavior execution (BT.CPP / py-trees, which PlanSys2 already dispatches into)?
 
-Full write-up, with the mapping: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0351-plansys2-outreach.md
+Full write-up, with the mapping: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0351-plansys2-outreach.md
 
 
 Thanks for PlanSys2; a maintained PDDL planning system for ROS 2 is exactly what the ecosystem needed.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

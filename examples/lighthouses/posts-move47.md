@@ -43,13 +43,13 @@ The mapping: a reconstruction of an environment is the spatial model a URML depl
 
 Two real questions: (1) is "a nerfstudio / gsplat reconstruction is the declared map a URML deployment validates intent against" a sensible consumer relationship? (2) Is there a clean export (poses, scene bounds, a mesh / occupancy proxy) a robot deployment would want to feed a capability manifest / envelope -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0518-nerfstudio-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0518-nerfstudio-outreach.md
 
 Thanks for Nerfstudio and gsplat; high-quality reconstruction is exactly the input a declared-world layer wants to consume.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -70,13 +70,13 @@ The mapping: a COLMAP reconstruction gives camera poses and a 3D model. A URML d
 
 Two real questions: (1) is "a COLMAP reconstruction is the declared geometry a URML deployment validates intent against" a sensible consumer relationship? (2) Is there a clean output (poses, model bounds) a robot deployment would feed a capability manifest / envelope -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0519-colmap-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0519-colmap-outreach.md
 
 Thanks for COLMAP; it is the reconstruction so much downstream robotics is built on, which is why the consumer relationship is worth naming.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -97,13 +97,13 @@ The mapping: Open3D's products (point clouds / meshes / reconstructions) are the
 
 Two real questions: (1) is "Open3D produces the 3D geometry, URML declares intent / constraints against it" a sensible consumer relationship? (2) Is there a clean product (an occupancy grid, a mesh, scene bounds) a robot deployment would feed a URML manifest / envelope -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0520-open3d-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0520-open3d-outreach.md
 
 Thanks for Open3D; it is the 3D-processing layer a declared-world robot intent sits on top of.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -124,13 +124,13 @@ The mapping: PCL turns raw sensor returns into segmented, registered geometry. A
 
 Two real questions: (1) is "PCL processes the point cloud, URML declares intent / constraints against the result" a sensible consumer relationship? (2) Is there a clean product (segmented obstacles, an occupancy proxy) a robot deployment would feed a URML manifest / envelope -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0521-pcl-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0521-pcl-outreach.md
 
 Thanks for PCL; it is the canonical point-cloud layer beneath the declared world a robot reasons about.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -151,13 +151,13 @@ The mapping: PDAL ingests, filters, and tiles large point datasets. A URML deplo
 
 Two real questions: (1) is "PDAL ingests the site point data, URML declares intent / constraints against it" a sensible consumer relationship for robotics over prior maps? (2) Is there a clean product (tiled occupancy, site bounds) a robot deployment would feed a URML manifest / envelope -- and is robotics-over-a-prior-map the right framing for PDAL's audience?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0522-pdal-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0522-pdal-outreach.md
 
 Thanks for PDAL; for site-scale robotics the prior map starts as point data your pipelines ingest.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -178,13 +178,13 @@ The mapping: URML's safety envelope declares occupancy and geofence constraints;
 
 Two real questions: (1) is "an OpenVDB grid is the declared occupancy a URML deployment validates intent against" a sensible consumer relationship for the robotics use of OpenVDB? (2) Is there a clean way a robot deployment would reference a VDB occupancy / distance field from a URML safety envelope -- and is robotics-occupancy the right framing for OpenVDB's audience (vs VFX)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0523-openvdb-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0523-openvdb-outreach.md
 
 Thanks for OpenVDB; the sparse-volume structure is increasingly the occupancy map robots reason about.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -205,13 +205,13 @@ The mapping: MOLA produces the robot's pose in a map. URML resolves its frames a
 
 Two real questions: (1) is "MOLA produces the pose estimate + map, URML resolves frames and validates constraints against it" a sensible consumer relationship? (2) Is there a clean output (pose, map frame, occupancy) a robot deployment would feed a URML manifest / envelope -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0524-mola-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0524-mola-outreach.md
 
 Thanks for MOLA; a modular LiDAR-inertial SLAM is exactly the estimate a declared-world intent layer wants to consume.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -232,13 +232,13 @@ The mapping: MRPT yields a pose estimate and occupancy / metric maps. URML resol
 
 Two real questions: (1) is "MRPT localizes and maps, URML resolves frames and validates constraints against it" a sensible consumer relationship? (2) Is there a clean output (pose, occupancy grid, map frame) a robot deployment would feed a URML manifest / envelope -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0525-mrpt-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0525-mrpt-outreach.md
 
 Thanks for MRPT; a long-standing mapping/localization toolkit is exactly the estimate a declared-world intent layer consumes.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -259,13 +259,13 @@ The layering: SymForce optimizes the factor graph that yields a robot's state es
 
 Two real questions: (1) is "a SymForce-powered estimator produces the state estimate, URML consumes it" a sensible layering? (2) Is an optimization library the right altitude to engage, or is the seam better at a SLAM / estimator that wraps SymForce?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0526-symforce-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0526-symforce-outreach.md
 
 Thanks for SymForce; the codegen-plus-optimization approach is the engine under a lot of the estimates a declared-world intent layer consumes.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -286,13 +286,13 @@ The mapping: Patchwork++ turns a raw LiDAR scan into ground vs non-ground, which
 
 Two real questions: (1) is "Patchwork++ segments the scan, URML validates intent against the resulting occupancy" a sensible (if indirect) consumer relationship? (2) Is a segmentation step the right altitude to engage, or is the seam better at a mapping layer that consumes Patchwork++?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0527-patchwork-plusplus-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0527-patchwork-plusplus-outreach.md
 
 Thanks for Patchwork++; fast, robust ground segmentation is where the occupancy a robot reasons about begins.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -313,11 +313,11 @@ The mapping: OKVIS2 yields a real-time visual-inertial pose estimate. URML resol
 
 Two real questions: (1) is "OKVIS2 produces the VIO pose estimate, URML consumes it to resolve frames and validate intent" a sensible consumer relationship? (2) Is there a clean output (pose, covariance, frame) a robot deployment would feed a URML manifest / envelope -- and which is the cleaner first seam?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0528-okvis2-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0528-okvis2-outreach.md
 
 Thanks for OKVIS2; a real-time VIO estimate is exactly the localized state a declared-world intent layer consumes.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

@@ -16,7 +16,7 @@
 
 The GoPiGo3 thread (`gopigo3`, RFC-0572) is the highest-momentum education engagement to date. It started on GitHub (`DexterInd/GoPiGo3#375` + URML discussion `#448`) and expanded to the Dexter Industries community forum, which is **not GitHub-routable**: posting there needs a forum account under the founder's own identity. The body below is drafted for the founder to post; ledger it in `outreach-move52.yaml` only once it actually goes out.
 
-The skeptical-but-fair user feedback (slowrunner / `cyclicalobsessive`) has already been answered candidly on GitHub discussion `#448` ([discussioncomment-17356116](https://github.com/URML-MARS/URML/discussions/448#discussioncomment-17356116)): the platform's limits were conceded and the value reframed as the pedagogical validate-and-explain teaching loop. The maintainer (CleoQc) thread and the meeting remain the priority.
+The skeptical-but-fair user feedback (slowrunner / `cyclicalobsessive`) has already been answered candidly on GitHub discussion `#448` ([discussioncomment-17356116](https://github.com/urml-dev/URML/discussions/448#discussioncomment-17356116)): the platform's limits were conceded and the value reframed as the pedagogical validate-and-explain teaching loop. The maintainer (CleoQc) thread and the meeting remain the priority.
 
 Two standing constraints apply:
 

@@ -123,7 +123,7 @@ These are real engagement candidates that this wave does **not** pursue because 
 | `ros2-core` | Already engaged Move-16 RFC-0200. |
 | `eclipse-cyclonedds` / `eclipse-zenoh` / `eclipse-iceoryx` | Already engaged Move-16 RFCs 0204 / 0209 / 0210. Eclipse Foundation already reached via Move-16; Sub-wave A RFC-0212 (SDV Blueprints) is the cross-WG extension. |
 | `linux-foundation-dronecode` | Already engaged Move-16 RFCs 0196 / 0197 / 0198 / 0199 / 0208 (PX4 / MAVLink / MAVSDK / DroneCAN / QGroundControl). Dronecode covered at constituent-project level. |
-| `ansi-ria-r15.08` | Managed by A3 (Automate.org); paid trade-association channel; no public engagement surface for Phase 1 URML. Defer to Phase 2 when measured response-time data supports formal SDO submission per [feedback_public_commitments](https://github.com/URML-MARS/URML). |
+| `ansi-ria-r15.08` | Managed by A3 (Automate.org); paid trade-association channel; no public engagement surface for Phase 1 URML. Defer to Phase 2 when measured response-time data supports formal SDO submission per [feedback_public_commitments](https://github.com/urml-dev/URML). |
 | `iec-tc-65` | National-body delegation channel only; no public participation surface. Phase 2. |
 | `asme-robotics` | No public robotics-software surface. Phase 2. |
 | `incits` | INCITS technical-committee directory lists AI / Biometrics / Cybersecurity / Networks / C-lang — **no robotics TC exists**. Confirmed via [incits.org/participation/technical-committees](https://www.incits.org/participation/technical-committees). |

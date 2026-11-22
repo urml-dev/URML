@@ -138,7 +138,7 @@ RFC-0035 ships as a single RFC document PR. Draft state.
 
 URML public Discussions:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Or Issue on `zivid/zivid-python`. Private via `MAINTAINERS.md`.
 

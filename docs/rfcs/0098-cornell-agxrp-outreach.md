@@ -108,7 +108,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `experiential.bot/agxrp` lists a "Contact Us" link without a specific email surfaced (verified 2026-05-26). URML's planned channel: courtesy outreach via the Contact form on `experiential.bot/agxrp` directed to Jonathan Jaramillo + AgXRP team. If the maintainer responds with a public GitHub URL, URML pivots to a standard Issue-thread engagement.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

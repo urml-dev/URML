@@ -144,7 +144,7 @@ RFC-0078 ships as a single RFC document PR. No adapter code in this PR. Research
 
 `clydemcqueen/orca4` has Issues enabled (5 open; verified 2026-05-24). URML's planned channel: open a single Issue on `clydemcqueen/orca4` labelled with the closest `enhancement` or `question` equivalent, pointing to this RFC. If the maintainer prefers a `ros-maritime` working-group thread, the URML follow-up moves there once the surface is confirmed.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

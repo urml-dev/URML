@@ -91,7 +91,7 @@ Single RFC document. Ledger entry in [`outreach-move22.yaml`](../../examples/lig
 
 Posted as [`OPCFoundation/UA-.NETStandard#3827`](https://github.com/OPCFoundation/UA-.NETStandard/issues/3827) on 2026-06-02. Maintainer `marcschier` responded positively and proposed a concrete shape: an OPC UA robotics extension library (companion-spec implementation) living in the UA-.NETStandard repo, with URML as the simplified AI-accessible binding aligned on top. The issue was retitled "Robot companion spec libraries to support URML" and kept open for other-maintainer agreement.
 
-On 2026-06-12 the OPC Foundation filed [`URML#292`](https://github.com/URML-MARS/URML/issues/292) correcting the license recorded here: UA-.NETStandard was relicensed RCL to MIT in December 2025. This RFC and the Move #22 ledger were corrected accordingly, and the earlier license caveat is withdrawn.
+On 2026-06-12 the OPC Foundation filed [`URML#292`](https://github.com/urml-dev/URML/issues/292) correcting the license recorded here: UA-.NETStandard was relicensed RCL to MIT in December 2025. This RFC and the Move #22 ledger were corrected accordingly, and the earlier license caveat is withdrawn.
 
 ## How to respond
 

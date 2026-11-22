@@ -117,7 +117,7 @@ RFC-0034 ships as a single RFC document PR. No code / manifest / fixture change.
 
 URML public Discussions:
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Or Issue on `Festo-se/phand-ros`. Private via `MAINTAINERS.md`.
 

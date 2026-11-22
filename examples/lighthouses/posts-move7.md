@@ -43,9 +43,9 @@ Posting this as a collaboration proposal to the Acorn maintainers. I'm Ido Yahal
 
 URML's value proposition for Acorn: a farmer or educator writes "drive the rover along row 3 and measure soil moisture every 2 meters" in URML's natural-language layer; URML compiles to `move_to(...)` + `measure(soil_moisture, ...)` + `wait_for(distance, 2m)`; an `AcornAdapter` dispatches the primitives onto Acorn's existing autonomous-navigation layer. The license fit is clean (Acorn is Apache-2.0, URML's `reference/` is Apache-2.0 too) and the audience is exactly the maker / farmer / educator who would benefit from URML's English-to-primitive path.
 
-Cross-link to URML's first agriculture-vertical RFC ([RFC-0067 FarmBot](https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0067-farmbot-outreach.md)) and to URML's existing `reference/marine-runtime/` precedent for Apache-2.0 substrate adapters.
+Cross-link to URML's first agriculture-vertical RFC ([RFC-0067 FarmBot](https://github.com/urml-dev/URML/blob/main/docs/rfcs/0067-farmbot-outreach.md)) and to URML's existing `reference/marine-runtime/` precedent for Apache-2.0 substrate adapters.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0092-twisted-fields-acorn-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0092-twisted-fields-acorn-outreach.md
 
 This is proposal-only, part of URML's **Move #7** outreach (agriculture-robotics second wave). Eight targets in this wave, mixing Tier A vendor-style and Tier B research-collab framing. URML has sent ~90 RFCs across seven outreach moves; single-digit substantive responses to date (the outreach is real but the language is early).
 
@@ -87,7 +87,7 @@ URML's value proposition for Sentera: an agronomist writes "photograph the field
 
 URML's `reference/px4-runtime/` already targets the MAVLink ecosystem; Sentera's MAVSDK / MAVSDK-Swift forks plus the documented MAVLink integration on `support.sentera.com` compose directly. The `measure` primitive with a typed `payload:` field abstracts radiometric / multispectral / NDVI readings as substrate-neutral observations.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0093-sentera-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0093-sentera-outreach.md
 
 This is proposal-only, part of URML's **Move #7** outreach (agriculture-robotics second wave). Eight targets in this wave. URML has sent ~90 RFCs across seven outreach moves; single-digit substantive responses to date.
 
@@ -129,7 +129,7 @@ URML's value proposition for Burro: a customer running mixed-vendor agriculture 
 
 The integration is BOSS-API-level (URML's substrate-Protocol sits at the intent layer above BOSS Cloud, not inside Burro's proprietary core).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0094-burro-robotics-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0094-burro-robotics-outreach.md
 
 This is proposal-only, part of URML's **Move #7** outreach (agriculture-robotics second wave). Eight targets in this wave. URML has sent ~90 RFCs across seven outreach moves; single-digit substantive responses to date.
 
@@ -172,7 +172,7 @@ URML's value proposition for AgriCruiser: students using AgriCruiser for over-th
 
 License-fit note: AgriCruiser is GPL-3.0; URML's `reference/` is Apache-2.0. URML's proposal here is **documented mapping + cross-citation**, not adapter code reuse. The integration lives in URML's `reference/agriculture-runtime/README.md` as a documented mapping; AgriCruiser code stays in `agri-cruiser/agri-cruiser` unmodified.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0095-ucla-agricruiser-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0095-ucla-agricruiser-outreach.md
 
 This is proposal-only, part of URML's **Move #7** outreach (agriculture-robotics second wave). Eight targets in this wave. URML has sent ~90 RFCs across seven outreach moves; single-digit substantive responses to date.
 
@@ -213,7 +213,7 @@ URML's value proposition for Romea: a documented mapping between URML's primitiv
 
 Romea is the strongest EU-academic ag-robotics surface URML has surfaced. 79 public repos, ROS 2 native, Apache-2.0, active maintenance (the most recent commit on `romea-ros2-joy` was four days before this RFC drafted).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0096-inrae-romea-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0096-inrae-romea-outreach.md
 
 This is proposal-only, part of URML's **Move #7** outreach (agriculture-robotics second wave). Eight targets in this wave. URML has sent ~90 RFCs across seven outreach moves; single-digit substantive responses to date.
 
@@ -256,7 +256,7 @@ URML's value proposition for TerraSentia: a URML program describing "scout the m
 
 License-fit note: `terra-lidar-imu-init` is GPL-2.0; other repos do not surface a license. URML's proposal here is **documented cross-citation**, not adapter code in URML's `reference/`. Adapter code follows license clarity.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0097-earthsense-terrasentia-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0097-earthsense-terrasentia-outreach.md
 
 This is proposal-only, part of URML's **Move #7** outreach (agriculture-robotics second wave). Eight targets in this wave. URML has sent ~90 RFCs across seven outreach moves; single-digit substantive responses to date.
 
@@ -296,7 +296,7 @@ Sending this off-GitHub since URML's verification on 2026-05-26 did not surface 
 
 URML fills a specific niche that maps closely to AgXRP's audience: **affordable open-source agriculture-robotics platforms for K-12 / 4-H / community-college STEM**. A student writes "drive the robot to the soil plot and measure soil moisture" in URML's natural-language layer; URML compiles to `move_to(...)` + `measure(soil_moisture, ...)`; an AgXRP-side controller dispatches the primitives. The pedagogical ladder URML offers; from natural-language English to validated robot programs; is the strongest match for the AgXRP audience. URML's `reference/edu-runtime/` already ships several educational adapters; an `AgXRPAdapter` would be a natural fifth, if the AgXRP maintainers want a URML-side home for it.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0098-cornell-agxrp-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0098-cornell-agxrp-outreach.md
 
 This is proposal-only, part of URML's **Move #7** outreach (agriculture-robotics second wave). Eight targets in this wave. URML has sent ~90 RFCs across seven outreach moves; single-digit substantive responses to date. If the substantive surface is the Cornell academic side, or the University of Idaho partnership, or 4-H, URML's outreach pivots accordingly.
 
@@ -338,7 +338,7 @@ URML's relevance to FRE 2026: the competition draws teams from universities acro
 
 For teams that have not yet built deep ROS expertise, URML's natural-language layer offers a pedagogical ladder: students begin by writing English-language URML programs and progressively descend into ROS as needed. URML's existing `examples/` directory provides starting code; participating labs own the pedagogical integration.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0099-wageningen-field-robot-event-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0099-wageningen-field-robot-event-outreach.md
 
 This is proposal-only, part of URML's **Move #7** outreach (agriculture-robotics second wave). Eight targets in this wave. URML has sent ~90 RFCs across seven outreach moves; single-digit substantive responses to date.
 

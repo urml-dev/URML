@@ -40,13 +40,13 @@ The same seam, with a gate: ROSGPT turns language into ROS commands. URML turns 
 
 Two real questions: (1) is a typed, statically-validated intermediate representation a useful layer between an LLM and ROS? (2) Does five-pass validation against a manifest + safety envelope address the "the LLM emitted an unsafe or unsupported command" failure mode that any language-to-ROS bridge has to handle somewhere?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0549-rosgpt-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0549-rosgpt-outreach.md
 
 Thanks for ROSGPT; it made the natural-language-to-robot case early and well, and the validation seam is exactly the part worth comparing notes on.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -67,13 +67,13 @@ The mapping: DialoStack turns a conversation into ROS 2 actions. URML is the int
 
 Two real questions: (1) is a typed, validated intent representation a useful target for an LLM dialogue layer that drives ROS 2? (2) Does capability + safety-envelope validation address the "the dialogue produced an action the robot can't safely do" case?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0550-dialostack-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0550-dialostack-outreach.md
 
 Thanks for DialoStack; the dialogue-to-ROS2 handoff is exactly where a validated intent representation earns its place.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -94,13 +94,13 @@ The layering: retico recognizes intent incrementally and responsively. URML is w
 
 Two real questions: (1) is "retico recognizes the intent incrementally, URML is the validated representation it commits to" a sensible layering for a dialogue-driven robot? (2) Does capability + safety-envelope validation fit where an incremental dialogue system hands off to actuation?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0551-retico-core-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0551-retico-core-outreach.md
 
 Thanks for retico-core; incremental dialogue is a genuinely hard problem done well, and the commit-to-actuation seam is the interesting boundary with a validated intent layer.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -121,13 +121,13 @@ The seam: a Furhat skill owns the social interaction. If a skill ever triggers a
 
 Two real questions: (1) do Furhat skills ever drive an external physical robot as part of an interaction? (2) If so, is a typed, validated intent layer between a skill and that physical robot useful?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0552-furhat-example-skills-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0552-furhat-example-skills-outreach.md
 
 Thanks for the Furhat skills; social robotics is a different world from actuation, and I am genuinely curious whether the two ever touch in your deployments.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -148,13 +148,13 @@ Two embodiments, one intent question: virtual humans and physical robots both tu
 
 Two real questions: (1) does a typed, validatable intent representation map onto how the toolkit drives a virtual human's embodied behavior? (2) Is the physical-robot / virtual-human intent boundary an interesting comparison?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0553-vhtoolkit-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0553-vhtoolkit-outreach.md
 
 Thanks for the Virtual Human Toolkit; the intent-representation question sits right between your world and the physical-robot one, which is why I wanted to compare notes.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -175,13 +175,13 @@ The mapping: URML validates intent before dispatch and records what was validate
 
 Two real questions: (1) is a typed validated-intent audit record a useful first-class time series alongside sensor/telemetry data? (2) Does intent-keyed retention/labeling fit ReductStore's model?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0554-reductstore-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0554-reductstore-outreach.md
 
 Thanks for ReductStore; a store built for unstructured robotics data is exactly where an intent record wants to live next to the signals it explains.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -202,13 +202,13 @@ The mapping: a robot-learning episode records what happened. URML's audit trail 
 
 Two real questions: (1) is a typed validated-intent record a useful annotation channel when converting robot-learning datasets? (2) Does aligning intent records to RLDS/LeRobot/rosbag episodes fit Forge's model?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0555-forge-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0555-forge-outreach.md
 
 Thanks for Forge; format conversion is the natural place to thread a consistent intent annotation through the robot-learning data world.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -229,13 +229,13 @@ The mapping: ARES ingests and annotates robot episodes. URML's audit trail is a 
 
 Two real questions: (1) is a typed validated-intent record a useful structured annotation layer over ingested robot episodes? (2) Does intent-and-verdict annotation fit how ARES models episode metadata?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0556-ares-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0556-ares-outreach.md
 
 Thanks for ARES; an episode-analysis platform is exactly where a typed intent-and-verdict layer makes the data answer questions it otherwise can't.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```
 
 ---
@@ -256,11 +256,11 @@ The mapping: a rosbag2 recording captures topics over time. A URML audit record 
 
 Two real questions: (1) is a typed validated-intent record a useful companion channel to a rosbag2 recording? (2) Does adding an optional intent-record stream fit a composable recorder's design?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0557-rosbag2-composable-recorder-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0557-rosbag2-composable-recorder-outreach.md
 
 Thanks for the composable recorder; the composability is exactly what makes an optional intent channel feasible without forcing it on anyone.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/URML-MARS/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see https://github.com/urml-dev/URML/blob/main/VIBE.md). Human-only correspondence available on request.*
 ```

@@ -174,7 +174,7 @@ Items 1–7 from "Unresolved questions" above.
 
 `SenteraLLC/py-radiometric-corrections` is the most-relevant Apache-2.0 Python library in the SenteraLLC org (21 stars; verified 2026-05-26). URML's planned channel: open a single Issue on `SenteraLLC/py-radiometric-corrections` labelled with the closest `enhancement` / `question` equivalent, pointing to this RFC. Optional cross-reference on `SenteraLLC/MAVSDK` if maintainers prefer the MAVLink-specific surface.
 
-URML's own public Discussions: https://github.com/URML-MARS/URML/discussions
+URML's own public Discussions: https://github.com/urml-dev/URML/discussions
 
 ## Self-review (Phase 0)
 

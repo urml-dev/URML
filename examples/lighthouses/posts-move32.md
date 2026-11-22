@@ -38,13 +38,13 @@ URML's marine-runtime targets the same BlueROV2 / ArduSub pairing blue orchestra
 
 Three real questions: (1) What should a URML capability manifest declare to honestly describe an underwater vehicle — depth rating, thruster/actuator configuration, buoyancy/ballast, tether vs untethered comms, current/visibility limits? (2) Is a validated natural-language intent layer above blue interesting for the lab's BlueROV2 / UVMS work? (3) Where is the cleanest seam — the ROS 2 interface, or the auv_controllers ros2_control layer?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0396-blue-rdml-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0396-blue-rdml-outreach.md
 
 Thanks for blue / auv_controllers / angler; a clean, open ROS 2 underwater stack is exactly what a neutral intent layer wants to sit above honestly.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -65,13 +65,13 @@ URML's marine-runtime drives a BlueROV2 over ArduSub/MAVLink; on the ROS 2 side,
 
 Two real questions: (1) What should a URML manifest declare to describe a BlueROV2-class AUV mission honestly (depth rating, mission/area bounds, battery/endurance, comms regime)? (2) Where is the right seam — URML move_to onto orca4's Nav2, or higher at the mission level?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0397-orca4-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0397-orca4-outreach.md
 
 Thanks for orca4; one of the cleanest open BlueROV2 autonomy stacks out there.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -92,13 +92,13 @@ A validated URML program (navigate, hold depth, capture, report) lowers to the M
 
 Two real questions: (1) Is the MAVLink/ArduSub surface BlueOS exposes the right seam for an external validated-intent layer, or is there a higher-level BlueOS service interface that is more natural? (2) What should a URML manifest declare to describe a BlueROV / BlueBoat honestly (depth rating, thruster configuration, tether vs untethered, payload sensors)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0398-blueos-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0398-blueos-outreach.md
 
 Thanks for BlueOS; an open onboard platform for accessible underwater robots is a great thing for the field.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -119,13 +119,13 @@ A URML program drives a Stonefish vehicle through stonefish_ros, the same ROS 2 
 
 Two real questions: (1) Is a validated natural-language intent layer above Stonefish interesting as a demonstration / teaching surface for underwater scenarios? (2) What should a URML manifest declare to describe an underwater deployment honestly (depth rating, buoyancy/ballast, thruster configuration, current and visibility limits)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0399-stonefish-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0399-stonefish-outreach.md
 
 Thanks for Stonefish; a serious open marine-robotics simulator is a real asset.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -146,13 +146,13 @@ A URML program drives a DAVE vehicle through its ROS 2 / Gazebo interface, the s
 
 Two real questions: (1) Is a validated natural-language intent layer above DAVE interesting as a demonstration / test surface for underwater scenarios? (2) What should a URML manifest declare to describe an underwater deployment honestly (depth rating, buoyancy, thruster configuration, current/visibility limits)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0400-dave-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0400-dave-outreach.md
 
 Thanks for keeping DAVE alive and on modern ROS 2 / Gazebo; an open underwater test bed is genuinely valuable.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -173,13 +173,13 @@ A URML program drives a HoloOcean AUV through holoocean-ros, the same ROS 2 surf
 
 Two real questions: (1) Is a validated natural-language intent layer above HoloOcean interesting as a demonstration / teaching surface for underwater scenarios? (2) What should a URML manifest declare to describe a HoloOcean AUV honestly (depth rating, dynamics class, sensor suite, current limits)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0401-holoocean-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0401-holoocean-outreach.md
 
 Thanks for HoloOcean and the ROS 2 bridge; high-fidelity underwater sim in the open is a great on-ramp.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -200,13 +200,13 @@ A URML program drives a MARUS surface or underwater vessel through the ROS 2 (gr
 
 Two real questions: (1) Is a validated natural-language intent layer above MARUS interesting as a demonstration / teaching surface for marine scenarios (surface and underwater)? (2) What should a URML manifest declare to describe a marine vessel honestly (vehicle class, depth rating where applicable, thruster configuration, environmental limits)?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0402-marus-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0402-marus-outreach.md
 
 Thanks for MARUS; an open Unity-based marine simulator that speaks ROS 2 is a great demonstration surface.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -227,11 +227,11 @@ URML primitives (move_to, detect, measure, report, and the marine vehicle path) 
 
 Two real questions: (1) Does URML's typed-intent layer map cleanly onto maritime_interfaces, and where should it target the standard interfaces rather than a generic ROS surface? (2) What should a URML capability manifest declare to describe a maritime vehicle in a way the WG would consider faithful (depth rating, thruster config, comms regime, environmental limits)? And is this alignment of interest as a Discourse thread or a meeting agenda item?
 
-Full write-up: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0403-ros-maritime-wg-outreach.md
+Full write-up: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0403-ros-maritime-wg-outreach.md
 
 Thanks for the Maritime WG; agreeing shared interfaces is exactly the layer a substrate-neutral intent vocabulary wants to align with rather than fragment.
 
 Ido Yahalomi (URML, greenvh@gmail.com)
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```

@@ -106,7 +106,7 @@ If you maintain `ros-industrial/staubli_val3_driver` (or contribute to the broad
 
 URML public Discussions (per [RFC-0008](0008-community-discussions.md)):
 
-> https://github.com/URML-MARS/URML/discussions
+> https://github.com/urml-dev/URML/discussions
 
 Categories: **Q&A**, **Ideas**, **Builders & Makers**.
 

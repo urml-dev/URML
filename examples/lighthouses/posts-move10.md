@@ -43,7 +43,7 @@ Each is a separate Spec RFC; URML's outreach RFCs ship with the v0.1 `custom` me
 **Disclosure paragraph (reused verbatim at the bottom of every post body):**
 
 ```
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -71,7 +71,7 @@ URML's perception story benefits from RealSense as the canonical depth-camera li
 
 This is **proposal-only**, posted as part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs). No adapter in URML's repo yet; an adapter would ship engagement-driven.
 
-Full RFC, with the manifest mapping table, v0.1 gaps, three alternatives considered, and detection-capability declaration as Q6: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0109-intel-realsense-outreach.md
+Full RFC, with the manifest mapping table, v0.1 gaps, three alternatives considered, and detection-capability declaration as Q6: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0109-intel-realsense-outreach.md
 
 Questions worth `librealsense` maintainer input on:
 
@@ -87,7 +87,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -113,7 +113,7 @@ ZED's GPU-accelerated depth pipeline plus on-board IMU/AHRS plus optional spatia
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0110-stereolabs-zed-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0110-stereolabs-zed-outreach.md
 
 Questions worth maintainer input on:
 
@@ -128,7 +128,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -154,7 +154,7 @@ MultiSense's combined stereo + lidar payload — well-deployed across legged rob
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0111-carnegie-multisense-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0111-carnegie-multisense-outreach.md
 
 Questions worth maintainer input on:
 
@@ -168,7 +168,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -194,7 +194,7 @@ rc_visard's industrial 3D-vision posture (GenICam compliance, in-process pose-es
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0112-roboception-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0112-roboception-outreach.md
 
 Questions worth maintainer input on:
 
@@ -208,7 +208,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -234,7 +234,7 @@ Basler's industrial 2D camera + ToF coverage gives URML's `cameras` block a clea
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0113-basler-pylon-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0113-basler-pylon-outreach.md
 
 Questions worth maintainer input on:
 
@@ -248,7 +248,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -274,7 +274,7 @@ Event cameras are a first-class v0.1 schema gap in URML: asynchronous per-pixel 
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0114-prophesee-event-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0114-prophesee-event-outreach.md
 
 Questions worth maintainer input on:
 
@@ -288,7 +288,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -314,7 +314,7 @@ O3R's multi-head ToF + 2D + IMU integrated platform exercises URML's `cameras` +
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0115-ifm-effector-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0115-ifm-effector-outreach.md
 
 Questions worth maintainer input on:
 
@@ -328,7 +328,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -354,7 +354,7 @@ Thermal cameras are a first-class v0.1 schema gap in URML: per-pixel calibrated 
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0116-teledyne-flir-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0116-teledyne-flir-outreach.md
 
 Questions worth maintainer input on:
 
@@ -368,7 +368,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -394,7 +394,7 @@ IMU measurement_types — `acceleration`, `angular_velocity`, `orientation` — 
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0117-microstrain-hbk-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0117-microstrain-hbk-outreach.md
 
 Questions worth maintainer input on:
 
@@ -408,7 +408,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -434,7 +434,7 @@ Same IMU-measurement_type gap as MicroStrain (RFC-0117); SBG's defense-grade Qua
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0118-sbg-systems-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0118-sbg-systems-outreach.md
 
 Questions worth maintainer input on:
 
@@ -448,7 +448,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -474,7 +474,7 @@ GNSS measurement_types (`gnss_position`, `gnss_velocity`, `gnss_quality`, `headi
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0119-septentrio-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0119-septentrio-outreach.md
 
 Questions worth maintainer input on:
 
@@ -488,7 +488,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -514,7 +514,7 @@ Same GNSS-class measurement_types gap as Septentrio (RFC-0119). NovAtel's SPAN I
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0120-novatel-hexagon-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0120-novatel-hexagon-outreach.md
 
 Questions worth maintainer input on:
 
@@ -528,7 +528,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -554,7 +554,7 @@ This is URML's first F/T-sensor RFC. 6-axis force/torque (`Fx Fy Fz Tx Ty Tz`) i
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs). Noting the recent vendor-org creation (Feb 2026); engagement is light-touch and exploratory.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0121-robotous-ft-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0121-robotous-ft-outreach.md
 
 Questions worth maintainer input on:
 
@@ -568,7 +568,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -596,7 +596,7 @@ This is URML's first tactile-sensing RFC. Tactile / pressure-array measurement i
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0122-gelsight-tactile-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0122-gelsight-tactile-outreach.md
 
 Questions worth maintainer input on:
 
@@ -609,7 +609,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -637,7 +637,7 @@ This is URML's first hyperspectral-imaging RFC. Per-pixel multi-band spectral si
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0123-cubert-hyperspectral-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0123-cubert-hyperspectral-outreach.md
 
 Questions worth maintainer input on:
 
@@ -652,7 +652,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -678,7 +678,7 @@ This is URML's first environmental / chemical-sensor RFC. v0.1 has `humidity` an
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0124-sensirion-environmental-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0124-sensirion-environmental-outreach.md
 
 Questions worth maintainer input on:
 
@@ -694,7 +694,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -720,7 +720,7 @@ Bosch and Sensirion (RFC-0124) together cover URML's MEMS / environmental sensor
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0125-bosch-sensortec-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0125-bosch-sensortec-outreach.md
 
 Questions worth maintainer input on:
 
@@ -736,7 +736,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -766,7 +766,7 @@ This RFC pairs with RFC-0114 (Prophesee) on URML's event-stream Spec-RFC gap. in
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0126-inivation-event-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0126-inivation-event-outreach.md
 
 Questions worth maintainer input on:
 
@@ -781,7 +781,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -809,7 +809,7 @@ Shared amplitude / depth-class Spec-RFC gap with RFC-0115 (ifm) and RFC-0137 (AM
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0127-pmdtechnologies-tof-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0127-pmdtechnologies-tof-outreach.md
 
 Questions worth maintainer input on:
 
@@ -823,7 +823,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -851,7 +851,7 @@ Shared thermal-array Spec-RFC gap with RFC-0116 (FLIR) and RFC-0129 (Seek Therma
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0128-optris-thermal-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0128-optris-thermal-outreach.md
 
 Questions worth maintainer input on:
 
@@ -865,7 +865,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -893,7 +893,7 @@ Shared thermal-array Spec-RFC gap.
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0129-seek-thermal-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0129-seek-thermal-outreach.md
 
 Questions worth maintainer input on:
 
@@ -907,7 +907,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -935,7 +935,7 @@ URML's adapter request lands on a community-org surface, not an OEM; the legacy-
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0130-velodyne-via-ros-drivers-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0130-velodyne-via-ros-drivers-outreach.md
 
 Questions worth maintainer input on:
 
@@ -949,7 +949,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -977,7 +977,7 @@ Shared IMU-type Spec-RFC gap with RFC-0117 / RFC-0118 / RFC-0125 / RFC-0132; sha
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0131-xsens-movella-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0131-xsens-movella-outreach.md
 
 Questions worth maintainer input on:
 
@@ -991,7 +991,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -1019,7 +1019,7 @@ Shared IMU-type Spec-RFC gap with RFC-0117 / RFC-0118 / RFC-0125 / RFC-0131. Com
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0132-tdk-invensense-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0132-tdk-invensense-outreach.md
 
 Questions worth maintainer input on:
 
@@ -1033,7 +1033,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -1061,7 +1061,7 @@ Shared GNSS-class Spec-RFC gap with RFC-0119 / RFC-0120 / RFC-0134.
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0133-ublox-gnss-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0133-ublox-gnss-outreach.md
 
 Questions worth maintainer input on (for u-blox):
 
@@ -1079,7 +1079,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -1105,7 +1105,7 @@ Shared GNSS-class Spec-RFC gap with RFC-0119 / RFC-0120 / RFC-0133.
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0134-emlid-rtk-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0134-emlid-rtk-outreach.md
 
 Questions worth maintainer input on:
 
@@ -1120,7 +1120,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -1148,7 +1148,7 @@ This is URML's first sonar / underwater-perception RFC. URML already has an exis
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs).
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0135-cerulean-sonar-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0135-cerulean-sonar-outreach.md
 
 Questions worth maintainer input on:
 
@@ -1163,7 +1163,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -1191,7 +1191,7 @@ Second tactile RFC after RFC-0122 GelSight. PapillArray's per-pillar 3-axis forc
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs). Light touch expected.
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0136-contactile-tactile-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0136-contactile-tactile-outreach.md
 
 Questions worth maintainer input on:
 
@@ -1206,7 +1206,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
@@ -1236,7 +1236,7 @@ Shared multi-zone-ToF / amplitude / depth-class Spec-RFC gap with RFC-0115 (ifm)
 
 This is **proposal-only**, part of URML's Move #10 outreach (perception-vendor wave, 29 engageable RFCs). **Completes the 29 engageable Move-10 RFCs.**
 
-Full RFC: https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0137-ams-osram-outreach.md
+Full RFC: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0137-ams-osram-outreach.md
 
 Questions worth maintainer input on:
 
@@ -1251,7 +1251,7 @@ Ido Yahalomi (URML maintainer, [urml.dev](https://urml.dev), greenvh@gmail.com)
 
 ---
 
-*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/URML-MARS/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
+*AI-assisted prose, maintainer-reviewed before posting (see [VIBE.md](https://github.com/urml-dev/URML/blob/main/VIBE.md)). Human-only correspondence available on request.*
 ```
 
 ---
