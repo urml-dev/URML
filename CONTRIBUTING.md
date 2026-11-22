@@ -53,7 +53,7 @@ External code PRs are open. Mechanics:
 
 ## Contributor License Agreement (CLA) and sign-off
 
-URML is licensed under the Business Source License 1.1 and offered under commercial licenses (see [`LICENSING.md`](LICENSING.md)). To make that possible, every contributor signs the [Contributor License Agreement](CLA.md) once. A CLA check runs on your first pull request and walks you through it. You keep the copyright in your contribution.
+URML is licensed under the Business Source License 1.1 and offered under commercial licenses (see [`LICENSING.md`](LICENSING.md)). To make that possible, every contributor signs the [Contributor License Agreement](CLA.md) once. A CLA check runs on your first pull request and walks you through it. You can also sign ahead of time at [cla-assistant.io/urml-dev/URML](https://cla-assistant.io/urml-dev/URML). You keep the copyright in your contribution.
 
 Every commit also carries a DCO sign-off as a record of provenance. The full DCO text is in [`DCO`](DCO).
 
