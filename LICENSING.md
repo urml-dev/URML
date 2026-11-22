@@ -49,13 +49,13 @@ URML's optional dependencies (ROS 2, PX4, pymavlink, asyncua and others) keep th
 
 ## Commercial license tiers
 
-| Tier | For |
-|---|---|
-| **Startup** | A first production deployment, up to an agreed robot count |
-| **Enterprise** | Fleets across sites, regulated and federal buyers, audited policy files, support SLA |
-| **OEM** | Robot and controller makers embedding URML in products they ship, with redistribution rights |
+| Tier | Price | For |
+|---|---|---|
+| **Production** | $4 per robot per month | Any company running URML on robots in production. Only robots in service count. |
+| **Enterprise lifetime** | $225,000 one time, plus $10,000 per year support | Perpetual license for unlimited robots and sites, including every future version and audited policy files |
+| **OEM** | Per unit, on request | Robot and controller makers embedding URML in products they ship, with redistribution rights |
 
-Pricing is on request: sales@urml.dev.
+Licenses: sales@urml.dev.
 
 ## Contributing
 
