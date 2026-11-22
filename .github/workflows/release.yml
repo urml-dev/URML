@@ -100,4 +100,10 @@ jobs:
         with:
           packages-dir: dist/
           repository-url: ${{ inputs.target == 'pypi' && 'https://upload.pypi.org/legacy/' || 'https://test.pypi.org/legacy/' }}
+          # Real PyPI: account-scoped API token stored as an environment secret
+          # of pypi-release (required reviewer). Empty for TestPyPI, which then
+          # falls back to Trusted Publishing.
+          password: ${{ inputs.target == 'pypi' && secrets.PYPI_API_TOKEN || '' }}
+          # Re-running after a partial upload must not fail on files already there.
+          skip-existing: true
           verbose: true

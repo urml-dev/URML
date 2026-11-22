@@ -20,7 +20,23 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
-Work on `main` since 0.4.0, not yet cut into a release. The packages on `main` still carry version 0.4.0. PyPI serves 0.4.0 of `urml-validator`, `urml-llm-bridge`, and four runtimes (`urml-ardupilot-runtime`, `urml-autosar-runtime`, `urml-chrono-runtime`, `urml-cobot-runtime`), uploaded 2026-09-10, and those builds predate most of the work below. The other packages, including `urml-ros2-runtime` (the mock runtime), `urml-px4-runtime` and `urml-mcp-server`, install from source; install every URML package from the same source, because a runtime built from `main` needs the validator from `main`.
+Nothing yet.
+
+## [0.5.0] - 2026-11-22
+
+First release from the new home, [`urml-dev/URML`](https://github.com/urml-dev/URML). All twenty-two packages are published to PyPI at 0.5.0, so every runtime installs with `pip` again instead of from source.
+
+### Changed: license
+
+URML 0.5.0 and later are licensed under the **Business Source License 1.1** ([RFC-0703](docs/rfcs/0703-bsl-relicense.md), [`LICENSING.md`](LICENSING.md)). Research, teaching, evaluation, development, testing, simulation and personal use are free. Production use needs a commercial license: $4 per robot per month, or the Enterprise lifetime package ([`COMMERCIAL.md`](COMMERCIAL.md)). Each release converts to Apache 2.0 two years after it ships. Releases up to and including 0.4.x stay Apache 2.0.
+
+### Changed: project
+
+- The canonical repository moved from `URML-MARS/URML` to `urml-dev/URML`; every link in the repository points at the new location.
+- Contributions require the [Contributor License Agreement](CLA.md), checked automatically on pull requests, plus DCO sign-off.
+- The MCP server's registry name is now `io.github.urml-dev/urml`.
+
+The entries below were developed on `main` after 0.4.0 and ship in 0.5.0.
 
 ### Added: ArduPilot reference runtime
 
