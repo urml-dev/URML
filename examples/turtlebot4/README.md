@@ -1,6 +1,6 @@
 # URML on a TurtleBot 4 (ROS 2, Nav2)
 
-The worked example from [Discussion #526](https://github.com/URML-MARS/URML/discussions/526),
+The worked example from [Discussion #526](https://github.com/urml-dev/URML/discussions/526),
 where [@slowrunner](https://github.com/slowrunner) asked how a ROS 2 robot maps
 onto URML. His Dave is a ROS bot and his WaLI is a TurtleBot 4 clone, so this is
 the shape for that family.

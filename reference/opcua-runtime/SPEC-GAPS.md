@@ -52,7 +52,7 @@ maintainer decision — never a silent primitive/schema change.
 
 ## Maintainer ratification flag (not a spec gap)
 
-`asyncua` is **LGPL-3.0**. In-repo code is Apache-2.0 and depends on it
+`asyncua` is **LGPL-3.0**. In-repo code is BSL 1.1 and depends on it
 **only** via the optional `[opcua]` extra, never imported at module
 load (the same posture as `rclpy` / `pymavlink`), so the Core
 Commitment boundary is intact and this runtime is outside that

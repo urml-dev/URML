@@ -130,4 +130,4 @@ Bench link verified on hardware (Pixhawk, ArduCopter 4.6.3, USB). The SITL e2e (
 
 ## License
 
-Apache 2.0. The adapter talks to ArduPilot firmware (GPLv3) over MAVLink; it links `pymavlink` (LGPLv3) as a normal Python import and never links the firmware.
+Business Source License 1.1: free for non-production use, commercial license for production (see [`LICENSING.md`](../../LICENSING.md)). The adapter talks to ArduPilot firmware (GPLv3) over MAVLink; it links `pymavlink` (LGPLv3) as a normal Python import and never links the firmware.

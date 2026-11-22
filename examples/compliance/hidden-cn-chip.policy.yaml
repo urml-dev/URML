@@ -1,6 +1,6 @@
 # Example HBOM-content policy (RFC-0005). Reject a critical component whose
 # HBOM declares a part from a covered foreign country, at any pedigree depth.
-# Illustrative, not legal advice (see CORE_COMMITMENT.md).
+# Illustrative, not legal advice (see LICENSING.md).
 
 policy_version: "0.1"
 policy_id: hidden_cn_chip_demo_policy

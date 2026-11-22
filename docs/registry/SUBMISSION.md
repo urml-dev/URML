@@ -30,7 +30,7 @@ Limits: at least one sentence on what your evidence does not show. Every entry h
 
 ### 1. Fork and branch
 
-Fork `URML-MARS/URML` and create a branch. Pick an id: lowercase words joined by hyphens, naming the robot and the runtime (`acme-rover-ros2`). The id is the entry's file name.
+Fork `urml-dev/URML` and create a branch. Pick an id: lowercase words joined by hyphens, naming the robot and the runtime (`acme-rover-ros2`). The id is the entry's file name.
 
 ### 2. Add the evidence folder
 
@@ -135,4 +135,4 @@ Open a pull request that sets `status: withdrawn` and says why. No questions ask
 
 ## If something goes wrong
 
-Open an issue or start a thread in [GitHub Discussions](https://github.com/URML-MARS/URML/discussions). The conformance suite and the checker are Apache 2.0, so anyone can re-run them and settle a disagreement about what passes.
+Open an issue or start a thread in [GitHub Discussions](https://github.com/urml-dev/URML/discussions). The conformance suite and the checker are free to run for testing, so anyone can re-run them and settle a disagreement about what passes.

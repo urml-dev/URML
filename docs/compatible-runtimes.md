@@ -34,7 +34,7 @@ If you make **robots or parts** rather than runtimes, the parallel surface is th
 
 Maintained by the URML project and verified by the in-repo conformance suite
 (`conformance/`), run hermetically against `MockROSAdapter` and
-adapter-agnostically against each runtime. All are Apache-2.0. "Live e2e" against
+adapter-agnostically against each runtime. All are BSL 1.1. "Live e2e" against
 real hardware or a real simulator is gated CI, calibration-staged, and **not** a
 hardware claim; see the [claims audit](launch/claims-audit.md).
 

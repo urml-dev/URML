@@ -7,14 +7,14 @@ name = "urml-conformance"
 version = "0.4.0"
 description = "Conformance test suite for URML runtimes. Free, public, runnable."
 readme = "README.md"
-license = { text = "Apache-2.0" }
+license = { text = "BUSL-1.1" }
 requires-python = ">=3.11"
 authors = [{ name = "URML Maintainers" }]
 keywords = ["robotics", "urml", "conformance", "specification"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: Apache Software License",
+  "License :: Other/Proprietary License",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.11",
@@ -44,9 +44,9 @@ llm-bridge = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/URML-MARS/URML"
-Repository = "https://github.com/URML-MARS/URML"
-Issues = "https://github.com/URML-MARS/URML/issues"
+Homepage = "https://github.com/urml-dev/URML"
+Repository = "https://github.com/urml-dev/URML"
+Issues = "https://github.com/urml-dev/URML/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/urml_conformance"]

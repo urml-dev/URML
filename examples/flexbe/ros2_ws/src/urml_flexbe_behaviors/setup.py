@@ -20,6 +20,6 @@ setup(
     maintainer="URML Maintainers",
     maintainer_email="greenvh@gmail.com",
     description="FlexBE behaviors for URML (URML Turtle Patrol; URML UR-3e Pick-Place).",
-    license="Apache-2.0",
+    license="BUSL-1.1",
     tests_require=["pytest"],
 )

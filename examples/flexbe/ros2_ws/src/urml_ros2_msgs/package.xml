@@ -9,7 +9,7 @@
     Part of the URML FlexBE worked example (RFC-0474).
   </description>
   <maintainer email="greenvh@gmail.com">URML Maintainers</maintainer>
-  <license>Apache-2.0</license>
+  <license>BUSL-1.1</license>
   <url type="website">https://urml.dev</url>
 
   <buildtool_depend>ament_cmake</buildtool_depend>

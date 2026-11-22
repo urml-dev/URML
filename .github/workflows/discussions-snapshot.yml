@@ -32,7 +32,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh api graphql -f query='{repository(owner:"URML-MARS",name:"URML"){discussions(first:50,orderBy:{field:UPDATED_AT,direction:DESC}){nodes{id number title url category{name} updatedAt author{login} answerChosenAt closed comments(first:30){totalCount nodes{id author{login} createdAt body replies(first:20){totalCount nodes{id author{login} createdAt body}}}}}}}}' > /tmp/discussions.json
+          gh api graphql -f query='{repository(owner:"urml-dev",name:"URML"){discussions(first:50,orderBy:{field:UPDATED_AT,direction:DESC}){nodes{id number title url category{name} updatedAt author{login} answerChosenAt closed comments(first:30){totalCount nodes{id author{login} createdAt body replies(first:20){totalCount nodes{id author{login} createdAt body}}}}}}}}' > /tmp/discussions.json
           python3 - <<'EOF'
           import json
           d = json.load(open('/tmp/discussions.json'))

@@ -57,7 +57,7 @@ If the bundled policy is *missing* a covered entity such that a real federal-pro
 
 - **Substrate vulnerabilities** (ROS 2, PX4, AUTOSAR, OPC UA, vendor SDKs). Please report those to the substrate's own security process. URML cannot fix bugs in code it does not maintain.
 - **Vulnerabilities in third-party runtimes, profiles, or tools** that are not part of this repository. Contact the maintainer of that project directly.
-- **Third-party compliance policy files.** URML supplies the mechanism and a bundled US-federal default. Other policy files (community-maintained or commercial; see [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) §What This Commitment Does Not Cover for the audited/certified commercial surface) are the responsibility of their authors. URML vulnerabilities in the *engine* that evaluates policies are in scope; flaws in *third-party rules* are not.
+- **Third-party compliance policy files.** URML supplies the mechanism and a bundled US-federal default. Other policy files (community-maintained or commercial; see [`COMMERCIAL.md`](COMMERCIAL.md) for the audited/certified commercial surface) are the responsibility of their authors. URML vulnerabilities in the *engine* that evaluates policies are in scope; flaws in *third-party rules* are not.
 
 ## Public security log
 

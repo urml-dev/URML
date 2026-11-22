@@ -47,5 +47,5 @@ marketplace entries point back to it. Use `greenvh@gmail.com` for any contact fi
 - Keep the skill in lockstep with the reference runtime. Every command in
   `SKILL.md` must run against the current `urml` CLI (the same no-dangling-example
   rule as the rest of the repo).
-- Apache-2.0, provider-agnostic, no telemetry. The skill is part of the open core
+- BSL 1.1 (free for non-production use), provider-agnostic, no telemetry. The skill is part of URML
   story, not a commercial surface.

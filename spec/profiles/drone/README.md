@@ -236,7 +236,7 @@ Abort current flight intent and return the drone to its declared home location, 
 
 ## Reference runtime
 
-[`/reference/px4-runtime/`](../../../reference/px4-runtime/) is the second reference runtime and targets this profile. It is part of the [Core Commitment](../../../CORE_COMMITMENT.md). The PX4 runtime ships in Phase 2 per the [manifesto roadmap](../../../MANIFESTO.md) §Roadmap Snapshot.
+[`/reference/px4-runtime/`](../../../reference/px4-runtime/) is the second reference runtime and targets this profile. The PX4 runtime ships in Phase 2 per the [manifesto roadmap](../../../MANIFESTO.md) §Roadmap Snapshot.
 
 ## Compliance policy alignment
 

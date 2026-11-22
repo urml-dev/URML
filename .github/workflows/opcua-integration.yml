@@ -31,7 +31,7 @@
 #
 # LICENSING NOTE: asyncua is LGPL-3.0; it is an OPTIONAL [opcua] extra
 # imported lazily, never at module load (the rclpy/pymavlink posture).
-# In-repo code is Apache-2.0. The posture is flagged in SPEC-GAPS.md
+# In-repo code is BSL 1.1. The posture is flagged in SPEC-GAPS.md
 # for maintainer ratification.
 
 name: opcua-integration

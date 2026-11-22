@@ -3,7 +3,7 @@ description_html: |
   Read-only mirror of every outreach ledger row.
   Source of truth lives in <code>examples/lighthouses/outreach*.yaml</code>.
   Regenerate this database with <code>make outreach-refresh</code>.
-  See <a href="https://github.com/URML-MARS/URML/blob/main/docs/rfcs/0275-outreach-ledger-schema-v2.md">RFC-0275</a>
+  See <a href="https://github.com/urml-dev/URML/blob/main/docs/rfcs/0275-outreach-ledger-schema-v2.md">RFC-0275</a>
   for the schema.
 
 databases:

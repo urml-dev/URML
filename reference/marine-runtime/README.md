@@ -55,7 +55,7 @@ with BlueRovAdapter(MarineConfig(connection_url="udp:127.0.0.1:14550")) as rov:
 
 ## Core Commitment
 
-This runtime is part of the [Core Commitment](../../CORE_COMMITMENT.md). It will always be Apache 2.0. No vendor coupling, no cloud dependency, no enterprise edition.
+This runtime is licensed under the Business Source License 1.1: free for non-production use, commercial license for production (see [`LICENSING.md`](../../LICENSING.md)). No vendor coupling, no cloud dependency.
 
 ## Related documents
 

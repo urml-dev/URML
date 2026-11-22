@@ -135,7 +135,7 @@ except BridgePolicyViolation as exc:
 - The bridge, in full: [`reference/llm-bridge/README.md`](../../reference/llm-bridge/README.md).
 - A narrated hermetic round-trip: [`docs/demos/bridge-roundtrip.md`](../bridge-roundtrip.md).
 - The hands-on tutorial: [`docs/tutorials/03-natural-language-to-urml.md`](../tutorials/03-natural-language-to-urml.md).
-- What is always open and free: [`CORE_COMMITMENT.md`](../../CORE_COMMITMENT.md). The bridge logic and the prompt contract are part of it: Apache 2.0, provider-agnostic, forever.
+- Licensing: [`LICENSING.md`](../../LICENSING.md). The bridge logic and the prompt contract are BSL 1.1 (free for non-production use) and provider-agnostic.
 
 ---
 

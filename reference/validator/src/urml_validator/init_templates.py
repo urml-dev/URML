@@ -216,9 +216,9 @@ urml translate "Bring me the red mug from the kitchen." \\
 
 See the spec for field references:
 
-- Layer 1 (manifest): https://github.com/URML-MARS/URML/tree/main/spec/layer-1-hal
-- Layer 2 (primitives): https://github.com/URML-MARS/URML/tree/main/spec/layer-2-primitives
-- Layer 3 (composition): https://github.com/URML-MARS/URML/tree/main/spec/layer-3-behavior
+- Layer 1 (manifest): https://github.com/urml-dev/URML/tree/main/spec/layer-1-hal
+- Layer 2 (primitives): https://github.com/urml-dev/URML/tree/main/spec/layer-2-primitives
+- Layer 3 (composition): https://github.com/urml-dev/URML/tree/main/spec/layer-3-behavior
 """
 
 
@@ -452,9 +452,9 @@ urml translate "Pick a red widget from the bin and place it in the red kitting t
 
 See the spec for field references:
 
-- Layer 1 (manifest): https://github.com/URML-MARS/URML/tree/main/spec/layer-1-hal
-- Layer 2 (primitives): https://github.com/URML-MARS/URML/tree/main/spec/layer-2-primitives
-- Layer 3 (composition): https://github.com/URML-MARS/URML/tree/main/spec/layer-3-behavior
+- Layer 1 (manifest): https://github.com/urml-dev/URML/tree/main/spec/layer-1-hal
+- Layer 2 (primitives): https://github.com/urml-dev/URML/tree/main/spec/layer-2-primitives
+- Layer 3 (composition): https://github.com/urml-dev/URML/tree/main/spec/layer-3-behavior
 """
 
 
@@ -677,10 +677,10 @@ urml translate "Inspect the north roof for damage and bring me photos." \\
 
 See the spec for field references:
 
-- Layer 1 (manifest): https://github.com/URML-MARS/URML/tree/main/spec/layer-1-hal
-- Layer 2 (primitives): https://github.com/URML-MARS/URML/tree/main/spec/layer-2-primitives
-- Layer 3 (composition): https://github.com/URML-MARS/URML/tree/main/spec/layer-3-behavior
-- Drone profile: https://github.com/URML-MARS/URML/tree/main/spec/profiles/drone
+- Layer 1 (manifest): https://github.com/urml-dev/URML/tree/main/spec/layer-1-hal
+- Layer 2 (primitives): https://github.com/urml-dev/URML/tree/main/spec/layer-2-primitives
+- Layer 3 (composition): https://github.com/urml-dev/URML/tree/main/spec/layer-3-behavior
+- Drone profile: https://github.com/urml-dev/URML/tree/main/spec/profiles/drone
 """
 
 
@@ -939,10 +939,10 @@ urml translate "Pick a tote from shelf A3 and place it on the outbound conveyor.
 
 See the spec for field references:
 
-- Layer 1 (manifest): https://github.com/URML-MARS/URML/tree/main/spec/layer-1-hal
-- Layer 2 (primitives): https://github.com/URML-MARS/URML/tree/main/spec/layer-2-primitives
-- Layer 3 (composition): https://github.com/URML-MARS/URML/tree/main/spec/layer-3-behavior
-- Warehouse profile: https://github.com/URML-MARS/URML/tree/main/spec/profiles/warehouse
+- Layer 1 (manifest): https://github.com/urml-dev/URML/tree/main/spec/layer-1-hal
+- Layer 2 (primitives): https://github.com/urml-dev/URML/tree/main/spec/layer-2-primitives
+- Layer 3 (composition): https://github.com/urml-dev/URML/tree/main/spec/layer-3-behavior
+- Warehouse profile: https://github.com/urml-dev/URML/tree/main/spec/profiles/warehouse
 """
 
 

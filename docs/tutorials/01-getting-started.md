@@ -27,7 +27,7 @@ You should be able to work through this tutorial in under five minutes.
 URML is shipped as a set of Python packages under `reference/` in the repository. In Phase 0 they are not on PyPI (a deliberate Phase-1 step); `bootstrap.py` installs all five editable into a project-local venv, in dependency order, in one step on any OS:
 
 ```bash
-git clone https://github.com/URML-MARS/URML.git
+git clone https://github.com/urml-dev/URML.git
 cd URML
 
 python bootstrap.py     # creates .venv, installs everything editable

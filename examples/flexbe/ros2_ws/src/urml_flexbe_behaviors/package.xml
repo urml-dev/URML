@@ -11,7 +11,7 @@
     FlexBE collaborative autonomy. Part of the URML FlexBE worked example (RFC-0474).
   </description>
   <maintainer email="greenvh@gmail.com">URML Maintainers</maintainer>
-  <license>Apache-2.0</license>
+  <license>BUSL-1.1</license>
   <url type="website">https://urml.dev</url>
 
   <exec_depend>flexbe_core</exec_depend>

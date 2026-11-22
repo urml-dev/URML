@@ -108,7 +108,7 @@ else:
 
 ## Core Commitment
 
-The validator is part of the [Core Commitment](../../CORE_COMMITMENT.md). It will always be Apache 2.0. The safety guarantees of URML flow through this component; gating it behind a license would forfeit them.
+The validator is licensed under the Business Source License 1.1: free for non-production use, commercial license for production (see [`LICENSING.md`](../../LICENSING.md)). Research, education and evaluation use is free, so anyone can check a URML program against a manifest without a contract.
 
 ## Quickstart (current pre-alpha)
 

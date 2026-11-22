@@ -164,7 +164,7 @@ The strategic posture behind this is in [RFC-0003](../rfcs/0003-us-alignment.md)
 
 ## What this is NOT
 
-A policy file passing the URML validator is not a legal compliance determination. The bundled default ships under Apache 2.0 forever per [`CORE_COMMITMENT.md`](../../CORE_COMMITMENT.md) item 7; audited and certified policy files carrying third-party legal attestation are a separate commercial surface (see [`CORE_COMMITMENT.md`](../../CORE_COMMITMENT.md) §What This Commitment Does Not Cover).
+A policy file passing the URML validator is not a legal compliance determination. The bundled default ships with URML under BSL 1.1 (see [`LICENSING.md`](../../LICENSING.md)); audited and certified policy files carrying third-party legal attestation are a separate commercial surface (see [`COMMERCIAL.md`](../../COMMERCIAL.md)).
 
 The walkthrough above is illustrative. Real deployments need real provenance attestations and counsel review.
 

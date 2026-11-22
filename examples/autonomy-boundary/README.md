@@ -1,6 +1,6 @@
 # URML in the mind of an autonomous robot
 
-The worked answer to [Discussion #526](https://github.com/URML-MARS/URML/discussions/526):
+The worked answer to [Discussion #526](https://github.com/urml-dev/URML/discussions/526):
 where does URML sit in an autonomous robot, and where does it not?
 
 The scenario is the patrol @slowrunner described: during activity hours, if the

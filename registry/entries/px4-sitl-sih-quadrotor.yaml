@@ -44,8 +44,8 @@ field_evidence:
       - reference/px4-runtime/tests/integration/sitl-runs/2026-09-27-px4-v1.17.0-sih.md
       - reference/px4-runtime/tests/integration/test_px4_sitl_e2e.py
       - docs/launch/claims-audit.md
-      - https://github.com/URML-MARS/URML/commit/9ff518cc1314765d9b6f84da30aa7a490446959f
-      - https://github.com/URML-MARS/URML/commit/9530a2f7d9c064b1f915e62e7f21904ae8e1b832
+      - https://github.com/urml-dev/URML/commit/9ff518cc1314765d9b6f84da30aa7a490446959f
+      - https://github.com/urml-dev/URML/commit/9530a2f7d9c064b1f915e62e7f21904ae8e1b832
   - kind: simulation_run
     date: "2026-09-27"
     by: URML maintainers
@@ -62,7 +62,7 @@ field_evidence:
       of the CI job's recipe.
     sources:
       - reference/px4-runtime/tests/integration/sitl-runs/2026-09-27-px4-v1.17.0-sih-heartbeat.md
-      - https://github.com/URML-MARS/URML/commit/3d6f5fa8986a7c0a3587265ba46d406842f5fa5d
+      - https://github.com/urml-dev/URML/commit/3d6f5fa8986a7c0a3587265ba46d406842f5fa5d
 
 validation_records:
   path: registry/evidence/px4-sitl-sih-quadrotor/validation-records.jsonl

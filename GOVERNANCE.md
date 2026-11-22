@@ -33,7 +33,7 @@ PRs (as opposed to RFCs) handle *implementation* of accepted RFCs and routine ma
 When in doubt about a decision in this repository, authority flows in this order (mirrors [`CLAUDE.md`](CLAUDE.md)):
 
 1. [`MANIFESTO.md`](MANIFESTO.md) — the constitution
-2. [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) — the licensing floor
+2. [`LICENSE`](LICENSE) and [`LICENSING.md`](LICENSING.md): the licensing terms ([`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) is superseded by RFC-0703)
 3. Layer specifications (versioned, in [`spec/`](spec/))
 4. Accepted RFCs (in [`docs/rfcs/`](docs/rfcs/))
 5. [`CLAUDE.md`](CLAUDE.md) — working conventions
@@ -81,7 +81,7 @@ When the project transitions to Phase 1+, the default-policy maintenance role is
 
 **Owner:** the sole maintainer, in Phase 0. The maintainer reviews directory submission PRs for completeness only, per [`docs/manufacturers/SUBMISSION.md`](docs/manufacturers/SUBMISSION.md) §"What the maintainer checks": that links resolve at the pinned commit, declared versions are well-formed, any linked federal-validation self-report uses only the permitted factual phrasing and carries the mandatory disclaimer, and the trademark-and-phrasing acknowledgement is ticked. The maintainer does not audit products, run validation independently, or assess fitness for any purpose.
 
-**What is NOT in scope of this role:** granting any mark, certifying or auditing any product, or operating the Phase-4 paid certification program. Those are a separate commercial surface outside this repository (see [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) and [`TRADEMARK.md`](TRADEMARK.md)). No lead generation, directory analytics, or contact capture is operated from this repository.
+**What is NOT in scope of this role:** granting any mark, certifying or auditing any product, or operating the Phase-4 paid certification program. Those are a separate commercial surface outside this repository (see [`COMMERCIAL.md`](COMMERCIAL.md) and [`TRADEMARK.md`](TRADEMARK.md)). No lead generation, directory analytics, or contact capture is operated from this repository.
 
 When the project transitions to Phase 1+, the directory-maintenance role is delegated to a named steering committee member or working group, the same way the default-policy role is.
 
@@ -97,17 +97,17 @@ This is the standard pattern (Kubernetes, OpenStack, Linux): the code is free, t
 
 ## Contributor License Posture
 
-URML uses **DCO sign-off**, not a Contributor License Agreement. Every commit must include a `Signed-off-by:` line; the workflow is in [`CONTRIBUTING.md`](CONTRIBUTING.md). The DCO posture is a deliberate strategic choice — see the rationale in [`CLAUDE.md`](CLAUDE.md) §What Claude Should Never Do (last bullet).
+External contributors sign the [Contributor License Agreement](CLA.md) once, and every commit carries a DCO `Signed-off-by:` line. The CLA lets the Licensor offer URML under the Business Source License 1.1 and under commercial licenses ([RFC-0703](docs/rfcs/0703-bsl-relicense.md)). The workflow is in [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## Conflicts of Interest
 
 The founder anticipates eventually being affiliated with a commercial entity that builds on URML. To preempt the obvious conflict:
 
-- No proprietary feature is merged into this repository. The Core Commitment defines what stays open; everything else lives elsewhere.
+- Everything in this repository is under the same license ([`LICENSE`](LICENSE)). Hosted services and fleet tooling live elsewhere.
 - The maintainer's commercial activities are disclosed in this file as soon as they exist.
 - Once a steering committee exists, conflicted RFCs (those that would benefit a maintainer's commercial entity) require approval from at least one non-conflicted committee member.
 
-**Current disclosed affiliations (as of 2026-05-13):** none. When this changes, this section is updated in the same PR that creates the affiliation.
+**Current disclosed affiliations (as of 2026-11-22):** the maintainer, Ido Yahalomi, is the Licensor of URML under the Business Source License 1.1 and sells commercial licenses (see [`COMMERCIAL.md`](COMMERCIAL.md)). When this changes, this section is updated in the same PR that creates the change.
 
 ## How to Reach the Maintainer
 

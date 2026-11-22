@@ -69,7 +69,7 @@ Without `pychrono` installed, `ChronoAdapter()` raises a clear error pointing at
 
 ## Core Commitment
 
-This runtime is Apache 2.0. It is outside the [Core Commitment](../../CORE_COMMITMENT.md) boundary (only ROS 2 + PX4 reference runtimes are named there) but carries the same no-vendor-coupling, no-cloud, no-enterprise-edition posture. PyChrono / Project Chrono is BSD-3-Clause (confirmed by the maintainers on #746); a validated-intent mapping carries no license entanglement.
+Business Source License 1.1: free for non-production use, commercial license for production (see [`LICENSING.md`](../../LICENSING.md)). No vendor coupling, no cloud dependency. PyChrono / Project Chrono is BSD-3-Clause (confirmed by the maintainers on #746); a validated-intent mapping carries no license entanglement.
 
 ## Related documents
 

@@ -41,10 +41,10 @@ python -m venv .urml-mcp
 . .urml-mcp/bin/activate                     # Windows: .urml-mcp\Scripts\activate
 
 pip install \
-  "git+https://github.com/URML-MARS/URML.git#subdirectory=reference/validator" \
-  "git+https://github.com/URML-MARS/URML.git#subdirectory=reference/llm-bridge" \
-  "git+https://github.com/URML-MARS/URML.git#subdirectory=reference/ros2-runtime" \
-  "git+https://github.com/URML-MARS/URML.git#subdirectory=reference/mcp-server"
+  "git+https://github.com/urml-dev/URML.git#subdirectory=reference/validator" \
+  "git+https://github.com/urml-dev/URML.git#subdirectory=reference/llm-bridge" \
+  "git+https://github.com/urml-dev/URML.git#subdirectory=reference/ros2-runtime" \
+  "git+https://github.com/urml-dev/URML.git#subdirectory=reference/mcp-server"
 
 urml-mcp        # runs over stdio
 ```

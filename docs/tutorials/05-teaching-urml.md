@@ -33,7 +33,7 @@ The starter files for this lesson live in [`examples/educational/`](../../exampl
 Follow [Tutorial 1](01-getting-started.md) on the teaching machine. The short version:
 
 ```bash
-git clone https://github.com/URML-MARS/URML.git
+git clone https://github.com/urml-dev/URML.git
 cd URML
 python bootstrap.py
 . .venv/bin/activate           # Windows: .venv\Scripts\activate
@@ -146,4 +146,4 @@ Two honest notes worth saying out loud, because they are part of why URML is saf
 
 ## Next
 
-You now have a lesson. If you want to point URML at a robot that is not in the starter set, [Tutorial 4](04-writing-your-own-manifest.md) shows how to write a manifest for your own hardware. If your school runs a robotics program, competition, or curriculum and you would like to talk about URML fitting into it, the project tracks that interest in the open; open an issue on the [repository](https://github.com/URML-MARS/URML).
+You now have a lesson. If you want to point URML at a robot that is not in the starter set, [Tutorial 4](04-writing-your-own-manifest.md) shows how to write a manifest for your own hardware. If your school runs a robotics program, competition, or curriculum and you would like to talk about URML fitting into it, the project tracks that interest in the open; open an issue on the [repository](https://github.com/urml-dev/URML).

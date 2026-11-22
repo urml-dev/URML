@@ -40,10 +40,10 @@ field_evidence:
       validated program ran with --execute, 2 steps, success, and the robot
       moved 10 cm. Speech was not heard in either run.
     sources:
-      - https://github.com/URML-MARS/URML/discussions/542
-      - https://github.com/URML-MARS/URML/discussions/523
+      - https://github.com/urml-dev/URML/discussions/542
+      - https://github.com/urml-dev/URML/discussions/523
       - https://urml.dev/blog/field-notes-first-robot-runs-urml
-      - https://github.com/URML-MARS/URML/commit/58ac44cdfb79ee64496e8790fa294a6fe176f806
+      - https://github.com/urml-dev/URML/commit/58ac44cdfb79ee64496e8790fa294a6fe176f806
   - kind: hardware_run
     date: "2026-07-07"
     by: "@slowrunner"
@@ -55,10 +55,10 @@ field_evidence:
       and orbited counterclockwise. It was merged on 2026-08-05, URML's first
       merged external code contribution.
     sources:
-      - https://github.com/URML-MARS/URML/issues/591
-      - https://github.com/URML-MARS/URML/issues/598
-      - https://github.com/URML-MARS/URML/pull/602
-      - https://github.com/URML-MARS/URML/commit/a93fe58d906adc147660bc2101b22f0ec2ceb434
+      - https://github.com/urml-dev/URML/issues/591
+      - https://github.com/urml-dev/URML/issues/598
+      - https://github.com/urml-dev/URML/pull/602
+      - https://github.com/urml-dev/URML/commit/a93fe58d906adc147660bc2101b22f0ec2ceb434
       - CHANGELOG.md
 
 validation_records:

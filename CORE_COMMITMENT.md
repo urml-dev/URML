@@ -12,9 +12,11 @@
 
 ---
 
-# URML Core Commitment
+# URML Core Commitment (superseded)
 
-**Status:** Draft  
+> **Superseded on 2026-11-22 by [RFC-0703](docs/rfcs/0703-bsl-relicense.md).** URML versions after v0.4.x are licensed under the Business Source License 1.1; see [`LICENSING.md`](LICENSING.md). Releases up to and including v0.4.x remain Apache 2.0. This document is kept as a historical record and no longer binds the project.
+
+**Status:** Superseded by RFC-0703  
 **Established:** Phase 0  
 **Authority:** Second only to [`MANIFESTO.md`](MANIFESTO.md) in this repository's precedence order (see [`CLAUDE.md`](CLAUDE.md) §Reference Documents).
 

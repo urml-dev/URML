@@ -39,7 +39,7 @@ field_evidence:
       - docs/demos/sentence-to-pixhawk.md
       - docs/launch/claims-audit.md
       - reference/ardupilot-runtime/tests/integration/test_arducopter_bench.py
-      - https://github.com/URML-MARS/URML/commit/f6cba8fd349047c50cc4f32a35ee1b95679fe929
+      - https://github.com/urml-dev/URML/commit/f6cba8fd349047c50cc4f32a35ee1b95679fe929
   - kind: simulation_run
     date: "2026-08-29"
     by: URML maintainers
@@ -58,7 +58,7 @@ field_evidence:
       - docs/launch/claims-audit.md
       - docs/demos/sentence-to-pixhawk.md
       - reference/ardupilot-runtime/tests/integration/test_arducopter_sitl_e2e.py
-      - https://github.com/URML-MARS/URML/commit/221ddfe37da6dcd0ff587616791c157feee9eb14
+      - https://github.com/urml-dev/URML/commit/221ddfe37da6dcd0ff587616791c157feee9eb14
 
 validation_records:
   path: registry/evidence/ardupilot-arducopter-pixhawk/validation-records.jsonl

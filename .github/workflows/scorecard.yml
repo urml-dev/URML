@@ -14,7 +14,7 @@ name: scorecard
 #      as a follow-up, once a first run has published). `id-token: write`
 #      authorizes that publish, and it requires this repo to stay public.
 #
-# URML is a monorepo, so this is a single top-level run over URML-MARS/URML;
+# URML is a monorepo, so this is a single top-level run over urml-dev/URML;
 # Scorecard scores one repository at a time and does not aggregate across repos.
 # Weekly cadence (Mondays 07:00 UTC) matches the repo's other scheduled
 # workflows; manual runs are available via `workflow_dispatch`. There is

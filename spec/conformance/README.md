@@ -34,8 +34,7 @@ to certify against.
   rationale and the human-readable obligations.
 - **The executable contract** is the [conformance suite](../../conformance/):
   the freely runnable tests whose passing is clause 6 of the contract. Both are
-  Apache-2.0 under the [Core Commitment](../../CORE_COMMITMENT.md); only the
-  certification *service* may be commercial.
+  BSL 1.1 (see [`LICENSING.md`](../../LICENSING.md)); running them is free.
 
 A runtime declares the spec versions and profiles it passes in its own
 `CONFORMANCE.md` (the self-reported tier).

@@ -26,8 +26,8 @@ returns a ``urml.conformance-report/1`` report that names the adapter, the
 versions and the fixture set; ``urml conformance run --output`` and
 ``python -m urml_conformance --report`` write it as JSON.
 
-The fixtures themselves are Apache 2.0 and part of the URML Core
-Commitment — they're the contract a runtime claims compatibility with.
+The fixtures are licensed under BSL 1.1 with the rest of URML (see
+LICENSING.md). They're the contract a runtime claims compatibility with.
 """
 
 from __future__ import annotations

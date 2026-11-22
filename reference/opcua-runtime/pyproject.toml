@@ -7,14 +7,14 @@ name = "urml-opcua-runtime"
 version = "0.4.0"
 description = "Industrial-automation reference runtime for URML — OPC UA Robotics, zero ROS."
 readme = "README.md"
-license = { text = "Apache-2.0" }
+license = { text = "BUSL-1.1" }
 requires-python = ">=3.11"
 authors = [{ name = "URML Maintainers" }]
 keywords = ["robotics", "industrial", "opc-ua", "opcua", "plc", "fieldbus", "urml", "runtime"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: Apache Software License",
+  "License :: Other/Proprietary License",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.11",
@@ -33,7 +33,7 @@ dependencies = [
 # (opcua-asyncio) is the pure-Python client/server, ships an in-memory
 # Server for hermetic tests, and is fully offline (no cloud). It is
 # imported lazily (this extra), so urml_opcua_runtime imports on every
-# host without it. NOTE: asyncua is LGPL-3.0. In-repo code is Apache-2.0
+# host without it. NOTE: asyncua is LGPL-3.0. In-repo code is BSL 1.1
 # and depends on it ONLY through this optional extra, never at module
 # load (the same posture as rclpy / pymavlink). The LGPL-optional-dep
 # posture is flagged for maintainer ratification — see SPEC-GAPS.md.
@@ -48,9 +48,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/URML-MARS/URML"
-Repository = "https://github.com/URML-MARS/URML"
-Issues = "https://github.com/URML-MARS/URML/issues"
+Homepage = "https://github.com/urml-dev/URML"
+Repository = "https://github.com/urml-dev/URML"
+Issues = "https://github.com/urml-dev/URML/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/urml_opcua_runtime"]

@@ -58,7 +58,7 @@ with MujocoAdapter(cfg) as sim:
 
 ## Core Commitment
 
-This runtime is Apache 2.0. It is outside the [Core Commitment](../../CORE_COMMITMENT.md) boundary (only ROS 2 + PX4 reference runtimes are named there) but carries the same no-vendor-coupling, no-cloud, no-enterprise-edition posture.
+Business Source License 1.1: free for non-production use, commercial license for production (see [`LICENSING.md`](../../LICENSING.md)). No vendor coupling, no cloud dependency.
 
 ## Related documents
 

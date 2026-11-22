@@ -44,7 +44,7 @@ The traffic numbers (clones, views, top referrers, top paths) cover a rolling 14
 The same script can be invoked from a developer machine if `gh auth login` is set up:
 
 ```bash
-python .github/scripts/collect_metrics.py --repo URML-MARS/URML --dry-run
+python .github/scripts/collect_metrics.py --repo urml-dev/URML --dry-run
 ```
 
 `--dry-run` prints both outputs to stdout instead of writing files. Useful for spot-checking the first-response calculations before trusting a monthly note.
