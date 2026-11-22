@@ -142,7 +142,7 @@ No key on the classroom machines? You can still show students exactly what URML 
 Two honest notes worth saying out loud, because they are part of why URML is safe to put in front of a class:
 
 - **It collects nothing.** No accounts, no analytics, no identifiers. The lesson runs offline.
-- **It promises nothing it has not measured.** URML is an early open-source project. There is no support guarantee here, and this tutorial deliberately makes none. If a step does not work, that is a bug worth reporting, not a service you are owed.
+- **It promises nothing it has not measured.** URML is an early project with one maintainer. Teaching with it is free under [`LICENSING.md`](../../LICENSING.md), and there is no support guarantee for that use, and this tutorial deliberately makes none. If a step does not work, that is a bug worth reporting, not a service you are owed.
 
 ## Next
 

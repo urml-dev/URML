@@ -20,7 +20,7 @@ Read this whole page before you publish anything. The phrasing rules are not opt
 
 ## What this is
 
-A factual, reproducible statement that a specific capability manifest validates clean under URML's bundled US-federal default compliance policy, at a pinned URML commit, with no policy override. Anyone can re-run it, because [`us_federal_default.yaml`](../../reference/validator/src/urml_validator/policies/us_federal_default.yaml) is Apache 2.0 and public ([CORE_COMMITMENT.md](../../CORE_COMMITMENT.md) item 7).
+A factual, reproducible statement that a specific capability manifest validates clean under URML's bundled US-federal default compliance policy, at a pinned URML commit, with no policy override. Anyone can re-run it, because [`us_federal_default.yaml`](../../reference/validator/src/urml_validator/policies/us_federal_default.yaml) is public and free to run for validation and testing ([`LICENSING.md`](../../LICENSING.md)).
 
 ## What this is NOT
 
