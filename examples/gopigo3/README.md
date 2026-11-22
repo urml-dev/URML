@@ -1,6 +1,6 @@
 # A native (non-ROS) GoPiGo3 URML runtime — the #523 headstart
 
-On [Discussion #523](https://github.com/URML-MARS/URML/discussions/523),
+On [Discussion #523](https://github.com/urml-dev/URML/discussions/523),
 [@slowrunner](https://github.com/slowrunner) asked for an example runtime that
 drives a basic GoPiGo3 from a validated URML program, on the Raspberry Pi,
 without ROS. This is that headstart, and it runs end to end here with no robot.

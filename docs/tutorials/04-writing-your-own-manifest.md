@@ -230,7 +230,7 @@ If you write `country_of_origin: CN` on a critical component and run the default
 
 See [`spec/layer-1-hal/policy.md`](../../spec/layer-1-hal/policy.md) for the normative policy file format, and [`examples/home/red-mug.manifest.yaml`](../../examples/home/red-mug.manifest.yaml) for a fully US-compliant illustrative manifest matching the canonical red-mug example.
 
-A note worth repeating from the spec: a policy file passing the validator is **not a legal compliance determination**. The bundled default ships under Apache 2.0 forever per [`CORE_COMMITMENT.md`](../../CORE_COMMITMENT.md) item 7; audited and certified policy files carrying third-party legal attestation are a separate, legitimate commercial surface.
+A note worth repeating from the spec: a policy file passing the validator is **not a legal compliance determination**. The bundled default ships with URML under BSL 1.1 (see [`LICENSING.md`](../../LICENSING.md)); audited and certified policy files carrying third-party legal attestation are a separate, legitimate commercial surface.
 
 ## What the validator does NOT check (yet)
 

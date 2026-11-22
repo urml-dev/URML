@@ -28,9 +28,9 @@ When in doubt about a definition, the precedence order is the same as the rest o
 
 **Conformance** — The property of a runtime correctly implementing a given URML specification version. Determined by passing the conformance suite at that version.
 
-**Conformance suite** — The Apache-2.0, freely runnable set of tests that determine whether a runtime is URML-compatible. Part of the Core Commitment.
+**Conformance suite**: the freely runnable set of tests that determine whether a runtime is URML-compatible. Free for non-production use under BSL 1.1.
 
-**Core Commitment** — The list of components URML guarantees to keep under Apache 2.0 in perpetuity: the specification documents, the conformance suite, the ROS 2 and PX4 reference runtimes, the validator, and the LLM prompt contract. See [`CORE_COMMITMENT.md`](../CORE_COMMITMENT.md).
+**Core Commitment**: the Apache-2.0 commitment made in Phase 0, superseded by [RFC-0703](rfcs/0703-bsl-relicense.md) on 2026-11-22. Releases up to v0.4.x remain Apache 2.0. See [`LICENSING.md`](../LICENSING.md).
 
 **DCO** — Developer Certificate of Origin. The per-commit sign-off URML uses in place of a Contributor License Agreement. See [`DCO`](../DCO) and [`CONTRIBUTING.md`](../CONTRIBUTING.md).
 
@@ -46,7 +46,7 @@ When in doubt about a definition, the precedence order is the same as the rest o
 
 **Layer** — One of the five horizontal slices of URML. Layer 1 (HAL), Layer 2 (primitives), Layer 3 (composition), Layer 4 (NL interface), plus Layer 0 (substrate, not part of URML). See [`architecture.md`](architecture.md).
 
-**LLM bridge** — The provider-agnostic glue that takes natural language, prompts an LLM with the URML contract and the active robot's capability manifest, validates the LLM's structured output, and surfaces revision feedback when validation fails. Part of the Core Commitment. Lives in [`/reference/llm-bridge`](../reference/llm-bridge/).
+**LLM bridge** — The provider-agnostic glue that takes natural language, prompts an LLM with the URML contract and the active robot's capability manifest, validates the LLM's structured output, and surfaces revision feedback when validation fails. Free for non-production use under BSL 1.1. Lives in [`/reference/llm-bridge`](../reference/llm-bridge/).
 
 **Maintainer** — During Phase 0, the founder. In later phases, a member of the steering committee (Phase 1+) or a working-group lead (Phase 2+). See [`GOVERNANCE.md`](../GOVERNANCE.md).
 
@@ -84,6 +84,6 @@ When in doubt about a definition, the precedence order is the same as the rest o
 
 **URML program** — An instance of the URML language: a YAML (canonical) or JSON-LD document containing a single behavior. Statically verified before execution.
 
-**Validator** — The static verification engine that checks a URML program against a capability manifest and active safety envelope. Part of the Core Commitment. Lives in [`/reference/validator`](../reference/validator/).
+**Validator** — The static verification engine that checks a URML program against a capability manifest and active safety envelope. Free for non-production use under BSL 1.1. Lives in [`/reference/validator`](../reference/validator/).
 
 **Working group** — A Phase 2+ body with merge authority within one profile (home, drone, industrial, ...). Cross-cutting changes escalate to the steering committee.

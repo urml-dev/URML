@@ -154,7 +154,7 @@ on `workflow_dispatch`. Real-PyPI publish is a separate gated input
 behind a protected GitHub Environment so it cannot fire without explicit
 approval. **Both paths require Trusted Publisher configuration on
 (Test)PyPI per package — that is a one-time founder setup on the PyPI
-side (Account → Publishing → add `URML-MARS/URML` + workflow), and
+side (Account → Publishing → add `urml-dev/URML` + workflow), and
 cannot be done from this repository.** Until that is configured, use the
 manual `twine upload` path above with an API token.
 

@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache_2.0-blue.svg" alt="License"></a>
+  <a href="LICENSING.md"><img src="https://img.shields.io/badge/license-BSL_1.1-orange.svg" alt="License: BSL 1.1"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/python-3.11%2B-blue.svg" alt="Python 3.11+"></a>
   <a href="https://pypi.org/project/urml-validator/"><img src="https://img.shields.io/pypi/v/urml-validator.svg" alt="PyPI"></a>
   <a href="docs/launch/claims-audit.md"><img src="https://img.shields.io/badge/tests-3077%20passing-brightgreen.svg" alt="Tests"></a>
@@ -29,7 +29,7 @@ URML sits above existing robot operating systems (ROS 2, PX4, OPC UA Robotics, v
 
 What the gate stops, what it cannot see, and the measured before-and-after numbers are in the [safety model](docs/safety/safety-model.md). In the [goalkeeper demo](examples/goalkeeper/), a scripted compromised model tried seven attacks on three robots, and URML sent zero commands for any of them.
 
-URML is a **specification** and a set of **reference implementations**, not a robot operating system. The specification is Apache 2.0 — see [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) for what will always remain so.
+URML is a **specification** and a set of **reference implementations**, not a robot operating system. It is source-available under the Business Source License 1.1: free for research, education and evaluation, with a commercial license for production. See [`LICENSING.md`](LICENSING.md).
 
 ---
 
@@ -72,7 +72,7 @@ urml --version    # confirm the new version
 ### From source (hack on URML itself)
 
 ```bash
-git clone https://github.com/URML-MARS/URML.git && cd URML
+git clone https://github.com/urml-dev/URML.git && cd URML
 python bootstrap.py     # creates .venv (or installs into an active one), all 5 packages editable
 make test               # → the core suites (make audit re-measures all 22 packages)
 make demo-run           # → the animation above, reproduced live on the mock
@@ -205,7 +205,7 @@ The point is not the syntax — it is what the validator rejects **before anythi
 | Write a URML program | [Tutorial 2: Anatomy of a URML program](docs/tutorials/02-anatomy-of-a-program.md) |
 | Author a capability manifest | [Tutorial 4: Writing your own manifest](docs/tutorials/04-writing-your-own-manifest.md) |
 | Connect URML to an LLM | [Tutorial 3: Natural language to URML](docs/tutorials/03-natural-language-to-urml.md) |
-| Understand governance and the open-source posture | [`GOVERNANCE.md`](GOVERNANCE.md), [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) |
+| Understand governance and licensing | [`GOVERNANCE.md`](GOVERNANCE.md), [`LICENSING.md`](LICENSING.md), [`COMMERCIAL.md`](COMMERCIAL.md) |
 | Know what stays free and where commercial work happens | [`COMMERCIAL.md`](COMMERCIAL.md) |
 | Understand how URML is authored | [`VIBE.md`](VIBE.md) |
 | Contribute (Phase 1+) | [`CONTRIBUTING.md`](CONTRIBUTING.md) |
@@ -213,20 +213,20 @@ The point is not the syntax — it is what the validator rejects **before anythi
 | Browse runtimes that report URML compatibility | [`docs/compatible-runtimes.md`](docs/compatible-runtimes.md) |
 | Position a robot for URML and federal-procurement readiness | [`docs/manufacturers/README.md`](docs/manufacturers/README.md) |
 | List a robot or product in the manufacturer directory | [`docs/manufacturers/SUBMISSION.md`](docs/manufacturers/SUBMISSION.md) |
-| Ask a question, show what you built, or give feedback | [GitHub Discussions](https://github.com/URML-MARS/URML/discussions) |
+| Ask a question, show what you built, or give feedback | [GitHub Discussions](https://github.com/urml-dev/URML/discussions) |
 | Report a security issue | [`SECURITY.md`](SECURITY.md) |
 
 ---
 
 ## Community & support
 
-URML uses [GitHub Discussions](https://github.com/URML-MARS/URML/discussions) as its public question and feedback channel:
+URML uses [GitHub Discussions](https://github.com/urml-dev/URML/discussions) as its public question and feedback channel:
 
-- [Q&A](https://github.com/URML-MARS/URML/discussions/categories/q-a) — how do I write a manifest, run the validator, integrate a runtime.
-- [Ideas](https://github.com/URML-MARS/URML/discussions/categories/ideas) — pre-RFC ideas for primitives, profiles, or tooling; the front of the funnel that leads to a primitive-proposal issue and then an RFC.
-- [Builders & Makers](https://github.com/URML-MARS/URML/discussions/categories/builders-makers) — runtime authors and manufacturers: conformance, the registry, the directory, the federal-validation self-report.
-- [Show and tell](https://github.com/URML-MARS/URML/discussions/categories/show-and-tell) — what you built on URML.
-- [General](https://github.com/URML-MARS/URML/discussions/categories/general) — everything else, including complaints and critique of the strategic posture.
+- [Q&A](https://github.com/urml-dev/URML/discussions/categories/q-a) — how do I write a manifest, run the validator, integrate a runtime.
+- [Ideas](https://github.com/urml-dev/URML/discussions/categories/ideas) — pre-RFC ideas for primitives, profiles, or tooling; the front of the funnel that leads to a primitive-proposal issue and then an RFC.
+- [Builders & Makers](https://github.com/urml-dev/URML/discussions/categories/builders-makers) — runtime authors and manufacturers: conformance, the registry, the directory, the federal-validation self-report.
+- [Show and tell](https://github.com/urml-dev/URML/discussions/categories/show-and-tell) — what you built on URML.
+- [General](https://github.com/urml-dev/URML/discussions/categories/general) — everything else, including complaints and critique of the strategic posture.
 
 Issues are scoped to reference-runtime bugs and the primitive-proposal funnel. Security and conduct concerns follow the private process in [`SECURITY.md`](SECURITY.md), never a public thread.
 
@@ -244,12 +244,18 @@ If instead you **make robots or parts** rather than runtimes, see [`docs/manufac
 
 ## Authoring
 
-URML is the invention of Ido Yahalomi. The spec text, the four reference runtimes, the validator, the conformance suite, and the outreach RFC log are AI-assisted (vibe-coded) under the maintainer's direction and review. See [`VIBE.md`](VIBE.md). The work-product discipline (tests, conformance fixtures, audit, DCO, Apache 2.0) is unchanged.
+URML is the invention of Ido Yahalomi. The spec text, the four reference runtimes, the validator, the conformance suite, and the outreach RFC log are AI-assisted (vibe-coded) under the maintainer's direction and review. See [`VIBE.md`](VIBE.md). The work-product discipline (tests, conformance fixtures, audit, sign-off) is unchanged.
 
 ---
 
 ## License
 
-Apache License 2.0. See [`LICENSE`](LICENSE). Contributions require a [Developer Certificate of Origin](DCO) sign-off — `git commit -s` adds the required line. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for the engagement details and [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) for what stays Apache 2.0 forever.
+Business Source License 1.1. See [`LICENSE`](LICENSE) and the plain-language summary in [`LICENSING.md`](LICENSING.md).
+
+- **Free** for research, teaching, evaluation, development, testing, simulation and personal projects.
+- **Commercial license** for production use, products and hosted services: sales@urml.dev. See [`COMMERCIAL.md`](COMMERCIAL.md).
+- Each release converts to **Apache 2.0** two years after it ships. Releases up to and including v0.4.x are Apache 2.0 already.
+
+Contributions require the [Contributor License Agreement](CLA.md) and a DCO sign-off (`git commit -s`). See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 This project follows the [Contributor Covenant v2.1](CODE_OF_CONDUCT.md) Code of Conduct.

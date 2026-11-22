@@ -61,7 +61,7 @@ with OpcUaAdapter(cfg) as cell:
 
 ## Core Commitment
 
-Apache 2.0. Outside the [Core Commitment](../../CORE_COMMITMENT.md) boundary (only ROS 2 + PX4 reference runtimes are named there) but carries the same no-vendor-coupling, no-cloud, no-enterprise-edition posture. `asyncua` is an LGPL-3.0 *optional* dependency — see SPEC-GAPS.md.
+Business Source License 1.1: free for non-production use, commercial license for production (see [`LICENSING.md`](../../LICENSING.md)). No vendor coupling, no cloud dependency. `asyncua` is an LGPL-3.0 *optional* dependency — see SPEC-GAPS.md.
 
 ## Related documents
 

@@ -17,6 +17,6 @@ setup(
     maintainer="URML Maintainers",
     maintainer_email="greenvh@gmail.com",
     description="FlexBE states for URML (ExecuteUrmlState).",
-    license="Apache-2.0",
+    license="BUSL-1.1",
     tests_require=["pytest"],
 )

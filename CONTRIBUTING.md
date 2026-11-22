@@ -29,12 +29,12 @@ The author welcomes:
 - **Use cases that strain the current architecture** — scenarios the manifesto's three motivating examples (home, drone, industrial) do not cover.
 - **Naming suggestions** if "URML" proves unsuitable. See `MANIFESTO.md` Appendix B, Question 1.
 
-URML uses [GitHub Discussions](https://github.com/URML-MARS/URML/discussions) ([RFC-0008](docs/rfcs/0008-community-discussions.md)). Where things go:
+URML uses [GitHub Discussions](https://github.com/urml-dev/URML/discussions) ([RFC-0008](docs/rfcs/0008-community-discussions.md)). Where things go:
 
-- **Questions** (writing a manifest, running the validator, integrating a runtime): Discussions [Q&A](https://github.com/URML-MARS/URML/discussions/categories/q-a).
-- **Ideas** for a primitive, profile, or tooling: Discussions [Ideas](https://github.com/URML-MARS/URML/discussions/categories/ideas). One that holds up graduates to the [primitive proposal issue](.github/ISSUE_TEMPLATE/primitive_proposal.md) and then an RFC.
-- **Complaints, feedback, posture critique**: Discussions [General](https://github.com/URML-MARS/URML/discussions/categories/general).
-- **Runtime author or manufacturer topics**: Discussions [Builders & Makers](https://github.com/URML-MARS/URML/discussions/categories/builders-makers).
+- **Questions** (writing a manifest, running the validator, integrating a runtime): Discussions [Q&A](https://github.com/urml-dev/URML/discussions/categories/q-a).
+- **Ideas** for a primitive, profile, or tooling: Discussions [Ideas](https://github.com/urml-dev/URML/discussions/categories/ideas). One that holds up graduates to the [primitive proposal issue](.github/ISSUE_TEMPLATE/primitive_proposal.md) and then an RFC.
+- **Complaints, feedback, posture critique**: Discussions [General](https://github.com/urml-dev/URML/discussions/categories/general).
+- **Runtime author or manufacturer topics**: Discussions [Builders & Makers](https://github.com/urml-dev/URML/discussions/categories/builders-makers).
 - **Reproducible reference-runtime bugs**: an [issue](.github/ISSUE_TEMPLATE/bug_report.md).
 - **Security or conduct concerns**: the private process in [`SECURITY.md`](SECURITY.md), never a public thread.
 
@@ -45,17 +45,17 @@ A contributor mailing list will be set up when the project moves under its perma
 External code PRs are open. Mechanics:
 
 1. **Branch off `main`.** Name it descriptively (`feat/...`, `fix/...`, `docs/...`, `rfc/NNNN-slug`).
-2. **DCO sign-off on every commit** — see below.
+2. **Sign the CLA once, and sign off every commit.** See below.
 3. **Tests with the change.** New code lands with tests; bug fixes land with a regression test that fails before the fix.
 4. **Open the PR against `main`.** The maintainer reviews. There is no formal review SLA yet (one maintainer, Phase 1); expect days, not minutes.
 5. **Specification changes are RFCs, not PRs** — see [Specification Changes Are RFCs](#specification-changes-are-rfcs) below.
-6. The repository will move under a permanent GitHub organization in a later phase ([`GOVERNANCE.md`](GOVERNANCE.md) §Phased Governance Plan).
+6. The canonical repository is [`urml-dev/URML`](https://github.com/urml-dev/URML).
 
-## Developer Certificate of Origin (DCO)
+## Contributor License Agreement (CLA) and sign-off
 
-URML uses **DCO sign-off**, not a Contributor License Agreement. The strategic reasoning is in [`CLAUDE.md`](CLAUDE.md) §What Claude Should Never Do (final bullet). The short version: a CLA concentrates copyright in one party and reads as a signal that re-licensing may be coming. DCO does neither.
+URML is licensed under the Business Source License 1.1 and offered under commercial licenses (see [`LICENSING.md`](LICENSING.md)). To make that possible, every contributor signs the [Contributor License Agreement](CLA.md) once. A CLA check runs on your first pull request and walks you through it. You keep the copyright in your contribution.
 
-The full DCO text is in [`DCO`](DCO).
+Every commit also carries a DCO sign-off as a record of provenance. The full DCO text is in [`DCO`](DCO).
 
 **To sign off a commit, add `-s` to `git commit`:**
 
@@ -99,7 +99,7 @@ Authorizing a profile-specific primitive does not require a dedicated RFC if the
 
 ## Proposing a Profile
 
-A new profile is a smaller commitment than a core primitive but still a commitment. The current profile set (home / drone / industrial) plus the stretch list (agricultural, AV, healthcare, SAR, education, underwater) in [`MANIFESTO.md`](MANIFESTO.md) §Scope is the canonical maintenance scope. The Apache 2.0 license permits external parties to build any profile on top of URML; the canonical URML organization maintains only the scoped set.
+A new profile is a smaller commitment than a core primitive but still a commitment. The current profile set (home / drone / industrial) plus the stretch list (agricultural, AV, healthcare, SAR, education, underwater) in [`MANIFESTO.md`](MANIFESTO.md) §Scope is the canonical maintenance scope. External parties may build profiles on top of URML under the terms in [`LICENSING.md`](LICENSING.md); the canonical URML organization maintains only the scoped set.
 
 To propose a new canonical profile:
 
@@ -143,4 +143,4 @@ If you find a safety issue in the specification (a primitive that admits unsafe 
 
 ## Questions
 
-If anything in this document is unclear, ambiguous, or contradicts other documents, that is a bug. Open an issue; documentation bugs are real bugs. For "how do I" questions rather than documentation defects, use Discussions [Q&A](https://github.com/URML-MARS/URML/discussions/categories/q-a).
+If anything in this document is unclear, ambiguous, or contradicts other documents, that is a bug. Open an issue; documentation bugs are real bugs. For "how do I" questions rather than documentation defects, use Discussions [Q&A](https://github.com/urml-dev/URML/discussions/categories/q-a).

@@ -90,7 +90,7 @@ Field-by-field:
 - URML does **not** fetch the HBOM document. The validator records what the manifest declares.
 - URML does **not** verify the integrity hash. A future RFC may add this; v0.1 treats the hash as a deployer-controlled commitment, not a check.
 - URML does **not** certify the provenance. The `manifest_attestation` field surfaces the strength of the claim; the *correctness* of the claim is the declarer's responsibility, not URML's.
-- The default policy file shipped with the validator is **not legal advice**. See [`policy.md`](policy.md) and [`CORE_COMMITMENT.md`](../../CORE_COMMITMENT.md) for the certified-policy commercial surface.
+- The default policy file shipped with the validator is **not legal advice**. See [`policy.md`](policy.md) and [`COMMERCIAL.md`](../../COMMERCIAL.md) for the certified-policy commercial surface.
 
 ### Status
 

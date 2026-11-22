@@ -7,14 +7,14 @@ name = "urml-ros2-runtime"
 version = "0.4.0"
 description = "ROS 2 reference runtime for URML — Universal Robot Language."
 readme = "README.md"
-license = { text = "Apache-2.0" }
+license = { text = "BUSL-1.1" }
 requires-python = ">=3.11"
 authors = [{ name = "URML Maintainers" }]
 keywords = ["robotics", "ros2", "urml", "runtime"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: Apache Software License",
+  "License :: Other/Proprietary License",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.11",
@@ -51,9 +51,9 @@ dev = [
 urml-ros2-action-server = "urml_ros2_runtime.action_server:main"
 
 [project.urls]
-Homepage = "https://github.com/URML-MARS/URML"
-Repository = "https://github.com/URML-MARS/URML"
-Issues = "https://github.com/URML-MARS/URML/issues"
+Homepage = "https://github.com/urml-dev/URML"
+Repository = "https://github.com/urml-dev/URML"
+Issues = "https://github.com/urml-dev/URML/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/urml_ros2_runtime"]

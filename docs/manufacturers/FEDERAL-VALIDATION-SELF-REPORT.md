@@ -32,7 +32,7 @@ RFC-0004 §Unresolved questions item 6 is explicit: a robot whose validation pas
 
 ## Generating the result
 
-From a clone of `URML-MARS/URML` at a commit you will pin, run the validator against your program and manifest with the bundled default policy. Do not pass `--policy` and do not pass `--no-policy`; the default policy must be the one in effect.
+From a clone of `urml-dev/URML` at a commit you will pin, run the validator against your program and manifest with the bundled default policy. Do not pass `--policy` and do not pass `--no-policy`; the default policy must be the one in effect.
 
 ```bash
 urml validate program.urml.yaml \
@@ -61,8 +61,8 @@ Put this at the root of your product repository, filled in, at a tagged release 
 This is a factual self-report. The manifest above validates clean under URML's
 open US-federal default compliance policy at the pinned URML commit. This is
 NOT a certification, an audit, an endorsement, or a legal compliance
-determination, and is not legal advice. The default policy is Apache 2.0 and
-public; anyone can reproduce this result. See CORE_COMMITMENT.md and
+determination, and is not legal advice. The default policy is public and free
+to run for evaluation; anyone can reproduce this result. See LICENSING.md and
 docs/manufacturers/FEDERAL-VALIDATION-SELF-REPORT.md.
 ```
 

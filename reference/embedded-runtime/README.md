@@ -60,7 +60,7 @@ with EmbeddedAdapter(cfg) as buggy:
 
 ## Core Commitment
 
-Apache 2.0. Outside the [Core Commitment](../../CORE_COMMITMENT.md) boundary (only ROS 2 + PX4 are named there) but carries the same no-vendor-coupling, no-cloud, no-enterprise-edition posture. `pyserial`/`pyfirmata2` are optional extras imported lazily, never at module load.
+Business Source License 1.1: free for non-production use, commercial license for production (see [`LICENSING.md`](../../LICENSING.md)). No vendor coupling, no cloud dependency. `pyserial`/`pyfirmata2` are optional extras imported lazily, never at module load.
 
 ## Related documents
 

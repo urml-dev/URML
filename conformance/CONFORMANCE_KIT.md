@@ -15,10 +15,9 @@
 # URML Conformance Kit
 
 This is how you check whether a robot runtime is URML-compatible. The
-fixtures in `conformance/fixtures/` are the contract. They are Apache
-2.0 and part of the [Core Commitment](../CORE_COMMITMENT.md): the
-behavior a runtime claims compatibility with does not move behind a
-paywall, ever.
+fixtures in `conformance/fixtures/` are the contract. They are BSL 1.1
+(see [`LICENSING.md`](../LICENSING.md)), and running them to test a
+runtime is free.
 
 You do not need any reference runtime, any robot, or ROS to run this.
 The default run is fully hermetic.

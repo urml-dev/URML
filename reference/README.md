@@ -17,7 +17,7 @@
 This directory holds the **reference implementations** maintained by the URML organization. They exist for three reasons:
 
 1. **To prove the specification is implementable.** A spec that no one has implemented is a hope, not a contract. Every primitive that lands in the core ships with at least one reference implementation.
-2. **To give first-time integrators a working starting point.** A robot maker building a URML-compatible runtime has an Apache 2.0 codebase to read, fork, or take as inspiration.
+2. **To give first-time integrators a working starting point.** A robot maker building a URML-compatible runtime has a source-available codebase (BSL 1.1) to read, evaluate, or take as inspiration.
 3. **To anchor the conformance suite.** The conformance tests are written against the spec, not the reference runtime — but in practice the reference runtime is the first thing the conformance suite is exercised against, and divergences surface quickly.
 
 ## What lives here
@@ -29,15 +29,15 @@ This directory holds the **reference implementations** maintained by the URML or
 | [`validator/`](validator/) | The static verification engine. Checks a URML program against a Layer-1 capability manifest and the active safety envelope before execution. Python; long-running deployments may eventually be backed by a Rust service. | Phase 1 |
 | [`llm-bridge/`](llm-bridge/) | Provider-agnostic glue that prompts an LLM with the URML contract, validates the LLM's emission, and surfaces revision feedback when validation fails. | Phase 1 |
 
-## What the Core Commitment says
+## Licensing and posture
 
-Every component in this directory is part of the [Core Commitment](../CORE_COMMITMENT.md). That means:
+Every component in this directory follows the same rules:
 
-- **Apache 2.0 forever.** No move behind a paywall, no "enterprise edition," no conditional license.
+- **Source available.** Business Source License 1.1: free for non-production use, commercial license for production, and each release converts to Apache 2.0 two years after it ships. See [`LICENSING.md`](../LICENSING.md).
 - **No vendor coupling.** The LLM bridge does not embed Anthropic, OpenAI, or any other specific provider. The ROS 2 runtime targets upstream ROS 2; the PX4 runtime targets upstream PX4.
 - **Offline-first.** A validated URML program executes fully offline. The reference runtimes do not require cloud connectivity at execution time. Hosted services — fleet management, telemetry, observability — are a separate, commercial concern and live outside this repository.
 
-These are not aspirations. They are commitments. See [`CORE_COMMITMENT.md`](../CORE_COMMITMENT.md) for the full statement and the procedure for changing it (extraordinary, by design).
+See [`LICENSING.md`](../LICENSING.md) for what is free and what needs a commercial license.
 
 ## Language conventions
 

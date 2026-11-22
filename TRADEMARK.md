@@ -16,7 +16,7 @@
 
 Status: stub, non-binding interim statement of intent.
 Established: Phase 0.
-Authority: refines [GOVERNANCE.md §Trademark Policy](GOVERNANCE.md#trademark-policy). Does not modify the [CORE_COMMITMENT.md](CORE_COMMITMENT.md), which controls.
+Authority: refines [GOVERNANCE.md §Trademark Policy](GOVERNANCE.md#trademark-policy). Licensing terms are in [LICENSE](LICENSE) and [LICENSING.md](LICENSING.md).
 
 ## What this is
 

@@ -7,14 +7,14 @@ name = "urml-humanoid-runtime"
 version = "0.4.0"
 description = "Humanoid reference runtime for URML — Agility Digit (locomotion subset, v0.1)."
 readme = "README.md"
-license = { text = "Apache-2.0" }
+license = { text = "BUSL-1.1" }
 requires-python = ">=3.11"
 authors = [{ name = "URML Maintainers" }]
 keywords = ["robotics", "humanoid", "biped", "agility", "digit", "urml", "runtime"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: Apache Software License",
+  "License :: Other/Proprietary License",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.11",
@@ -42,9 +42,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/URML-MARS/URML"
-Repository = "https://github.com/URML-MARS/URML"
-Issues = "https://github.com/URML-MARS/URML/issues"
+Homepage = "https://github.com/urml-dev/URML"
+Repository = "https://github.com/urml-dev/URML"
+Issues = "https://github.com/urml-dev/URML/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/urml_humanoid_runtime"]

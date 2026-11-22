@@ -27,7 +27,7 @@ Routing:
 
 ## Why this belongs in this repository
 
-<!-- Reminder: commercial features, hosted services, paid tooling, and provider-specific LLM integrations live outside this repo. See CLAUDE.md §Strategic Posture and CORE_COMMITMENT.md. -->
+<!-- Reminder: commercial features, hosted services, paid tooling, and provider-specific LLM integrations live outside this repo. See CLAUDE.md §Strategic Posture and COMMERCIAL.md. -->
 
 ## Impact
 

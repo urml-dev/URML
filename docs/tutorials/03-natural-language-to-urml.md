@@ -157,7 +157,7 @@ export ANTHROPIC_API_KEY=sk-ant-...
 >
 > Any other OpenAI-compatible server (LM Studio, vLLM) works through the `openai` provider: `--provider openai --base-url http://127.0.0.1:1234/v1 --model your-model-name`. When a base URL is set, `OPENAI_API_KEY` is not required.
 >
-> Translation is the demanding step, and a small model (under roughly 7B) often emits structurally invalid URML that the validator then rejects; a capable local model works offline (a community user reported qwen3.5:9b at a 128k context translating cleanly). The validator gates either way, so a weak model can be wrong but the robot still only runs a validated program. There is a community Ollama HOWTO on [Discussion #497](https://github.com/URML-MARS/URML/discussions/497).
+> Translation is the demanding step, and a small model (under roughly 7B) often emits structurally invalid URML that the validator then rejects; a capable local model works offline (a community user reported qwen3.5:9b at a 128k context translating cleanly). The validator gates either way, so a weak model can be wrong but the robot still only runs a validated program. There is a community Ollama HOWTO on [Discussion #497](https://github.com/urml-dev/URML/discussions/497).
 >
 > If the first translate times out and a retry then succeeds, that is a cold start: the server is loading a multi-GB model into memory on the first call. Keep the model warm (Ollama's `OLLAMA_KEEP_ALIVE`), or simply re-run. On the `openai` path, `export URML_OPENAI_TIMEOUT=600` (seconds) raises the per-request timeout.
 

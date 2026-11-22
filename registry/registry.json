@@ -12,7 +12,7 @@
         "name": "Pixhawk-class flight controller with ArduCopter 4.6.3",
         "class": "multirotor flight controller",
         "maker": null,
-        "manifest_url": "https://github.com/URML-MARS/URML/blob/main/examples/drone/pixhawk-ardupilot.manifest.yaml"
+        "manifest_url": "https://github.com/urml-dev/URML/blob/main/examples/drone/pixhawk-ardupilot.manifest.yaml"
       },
       "runtime": {
         "package": "urml-ardupilot-runtime",
@@ -31,10 +31,10 @@
           "by": "URML maintainers",
           "summary": "A Pixhawk-class board running ArduCopter 4.6.3, on USB, propellers off. The read-only probe identified the board (ArduPilot, quadrotor, MAVLink system id 10, disarmed). `urml execute --adapter ardupilot` ran the bench-battery program to SUCCESS: a battery read over MAVLink and a report back to the autopilot's log. The bench-hop flight program passed the validator, and the autopilot's own pre-arm checks refused to arm (compass not calibrated, GPS bad fix, battery low voltage failsafe). URML reported that reason and stopped; the vehicle stayed disarmed.",
           "sources": [
-            "https://github.com/URML-MARS/URML/blob/main/docs/demos/sentence-to-pixhawk.md",
-            "https://github.com/URML-MARS/URML/blob/main/docs/launch/claims-audit.md",
-            "https://github.com/URML-MARS/URML/blob/main/reference/ardupilot-runtime/tests/integration/test_arducopter_bench.py",
-            "https://github.com/URML-MARS/URML/commit/f6cba8fd349047c50cc4f32a35ee1b95679fe929"
+            "https://github.com/urml-dev/URML/blob/main/docs/demos/sentence-to-pixhawk.md",
+            "https://github.com/urml-dev/URML/blob/main/docs/launch/claims-audit.md",
+            "https://github.com/urml-dev/URML/blob/main/reference/ardupilot-runtime/tests/integration/test_arducopter_bench.py",
+            "https://github.com/urml-dev/URML/commit/f6cba8fd349047c50cc4f32a35ee1b95679fe929"
           ]
         },
         {
@@ -43,10 +43,10 @@
           "by": "URML maintainers",
           "summary": "ArduCopter SITL built from the Copter-4.6.3 tag, in WSL2 on the maintainer's machine. Three of three passed in one uninterrupted run: the drone/flight_only_positive conformance fixture, the site-photogrammetry example (take-off to 100 m, five stations with a photo at each, return, land) and the parcel-delivery example (gripper and winch through set_output). The run surfaced one defect, fixed the same day: ArduCopter 4.6 rejects the MAVLink winch deliver and retract actions, so the adapter uses relative-length control. On 2026-08-30 the programs Gemini 2.5 Pro emitted through the LLM bridge for the two flight-test sentences flew unchanged on the same SITL.",
           "sources": [
-            "https://github.com/URML-MARS/URML/blob/main/docs/launch/claims-audit.md",
-            "https://github.com/URML-MARS/URML/blob/main/docs/demos/sentence-to-pixhawk.md",
-            "https://github.com/URML-MARS/URML/blob/main/reference/ardupilot-runtime/tests/integration/test_arducopter_sitl_e2e.py",
-            "https://github.com/URML-MARS/URML/commit/221ddfe37da6dcd0ff587616791c157feee9eb14"
+            "https://github.com/urml-dev/URML/blob/main/docs/launch/claims-audit.md",
+            "https://github.com/urml-dev/URML/blob/main/docs/demos/sentence-to-pixhawk.md",
+            "https://github.com/urml-dev/URML/blob/main/reference/ardupilot-runtime/tests/integration/test_arducopter_sitl_e2e.py",
+            "https://github.com/urml-dev/URML/commit/221ddfe37da6dcd0ff587616791c157feee9eb14"
           ]
         }
       ],
@@ -65,7 +65,7 @@
           "rule.declaration_missing": 6
         },
         "summary": "Produced for this listing on 2026-09-27 with the urml_validator.evidence API, by validating against the listed manifest the two committed programs for it (bench-battery and bench-hop, both accepted) and four refusal cases (a take-off to 150 m, a 15 m/s leg, a photo with no camera, a flight to an undeclared place), with the compliance policy pass off and the bundled FAA Part 107 rulebook on. Every record carries the Remote ID warning, because no deployment rulebook declares a Remote ID method. The records show the gate's verdicts on this manifest; they are not flight logs.",
-        "url": "https://github.com/URML-MARS/URML/blob/main/registry/evidence/ardupilot-arducopter-pixhawk/validation-records.jsonl",
+        "url": "https://github.com/urml-dev/URML/blob/main/registry/evidence/ardupilot-arducopter-pixhawk/validation-records.jsonl",
         "reverified_with": "urml-validator 0.4.0"
       },
       "limits": [
@@ -77,7 +77,7 @@
         "The validation records were judged with the compliance policy pass off. The manifest declares no provenance, and this listing makes no compliance statement.",
         "PX4 is a different runtime (urml-px4-runtime) and is not covered by this entry."
       ],
-      "entry_url": "https://github.com/URML-MARS/URML/blob/main/registry/entries/ardupilot-arducopter-pixhawk.yaml"
+      "entry_url": "https://github.com/urml-dev/URML/blob/main/registry/entries/ardupilot-arducopter-pixhawk.yaml"
     },
     {
       "id": "gopigo3-example-adapter",
@@ -90,7 +90,7 @@
         "name": "GoPiGo3",
         "class": "two-wheel educational ground robot on a Raspberry Pi",
         "maker": "Dexter Industries",
-        "manifest_url": "https://github.com/URML-MARS/URML/blob/main/examples/gopigo3/gopigo3.manifest.yaml"
+        "manifest_url": "https://github.com/urml-dev/URML/blob/main/examples/gopigo3/gopigo3.manifest.yaml"
       },
       "runtime": {
         "package": "examples/gopigo3",
@@ -109,10 +109,10 @@
           "by": "@slowrunner, an independent user, on their own GoPiGo3",
           "summary": "On @slowrunner's GoPiGo3 (Lyrical-Dave, with a Raspberry Pi), the example's two built-in programs ran through the real easygopigo3 library: the robot turned 90 degrees and drove under a chair. The run came from typing -h, because the example as it then stood drove the robot; the same day the maintainers made a bare run a dry run, with --execute to drive. Later that day @slowrunner ran the whole loop from a sentence: \"Announce 'Driving forward 10 centimeters' and then execute the action\", translated by qwen3.5:9b served through Ollama (a first request timed out; the retry was accepted after 0 revisions). The validated program ran with --execute, 2 steps, success, and the robot moved 10 cm. Speech was not heard in either run.",
           "sources": [
-            "https://github.com/URML-MARS/URML/discussions/542",
-            "https://github.com/URML-MARS/URML/discussions/523",
+            "https://github.com/urml-dev/URML/discussions/542",
+            "https://github.com/urml-dev/URML/discussions/523",
             "https://urml.dev/blog/field-notes-first-robot-runs-urml",
-            "https://github.com/URML-MARS/URML/commit/58ac44cdfb79ee64496e8790fa294a6fe176f806"
+            "https://github.com/urml-dev/URML/commit/58ac44cdfb79ee64496e8790fa294a6fe176f806"
           ]
         },
         {
@@ -121,11 +121,11 @@
           "by": "@slowrunner",
           "summary": "On the same robot, turns and arcs ran clockwise where URML specifies counterclockwise as positive (Issues #591 and #598, opened 2026-07-04 and 2026-07-06). The fix @slowrunner contributed negates the angle and the arc at the easygopigo3 call; with --execute the robot then turned and orbited counterclockwise. It was merged on 2026-08-05, URML's first merged external code contribution.",
           "sources": [
-            "https://github.com/URML-MARS/URML/issues/591",
-            "https://github.com/URML-MARS/URML/issues/598",
-            "https://github.com/URML-MARS/URML/pull/602",
-            "https://github.com/URML-MARS/URML/commit/a93fe58d906adc147660bc2101b22f0ec2ceb434",
-            "https://github.com/URML-MARS/URML/blob/main/CHANGELOG.md"
+            "https://github.com/urml-dev/URML/issues/591",
+            "https://github.com/urml-dev/URML/issues/598",
+            "https://github.com/urml-dev/URML/pull/602",
+            "https://github.com/urml-dev/URML/commit/a93fe58d906adc147660bc2101b22f0ec2ceb434",
+            "https://github.com/urml-dev/URML/blob/main/CHANGELOG.md"
           ]
         }
       ],
@@ -145,7 +145,7 @@
           "capability.tts_engine_undeclared": 2
         },
         "summary": "Produced for this listing on 2026-09-27 with the urml_validator.evidence API, by validating against the listed manifest the example's two built-in programs (announce then drive 1 m, and the short patrol; both accepted) and four refusal cases (a 3 m drive in one move, picking up a cup, a take-off, a trip to an undeclared kitchen), with the compliance policy pass off. The two accepted programs carry a warning that the manifest declares no text-to-speech engine. The records show the gate's verdicts on this manifest; they are not logs from the robot.",
-        "url": "https://github.com/URML-MARS/URML/blob/main/registry/evidence/gopigo3-example-adapter/validation-records.jsonl",
+        "url": "https://github.com/urml-dev/URML/blob/main/registry/evidence/gopigo3-example-adapter/validation-records.jsonl",
         "reverified_with": "urml-validator 0.4.0"
       },
       "limits": [
@@ -158,7 +158,7 @@
         "The gate does not compare a drive speed with the manifest's 0.3 m/s max_velocity; docs/safety/envelope-coverage.md leaves base velocity limits to the consuming node (RFC-0518). The example adapter passes no speed to easygopigo3, so the robot moves at the library's default speed.",
         "The validation records were judged with the compliance policy pass off. The manifest declares no provenance, and this listing makes no compliance statement."
       ],
-      "entry_url": "https://github.com/URML-MARS/URML/blob/main/registry/entries/gopigo3-example-adapter.yaml"
+      "entry_url": "https://github.com/urml-dev/URML/blob/main/registry/entries/gopigo3-example-adapter.yaml"
     },
     {
       "id": "px4-sitl-sih-quadrotor",
@@ -171,7 +171,7 @@
         "name": "PX4 v1.17.0 SITL with the SIH quadrotor model (a simulated vehicle)",
         "class": "multirotor autopilot, simulated",
         "maker": "PX4 open-source project",
-        "manifest_url": "https://github.com/URML-MARS/URML/blob/main/reference/validator/tests/fixtures/manifests/drone_civilian.yaml"
+        "manifest_url": "https://github.com/urml-dev/URML/blob/main/reference/validator/tests/fixtures/manifests/drone_civilian.yaml"
       },
       "runtime": {
         "package": "urml-px4-runtime",
@@ -190,11 +190,11 @@
           "by": "URML maintainers",
           "summary": "PX4 v1.17.0 SITL (the SIH quadrotor, headless) in WSL2 on the maintainer's machine. The drone/flight_only_positive conformance program (take-off to 30 m, a waypoint 15 m north, return to launch, land) ran through the validator, the conformance runner and `PX4Adapter` over MAVLink. PX4's own log records \"Armed by external command\", \"Takeoff detected\", \"Returning to launch\", \"Landing detected\" and \"Disarmed by landing\". A listen-only witness on PX4's ground-station link measured a maximum relative altitude of 31.79 m and a closest approach of 0.92 m to the waypoint, and saw the vehicle end on the ground, disarmed. Four runs on the final adapter code all passed. The same day's runs found and fixed three adapter defects: PX4 moves home when it arms, DO_REPOSITION needs its change-mode flag, and the old take-off sent a 0,0 position.",
           "sources": [
-            "https://github.com/URML-MARS/URML/blob/main/reference/px4-runtime/tests/integration/sitl-runs/2026-09-27-px4-v1.17.0-sih.md",
-            "https://github.com/URML-MARS/URML/blob/main/reference/px4-runtime/tests/integration/test_px4_sitl_e2e.py",
-            "https://github.com/URML-MARS/URML/blob/main/docs/launch/claims-audit.md",
-            "https://github.com/URML-MARS/URML/commit/9ff518cc1314765d9b6f84da30aa7a490446959f",
-            "https://github.com/URML-MARS/URML/commit/9530a2f7d9c064b1f915e62e7f21904ae8e1b832"
+            "https://github.com/urml-dev/URML/blob/main/reference/px4-runtime/tests/integration/sitl-runs/2026-09-27-px4-v1.17.0-sih.md",
+            "https://github.com/urml-dev/URML/blob/main/reference/px4-runtime/tests/integration/test_px4_sitl_e2e.py",
+            "https://github.com/urml-dev/URML/blob/main/docs/launch/claims-audit.md",
+            "https://github.com/urml-dev/URML/commit/9ff518cc1314765d9b6f84da30aa7a490446959f",
+            "https://github.com/urml-dev/URML/commit/9530a2f7d9c064b1f915e62e7f21904ae8e1b832"
           ]
         },
         {
@@ -203,8 +203,8 @@
           "by": "URML maintainers",
           "summary": "The same program on the same PX4 build, flown again later the same day with the adapter that sends a ground-station heartbeat once a second (commit 3d6f5fa). The witness measured a maximum relative altitude of 31.778 m and a closest approach of 0.95 m to the waypoint, and saw the vehicle end on the ground, disarmed. With the heartbeat, PX4 sent its STATUSTEXT narration of the flight to the adapter's link, and a separate no-flight probe got PX4's own text in a refused arm's reason (\"Arming denied: Resolve system health failures first\"). Five flights that day with the heartbeat adapter passed, one of them a from-scratch rehearsal of the CI job's recipe.",
           "sources": [
-            "https://github.com/URML-MARS/URML/blob/main/reference/px4-runtime/tests/integration/sitl-runs/2026-09-27-px4-v1.17.0-sih-heartbeat.md",
-            "https://github.com/URML-MARS/URML/commit/3d6f5fa8986a7c0a3587265ba46d406842f5fa5d"
+            "https://github.com/urml-dev/URML/blob/main/reference/px4-runtime/tests/integration/sitl-runs/2026-09-27-px4-v1.17.0-sih-heartbeat.md",
+            "https://github.com/urml-dev/URML/commit/3d6f5fa8986a7c0a3587265ba46d406842f5fa5d"
           ]
         }
       ],
@@ -224,7 +224,7 @@
           "rule.declaration_missing": 6
         },
         "summary": "Produced for this listing on 2026-09-27 with the urml_validator.evidence API, by validating against the listed manifest and the default drone envelope the program flown in SITL (flight_only) and the hover conformance program, both accepted, and four refusal cases (a take-off to 150 m, a 25 m/s leg, a flight to an undeclared place, a grasp on a vehicle with no gripper), with the compliance policy pass off and the bundled FAA Part 107 rulebook on. Every record carries the Remote ID warning, because no deployment rulebook declares a Remote ID method. The records show the gate's verdicts on this manifest; they are not flight logs.",
-        "url": "https://github.com/URML-MARS/URML/blob/main/registry/evidence/px4-sitl-sih-quadrotor/validation-records.jsonl",
+        "url": "https://github.com/urml-dev/URML/blob/main/registry/evidence/px4-sitl-sih-quadrotor/validation-records.jsonl",
         "reverified_with": "urml-validator 0.4.0"
       },
       "limits": [
@@ -235,7 +235,7 @@
         "Perception, manipulation, docking and `scan` are not available on a bare PX4 autopilot; the adapter returns a documented not-supported result for them. `wait_for(emergency_stop)` reads the autopilot's HEARTBEAT system_status; it is not part of the flown program and is not covered by this listing.",
         "The validation records were judged with the compliance policy pass off. This listing makes no compliance statement."
       ],
-      "entry_url": "https://github.com/URML-MARS/URML/blob/main/registry/entries/px4-sitl-sih-quadrotor.yaml"
+      "entry_url": "https://github.com/urml-dev/URML/blob/main/registry/entries/px4-sitl-sih-quadrotor.yaml"
     }
   ]
 }

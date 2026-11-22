@@ -73,7 +73,7 @@ __all__ = [
 
 REGISTRY_VERSION: Literal["1"] = "1"
 EXPORT_FORMAT = "urml.registry/1"
-REPO_URL = "https://github.com/URML-MARS/URML"
+REPO_URL = "https://github.com/urml-dev/URML"
 
 ENTRIES_DIR = "registry/entries"
 EXPORT_PATH = "registry/registry.json"

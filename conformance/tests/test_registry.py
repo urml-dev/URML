@@ -217,7 +217,7 @@ def test_the_mini_registry_is_clean(mini: Mini) -> None:
     assert entry["validation_records"]["refused"] == 1
     assert entry["validation_records"]["codes"] == {"capability.relative_distance_exceeded": 1}
     assert entry["field_evidence"][0]["sources"] == [
-        "https://github.com/URML-MARS/URML/blob/main/docs/run.md",
+        "https://github.com/urml-dev/URML/blob/main/docs/run.md",
         "https://example.org/run",
     ]
     assert entry["robot"]["manifest_url"].endswith(f"/blob/main/{MANIFEST_REL}")
@@ -375,7 +375,7 @@ def test_a_self_report_from_the_runtimes_own_adapter_is_accepted(mini: Mini) -> 
         "profiles": ["educational"],
         "fixtures_run": len(EDUCATIONAL),
         "filter": None,
-        "report_url": f"https://github.com/URML-MARS/URML/blob/main/{REPORT_REL}",
+        "report_url": f"https://github.com/urml-dev/URML/blob/main/{REPORT_REL}",
     }
 
 

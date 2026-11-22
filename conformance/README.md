@@ -18,11 +18,11 @@
 
 ## What this is
 
-The Apache-2.0, **freely runnable** set of tests that determines whether a runtime is **URML-compatible**. The conformance suite is the bridge between the abstract specification documents in [`/spec`](../spec/) and a concrete claim of compatibility a robot maker can stand behind.
+The **freely runnable** set of tests that determines whether a runtime is **URML-compatible**. The conformance suite is the bridge between the abstract specification documents in [`/spec`](../spec/) and a concrete claim of compatibility a robot maker can stand behind.
 
 A sibling sub-suite, [`conformance/llm-bridge/`](./llm-bridge/), scores `(model, backend, profile)` triples for the on-device LLM bridge introduced by [RFC-0021](../docs/rfcs/0021-on-device-llm-bridge.md). The runtime sub-suite below answers "does this runtime execute URML correctly"; the LLM-bridge sub-suite answers "how reliably does this model emit URML the validator accepts."
 
-The conformance suite is part of the [Core Commitment](../CORE_COMMITMENT.md). It will always be Apache 2.0. The eventual *certification program* — the trademark *URML-Certified* — may be paid; the *tests themselves* remain free, public, and runnable by anyone. This separation is deliberate: it lets URML's compatibility claim be honest (anyone can verify it) while preserving a commercial moat in the surround (the mark is licensed, not the tests).
+The conformance suite is licensed under the Business Source License 1.1 (see [`LICENSING.md`](../LICENSING.md)). Running it to test a runtime is non-production use and is free. The eventual *certification program* — the trademark *URML-Certified* — may be paid; the *tests themselves* remain free, public, and runnable by anyone. This separation is deliberate: it lets URML's compatibility claim be honest (anyone can verify it) while preserving a commercial moat in the surround (the mark is licensed, not the tests).
 
 The **normative, human-readable contract** this suite enforces — the six clauses a runtime must satisfy, the two tiers, and the spec-gap loop — is [`spec/conformance/v0.1.0.md`](../spec/conformance/v0.1.0.md) ([RFC-0014](../docs/rfcs/0014-substrate-conformance.md)). This suite is its executable form (clause 6); that document is its written form.
 
@@ -168,7 +168,7 @@ run` for the live count):
 
 ## Related documents
 
-- [`CORE_COMMITMENT.md`](../CORE_COMMITMENT.md) — the commitment that the suite stays free.
+- [`LICENSING.md`](../LICENSING.md): what is free and what needs a commercial license.
 - [`/spec/`](../spec/) — the specifications the suite tests against.
 - [`/reference/`](../reference/) — the reference implementations the suite is first exercised against.
 - [`MANIFESTO.md`](../MANIFESTO.md) §License Direction — the trademark / conformance-mark policy that lives separately from the suite.

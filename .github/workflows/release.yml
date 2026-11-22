@@ -15,7 +15,7 @@
 # PREREQUISITE (one-time, founder-side, cannot be done from this repo):
 # configure a PyPI/TestPyPI Trusted Publisher for EACH of the twenty
 # packages — on (test.)pypi.org: the project → Settings → Publishing →
-# add publisher: owner `URML-MARS`, repo `URML`, workflow `release.yml`,
+# add publisher: owner `urml-dev`, repo `URML`, workflow `release.yml`,
 # environment `pypi-release` (for pypi) / leave blank (for testpypi).
 # Until that exists, use the manual `twine upload` path in RELEASING.md.
 #

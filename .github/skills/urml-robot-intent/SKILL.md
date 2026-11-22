@@ -1,7 +1,7 @@
 ---
 name: urml-robot-intent
 description: Turn a natural-language goal for a physical robot into a URML program that is statically validated against the robot's declared capabilities and active safety envelope before any actuator moves. Use this when an agent needs to command a robot, drone, arm, humanoid, or mobile base from a plain-language instruction, or needs to check whether a requested physical action is admissible (within declared capabilities and safety limits) before executing it. Covers the translate then validate then execute loop. Provider-agnostic (any LLM), runs fully offline once a program is validated, and never lets an action reach an actuator until it passes verification.
-license: Apache-2.0
+license: BUSL-1.1
 ---
 
 # URML: validated robot intent for agents
@@ -93,4 +93,4 @@ except BridgePolicyViolation as exc:
 - Full agent integration guide: `references/urml-for-ai-agents.md` (in this skill) or `docs/integrations/urml-for-ai-agents.md` in the URML repository.
 - Normative Layer-4 prompt contract: `spec/layer-4-nl-grammar/v0.1.0.md`.
 - Project home: https://urml.dev
-- Source and issues: https://github.com/URML-MARS/URML
+- Source and issues: https://github.com/urml-dev/URML

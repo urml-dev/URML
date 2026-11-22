@@ -14,7 +14,7 @@ No third-party Python dependencies.
 
 Usage:
     python .github/scripts/collect_metrics.py \
-        --repo URML-MARS/URML \
+        --repo urml-dev/URML \
         --month 2026-05 \
         --output-dir docs/community
 
@@ -388,7 +388,7 @@ def render_markdown(m: Metrics) -> str:
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--repo", required=True, help="owner/repo, e.g. URML-MARS/URML")
+    parser.add_argument("--repo", required=True, help="owner/repo, e.g. urml-dev/URML")
     parser.add_argument(
         "--month",
         help="Reporting month as YYYY-MM (default: previous calendar month, UTC)",

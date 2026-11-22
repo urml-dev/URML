@@ -45,7 +45,7 @@ Commit your manifest and any `URML-FEDERAL-VALIDATION.md` to your product reposi
 
 ### 5. Open a PR against this repo
 
-Open a PR against `URML-MARS/URML` that adds one row to [docs/manufacturers/directory.md](directory.md). Use the manufacturer-listing PR template (it auto-loads if you append `?template=manufacturer-listing.md` to the New Pull Request URL).
+Open a PR against `urml-dev/URML` that adds one row to [docs/manufacturers/directory.md](directory.md). Use the manufacturer-listing PR template (it auto-loads if you append `?template=manufacturer-listing.md` to the New Pull Request URL).
 
 The row needs:
 
@@ -87,7 +87,7 @@ Open a PR removing your row. No questions asked. Delisting is recorded in git, s
 
 ## If something goes wrong
 
-Open an issue describing the problem. The maintainer commits to responding within 30 days during Phase 0. The validator is Apache 2.0 and freely runnable, so disputes about whether a manifest validates are resolvable independently by anyone.
+Open an issue describing the problem. The maintainer commits to responding within 30 days during Phase 0. The validator is free to run for evaluation, so disputes about whether a manifest validates are resolvable independently by anyone.
 
 ## What this is not
 

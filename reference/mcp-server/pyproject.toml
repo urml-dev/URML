@@ -8,7 +8,7 @@ version = "0.4.0"
 description = "Model Context Protocol server for URML: validate-before-actuate robot intent as agent tools"
 readme = "README.md"
 requires-python = ">=3.11"
-license = "Apache-2.0"
+license = "BUSL-1.1"
 authors = [{ name = "URML Maintainers" }]
 keywords = ["robotics", "robot-intent", "mcp", "validation", "safety", "urml"]
 classifiers = [
@@ -37,9 +37,9 @@ dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.5", "mypy>=1.10"]
 urml-mcp = "urml_mcp.server:main"
 
 [project.urls]
-Homepage = "https://github.com/URML-MARS/URML"
-Repository = "https://github.com/URML-MARS/URML"
-Issues = "https://github.com/URML-MARS/URML/issues"
+Homepage = "https://github.com/urml-dev/URML"
+Repository = "https://github.com/urml-dev/URML"
+Issues = "https://github.com/urml-dev/URML/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/urml_mcp"]

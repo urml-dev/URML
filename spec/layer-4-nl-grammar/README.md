@@ -59,7 +59,7 @@ Layer 4 is the surface where that answer meets the LLM ecosystem. The quality of
 
 ## Reference implementation
 
-The provider-agnostic glue lives in [`/reference/llm-bridge/`](../../reference/llm-bridge/). That code is part of the [Core Commitment](../../CORE_COMMITMENT.md) — always Apache 2.0, no vendor coupling.
+The provider-agnostic glue lives in [`/reference/llm-bridge/`](../../reference/llm-bridge/). That code is BSL 1.1 (see [`LICENSING.md`](../../LICENSING.md)) with no vendor coupling.
 
 The shipped adapters cover cloud (Anthropic tool-use, OpenAI JSON mode), hermetic test (`EchoProvider`), and on-device ([RFC-0021](../../docs/rfcs/0021-on-device-llm-bridge.md): `llama_cpp` against `llama-server` with a schema-derived GBNF, `ollama` against `ollama serve`). On-device adapters install via opt-in extras (`pip install urml-llm-bridge[llama_cpp]` / `[ollama]`); per-model conformance scores live under [`conformance/llm-bridge/`](../../conformance/llm-bridge/).
 

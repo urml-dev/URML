@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  A small, opinionated, human-readable language for describing robot intent.
+  The standard language for robot intent.
 </p>
 
 <p align="center">
@@ -12,52 +12,39 @@
 
 ---
 
-# URML and Commercial Use
+# URML Commercial Licensing
 
-Status: interim statement, Phase 1.
-Established: Phase 1.
-Authority: ratified by [RFC-0672](docs/rfcs/0672-commercial-boundary.md). Summarizes [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) for adopters and refines [`GOVERNANCE.md`](GOVERNANCE.md). Does not modify [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md), which controls.
+Status: in force from 2026-11-22.
+Authority: [RFC-0703](docs/rfcs/0703-bsl-relicense.md). Summarizes [`LICENSE`](LICENSE) and [`LICENSING.md`](LICENSING.md) for companies. `LICENSE` controls.
 
-## What this is
+## Who needs a commercial license
 
-A plain answer to a fair question from anyone deciding whether to build on URML: will the parts I depend on ever move behind a paywall, and where does this project intend to make money? The binding answer lives in [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md). This page restates it for people evaluating adoption, and draws the line between the open standard and the commercial work that may grow around it.
+Any organization that uses URML in production. That means operating robots with URML in a commercial or business setting, shipping URML inside a product, or offering it as a service.
 
-## What is free, forever
+Research, teaching, evaluation, development, testing, simulation and personal projects are free under the [Business Source License 1.1](LICENSE). Each release converts to Apache 2.0 two years after it ships.
 
-These components are Apache 2.0 in perpetuity. They will never move behind a paywall, a conditional license, or an "enterprise edition" fork. The binding commitment is [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md); this is the short version:
+## What a commercial license includes
 
-- the specification documents (every layer, every profile),
-- the conformance test suite (the tests are free and public; a certification program may be paid, the tests are not),
-- the ROS 2 and PX4 reference runtimes,
-- the validator (URML's safety guarantees flow through it, so it is never gated),
-- the LLM prompt contract (provider-neutral, so no model vendor can capture the standard),
-- the default US-federal compliance policy file.
+- The right to run URML in production on the robots and sites the license covers.
+- The validator, every reference runtime, the LLM bridge and MCP server, and the conformance suite.
+- The bundled US-federal default compliance policy.
+- Email support, with SLA options on Enterprise.
 
-If you build on these, you are building on ground that does not move.
+## Tiers
 
-## Where commercial work happens
+| Tier | For | Adds |
+|---|---|---|
+| **Startup** | A first production deployment | Production rights up to an agreed robot count |
+| **Enterprise** | Multi-site fleets, regulated and federal buyers | Unlimited robots, audited policy files, SLA, named engineer |
+| **OEM** | Robot and controller makers | Redistribution rights in shipped products, per-unit pricing, directory listing |
 
-URML intends to be sustainable. The revenue comes from products and services built on top of the open core, never from closing it. The standard is the reason the surround has value, so closing the standard would destroy the thing that makes the rest worth anything.
+## Other commercial offerings
 
-Legitimate commercial surfaces, for the URML organization or for anyone else the Apache 2.0 license permits:
+- **URML-Certified** conformance program and mark (planned; see [`TRADEMARK.md`](TRADEMARK.md)).
+- **Audited policy files** with third-party legal attestation, kept current.
+- **Hosted services**: validation, LLM bridge, simulation. URML always runs fully offline; hosting is optional.
+- **Training and certification** for teams.
 
-- the **URML-Certified** conformance program and the trademark. The conformance tests stay free; the mark and the audit that backs it are the paid program. This is a Phase 4 program and is not in use yet.
-- **audited policy files.** The default policy file is free forever. A third-party accredited legal attestation layered on top, and kept current, is a product.
-- **managed and hosted services**, for teams that would rather not self-host: hosted validation, a hosted LLM bridge, hosted simulation. The core always runs fully offline once validated, so hosting is a convenience, never a requirement.
-- **premium tooling above the standard**, such as fleet management and observability.
-- **training and individual certification.**
+## Contact
 
-These live outside this repository. Nothing commercial is merged here.
-
-## The line, stated plainly
-
-The open core is the standard. The commercial surround is separate, optional, and built on top of it. Depending on URML never requires buying anything from anyone.
-
-This guarantee was written in Phase 0, before URML had any adopters, on purpose. The right time to promise that the ground will not move is before anyone has to stand on it, not after.
-
-## Related
-
-- [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) is the binding commitment and controls if this summary and it ever disagree.
-- [`TRADEMARK.md`](TRADEMARK.md) covers the URML and URML-Certified marks.
-- [`GOVERNANCE.md`](GOVERNANCE.md) covers how decisions are made.
-- [`MANIFESTO.md`](MANIFESTO.md) has the phase roadmap; the certification program is Phase 4.
+sales@urml.dev

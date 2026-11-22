@@ -36,8 +36,8 @@ and a deployment compliance policy. Only a program that passes all five passes
 is allowed to reach an actuator. Proposal and verification are separated, and
 the verifier is not optional.
 
-URML is a **specification** plus **reference implementations**, Apache-2.0
-forever for the core (see `CORE_COMMITMENT.md`). It is not a robot operating
+URML is a **specification** plus **reference implementations**, source-available
+under BSL 1.1 (see `LICENSING.md`). It is not a robot operating
 system; it targets the ones that exist.
 
 ## Why it's credible, not vapor
@@ -80,7 +80,7 @@ system; it targets the ones that exist.
 ## Try it
 
 ```bash
-git clone https://github.com/URML-MARS/URML.git && cd URML
+git clone https://github.com/urml-dev/URML.git && cd URML
 python bootstrap.py
 make demo            # → Validation passed
 ```

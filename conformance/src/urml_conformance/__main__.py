@@ -2,7 +2,7 @@
 
 This is the bring-your-own-adapter entrypoint. Any runtime that
 implements the substrate-neutral ``ROSAdapter`` Protocol can be checked
-against the same Apache-2.0 fixture contract every reference runtime
+against the same fixture contract every reference runtime
 passes:
 
     # Hermetic self-test (default: MockROSAdapter):

@@ -163,7 +163,7 @@ The `remediation_hint` field lets the LLM bridge exit revision loops fast: the L
 
 The reference validator ships with a default policy at `urml_validator/policies/us_federal_default.yaml`. It is loaded automatically when no `--policy` flag is passed. Per [RFC-0003](../../docs/rfcs/0003-us-alignment.md), this default mirrors US federal procurement rules: NDAA Section 889 / FY26, the FCC Covered List, EO 14307, and the American Security Robotics Act (once enacted).
 
-Per [`CORE_COMMITMENT.md`](../../CORE_COMMITMENT.md) item 7, the default policy file remains Apache 2.0 forever and may not move behind a paywall. *Audited* or *certified* policy files carrying third-party legal attestation are a separate commercial surface.
+The default policy file is licensed under BSL 1.1 with the rest of URML (see [`LICENSING.md`](../../LICENSING.md)). *Audited* or *certified* policy files carrying third-party legal attestation are a separate commercial surface.
 
 Deployers outside the US must override the default with their own policy file via `urml validate --policy <file.yaml>`. The default may also be disabled entirely with `--no-policy` (or `policy=None` via the Python API).
 
@@ -195,4 +195,4 @@ The following are explicitly **not** in v0.1 and are scheduled for follow-up RFC
 - [README.md](README.md) — Layer-1 hardware abstraction overview and the `provenance:` block field reference.
 - [RFC-0003](../../docs/rfcs/0003-us-alignment.md) — strategic alignment to US federal regulation.
 - [RFC-0004](../../docs/rfcs/0004-compliance-policy.md) — technical specification of the policy mechanism.
-- [CORE_COMMITMENT.md](../../CORE_COMMITMENT.md) §The Commitment item 7 — the default policy file as a public good.
+- [LICENSING.md](../../LICENSING.md): license terms for the default policy file.

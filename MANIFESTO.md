@@ -52,7 +52,7 @@ URML is **not** a single product. It is a specification with reference implement
 
 URML is **not** a hidden-state black box. Every URML program is human-readable text. An LLM can write it, a child can read it (with a glossary), a safety reviewer can audit it before a single actuator moves.
 
-URML does **not** narrow what the Apache 2.0 license permits — any third party may build any extension on top of URML. The canonical URML organization, separately, scopes its own development to civilian, consumer, educational, industrial, and research domains. Profiles outside that scope are not maintained here.
+Third parties may build extensions on top of URML under the terms in [`LICENSING.md`](LICENSING.md). The canonical URML organization, separately, scopes its own development to civilian, consumer, educational, industrial, and research domains. Profiles outside that scope are not maintained here.
 
 ## Jurisdictional Alignment
 
@@ -221,6 +221,8 @@ As the project grows:
 The governance file (`GOVERNANCE.md`) describes the current state honestly. It will say "one person" until that becomes false.
 
 ## License Direction
+
+> Updated 2026-11-22 by [RFC-0703](docs/rfcs/0703-bsl-relicense.md): versions after v0.4.x ship under the **Business Source License 1.1**, free for non-production use and converting to Apache 2.0 two years after each release. See [`LICENSING.md`](LICENSING.md). The original direction follows for the record.
 
 The specification, reference implementations, and conformance suite ship under **Apache License 2.0**. This license is permissive enough to enable broad adoption, includes an explicit patent grant to protect against ambush, and is compatible with the licenses of the systems URML targets (ROS 2 under Apache 2.0; PX4 under BSD-3-Clause).
 

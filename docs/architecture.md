@@ -177,7 +177,7 @@ A profile may **not** weaken the core's safety guarantees or break the substrate
 
 ### Out of scope for canonical maintenance
 
-The canonical URML organization develops profiles only within its declared scope: **civilian, consumer, educational, industrial, research**. Profiles outside that scope are architecturally permitted on top of URML (the Apache 2.0 license is not narrowed) but are not maintained in this repository. See [`CLAUDE.md`](../CLAUDE.md) §What Claude Should Never Do and [`MANIFESTO.md`](../MANIFESTO.md) §Scope.
+The canonical URML organization develops profiles only within its declared scope: **civilian, consumer, educational, industrial, research**. Profiles outside that scope are architecturally permitted on top of URML (subject to the license terms in [`LICENSING.md`](../LICENSING.md)) but are not maintained in this repository. See [`CLAUDE.md`](../CLAUDE.md) §What Claude Should Never Do and [`MANIFESTO.md`](../MANIFESTO.md) §Scope.
 
 ---
 
@@ -200,7 +200,7 @@ URML does **not** define motor control, real-time scheduling, sensor fusion, or 
 
 ### Validation
 
-Every URML program is checked against (a) the capability manifest of the target robot and (b) the active safety envelope **before** any actuator moves. The validator is the safety boundary; bypassing it at runtime is rejected on review. The validator is part of the Core Commitment — it stays Apache 2.0 forever. See [`/reference/validator/`](../reference/validator/) and [`CORE_COMMITMENT.md`](../CORE_COMMITMENT.md).
+Every URML program is checked against (a) the capability manifest of the target robot and (b) the active safety envelope **before** any actuator moves. The validator is the safety boundary; bypassing it at runtime is rejected on review. The validator is BSL 1.1 and free to run for evaluation. See [`/reference/validator/`](../reference/validator/) and [`LICENSING.md`](../LICENSING.md).
 
 ### Versioning
 
@@ -208,4 +208,4 @@ Each spec layer and each profile versions independently per semver. v0.x.y allow
 
 ### Conformance
 
-A runtime is "URML-compatible" only if it passes the published conformance suite for the declared spec version. The suite is Apache 2.0 and runnable by anyone. The certification *program* (trademark, mark of conformance) may be paid; the tests themselves are not. See [`/conformance/`](../conformance/) and [`CORE_COMMITMENT.md`](../CORE_COMMITMENT.md).
+A runtime is "URML-compatible" only if it passes the published conformance suite for the declared spec version. The suite is source-available under BSL 1.1 and free to run for testing. The certification *program* (trademark, mark of conformance) may be paid; the tests themselves are not. See [`/conformance/`](../conformance/) and [`LICENSING.md`](../LICENSING.md).

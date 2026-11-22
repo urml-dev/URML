@@ -114,7 +114,7 @@ The bridge has its own conformance bar: for the published few-shot example libra
 
 ## Core Commitment
 
-The LLM bridge — the *bridge logic and the prompt contract*, not any specific provider's API — is part of the [Core Commitment](../../CORE_COMMITMENT.md). It will always be Apache 2.0 and provider-agnostic.
+The LLM bridge — the *bridge logic and the prompt contract*, not any specific provider's API — is licensed under the Business Source License 1.1: free for non-production use, commercial license for production (see [`LICENSING.md`](../../LICENSING.md)). It stays provider-agnostic.
 
 ## Quickstart (current pre-alpha — hermetic, no provider needed)
 

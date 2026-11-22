@@ -36,7 +36,7 @@ A profile may not:
 
 ## Canonical maintenance scope
 
-The canonical URML organization maintains profiles within its declared scope: **civilian, consumer, educational, industrial, research**. Profiles outside that scope are architecturally permitted on top of URML (the Apache 2.0 license is not narrowed) but are not maintained in this repository. See [`CLAUDE.md`](../../CLAUDE.md) §What Claude Should Never Do and [`MANIFESTO.md`](../../MANIFESTO.md) §Scope.
+The canonical URML organization maintains profiles within its declared scope: **civilian, consumer, educational, industrial, research**. Profiles outside that scope are architecturally permitted on top of URML (subject to the license terms in [`LICENSING.md`](../../LICENSING.md)) but are not maintained in this repository. See [`CLAUDE.md`](../../CLAUDE.md) §What Claude Should Never Do and [`MANIFESTO.md`](../../MANIFESTO.md) §Scope.
 
 ## V1.0 profiles
 

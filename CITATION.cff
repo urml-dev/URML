@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: >-
   If you use or reference URML (the Universal Robot Language) in academic
   work, please cite it using these metadata.
-title: "URML — Universal Robot Language"
+title: "URML: Universal Robot Language"
 abstract: >-
   An open specification and reference implementation for describing robot
   intent: a small, human-readable language that sits above robot operating
@@ -14,10 +14,10 @@ type: software
 authors:
   - given-names: Ido
     family-names: Yahalomi
-    email: greenvh@gmail.com
-repository-code: "https://github.com/URML-MARS/URML"
-url: "https://github.com/URML-MARS/URML"
-license: Apache-2.0
+    email: ido@beamdesk.space
+repository-code: "https://github.com/urml-dev/URML"
+url: "https://github.com/urml-dev/URML"
+license: BUSL-1.1
 keywords:
   - robotics
   - large language models

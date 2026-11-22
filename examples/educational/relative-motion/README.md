@@ -7,7 +7,7 @@
 A worked example of the `drive` and `turn` primitives: relative (odometric)
 motion for a frameless robot, the two-motor, wheel-encoder classroom buggy that
 has no global frame. It came out of
-[Discussion #497](https://github.com/URML-MARS/URML/discussions/497), where a user
+[Discussion #497](https://github.com/urml-dev/URML/discussions/497), where a user
 runs URML on a GoPiGo3 and wanted "drive forward X" / "spin X degrees" rather
 than navigation to named locations.
 

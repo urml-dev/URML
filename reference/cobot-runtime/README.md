@@ -62,7 +62,7 @@ with UrRtdeAdapter(cfg) as ur:
 
 ## Core Commitment
 
-Apache 2.0. Outside the [Core Commitment](../../CORE_COMMITMENT.md) boundary (only ROS 2 + PX4 are named there) but carries the same no-vendor-coupling, no-cloud, no-enterprise-edition posture. `panda-py` is Apache-2.0; `ur_rtde` is an optional `[ur]` extra imported lazily, never at module load (the `rclpy`/`pymavlink` posture).
+Business Source License 1.1: free for non-production use, commercial license for production (see [`LICENSING.md`](../../LICENSING.md)). No vendor coupling, no cloud dependency. `panda-py` is Apache-2.0; `ur_rtde` is an optional `[ur]` extra imported lazily, never at module load (the `rclpy`/`pymavlink` posture).
 
 ## Related documents
 
