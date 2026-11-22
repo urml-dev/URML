@@ -53,7 +53,7 @@ If you are learning, teaching, researching, evaluating, building a proof of conc
 | Tier | Price |
 |---|---|
 | Production | $4 per robot per month, counting only robots in service |
-| Enterprise lifetime | $225,000 once, plus $10,000 per year for support |
+| Enterprise lifetime | $225,000 once for up to 1,000 robots, plus $10,000 per year for support |
 | OEM | Per unit, on request |
 
 [How to buy](COMMERCIAL.md#how-to-buy) is a short email to sales@urml.dev.

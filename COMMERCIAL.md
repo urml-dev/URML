@@ -28,15 +28,18 @@ Research, teaching, evaluation, development, testing, simulation and personal pr
 - The right to run URML in production on the robots and sites the license covers.
 - The validator, every reference runtime, the LLM bridge and MCP server, and the conformance suite.
 - The bundled US-federal default compliance policy.
-- Email support. Enterprise lifetime adds an SLA and a named engineer.
+- Email support. Enterprise tiers add priority email support.
 
 ## Tiers
 
 | Tier | Price | Includes |
 |---|---|---|
 | **Production** | **$4 per robot per month** | Any company running URML on robots in production. Only robots in service count. Email support |
-| **Enterprise lifetime** | **$225,000 one time**, plus **$10,000 per year** support | Perpetual license: unlimited robots and sites, every future version, audited policy files, SLA, named engineer |
+| **Enterprise lifetime** | **$225,000 one time**, plus **$10,000 per year** support | Perpetual license for up to 1,000 robots in service; extra robots $225 each, one time; every release while support is paid; audited policy files; priority email support |
+| **Enterprise half** | **$112,500 one time**, plus **$5,000 per year** support | The same, for up to 500 robots. On request. Upgrade to lifetime by paying the difference |
 | **OEM** | Per unit, on request | Robot and controller makers: redistribution rights in shipped products, directory listing |
+
+What counts as production, and what counts as one robot, is in [`LICENSING.md`](LICENSING.md#what-counts-as-production). Prices may change. The signed order form sets the price.
 
 ## How to buy
 
@@ -47,13 +50,13 @@ Research, teaching, evaluation, development, testing, simulation and personal pr
 ### Production
 
 1. Email sales@urml.dev with your company name, the number of robots that will run URML, and where they operate.
-2. You receive an order form and an invoice.
-3. Once the invoice is paid, you receive a signed license letter naming your company and the number of robots it covers.
+2. You receive an order form under the URML Commercial License Agreement, naming your company and the number of robots it covers.
+3. Once both sides sign and the first payment is made, the license is active.
 4. When your fleet grows or shrinks, email the new count. You pay only for robots in service.
 
-### Enterprise lifetime
+### Enterprise lifetime and Enterprise half
 
-Enterprise lifetime is a signed contract rather than an order form. Email sales@urml.dev with your company name and the sites you plan to cover.
+Both are a signed contract rather than an order form. Email sales@urml.dev with your company name and the number of robots you plan to cover.
 
 ### OEM
 
