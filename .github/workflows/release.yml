@@ -111,15 +111,34 @@ jobs:
                  humanoid_runtime mobile_runtime legged_runtime isaac_runtime
                  mujoco_runtime opcua_runtime marine_runtime"
           files=$(for p in $ORDER; do ls dist/urml_${p}-* 2>/dev/null; done; ls dist/*)
+          # A 429 from PyPI is its new-project limit: expected while new names
+          # roll out, so it ends the run green with a warning. Any other upload
+          # error fails the run.
+          limited=""
           failed=""
           for f in $(printf '%s\n' $files | awk '!seen[$0]++'); do
             echo "::group::$f"
-            python -m twine upload --non-interactive --skip-existing "$f" || failed="$failed $(basename "$f")"
+            if out=$(python -m twine upload --non-interactive --skip-existing "$f" 2>&1); then
+              echo "$out"
+            else
+              echo "$out"
+              if printf '%s' "$out" | grep -q "429 Too Many Requests"; then
+                limited="$limited $(basename "$f")"
+              else
+                failed="$failed $(basename "$f")"
+              fi
+            fi
             echo "::endgroup::"
           done
+          if [ -n "$limited" ]; then
+            echo "::warning::Held back by PyPI's new-project limit (about 4 per day). Re-run 24h after the last new project was created:$limited"
+            echo "### Held back by PyPI's new-project limit" >> "$GITHUB_STEP_SUMMARY"
+            echo "Re-run this workflow 24h after the last new project was created." >> "$GITHUB_STEP_SUMMARY"
+            for f in $limited; do echo "- $f" >> "$GITHUB_STEP_SUMMARY"; done
+          fi
           if [ -n "$failed" ]; then
-            echo "::error::Not uploaded. New-project limit is about 4 per day; re-run the publish job 24h after the last successful new project:$failed"
-            echo "### Not uploaded" >> "$GITHUB_STEP_SUMMARY"
+            echo "::error::Upload failed for a reason other than the rate limit:$failed"
+            echo "### Upload failed" >> "$GITHUB_STEP_SUMMARY"
             for f in $failed; do echo "- $f" >> "$GITHUB_STEP_SUMMARY"; done
             exit 1
           fi
