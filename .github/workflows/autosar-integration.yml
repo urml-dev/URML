@@ -109,7 +109,12 @@ jobs:
                 -e "reference/autosar-runtime[autosar]" \
                 -e conformance \
                 "pytest>=8"
-              python -c "import urml_autosar_runtime, ara, platform; print(\"urml_autosar_runtime + ara import OK on\", platform.machine())"
+              # The [autosar] extra is an empty placeholder: the ara::com
+              # binding is a vendor wheel that is not on PyPI, so `ara`
+              # is never installed here. The adapter imports it lazily,
+              # so assert our package imports and let the hermetic suite
+              # fake ara (the ros2-arm64-build posture).
+              python -c "import urml_autosar_runtime, urml_autosar_runtime.adapter, platform; print(\"urml_autosar_runtime import OK (ara lazy/absent) on\", platform.machine())"
               cd reference/autosar-runtime
               python -m pytest tests/test_autosar_adapter.py -q
             '
