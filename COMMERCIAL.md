@@ -47,6 +47,8 @@ What counts as production, and what counts as one robot, is in [`LICENSING.md`](
 
 **Not sure your use counts as production?** Email sales@urml.dev and describe it before you buy.
 
+**Online payment is coming soon.** Until then, email sales@urml.dev and we send you an order form and an invoice.
+
 ### Production
 
 1. Email sales@urml.dev with your company name, the number of robots that will run URML, and where they operate.
