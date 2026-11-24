@@ -243,6 +243,9 @@ for its machine require, for example:
 - for industrial mobile robots, ISO 3691-4:2023 and ANSI/A3 R15.08 (an
   integrator's rulebook template is in
   [`examples/rulebooks/amr-template.yaml`](../../examples/rulebooks/amr-template.yaml));
+- for personal care robots, ISO 13482:2014, which ISO is revising (a
+  template for mobile servant robots is in
+  [`examples/rulebooks/home-template.yaml`](../../examples/rulebooks/home-template.yaml));
 - a risk assessment of the actual site.
 
 The editions above were checked on 2026-09-26. Check them again before relying
