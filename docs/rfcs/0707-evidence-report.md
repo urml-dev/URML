@@ -109,7 +109,7 @@ The JSON report has these sections, in this order. Each section is a list of ite
    - whether any `declared` item is true;
    - anything a program does through a substrate path that does not pass through a URML runtime.
 
-   Then every rulebook obligation and every `runtime` item again, so the list of what someone else must cover is complete in one place.
+   Rulebook obligations stay in the Rules section and `runtime` items in theirs, each with its status; they are not repeated here, so every item is counted once. (Step 1 changed this from repeating them.)
 
 10. **Counts.** Items per status, per section. Counts only: no ratio, no grade.
 
@@ -208,7 +208,7 @@ The paid fleet and vehicle validation services in [`COMMERCIAL.md`](../../COMMER
 2. **Programs and conformance.** The Programs and Conformance sections, reusing the registry checker for tier and expiry.
 3. **Human form.** Markdown and static HTML rendered from the JSON with the standard library only. A test asserts that every item in the JSON appears in the rendering, so the human form cannot drop a finding.
 4. **Redaction and signing.** `--redact`, with a test that no coordinate survives it and that the full report's hash matches. `urml evidence verify`, the Licensor's public key in the package, and a test that verifies a committed signed fixture offline and rejects a report altered by one byte.
-5. **Example and docs.** `examples/evidence/` with one committed, byte-asserted report and a README written for an auditor who has never seen URML. A section in `docs/safety/safety-model.md`.
+5. **Example and docs.** `examples/evidence-report/` (not `examples/evidence/`, which holds the RFC-0631 capability-evidence example) with one committed, byte-asserted report and a README written for an auditor who has never seen URML. A section in `docs/safety/safety-model.md`.
 6. **Website.** A page on urml.dev showing an example report, after steps 1 to 5 ship.
 
 Each step lands with its tests. No step changes validation results.
