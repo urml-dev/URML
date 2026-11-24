@@ -14,10 +14,12 @@
 
 # Substrate Conformance
 
-**Status:** Normative. The specification is [`v0.1.0.md`](v0.1.0.md) — the
-six-clause contract a runtime MUST satisfy to be **URML-compatible**, the two
+**Status:** Normative. The current specification is [`v0.2.0.md`](v0.2.0.md):
+the six-clause contract a runtime MUST satisfy to be **URML-compatible**, the two
 conformance tiers (self-reported and URML-Certified), and the normative
-spec-gap loop. Specified by [RFC-0014](../../docs/rfcs/0014-substrate-conformance.md).
+spec-gap loop. Specified by [RFC-0014](../../docs/rfcs/0014-substrate-conformance.md); the
+certified tier by [RFC-0705](../../docs/rfcs/0705-urml-certified.md). [`v0.1.0.md`](v0.1.0.md) is
+the previous version.
 
 ## Purpose
 
@@ -25,12 +27,11 @@ Layers 1–4 define what URML *is*; this layer defines what it means for a
 *runtime* to correctly run it. "URML-compatible" was previously folklore — a
 runtime felt compatible if it resembled the ROS 2 reference runtime. This
 document makes the contract explicit and testable, so the universality claim is
-provable and the eventual *URML-Certified* trademark program has a specification
-to certify against.
+provable and the *URML-Certified* mark has a specification to certify against.
 
 ## The two halves
 
-- **The written contract** is [`v0.1.0.md`](v0.1.0.md) (this directory): the
+- **The written contract** is [`v0.2.0.md`](v0.2.0.md) (this directory): the
   rationale and the human-readable obligations.
 - **The executable contract** is the [conformance suite](../../conformance/):
   the freely runnable tests whose passing is clause 6 of the contract. Both are
