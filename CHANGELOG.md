@@ -31,6 +31,15 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 - `examples/rulebooks/amr-template.yaml`: an integrator's rulebook template for industrial mobile robots, after ISO 3691-4:2023 and ANSI/A3 R15.08-1-2020 (R2026), R15.08-2-2023 and R15.08-3-2026. Five rules (travel-speed cap, forbidden zones, load handling only at stations, a program allowlist, untouched safety outputs) and five obligations URML lists but cannot check. It carries no values from either standard and refuses to load until filled in; a test fills it with sample values and shows each rule refusing what it should.
 - **URML-Certified** ([RFC-0705](docs/rfcs/0705-urml-certified.md)): a free conformance certification on public criteria. A third-party runtime version is certified when it passes the full conformance suite for its profiles and the Licensor reproduces that run offline from the public package. The registry gains a `certified` tier, checked by `python -m urml_conformance.registry check` (reproduction report, same fixture set, one exact public version, expiry). Conformance specification `v0.2.0` describes the tier; `TRADEMARK.md` replaces its Phase 4 stub with the policy. Certification covers conformance only, never safety or compliance. Nothing is certified yet.
 
+### Changed: conformance
+
+- The conformance harness records adapter calls ([RFC-0706](docs/rfcs/0706-recorded-adapter-calls.md)). `ConformanceRunner` wraps every adapter, single-robot and each fleet member, in `RecordingAdapter` and checks `audit_methods` and `per_member_audit` against what it recorded. Before this, the runner read a `call_log` only the mock keeps, so a real adapter (`RclpyAdapter`, a vendor SDK) failed 102 of the 103 fixtures that check execution. An adapter no longer keeps or vouches for its own log. `RecordingAdapter` moves to `urml_conformance.recording`; the old import paths still work.
+- Conformance specification [v0.2.1](spec/conformance/v0.2.1.md): clause 6 says the suite records the calls. No obligation on a runtime changes. Registry certifications may name `conformance_spec: "0.2.1"`.
+
+### Fixed
+
+- `gazebo-e2e` in `ros2-integration` now runs its test: it launches the real Jazzy TurtleBot 4 simulation (`turtlebot4_gz_bringup`), keeps pytest's exit code, and pins apt mirrors. It had reported success with no simulator and no test. The nav-patrol fixture passes on the live sim (#17).
+
 ## [0.5.0] - 2026-11-22
 
 First release from the new home, [`urml-dev/URML`](https://github.com/urml-dev/URML). All twenty-two packages were built at 0.5.0. PyPI lets a personal account create only about 4 new projects a day, so they reach PyPI in batches: 14 were live on 2026-11-24, and the rest follow as the limit allows. Until a package is on PyPI it installs from source.
