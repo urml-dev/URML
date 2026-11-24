@@ -66,7 +66,7 @@ with Vda5050Adapter(config) as amr:          # connects to config.broker_host
 
 ## Tested
 
-- **Hermetic suite** (`tests/`): the adapter against `SimulatedVehicle` on an `InMemoryBroker`. Every message either side publishes is validated against the official VDA 5050 3.0.0 JSON schemas ([`tests/vda5050_schemas/`](tests/vda5050_schemas/), MIT). Includes the repository's unchanged warehouse example run end to end through the validator and `URMLRuntime`, and a validator rejection that sends nothing to the vehicle.
+- **Hermetic suite** (`tests/`): the adapter against `SimulatedVehicle` on an `InMemoryBroker`. Every message either side publishes is validated against the official VDA 5050 JSON schemas for 3.0.0, as upstream maintains them on its `main` branch ([`tests/vda5050_schemas/`](tests/vda5050_schemas/), MIT, pinned to a commit). Includes the repository's unchanged warehouse example run end to end through the validator and `URMLRuntime`, and a validator rejection that sends nothing to the vehicle.
 - **Live broker** (`tests/integration/`, `URML_VDA5050_BROKER=host:port`): adapter and simulated vehicle on separate `paho-mqtt` connections to a real Mosquitto 2.0 broker. Run weekly by [`vda5050-integration.yml`](../../.github/workflows/vda5050-integration.yml).
 - **Not yet:** a real vendor vehicle, or a vendor's VDA 5050 simulator. The vehicle on the other side of every test is this package's own simulator, which follows the protocol rules a fleet control depends on but is not a vehicle model.
 

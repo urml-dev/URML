@@ -1,14 +1,16 @@
-# VDA 5050 3.0.0 JSON schemas (test fixtures)
+# VDA 5050 JSON schemas (test fixtures)
 
-Copied from the [`VDA5050/VDA5050`](https://github.com/VDA5050/VDA5050) repository at tag `3.0.0` (released 2026-03-18), directory `json_schemas/`. MIT License, copyright Verband der Automobilindustrie; the license text is in [`LICENSE.txt`](LICENSE.txt).
+Copied unmodified from the [`VDA5050/VDA5050`](https://github.com/VDA5050/VDA5050) repository, `main` branch at commit [`f480c40`](https://github.com/VDA5050/VDA5050/tree/f480c4020c91577841400b27390e8eb38120e434/json_schemas) (2026-11-11), directory `json_schemas/`. MIT License, copyright Verband der Automobilindustrie; the license text is in [`LICENSE.txt`](LICENSE.txt).
 
 The tests validate every message the adapter and the simulated vehicle publish against these files. They are test fixtures only and are not shipped in the wheel.
 
-| File | Upstream SHA-256 | Changed here |
-|---|---|---|
-| `order.schema` | `f7e2d3b5c914e76d28d39e3e5a08b6997e56e9c4cbcceb634f13fe3573986d12` | Yes, see below |
-| `instantActions.schema` | `230bfcab4617fb9e8b93c1b9c18c99da43b1c80619e3a1ecc8daa926cd792450` | No |
-| `state.schema` | `f00d6620e0d1d20efa99f8ce3bd1a25a578f0c01e96cc9b52548259f4847d307` | No |
-| `connection.schema` | `083dffd157e1af2d365e24b73dfc18e404addb3e1e46dd4c7fbab63cd777cafb` | No |
+| File | SHA-256 |
+|---|---|
+| `order.schema` | `3d8b37a6660d72dd8c581f8df583cb722a04a0b03f9fc9e7c4c59897fe29d902` |
+| `instantActions.schema` | `230bfcab4617fb9e8b93c1b9c18c99da43b1c80619e3a1ecc8daa926cd792450` |
+| `state.schema` | `9cb308fb2b59c591f518dabd32f030430e26963e5ad38e08d199eb1650dfc061` |
+| `connection.schema` | `50710e678b56ddeffe2af7f3c87687abd20f425d62235e05809895074abbd555` |
 
-**The one change.** Upstream `order.schema` at `3.0.0` is not valid JSON: it has trailing commas before closing braces (the first at line 314). No JSON parser accepts it as published. The copy here removes those trailing commas and nothing else; `diff` with trailing commas stripped from both files is empty. `factsheet.schema` and `visualization.schema` have the same defect upstream and are not used here.
+**Why `main` and not the `3.0.0` tag.** The VDA 5050 core team keeps the schemas on the repository branch and does not release them: "Schemas are always updated in the respective GitHub branch directly" ([VDA5050/VDA5050#660](https://github.com/VDA5050/VDA5050/issues/660), 2026-10-22). The `3.0.0` tag's `order`, `factsheet` and `visualization` schemas contain trailing commas and do not parse; `main` fixed that in [#599](https://github.com/VDA5050/VDA5050/pull/599). The commits on `main` since `3.0.0` correct the 3.0.0 schemas (a unit, an enum, descriptions) and do not change the message format, so these files describe 3.0.0 messages.
+
+To update: pick a newer `main` commit, copy the four files unchanged, and update the commit and the hashes above.
