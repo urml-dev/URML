@@ -154,11 +154,13 @@ jobs:
     # The apt install alone has taken 41 minutes on a slow Ubuntu mirror,
     # and a 50-minute cap cancelled a run mid-download (2026-11-24), so
     # leave headroom. The sim wait below can take up to 21 minutes over
-    # two launches, and the three-goal drive itself took 42 minutes. Each
-    # slow step has its own cap so an overrun fails with the step's name,
-    # not a generic job cancellation; the job cap only bounds the sum.
-    # The job is cron + manual only, never per-PR.
-    timeout-minutes: 160
+    # two launches, and the three-goal drive has taken from 43 to 71
+    # minutes on the same fixture (2026-11-24); a 55-minute step cap cut
+    # off a healthy drive. Each slow step has its own cap so an overrun
+    # fails with the step's name, not a generic job cancellation; the
+    # job cap only bounds the sum. The job is cron + manual only, never
+    # per-PR.
+    timeout-minutes: 200
     steps:
       - uses: actions/checkout@v4
 
@@ -277,7 +279,7 @@ jobs:
           exit 1
 
       - name: Run the Gazebo end-to-end conformance test
-        timeout-minutes: 55
+        timeout-minutes: 100
         env:
           URML_GAZEBO_E2E: "1"
           # Same launch_testing collection bug as rclpy-smoke: without
