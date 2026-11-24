@@ -6,6 +6,7 @@ state: Draft
 created: 2026-11-24
 updated: 2026-11-24
 supersedes: none
+amends: RFC-0702 (an optional `standard` field on `cite`)
 superseded-by: none
 ---
 
@@ -95,7 +96,7 @@ The JSON report has these sections, in this order. Each section is a list of ite
 
 5. **Rules.** One item per rule in each loaded rulebook ([RFC-0702](0702-rulebooks.md)): its kind, its `cite`, and its status (`checked` for every rule kind the validator enforces). Each `require_declared` rule shows the declared value, the deployment rulebook it came from and its issuer, as `declared`, or `missing` when absent or not in the allowed list. Each obligation is `outside`, with its cite. Exceptions are listed with their cited basis.
 
-6. **By standard.** The same rules and obligations regrouped by the standard their `cite` names (ISO 10218-1:2025, ISO 3691-4:2023, IEC 61508:2010, 14 CFR Part 107, and so on). For each standard: rules checked, declarations on record, obligations outside URML. The grouping key is the cite text up to the clause, so it works for any rulebook, including ones this repository has never seen. This is the view a certification body reads first.
+6. **By standard.** The same rules and obligations regrouped by the standard their `cite` names (ISO 10218-1:2025, ISO 3691-4:2023, IEC 61508:2010, 14 CFR Part 107, and so on). For each standard: rules checked, declarations on record, obligations outside URML. The grouping key is the cite's `standard` field (below) when it is present, and the cite text up to the clause when it is not, so the view works for any rulebook, including ones written before the field existed.
 
 7. **Programs.** When `--program` is given, one item per program: accepted or refused, and every issue the validator raised, with its code and the rule or limit behind it. Without programs, the section says none were given; the rest of the report stands without it.
 
@@ -117,6 +118,26 @@ The human form (`md` or `html`) renders the same sections from the JSON and adds
 ### Determinism and reproduction
 
 Same inputs, same `--as-of`, same validator version: byte-identical JSON. Lists are sorted by a stated key, floats are printed in one fixed form, and no wall-clock time, hostname, user name or absolute path enters the report. A reader who wants to trust a report does not trust its author: they rerun `urml evidence build` on the same files and compare the sha256. This is the trust model [RFC-0705](0705-urml-certified.md) already uses for certification reproduction, applied to one deployment.
+
+### A `standard` field on rulebook cites
+
+This RFC amends the rulebook format ([RFC-0702](0702-rulebooks.md)) with one optional field. A `cite` keeps its free `text` and `url`, and may add `standard`: the identifier of the standard or regulation it comes from, with its edition, and nothing else.
+
+```yaml
+cite:
+  text: "ISO 3691-4:2023, clause FILL_IN"
+  standard: "ISO 3691-4:2023"
+```
+
+A cite that draws on more than one standard lists them:
+
+```yaml
+cite:
+  text: "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause FILL_IN"
+  standard: ["ISO 13849-1:2023", "IEC 62061:2021", "IEC 61508:2010"]
+```
+
+The field changes no validation result. It exists so that two rulebooks naming one standard land in one group in the By standard section, whatever their `text` says. It is optional, so every existing rulebook stays valid; the bundled FAA rulebook and the safety-standard templates gain it in the same change that adds it to the schema.
 
 ### Redaction
 
@@ -183,7 +204,7 @@ The paid fleet and vehicle validation services in [`COMMERCIAL.md`](../../COMMER
 
 ## Implementation plan
 
-1. **Schema and core sections.** `spec/evidence/v0.1.0/report.schema.json`; `urml evidence` producing JSON for Inputs, Robot, Provenance, Envelope, Rules, By standard, Outside URML and Counts. Golden reports for `examples/warehouse` and `examples/industrial/simple-pick-and-place` with each safety-standard template filled in, as the template tests already do. A determinism test runs the command twice and compares bytes, and a schema test validates every golden report.
+1. **Schema and core sections.** The optional `standard` field on `cite` in the rulebook schema and spec, filled in the bundled FAA rulebook and the safety-standard templates. `spec/evidence/v0.1.0/report.schema.json`; `urml evidence` producing JSON for Inputs, Robot, Provenance, Envelope, Rules, By standard, Outside URML and Counts. Golden reports for `examples/warehouse` and `examples/industrial/simple-pick-and-place` with each safety-standard template filled in, as the template tests already do. A determinism test runs the command twice and compares bytes, and a schema test validates every golden report.
 2. **Programs and conformance.** The Programs and Conformance sections, reusing the registry checker for tier and expiry.
 3. **Human form.** Markdown and static HTML rendered from the JSON with the standard library only. A test asserts that every item in the JSON appears in the rendering, so the human form cannot drop a finding.
 4. **Redaction and signing.** `--redact`, with a test that no coordinate survives it and that the full report's hash matches. `urml evidence verify`, the Licensor's public key in the package, and a test that verifies a committed signed fixture offline and rejects a report altered by one byte.
@@ -200,8 +221,8 @@ Settled by the founder on 2026-11-24:
 2. **Run-time evidence.** What actually ran is a second report, in a later RFC.
 3. **Redaction.** `--redact` exists, with the single behavior described under Redaction.
 4. **The name.** `urml evidence`, and "evidence report".
+5. **Grouping by standard.** Rulebook cites gain an optional `standard` field, as described above.
 
 ## Open questions
 
-1. **Grouping by standard.** The By standard section groups rules on their `cite` text, and two rulebooks may write one standard two ways (`ISO 3691-4:2023` and `ISO 3691-4 (2023)`), which would split it into two groups. The proposed fix is an optional `standard` field on `cite`, holding only the standard's identifier, used for grouping when present, with the text as the fallback. That is a small, backward-compatible change to the rulebook format ([RFC-0702](0702-rulebooks.md)), so it needs its own decision.
-2. **Key custody beyond one person.** One Licensor key on one hardware token is enough while there is one maintainer. When a foundation holds the standard, who holds the key, and does a reviewed report need two signatures?
+1. **Key custody beyond one person.** One Licensor key on one hardware token is enough while there is one maintainer. When a foundation holds the standard, who holds the key, and does a reviewed report need two signatures?
