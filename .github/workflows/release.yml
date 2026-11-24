@@ -1,4 +1,4 @@
-# Build + publish the twenty URML packages.
+# Build + publish the URML packages.
 #
 # DESIGN: publishing is irreversible and outward-facing, so this workflow
 # is NEVER triggered by push/PR. It is manual-dispatch only, and the
@@ -12,12 +12,14 @@
 #     repo Settings so a second pair of eyes (or a deliberate founder click)
 #     is mandatory.
 #
-# PREREQUISITE (one-time, founder-side, cannot be done from this repo):
-# configure a PyPI/TestPyPI Trusted Publisher for EACH of the twenty
-# packages — on (test.)pypi.org: the project → Settings → Publishing →
-# add publisher: owner `urml-dev`, repo `URML`, workflow `release.yml`,
-# environment `pypi-release` (for pypi) / leave blank (for testpypi).
-# Until that exists, use the manual `twine upload` path in RELEASING.md.
+# AUTHENTICATION (one-time, founder-side, cannot be done from this repo):
+#   - Real PyPI uploads with the PYPI_API_TOKEN repository secret, an
+#     account-scoped PyPI token. It can create new projects, so a new
+#     package needs no PyPI-side setup; it only waits on PyPI's limit of
+#     about 4 new projects a day (see the publish step).
+#   - TestPyPI uploads through Trusted Publishing (OIDC). Each project
+#     needs a (pending) publisher on test.pypi.org: owner `urml-dev`, repo
+#     `URML`, workflow `release.yml`, environment left blank.
 #
 # Publish order matters (a package must be on the index before its
 # dependents resolve). The ordered build list enforces
@@ -64,6 +66,7 @@ jobs:
                    reference/legged-runtime reference/marine-runtime \
                    reference/mobile-runtime reference/mujoco-runtime \
                    reference/opcua-runtime reference/px4-runtime \
+                   reference/vda5050-runtime \
                    conformance reference/mcp-server \
                    reference/model; do
             python -m build --outdir dist "$p"
@@ -107,9 +110,9 @@ jobs:
           python -m pip install --quiet twine
           ORDER="validator llm_bridge conformance ardupilot_runtime autosar_runtime
                  av_runtime chrono_runtime cobot_runtime edu_runtime embedded_runtime
-                 ros2_runtime px4_runtime mcp_server model industrial_arm_runtime
-                 humanoid_runtime mobile_runtime legged_runtime isaac_runtime
-                 mujoco_runtime opcua_runtime marine_runtime"
+                 ros2_runtime px4_runtime mcp_server model vda5050_runtime
+                 industrial_arm_runtime humanoid_runtime mobile_runtime legged_runtime
+                 isaac_runtime mujoco_runtime opcua_runtime marine_runtime"
           files=$(for p in $ORDER; do ls dist/urml_${p}-* 2>/dev/null; done; ls dist/*)
           # A 429 from PyPI is its new-project limit: expected while new names
           # roll out, so it ends the run green with a warning. Any other upload

@@ -35,11 +35,20 @@ publishes all of these, aligned at `0.4.0` in lockstep:
 `urml-cobot-runtime` · `urml-edu-runtime` · `urml-embedded-runtime` ·
 `urml-humanoid-runtime` · `urml-industrial-arm-runtime` ·
 `urml-isaac-runtime` · `urml-legged-runtime` · `urml-marine-runtime` ·
-`urml-mobile-runtime` · `urml-mujoco-runtime` · `urml-opcua-runtime`
+`urml-mobile-runtime` · `urml-mujoco-runtime` · `urml-opcua-runtime` ·
+`urml-vda5050-runtime`
 
 (The exact list and its build order live in
 [`release.yml`](../../.github/workflows/release.yml); if the two ever
 disagree, the workflow wins.)
+
+> **How the workflow authenticates today.** Real PyPI uploads use the
+> `PYPI_API_TOKEN` repository secret (an account-scoped token), so a new
+> package such as `urml-vda5050-runtime` needs no pending publisher on
+> pypi.org; it only waits on PyPI's limit of about 4 new projects a day.
+> Trusted Publishing (0c below) is still how the TestPyPI rehearsal
+> uploads, so a new package needs a pending publisher on test.pypi.org
+> before it can be rehearsed there.
 
 ## 0b — Accounts
 
