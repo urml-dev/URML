@@ -95,6 +95,7 @@ TEMPLATES = [
     "amr-template.yaml",
     "home-template.yaml",
     "functional-safety-template.yaml",
+    "cybersecurity-template.yaml",
 ]
 
 

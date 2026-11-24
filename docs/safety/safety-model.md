@@ -253,7 +253,10 @@ for its machine require, for example:
 - for personal care robots, ISO 13482:2014, which ISO is revising (a
   template for mobile servant robots is in
   [`examples/rulebooks/home-template.yaml`](../../examples/rulebooks/home-template.yaml));
-- a risk assessment of the actual site.
+- a risk assessment of the actual site;
+- for the cybersecurity of the control system around the robot, IEC 62443 (where URML stands is in
+  [`docs/security/iec-62443.md`](../security/iec-62443.md); a rulebook template is in
+  [`examples/rulebooks/cybersecurity-template.yaml`](../../examples/rulebooks/cybersecurity-template.yaml)).
 
 The editions above were checked on 2026-09-26. Check them again before relying
 on a year.
