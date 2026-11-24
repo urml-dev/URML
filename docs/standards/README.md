@@ -81,7 +81,7 @@ URML is never a safety function, a security control or a certifier for anything 
 | [IEC 62061:2021](#iec-62061) | Standard | Functional safety of machinery | Designers of electrical safety control | Rulebook template |
 | [IEC 61508:2010](#iec-61508) | Standard | Functional safety, all sectors | Makers of safety components and safety software | Rulebook template, Position page |
 | [IEC 62443](#iec-62443) | Standard | Industrial cybersecurity | Asset owners, integrators, makers of control products | Rulebook template, Position page |
-| [UL 1740, UL 3100, UL 3300](#ul-robots) | Listing or mark | US product safety | Makers selling robots into US workplaces and public spaces | None yet |
+| [UL 1740, UL 3100, UL 3300](#ul-robots) | Listing or mark | US product safety | Makers selling robots into US workplaces and public spaces | Rulebook template |
 | [ISO 8373:2021](#iso-8373) | Standard | Vocabulary | Anyone writing about robots precisely | Position page |
 | [VDA 5050 3.0.0](#vda-5050) | Standard | Fleet interface | Fleet operators and vehicle makers | Runtime |
 | [ISO 21423:2026](#iso-21423) | Standard | Fleet interface | Fleet operators and robot makers | Runtime |
@@ -318,7 +318,7 @@ The safety standards a US lab lists a robot to.
 - **How to meet it.** Design to the standard, submit the product to an NRTL for testing, then keep the listing through the lab's follow-up inspections.
 - **Where to get the text.** [UL 1740](https://www.shopulstandards.com/ProductDetail.aspx?productId=UL1740), [UL 3100](https://www.shopulstandards.com/ProductDetail.aspx?productId=UL3100), [UL 3300](https://www.shopulstandards.com/ProductDetail.aspx?productId=UL3300)
 - **Who assesses it.** NRTLs such as UL Solutions, Intertek, TÜV Rheinland or CSA Group; OSHA publishes which lab may certify to which standard. [OSHA list of NRTLs](https://www.osha.gov/nationally-recognized-testing-laboratory-program/current-list-of-nrtls)
-- **What URML gives you.** Nothing specific. A listing concerns the robot's hardware and electrical safety, below anything URML touches.
+- **What URML gives you.** The service-robot template, after UL 3300, for robots in public and commercial spaces: speed and grip-force caps, hazard zones and a program allowlist, with programs refused until the listing standard and the NRTL listing are on record. The listing itself covers the robot's hardware and protective functions, which URML does not touch; URML is not part of what the NRTL evaluates. [service-robot-template.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/service-robot-template.yaml)
 
 ## Vocabulary and interoperability
 

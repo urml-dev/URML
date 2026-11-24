@@ -1,0 +1,188 @@
+# Template: a site's rulebook for service robots in public and commercial
+# spaces (hotels, shops, offices, hospitals' public areas, museums), shaped
+# after ANSI/CAN/UL 3300, the US and Canadian safety standard for service,
+# communication, information, education and entertainment (SCIEE) robots.
+#
+# Read this first. A UL 3300 listing is earned by the robot: a Nationally
+# Recognized Testing Laboratory (NRTL) tests the product and lists it. URML is
+# not part of that evaluation, does not make a robot listed, and must not
+# change anything the listing covers. The robot's own protective functions
+# (obstacle detection, stopping, speed and force limits, battery protection)
+# stay in the listed product.
+#
+# What this rulebook does is narrower and still useful: it keeps programs
+# inside the limits the site sets for its public spaces (a speed cap, places
+# the robot never enters, a grip-force cap, a list of covered built-in
+# programs), and it refuses programs until the operator has put the robot's
+# listing on record: which standard it is listed to and the NRTL's listing
+# reference. URML checks that the listing is declared, not that it is valid.
+#
+# This file carries no values from the standard. UL standards are
+# copyrighted, and every limit comes from the robot's listing conditions, its
+# maker's instructions and the site's risk assessment. Every FILL_IN is
+# deliberately invalid: a validator refuses to load this file
+# (rule.rulebook_invalid) until each one is replaced, so an unfilled template
+# never runs.
+#
+# How to use it:
+#   1. Copy the file. Give it your own rulebook_id, title, issuer and
+#      reviewed date. Delete the rules that do not fit the robot (a robot
+#      with no gripper needs no grip-force cap).
+#   2. Fill each limit and list from the listing's conditions of use, the
+#      maker's instructions and the site's risk assessment. Name the places
+#      the robot must never enter in the manifest's declared_areas.
+#   3. List in `allowed` the listing standards the site accepts: UL 3300 for
+#      a SCIEE robot; UL 3100 if the site also accepts an automated mobile
+#      platform listed to it.
+#   4. Have the operator file a deployment rulebook with the listing, for
+#      example:
+#
+#        rulebook_version: "0.1"
+#        rulebook_id: lobby_robot_declarations
+#        title: Lobby robot listing on record
+#        issuer: {kind: deployment, name: Example Hotel Operations}
+#        source_status: deployment_declaration
+#        declarations:
+#          listing_standard: "UL 3300"
+#          nrtl_listing: "Example NRTL, file E000000"
+#
+#   5. Load both with --rulebook. With the deployment rulebook loaded, a
+#      missing listing refuses every program (rule.declaration_missing).
+#      With no deployment rulebook loaded, the same finding is a warning.
+#
+# Edition checked on 2026-11-24 on the UL Standards & Engagement store:
+# UL 3300, edition 1, published 2024-05-14, latest revision approved by ANSI
+# and SCC on 2026-08-14. The OSHA list of NRTLs says which labs may certify
+# to it.
+#
+# Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702).
+
+rulebook_version: "0.1"
+rulebook_id: FILL_IN
+title: "FILL_IN (for example: Lobby service robot rules, from the 2026 site risk assessment)"
+issuer:
+  kind: organization
+  name: "FILL_IN (the site operator, the integrator or the robot maker)"
+source_status: organization_policy
+reviewed: FILL_IN
+description: >-
+  Operating rules for a service robot in public and commercial spaces, after
+  ANSI/CAN/UL 3300. The robot's listing comes from an NRTL; URML keeps
+  programs within the site's limits and refuses them until the listing is on
+  record.
+
+rules:
+  - id: listing_standard_declared
+    title: The robot's product listing standard is declared and accepted
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the site's purchasing requirements"
+      standard: "UL 3300"
+    note: >-
+      The standard the robot is listed to, as the listing names it.
+    require_declared:
+      key: listing_standard
+      allowed: [FILL_IN]
+
+  - id: listing_on_record
+    title: The NRTL listing is on record
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the NRTL's listing"
+      standard: "UL 3300"
+    note: >-
+      The declared value names the NRTL and its listing or file reference, so
+      a reader can look it up. Any value satisfies the rule.
+    require_declared:
+      key: nrtl_listing
+
+  - id: max_travel_speed
+    title: Maximum travel speed a program may request in public spaces
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the robot's instructions; the site's risk assessment"
+      standard: "UL 3300"
+    note: >-
+      No higher than the listing's conditions and the maker's instructions
+      allow, and as low as the site's risk assessment asks where people walk.
+      A global cap; the robot's own speed limiting near people stays in the
+      listed product.
+    cap:
+      quantity: speed_m_per_s
+      max: FILL_IN
+
+  - id: max_grip_force
+    title: Maximum gripper force where the robot hands items to people
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the robot's instructions"
+      standard: "UL 3300"
+    note: >-
+      For robots that pick up or hand over items. Delete this rule if the
+      robot has no gripper.
+    cap:
+      quantity: grip_force_n
+      max: FILL_IN
+
+  - id: hazard_zones
+    title: Programs never send the robot into a hazard zone
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the site's risk assessment"
+      standard: "UL 3300"
+    note: >-
+      Name the places the robot must never enter, such as the top of stairs,
+      escalator landings, drop-offs, pools, kitchens or areas outside its
+      rated environment, and declare them in the manifest's declared_areas.
+    forbid_zone_entry:
+      zones: [FILL_IN]
+
+  - id: covered_programs_only
+    title: Only built-in programs the listing and the site cover run
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the site's risk assessment"
+      standard: "UL 3300"
+    note: >-
+      call_program is opaque to URML. List the built-in programs the maker
+      documents for this use and the site's risk assessment covers.
+    forbid_primitive:
+      primitives: [call_program]
+      except_names: [FILL_IN]
+
+obligations:
+  - id: urml_not_part_of_the_listing
+    title: URML is not part of the listing and changes nothing it covers
+    text: >-
+      The NRTL did not evaluate URML. Integrating URML does not change the
+      robot's hardware, firmware, protective functions or battery system. If
+      an integration would, the site asks the NRTL whether the listing still
+      applies before the robot goes into service.
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the NRTL's listing"
+      standard: "UL 3300"
+
+  - id: used_within_listing_conditions
+    title: The robot is used within its listing's conditions
+    text: >-
+      The robot works only in the environment, on the floors and slopes, with
+      the loads and the charging arrangement its listing and instructions
+      allow.
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the robot's instructions"
+      standard: "UL 3300"
+
+  - id: listing_kept_current
+    title: The listing is kept current
+    text: >-
+      The site checks that the listing is still in force (the NRTL's follow-up
+      inspections continue) and updates the declaration when the robot, its
+      firmware or its listing changes.
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the NRTL's listing; the site's own procedures"
+      standard: "UL 3300"
+
+  - id: public_space_risk_assessment
+    title: The site's risk assessment covers the public
+    text: >-
+      The site assesses the risk to the people the robot meets, including
+      children, older people and people with limited mobility or vision,
+      informs them that a robot operates there, and repeats the assessment
+      when the space or the tasks change.
+    cite:
+      text: "ANSI/CAN/UL 3300, section FILL_IN; the site's risk assessment"
+      standard: "UL 3300"

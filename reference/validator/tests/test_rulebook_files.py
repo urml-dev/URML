@@ -97,6 +97,7 @@ TEMPLATES = [
     "functional-safety-template.yaml",
     "cybersecurity-template.yaml",
     "machinery-safety-template.yaml",
+    "service-robot-template.yaml",
 ]
 
 
