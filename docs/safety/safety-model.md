@@ -236,8 +236,10 @@ makes no functional-safety claim. A deployment still needs what the standards
 for its machine require, for example:
 
 - a hardwired emergency stop (ISO 13850:2015);
-- safety-rated control functions (ISO 13849-1:2023 or IEC 62061:2021). URML
-  is not part of them and counts toward no performance level or safety
+- safety-rated control functions (ISO 13849-1:2023, IEC 62061:2021, or
+  IEC 61508:2010 for robots and safety components outside the machinery
+  standards; where URML stands under IEC 61508 is in
+  [`iec-61508.md`](iec-61508.md)). URML is not part of them and counts toward no performance level or safety
   integrity level; the rulebook template
   [`examples/rulebooks/functional-safety-template.yaml`](../../examples/rulebooks/functional-safety-template.yaml)
   only refuses programs until the operator has declared the PL or SIL the

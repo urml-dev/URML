@@ -1,8 +1,8 @@
-"""The functional-safety rulebook template (ISO 13849-1:2023 / ISO 13849-2, IEC 62061:2021).
+"""The functional-safety rulebook template (ISO 13849, IEC 62061:2021, IEC 61508:2010).
 
 The template refuses programs until the operator has declared, in a
 deployment rulebook, the performance level (ISO 13849) or safety integrity
-level (IEC 62061) each safety function reached.
+level (IEC 62061 or IEC 61508) each safety function reached.
 URML checks the declaration, never the safety function itself.
 
 Two guarantees, as for the other templates: as shipped it refuses to load,
@@ -32,8 +32,8 @@ DECLARED = {
     "speed_monitoring_safety_level": "PLe",
     "safety_validation_record": "VAL-2026-017",
 }
-#: Test values: levels meeting a PLr of d, or a required SIL 2.
-ALLOWED = ["PLd", "PLe", "SIL2", "SIL3"]
+#: Test values: levels meeting a PLr of d, or a required SIL 2 (SIL4 exists under IEC 61508 only).
+ALLOWED = ["PLd", "PLe", "SIL2", "SIL3", "SIL4"]
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -94,7 +94,9 @@ def test_the_filled_template_loads() -> None:
         "speed_monitoring_declared",
         "safety_validation_on_record",
     ]
-    assert "urml_is_not_a_safety_function" in [o.id for o in book.obligations]
+    obligations = [o.id for o in book.obligations]
+    assert "urml_is_not_a_safety_function" in obligations
+    assert "urml_cannot_interfere" in obligations
 
 
 def test_with_every_function_declared_the_program_runs() -> None:
@@ -103,12 +105,22 @@ def test_with_every_function_declared_the_program_runs() -> None:
     assert result.accepted
 
 
+def test_an_iec_61508_sil4_declaration_meets_a_sil2_requirement() -> None:
+    result = _run(_fill(_load(TEMPLATE)), _deployment(**{**DECLARED, "speed_monitoring_safety_level": "SIL4"}))
+    assert _issues(result) == []
+    assert result.accepted
+
+
 @pytest.mark.parametrize(
     ("key", "level"),
-    [("emergency_stop_safety_level", "PLc"), ("protective_stop_safety_level", "SIL1")],
-    ids=["iso13849", "iec62061"],
+    [
+        ("emergency_stop_safety_level", "PLc"),
+        ("protective_stop_safety_level", "SIL1"),
+        ("speed_monitoring_safety_level", "SIL 2"),
+    ],
+    ids=["pl_too_low", "sil_too_low", "sil_misspelt"],
 )
-def test_a_level_below_the_requirement_refuses_the_program(key: str, level: str) -> None:
+def test_a_level_outside_the_allowed_list_refuses_the_program(key: str, level: str) -> None:
     result = _run(_fill(_load(TEMPLATE)), _deployment(**{**DECLARED, key: level}))
     assert _issues(result) == [("rule.declaration_missing", "error")]
     assert not result.accepted
