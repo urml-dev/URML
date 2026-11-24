@@ -39,12 +39,17 @@ Every item carries exactly one status.
 ## Rules a producer follows
 
 1. **Sections**, in this order: `robot`, `provenance`, `envelope`, `rules`, `programs`, `conformance`, `outside`. Every section is present. One with no items carries a `note` saying why, for example that no program was given. The `outside` section always opens with the same five items: safety-related control, what lies below the substrate, the physical site, the truth of declarations, and paths that do not pass through a URML runtime.
-2. **Programs.** Each program given is validated against the deployment's own manifest, envelope, policy and rulebooks, on the report's `as_of` date. It is a `checked` item whose `result` is `pass` when the validator accepts it and `fail` when it refuses it, with every issue in its detail.
-3. **Conformance.** A conformance report and a registry entry are what their authors state, so their items are `declared`. A run against the hermetic mock adapter, a filtered run, a failed fixture, a profile the run or the claim does not cover, an expired certification, a withdrawn entry and a report the entry does not pin are each `missing`.
-4. **By standard.** Every item that carries a cite is grouped under each standard its cite names in `standard`, or, without that field, under the cite text up to the clause. Items without a cite are not grouped.
-5. **Counts.** `gaps` is the number of `missing` items plus the number of `checked` items whose `result` is `fail`. There is no score, no grade and no overall verdict.
-6. **Determinism.** The same inputs, `as_of` date and producer version give the same bytes: keys sorted, two-space indent, one trailing newline, no wall-clock time, host, user or absolute path. Input digests are `sha256` over canonical JSON (sorted keys, no whitespace), as in validation records, so a YAML file and its JSON equivalent hash alike.
+2. **Provenance.** Without a provenance block in the manifest, the policy's provenance rules have nothing to judge. They are not listed as passed; the `provenance.absent` item names them instead.
+3. **Programs.** Each program given is validated against the deployment's own manifest, envelope, policy and rulebooks, on the report's `as_of` date. It is a `checked` item whose `result` is `pass` when the validator accepts it and `fail` when it refuses it, with every issue in its detail.
+4. **Conformance.** A conformance report and a registry entry are what their authors state, so their items are `declared`. A run against the hermetic mock adapter, a filtered run, a failed fixture, a profile the run or the claim does not cover, an expired certification, a withdrawn entry and a report the entry does not pin are each `missing`.
+5. **By standard.** Every item that carries a cite is grouped under each standard its cite names in `standard`, or, without that field, under the cite text up to the clause. Items without a cite are not grouped.
+6. **Counts.** `gaps` is the number of `missing` items plus the number of `checked` items whose `result` is `fail`. There is no score, no grade and no overall verdict.
+7. **Determinism.** The same inputs, `as_of` date and producer version give the same bytes: keys sorted, two-space indent, one trailing newline, no wall-clock time, host, user or absolute path. Input digests are `sha256` over canonical JSON (sorted keys, no whitespace), as in validation records, so a YAML file and its JSON equivalent hash alike.
 
 ## Not yet in this version
 
-Redaction, signatures and the human forms (Markdown, HTML) are later steps of RFC-0707's implementation plan.
+Redaction and signatures are later steps of RFC-0707's implementation plan.
+
+## Human forms
+
+`urml evidence build --format md` and `--format html` render the JSON report for people. They are not normative and add nothing the JSON lacks: each opens with the notice, and each carries every item's id, status and text, every cited standard and every input digest. The HTML is one static file with inline styles, no scripts and no external requests, so it opens offline and can be attached to an audit file. Only the JSON is meant to be signed.

@@ -63,7 +63,7 @@
         "runtime": 0
       },
       "provenance": {
-        "checked": 5,
+        "checked": 0,
         "declared": 0,
         "missing": 1,
         "outside": 0,
@@ -85,7 +85,7 @@
       }
     },
     "by_status": {
-      "checked": 19,
+      "checked": 14,
       "declared": 2,
       "missing": 4,
       "outside": 12,
@@ -206,7 +206,15 @@
       "id": "provenance",
       "items": [
         {
-          "detail": {},
+          "detail": {
+            "unchecked_rules": [
+              "critical_country_denylist",
+              "critical_final_assembly_denylist",
+              "covered_vendor_denylist",
+              "hbom_required_for_critical",
+              "attestation_floor"
+            ]
+          },
           "id": "provenance.absent",
           "result": null,
           "source": {
@@ -214,77 +222,7 @@
             "input": "manifest"
           },
           "status": "missing",
-          "text": "The manifest declares no provenance, so no component origin is on record and the policy's provenance rules have nothing to check."
-        },
-        {
-          "detail": {
-            "codes": [],
-            "policy_id": "urml_us_federal_default"
-          },
-          "id": "policy_rule.critical_country_denylist",
-          "result": "pass",
-          "source": {
-            "field": "rules.critical_country_denylist",
-            "input": "policy"
-          },
-          "status": "checked",
-          "text": "Policy rule critical_country_denylist: passed."
-        },
-        {
-          "detail": {
-            "codes": [],
-            "policy_id": "urml_us_federal_default"
-          },
-          "id": "policy_rule.critical_final_assembly_denylist",
-          "result": "pass",
-          "source": {
-            "field": "rules.critical_final_assembly_denylist",
-            "input": "policy"
-          },
-          "status": "checked",
-          "text": "Policy rule critical_final_assembly_denylist: passed."
-        },
-        {
-          "detail": {
-            "codes": [],
-            "policy_id": "urml_us_federal_default"
-          },
-          "id": "policy_rule.covered_vendor_denylist",
-          "result": "pass",
-          "source": {
-            "field": "rules.covered_vendor_denylist",
-            "input": "policy"
-          },
-          "status": "checked",
-          "text": "Policy rule covered_vendor_denylist: passed."
-        },
-        {
-          "detail": {
-            "codes": [],
-            "policy_id": "urml_us_federal_default"
-          },
-          "id": "policy_rule.hbom_required_for_critical",
-          "result": "pass",
-          "source": {
-            "field": "rules.hbom_required_for_critical",
-            "input": "policy"
-          },
-          "status": "checked",
-          "text": "Policy rule hbom_required_for_critical: passed."
-        },
-        {
-          "detail": {
-            "codes": [],
-            "policy_id": "urml_us_federal_default"
-          },
-          "id": "policy_rule.attestation_floor",
-          "result": "pass",
-          "source": {
-            "field": "rules.attestation_floor",
-            "input": "policy"
-          },
-          "status": "checked",
-          "text": "Policy rule attestation_floor: passed."
+          "text": "The manifest declares no provenance, so no component origin is on record and the policy's provenance rules (critical_country_denylist, critical_final_assembly_denylist, covered_vendor_denylist, hbom_required_for_critical, attestation_floor) have nothing to check."
         }
       ],
       "note": null,

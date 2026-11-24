@@ -330,13 +330,16 @@ def _provenance_section(
     c = _Collector(seen)
     prov = manifest.provenance
     if prov is None:
+        unchecked = [rule.id for rule in policy.rules] if policy is not None else []
+        names = f" ({', '.join(unchecked)})" if unchecked else ""
         c.add(
             "provenance.absent",
-            "missing" if policy is not None and policy.rules else "declared",
+            "missing" if unchecked else "declared",
             "The manifest declares no provenance, so no component origin is on record and the "
-            "policy's provenance rules have nothing to check.",
+            f"policy's provenance rules{names} have nothing to check.",
             "manifest",
             "provenance",
+            detail={"unchecked_rules": unchecked},
         )
     else:
         c.add(
@@ -372,7 +375,9 @@ def _provenance_section(
         )
         return Section(id="provenance", title="Provenance", items=c.items)
     by_rule = _issues_by_rule(evaluate_policy(manifest, policy, manifest_base_dir=manifest_base_dir))
-    for rule in policy.rules:
+    # Without provenance the provenance rules have nothing to judge; listing them as
+    # passed would read as a clean bill. provenance.absent names them instead.
+    for rule in policy.rules if prov is not None else []:
         issues = by_rule.get(rule.id, [])
         text, result = _check_text("Policy rule", rule.id, issues)
         c.add(
