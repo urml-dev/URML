@@ -1,0 +1,234 @@
+# Template: a rulebook that keeps programs from running until the site has put
+# the machine's basic safety on record, shaped after the machinery safety
+# standards every robot cell builds on: ISO 12100 (risk assessment),
+# ISO 13850 (emergency stop), ISO 13855 (positioning of safeguards),
+# ISO 14119 (interlocking guards), IEC 60204-1 (electrical equipment) and
+# IEC 61496 (electro-sensitive protective equipment: light curtains, laser
+# scanners).
+#
+# Read this first. URML is not part of any of these safety measures. The
+# emergency stop, the guards, their interlocks, the light curtains and
+# scanners and the machine's wiring are designed, built and validated outside
+# URML, and they must work whatever URML does. A refusal by the validator is
+# not a safety function.
+#
+# What this rulebook does is narrower and still useful: it refuses programs
+# until the site operator has put on record, in a deployment rulebook, the
+# risk assessment, the emergency stop's stop category, the calculation that
+# placed the safeguards, the interlocking record, the type of the protective
+# devices and the electrical equipment's verification; and it keeps programs
+# off the outputs that drive safeguards. URML checks that each declaration
+# exists and, where it lists values, that the value is allowed. It does not
+# check that a declaration is true.
+#
+# Values used here, in URML's own words:
+#   emergency_stop_category: category_0 or category_1. An emergency stop
+#     stops by removing power at once (category 0) or by a controlled stop
+#     and then removing power (category 1); IEC 60204-1 defines the
+#     categories, ISO 13850 the emergency stop. Your risk assessment says
+#     which the machine needs.
+#   protective_device_type: type_2, type_3 or type_4, the IEC 61496 type of
+#     the light curtains or scanners that detect people. List the types your
+#     risk assessment accepts.
+#
+# How URML itself behaves around an emergency stop: a program may wait for
+# a declared emergency_stop event (wait_for), and a conforming runtime must
+# stop dispatching and stop every motion it commands when the substrate
+# reports an emergency stop (RFC-0701, section 1.3). The evidence report
+# lists that as a runtime obligation. URML never implements, resets or
+# replaces the emergency stop.
+#
+# This file carries no values from the standards. ISO and IEC standards are
+# copyrighted, and every choice comes from the machine's risk assessment and
+# licensed copies. Every FILL_IN is deliberately invalid: a validator refuses
+# to load this file (rule.rulebook_invalid) until each one is replaced, so an
+# unfilled template never runs.
+#
+# How to use it:
+#   1. Copy the file. Give it your own rulebook_id, title, issuer and
+#      reviewed date. Delete the rules for measures the machine does not
+#      have (for example, no guards means no interlocking record).
+#   2. Fill `allowed` for the stop category and the device type, and list in
+#      `names` the output lines wired to safeguards and interlocks.
+#   3. Have the operator file a deployment rulebook that declares each key,
+#      for example:
+#
+#        rulebook_version: "0.1"
+#        rulebook_id: cell_4_machinery_declarations
+#        title: Cell 4 machinery safety declarations
+#        issuer: {kind: deployment, name: Example Integrator}
+#        source_status: deployment_declaration
+#        declarations:
+#          risk_assessment_record: "RA-2026-031"
+#          emergency_stop_category: category_1
+#          safeguard_distance_record: "SD-2026-007"
+#          interlocking_record: "IL-2026-007"
+#          protective_device_type: type_3
+#          electrical_verification_record: "EV-2026-012"
+#
+#   4. Load both with --rulebook. With the deployment rulebook loaded, a
+#      missing or disallowed declaration refuses every program
+#      (rule.declaration_missing). With no deployment rulebook loaded, the
+#      same finding is a warning, as the rulebook format specifies.
+#
+# Editions checked on 2026-11-24 (ISO from ISO's open data; IEC on the IEC webstore):
+#   - ISO 12100:2010 (risk assessment and risk reduction), edition 1. A second
+#     edition is at the draft international standard stage.
+#   - ISO 13850:2015 (emergency stop function), edition 3. ISO plans a revision.
+#   - ISO 13855:2024 (positioning of safeguards), edition 3, replacing :2010.
+#   - ISO 14119:2024 (interlocking devices with guards), edition 3, replacing :2013.
+#   - IEC 60204-1:2016 (electrical equipment of machines), edition 6.0, with
+#     Amendment 1:2021; consolidated edition 6.1.
+#   - IEC 61496-1:2020 (electro-sensitive protective equipment, general),
+#     edition 4.0, and IEC 61496-3:2025 (laser scanners and other diffuse
+#     reflection devices), edition 4.0, replacing :2018.
+#
+# Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702).
+
+rulebook_version: "0.1"
+rulebook_id: FILL_IN
+title: "FILL_IN (for example: Cell 4 machine safety on record before any program runs)"
+issuer:
+  kind: organization
+  name: "FILL_IN (the integrator or the site operator)"
+source_status: organization_policy
+reviewed: FILL_IN
+description: >-
+  Programs run only after the site operator has put the machine's risk
+  assessment, emergency stop, safeguard placement, interlocks, protective
+  devices and electrical verification on record, and programs never write
+  the outputs that drive safeguards. URML checks the declarations, not the
+  safety measures.
+
+rules:
+  - id: risk_assessment_on_record
+    title: The machine's risk assessment is on record
+    cite:
+      text: "ISO 12100:2010, clause FILL_IN"
+      standard: "ISO 12100:2010"
+    note: >-
+      The declared value is the reference of the risk assessment that covers
+      this machine and site. Any value satisfies the rule.
+    require_declared:
+      key: risk_assessment_record
+
+  - id: emergency_stop_category_declared
+    title: The emergency stop's stop category is declared and allowed
+    cite:
+      text: "ISO 13850:2015 and IEC 60204-1:2016, clause FILL_IN; the machine's risk assessment"
+      standard: ["ISO 13850:2015", "IEC 60204-1:2016"]
+    note: >-
+      category_0 or category_1, as the risk assessment requires.
+    require_declared:
+      key: emergency_stop_category
+      allowed: [FILL_IN]
+
+  - id: safeguard_distances_on_record
+    title: The calculation that placed the safeguards is on record
+    cite:
+      text: "ISO 13855:2024, clause FILL_IN"
+      standard: "ISO 13855:2024"
+    note: >-
+      The reference of the calculation of minimum distances for the light
+      curtains, scanners and other safeguards, from approach speeds and the
+      machine's stopping time. Any value satisfies the rule.
+    require_declared:
+      key: safeguard_distance_record
+
+  - id: interlocking_on_record
+    title: The guard interlocking is on record
+    cite:
+      text: "ISO 14119:2024, clause FILL_IN"
+      standard: "ISO 14119:2024"
+    note: >-
+      The reference of the design and verification of the interlocking
+      devices on guards and doors. Delete this rule if the machine has no
+      interlocked guards.
+    require_declared:
+      key: interlocking_record
+
+  - id: protective_device_type_declared
+    title: The protective devices that detect people have a declared, allowed type
+    cite:
+      text: "IEC 61496-1:2020 and IEC 61496-3:2025, clause FILL_IN; the machine's risk assessment"
+      standard: ["IEC 61496-1:2020", "IEC 61496-3:2025"]
+    note: >-
+      The IEC 61496 type of the light curtains or laser scanners. Delete this
+      rule if the machine has none.
+    require_declared:
+      key: protective_device_type
+      allowed: [FILL_IN]
+
+  - id: electrical_verification_on_record
+    title: The electrical equipment's verification is on record
+    cite:
+      text: "IEC 60204-1:2016, clause FILL_IN"
+      standard: "IEC 60204-1:2016"
+    note: >-
+      The reference of the verification of the machine's electrical
+      equipment. Any value satisfies the rule.
+    require_declared:
+      key: electrical_verification_record
+
+  - id: safeguard_outputs_untouched
+    title: Programs never write the outputs that drive safeguards or interlocks
+    cite:
+      text: "ISO 14119:2024 and ISO 13850:2015, clauses FILL_IN; the machine's risk assessment"
+      standard: ["ISO 14119:2024", "ISO 13850:2015"]
+    note: >-
+      List every output line wired to a guard lock, an interlock, a muting
+      input or an emergency stop circuit. A program can never set them.
+    forbid_primitive:
+      primitives: [set_output]
+      names: [FILL_IN]
+
+obligations:
+  - id: emergency_stop_independent_of_urml
+    title: The emergency stop works whatever URML does
+    text: >-
+      The emergency stop overrides every other function of the machine,
+      including any URML runtime, and does not depend on URML, its host or
+      its network to act. Resetting it does not restart the machine.
+    cite:
+      text: "ISO 13850:2015, clause FILL_IN"
+      standard: "ISO 13850:2015"
+
+  - id: urml_stops_on_emergency_stop
+    title: The URML runtime stops on an emergency stop and does not resume by itself
+    text: >-
+      When the substrate reports an emergency stop, the URML runtime stops
+      dispatching and stops every motion it commands. After the reset, no
+      program resumes on its own; a run is started again deliberately. The
+      integrator verifies this on the installed system.
+    cite:
+      text: "ISO 13850:2015, clause FILL_IN; RFC-0701 section 1.3"
+      standard: "ISO 13850:2015"
+
+  - id: risk_assessment_kept_current
+    title: The risk assessment is kept current
+    text: >-
+      The risk assessment is reviewed when the machine, its tasks, its
+      programs' scope or the site layout change, and the declarations follow
+      it.
+    cite:
+      text: "ISO 12100:2010, clause FILL_IN"
+      standard: "ISO 12100:2010"
+
+  - id: safeguards_verified_after_changes
+    title: Safeguard positions and stopping times are verified after changes
+    text: >-
+      The stopping time and the safeguard distances are measured again after
+      any change to the machine, its speed limits or the safeguards, and the
+      record is updated.
+    cite:
+      text: "ISO 13855:2024, clause FILL_IN"
+      standard: "ISO 13855:2024"
+
+  - id: interlocks_not_defeated
+    title: Interlocks are not defeated
+    text: >-
+      Interlocking devices are fitted and maintained so they are hard to
+      defeat, and no program, tool or procedure bypasses them.
+    cite:
+      text: "ISO 14119:2024, clause FILL_IN"
+      standard: "ISO 14119:2024"
