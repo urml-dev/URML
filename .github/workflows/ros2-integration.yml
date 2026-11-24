@@ -153,8 +153,10 @@ jobs:
     # prebuilt image that has all of ROS 2 Jazzy + Nav2 + TB4 sim + Gz.
     # The apt install alone has taken 41 minutes on a slow Ubuntu mirror,
     # and a 50-minute cap cancelled a run mid-download (2026-11-24), so
-    # leave headroom. The job is cron + manual only, never per-PR.
-    timeout-minutes: 90
+    # leave headroom. The sim wait below can take up to 20 minutes over
+    # two launches, and the three-goal drive itself took 42 minutes. The
+    # job is cron + manual only, never per-PR.
+    timeout-minutes: 120
     steps:
       - uses: actions/checkout@v4
 
@@ -217,13 +219,47 @@ jobs:
           # does not exist there). world:=depot matches the poses in
           # tests/integration/adapter_nav_patrol.yaml. There is no headless
           # arg; the GUI runs under xvfb with software GL.
-          nohup xvfb-run -a ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py \
-            nav2:=true slam:=true rviz:=false world:=depot \
-            > "$HOME/e2e-logs/sim.log" 2>&1 &
-          echo $! > "$HOME/e2e-logs/sim.pid"
-          # Give the sim + Nav2 lifecycle a head start; the test itself
-          # also waits on the /navigate_to_pose server (60s bound).
-          sleep 90
+          #
+          # A fixed sleep is not enough. On 2026-11-24 Gazebo had not
+          # served the world after 90 s, the controller spawners gave up
+          # after their 30 s timeout and exited, nothing published odom,
+          # and Nav2 never activated; the test's first goal was rejected.
+          # So wait until bt_navigator is active, and relaunch once if a
+          # spawner died (the second launch also finds the world's models
+          # already in the Fuel cache).
+          launch_sim() {
+            setsid nohup xvfb-run -a ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py \
+              nav2:=true slam:=true rviz:=false world:=depot \
+              > "$HOME/e2e-logs/sim-attempt-$1.log" 2>&1 &
+            echo $! > "$HOME/e2e-logs/sim.pid"
+          }
+          stop_sim() {
+            kill -TERM -- "-$(cat "$HOME/e2e-logs/sim.pid")" 2>/dev/null || true
+            sleep 15
+            pkill -9 -f 'gz sim' 2>/dev/null || true
+            pkill -9 -f '/opt/ros/jazzy/lib/' 2>/dev/null || true
+            sleep 5
+          }
+          for attempt in 1 2; do
+            log="$HOME/e2e-logs/sim-attempt-$attempt.log"
+            launch_sim "$attempt"
+            deadline=$((SECONDS + 600))
+            while [ "$SECONDS" -lt "$deadline" ]; do
+              if ros2 lifecycle get /bt_navigator 2>/dev/null | grep -q '^active'; then
+                echo "Nav2 active on attempt $attempt after ${SECONDS}s"
+                exit 0
+              fi
+              if grep -q 'spawner.*process has died' "$log"; then
+                echo "::warning::A controller spawner died on attempt $attempt; relaunching."
+                break
+              fi
+              sleep 10
+            done
+            echo "Nav2 not active on attempt $attempt."
+            stop_sim
+          done
+          echo "::error::Nav2 never became active after two sim launches."
+          exit 1
 
       - name: Run the Gazebo end-to-end conformance test
         env:
@@ -249,6 +285,12 @@ jobs:
           cp -r "$HOME/.ros/log" "$HOME/e2e-logs/ros-log" 2>/dev/null || true
           ros2 node list > "$HOME/e2e-logs/node-list.txt" 2>&1 || true
           ros2 action list > "$HOME/e2e-logs/action-list.txt" 2>&1 || true
+          ros2 lifecycle get /bt_navigator > "$HOME/e2e-logs/bt-navigator-state.txt" 2>&1 || true
+          # Gazebo's own logs, and what it fetched from Fuel, to tell a
+          # slow model download from a slow server start.
+          cp -r "$HOME/.gz/sim/log" "$HOME/e2e-logs/gz-log" 2>/dev/null || true
+          { du -sh "$HOME/.gz/fuel"; find "$HOME/.gz/fuel" -maxdepth 4 -type d; } \
+            > "$HOME/e2e-logs/gz-fuel-cache.txt" 2>&1 || true
 
       - name: Upload diagnostics
         if: always()
