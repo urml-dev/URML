@@ -54,6 +54,13 @@ packages = ["src/urml_conformance"]
 [tool.hatch.build.targets.wheel.force-include]
 "fixtures" = "urml_conformance/fixtures"
 
+# The manifests, envelopes, policies and rulebooks the fixtures name live
+# outside this directory; hatch_build.py bundles them into the sdist and
+# the wheel so an installed suite runs without a repository checkout.
+[tool.hatch.build.targets.wheel.hooks.custom]
+
+[tool.hatch.build.targets.sdist.hooks.custom]
+
 [tool.ruff]
 line-length = 120
 target-version = "py311"

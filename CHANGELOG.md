@@ -39,6 +39,7 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ### Fixed
 
+- `urml-conformance` installed from a wheel runs outside a repository checkout. The fixtures name manifests, envelopes, policies and rulebooks from `reference/validator/tests/fixtures`, `examples/fleet` and `examples/rulebooks`, which the 0.5.0 wheel did not contain, so `pip install urml-conformance` followed by `python -m urml_conformance` failed with `FileNotFoundError`. A build hook (`conformance/hatch_build.py`) now bundles them, and the `conformance-wheel` workflow runs the suite from built wheels on every change that could break it.
 - `gazebo-e2e` in `ros2-integration` now runs its test: it launches the real Jazzy TurtleBot 4 simulation (`turtlebot4_gz_bringup`), keeps pytest's exit code, and pins apt mirrors. It had reported success with no simulator and no test. The nav-patrol fixture passes on the live sim (#17).
 
 ## [0.5.0] - 2026-11-22
