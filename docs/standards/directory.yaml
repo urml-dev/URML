@@ -1,0 +1,866 @@
+# The robot standards directory: the single source for docs/standards/README.md
+# and urml.dev/standards. Edit this file, then run
+#   python tools/scripts/gen_standards_doc.py
+# which writes README.md and directory.json next to it.
+# reference/validator/tests/test_standards_directory.py fails when they are stale,
+# when a link is not https, or when an entry misses a field.
+#
+# No standard's text is quoted here. Every "url" points at the publisher's or the
+# authority's own page.
+
+version: 1
+checked: "2026-11-24"
+title: "Robot standards, regulations and certifications: a directory"
+lead: >-
+  Robots are covered by standards, laws and certification schemes from many bodies,
+  and the names alone rarely say which one applies to you, whether it is binding, or
+  who can attest to it. This directory is a map. For each entry it says what it is,
+  why it matters, who needs it, how you meet it, who issues or assesses it, and what
+  URML gives you for it.
+caveat: >-
+  It is a starting point, not advice. Which documents apply to a machine depends on
+  what it is, where it works and who buys it; decide that with your risk assessment,
+  a licensed copy of each standard, and, for anything binding, counsel. URML quotes no
+  copyrighted standard text. Editions were checked on the date above; check the
+  publisher's catalogue before relying on a year.
+
+legend:
+  kinds:
+    - id: standard
+      name: Standard
+      what: >-
+        A consensus document written by a standards body. It says how to do something
+        well: how to design a safe robot cell, how to test a light curtain.
+      binding: Not by itself. It becomes binding when a law, a contract or a buyer requires it.
+      example: ISO 10218, IEC 62443
+    - id: regulation
+      name: Regulation
+      what: Law, or a rule an agency makes under law.
+      binding: Yes, for whoever it covers.
+      example: 14 CFR Part 107, NDAA Section 889
+    - id: certification
+      name: Certification
+      what: >-
+        A third party's statement, after an assessment, that a product, a process or a
+        person meets a document.
+      binding: Only as far as a law or a buyer requires it.
+      example: ISASecure CSA, a functional-safety certificate
+    - id: listing
+      name: Listing or mark
+      what: >-
+        A certification you can see on the product, issued by an accredited lab after
+        testing, such as an NRTL listing to a UL standard.
+      binding: Often expected by employers, insurers and local inspectors.
+      example: A robot listed to UL 1740
+    - id: self-declaration
+      name: Self-declaration
+      what: The maker states conformance and keeps the evidence (the technical file).
+      binding: Carries the maker's liability.
+      example: A maker's declaration of conformity
+    - id: procurement-list
+      name: Procurement list
+      what: A list a buyer uses to admit or exclude vendors and products.
+      binding: Binding on that buyer's purchases.
+      example: FCC Covered List, DCMA Blue List
+
+  roles:
+    - id: sdo
+      name: Standards body
+      what: >-
+        Writes and sells the documents. ISO and IEC are international; ANSI is the US
+        member of both and runs the US webstore; A3, UL Standards & Engagement and ISA
+        write US standards; VDA writes industry specifications.
+      links:
+        - {label: ISO, url: "https://www.iso.org"}
+        - {label: IEC, url: "https://www.iec.ch"}
+        - {label: ANSI webstore, url: "https://webstore.ansi.org"}
+        - {label: A3, url: "https://www.automate.org"}
+        - {label: UL Standards & Engagement, url: "https://ulse.org"}
+        - {label: ISA, url: "https://www.isa.org"}
+    - id: certifier
+      name: Certification body
+      what: >-
+        Assesses products, processes or people and issues certificates. The body that
+        writes a standard usually does not certify to it. Named here as examples, not
+        endorsements.
+      links:
+        - {label: TÜV SÜD, url: "https://www.tuvsud.com"}
+        - {label: TÜV Rheinland, url: "https://www.tuv.com"}
+        - {label: UL Solutions, url: "https://www.ul.com"}
+        - {label: SGS, url: "https://www.sgs.com"}
+        - {label: Intertek, url: "https://www.intertek.com"}
+        - {label: exida, url: "https://www.exida.com"}
+    - id: nrtl
+      name: NRTL
+      what: >-
+        Nationally Recognized Testing Laboratory: a lab OSHA recognizes to test and
+        certify products to listed US safety standards. OSHA publishes which lab may
+        certify to which standard.
+      links:
+        - {label: OSHA NRTL program, url: "https://www.osha.gov/nationally-recognized-testing-laboratory-program"}
+    - id: authority
+      name: Authority
+      what: The agency that makes and enforces a regulation, such as the FAA for drones or the FCC for radio equipment.
+      links:
+        - {label: FAA drones, url: "https://www.faa.gov/uas"}
+        - {label: FCC Covered List, url: "https://www.fcc.gov/supplychain/coveredlist"}
+
+  terms:
+    - term: Risk assessment
+      what: >-
+        The analysis of one machine, at one site, in its intended use, that decides which
+        hazards matter, which requirements apply and how strong each safety function must
+        be. Nearly every safety and security standard below starts from it; ISO 12100
+        says how to do it.
+      see: iso-12100
+    - term: Type A, B and C standards
+      what: >-
+        Machinery safety standards come in three layers. Type A gives the basic concepts
+        for all machines (ISO 12100). Type B covers one aspect or one kind of safeguard
+        across machines (ISO 13849, ISO 13850, ISO 13855, ISO 14119, IEC 60204-1). Type C
+        is for one kind of machine (ISO 10218 for industrial robots, ISO 3691-4 for
+        driverless trucks). Where a type C standard speaks, it takes precedence.
+      see: iso-12100
+    - term: PL, SIL, SL
+      what: >-
+        How strong a function must be. Performance level PLa to PLe (ISO 13849) and
+        safety integrity level SIL 1 to 4 (IEC 62061, IEC 61508) rate safety functions;
+        security level SL 1 to 4 (IEC 62443) rates how much attack a zone must withstand.
+      see: iso-13849
+    - term: Stop categories
+      what: >-
+        How a machine stops: category 0 removes power at once, category 1 brings the
+        machine to a controlled stop and then removes power, category 2 stops under
+        control and keeps power. IEC 60204-1 defines them; an emergency stop uses
+        category 0 or 1.
+      see: iso-13850
+    - term: Safety function
+      what: >-
+        A function whose failure would raise a risk at once, such as an emergency stop, a
+        protective stop on a light curtain or speed monitoring near people. It lives in
+        the machine's safety-related control, never in URML.
+      see: iso-13849
+    - term: Conformity assessment
+      what: >-
+        Showing that something meets a document: by the maker's own testing and
+        declaration, by a certification body, or by an accredited lab's listing.
+      see: null
+
+  support:
+    - id: template
+      name: Rulebook template
+      what: >-
+        Turns a standard's checkable limits into rules the validator enforces before any
+        program runs, and lists the rest as obligations for people. It carries no values
+        from the standard; you fill them in from your risk assessment and licensed copy.
+    - id: runtime
+      name: Runtime
+      what: A URML runtime that speaks the protocol.
+    - id: position
+      name: Position page
+      what: Says where URML stands under the standard and what it does not claim.
+    - id: rules
+      name: Bundled rules
+      what: Checks that ship in the validator and are on by default.
+    - id: evidence
+      name: Evidence report
+      what: >-
+        urml evidence build lists, for one deployment, what URML checks for each cited
+        standard and what it leaves to others.
+
+  not_a_certifier: >-
+    URML is never a safety function, a security control or a certifier for anything in
+    this directory. It refuses programs that break declared limits and records what was
+    declared. Certificates come from the bodies named in each entry.
+
+groups:
+  - id: basics
+    title: Machine safety basics
+    intro: >-
+      The standards every machine, robots included, builds on: how to assess risk, how
+      to stop in an emergency, where to put safeguards, how to interlock them, how to
+      wire the machine and how to test the sensors that see people.
+    entries: 
+      - id: iso-12100
+        name: ISO 12100:2010
+        title: Risk assessment and risk reduction
+        kind: standard
+        area: Machine safety, all machines
+        who_short: Every machine maker and integrator
+        what: 'The basic (type A) machinery safety standard: how to identify hazards, estimate and evaluate
+          risk, and reduce it, first by design, then by safeguards, then by information for use. A second edition
+          is at the draft stage.'
+        why: Every other machinery standard assumes this risk assessment exists. It is the document that decides
+          which requirements, levels and safeguards a robot cell needs, and the first thing an auditor or an
+          inspector asks for.
+        who: Robot makers, integrators who build cells and lines, and anyone who changes a machine's use.
+        how: Define the machine's limits and intended use, list the hazards for every task and phase of life,
+          estimate and evaluate each risk, reduce it in the standard's order, and keep the whole analysis on
+          record, updated when anything changes.
+        text:
+        - label: ISO 12100 at ISO
+          url: https://www.iso.org/standard/51528.html
+        assess:
+          text: Reviewed as part of a machine's conformity assessment by certification bodies, or kept by the
+            maker in its technical file.
+          links: []
+        urml:
+          support:
+          - template
+          text: The machinery-safety template refuses programs until the risk assessment's reference is on record,
+            and lists keeping it current as an obligation.
+          links:
+          - label: machinery-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml
+      - id: iso-13850
+        name: ISO 13850:2015
+        title: Emergency stop function
+        kind: standard
+        area: Machine safety, all machines
+        who_short: Every machine with an emergency stop
+        what: 'The principles for designing a machine''s emergency stop: what it must do, that it overrides
+          every other function, that it stops in stop category 0 or 1, and that resetting it does not restart
+          the machine. ISO plans a revision.'
+        why: The emergency stop is the last line of protection a person can reach. Robot standards rely on it,
+          and every robot cell has one.
+        who: Machine and robot makers, and integrators who add emergency stop devices to a cell.
+        how: Choose the stop category from the risk assessment, design the circuit to the performance level
+          it needs (ISO 13849 or IEC 62061), place and mark the devices, and validate that the stop works and
+          that reset never restarts motion.
+        text:
+        - label: ISO 13850 at ISO
+          url: https://www.iso.org/standard/59970.html
+        assess:
+          text: Part of the machine's conformity assessment; the circuit's safety level is certified with the
+            rest of the safety-related control by bodies such as TÜV SÜD, TÜV Rheinland or UL Solutions.
+          links: []
+        urml:
+          support:
+          - template
+          - evidence
+          text: URML never implements, resets or replaces the emergency stop. A program may wait for a declared
+            emergency_stop event; a conforming runtime must stop dispatching and every motion it commands when
+            the substrate reports one (RFC-0701), which the evidence report lists as a runtime obligation. The
+            machinery-safety template asks for the stop category on record and keeps programs off emergency
+            stop outputs.
+          links:
+          - label: machinery-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml
+      - id: iso-13855
+        name: ISO 13855:2024
+        title: Positioning of safeguards
+        kind: standard
+        area: Machine safety, all machines
+        who_short: Anyone placing light curtains, scanners or guards
+        what: How far from a hazard a safeguard must be, from the speed at which a person approaches and the
+          machine's total stopping time. Edition 3, replacing the 2010 edition.
+        why: A light curtain or a scanner field that is too close stops the robot after a person has already
+          reached it. This calculation is where safe distances come from.
+        who: Integrators who lay out cells and protective fields, and sites that change them.
+        how: Measure the machine's stopping time, apply the standard's approach speeds and formulas for each
+          safeguard, position the devices, and record and re-verify the calculation after changes.
+        text:
+        - label: ISO 13855 at ISO
+          url: https://www.iso.org/standard/80590.html
+        assess:
+          text: Checked in the machine's validation and conformity assessment.
+          links: []
+        urml:
+          support:
+          - template
+          text: The machinery-safety template refuses programs until the safeguard distance calculation is on
+            record, and lists re-verifying it after changes as an obligation. Lowering a speed limit in the
+            envelope does not change a stopping time URML cannot measure.
+          links:
+          - label: machinery-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml
+      - id: iso-14119
+        name: ISO 14119:2024
+        title: Interlocking devices associated with guards
+        kind: standard
+        area: Machine safety, all machines
+        who_short: Anyone fitting interlocked doors and guards
+        what: How to design and choose interlocking devices on guards, such as door switches and guard locks,
+          including how to make them hard to defeat. Edition 3, replacing the 2013 edition.
+        why: Most robot cells are fenced, and the interlocked door is what stops the robot when someone opens
+          it. Defeated interlocks are a classic cause of accidents.
+        who: Machine makers and integrators who build guarded cells.
+        how: Choose the interlock type for each guard, design it to the required performance level, fit it so
+          it is hard to defeat, and validate it.
+        text:
+        - label: ISO 14119 at ISO
+          url: https://www.iso.org/standard/75942.html
+        assess:
+          text: Checked in the machine's validation; interlock devices are often certified by their makers.
+          links: []
+        urml:
+          support:
+          - template
+          text: The machinery-safety template refuses programs until the interlocking record is on file, keeps
+            programs off the outputs that drive guard locks and interlocks, and lists not defeating interlocks
+            as an obligation.
+          links:
+          - label: machinery-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml
+      - id: iec-60204-1
+        name: IEC 60204-1:2016
+        title: Electrical equipment of machines
+        kind: standard
+        area: Machine safety, all machines
+        who_short: Anyone building or wiring a machine
+        what: 'The requirements for a machine''s electrical equipment: supply disconnection, protection, control
+          circuits, wiring, and the stop categories 0, 1 and 2 that emergency stops and protective stops use.
+          Edition 6.0 with Amendment 1:2021.'
+        why: It is the electrical basis every robot cell is wired to, and where the stop categories other standards
+          refer to are defined.
+        who: Machine and robot makers, panel builders and integrators.
+        how: Design and build the electrical equipment to the standard, then verify it (continuity, insulation,
+          functional tests) and keep the records.
+        text:
+        - label: IEC 60204-1 at IEC
+          url: https://webstore.iec.ch/en/publication/26037
+        - label: Consolidated edition 6.1
+          url: https://webstore.iec.ch/en/publication/71256
+        assess:
+          text: Verified by the maker; certification bodies and NRTLs assess it as part of product certification.
+          links: []
+        urml:
+          support:
+          - template
+          text: The machinery-safety template refuses programs until the electrical verification is on record.
+            URML touches nothing electrical.
+          links:
+          - label: machinery-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml
+      - id: iec-61496
+        name: IEC 61496-1:2020, -3:2025
+        title: Electro-sensitive protective equipment
+        kind: standard
+        area: Machine safety, all machines
+        who_short: Makers and users of light curtains and safety scanners
+        what: 'The requirements and tests for devices that detect people without touching them: part 1 in general,
+          part 3 for laser scanners and other diffuse-reflection devices (2025 edition). Devices are rated by
+          type, 1 to 4.'
+        why: Safety laser scanners on mobile robots and light curtains around cells are how a robot knows a
+          person is near. Their type says how much a fault can be tolerated.
+        who: Makers of safety sensors; integrators choosing them for a cell or a mobile robot.
+        how: Choose a device of the type the risk assessment requires, certified to IEC 61496, position it by
+          ISO 13855, and integrate it into the safety-related control.
+        text:
+        - label: IEC 61496-1 at IEC
+          url: https://webstore.iec.ch/en/publication/63115
+        - label: IEC 61496-3 at IEC
+          url: https://webstore.iec.ch/en/publication/84133
+        assess:
+          text: Devices are type-tested and certified by bodies such as TÜV SÜD, TÜV Rheinland or UL Solutions.
+          links: []
+        urml:
+          support:
+          - template
+          text: The machinery-safety template refuses programs until the protective devices' IEC 61496 type
+            is declared and allowed. URML never reads a safety sensor.
+          links:
+          - label: machinery-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml
+  - id: robots
+    title: Robot safety
+    intro: The machine-specific standards for industrial, collaborative, mobile and personal care robots.
+    entries: 
+      - id: iso-10218
+        name: ISO 10218-1 and -2:2025
+        title: Industrial robots
+        kind: standard
+        area: Industrial robot safety
+        who_short: Robot makers, integrators, users of industrial robots
+        what: 'The safety requirements for industrial robots: part 1 for the robot, part 2 for robot applications
+          and cells. In the US they are adopted as ANSI/A3 R15.06-2025, which replaces R15.06-2012 and adds
+          a US-only part 3 for users.'
+        why: It is the reference a buyer, an insurer, an inspector or a court uses to ask whether an industrial
+          robot cell was made safely. OSHA has no robot-specific standard and looks to consensus standards such
+          as R15.06.
+        who: Robot makers (part 1), integrators who build cells (part 2), companies that run them (R15.06-3).
+        how: Risk-assess the cell, design the safeguards and safety functions it calls for, validate them and
+          keep the technical file. Makers usually declare conformance, often backed by a third-party assessment.
+        text:
+        - label: ISO 10218-1 at ISO
+          url: https://www.iso.org/standard/73933.html
+        - label: ISO 10218-2 at ISO
+          url: https://www.iso.org/standard/73934.html
+        - label: R15.06-2025 at ANSI
+          url: https://webstore.ansi.org/standards/ria/ansia3r15062025
+        - label: A3
+          url: https://www.automate.org
+        assess:
+          text: Certification bodies such as TÜV SÜD, TÜV Rheinland, UL Solutions or SGS.
+          links: []
+        urml:
+          support:
+          - template
+          - evidence
+          text: 'The industrial template: speed and force caps, a program allowlist, untouched safety outputs,
+            the cell layout, and the obligations URML cannot check.'
+          links:
+          - label: industrial-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/industrial-template.yaml
+      - id: iso-ts-15066
+        name: ISO/TS 15066:2016
+        title: Collaborative operation
+        kind: standard
+        area: Collaborative robots
+        who_short: Anyone running robots alongside people
+        what: 'The technical specification for robots that share space with people: power and force limiting,
+          and speed and separation monitoring. ISO 10218-2:2025 now incorporates its content; a revision is
+          in progress.'
+        why: It is where the limits for contact between a robot and a person come from.
+        who: Integrators and users of collaborative applications.
+        how: 'As for ISO 10218: risk-assess the application, set limits per body region and task, then measure
+          and validate them.'
+        text:
+        - label: ISO/TS 15066 at ISO
+          url: https://www.iso.org/standard/62996.html
+        assess:
+          text: The same certification bodies as ISO 10218; force and pressure measurements are often done by
+            them.
+          links: []
+        urml:
+          support:
+          - template
+          text: The force and speed caps in the industrial template; the values come from your licensed copy.
+          links:
+          - label: industrial-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/industrial-template.yaml
+      - id: iso-3691-4
+        name: ISO 3691-4:2023, ANSI/A3 R15.08
+        title: Mobile robots and driverless trucks
+        kind: standard
+        area: Mobile robots, AGVs
+        who_short: Makers and sites running AMRs and AGVs
+        what: 'ISO 3691-4:2023 covers driverless industrial trucks and their systems. ANSI/A3 R15.08 is the
+          US standard for industrial mobile robots: part 1 the robot (2020, reaffirmed 2026), part 2 the system
+          and site (2023), part 3 the user (2026).'
+        why: Warehouses and factories run fleets among people; these documents set how the vehicles detect people,
+          slow, stop and stay in their zones.
+        who: Makers of AMRs and AGVs, integrators, and sites that run them.
+        how: Risk-assess the site and routes, fit safety-rated personnel detection and speed control, mark the
+          zones, validate, and train the people who work near the robots.
+        text:
+        - label: ISO 3691-4 at ISO
+          url: https://www.iso.org/standard/83545.html
+        - label: A3 (R15.08)
+          url: https://www.automate.org
+        assess:
+          text: Certification bodies such as TÜV SÜD, TÜV Rheinland, UL Solutions or SGS.
+          links: []
+        urml:
+          support:
+          - template
+          - runtime
+          text: The AMR template (travel-speed cap, forbidden zones, load handling only at stations, a program
+            allowlist), and the VDA 5050 and ISO 21423 runtimes.
+          links:
+          - label: amr-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/amr-template.yaml
+      - id: iso-13482
+        name: ISO 13482:2014
+        title: Personal care robots
+        kind: standard
+        area: Service robots near people
+        who_short: Makers of service robots that work near people
+        what: 'The safety requirements for robots that work close to people outside industry: mobile servants,
+          physical assistants, person carriers. A second edition is in the last stage before publication.'
+        why: It is the main international reference for service robots in homes, care and public spaces.
+        who: Makers of personal care and service robots.
+        how: Identify the hazards of the robot in its intended use, assess the risk, then apply the protective
+          measures and validation the standard calls for.
+        text:
+        - label: ISO 13482 at ISO
+          url: https://www.iso.org/standard/53820.html
+        assess:
+          text: Certification bodies such as TÜV SÜD, TÜV Rheinland or UL Solutions.
+          links: []
+        urml:
+          support:
+          - template
+          text: 'The home template: speed and grip-force caps, hazard zones, no handling in excluded zones.
+            Check its cites when the new edition is out.'
+          links:
+          - label: home-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/home-template.yaml
+  - id: functional-safety
+    title: Functional safety
+    intro: How the safety functions themselves are designed and rated.
+    entries: 
+      - id: iso-13849
+        name: ISO 13849-1:2023, -2:2012
+        title: Safety-related parts of control systems
+        kind: standard
+        area: Functional safety of machinery
+        who_short: Anyone designing safety functions
+        what: How to design (part 1) and validate (part 2) the parts of a machine's control that perform safety
+          functions, rated by performance level PLa to PLe. A new edition of part 2 is at the final draft stage.
+        why: An emergency stop, a protective stop or speed monitoring is only as good as its design; the required
+          PL says how good it must be.
+        who: Machine and robot makers, and integrators who add safety functions.
+        how: Set the required level (PLr) from the risk assessment, design the architecture, calculate and validate
+          the achieved PL, and document it.
+        text:
+        - label: ISO 13849-1 at ISO
+          url: https://www.iso.org/standard/73481.html
+        - label: ISO 13849-2 at ISO
+          url: https://www.iso.org/standard/53640.html
+        assess:
+          text: 'Products and components: bodies such as TÜV SÜD, TÜV Rheinland, exida or UL Solutions. People
+            can hold functional-safety certifications too.'
+          links: []
+        urml:
+          support:
+          - template
+          text: 'The functional-safety template: programs wait until each safety function''s achieved level
+            is declared and meets the requirement. URML counts toward no PL.'
+          links:
+          - label: functional-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/functional-safety-template.yaml
+      - id: iec-62061
+        name: IEC 62061:2021
+        title: Functional safety of machinery
+        kind: standard
+        area: Functional safety of machinery
+        who_short: Designers of electrical safety control
+        what: The machinery standard for safety-related control, rated by SIL 1 to 3, with Amendment 1:2024
+          and Amendment 2:2026 (consolidated edition 2.2). A machine is designed to it or to ISO 13849.
+        why: It is the SIL route to the same goal as ISO 13849, common where electrical and programmable control
+          dominate.
+        who: Makers and integrators who design safety functions in electrical and programmable control.
+        how: As for ISO 13849, in the SIL vocabulary.
+        text:
+        - label: IEC 62061 at IEC
+          url: https://webstore.iec.ch/en/publication/59927
+        - label: Consolidated edition 2.2
+          url: https://webstore.iec.ch/en/publication/112847
+        assess:
+          text: Bodies such as TÜV SÜD, TÜV Rheinland, exida or UL Solutions.
+          links: []
+        urml:
+          support:
+          - template
+          text: The same functional-safety template, which takes SILs.
+          links:
+          - label: functional-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/functional-safety-template.yaml
+      - id: iec-61508
+        name: IEC 61508:2010
+        title: Basic functional safety
+        kind: standard
+        area: Functional safety, all sectors
+        who_short: Makers of safety components and safety software
+        what: The basic functional-safety standard for electrical, electronic and programmable systems, parts
+          1 to 7, edition 2.0, rated by SIL 1 to 4. IEC 62061 applies it to machinery. Edition 3 is being prepared.
+        why: Safety controllers, drives with safe torque off and safety-rated sensors are designed and certified
+          to it, and robots outside the machinery standards use it directly.
+        who: Makers of safety components and of safety-related software.
+        how: 'Follow the full safety lifecycle: hazard analysis, safety requirements, design and verification
+          to the target SIL, and, for software, development to IEC 61508-3.'
+        text:
+        - label: IEC 61508-1 at IEC
+          url: https://webstore.iec.ch/en/publication/5515
+        assess:
+          text: Bodies such as TÜV SÜD, TÜV Rheinland, exida or UL Solutions.
+          links: []
+        urml:
+          support:
+          - template
+          - position
+          text: 'The functional-safety template (SIL 1 to 4) and a position page: URML is outside the safety-related
+            system and has no SIL.'
+          links:
+          - label: functional-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/functional-safety-template.yaml
+          - label: URML and IEC 61508
+            url: https://github.com/urml-dev/URML/blob/main/docs/safety/iec-61508.md
+  - id: security
+    title: Security
+    intro: The cybersecurity of the control system a robot belongs to.
+    entries: 
+      - id: iec-62443
+        name: IEC 62443
+        title: Industrial cybersecurity
+        kind: standard
+        area: Industrial cybersecurity
+        who_short: Asset owners, integrators, makers of control products
+        what: 'ISA/IEC 62443, the series for securing industrial automation and control systems. Most used:
+          2-1 (the owner''s security program), 3-2 (risk assessment, zones and conduits), 3-3 (system requirements,
+          security levels SL 1 to 4), 4-1 (secure development) and 4-2 (component requirements).'
+        why: Robots are networked control systems. Buyers in manufacturing, energy and logistics increasingly
+          ask suppliers for IEC 62443 evidence.
+        who: Asset owners (2-1, 3-2), integrators (3-3), makers of control products (4-1, 4-2).
+        how: Model the site as zones and conduits, set target levels from a security risk assessment, meet the
+          system and component requirements, and for products, develop under a 4-1 lifecycle.
+        text:
+        - label: IEC 62443-3-3 at IEC
+          url: https://webstore.iec.ch/en/publication/7033
+        - label: IEC 62443-3-2 at IEC
+          url: https://webstore.iec.ch/en/publication/30727
+        - label: IEC 62443-4-2 at IEC
+          url: https://webstore.iec.ch/en/publication/34421
+        assess:
+          text: ISASecure (SDLA for the 4-1 development process, SSA for systems, CSA for components), the IECEE
+            scheme, and certification bodies.
+          links:
+          - label: ISASecure
+            url: https://isasecure.org/certification
+        urml:
+          support:
+          - template
+          - position
+          text: The cybersecurity template and a position page mapping URML against the foundational requirements.
+            The VDA 5050 and ISO 21423 runtimes protect their broker conduit with TLS, mutual TLS and broker
+            credentials. URML is not a security control and claims no SL.
+          links:
+          - label: cybersecurity-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/cybersecurity-template.yaml
+          - label: URML and IEC 62443
+            url: https://github.com/urml-dev/URML/blob/main/docs/security/iec-62443.md
+  - id: listings
+    title: US product listings
+    intro: The safety standards a US lab lists a robot to.
+    entries: 
+      - id: ul-robots
+        name: UL 1740, UL 3100, UL 3300
+        title: US product listings for robots
+        kind: listing
+        area: US product safety
+        who_short: Makers selling robots into US workplaces and public spaces
+        what: 'US product safety standards: UL 1740 for robots and robotic equipment, UL 3100 for automated
+          mobile platforms, and UL 3300 for service, communication, information, education and entertainment
+          robots. A robot is tested and listed to one by an NRTL.'
+        why: Employers, insurers and local electrical inspectors in the US often expect equipment to carry an
+          NRTL listing.
+        who: Makers selling robots into US workplaces and public spaces. Pick the standard by robot type and
+          check its scope.
+        how: Design to the standard, submit the product to an NRTL for testing, then keep the listing through
+          the lab's follow-up inspections.
+        text:
+        - label: UL 1740
+          url: https://www.shopulstandards.com/ProductDetail.aspx?productId=UL1740
+        - label: UL 3100
+          url: https://www.shopulstandards.com/ProductDetail.aspx?productId=UL3100
+        - label: UL 3300
+          url: https://www.shopulstandards.com/ProductDetail.aspx?productId=UL3300
+        assess:
+          text: NRTLs such as UL Solutions, Intertek, TÜV Rheinland or CSA Group; OSHA publishes which lab may
+            certify to which standard.
+          links:
+          - label: OSHA list of NRTLs
+            url: https://www.osha.gov/nationally-recognized-testing-laboratory-program/current-list-of-nrtls
+        urml:
+          support: []
+          text: Nothing specific. A listing concerns the robot's hardware and electrical safety, below anything
+            URML touches.
+          links: []
+  - id: interop
+    title: Vocabulary and interoperability
+    intro: Shared words, and the protocols that let one controller drive robots from many makers.
+    entries: 
+      - id: iso-8373
+        name: ISO 8373:2021
+        title: Robotics vocabulary
+        kind: standard
+        area: Vocabulary
+        who_short: Anyone writing about robots precisely
+        what: The international robotics vocabulary. A fourth edition is at the draft stage.
+        why: Specifications, contracts and safety files read the same way when they use the same words.
+        who: Anyone writing requirements, manuals or safety documentation about robots.
+        how: Nothing to certify; use its terms, from a licensed copy.
+        text:
+        - label: ISO 8373 at ISO
+          url: https://www.iso.org/standard/75539.html
+        assess:
+          text: Not assessed.
+          links: []
+        urml:
+          support:
+          - position
+          text: An alignment page lining up URML's terms with the standard's.
+          links:
+          - label: URML terms and ISO 8373
+            url: https://github.com/urml-dev/URML/blob/main/docs/iso-8373-alignment.md
+      - id: vda-5050
+        name: VDA 5050 3.0.0
+        title: Fleet interface for AGVs and AMRs
+        kind: standard
+        area: Fleet interface
+        who_short: Fleet operators and vehicle makers
+        what: The interface between a fleet controller and driverless vehicles over MQTT, from the German automotive
+          and machinery associations VDA and VDMA. Version 3.0.0 was released in March 2026.
+        why: One controller can drive vehicles from different makers.
+        who: Sites running mixed fleets of AGVs or AMRs, and the makers of the vehicles and fleet controllers.
+        how: Implement the messages and state machine, and test against the official schemas and the other side's
+          implementation. The specification is free; we know of no formal certification scheme for it.
+        text:
+        - label: VDA 5050 on GitHub
+          url: https://github.com/VDA5050/VDA5050
+        assess:
+          text: No formal scheme we know of; integrators test vehicles against their fleet controller.
+          links: []
+        urml:
+          support:
+          - runtime
+          text: urml-vda5050-runtime, on PyPI, with TLS and broker credentials on main for the next release,
+            and paid fleet and vehicle validation.
+          links:
+          - label: urml-vda5050-runtime
+            url: https://github.com/urml-dev/URML/tree/main/reference/vda5050-runtime
+          - label: Validation services
+            url: https://urml.dev/pricing#validation
+      - id: iso-21423
+        name: ISO 21423:2026
+        title: Industrial mobile robot interoperability
+        kind: standard
+        area: Fleet interface
+        who_short: Fleet operators and robot makers
+        what: Communications and interoperability between industrial mobile robots, their fleet managers and
+          site systems, over MQTT. Published in October 2026.
+        why: As for VDA 5050, as an ISO standard that also covers fleet managers and site equipment.
+        who: Sites running mobile robots from several makers, robot makers, and fleet manager vendors.
+        how: Implement it from a licensed copy; we know of no certification scheme yet.
+        text:
+        - label: ISO 21423 at ISO
+          url: https://www.iso.org/standard/86749.html
+        assess:
+          text: No scheme yet that we know of.
+          links: []
+        urml:
+          support:
+          - runtime
+          text: urml-iso21423-runtime, with TLS and broker credentials, built from public material based on
+            the draft. Validation against the published standard is in progress, and URML makes no conformance
+            claim until it is done.
+          links:
+          - label: urml-iso21423-runtime
+            url: https://github.com/urml-dev/URML/tree/main/reference/iso21423-runtime
+        status: Validation in progress
+  - id: regulation
+    title: Regulation and procurement
+    intro: US law for drones, and the supply-chain rules for selling to the US government.
+    entries: 
+      - id: faa-part-107
+        name: 14 CFR Part 107 and Part 89
+        title: Small drones in the US
+        kind: regulation
+        area: Small drones, US
+        who_short: Anyone flying a drone for work in the US
+        what: The FAA's rules for small unmanned aircraft in the US, operating rules (Part 107) and Remote ID
+          (Part 89).
+        why: It is federal law for commercial drone flights.
+        who: Anyone flying a small drone for work in the US, and drone makers (Remote ID).
+        how: The remote pilot passes the FAA's knowledge test for a remote pilot certificate, the aircraft is
+          registered and broadcasts Remote ID, and operations outside the rules need a waiver or authorization.
+        text:
+        - label: Part 107 (eCFR)
+          url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107
+        - label: Part 89 (eCFR)
+          url: https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-89
+        assess:
+          text: The FAA issues pilot certificates, registrations, waivers and authorizations.
+          links:
+          - label: FAA Part 107
+            url: https://www.faa.gov/newsroom/small-unmanned-aircraft-systems-uas-regulations-part-107
+          - label: FAA Remote ID
+            url: https://www.faa.gov/uas/getting_started/remote_id
+        urml:
+          support:
+          - rules
+          text: 'The bundled Part 107 rulebook, on by default for aircraft: altitude, speed and over-people
+            limits, one aircraft per pilot, Remote ID declared, and the rules no static check can see as obligations.
+            A refusal is not a legal determination.'
+          links:
+          - label: us_faa_part107.yaml
+            url: https://github.com/urml-dev/URML/blob/main/reference/validator/src/urml_validator/rulebooks/us_faa_part107.yaml
+      - id: us-procurement
+        name: NDAA Section 889, FCC Covered List, DCMA Blue List
+        title: US supply-chain rules
+        kind: procurement-list
+        area: Supply chain, US government
+        who_short: Vendors to the US government and its contractors
+        what: NDAA Section 889 bars federal agencies and their contractors from certain telecommunications and
+          video-surveillance equipment, and later NDAAs extend similar limits to drones. The FCC Covered List
+          names equipment the FCC no longer authorizes. The Blue List of drones cleared for Department of Defense
+          use, formerly DIU's Blue UAS list, is now managed by DCMA.
+        why: It decides who can sell robots and drones to the US government and its contractors.
+        who: Vendors to federal agencies and contractors, and anyone whose customers are.
+        how: Know and document where every critical component comes from, make the contract representations,
+          and for the Blue List go through DCMA's review.
+        text:
+        - label: FCC Covered List
+          url: https://www.fcc.gov/supplychain/coveredlist
+        - label: Blue UAS list (DIU)
+          url: https://www.diu.mil/blue-uas-cleared-list
+        assess:
+          text: Contracting officers, the FCC and DCMA.
+          links: []
+        urml:
+          support:
+          - rules
+          text: The bundled compliance policy, on by default for urml validate, checks the component origins
+            a manifest declares. It is not legal advice and not a procurement determination.
+          links:
+          - label: us_federal_default.yaml
+            url: https://github.com/urml-dev/URML/blob/main/reference/validator/src/urml_validator/policies/us_federal_default.yaml
+  - id: urml
+    title: URML's own
+    intro: What the URML project itself offers. Neither is a safety or compliance certification.
+    entries: 
+      - id: urml-certified
+        name: URML-Certified
+        title: Conformance to the URML specification
+        kind: certification
+        area: URML conformance
+        who_short: Makers of third-party URML runtimes
+        what: A free certification that a third-party runtime conforms to the URML specification for its profiles
+          (RFC-0705), for at most 366 days.
+        why: A buyer can tell that a runtime's conformance claim was reproduced by someone other than its authors.
+        who: Makers of URML runtimes for their robots or substrates.
+        how: Pass the full conformance suite with your own adapter, publish the package, and the Licensor reproduces
+          the run offline from the public package.
+        text:
+        - label: RFC-0705
+          url: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0705-urml-certified.md
+        assess:
+          text: The Licensor, Yahalomik Ltd., through the URML registry. Free. It certifies conformance only,
+            never safety, security or compliance.
+          links:
+          - label: Registry
+            url: https://urml.dev/registry
+        urml:
+          support: []
+          text: This is URML's own program.
+          links: []
+      - id: evidence-reports
+        name: Evidence reports
+        title: One page of evidence per deployment
+        kind: self-declaration
+        area: Evidence for all of the above
+        who_short: Integrators, auditors, buyers
+        what: Not a certification. urml evidence build writes one report per robot deployment that marks every
+          item checked, declared, runtime, missing or outside, and regroups the rules by the standard each cites
+          (RFC-0707).
+        why: It shows, for every entry above that a deployment cites, what URML checks and what someone else
+          must cover.
+        who: Integrators before commissioning, auditors and certification bodies, buyers and insurers.
+        how: Build it yourself and rebuild it to check it, or ask the Licensor for a reviewed report.
+        text:
+        - label: RFC-0707
+          url: https://github.com/urml-dev/URML/blob/main/docs/rfcs/0707-evidence-report.md
+        assess:
+          text: Anyone can rebuild a report from the same files and compare bytes; a Licensor-reviewed report
+            can be signed.
+          links:
+          - label: Evidence reports
+            url: https://urml.dev/evidence
+        urml:
+          support:
+          - evidence
+          text: The command, a worked example for auditors, and paid reviewed reports.
+          links:
+          - label: Worked example
+            url: https://github.com/urml-dev/URML/tree/main/examples/evidence-report

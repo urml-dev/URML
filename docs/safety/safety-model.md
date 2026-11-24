@@ -235,7 +235,10 @@ not a safety-rated component, and a refusal is not a safety function. URML
 makes no functional-safety claim. A deployment still needs what the standards
 for its machine require, for example:
 
-- a hardwired emergency stop (ISO 13850:2015);
+- a hardwired emergency stop (ISO 13850:2015), and the machinery safety basics around it: a risk
+  assessment (ISO 12100:2010), safeguards placed by ISO 13855:2024, interlocked guards (ISO 14119:2024),
+  electrical equipment to IEC 60204-1 and protective devices to IEC 61496 (a rulebook template is in
+  [`examples/rulebooks/machinery-safety-template.yaml`](../../examples/rulebooks/machinery-safety-template.yaml));
 - safety-rated control functions (ISO 13849-1:2023, IEC 62061:2021, or
   IEC 61508:2010 for robots and safety components outside the machinery
   standards; where URML stands under IEC 61508 is in
