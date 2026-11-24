@@ -220,6 +220,12 @@ jobs:
       - name: Run the Gazebo end-to-end conformance test
         env:
           URML_GAZEBO_E2E: "1"
+          # Same launch_testing collection bug as rclpy-smoke: without
+          # this, pytest collects nothing and exits 4.
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+        # pipefail: without it the `| tee` below hides pytest's exit code
+        # and a run that collected or passed nothing still shows green.
+        shell: bash -eo pipefail {0}
         run: |
           . /opt/ros/jazzy/setup.sh
           cd reference/ros2-runtime
