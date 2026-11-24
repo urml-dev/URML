@@ -1,0 +1,102 @@
+# Generated input for the evidence-report golden tests (RFC-0707).
+# examples/rulebooks/home-template.yaml, filled as its test fills it.
+# Test values, not requirements from any standard.
+
+rulebook_version: '0.1'
+rulebook_id: home_helper_rules
+title: '5.1 (for example: Home helper rules, from the 2026 risk assessment)'
+issuer:
+  kind: organization
+  name: 5.1 (the robot maker, the integrator or the care provider)
+source_status: organization_policy
+reviewed: '2026-11-24'
+description: Operating rules for a mobile servant robot that works near people, taken from the robot's
+  risk assessment and ISO 13482:2014. Every value comes from a licensed copy of the standard named in
+  its cite.
+rules:
+- id: max_travel_speed
+  title: Maximum travel speed a program may request
+  cite:
+    text: ISO 13482:2014, clause 5.1; the robot's risk assessment
+    standard: ISO 13482:2014
+  note: 'The highest speed the risk assessment allows where the robot shares space with people. A global
+    cap: v0.1 has no zone-scoped caps. Speed and separation near a person stay in the robot''s safety-rated
+    control.'
+  cap:
+    quantity: speed_m_per_s
+    max: 0.3
+- id: max_grip_force
+  title: Maximum gripper force where a person can be touched
+  cite:
+    text: ISO 13482:2014, clause 5.1; the robot's risk assessment
+    standard: ISO 13482:2014
+  note: Covers fetching and handing an object to a person. URML compares the force a program requests;
+    limiting the force during contact stays in the robot's safety-rated control. The home envelope's max_grip_force_n
+    also applies, and the stricter limit wins.
+  cap:
+    quantity: grip_force_n
+    max: 2.0
+- id: hazard_zones
+  title: Programs never send the robot into a hazard zone
+  cite:
+    text: ISO 13482:2014, clause 5.1; the robot's risk assessment
+    standard: ISO 13482:2014
+  note: Name the places the risk assessment keeps the robot out of, such as the top of a stairway, a balcony
+    or a pool area, and declare them in the manifest's declared_areas.
+  forbid_zone_entry:
+    zones:
+    - stairwell
+- id: no_handling_in_zones
+  title: No grasping or releasing in zones the risk assessment excludes
+  cite:
+    text: ISO 13482:2014, clause 5.1; the robot's risk assessment
+    standard: ISO 13482:2014
+  note: Name the areas where the robot must not pick up or put down objects, such as next to a cooktop
+    or beside a bed. pick_from and place_at count as grasp and release.
+  forbid_primitive:
+    primitives:
+    - grasp
+    - release
+    in_zones:
+    - cooktop_area
+- id: validated_programs_only
+  title: Only robot programs covered by the risk assessment run
+  cite:
+    text: ISO 13482:2014, clause 5.1; the robot's risk assessment
+    standard: ISO 13482:2014
+  note: call_program is opaque to URML. List the built-in programs the risk assessment covered.
+  forbid_primitive:
+    primitives:
+    - call_program
+    except_names:
+    - tidy_up
+obligations:
+- id: risk_assessment
+  title: A current risk assessment for the robot in its setting
+  text: The robot has a risk assessment that covers the people it works near, including children, older
+    people and anyone with limited mobility, and every task these programs perform. It is repeated when
+    the setting or the tasks change.
+  cite:
+    text: ISO 13482:2014, clause 5.1
+    standard: ISO 13482:2014
+- id: safety_rated_functions
+  title: Stopping, speed and force limits in safety-rated control
+  text: Protective stop, emergency stop, and the limits on speed and contact force near people run in
+    safety-rated hardware and software, at the performance levels the standard requires, not in URML.
+  cite:
+    text: ISO 13482:2014, clauses 5.1
+    standard: ISO 13482:2014
+- id: environment_checked
+  title: The setting is checked for the robot's travel
+  text: Floors, thresholds, slopes, stairs and obstacles in the home or facility are checked against the
+    robot's stability and travel limits, and the declared_areas in its manifest match the hazards found.
+  cite:
+    text: ISO 13482:2014, clause 5.1
+    standard: ISO 13482:2014
+- id: users_informed
+  title: The people the robot serves are informed and instructed
+  text: The people who live or work with the robot, and their carers, receive the information for use,
+    including how to stop the robot and what it must not be asked to do.
+  cite:
+    text: ISO 13482:2014, clause 5.1
+    standard: ISO 13482:2014

@@ -47,6 +47,7 @@ rules:
     title: Maximum robot speed in the collaborative application
     cite:
       text: "ISO 10218-2:2025, clause FILL_IN; the cell's risk assessment"
+      standard: "ISO 10218-2:2025"
     note: >-
       The speed the risk assessment allows where people and the robot share
       the workspace. A global cap: v0.1 has no zone-scoped caps. Speed and
@@ -59,6 +60,7 @@ rules:
     title: Maximum gripper force where a hand can be caught
     cite:
       text: "ISO/TS 15066:2016 or ISO 10218-2:2025, clause FILL_IN; the cell's risk assessment"
+      standard: ["ISO 10218-2:2025", "ISO/TS 15066:2016"]
     note: >-
       Derived from the quasi-static contact limit for the hand and fingers in
       the licensed standard, with the integrator's own margin. URML compares
@@ -72,6 +74,7 @@ rules:
     title: Only controller programs covered by the risk assessment run
     cite:
       text: "ISO 10218-2:2025, clause FILL_IN; the cell's risk assessment"
+      standard: "ISO 10218-2:2025"
     note: >-
       call_program is opaque to URML. List the controller programs the risk
       assessment covered.
@@ -83,6 +86,7 @@ rules:
     title: Programs never write safety-related output lines
     cite:
       text: "ISO 10218-2:2025, clause FILL_IN; the cell's risk assessment"
+      standard: "ISO 10218-2:2025"
     note: >-
       Name the output lines the risk assessment marks safety-related, such as
       a muting or bypass signal.
@@ -94,6 +98,7 @@ rules:
     title: The robot never targets a place outside the validated cell layout
     cite:
       text: "ISO 10218-2:2025, clause FILL_IN; the cell layout"
+      standard: "ISO 10218-2:2025"
     note: >-
       Name the floor areas the cell layout keeps the robot out of, and declare
       them in the manifest's declared_areas.
@@ -108,6 +113,7 @@ obligations:
       perform, repeated whenever the cell changes.
     cite:
       text: "ISO 10218-2:2025, clause FILL_IN"
+      standard: "ISO 10218-2:2025"
 
   - id: safety_rated_functions
     title: Stop functions in safety-rated control
@@ -117,6 +123,7 @@ obligations:
       not in URML.
     cite:
       text: "ISO 10218-1:2025 and ISO 10218-2:2025, clauses FILL_IN"
+      standard: ["ISO 10218-1:2025", "ISO 10218-2:2025"]
 
   - id: contact_verification
     title: Measured contact forces for power and force limiting
@@ -126,6 +133,7 @@ obligations:
       limits the risk assessment sets.
     cite:
       text: "ISO/TS 15066:2016 or ISO 10218-2:2025, clause FILL_IN"
+      standard: ["ISO 10218-2:2025", "ISO/TS 15066:2016"]
 
   - id: cell_validation
     title: The installed cell is validated before production use
@@ -134,3 +142,4 @@ obligations:
       installed cell before it runs production programs.
     cite:
       text: "ISO 10218-2:2025, clause FILL_IN"
+      standard: "ISO 10218-2:2025"

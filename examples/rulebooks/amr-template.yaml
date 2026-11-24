@@ -57,6 +57,7 @@ rules:
     title: Maximum travel speed a program may request
     cite:
       text: "ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause FILL_IN; the site's risk assessment"
+      standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-2-2023"]
     note: >-
       The highest speed the risk assessment allows in the areas where people
       may be present. A global cap: v0.1 has no zone-scoped caps, so set it to
@@ -71,6 +72,7 @@ rules:
     title: Programs never send a robot outside its operating zones
     cite:
       text: "ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause FILL_IN; the site layout"
+      standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-2-2023"]
     note: >-
       Name the areas the risk assessment keeps mobile robots out of, such as
       pedestrian-only areas, and declare them in the manifest's
@@ -82,6 +84,7 @@ rules:
     title: Loads are picked and placed only at designated stations
     cite:
       text: "ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause FILL_IN; the site's risk assessment"
+      standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-2-2023"]
     note: >-
       Name the travel lanes, crossings and other areas where the risk
       assessment does not allow load handling. pick_from and place_at count
@@ -94,6 +97,7 @@ rules:
     title: Only robot programs covered by the risk assessment run
     cite:
       text: "ANSI/A3 R15.08-2-2023, clause FILL_IN; the site's risk assessment"
+      standard: "ANSI/A3 R15.08-2-2023"
     note: >-
       call_program is opaque to URML; over VDA 5050 it runs a vendor action.
       List the programs the risk assessment covered.
@@ -105,6 +109,7 @@ rules:
     title: Programs never write safety-related output lines
     cite:
       text: "ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause FILL_IN; the site's risk assessment"
+      standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-2-2023"]
     note: >-
       Name the output lines the risk assessment marks safety-related, such as
       a door interlock or a muting signal.
@@ -121,6 +126,7 @@ obligations:
       change.
     cite:
       text: "ISO 3691-4:2023 and ANSI/A3 R15.08-2-2023, clauses FILL_IN"
+      standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-2-2023"]
 
   - id: safety_rated_functions
     title: Personnel detection and stopping in safety-rated control
@@ -131,6 +137,7 @@ obligations:
       fleet manager.
     cite:
       text: "ISO 3691-4:2023 and ANSI/A3 R15.08-1-2020 (R2026), clauses FILL_IN"
+      standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-1-2020"]
 
   - id: zones_marked_and_declared
     title: Operating and restricted zones are marked on site and match the manifest
@@ -140,6 +147,7 @@ obligations:
       are drawn to match them.
     cite:
       text: "ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause FILL_IN"
+      standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-2-2023"]
 
   - id: system_validation
     title: The installed system is verified and validated before use
@@ -148,6 +156,7 @@ obligations:
       installed mobile robot system before the site runs production programs.
     cite:
       text: "ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause FILL_IN"
+      standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-2-2023"]
 
   - id: users_trained
     title: People who work near the robots are trained and informed
@@ -157,3 +166,4 @@ obligations:
       assessment requires.
     cite:
       text: "ANSI/A3 R15.08-3-2026 or ISO 3691-4:2023, clause FILL_IN"
+      standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-3-2026"]

@@ -55,6 +55,7 @@ rules:
     title: Maximum travel speed a program may request
     cite:
       text: "ISO 13482:2014, clause FILL_IN; the robot's risk assessment"
+      standard: "ISO 13482:2014"
     note: >-
       The highest speed the risk assessment allows where the robot shares
       space with people. A global cap: v0.1 has no zone-scoped caps. Speed
@@ -67,6 +68,7 @@ rules:
     title: Maximum gripper force where a person can be touched
     cite:
       text: "ISO 13482:2014, clause FILL_IN; the robot's risk assessment"
+      standard: "ISO 13482:2014"
     note: >-
       Covers fetching and handing an object to a person. URML compares the
       force a program requests; limiting the force during contact stays in
@@ -80,6 +82,7 @@ rules:
     title: Programs never send the robot into a hazard zone
     cite:
       text: "ISO 13482:2014, clause FILL_IN; the robot's risk assessment"
+      standard: "ISO 13482:2014"
     note: >-
       Name the places the risk assessment keeps the robot out of, such as the
       top of a stairway, a balcony or a pool area, and declare them in the
@@ -91,6 +94,7 @@ rules:
     title: No grasping or releasing in zones the risk assessment excludes
     cite:
       text: "ISO 13482:2014, clause FILL_IN; the robot's risk assessment"
+      standard: "ISO 13482:2014"
     note: >-
       Name the areas where the robot must not pick up or put down objects,
       such as next to a cooktop or beside a bed. pick_from and place_at count
@@ -103,6 +107,7 @@ rules:
     title: Only robot programs covered by the risk assessment run
     cite:
       text: "ISO 13482:2014, clause FILL_IN; the robot's risk assessment"
+      standard: "ISO 13482:2014"
     note: >-
       call_program is opaque to URML. List the built-in programs the risk
       assessment covered.
@@ -120,6 +125,7 @@ obligations:
       the tasks change.
     cite:
       text: "ISO 13482:2014, clause FILL_IN"
+      standard: "ISO 13482:2014"
 
   - id: safety_rated_functions
     title: Stopping, speed and force limits in safety-rated control
@@ -129,6 +135,7 @@ obligations:
       performance levels the standard requires, not in URML.
     cite:
       text: "ISO 13482:2014, clauses FILL_IN"
+      standard: "ISO 13482:2014"
 
   - id: environment_checked
     title: The setting is checked for the robot's travel
@@ -138,6 +145,7 @@ obligations:
       declared_areas in its manifest match the hazards found.
     cite:
       text: "ISO 13482:2014, clause FILL_IN"
+      standard: "ISO 13482:2014"
 
   - id: users_informed
     title: The people the robot serves are informed and instructed
@@ -147,3 +155,4 @@ obligations:
       must not be asked to do.
     cite:
       text: "ISO 13482:2014, clause FILL_IN"
+      standard: "ISO 13482:2014"

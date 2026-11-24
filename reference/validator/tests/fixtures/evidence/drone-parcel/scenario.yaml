@@ -1,0 +1,7 @@
+description: The parcel-delivery drone example under the bundled 14 CFR Part 107 rulebook.
+as_of: '2026-11-24'
+profiles:
+- drone
+manifest: ../../../../../../examples/drone/parcel-delivery.manifest.yaml
+envelope: ../../../../../../examples/drone/parcel-delivery.envelope.yaml
+rulebooks: []

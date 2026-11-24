@@ -1,0 +1,11 @@
+description: 'An AMR with an arm in a warehouse: AMR and functional-safety rulebooks,
+  every declaration on record.'
+as_of: '2026-11-24'
+profiles:
+- warehouse
+manifest: manifest.yaml
+envelope: envelope.yaml
+rulebooks:
+- amr-rules.yaml
+- functional-safety.yaml
+- declarations.yaml

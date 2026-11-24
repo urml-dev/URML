@@ -1,0 +1,16 @@
+# Generated input for the evidence-report golden tests (RFC-0707).
+# The operator's deployment rulebook: safety levels on record.
+# Test values, not requirements from any standard.
+
+rulebook_version: '0.1'
+rulebook_id: cell_7_safety_declarations
+title: Cell 7 safety function declarations
+issuer:
+  kind: deployment
+  name: Example Integrator
+source_status: deployment_declaration
+declarations:
+  emergency_stop_safety_level: PLd
+  protective_stop_safety_level: SIL2
+  speed_monitoring_safety_level: PLe
+  safety_validation_record: VAL-2026-017

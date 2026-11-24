@@ -1,0 +1,129 @@
+# Generated input for the evidence-report golden tests (RFC-0707).
+# examples/rulebooks/amr-template.yaml, filled as its test fills it.
+# Test values, not requirements from any standard.
+
+rulebook_version: '0.1'
+rulebook_id: site_amr_rules
+title: '4.2 (for example: Building 2 mobile robot rules, from the 2026 risk assessment)'
+issuer:
+  kind: organization
+  name: 4.2 (the integrator or the site operator)
+source_status: organization_policy
+reviewed: '2026-11-24'
+description: Operating rules for the mobile robots at one site, taken from the site's risk assessment,
+  ISO 3691-4 and the ANSI/A3 R15.08 series. Every value comes from the integrator's licensed copy of the
+  standard named in its cite.
+rules:
+- id: max_travel_speed
+  title: Maximum travel speed a program may request
+  cite:
+    text: ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause 4.2; the site's risk assessment
+    standard:
+    - ISO 3691-4:2023
+    - ANSI/A3 R15.08-2-2023
+  note: 'The highest speed the risk assessment allows in the areas where people may be present. A global
+    cap: v0.1 has no zone-scoped caps, so set it to the lowest speed any shared area allows. Speed reduction
+    near people, personnel detection and braking stay in the robot''s safety-rated controller.'
+  cap:
+    quantity: speed_m_per_s
+    max: 1.0
+- id: outside_operating_zones
+  title: Programs never send a robot outside its operating zones
+  cite:
+    text: ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause 4.2; the site layout
+    standard:
+    - ISO 3691-4:2023
+    - ANSI/A3 R15.08-2-2023
+  note: Name the areas the risk assessment keeps mobile robots out of, such as pedestrian-only areas,
+    and declare them in the manifest's declared_areas.
+  forbid_zone_entry:
+    zones:
+    - pedestrian_area
+- id: load_handling_at_stations_only
+  title: Loads are picked and placed only at designated stations
+  cite:
+    text: ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause 4.2; the site's risk assessment
+    standard:
+    - ISO 3691-4:2023
+    - ANSI/A3 R15.08-2-2023
+  note: Name the travel lanes, crossings and other areas where the risk assessment does not allow load
+    handling. pick_from and place_at count as grasp and release, so the rule covers them too.
+  forbid_primitive:
+    primitives:
+    - grasp
+    - release
+    in_zones:
+    - travel_lane
+- id: validated_programs_only
+  title: Only robot programs covered by the risk assessment run
+  cite:
+    text: ANSI/A3 R15.08-2-2023, clause 4.2; the site's risk assessment
+    standard: ANSI/A3 R15.08-2-2023
+  note: call_program is opaque to URML; over VDA 5050 it runs a vendor action. List the programs the risk
+    assessment covered.
+  forbid_primitive:
+    primitives:
+    - call_program
+    except_names:
+    - wrap_pallet
+- id: safety_outputs_untouched
+  title: Programs never write safety-related output lines
+  cite:
+    text: ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause 4.2; the site's risk assessment
+    standard:
+    - ISO 3691-4:2023
+    - ANSI/A3 R15.08-2-2023
+  note: Name the output lines the risk assessment marks safety-related, such as a door interlock or a
+    muting signal.
+  forbid_primitive:
+    primitives:
+    - set_output
+    names:
+    - door_interlock
+obligations:
+- id: risk_assessment
+  title: A current risk assessment for the mobile robot system
+  text: The site has a risk assessment that covers every route, station and task these programs use, repeated
+    whenever the layout, the fleet or the tasks change.
+  cite:
+    text: ISO 3691-4:2023 and ANSI/A3 R15.08-2-2023, clauses 4.2
+    standard:
+    - ISO 3691-4:2023
+    - ANSI/A3 R15.08-2-2023
+- id: safety_rated_functions
+  title: Personnel detection and stopping in safety-rated control
+  text: Personnel detection, speed control near people, braking and emergency stop run in the robot's
+    safety-rated hardware and software, at the performance levels the standards require, not in URML and
+    not in the fleet manager.
+  cite:
+    text: ISO 3691-4:2023 and ANSI/A3 R15.08-1-2020 (R2026), clauses 4.2
+    standard:
+    - ISO 3691-4:2023
+    - ANSI/A3 R15.08-1-2020
+- id: zones_marked_and_declared
+  title: Operating and restricted zones are marked on site and match the manifest
+  text: The zones the risk assessment defines are marked on the floor or otherwise identified, and the
+    declared_areas in each robot's manifest are drawn to match them.
+  cite:
+    text: ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause 4.2
+    standard:
+    - ISO 3691-4:2023
+    - ANSI/A3 R15.08-2-2023
+- id: system_validation
+  title: The installed system is verified and validated before use
+  text: The integrator verifies and validates the safety functions of the installed mobile robot system
+    before the site runs production programs.
+  cite:
+    text: ISO 3691-4:2023 or ANSI/A3 R15.08-2-2023, clause 4.2
+    standard:
+    - ISO 3691-4:2023
+    - ANSI/A3 R15.08-2-2023
+- id: users_trained
+  title: People who work near the robots are trained and informed
+  text: The site operator trains the people who work with or near the robots, keeps the information for
+    use current, and keeps zones clear as the risk assessment requires.
+  cite:
+    text: ANSI/A3 R15.08-3-2026 or ISO 3691-4:2023, clause 4.2
+    standard:
+    - ISO 3691-4:2023
+    - ANSI/A3 R15.08-3-2026

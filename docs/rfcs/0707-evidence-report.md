@@ -80,7 +80,7 @@ urml evidence verify report.json report.json.sig
 
 Input flags mean exactly what they mean for `urml validate`, so a deployment's evidence report uses the same files its validation does. `--as-of` is required: the report states the date it describes, and expiry checks (conformance, certification, rulebook review dates) use that date, never the clock. The command runs offline, reads only the files it is given, and sends nothing anywhere.
 
-Exit codes: `0` when the report was written and nothing is `missing` and no given program was refused; `2` when the report was written and at least one item is `missing` or one program was refused; `1` when the report could not be built (an input failed to load). The report is written in both of the first two cases. A CI job can gate on `2` without parsing the report.
+Exit codes follow `urml validate`: `0` when the report was written and nothing is `missing` and no check failed; `1` when the report was written and at least one item is `missing` or one check failed (a policy rule a manifest breaks, or, once programs are added, a refused program); `2` when an input could not be read. The report is written in both of the first two cases. A CI job can gate on the exit code without parsing the report.
 
 ### The report
 

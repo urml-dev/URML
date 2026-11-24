@@ -736,6 +736,67 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_conformance_run.set_defaults(func=cmd_conformance_run)
 
+    # ---- urml evidence (RFC-0707, Draft) ----
+    p_evidence = subparsers.add_parser(
+        "evidence",
+        help="Build an evidence report: what URML checks for one deployment, and what it cannot see.",
+        description=(
+            "Evidence reports (RFC-0707, Draft). An evidence report marks every item of a "
+            "deployment checked, declared, runtime, missing or outside. It is not a safety "
+            "assessment, a certification or a compliance determination."
+        ),
+    )
+    p_evidence_sub = p_evidence.add_subparsers(dest="evidence_command", required=True, metavar="SUBCOMMAND")
+    p_evidence_build = p_evidence_sub.add_parser(
+        "build",
+        help="Build the report for one deployment.",
+        description=(
+            "Read a deployment's manifest, envelope, policy and rulebooks and write its "
+            "evidence report as JSON. Offline and deterministic: the same files and "
+            "--as-of give the same bytes. Exit 0 when nothing is missing and no check "
+            "failed, 1 when something is, 2 when an input cannot be read."
+        ),
+    )
+    p_evidence_build.add_argument(
+        "--manifest", "-m", type=Path, required=True, metavar="PATH", help="The robot's capability manifest (YAML)."
+    )
+    p_evidence_build.add_argument(
+        "--envelope", "-e", type=Path, default=None, metavar="PATH", help="The site's safety envelope (YAML)."
+    )
+    p_evidence_build.add_argument(
+        "--profile",
+        "-p",
+        action="append",
+        default=[],
+        metavar="NAME",
+        help="Profile(s) the deployment runs (repeatable); they decide which rulebooks are in scope.",
+    )
+    p_evidence_policy = p_evidence_build.add_mutually_exclusive_group()
+    p_evidence_policy.add_argument(
+        "--policy",
+        "-P",
+        dest="policy_path",
+        type=Path,
+        default=None,
+        metavar="PATH",
+        help="Compliance policy file (YAML). If omitted, the bundled US-federal default policy.",
+    )
+    p_evidence_policy.add_argument(
+        "--no-policy", dest="no_policy", action="store_true", help="Leave the compliance policy out."
+    )
+    _add_rulebook_args(p_evidence_build)
+    p_evidence_build.add_argument(
+        "--as-of",
+        dest="as_of",
+        required=True,
+        metavar="YYYY-MM-DD",
+        help="The date the report describes. Required: a report never depends on the clock.",
+    )
+    p_evidence_build.add_argument(
+        "--out", "-o", type=Path, default=None, metavar="PATH", help="Write the report to PATH instead of stdout."
+    )
+    p_evidence_build.set_defaults(func=cmd_evidence_build)
+
     return parser
 
 
@@ -820,6 +881,53 @@ def cmd_validate(args: argparse.Namespace) -> int:
         _emit_pretty(result, program_path=args.program)
 
     return 0 if result.accepted else 1
+
+
+def cmd_evidence_build(args: argparse.Namespace) -> int:
+    """Implement `urml evidence build` (RFC-0707, Draft)."""
+    from urml_validator.evidence_report import EvidenceInputError, build_evidence_report, render_json
+
+    try:
+        as_of = date.fromisoformat(args.as_of)
+    except ValueError:
+        print(f"urml: --as-of must be a date as YYYY-MM-DD, not {args.as_of!r}", file=sys.stderr)
+        return 2
+    try:
+        manifest = _load_yaml(args.manifest, kind="manifest")
+        envelope = _load_yaml(args.envelope, kind="envelope") if args.envelope is not None else None
+        policy_arg = _resolve_policy_arg(args)
+        rulebooks, default_rulebooks = _resolve_rulebook_args(args)
+        report = build_evidence_report(
+            manifest,
+            envelope,
+            as_of=as_of,
+            policy=policy_arg,
+            rulebooks=rulebooks,
+            default_rulebooks=default_rulebooks,
+            profiles=tuple(args.profile),
+            manifest_base_dir=Path(args.manifest).parent,
+            manifest_name=Path(args.manifest).name,
+            envelope_name=Path(args.envelope).name if args.envelope is not None else None,
+            policy_name=Path(args.policy_path).name if args.policy_path is not None else None,
+            rulebook_names=[Path(p).name for p in args.rulebook_paths],
+        )
+    except (_CLILoadError, EvidenceInputError) as exc:
+        print(f"urml: {exc}", file=sys.stderr)
+        return 2
+    text = render_json(report)
+    if args.out is None:
+        sys.stdout.write(text)
+    else:
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        args.out.write_text(text, encoding="utf-8")
+    counts = report.counts
+    print(
+        f"urml: evidence report for {report.subject['robot_id']}: "
+        + ", ".join(f"{n} {status}" for status, n in counts.by_status.items())
+        + f"; {counts.failed_checks} failed checks.",
+        file=sys.stderr,
+    )
+    return 0 if counts.gaps == 0 else 1
 
 
 def _resolve_policy_arg(args: argparse.Namespace) -> Any:
