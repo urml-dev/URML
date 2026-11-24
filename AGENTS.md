@@ -118,6 +118,17 @@ The CLAUDE.md rule is "merge commit, never squash". This is the operational deta
 - **After merge, verify the edit landed on `origin/main`** before claiming the work shipped. On Windows the Bash tool mangles `git show origin/main:path` (colon plus backslash); use `git ls-tree -r origin/main -- path` and then read the blob, or use PowerShell.
 - **Never `--no-verify` or `--no-gpg-sign`.** If a hook fails, fix the underlying issue. DCO sign-off (`-s`) is mandatory on every commit.
 
+## Parallel sessions
+
+Two sessions in one checkout share one working tree. Uncommitted edits ride along with whatever branch the other session checks out, and a broad `git add -A` or `git commit -a` can put one session's work into the other's PR. This happened on 2026-11-24 (the VDA 5050 docs edits sat in the tree while CI fixes were committed on other branches).
+
+- **Every session beyond the first starts in its own worktree:** `claude -w <short-name>`. Claude Code creates `.claude/worktrees/<short-name>/` on a new branch `worktree-<short-name>`, based on `origin/main`. Resume it later with `claude -w <short-name> --resume`.
+- **Run `make install` inside the new worktree** before running tests. Each checkout has its own `.venv`; a worktree that borrows the main checkout's venv imports the main checkout's code.
+- **Gitignored files are not copied, except those listed in [`.worktreeinclude`](.worktreeinclude)** (currently `.env` files). The outreach dashboard mirror `tools/outreach.db` is not copied: regenerate it with `make outreach-refresh` if the session needs it.
+- **Rename the branch before opening a PR** if `worktree-<name>` reads badly: `git branch -m <descriptive-name>`.
+- **Commit by explicit path** even inside a worktree. It costs nothing and catches the case where two sessions ended up in the same directory anyway.
+- When the session ends, Claude Code removes a clean worktree and asks about one with work in it. Keep it until its PR is merged.
+
 ## Audit discipline
 
 `make audit` (= `python tools/scripts/refresh_audit.py`) is a read-only re-measurer:
