@@ -151,7 +151,10 @@ jobs:
     # No container: the TurtleBot 4 sim + Gazebo Harmonic stack is
     # easier to apt-install on the bare runner than to find a single
     # prebuilt image that has all of ROS 2 Jazzy + Nav2 + TB4 sim + Gz.
-    timeout-minutes: 50
+    # The apt install alone has taken 41 minutes on a slow Ubuntu mirror,
+    # and a 50-minute cap cancelled a run mid-download (2026-11-24), so
+    # leave headroom. The job is cron + manual only, never per-PR.
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -165,6 +168,8 @@ jobs:
             | sudo gpg --dearmor -o /usr/share/keyrings/ros-archive-keyring.gpg
           echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" \
             | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+          # Retry transient mirror failures instead of failing the run.
+          echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries > /dev/null
           sudo apt-get update
           # ros-base + the TB4 sim + nav stack. turtlebot4-simulator pulls
           # Gazebo Harmonic (gz-sim8) and the TB4 description/bringup.
