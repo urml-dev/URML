@@ -22,14 +22,14 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ### Added
 
-- `urml-vda5050-runtime` (`reference/vda5050-runtime`): drives AMRs and AGVs that speak VDA 5050 3.0.0 over MQTT, with no ROS. URML acts as fleet control for each vehicle; every dispatch step becomes one VDA 5050 order, and a step succeeds only when the vehicle's state reports it finished. Implements the mapping proposed in [RFC-0297](docs/rfcs/0297-vda5050-outreach.md). Tested against a simulated vehicle, with every message validated against the official VDA 5050 schemas, and over a real Mosquitto broker in the gated `vda5050-integration` workflow. Not yet tested on a vendor's vehicle and not yet on PyPI. Known gaps are in `reference/vda5050-runtime/SPEC-GAPS.md`.
+- `urml-vda5050-runtime` (`reference/vda5050-runtime`): drives AMRs and AGVs that speak VDA 5050 3.0.0 over MQTT, with no ROS. URML acts as fleet control for each vehicle; every dispatch step becomes one VDA 5050 order, and a step succeeds only when the vehicle's state reports it finished. Implements the mapping proposed in [RFC-0297](docs/rfcs/0297-vda5050-outreach.md). Tested against a simulated vehicle, with every message validated against the official VDA 5050 schemas, and over a real Mosquitto broker in the gated `vda5050-integration` workflow. Not yet tested on a vendor's vehicle and not yet on PyPI. Known gaps are in `reference/vda5050-runtime/SPEC-GAPS.md`. Wired into `release.yml` for PyPI at the family version (0.5.0); it reaches PyPI when the release workflow's next run gets past PyPI's new-project limit.
 - `examples/vda5050/`: the warehouse example run as VDA 5050 orders, with a byte-asserted recorded output.
 - [`COMMERCIAL.md`](COMMERCIAL.md#validation-services): paid fleet validation for operators and vehicle validation for AMR and AGV makers.
 - **URML-Certified** ([RFC-0705](docs/rfcs/0705-urml-certified.md)): a free conformance certification on public criteria. A third-party runtime version is certified when it passes the full conformance suite for its profiles and the Licensor reproduces that run offline from the public package. The registry gains a `certified` tier, checked by `python -m urml_conformance.registry check` (reproduction report, same fixture set, one exact public version, expiry). Conformance specification `v0.2.0` describes the tier; `TRADEMARK.md` replaces its Phase 4 stub with the policy. Certification covers conformance only, never safety or compliance. Nothing is certified yet.
 
 ## [0.5.0] - 2026-11-22
 
-First release from the new home, [`urml-dev/URML`](https://github.com/urml-dev/URML). All twenty-two packages are published to PyPI at 0.5.0, so every runtime installs with `pip` again instead of from source.
+First release from the new home, [`urml-dev/URML`](https://github.com/urml-dev/URML). All twenty-two packages were built at 0.5.0. PyPI lets a personal account create only about 4 new projects a day, so they reach PyPI in batches: 14 were live on 2026-11-24, and the rest follow as the limit allows. Until a package is on PyPI it installs from source.
 
 ### Changed: license
 
