@@ -68,6 +68,7 @@ from urml_ros2_runtime.substrate.base import (
 )
 
 from urml_iso21423_runtime import messages as m
+from urml_iso21423_runtime.broker import password_from_env
 from urml_iso21423_runtime.config import Iso21423Config
 from urml_iso21423_runtime.transport import PahoTransport, Transport, Will, _require_paho
 
@@ -141,7 +142,13 @@ class Iso21423Adapter:
                 {"states": ["LOST_CONNECTION"]},
             )
             self._t = PahoTransport(
-                self._c.broker_host, self._c.broker_port, client_id=f"urml-{self._c.requester_id}", will=will
+                self._c.broker_host,
+                self._c.broker_port,
+                client_id=f"urml-{self._c.requester_id}",
+                will=will,
+                tls=self._c.broker_tls.context() if self._c.broker_tls is not None else None,
+                username=self._c.broker_username,
+                password=password_from_env(self._c.broker_password_env),
             )
         for key in ("identity", "status", "batteryStatus", "odometry", "disconnection"):
             self._t.subscribe(self._c.robot_topic(key), self._store(key), qos=1)

@@ -18,7 +18,9 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+
+from urml_vda5050_runtime.broker import BrokerTls, check_env_name
 
 #: The actions VDA 5050 3.0.0 section 6.2.3 requires every mobile robot to support.
 MANDATORY_ACTIONS: tuple[str, ...] = ("cancelOrder", "startPause", "stopPause")
@@ -74,6 +76,22 @@ class Vda5050Config(BaseModel):
     protocol_version: str = Field("3.0.0", pattern=r"^\d+\.\d+\.\d+$")
     broker_host: str = "127.0.0.1"
     broker_port: int = Field(1883, gt=0, lt=65536)
+    broker_tls: BrokerTls | None = Field(None, description="TLS for the broker connection; see broker.py.")
+    broker_username: str | None = Field(None, min_length=1)
+    broker_password_env: str | None = Field(
+        None, description="The environment variable that holds the broker password. Never the password itself."
+    )
+
+    @field_validator("broker_password_env")
+    @classmethod
+    def _env_name(cls, value: str | None) -> str | None:
+        return check_env_name(value)
+
+    @model_validator(mode="after")
+    def _password_needs_username(self) -> Vda5050Config:
+        if self.broker_password_env is not None and self.broker_username is None:
+            raise ValueError("broker_password_env needs broker_username")
+        return self
 
     # --- route graph ------------------------------------------------------------
     map_id: str
@@ -179,4 +197,7 @@ def load_vda5050_config(path: str | Path) -> Vda5050Config:
         data = yaml.safe_load(fh) or {}
     if not isinstance(data, dict):
         raise ValueError(f"vda5050-config file {p} did not contain a YAML mapping at the top level.")
-    return Vda5050Config.model_validate(data)
+    config = Vda5050Config.model_validate(data)
+    if config.broker_tls is not None:
+        config = config.model_copy(update={"broker_tls": config.broker_tls.resolved(p.resolve().parent)})
+    return config

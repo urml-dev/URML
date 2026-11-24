@@ -17,6 +17,8 @@ from typing import Any, Literal
 import yaml
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
+from urml_iso21423_runtime.broker import BrokerTls, check_env_name
+
 #: The station actions a dock request may ask for.
 DockAction = Literal["CHARGE", "DUMP", "FILL", "LOAD", "UNLOAD", "PICK", "DROP"]
 _ENTITY_TYPE = r"^[A-Z0-9_]+$"
@@ -97,6 +99,11 @@ class Iso21423Config(BaseModel):
     # --- transport ------------------------------------------------------------
     broker_host: str = "127.0.0.1"
     broker_port: int = Field(1883, gt=0, lt=65536)
+    broker_tls: BrokerTls | None = Field(None, description="TLS for the broker connection; see broker.py.")
+    broker_username: str | None = Field(None, min_length=1)
+    broker_password_env: str | None = Field(
+        None, description="The environment variable that holds the broker password. Never the password itself."
+    )
     major_version: int = Field(1, ge=1)
 
     # --- space -----------------------------------------------------------------
@@ -120,6 +127,17 @@ class Iso21423Config(BaseModel):
     @classmethod
     def _check_uuid(cls, value: str | None) -> str | None:
         return None if value is None else _uuid(value)
+
+    @field_validator("broker_password_env")
+    @classmethod
+    def _env_name(cls, value: str | None) -> str | None:
+        return check_env_name(value)
+
+    @model_validator(mode="after")
+    def _password_needs_username(self) -> Iso21423Config:
+        if self.broker_password_env is not None and self.broker_username is None:
+            raise ValueError("broker_password_env needs broker_username")
+        return self
 
     @model_validator(mode="after")
     def _coherent(self) -> Iso21423Config:
@@ -167,4 +185,7 @@ def load_iso21423_config(path: str | Path) -> Iso21423Config:
         data = yaml.safe_load(fh) or {}
     if not isinstance(data, dict):
         raise ValueError(f"iso21423-config file {p} did not contain a YAML mapping at the top level.")
-    return Iso21423Config.model_validate(data)
+    config = Iso21423Config.model_validate(data)
+    if config.broker_tls is not None:
+        config = config.model_copy(update={"broker_tls": config.broker_tls.resolved(p.resolve().parent)})
+    return config

@@ -11,6 +11,11 @@ target_type: IMR                                    # or IMRFM, to go through a 
 target_id: 64fdf7f4-02eb-40e3-a0e6-e1f4f1ebb72b          # the robot the requests go to
 broker_host: 127.0.0.1
 broker_port: 1883
+# For a broker on another host, use TLS and credentials (see the runtime's README):
+# broker_port: 8883
+# broker_tls: {ca_file: certs/broker-ca.pem}
+# broker_username: urml-fleet
+# broker_password_env: URML_BROKER_PASSWORD
 
 ccs_id: 8615ec80-cbd2-46f1-808b-37578548aa45             # the facility's Common Coordinate System
 

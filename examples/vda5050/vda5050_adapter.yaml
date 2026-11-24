@@ -11,6 +11,11 @@ interface_name: vda5050      # topic prefix: vda5050/v3/ExampleAMR/amr-0001/...
 protocol_version: "3.0.0"
 broker_host: 127.0.0.1
 broker_port: 1883
+# For a broker on another host, use TLS and credentials (see the runtime's README):
+# broker_port: 8883
+# broker_tls: {ca_file: certs/broker-ca.pem}
+# broker_username: urml-fleet
+# broker_password_env: URML_BROKER_PASSWORD
 
 map_id: warehouse-1
 

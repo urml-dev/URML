@@ -26,8 +26,9 @@
 # See docs/security/iec-62443.md for where URML stands under IEC 62443, what
 # it contributes to the foundational requirements, and what it does not do.
 # In particular, the VDA 5050 and ISO 21423 reference runtimes connect to
-# their MQTT broker without TLS or broker authentication today, so the conduit
-# that carries their traffic must be protected by the network.
+# their MQTT broker in clear text unless broker_tls is set in their config;
+# set it (with broker credentials or a client certificate) for any broker that
+# is not on the URML host, or protect that conduit with the network.
 #
 # This file carries no values. IEC standards are copyrighted, and the target
 # level of each zone comes from the site's security risk assessment and a
@@ -152,9 +153,9 @@ obligations:
     text: >-
       Traffic between the URML host and the robot controller, its fleet
       manager or its broker is authenticated and protected to the conduit's
-      target level. Where a URML runtime connects without transport security
-      (the VDA 5050 and ISO 21423 reference runtimes use plain MQTT today),
-      the network provides it.
+      target level. The VDA 5050 and ISO 21423 reference runtimes do this
+      with broker_tls and broker credentials; where a runtime connects
+      without transport security, the network provides it.
     cite:
       text: "IEC 62443-3-3:2013 and IEC 62443-3-2:2020, clauses FILL_IN"
       standard: ["IEC 62443-3-3:2013", "IEC 62443-3-2:2020"]

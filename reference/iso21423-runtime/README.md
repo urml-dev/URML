@@ -51,6 +51,23 @@ A `move` request carries no speed limit. A step that asks for a speed runs only 
 
 The robot or fleet manager to address, the Common Coordinate System, where each URML location sits in it, the docks and the dock services are deployment facts. They go in an `iso21423_adapter.yaml`; see [`examples/iso21423/iso21423_adapter.yaml`](../../examples/iso21423/iso21423_adapter.yaml). To go through a fleet manager, set `target_type: IMRFM`, `target_id` to the fleet manager and `robot_id` to the robot.
 
+### Broker security
+
+To reach a broker that is not on this machine, give the connection TLS and credentials in the adapter config:
+
+```yaml
+broker_host: broker.site.example
+broker_port: 8883
+broker_tls:
+  ca_file: certs/broker-ca.pem       # omit to trust the system store
+  client_cert_file: certs/urml.pem   # optional: mutual TLS, give both or neither
+  client_key_file: certs/urml.key
+broker_username: urml-fleet
+broker_password_env: URML_BROKER_PASSWORD   # the variable that holds the password
+```
+
+TLS is 1.2 or newer, and the broker's certificate and host name are always checked; there is no switch to turn either off. The password is read from the named environment variable when the adapter connects and never appears in the config. Relative certificate paths resolve against the config file's folder. The adapter connects only once the broker accepts: a wrong password or a failed certificate check is a `ConnectionError` at connect, not a later timeout. Without `broker_tls`, a connection to a broker on another host still works, in clear text, with a warning. Where this fits in a site's IEC 62443 zones and conduits: [`docs/security/iec-62443.md`](../../docs/security/iec-62443.md).
+
 ## Install and run
 
 ```bash
@@ -63,6 +80,7 @@ python examples/iso21423/run_demo.py                # a warehouse program as ISO
 
 - **Hermetic suite** (`tests/`): the adapter against `SimulatedImr` on an in-memory broker that keeps retained messages. Covers every primitive, the preflight refusals, rejection reasons, timeout and cancel, disconnection through the will, a fleet manager in between, and a URML program run end to end through the validator and `URMLRuntime`.
 - **Live broker** (`tests/integration/test_live_broker.py`, `URML_ISO21423_BROKER=host:port`): adapter and simulated robot on separate `paho-mqtt` connections to a real broker; a client killed outright, with the broker publishing its will. Run against Mosquitto weekly by [`iso21423-integration.yml`](../../.github/workflows/iso21423-integration.yml).
+- **TLS broker** (`tests/integration/test_tls_broker.py`, `URML_MQTT_TLS_DIR`): the same checks over TLS as for the VDA 5050 runtime: a round trip, a wrong password, an untrusted CA and a wrong host name refused at connect, mutual TLS. Run by the same workflow.
 - **Cross-check** (`tests/integration/test_openrobops_schemas.py`, `URML_ISO21423_SCHEMA_CHECK=1`): every message the adapter and the simulated robot publish is checked against the JSON Schemas OpenRobOps publishes for ISO 21423, downloaded at a pinned commit. This shows URML's reading of the message model agrees with another implementer's reading of the same draft. It is not validation against the published standard.
 - **Not yet:** a check against the published ISO 21423:2026 text, a real robot, or a vendor's fleet manager.
 
