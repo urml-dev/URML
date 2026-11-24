@@ -6,6 +6,8 @@
 
 # URML MCP server
 
+<!-- mcp-name: io.github.urml-dev/urml -->
+
 A [Model Context Protocol](https://modelcontextprotocol.io) server that exposes URML's validate-before-actuate loop as tools any MCP-capable agent (Claude Code, Cursor, VS Code, Goose, OpenHands, and the rest of the ecosystem) can call. Design and rationale: [`docs/integrations/mcp-server-scope.md`](../../docs/integrations/mcp-server-scope.md).
 
 **The server is the safety boundary, never the model.** It exposes validation and execution and never calls an LLM. The calling agent is already a model: it emits the URML, the server checks and runs it. That keeps URML's provider-neutrality intact by construction and keeps the validator as the safety boundary.

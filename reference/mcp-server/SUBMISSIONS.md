@@ -14,38 +14,28 @@ identity, so they are drafted for the founder to run. Contact field everywhere:
 [`examples/lighthouses/distribution.yaml`](../../examples/lighthouses/distribution.yaml)
 (the `track: mcp` rows).
 
-Publishing is irreversible and outward-facing. Nothing here goes live until the
-0.2.0 core release is on PyPI.
+Publishing is irreversible and outward-facing.
 
 ---
 
-## Prerequisite: the 0.2.0 core release (blocking)
+## Prerequisite: the dependencies on PyPI
 
-The package `urml-mcp-server` depends on `urml-validator>=0.2.0`,
-`urml-llm-bridge>=0.2.0`, and `urml-ros2-runtime>=0.2.0` (the `mock` adapter
-lives in ros2-runtime). PyPI resolves those at install time, so they must be on
-the index **before** `urml-mcp-server` is uploaded. As of this writing only
-`urml-validator` and `urml-llm-bridge` are on PyPI, and both at `0.1.0`, so the
-MCP publish is gated on cutting the full 0.2.0 release first.
-
-Do that release per [`RELEASING.md`](../../RELEASING.md). `urml-mcp-server` is
-now the sixth package in that ordered flow.
+`urml-mcp-server` depends on `urml-validator`, `urml-llm-bridge` and
+`urml-ros2-runtime` at the family version, so those must be on PyPI first.
+Since 0.5.0 all three are, and `release.yml` uploads them before the server.
 
 ---
 
 ## Channel 1: PyPI (`urml-mcp-server`)
 
-First-ever publish, so the name is unclaimed. Configure a **pending** Trusted
-Publisher on TestPyPI and PyPI (owner `urml-dev`, repo `URML`, workflow
-`release.yml`) before the first upload, or use a token with the manual `twine`
-path. The build + ordered upload commands are in
-[`RELEASING.md`](../../RELEASING.md) (step-by-step, sixth in the loop).
+On PyPI since 0.5.0, published by `release.yml` with the rest of the family
+(see [`RELEASING.md`](../../RELEASING.md)).
 
 Verify from a clean venv outside the repo before real PyPI:
 
 ```bash
 urml-mcp --help          # console script resolves
-python -m pytest reference/mcp-server/tests   # 10 hermetic tool tests pass
+python -m pytest reference/mcp-server/tests   # the hermetic tool tests pass
 ```
 
 ---
@@ -57,12 +47,27 @@ python -m pytest reference/mcp-server/tests   # 10 hermetic tool tests pass
 The registry hosts no code; it points at the PyPI package, so Channel 1 must be
 live first.
 
-**Steps:**
-1. Install the `mcp-publisher` CLI.
-2. `mcp-publisher publish` against [`server.json`](server.json). GitHub login
-   verifies ownership of the `io.github.urml-dev` namespace.
-3. Confirm the schema version and field casing against the CLI at publish time;
-   the registry schema is still evolving.
+**What the registry checks:**
+- PyPI ownership: the package README, which becomes the PyPI description,
+  must contain `mcp-name: io.github.urml-dev/urml`.
+  [`README.md`](README.md) carries it in an HTML comment under the title. The
+  line first shipped in 0.5.2; earlier versions on PyPI cannot be registered.
+- The version: `server.json` names one exact PyPI version. `bump_version.py`
+  moves both of its `"version"` fields with the family, so `--check` catches
+  a stale manifest.
+- The description: at most 100 characters.
+- The namespace: `io.github.urml-dev` needs an Owner of the `urml-dev` org.
+  The browser device flow (`mcp-publisher login github`) cannot publish to an
+  org namespace at present (registry issue #1468); log in with a token that
+  has `read:org` instead, or with `login github-oidc` from a workflow.
+
+**Steps** (after the matching release is on PyPI):
+1. Get a current `mcp-publisher` from the
+   [registry releases](https://github.com/modelcontextprotocol/registry/releases).
+2. From `reference/mcp-server/`: `mcp-publisher validate`.
+3. `mcp-publisher login github --token "$(gh auth token)"`, as an org Owner.
+4. `mcp-publisher publish`, then confirm the entry at
+   `https://registry.modelcontextprotocol.io/v0/servers?search=io.github.urml-dev/urml`.
 
 ---
 
