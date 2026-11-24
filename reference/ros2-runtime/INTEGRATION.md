@@ -172,8 +172,11 @@ export LIBGL_ALWAYS_SOFTWARE=1   # only needed on a GPU-less box
 ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py \
   nav2:=true slam:=true rviz:=false world:=depot
 
-# Terminal 2 — once /navigate_to_pose is up, run the e2e:
+# Terminal 2: wait until bt_navigator is active. /navigate_to_pose
+# appears earlier, but an inactive bt_navigator rejects every goal.
+# The test itself waits up to 120 s for this, then fails.
 source /opt/ros/jazzy/setup.bash
+ros2 lifecycle get /bt_navigator   # repeat until it prints "active [3]"
 cd reference/ros2-runtime
 URML_GAZEBO_E2E=1 python3 -m pytest tests/integration/test_nav_patrol_gazebo_e2e.py -v
 ```

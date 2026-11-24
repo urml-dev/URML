@@ -60,9 +60,6 @@ _FIXTURE_NAME = "home/nav_patrol_positive"
 # running this test; the bound covers a local run started too early.
 _NAV_SERVER_TIMEOUT_S = 120.0
 
-# lifecycle_msgs/msg/State PRIMARY_STATE_ACTIVE.
-_LIFECYCLE_ACTIVE = 3
-
 
 def _wait_for_nav2(timeout_s: float) -> bool:
     """Return True once /navigate_to_pose answers and bt_navigator is active.
@@ -80,12 +77,15 @@ def _wait_for_nav2(timeout_s: float) -> bool:
 
     probe: Node = rclpy.create_node("urml_e2e_nav2_probe")
     try:
+        from lifecycle_msgs.msg import State
         from lifecycle_msgs.srv import GetState
         from nav2_msgs.action import NavigateToPose
 
+        # One shared budget: time spent waiting for the action server
+        # comes out of the time left for the lifecycle check.
         deadline = time.monotonic() + timeout_s
         client = ActionClient(probe, NavigateToPose, "/navigate_to_pose")
-        if not client.wait_for_server(timeout_sec=timeout_s):
+        if not client.wait_for_server(timeout_sec=max(0.0, deadline - time.monotonic())):
             return False
         state = probe.create_client(GetState, "/bt_navigator/get_state")
         while time.monotonic() < deadline:
@@ -93,7 +93,7 @@ def _wait_for_nav2(timeout_s: float) -> bool:
                 future = state.call_async(GetState.Request())
                 rclpy.spin_until_future_complete(probe, future, timeout_sec=5.0)
                 result = future.result()
-                if result is not None and result.current_state.id == _LIFECYCLE_ACTIVE:
+                if result is not None and result.current_state.id == State.PRIMARY_STATE_ACTIVE:
                     return True
             time.sleep(2.0)
         return False
