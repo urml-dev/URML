@@ -56,6 +56,7 @@ PACKAGE_DIRS: tuple[str, ...] = (
     "reference/opcua-runtime",
     "reference/px4-runtime",
     "reference/vda5050-runtime",
+    "reference/iso21423-runtime",
     "conformance",
     "reference/mcp-server",
     "reference/model",

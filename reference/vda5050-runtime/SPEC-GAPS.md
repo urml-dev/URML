@@ -42,4 +42,4 @@ The `order`, `factsheet` and `visualization` schemas at tag `3.0.0` contain trai
 
 ## ISO 21423:2026
 
-ISO 21423:2026 (Robotics, Industrial mobile robots, Communications and interoperability, first edition 2026-10-14) covers communication between industrial mobile robots, their fleet managers and site equipment. Its text is sold by ISO and is not publicly available, so its message definitions are unknown here and nothing is implemented against it. The adapter keeps every VDA 5050 field name in `messages.py` so that a second protocol can be added as a sibling module. Until someone works from a licensed copy, URML makes no claim of ISO 21423 support or conformance.
+ISO 21423:2026 (Robotics, Industrial mobile robots, Communications and interoperability) is implemented separately, in [`reference/iso21423-runtime/`](../iso21423-runtime/), because its request model differs from VDA 5050's orders. That runtime is built from public material based on the ISO/FDIS 21423 draft; its validation against the published standard is in progress, and it makes no conformance claim until that is done.

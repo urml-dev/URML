@@ -1,0 +1,39 @@
+# Deployment config for Iso21423Adapter, for the warehouse example robot
+# (examples/warehouse/). Fictional site and robot; the UUIDs are random.
+#
+# STATUS: the ISO 21423 runtime is built from public material based on the
+# ISO/FDIS 21423 draft. We are validating it against the published
+# ISO 21423:2026; until that is done it makes no claim of conformance.
+
+requester_id: 919aa142-9f1f-41b2-b766-45b319536ff9        # this URML adapter, as an ISO 21423 entity
+requester_type: URML
+target_type: IMR                                    # or IMRFM, to go through a fleet manager
+target_id: 64fdf7f4-02eb-40e3-a0e6-e1f4f1ebb72b          # the robot the requests go to
+broker_host: 127.0.0.1
+broker_port: 1883
+
+ccs_id: 8615ec80-cbd2-46f1-808b-37578548aa45             # the facility's Common Coordinate System
+
+# URML location name -> point in the CCS, metres.
+places:
+  charge_dock_1: { x: -4.0, y: 0.0 }
+  shelf_a3:      { x: 6.0,  y: -2.0 }
+  conveyor_a:    { x: 0.0,  y: 4.0 }
+
+# Stations the robot docks at. Picks and drops happen through a dock request.
+docks:
+  charge_dock_1: { location: charge_dock_1, dock_id: dd8cc471-1292-4e77-b182-08b5e5130ac8 }
+  shelf_a3:      { location: shelf_a3 }
+  conveyor_a:    { location: conveyor_a, dock_id: 63f8844c-bd15-4c64-8f97-1cdec6fe6fa5 }
+primary_dock: charge_dock_1
+
+# URML dock service -> the dock request's station actions. At this site,
+# docking at the charge dock means charging.
+dock_services:
+  dock: [CHARGE]
+  charge: [CHARGE]
+  park: []
+
+tolerance_radius: 0.25
+request_timeout_seconds: 300
+state_timeout_seconds: 10

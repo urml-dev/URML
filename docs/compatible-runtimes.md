@@ -46,6 +46,7 @@ hardware claim; see the [claims audit](launch/claims-audit.md).
 | [`marine-runtime`](../reference/marine-runtime/) | BlueROV2 / ArduSub (MAVLink) | The zero-ROS underwater sibling. |
 | [`opcua-runtime`](../reference/opcua-runtime/) | OPC UA Robotics (zero ROS) | Factory-floor companion spec via `asyncua`. |
 | [`vda5050-runtime`](../reference/vda5050-runtime/) | VDA 5050 AMRs / AGVs over MQTT (zero ROS) | Plays fleet control for one vehicle: steps become VDA 5050 3.0.0 orders. Tested against a simulated vehicle, locally and over a real Mosquitto broker; no vendor vehicle run yet. |
+| [`iso21423-runtime`](../reference/iso21423-runtime/) | ISO 21423 mobile robots over MQTT (zero ROS) | Sends each step as an ISO 21423 request. **Validation in progress:** built from public material based on the ISO/FDIS 21423 draft; not yet checked against the published ISO 21423:2026, and no conformance claim until it is. Tested against a simulated robot, locally and over a real broker. |
 | [`mujoco-runtime`](../reference/mujoco-runtime/) | MuJoCo simulator (zero ROS) | The purest substrate-neutrality proof: a sim with no robot, no middleware. |
 | [`isaac-runtime`](../reference/isaac-runtime/) | NVIDIA Isaac Sim / Lab | RTX-host simulator substrate. |
 | [`chrono-runtime`](../reference/chrono-runtime/) | Project Chrono (PyChrono) | High-fidelity multibody **validation**; primitive to driver-input, dynamics as evidence (RFC-0328). |
