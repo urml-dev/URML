@@ -24,6 +24,10 @@ Rewritten surfaces, per package directory:
 - `reference/validator/src/urml_validator/__init__.py`: the docstring
   `Stability: X.Y.Z.` line, a special case the release commits have
   historically updated.
+- `reference/mcp-server/server.json`: the server and package `"version"`
+  fields of the MCP registry manifest. The registry looks up exactly that
+  version on PyPI, so it has to match the published package (it was left
+  at 0.2.0 through 0.5.1).
 """
 
 from __future__ import annotations
@@ -78,6 +82,9 @@ def _version_files(root: Path) -> list[Path]:
     validator_init = root / "reference/validator/src/urml_validator/__init__.py"
     if validator_init.is_file():
         files.append(validator_init)
+    mcp_server_json = root / "reference/mcp-server/server.json"
+    if mcp_server_json.is_file():
+        files.append(mcp_server_json)
     return files
 
 
@@ -90,6 +97,8 @@ def _patterns(version: str) -> list[tuple[re.Pattern[str], str]]:
         (re.compile(rf'^(__version__(?:: str)? = "){v}(")$', re.MULTILINE), r"\g<1>{new}\g<2>"),
         (re.compile(rf"(urml-[a-z0-9-]+>=){v}\b"), r"\g<1>{new}"),
         (re.compile(rf"(Stability: ){v}(\.)"), r"\g<1>{new}\g<2>"),
+        # server.json: `"version": "X.Y.Z"` (server and package entries).
+        (re.compile(rf'("version": "){v}(")'), r"\g<1>{new}\g<2>"),
     ]
 
 
@@ -100,14 +109,19 @@ def check(root: Path, version: str) -> int:
         r'^version = "(?P<v>[\d.]+)"$'
         r'|^__version__(?:: str)? = "(?P<w>[\d.]+)"$'
         r"|urml-[a-z0-9-]+>=(?P<p>[\d.]+)"
-        r"|Stability: (?P<s>[\d.]+)\.",
+        r"|Stability: (?P<s>[\d.]+)\."
+        r'|"version": "(?P<j>[\d.]+)"',
         re.MULTILINE,
     )
     for path in _version_files(root):
         text = path.read_text(encoding="utf-8")
         for match in stale.finditer(text):
             found = (
-                match.group("v") or match.group("w") or match.group("p") or match.group("s")
+                match.group("v")
+                or match.group("w")
+                or match.group("p")
+                or match.group("s")
+                or match.group("j")
             )
             if found != version:
                 print(f"DRIFT {path.relative_to(root)}: {match.group(0).strip()}")

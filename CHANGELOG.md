@@ -20,6 +20,10 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+### Changed: MCP server
+
+- `urml-mcp-server` is ready for the official MCP Registry. Its README carries the `mcp-name: io.github.urml-dev/urml` line the registry uses to verify PyPI ownership, and `server.json` uses the 2025-12-11 schema and a description within the registry's 100-character limit. `server.json` had stayed at version 0.2.0; `tools/scripts/bump_version.py` now moves it with the family. The family is bumped in lockstep to 0.5.2 so a published version carries the ownership line; no other code changed.
+
 ## [0.5.1] - 2026-11-24
 
 `urml-conformance` 0.5.1 records adapter calls in the harness (RFC-0706, conformance spec v0.2.1) and runs from an installed wheel. The rest of the family is rebuilt at 0.5.1 in lockstep.

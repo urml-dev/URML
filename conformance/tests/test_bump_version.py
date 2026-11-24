@@ -120,3 +120,28 @@ def test_apply_is_a_noop_second_time(mini_tree: Path, monkeypatch: pytest.Monkey
     monkeypatch.setattr(mod, "PACKAGE_DIRS", ("reference/validator", "conformance"))
     assert mod.apply(mini_tree, "0.3.0", "0.4.0") == 0
     assert mod.apply(mini_tree, "0.3.0", "0.4.0") == 1  # nothing left at 0.3.0
+
+
+def test_apply_and_check_cover_the_mcp_server_json(
+    mini_tree: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """The MCP registry manifest moves with the family (it sat at 0.2.0 through 0.5.1)."""
+    mod = _load_bump()
+    monkeypatch.setattr(mod, "PACKAGE_DIRS", ("reference/validator", "conformance"))
+    server_json = mini_tree / "reference" / "mcp-server" / "server.json"
+    server_json.parent.mkdir(parents=True)
+    server_json.write_text(
+        '{\n  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",\n'
+        '  "version": "0.3.0",\n  "packages": [{"identifier": "urml-mcp-server", "version": "0.3.0"}]\n}\n',
+        encoding="utf-8",
+    )
+    assert mod.check(mini_tree, "0.3.0") == 0
+    mod.apply(mini_tree, "0.3.0", "0.4.0")
+    text = server_json.read_text("utf-8")
+    assert text.count('"version": "0.4.0"') == 2
+    assert "schemas/2025-12-11/" in text  # the schema date is not a version
+    assert mod.check(mini_tree, "0.4.0") == 0
+
+    server_json.write_text(text.replace('"version": "0.4.0",', '"version": "0.3.0",', 1), encoding="utf-8")
+    assert mod.check(mini_tree, "0.4.0") == 1
+    assert "server.json" in capsys.readouterr().out

@@ -66,7 +66,7 @@
         },
         "summary": "Produced for this listing on 2026-09-27 with the urml_validator.evidence API, by validating against the listed manifest the two committed programs for it (bench-battery and bench-hop, both accepted) and four refusal cases (a take-off to 150 m, a 15 m/s leg, a photo with no camera, a flight to an undeclared place), with the compliance policy pass off and the bundled FAA Part 107 rulebook on. Every record carries the Remote ID warning, because no deployment rulebook declares a Remote ID method. The records show the gate's verdicts on this manifest; they are not flight logs.",
         "url": "https://github.com/urml-dev/URML/blob/main/registry/evidence/ardupilot-arducopter-pixhawk/validation-records.jsonl",
-        "reverified_with": "urml-validator 0.5.1"
+        "reverified_with": "urml-validator 0.5.2"
       },
       "limits": [
         "Propellers were off on the bench. No free flight is claimed, and the two flight-test runbooks have not been flown on hardware.",
@@ -146,7 +146,7 @@
         },
         "summary": "Produced for this listing on 2026-09-27 with the urml_validator.evidence API, by validating against the listed manifest the example's two built-in programs (announce then drive 1 m, and the short patrol; both accepted) and four refusal cases (a 3 m drive in one move, picking up a cup, a take-off, a trip to an undeclared kitchen), with the compliance policy pass off. The two accepted programs carry a warning that the manifest declares no text-to-speech engine. The records show the gate's verdicts on this manifest; they are not logs from the robot.",
         "url": "https://github.com/urml-dev/URML/blob/main/registry/evidence/gopigo3-example-adapter/validation-records.jsonl",
-        "reverified_with": "urml-validator 0.5.1"
+        "reverified_with": "urml-validator 0.5.2"
       },
       "limits": [
         "The hardware runs are @slowrunner's, on their own robot, as reported in @slowrunner's public threads. The maintainers have not reproduced them on a GoPiGo3.",
@@ -225,7 +225,7 @@
         },
         "summary": "Produced for this listing on 2026-09-27 with the urml_validator.evidence API, by validating against the listed manifest and the default drone envelope the program flown in SITL (flight_only) and the hover conformance program, both accepted, and four refusal cases (a take-off to 150 m, a 25 m/s leg, a flight to an undeclared place, a grasp on a vehicle with no gripper), with the compliance policy pass off and the bundled FAA Part 107 rulebook on. Every record carries the Remote ID warning, because no deployment rulebook declares a Remote ID method. The records show the gate's verdicts on this manifest; they are not flight logs.",
         "url": "https://github.com/urml-dev/URML/blob/main/registry/evidence/px4-sitl-sih-quadrotor/validation-records.jsonl",
-        "reverified_with": "urml-validator 0.5.1"
+        "reverified_with": "urml-validator 0.5.2"
       },
       "limits": [
         "Simulation only. No PX4 hardware has flown a URML program.",
