@@ -152,8 +152,14 @@ def _diag_validation(case: FixtureCase, result: Any) -> list[str]:
     return diagnostics
 
 
-def _diag_execution(case: FixtureCase, result: Any, audit_log: list[dict[str, Any]]) -> list[str]:
-    """Compare RuntimeResult against expected_execution."""
+def _diag_execution(
+    case: FixtureCase, result: Any, audit_log: list[dict[str, Any]] | None
+) -> list[str]:
+    """Compare RuntimeResult against expected_execution.
+
+    ``audit_log`` is None when the adapter keeps no call log; the
+    audit-method check is then skipped rather than compared with nothing.
+    """
     expected = case.expected_execution
     if expected is None:
         return []
@@ -164,7 +170,7 @@ def _diag_execution(case: FixtureCase, result: Any, audit_log: list[dict[str, An
         diagnostics.append(
             f"steps_executed={result.steps_executed}, expected={expected.steps_executed}"
         )
-    if expected.audit_methods is not None:
+    if expected.audit_methods is not None and audit_log is not None:
         actual = [entry["method"] for entry in audit_log]
         if actual != expected.audit_methods:
             diagnostics.append(
@@ -332,9 +338,11 @@ class ConformanceRunner:
             diagnostics.append(f"runtime raised: {type(exc).__name__}: {exc}")
             return CaseResult(name=case.name, passed=False, diagnostics=diagnostics)
 
-        # Audit-log assertions only run against the mock (real adapters
-        # don't expose a call_log surface).
-        call_log = getattr(adapter, "call_log", [])
+        # Audit-log assertions only run against adapters that keep a
+        # call_log (the mock). A real adapter has none, so it is judged on
+        # success, steps and bindings; an empty default here would fail
+        # every real run on audit_methods.
+        call_log = getattr(adapter, "call_log", None)
         diagnostics.extend(_diag_execution(case, runtime_result, call_log))
 
         return CaseResult(

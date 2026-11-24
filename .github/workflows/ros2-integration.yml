@@ -151,7 +151,10 @@ jobs:
     # No container: the TurtleBot 4 sim + Gazebo Harmonic stack is
     # easier to apt-install on the bare runner than to find a single
     # prebuilt image that has all of ROS 2 Jazzy + Nav2 + TB4 sim + Gz.
-    timeout-minutes: 50
+    # The apt install alone has taken 41 minutes on a slow Ubuntu mirror,
+    # and a 50-minute cap cancelled a run mid-download (2026-11-24), so
+    # leave headroom. The job is cron + manual only, never per-PR.
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
 
@@ -165,6 +168,14 @@ jobs:
             | sudo gpg --dearmor -o /usr/share/keyrings/ros-archive-keyring.gpg
           echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" \
             | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+          # Retry transient mirror failures instead of failing the run.
+          echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries > /dev/null
+          # The runner's sources read their Ubuntu mirror from this list.
+          # Its regional EC2 mirror has served ~1 package / 2 s (a 658 MB
+          # install did not finish in 90 min on 2026-11-24), so pin the
+          # main Ubuntu mirrors instead.
+          printf 'http://archive.ubuntu.com/ubuntu/\tpriority:1\nhttp://azure.archive.ubuntu.com/ubuntu/\tpriority:2\n' \
+            | sudo tee /etc/apt/apt-mirrors.txt
           sudo apt-get update
           # ros-base + the TB4 sim + nav stack. turtlebot4-simulator pulls
           # Gazebo Harmonic (gz-sim8) and the TB4 description/bringup.
@@ -200,12 +211,14 @@ jobs:
           # Headless: software GL under Xvfb so Gazebo's rendering plugin
           # doesn't abort on a GPU-less runner.
           export LIBGL_ALWAYS_SOFTWARE=1
-          # Best-effort launch. `nav2:=true slam:=true` brings up Nav2 with
-          # online SLAM so no prebuilt map is needed for the flat default
-          # world. If the launch/arg names differ on the installed TB4
-          # version, the artifact upload below captures the error.
-          nohup xvfb-run -a ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py \
-            nav2:=true slam:=true rviz:=false headless:=true \
+          # `nav2:=true slam:=true` brings up Nav2 with online SLAM so no
+          # prebuilt map is needed. On Jazzy the TB4 sim is Gazebo Harmonic
+          # and ships as turtlebot4_gz_bringup (turtlebot4_ignition_bringup
+          # does not exist there). world:=depot matches the poses in
+          # tests/integration/adapter_nav_patrol.yaml. There is no headless
+          # arg; the GUI runs under xvfb with software GL.
+          nohup xvfb-run -a ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py \
+            nav2:=true slam:=true rviz:=false world:=depot \
             > "$HOME/e2e-logs/sim.log" 2>&1 &
           echo $! > "$HOME/e2e-logs/sim.pid"
           # Give the sim + Nav2 lifecycle a head start; the test itself
@@ -215,6 +228,12 @@ jobs:
       - name: Run the Gazebo end-to-end conformance test
         env:
           URML_GAZEBO_E2E: "1"
+          # Same launch_testing collection bug as rclpy-smoke: without
+          # this, pytest collects nothing and exits 4.
+          PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
+        # pipefail: without it the `| tee` below hides pytest's exit code
+        # and a run that collected or passed nothing still shows green.
+        shell: bash -eo pipefail {0}
         run: |
           . /opt/ros/jazzy/setup.sh
           cd reference/ros2-runtime
@@ -225,6 +244,8 @@ jobs:
         if: always()
         run: |
           set +e
+          # Each step is a fresh shell: load ROS or `ros2` is not found.
+          . /opt/ros/jazzy/setup.sh
           cp -r "$HOME/.ros/log" "$HOME/e2e-logs/ros-log" 2>/dev/null || true
           ros2 node list > "$HOME/e2e-logs/node-list.txt" 2>&1 || true
           ros2 action list > "$HOME/e2e-logs/action-list.txt" 2>&1 || true
