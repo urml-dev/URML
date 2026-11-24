@@ -170,6 +170,12 @@ jobs:
             | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
           # Retry transient mirror failures instead of failing the run.
           echo 'Acquire::Retries "5";' | sudo tee /etc/apt/apt.conf.d/80-retries > /dev/null
+          # The runner's sources read their Ubuntu mirror from this list.
+          # Its regional EC2 mirror has served ~1 package / 2 s (a 658 MB
+          # install did not finish in 90 min on 2026-11-24), so pin the
+          # main Ubuntu mirrors instead.
+          printf 'http://archive.ubuntu.com/ubuntu/\tpriority:1\nhttp://azure.archive.ubuntu.com/ubuntu/\tpriority:2\n' \
+            | sudo tee /etc/apt/apt-mirrors.txt
           sudo apt-get update
           # ros-base + the TB4 sim + nav stack. turtlebot4-simulator pulls
           # Gazebo Harmonic (gz-sim8) and the TB4 description/bringup.
