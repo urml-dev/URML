@@ -1,0 +1,12 @@
+# Keys whose signatures on evidence reports `urml evidence verify` trusts
+# (RFC-0707). OpenSSH allowed-signers format, Ed25519 keys only:
+#
+#   <principal> namespaces="evidence-report@urml.dev"[,valid-after="YYYYMMDD"][,valid-before="YYYYMMDD"] <type> <base64>
+#
+# Only the Licensor's keys belong here. A retired key stays, with a
+# valid-before date, so reports it signed keep verifying. Every change to
+# this file is a reviewed commit: the history is the key's record.
+#
+# No Licensor key is published yet. Until one is, `urml evidence verify`
+# reports that no key is available, and a signature cannot verify against
+# the bundled file. See docs/evidence/signing.md.

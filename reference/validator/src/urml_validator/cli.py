@@ -832,7 +832,38 @@ def build_parser() -> argparse.ArgumentParser:
             "html is one static file with no scripts."
         ),
     )
+    p_evidence_build.add_argument(
+        "--redact",
+        action="store_true",
+        help=(
+            "Write a copy fit to share outside the site: coordinates, polygons, altitude bands and "
+            "program messages removed; names, statuses and counts kept; the full report's sha256 recorded."
+        ),
+    )
     p_evidence_build.set_defaults(func=cmd_evidence_build)
+
+    p_evidence_verify = p_evidence_sub.add_parser(
+        "verify",
+        help="Verify a signed evidence report offline.",
+        description=(
+            "Verify an OpenSSH signature (ssh-keygen -Y sign, namespace evidence-report@urml.dev) over "
+            "the exact bytes of an evidence report, against the Licensor keys shipped in this package or "
+            "--allowed-signers. Offline. Exit 0 for a good signature, 1 for a bad or untrusted one, 2 "
+            "when a file cannot be read. A good signature is not a certification."
+        ),
+    )
+    p_evidence_verify.add_argument("report", type=Path, metavar="REPORT", help="The report JSON file.")
+    p_evidence_verify.add_argument(
+        "signature", type=Path, nargs="?", default=None, metavar="SIGNATURE", help="Default: REPORT.sig."
+    )
+    p_evidence_verify.add_argument(
+        "--allowed-signers",
+        type=Path,
+        default=None,
+        metavar="PATH",
+        help="An OpenSSH allowed-signers file to trust instead of the bundled Licensor keys.",
+    )
+    p_evidence_verify.set_defaults(func=cmd_evidence_verify)
 
     return parser
 
@@ -958,6 +989,10 @@ def cmd_evidence_build(args: argparse.Namespace) -> int:
     except (_CLILoadError, EvidenceInputError) as exc:
         print(f"urml: {exc}", file=sys.stderr)
         return 2
+    if args.redact:
+        from urml_validator.evidence_report import redact_report
+
+        report = redact_report(report)
     if args.report_format == "md":
         from urml_validator.evidence_render import render_markdown
 
@@ -981,6 +1016,31 @@ def cmd_evidence_build(args: argparse.Namespace) -> int:
         file=sys.stderr,
     )
     return 0 if counts.gaps == 0 else 1
+
+
+def cmd_evidence_verify(args: argparse.Namespace) -> int:
+    """Implement `urml evidence verify` (RFC-0707, Draft)."""
+    from urml_validator.evidence_sign import SignatureError, verify_report_file
+
+    signature = args.signature or args.report.with_name(args.report.name + ".sig")
+    for path, kind in ((args.report, "report"), (signature, "signature"), (args.allowed_signers, "allowed signers")):
+        if path is not None and not path.is_file():
+            print(f"urml: {kind} file not found: {path}", file=sys.stderr)
+            return 2
+    try:
+        result = verify_report_file(args.report, signature, args.allowed_signers)
+    except (SignatureError, UnicodeDecodeError) as exc:
+        print(f"urml: {exc}", file=sys.stderr)
+        return 2
+    if result.good:
+        print(
+            f"Good signature by {result.principal} ({result.fingerprint}) on the evidence report for "
+            f"{result.robot_id} as of {result.as_of}. It says the signer rebuilt and reviewed this report; "
+            "it is not a certification and not a safety or compliance determination."
+        )
+        return 0
+    print(f"Not verified: {result.reason}.", file=sys.stderr)
+    return 1
 
 
 def _load_conformance_report(path: Path | None) -> tuple[dict[str, Any] | None, str | None]:

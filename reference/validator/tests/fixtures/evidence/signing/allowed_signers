@@ -1,0 +1,4 @@
+# TEST KEYS ONLY. Generated for the evidence-report signing tests; the private keys were
+# discarded. Never trust these for a real report.
+current@test.invalid namespaces="evidence-report@urml.dev" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIRKTxIZm3swvYNcbHk+eXO8N3rPJZdeT7vFSgppV9ui
+retired@test.invalid namespaces="evidence-report@urml.dev",valid-before="20261101" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN4VWAC2OHpKWUX/AUYjpXgETdQd1tUcAulvty4khcI6

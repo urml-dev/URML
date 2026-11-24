@@ -1,0 +1,918 @@
+{
+  "as_of": "2026-11-24",
+  "by_standard": [
+    {
+      "items": {
+        "checked": [
+          "rule.us_faa_part107.altitude_400ft_agl",
+          "rule.us_faa_part107.groundspeed_100mph",
+          "rule.us_faa_part107.over_human_beings",
+          "rule.us_faa_part107.one_aircraft_per_pilot"
+        ],
+        "outside": [
+          "obligation.us_faa_part107.remote_pilot_certificate",
+          "obligation.us_faa_part107.visual_line_of_sight",
+          "obligation.us_faa_part107.night_and_twilight_lighting",
+          "obligation.us_faa_part107.controlled_airspace_authorization",
+          "obligation.us_faa_part107.flight_visibility",
+          "obligation.us_faa_part107.cloud_clearance",
+          "obligation.us_faa_part107.people_outside_declared_zones"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "14 CFR Part 107"
+    },
+    {
+      "items": {
+        "missing": [
+          "rule.us_faa_part107.remote_identification"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "14 CFR Part 89"
+    }
+  ],
+  "counts": {
+    "by_section": {
+      "conformance": {
+        "checked": 0,
+        "declared": 2,
+        "missing": 2,
+        "outside": 0,
+        "runtime": 0
+      },
+      "envelope": {
+        "checked": 6,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 6
+      },
+      "outside": {
+        "checked": 0,
+        "declared": 0,
+        "missing": 0,
+        "outside": 5,
+        "runtime": 0
+      },
+      "programs": {
+        "checked": 2,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 0
+      },
+      "provenance": {
+        "checked": 0,
+        "declared": 0,
+        "missing": 1,
+        "outside": 0,
+        "runtime": 0
+      },
+      "robot": {
+        "checked": 2,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 0
+      },
+      "rules": {
+        "checked": 4,
+        "declared": 0,
+        "missing": 1,
+        "outside": 7,
+        "runtime": 0
+      }
+    },
+    "by_status": {
+      "checked": 14,
+      "declared": 2,
+      "missing": 4,
+      "outside": 12,
+      "runtime": 6
+    },
+    "failed_checks": 1,
+    "gaps": 5
+  },
+  "format": "urml.evidence-report/0.1",
+  "inputs": {
+    "default_rulebooks": true,
+    "files": [
+      {
+        "bundled": false,
+        "digest": "sha256:2be728c3130b9a6a210fed037964bbf39901bb673c9e9c2fb8287d6428a85383",
+        "id": "arducopter_delivery_quad",
+        "name": "parcel-delivery.manifest.yaml",
+        "role": "manifest"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:35081612e6f9ddde40144f5a918c64f248a7f89d9bd8946ea04b86a5342a5c01",
+        "id": "parcel_delivery_test",
+        "name": "parcel-delivery.envelope.yaml",
+        "role": "envelope"
+      },
+      {
+        "bundled": true,
+        "digest": "sha256:281e91ec5795a8d27cf029bb641704642eb8fb9e6dbb258ebbe2879ff960c4aa",
+        "id": "urml_us_federal_default",
+        "name": null,
+        "role": "policy"
+      },
+      {
+        "bundled": true,
+        "digest": "sha256:031f6907896cf0f898826e21636fe071e8c88f2e78b3d4b7a8191b16c4d563f1",
+        "id": "us_faa_part107",
+        "name": null,
+        "role": "rulebook"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:eaa34c716aa5fea7afd850335ee302504e3968f19078ff958a8ffb031900a8ee",
+        "id": null,
+        "name": "parcel-delivery.urml.yaml",
+        "role": "program"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:5aa895e48e03f4276cc59ccf4642882e366330dd1662f0de680aca18f58c0424",
+        "id": null,
+        "name": "too-high.urml.yaml",
+        "role": "program"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:b902c8e6947bec44a3389363679d4186a0863ac5c4b23acc8d034248f3977c21",
+        "id": "example_vendor_runtime:ExampleAdapter",
+        "name": "conformance-report.json",
+        "role": "conformance_report"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:704d862df5761d12d503c2511efeea3930ff98761e38fe3d2d3560c75eee21a5",
+        "id": "example-vendor-quadrotor",
+        "name": "registry-entry.yaml",
+        "role": "registry_entry"
+      }
+    ],
+    "policy": "bundled",
+    "profiles": [
+      "drone"
+    ],
+    "validator": {
+      "name": "urml-validator",
+      "version": "VERSION"
+    }
+  },
+  "notice": "Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.",
+  "redaction": {
+    "full_report_sha256": "105e4e8ba01c31c4cf5adc6de0917f6d80931c39b7c18a912146c6c9fa34d5d3",
+    "removed": [
+      "envelope/geofence.delivery_corridor/detail/vertices",
+      "envelope/geofence.delivery_corridor/detail/min_altitude",
+      "envelope/geofence.delivery_corridor/detail/max_altitude",
+      "envelope/people_zone.footpath/detail/vertices",
+      "programs/validated.parcel-delivery/detail/issues/0/message",
+      "programs/validated.parcel-delivery/text",
+      "programs/validated.too-high/detail/issues/0/message",
+      "programs/validated.too-high/detail/issues/1/message",
+      "programs/validated.too-high/detail/issues/2/message",
+      "programs/validated.too-high/text"
+    ]
+  },
+  "sections": [
+    {
+      "id": "robot",
+      "items": [
+        {
+          "detail": {
+            "drive_type": "multirotor",
+            "evidence": null,
+            "max_velocity": 10.0
+          },
+          "id": "capability.mobility",
+          "result": null,
+          "source": {
+            "field": "mobility",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "Mobility (multirotor), up to 10 m/s. The validator refuses steps faster than this or the envelope's limit. No evidence tag: the claim's source is not recorded."
+        },
+        {
+          "detail": {
+            "evidence": null,
+            "measurement_type": "voltage"
+          },
+          "id": "capability.sensor.battery",
+          "result": null,
+          "source": {
+            "field": "perception.sensors.battery",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "Sensor battery (voltage). No evidence tag: the claim's source is not recorded."
+        }
+      ],
+      "note": null,
+      "title": "Robot"
+    },
+    {
+      "id": "provenance",
+      "items": [
+        {
+          "detail": {
+            "unchecked_rules": [
+              "critical_country_denylist",
+              "critical_final_assembly_denylist",
+              "covered_vendor_denylist",
+              "hbom_required_for_critical",
+              "attestation_floor"
+            ]
+          },
+          "id": "provenance.absent",
+          "result": null,
+          "source": {
+            "field": "provenance",
+            "input": "manifest"
+          },
+          "status": "missing",
+          "text": "The manifest declares no provenance, so no component origin is on record and the policy's provenance rules (critical_country_denylist, critical_final_assembly_denylist, covered_vendor_denylist, hbom_required_for_critical, attestation_floor) have nothing to check."
+        }
+      ],
+      "note": null,
+      "title": "Provenance"
+    },
+    {
+      "id": "envelope",
+      "items": [
+        {
+          "detail": {
+            "effective": 10.0,
+            "envelope": 10.0,
+            "manifest": 10.0,
+            "unit": "m/s"
+          },
+          "id": "limit.max_velocity",
+          "result": null,
+          "source": {
+            "field": "max_velocity",
+            "input": "envelope"
+          },
+          "status": "checked",
+          "text": "The envelope limits speed to 10 m/s. The manifest allows 10 m/s; the stricter, 10 m/s, applies."
+        },
+        {
+          "detail": {
+            "effective": 60.0,
+            "envelope": 60.0,
+            "manifest": 120.0,
+            "unit": "m"
+          },
+          "id": "limit.max_altitude",
+          "result": null,
+          "source": {
+            "field": "max_altitude",
+            "input": "envelope"
+          },
+          "status": "checked",
+          "text": "The envelope limits altitude to 60 m. The manifest allows 120 m; the stricter, 60 m, applies."
+        },
+        {
+          "detail": {
+            "effective": 1.5,
+            "envelope": 1.5,
+            "manifest": 1.5,
+            "unit": "kg"
+          },
+          "id": "limit.max_payload",
+          "result": null,
+          "source": {
+            "field": "max_payload",
+            "input": "envelope"
+          },
+          "status": "checked",
+          "text": "The envelope limits payload to 1.5 kg. The manifest allows 1.5 kg; the stricter, 1.5 kg, applies."
+        },
+        {
+          "detail": {
+            "effective": 5.0,
+            "envelope": 5.0,
+            "manifest": null,
+            "unit": "m"
+          },
+          "id": "limit.max_drop_height",
+          "result": null,
+          "source": {
+            "field": "max_drop_height",
+            "input": "envelope"
+          },
+          "status": "checked",
+          "text": "The envelope limits drop height to 5 m."
+        },
+        {
+          "detail": {
+            "frame": "agl",
+            "max_altitude": "[redacted]",
+            "min_altitude": "[redacted]",
+            "vertices": "[redacted]"
+          },
+          "id": "geofence.delivery_corridor",
+          "result": null,
+          "source": {
+            "field": "geofences.delivery_corridor",
+            "input": "envelope"
+          },
+          "status": "checked",
+          "text": "Geofence delivery_corridor (frame agl, 4 vertices). Every place a program names must lie inside a declared geofence."
+        },
+        {
+          "detail": {
+            "allow_override": false,
+            "frame": "agl",
+            "vertices": "[redacted]"
+          },
+          "id": "people_zone.footpath",
+          "result": null,
+          "source": {
+            "field": "people_occupancy_zones.footpath",
+            "input": "envelope"
+          },
+          "status": "checked",
+          "text": "People-occupancy zone footpath (frame agl). Programs may not target places inside it."
+        },
+        {
+          "detail": {
+            "allow_precipitation": false,
+            "max_wind_m_per_s": 6.0
+          },
+          "id": "weather",
+          "result": null,
+          "source": {
+            "field": "weather",
+            "input": "envelope"
+          },
+          "status": "runtime",
+          "text": "Weather limits are on record. The validator cannot see the weather; the runtime or the operator must check conditions before and during a run."
+        },
+        {
+          "detail": {
+            "action": "return_to_home",
+            "role": "command_link"
+          },
+          "id": "link_loss.0",
+          "result": null,
+          "source": {
+            "field": "link_loss_policy.0",
+            "input": "envelope"
+          },
+          "status": "runtime",
+          "text": "On losing the command_link link, the robot must return_to_home. The validator checks the policy against the declared links; acting on a loss happens at run time."
+        },
+        {
+          "detail": {},
+          "id": "runtime.start_position",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "Where the robot starts. The runtime must not start a program while the robot is outside every geofence, or inside a people-occupancy zone that does not allow an override."
+        },
+        {
+          "detail": {},
+          "id": "runtime.paths",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "The path between two checked places. The runtime must keep it inside the geofences and out of the people-occupancy zones."
+        },
+        {
+          "detail": {},
+          "id": "runtime.unstated_speed",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "The speed of a step that states none. The runtime must keep it at or below the strictest speed limit."
+        },
+        {
+          "detail": {},
+          "id": "runtime.emergency_stop",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "On an emergency stop reported by the substrate, the runtime must stop dispatching and stop every motion it commands. The emergency stop itself is a function of the machine."
+        }
+      ],
+      "note": null,
+      "title": "Envelope"
+    },
+    {
+      "id": "rules",
+      "items": [
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.51(b)",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.51#p-107.51(b)"
+            },
+            "kind": "cap",
+            "rule": {
+              "max": 121.92,
+              "quantity": "altitude_agl_m"
+            }
+          },
+          "id": "rule.us_faa_part107.altitude_400ft_agl",
+          "result": null,
+          "source": {
+            "field": "rules.altitude_400ft_agl",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "checked",
+          "text": "Maximum altitude 400 feet (121.92 m) above ground level. Checked against every program (cap)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.51(a)",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.51#p-107.51(a)"
+            },
+            "kind": "cap",
+            "rule": {
+              "max": 44.704,
+              "quantity": "speed_m_per_s"
+            }
+          },
+          "id": "rule.us_faa_part107.groundspeed_100mph",
+          "result": null,
+          "source": {
+            "field": "rules.groundspeed_100mph",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "checked",
+          "text": "Maximum groundspeed 87 knots (100 miles per hour); the stricter 44.704 m/s is used. Checked against every program (cap)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.39",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.39"
+            },
+            "kind": "forbid_over_people",
+            "rule": {
+              "unless_declared": [
+                {
+                  "allowed": [
+                    "category_1",
+                    "category_2",
+                    "category_3",
+                    "category_4"
+                  ],
+                  "cite": {
+                    "standard": "14 CFR Part 107",
+                    "text": "14 CFR 107.39(c) and Part 107 Subpart D",
+                    "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-D"
+                  },
+                  "key": "operations_over_people_category"
+                }
+              ]
+            }
+          },
+          "id": "rule.us_faa_part107.over_human_beings",
+          "result": null,
+          "source": {
+            "field": "rules.over_human_beings",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "checked",
+          "text": "No flight over human beings unless the operation meets a Subpart D category. Checked against every program (forbid_over_people)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.35",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.35"
+            },
+            "kind": "max_concurrent_aircraft",
+            "rule": {
+              "max_per_remote_pilot": 1
+            }
+          },
+          "id": "rule.us_faa_part107.one_aircraft_per_pilot",
+          "result": null,
+          "source": {
+            "field": "rules.one_aircraft_per_pilot",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "checked",
+          "text": "One unmanned aircraft at a time per remote pilot in command. Checked against every program (max_concurrent_aircraft)."
+        },
+        {
+          "detail": {
+            "allowed": [
+              "standard_remote_id",
+              "broadcast_module",
+              "faa_recognized_identification_area"
+            ],
+            "cite": {
+              "standard": [
+                "14 CFR Part 89"
+              ],
+              "text": "14 CFR 89.105, 89.110 and 89.115",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-89/subpart-B/section-89.105"
+            },
+            "declared_value": null,
+            "key": "remote_id",
+            "kind": "require_declared",
+            "rule": {
+              "allowed": [
+                "standard_remote_id",
+                "broadcast_module",
+                "faa_recognized_identification_area"
+              ],
+              "key": "remote_id"
+            }
+          },
+          "id": "rule.us_faa_part107.remote_identification",
+          "result": null,
+          "source": {
+            "field": "rules.remote_identification",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "missing",
+          "text": "Remote identification by one of the means of 14 CFR Part 89. The deployment declares no remote_id; every program is refused until it does."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.12",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.12"
+            }
+          },
+          "id": "obligation.us_faa_part107.remote_pilot_certificate",
+          "result": null,
+          "source": {
+            "field": "obligations.remote_pilot_certificate",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "outside",
+          "text": "A remote pilot certificate with a small UAS rating. The remote pilot in command holds a remote pilot certificate with a small UAS rating. Anyone else at the flight controls is under the direct supervision of that pilot, who can take direct control immediately."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.31",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.31"
+            }
+          },
+          "id": "obligation.us_faa_part107.visual_line_of_sight",
+          "result": null,
+          "source": {
+            "field": "obligations.visual_line_of_sight",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "outside",
+          "text": "Visual line of sight for the whole flight. The remote pilot in command, the person at the controls and any visual observer are able to see the aircraft throughout the flight with vision unaided by any device other than corrective lenses, and either the two pilots or a visual observer keep watching it."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.29",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.29"
+            }
+          },
+          "id": "obligation.us_faa_part107.night_and_twilight_lighting",
+          "result": null,
+          "source": {
+            "field": "obligations.night_and_twilight_lighting",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "outside",
+          "text": "Anti-collision lighting at night and in civil twilight. At night, the remote pilot in command has completed an initial knowledge test or training under 107.65 after April 6, 2021, and the aircraft shows lighted anti-collision lighting visible for at least 3 statute miles. The same lighting is required during civil twilight."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.41",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.41"
+            }
+          },
+          "id": "obligation.us_faa_part107.controlled_airspace_authorization",
+          "result": null,
+          "source": {
+            "field": "obligations.controlled_airspace_authorization",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "outside",
+          "text": "ATC authorization in controlled airspace. Operations in Class B, Class C or Class D airspace, or within the lateral boundaries of the surface area of Class E airspace designated for an airport, have prior authorization from Air Traffic Control."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.51(c)",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.51#p-107.51(c)"
+            }
+          },
+          "id": "obligation.us_faa_part107.flight_visibility",
+          "result": null,
+          "source": {
+            "field": "obligations.flight_visibility",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "outside",
+          "text": "Flight visibility of at least 3 statute miles. The minimum flight visibility, observed from the control station, is at least 3 statute miles."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.51(d)",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.51#p-107.51(d)"
+            }
+          },
+          "id": "obligation.us_faa_part107.cloud_clearance",
+          "result": null,
+          "source": {
+            "field": "obligations.cloud_clearance",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "outside",
+          "text": "At least 500 feet below and 2,000 feet horizontally from clouds. The aircraft stays at least 500 feet below clouds and at least 2,000 feet horizontally from them."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "14 CFR Part 107"
+              ],
+              "text": "14 CFR 107.39",
+              "url": "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.39"
+            }
+          },
+          "id": "obligation.us_faa_part107.people_outside_declared_zones",
+          "result": null,
+          "source": {
+            "field": "obligations.people_outside_declared_zones",
+            "input": "rulebook:us_faa_part107"
+          },
+          "status": "outside",
+          "text": "People and flight paths the validator cannot see. URML checks flight targets against the people-occupancy zones the deployment declares. People outside those zones, and the path the aircraft flies between targets, are for the remote pilot in command to watch."
+        }
+      ],
+      "note": null,
+      "title": "Rules"
+    },
+    {
+      "id": "programs",
+      "items": [
+        {
+          "detail": {
+            "accepted": true,
+            "issues": [
+              {
+                "code": "rule.declaration_missing",
+                "message": "[redacted]",
+                "rule_id": "remote_identification",
+                "rulebook_id": "us_faa_part107",
+                "severity": "warning"
+              }
+            ]
+          },
+          "id": "validated.parcel-delivery",
+          "result": "pass",
+          "source": {
+            "field": null,
+            "input": "program:parcel-delivery.urml.yaml"
+          },
+          "status": "checked",
+          "text": "Program parcel-delivery.urml.yaml is accepted. Issue codes: rule.declaration_missing."
+        },
+        {
+          "detail": {
+            "accepted": false,
+            "issues": [
+              {
+                "code": "envelope.altitude_exceeded",
+                "message": "[redacted]",
+                "severity": "error"
+              },
+              {
+                "code": "envelope.geofence_violation",
+                "message": "[redacted]",
+                "severity": "error"
+              },
+              {
+                "code": "rule.declaration_missing",
+                "message": "[redacted]",
+                "rule_id": "remote_identification",
+                "rulebook_id": "us_faa_part107",
+                "severity": "warning"
+              }
+            ]
+          },
+          "id": "validated.too-high",
+          "result": "fail",
+          "source": {
+            "field": null,
+            "input": "program:too-high.urml.yaml"
+          },
+          "status": "checked",
+          "text": "Program too-high.urml.yaml is refused. Issue codes: envelope.altitude_exceeded, envelope.geofence_violation, rule.declaration_missing."
+        }
+      ],
+      "note": null,
+      "title": "Programs"
+    },
+    {
+      "id": "conformance",
+      "items": [
+        {
+          "detail": {
+            "adapter": "example_vendor_runtime:ExampleAdapter",
+            "failed": 1,
+            "file_sha256": "77e2bb3a8f496095f9661cd78923f62369b52464c1b409bf421b21bfee3a95d3",
+            "filter": null,
+            "fixture_count": 3,
+            "fixtures_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "passed": 2,
+            "profiles": [
+              "drone"
+            ],
+            "urml_conformance_version": "0.5.0",
+            "urml_validator_version": "0.5.0"
+          },
+          "id": "conformance.run",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "conformance_report"
+          },
+          "status": "declared",
+          "text": "The conformance report says adapter example_vendor_runtime:ExampleAdapter ran 3 fixtures: 2 passed, 1 failed."
+        },
+        {
+          "detail": {
+            "failed": [
+              "drone/return_to_home_on_link_loss"
+            ]
+          },
+          "id": "conformance.failures",
+          "result": null,
+          "source": {
+            "field": "results",
+            "input": "conformance_report"
+          },
+          "status": "missing",
+          "text": "1 fixture failed: drone/return_to_home_on_link_loss."
+        },
+        {
+          "detail": {
+            "id": "example-vendor-quadrotor",
+            "profiles": [
+              "drone"
+            ],
+            "runtime": {
+              "package": "example-vendor-runtime",
+              "version": "1.2.0"
+            },
+            "status": "listed"
+          },
+          "id": "registry.entry",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "registry_entry"
+          },
+          "status": "declared",
+          "text": "Registry entry example-vendor-quadrotor (listed) lists example-vendor-runtime 1.2.0 for profiles drone, last verified 2025-07-01."
+        },
+        {
+          "detail": {
+            "certified_on": "2025-07-01",
+            "conformance_spec": "0.2.0",
+            "expires": "2026-06-30",
+            "profiles": [
+              "drone"
+            ],
+            "tier": "certified"
+          },
+          "id": "registry.tier",
+          "result": null,
+          "source": {
+            "field": "compatibility.certification",
+            "input": "registry_entry"
+          },
+          "status": "missing",
+          "text": "URML-Certified for drone expired on 2026-06-30. It certifies conformance to URML, not safety or compliance."
+        }
+      ],
+      "note": null,
+      "title": "Conformance"
+    },
+    {
+      "id": "outside",
+      "items": [
+        {
+          "detail": {},
+          "id": "outside.safety_control",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "The robot's safety-related control and its safety functions (stops, speed and separation monitoring, power and force limiting), designed and validated outside URML."
+        },
+        {
+          "detail": {},
+          "id": "outside.below_substrate",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Firmware, controllers and drivers below the substrate."
+        },
+        {
+          "detail": {},
+          "id": "outside.site",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Wiring, guarding and the physical site."
+        },
+        {
+          "detail": {},
+          "id": "outside.declarations",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Whether any declared item in this report is true."
+        },
+        {
+          "detail": {},
+          "id": "outside.unmediated",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Anything a program does through a path that does not pass through a URML runtime."
+        }
+      ],
+      "note": null,
+      "title": "Outside URML"
+    }
+  ],
+  "subject": {
+    "description": "ArduCopter multirotor with a winch and a payload latch for parcel delivery.",
+    "robot_id": "arducopter_delivery_quad"
+  }
+}

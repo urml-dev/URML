@@ -29,6 +29,7 @@ which this report prints.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from collections.abc import Callable, Mapping, Sequence
@@ -140,6 +141,13 @@ class Counts(_Strict):
     gaps: int = Field(..., description="Missing items plus failed checks. 0 means none.")
 
 
+class Redaction(_Strict):
+    """What a redacted copy left out (RFC-0707, Redaction)."""
+
+    removed: list[str] = Field(..., description="Paths of the removed values, as section/item/detail key.")
+    full_report_sha256: str = Field(..., description="sha256 (hex) of the full report's canonical JSON bytes.")
+
+
 class EvidenceReport(_Strict):
     """An evidence report (RFC-0707)."""
 
@@ -151,6 +159,7 @@ class EvidenceReport(_Strict):
     sections: list[Section]
     by_standard: list[StandardGroup]
     counts: Counts
+    redaction: Redaction | None = Field(None, description="Present only on a redacted copy.")
 
 
 # ---------------------------------------------------------------------------
@@ -1283,6 +1292,51 @@ def build_evidence_report(
     )
 
 
+#: What replaces a removed value in a redacted copy. A marker, not a hash: site
+#: coordinates are few and guessable, so a hash of one could be brute-forced back.
+REDACTED = "[redacted]"
+
+#: Detail keys that carry site geometry: coordinates, polygons and altitude bands.
+_GEOMETRY_KEYS = ("vertices", "min_altitude", "max_altitude")
+
+
+def redact_report(report: EvidenceReport) -> EvidenceReport:
+    """A copy of `report` fit to share outside the site (RFC-0707, Redaction).
+
+    Every coordinate, polygon and altitude band is replaced by a marker, and so is
+    every validator message on a program, which can quote coordinates; the issue
+    codes stay. Names, statuses, rules, cites, declarations and counts stay, so the
+    copy says as much about what was checked as the full report. The copy records
+    what it removed and the sha256 of the full report, so a recipient later shown
+    the full report can check that it is the same one.
+    """
+    if report.redaction is not None:
+        raise ValueError("the report is already redacted")
+    full_sha = hashlib.sha256(render_json(report).encode("utf-8")).hexdigest()
+    copy = report.model_copy(deep=True)
+    removed: list[str] = []
+    for section in copy.sections:
+        for item in section.items:
+            where = f"{section.id}/{item.id}"
+            for key in _GEOMETRY_KEYS:
+                if key in item.detail and item.detail[key] is not None:
+                    item.detail[key] = REDACTED
+                    removed.append(f"{where}/detail/{key}")
+            issues = item.detail.get("issues")
+            if section.id == "programs" and isinstance(issues, list):
+                for index, issue in enumerate(issues):
+                    if isinstance(issue, dict) and "message" in issue:
+                        issue["message"] = REDACTED
+                        removed.append(f"{where}/detail/issues/{index}/message")
+                name = item.source.input.partition(":")[2] or item.id
+                codes = ", ".join(dict.fromkeys(str(i.get("code")) for i in issues if isinstance(i, dict)))
+                verdict = "accepted" if item.result == "pass" else "refused"
+                item.text = f"Program {name} is {verdict}." + (f" Issue codes: {codes}." if codes else "")
+                removed.append(f"{where}/text")
+    copy.redaction = Redaction(removed=removed, full_report_sha256=full_sha)
+    return copy
+
+
 def render_json(report: EvidenceReport) -> str:
     """The report's canonical JSON: sorted keys, two-space indent, one trailing newline."""
     data = report.model_dump(mode="json")
@@ -1304,7 +1358,10 @@ __all__ = [
     "EvidenceInputError",
     "EvidenceReport",
     "Item",
+    "REDACTED",
+    "Redaction",
     "build_evidence_report",
+    "redact_report",
     "render_json",
     "report_schema",
 ]

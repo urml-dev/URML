@@ -43,6 +43,15 @@ def _subtitle(report: EvidenceReport) -> str:
     return " · ".join(parts)
 
 
+def _redaction_line(report: EvidenceReport) -> str:
+    assert report.redaction is not None
+    n = len(report.redaction.removed)
+    return (
+        f"Redacted copy: {n} value{'s' if n != 1 else ''} removed (site geometry and program messages). "
+        f"The full report's sha256 is {report.redaction.full_report_sha256}."
+    )
+
+
 def _gap_line(report: EvidenceReport) -> str:
     c = report.counts
     if c.gaps == 0:
@@ -64,6 +73,8 @@ def render_markdown(report: EvidenceReport) -> str:
     """The report as Markdown: summary, gaps, every section, by standard, inputs."""
     robot = report.subject.get("robot_id") or "robot"
     out: list[str] = [f"# Evidence report: {robot}", "", f"> {report.notice}", "", _subtitle(report), ""]
+    if report.redaction is not None:
+        out += [_redaction_line(report), ""]
 
     out += ["## Summary", "", "| Status | Items | Meaning |", "|---|---|---|"]
     for status in STATUSES:
@@ -171,6 +182,7 @@ def render_html(report: EvidenceReport) -> str:
         f"<h1>Evidence report: {_e(robot)}</h1>",
         f'<p class="notice">{_e(report.notice)}</p>',
         f'<p class="sub">{_e(_subtitle(report))}</p>',
+        *([f'<p class="note"><strong>{_e(_redaction_line(report))}</strong></p>'] if report.redaction else []),
         "<h2>Summary</h2>",
         '<div class="wrap"><table><thead><tr><th>Status</th><th>Items</th><th>Meaning</th></tr></thead><tbody>',
     ]
