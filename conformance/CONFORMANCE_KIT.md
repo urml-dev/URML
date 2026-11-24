@@ -107,6 +107,13 @@ the right move is the honest not-supported result plus a fixture subset
 that matches your robot's declared capability manifest, exactly as the
 PX4 runtime runs the flight-only subset rather than faking perception.
 
+The audit trace is recorded by the suite, not by your adapter. The
+runner wraps your adapter in a recording proxy and compares the methods
+the runtime called on it, in order, with the methods a fixture expects
+(RFC-0706). You do not implement a call log. The trace shows what the
+runtime asked the substrate to do; it does not show that the robot
+moved, which is why execution success and step counts are checked too.
+
 The JSON report (`urml.conformance-report/1`) says what ran:
 `all_passed`, the `passed` and `failed` counts, the `adapter` spec
 (`urml_ros2_runtime:MockROSAdapter` when you pass none), the

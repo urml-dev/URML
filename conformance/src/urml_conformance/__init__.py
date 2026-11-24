@@ -50,7 +50,8 @@ from urml_conformance.fixtures import (
     resolve_manifest,
     resolve_rulebook,
 )
-from urml_conformance.goal_line import RecordedCall, RecordingAdapter, run_goal_line
+from urml_conformance.goal_line import run_goal_line
+from urml_conformance.recording import RecordedCall, RecordingAdapter
 from urml_conformance.report import DEFAULT_ADAPTER, REPORT_FORMAT, CaseResult, ConformanceReport
 from urml_conformance.runner import (
     AdapterSpecError,
