@@ -30,6 +30,7 @@ formatting. The `--json` flag emits the raw `ValidationResult` so other tools
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -752,7 +753,8 @@ def build_parser() -> argparse.ArgumentParser:
         help="Build the report for one deployment.",
         description=(
             "Read a deployment's manifest, envelope, policy and rulebooks and write its "
-            "evidence report as JSON. Offline and deterministic: the same files and "
+            "evidence report as JSON, optionally validating programs and reading the runtime's "
+            "conformance report and registry entry. Offline and deterministic: the same files and "
             "--as-of give the same bytes. Exit 0 when nothing is missing and no check "
             "failed, 1 when something is, 2 when an input cannot be read."
         ),
@@ -785,6 +787,31 @@ def build_parser() -> argparse.ArgumentParser:
         "--no-policy", dest="no_policy", action="store_true", help="Leave the compliance policy out."
     )
     _add_rulebook_args(p_evidence_build)
+    p_evidence_build.add_argument(
+        "--program",
+        dest="program_paths",
+        action="append",
+        type=Path,
+        default=[],
+        metavar="PATH",
+        help="A URML program to validate against the deployment (repeatable). A refused program is a gap.",
+    )
+    p_evidence_build.add_argument(
+        "--conformance-report",
+        dest="conformance_report",
+        type=Path,
+        default=None,
+        metavar="PATH",
+        help="The runtime's urml.conformance-report/1 JSON report. Needs urml-conformance installed.",
+    )
+    p_evidence_build.add_argument(
+        "--registry-entry",
+        dest="registry_entry",
+        type=Path,
+        default=None,
+        metavar="PATH",
+        help="The runtime's URML registry entry (YAML): tier, certification and expiry. Needs urml-conformance.",
+    )
     p_evidence_build.add_argument(
         "--as-of",
         dest="as_of",
@@ -897,6 +924,7 @@ def cmd_evidence_build(args: argparse.Namespace) -> int:
         envelope = _load_yaml(args.envelope, kind="envelope") if args.envelope is not None else None
         policy_arg = _resolve_policy_arg(args)
         rulebooks, default_rulebooks = _resolve_rulebook_args(args)
+        report_data, report_sha256 = _load_conformance_report(args.conformance_report)
         report = build_evidence_report(
             manifest,
             envelope,
@@ -910,6 +938,12 @@ def cmd_evidence_build(args: argparse.Namespace) -> int:
             envelope_name=Path(args.envelope).name if args.envelope is not None else None,
             policy_name=Path(args.policy_path).name if args.policy_path is not None else None,
             rulebook_names=[Path(p).name for p in args.rulebook_paths],
+            programs=[(Path(p).name, _load_yaml(p, kind="program")) for p in args.program_paths],
+            conformance_report=report_data,
+            conformance_report_sha256=report_sha256,
+            conformance_report_name=Path(args.conformance_report).name if args.conformance_report else None,
+            registry_entry=_load_yaml(args.registry_entry, kind="registry entry") if args.registry_entry else None,
+            registry_entry_name=Path(args.registry_entry).name if args.registry_entry else None,
         )
     except (_CLILoadError, EvidenceInputError) as exc:
         print(f"urml: {exc}", file=sys.stderr)
@@ -928,6 +962,22 @@ def cmd_evidence_build(args: argparse.Namespace) -> int:
         file=sys.stderr,
     )
     return 0 if counts.gaps == 0 else 1
+
+
+def _load_conformance_report(path: Path | None) -> tuple[dict[str, Any] | None, str | None]:
+    """Read a conformance report as JSON, with the sha256 of its bytes for a registry pin."""
+    if path is None:
+        return None, None
+    if not path.is_file():
+        raise _CLILoadError(f"conformance report file not found: {path}")
+    raw = path.read_bytes()
+    try:
+        data = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise _CLILoadError(f"conformance report {path} is not JSON: {exc}") from exc
+    if not isinstance(data, dict):
+        raise _CLILoadError(f"conformance report {path} did not contain a JSON object.")
+    return data, hashlib.sha256(raw).hexdigest()
 
 
 def _resolve_policy_arg(args: argparse.Namespace) -> Any:

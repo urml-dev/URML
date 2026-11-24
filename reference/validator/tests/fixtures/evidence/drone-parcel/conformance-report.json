@@ -1,0 +1,20 @@
+{
+  "format": "urml.conformance-report/1",
+  "adapter": "urml_ros2_runtime:MockROSAdapter",
+  "urml_conformance_version": "0.5.1",
+  "urml_validator_version": "0.5.1",
+  "fixture_count": 1,
+  "fixtures_sha256": "9769e21aab835ea73c879f8a0ec269da57752cef3dc882271d27236ee3dc6d99",
+  "filter": "flight_only",
+  "profiles": null,
+  "all_passed": true,
+  "passed": 1,
+  "failed": 0,
+  "results": [
+    {
+      "name": "drone/flight_only_positive",
+      "passed": true,
+      "diagnostics": []
+    }
+  ]
+}

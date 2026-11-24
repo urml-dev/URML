@@ -68,7 +68,7 @@ urml evidence build --manifest robot.manifest.yaml \
                     [--policy PATH | --no-policy] \
                     [--rulebook PATH]... [--no-default-rulebooks] \
                     [--program PATH]... \
-                    [--conformance-report PATH] \
+                    [--conformance-report PATH] [--registry-entry PATH] \
                     --as-of 2026-11-24 \
                     [--redact] \
                     [--format json|md|html] [--out PATH]
@@ -100,7 +100,7 @@ The JSON report has these sections, in this order. Each section is a list of ite
 
 7. **Programs.** When `--program` is given, one item per program: accepted or refused, and every issue the validator raised, with its code and the rule or limit behind it. Without programs, the section says none were given; the rest of the report stands without it.
 
-8. **Conformance.** When `--conformance-report` is given: the runtime package and exact version, the report's sha256, the profiles covered, and the registry tier (`self-reported` or `certified`, [RFC-0705](0705-urml-certified.md)) with its expiry against `--as-of`. A report from the mock adapter is shown and marked as such.
+8. **Conformance.** When `--conformance-report` is given: the adapter it ran against, the fixture count and set, passes and failures. A run against the hermetic mock adapter, a filtered run, a failed fixture and a deployment profile the run did not select are each `missing`. When `--registry-entry` is given: the runtime package and exact version, the registry tier (`self_reported` or `certified`, [RFC-0705](0705-urml-certified.md)), a certification's expiry against `--as-of`, whether the entry pins the given report's sha256, and the profiles its claim covers. Both read through the `urml-conformance` package, so the evidence report applies the registry's own rules rather than a copy of them.
 
 9. **Outside URML.** Always present, always the same opening items, whatever the inputs:
    - the robot's safety-related control and its safety functions (stops, monitoring, limiting), designed and validated outside URML;

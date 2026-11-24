@@ -117,6 +117,13 @@
   ],
   "counts": {
     "by_section": {
+      "conformance": {
+        "checked": 0,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 0
+      },
       "envelope": {
         "checked": 2,
         "declared": 0,
@@ -129,6 +136,13 @@
         "declared": 0,
         "missing": 0,
         "outside": 5,
+        "runtime": 0
+      },
+      "programs": {
+        "checked": 0,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
         "runtime": 0
       },
       "provenance": {
@@ -296,6 +310,7 @@
           "text": "Opaque program teach_mode_jog. The validator checks a call to it against its declared arguments; what the program does inside is the robot's own code, which URML does not see."
         }
       ],
+      "note": null,
       "title": "Robot"
     },
     {
@@ -456,6 +471,7 @@
           "text": "Policy rule attestation_floor: 1 finding (warning). Self-declared provenance accepted in v0.1 but flagged. v0.2 will promote this to an error; deployments should arrange third-party attestation now."
         }
       ],
+      "note": null,
       "title": "Provenance"
     },
     {
@@ -549,6 +565,7 @@
           "text": "On an emergency stop reported by the substrate, the runtime must stop dispatching and stop every motion it commands. The emergency stop itself is a function of the machine."
         }
       ],
+      "note": null,
       "title": "Envelope"
     },
     {
@@ -1017,7 +1034,20 @@
           "text": "The declarations match the validation records. The operator keeps the deployment rulebook's declarations in line with the current validation records, and updates them when the safety functions or their validation change."
         }
       ],
+      "note": null,
       "title": "Rules"
+    },
+    {
+      "id": "programs",
+      "items": [],
+      "note": "No program was given, so this report judges none.",
+      "title": "Programs"
+    },
+    {
+      "id": "conformance",
+      "items": [],
+      "note": "No conformance report or registry entry was given.",
+      "title": "Conformance"
     },
     {
       "id": "outside",
@@ -1078,6 +1108,7 @@
           "text": "Anything a program does through a path that does not pass through a URML runtime."
         }
       ],
+      "note": null,
       "title": "Outside URML"
     }
   ],

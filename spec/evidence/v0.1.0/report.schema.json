@@ -84,7 +84,10 @@
             "manifest",
             "envelope",
             "policy",
-            "rulebook"
+            "rulebook",
+            "program",
+            "conformance_report",
+            "registry_entry"
           ],
           "title": "Role",
           "type": "string"
@@ -247,6 +250,19 @@
           },
           "title": "Items",
           "type": "array"
+        },
+        "note": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Why a section has no items, when it has none.",
+          "title": "Note"
         },
         "title": {
           "title": "Title",

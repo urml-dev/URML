@@ -1,7 +1,11 @@
-description: The parcel-delivery drone example under the bundled 14 CFR Part 107 rulebook.
+description: The parcel-delivery drone example under the bundled 14 CFR Part 107 rulebook,
+  with a conformance report from the hermetic mock adapter.
 as_of: '2026-11-24'
 profiles:
 - drone
 manifest: ../../../../../../examples/drone/parcel-delivery.manifest.yaml
 envelope: ../../../../../../examples/drone/parcel-delivery.envelope.yaml
 rulebooks: []
+programs:
+- ../../../../../../examples/drone/parcel-delivery.urml.yaml
+conformance_report: conformance-report.json

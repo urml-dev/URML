@@ -23,6 +23,13 @@
   ],
   "counts": {
     "by_section": {
+      "conformance": {
+        "checked": 0,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 0
+      },
       "envelope": {
         "checked": 2,
         "declared": 0,
@@ -35,6 +42,13 @@
         "declared": 0,
         "missing": 0,
         "outside": 5,
+        "runtime": 0
+      },
+      "programs": {
+        "checked": 0,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
         "runtime": 0
       },
       "provenance": {
@@ -155,6 +169,7 @@
           "text": "Camera oakd_rgb. Capture steps must name a declared camera. No evidence tag: the claim's source is not recorded."
         }
       ],
+      "note": null,
       "title": "Robot"
     },
     {
@@ -298,6 +313,7 @@
           "text": "Policy rule attestation_floor: 1 finding (warning). Self-declared provenance accepted in v0.1 but flagged. v0.2 will promote this to an error; deployments should arrange third-party attestation now."
         }
       ],
+      "note": null,
       "title": "Provenance"
     },
     {
@@ -391,6 +407,7 @@
           "text": "On an emergency stop reported by the substrate, the runtime must stop dispatching and stop every motion it commands. The emergency stop itself is a function of the machine."
         }
       ],
+      "note": null,
       "title": "Envelope"
     },
     {
@@ -603,7 +620,20 @@
           "text": "The people the robot serves are informed and instructed. The people who live or work with the robot, and their carers, receive the information for use, including how to stop the robot and what it must not be asked to do."
         }
       ],
+      "note": null,
       "title": "Rules"
+    },
+    {
+      "id": "programs",
+      "items": [],
+      "note": "No program was given, so this report judges none.",
+      "title": "Programs"
+    },
+    {
+      "id": "conformance",
+      "items": [],
+      "note": "No conformance report or registry entry was given.",
+      "title": "Conformance"
     },
     {
       "id": "outside",
@@ -664,6 +694,7 @@
           "text": "Anything a program does through a path that does not pass through a URML runtime."
         }
       ],
+      "note": null,
       "title": "Outside URML"
     }
   ],

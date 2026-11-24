@@ -1,0 +1,13 @@
+description: 'The parcel drone with a FICTIONAL vendor runtime: certified, expired,
+  one failing fixture, and one refused program.'
+as_of: '2026-11-24'
+profiles:
+- drone
+manifest: ../../../../../../examples/drone/parcel-delivery.manifest.yaml
+envelope: ../../../../../../examples/drone/parcel-delivery.envelope.yaml
+rulebooks: []
+programs:
+- ../../../../../../examples/drone/parcel-delivery.urml.yaml
+- too-high.urml.yaml
+conformance_report: conformance-report.json
+registry_entry: registry-entry.yaml

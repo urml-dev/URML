@@ -132,6 +132,13 @@
   ],
   "counts": {
     "by_section": {
+      "conformance": {
+        "checked": 0,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 0
+      },
       "envelope": {
         "checked": 5,
         "declared": 0,
@@ -144,6 +151,13 @@
         "declared": 0,
         "missing": 0,
         "outside": 5,
+        "runtime": 0
+      },
+      "programs": {
+        "checked": 1,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
         "runtime": 0
       },
       "provenance": {
@@ -169,7 +183,7 @@
       }
     },
     "by_status": {
-      "checked": 20,
+      "checked": 21,
       "declared": 10,
       "missing": 0,
       "outside": 15,
@@ -223,6 +237,13 @@
         "id": "cell_7_safety_declarations",
         "name": "declarations.yaml",
         "role": "rulebook"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:ea3d21520cfe0bffac6a8218b725bee0f33fc3c8cc48a0fa1194ad483e5a8364",
+        "id": null,
+        "name": "pick-to-conveyor.urml.yaml",
+        "role": "program"
       }
     ],
     "policy": "bundled",
@@ -313,6 +334,7 @@
           "text": "Sensor battery (voltage). No evidence tag: the claim's source is not recorded."
         }
       ],
+      "note": null,
       "title": "Robot"
     },
     {
@@ -490,6 +512,7 @@
           "text": "Policy rule attestation_floor: 1 finding (warning). Self-declared provenance accepted in v0.1 but flagged. v0.2 will promote this to an error; deployments should arrange third-party attestation now."
         }
       ],
+      "note": null,
       "title": "Provenance"
     },
     {
@@ -653,6 +676,7 @@
           "text": "On an emergency stop reported by the substrate, the runtime must stop dispatching and stop every motion it commands. The emergency stop itself is a function of the machine."
         }
       ],
+      "note": null,
       "title": "Envelope"
     },
     {
@@ -1155,7 +1179,42 @@
           "text": "The declarations match the validation records. The operator keeps the deployment rulebook's declarations in line with the current validation records, and updates them when the safety functions or their validation change."
         }
       ],
+      "note": null,
       "title": "Rules"
+    },
+    {
+      "id": "programs",
+      "items": [
+        {
+          "detail": {
+            "accepted": true,
+            "issues": [
+              {
+                "code": "policy.attestation_insufficient",
+                "message": "Self-declared provenance accepted in v0.1 but flagged. v0.2 will promote this to an error; deployments should arrange third-party attestation now.",
+                "rule_id": "attestation_floor",
+                "severity": "warning"
+              }
+            ]
+          },
+          "id": "validated.pick-to-conveyor",
+          "result": "pass",
+          "source": {
+            "field": null,
+            "input": "program:pick-to-conveyor.urml.yaml"
+          },
+          "status": "checked",
+          "text": "Program pick-to-conveyor.urml.yaml is accepted. 1 warning: policy.attestation_insufficient."
+        }
+      ],
+      "note": null,
+      "title": "Programs"
+    },
+    {
+      "id": "conformance",
+      "items": [],
+      "note": "No conformance report or registry entry was given.",
+      "title": "Conformance"
     },
     {
       "id": "outside",
@@ -1216,6 +1275,7 @@
           "text": "Anything a program does through a path that does not pass through a URML runtime."
         }
       ],
+      "note": null,
       "title": "Outside URML"
     }
   ],

@@ -1,0 +1,9 @@
+# A program the parcel drone's envelope refuses: the waypoint is above its
+# 60 m ceiling. Test input for the evidence report's Programs section.
+profile: drone
+behavior:
+  type: sequence
+  steps:
+    - take_off: {altitude: 20.0}
+    - move_to: {pose: {x: 50.0, y: 40.0, z: 80.0}, frame: agl}
+    - land: {}

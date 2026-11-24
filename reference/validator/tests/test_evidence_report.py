@@ -10,6 +10,7 @@ tests/test_evidence_report.py`, then read the diff before committing it.
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import os
 from datetime import date
@@ -68,6 +69,10 @@ def _build(name: str) -> EvidenceReport:
     folder, sc = _scenario(name)
     manifest_path = (folder / sc["manifest"]).resolve()
     envelope_path = (folder / sc["envelope"]).resolve() if sc["envelope"] else None
+    report, report_sha = None, None
+    if sc.get("conformance_report"):
+        raw = (folder / sc["conformance_report"]).read_bytes()
+        report, report_sha = json.loads(raw), hashlib.sha256(raw).hexdigest()
     return build_evidence_report(
         _yaml(manifest_path),
         _yaml(envelope_path) if envelope_path is not None else None,
@@ -78,6 +83,12 @@ def _build(name: str) -> EvidenceReport:
         manifest_name=manifest_path.name,
         envelope_name=envelope_path.name if envelope_path is not None else None,
         rulebook_names=[Path(rb).name for rb in sc["rulebooks"]],
+        programs=[(Path(p).name, _yaml(folder / p)) for p in sc.get("programs", [])],
+        conformance_report=report,
+        conformance_report_sha256=report_sha,
+        conformance_report_name=sc.get("conformance_report"),
+        registry_entry=_yaml(folder / sc["registry_entry"]) if sc.get("registry_entry") else None,
+        registry_entry_name=sc.get("registry_entry"),
     )
 
 
@@ -90,6 +101,12 @@ def _cli_args(name: str) -> list[str]:
         args += ["--profile", profile]
     for rb in sc["rulebooks"]:
         args += ["--rulebook", str(folder / rb)]
+    for program in sc.get("programs", []):
+        args += ["--program", str(folder / program)]
+    if sc.get("conformance_report"):
+        args += ["--conformance-report", str(folder / sc["conformance_report"])]
+    if sc.get("registry_entry"):
+        args += ["--registry-entry", str(folder / sc["registry_entry"])]
     return args
 
 
@@ -145,7 +162,15 @@ def test_the_report_carries_no_local_path(name: str) -> None:
 def test_every_report_has_the_notice_the_sections_and_the_fixed_blind_spots(name: str) -> None:
     report = _build(name)
     assert report.notice == NOTICE
-    assert [s.id for s in report.sections] == ["robot", "provenance", "envelope", "rules", "outside"]
+    assert [s.id for s in report.sections] == [
+        "robot",
+        "provenance",
+        "envelope",
+        "rules",
+        "programs",
+        "conformance",
+        "outside",
+    ]
     outside = report.sections[-1]
     assert [i.id for i in outside.items] == FIXED_OUTSIDE
     assert all(i.status == "outside" for i in outside.items)
@@ -363,3 +388,131 @@ def test_a_rulebook_without_the_field_still_loads() -> None:
     for entry in [*book["rules"], *book["obligations"]]:
         entry["cite"].pop("standard", None)
     Rulebook.model_validate(book)
+
+
+# ----- step 2: programs and conformance -----
+
+
+def _vendor(**changes: Any) -> EvidenceReport:
+    """The drone-vendor scenario, with the registry entry or report changed."""
+    folder, sc = _scenario("drone-vendor")
+    entry = _yaml(folder / sc["registry_entry"])
+    raw = (folder / sc["conformance_report"]).read_bytes()
+    report = json.loads(raw)
+    sha = hashlib.sha256(raw).hexdigest()
+    if "entry" in changes:
+        changes["entry"](entry)
+    if "report" in changes:
+        changes["report"](report)
+        sha = hashlib.sha256(json.dumps(report).encode()).hexdigest()
+    return build_evidence_report(
+        _yaml((folder / sc["manifest"]).resolve()),
+        _yaml((folder / sc["envelope"]).resolve()),
+        as_of=changes.get("as_of", date(2026, 11, 24)),
+        profiles=changes.get("profiles", ["drone"]),
+        conformance_report=report,
+        conformance_report_sha256=sha,
+        registry_entry=entry,
+    )
+
+
+def test_without_programs_or_conformance_the_sections_say_so() -> None:
+    report = _build("home-helper")
+    sections = {s.id: s for s in report.sections}
+    assert sections["programs"].items == [] and sections["programs"].note
+    assert sections["conformance"].items == [] and sections["conformance"].note
+
+
+def test_the_vendor_scenario_lists_its_gaps() -> None:
+    report = _build("drone-vendor")
+    items = _items(report)
+    assert sorted(i for i, item in items.items() if item.status == "missing") == [
+        "conformance.failures",
+        "provenance.absent",
+        "registry.tier",
+        "rule.us_faa_part107.remote_identification",
+    ]
+    assert [i for i, item in items.items() if item.result == "fail"] == ["validated.too-high"]
+    codes = [issue["code"] for issue in items["validated.too-high"].detail["issues"]]
+    assert "envelope.altitude_exceeded" in codes
+    assert items["validated.parcel-delivery"].result == "pass"
+    assert report.counts.gaps == 5
+
+
+def test_a_mock_or_filtered_conformance_run_is_a_gap() -> None:
+    items = _items(_build("drone-parcel"))
+    assert items["conformance.adapter"].status == "missing"
+    assert items["conformance.filter"].status == "missing"
+    assert items["conformance.run"].status == "declared"
+
+
+def test_a_certification_in_force_is_declared_not_a_gap() -> None:
+    items = _items(_vendor(as_of=date(2026, 1, 15)))
+    assert items["registry.tier"].status == "declared"
+    assert "until 2026-06-30" in items["registry.tier"].text
+    assert "not safety or compliance" in items["registry.tier"].text
+
+
+def test_a_self_reported_entry_says_nobody_reproduced_it() -> None:
+    def self_reported(entry: dict[str, Any]) -> None:
+        entry["compatibility"]["tier"] = "self_reported"
+        del entry["compatibility"]["certification"]
+
+    items = _items(_vendor(entry=self_reported))
+    assert items["registry.tier"].status == "declared"
+    assert "nobody else has reproduced it" in items["registry.tier"].text
+
+
+def test_a_report_the_entry_does_not_pin_is_a_gap() -> None:
+    def tamper(report: dict[str, Any]) -> None:
+        report["fixture_count"] = 4
+
+    items = _items(_vendor(report=tamper))
+    assert items["registry.report_pin"].status == "missing"
+
+
+def test_a_withdrawn_entry_is_a_gap() -> None:
+    def withdraw(entry: dict[str, Any]) -> None:
+        entry["status"] = "withdrawn"
+
+    assert _items(_vendor(entry=withdraw))["registry.withdrawn"].status == "missing"
+
+
+def test_a_profile_the_claims_do_not_cover_is_a_gap() -> None:
+    items = _items(_vendor(profiles=["drone", "warehouse"]))
+    assert items["conformance.profile.warehouse"].status == "missing"
+    assert items["registry.profile.warehouse"].status == "missing"
+    assert "conformance.profile.drone" not in items
+
+
+def test_a_conformance_report_that_contradicts_itself_is_an_input_error() -> None:
+    def lie(report: dict[str, Any]) -> None:
+        report["passed"] = 3
+
+    with pytest.raises(EvidenceInputError):
+        _vendor(report=lie)
+
+
+def test_two_programs_with_one_name_get_distinct_ids() -> None:
+    folder, sc = _scenario("drone-vendor")
+    program = _yaml(folder / "too-high.urml.yaml")
+    report = build_evidence_report(
+        _yaml((folder / sc["manifest"]).resolve()),
+        _yaml((folder / sc["envelope"]).resolve()),
+        as_of=date(2026, 11, 24),
+        profiles=["drone"],
+        programs=[("a/too-high.urml.yaml", program), ("b/too-high.urml.yaml", program)],
+    )
+    assert [i.id for i in report.sections[4].items] == ["validated.too-high", "validated.too-high-2"]
+
+
+def test_cli_reads_programs_conformance_and_registry(capsys: pytest.CaptureFixture[str]) -> None:
+    assert main(_cli_args("drone-vendor")) == 1
+    out = capsys.readouterr().out
+    assert _golden_form(out) == (FIXTURES / "drone-vendor" / "expected.json").read_text(encoding="utf-8")
+
+
+def test_cli_exits_2_on_a_conformance_report_that_is_not_json(tmp_path: Path) -> None:
+    bad = tmp_path / "report.json"
+    bad.write_text("not json", encoding="utf-8")
+    assert main([*_cli_args("home-helper"), "--conformance-report", str(bad)]) == 2
