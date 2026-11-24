@@ -48,7 +48,13 @@ Every item carries exactly one status.
 
 ## Not yet in this version
 
-Redaction and signatures are later steps of RFC-0707's implementation plan.
+## Redaction
+
+A redacted copy carries a `redaction` block: `removed`, the paths of the values it removed, and `full_report_sha256`, the sha256 of the full report's canonical JSON. A producer replaces every geofence and zone vertex list, every altitude band and every validator message on a program with the marker `[redacted]`, never with a hash of the value. Everything else stays, so the copy's statuses, results, counts and by-standard groups equal the full report's.
+
+## Signatures
+
+A signed report is the JSON file plus an OpenSSH signature of its exact bytes (SSHSIG, namespace `evidence-report@urml.dev`, Ed25519 key, plain or FIDO). A verifier accepts it only from a key in its allowed-signers file that is valid on the report's `as_of` date. See [`docs/evidence/signing.md`](../../docs/evidence/signing.md).
 
 ## Human forms
 

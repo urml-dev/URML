@@ -143,10 +143,10 @@ The field changes no validation result. It exists so that two rulebooks naming o
 
 A report names locations, zones, geofences and their coordinates: the layout of a site, which an operator may not want to hand to a buyer or an insurer. `--redact` writes a report fit to share outside the site. It is one flag with one behavior, not a menu:
 
-- every coordinate, polygon, altitude band and frame transform is removed, and each removed value is replaced by its sha256;
+- every coordinate, polygon, altitude band and frame transform is removed and replaced by the marker `[redacted]`, and so is every validator message on a program, since those can quote coordinates (the issue codes stay). Step 4 changed this from "replaced by its sha256": site coordinates are few and guessable, so a hash of one value could be brute-forced back to the value, and the full report's hash already lets a recipient match the two copies;
 - names (of locations, zones, rules, capabilities) stay, because without them the rules cannot be read;
 - every status, rule, cite, declaration and count stays, so the redacted report says as much about what was checked as the full one;
-- the report records `redacted: true`, the list of field paths it redacted, and the sha256 of the full report built from the same inputs.
+- the report carries a `redaction` block: the paths it removed and the sha256 of the full report built from the same inputs.
 
 Redaction is deterministic like the rest of the report. A recipient who is later shown the full report, under whatever agreement the parties have, can check that it matches the hash the redacted one carries.
 
@@ -154,13 +154,13 @@ Redaction is deterministic like the rest of the report. A recipient who is later
 
 Anyone can build an evidence report, and a report anyone builds is trusted by reproduction, not by signature. A report the Licensor has reproduced and reviewed, as part of the paid validation services, is also signed, so that the recipient can tell it came from the Licensor without rerunning it.
 
-- The signature is a detached Ed25519 signature over the exact bytes of the JSON report, in a file next to it (`report.json.sig`). The human forms are not signed; they are renderings of the JSON.
+- The signature is an OpenSSH signature (the SSHSIG format, made by `ssh-keygen -Y sign -n evidence-report@urml.dev`) with an Ed25519 key, plain or FIDO hardware-backed, over the exact bytes of the JSON report, in a file next to it (`report.json.sig`). The human forms are not signed; they are renderings of the JSON.
 - The Licensor's public key is committed to this repository and published on urml.dev. Key rotation is recorded in the repository, with the old key kept so old signatures still verify.
-- `urml evidence verify report.json report.json.sig` checks the signature offline, against the keys in the installed package. No network, no service, no account.
+- `urml evidence verify report.json report.json.sig` checks the signature offline, against the keys in the installed package (an OpenSSH allowed-signers file). Verification is pure Python in the validator: no OpenSSH install, no network, no service, no account. A key's `valid-after` and `valid-before` dates are judged against the report's `as_of` date, so a retired key keeps verifying the reports it signed.
 - A signature means one thing: the Licensor rebuilt this report from inputs with these hashes and reviewed it. It is not a certification and does not say the robot is safe or compliant. The signed report's first line says so, like every other report.
 - Redacted and full reports are signed separately; each carries its own signature.
 
-The private key is held by the Licensor on a hardware token and never enters CI. The choice of tool (OpenSSH signatures, minisign, or a small Ed25519 implementation in the validator) is an implementation detail, decided in step 4 of the plan, as long as verification needs nothing but the package.
+The private key is held by the Licensor on a hardware token and never enters CI. Step 4 chose OpenSSH signatures because the standard tool already signs with hardware-backed keys, so no URML signing tool exists to trust or maintain; [`docs/evidence/signing.md`](../evidence/signing.md) has the procedure.
 
 ### What actually ran is a second report
 

@@ -237,6 +237,31 @@
       "title": "ItemSource",
       "type": "object"
     },
+    "Redaction": {
+      "additionalProperties": false,
+      "description": "What a redacted copy left out (RFC-0707, Redaction).",
+      "properties": {
+        "full_report_sha256": {
+          "description": "sha256 (hex) of the full report's canonical JSON bytes.",
+          "title": "Full Report Sha256",
+          "type": "string"
+        },
+        "removed": {
+          "description": "Paths of the removed values, as section/item/detail key.",
+          "items": {
+            "type": "string"
+          },
+          "title": "Removed",
+          "type": "array"
+        }
+      },
+      "required": [
+        "removed",
+        "full_report_sha256"
+      ],
+      "title": "Redaction",
+      "type": "object"
+    },
     "Section": {
       "additionalProperties": false,
       "properties": {
@@ -347,6 +372,18 @@
       "default": "Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.",
       "title": "Notice",
       "type": "string"
+    },
+    "redaction": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Redaction"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Present only on a redacted copy."
     },
     "sections": {
       "items": {

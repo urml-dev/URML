@@ -256,6 +256,7 @@
     }
   },
   "notice": "Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.",
+  "redaction": null,
   "sections": [
     {
       "id": "robot",
