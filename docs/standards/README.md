@@ -145,7 +145,7 @@ URML is never a safety function, a security control or a certifier for any docum
 - **Who needs it.** Asset owners (2-1, 3-2), integrators (3-3), and makers of control products (4-1, 4-2).
 - **How to achieve it.** Model the site as zones and conduits; set target levels from a security risk assessment; meet the system and component requirements; for products, develop under a 4-1 lifecycle.
 - **From whom.** Text: IEC or ISA (identical ANSI/ISA editions). Certification: the ISASecure schemes of the ISA Security Compliance Institute (SDLA for the 4-1 development process, SSA for systems against 3-3, CSA for components against 4-2), the IECEE scheme, and certification bodies.
-- **What URML gives you.** [`cybersecurity-template.yaml`](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/cybersecurity-template.yaml) and [a position page](https://github.com/urml-dev/URML/blob/main/docs/security/iec-62443.md) that maps URML against the foundational requirements and states its gaps. URML is not a security control and claims no SL.
+- **What URML gives you.** [`cybersecurity-template.yaml`](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/cybersecurity-template.yaml) and [a position page](https://github.com/urml-dev/URML/blob/main/docs/security/iec-62443.md) that maps URML against the foundational requirements and states its gaps. The VDA 5050 and ISO 21423 runtimes can protect their broker conduit with TLS, mutual TLS and broker credentials. URML is not a security control and claims no SL.
 
 ## US product listings
 
@@ -175,14 +175,14 @@ URML is never a safety function, a security control or a certifier for any docum
 - **Who needs it.** Fleet operators and vehicle makers.
 - **How to achieve it.** Implement the messages and state machine; test against the official schemas and the other side's implementation. The specification is free; we know of no formal certification scheme for it.
 - **From whom.** The VDA 5050 repository on GitHub.
-- **What URML gives you.** [`urml-vda5050-runtime`](https://github.com/urml-dev/URML/tree/main/reference/vda5050-runtime), on PyPI, and paid fleet and vehicle validation ([pricing](https://urml.dev/pricing)).
+- **What URML gives you.** [`urml-vda5050-runtime`](https://github.com/urml-dev/URML/tree/main/reference/vda5050-runtime), on PyPI, with TLS and broker credentials for the MQTT connection (on main, in the next release), and paid fleet and vehicle validation ([pricing](https://urml.dev/pricing)).
 
 ### ISO 21423, mobile robot interoperability
 
 - **What it is.** ISO 21423:2026, interoperability between industrial mobile robots, their fleet managers and site systems over MQTT.
 - **Why it matters, who needs it.** As for VDA 5050, as an ISO standard.
 - **How to achieve it, from whom.** Implement it from a licensed copy bought from ISO; we know of no certification scheme yet.
-- **What URML gives you.** [`urml-iso21423-runtime`](https://github.com/urml-dev/URML/tree/main/reference/iso21423-runtime), built from public material based on the draft. Validation against the published standard is in progress, and URML makes no conformance claim until it is done.
+- **What URML gives you.** [`urml-iso21423-runtime`](https://github.com/urml-dev/URML/tree/main/reference/iso21423-runtime), built from public material based on the draft, with TLS and broker credentials for the MQTT connection. Validation against the published standard is in progress, and URML makes no conformance claim until it is done.
 
 ## Regulation and procurement
 
