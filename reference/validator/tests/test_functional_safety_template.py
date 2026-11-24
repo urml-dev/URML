@@ -1,7 +1,8 @@
-"""The functional-safety rulebook template (ISO 13849-1:2023, ISO 13849-2).
+"""The functional-safety rulebook template (ISO 13849-1:2023 / ISO 13849-2, IEC 62061:2021).
 
 The template refuses programs until the operator has declared, in a
-deployment rulebook, the performance level each safety function reached.
+deployment rulebook, the performance level (ISO 13849) or safety integrity
+level (IEC 62061) each safety function reached.
 URML checks the declaration, never the safety function itself.
 
 Two guarantees, as for the other templates: as shipped it refuses to load,
@@ -26,11 +27,13 @@ REPO_ROOT = Path(__file__).resolve().parents[3]
 TEMPLATE = REPO_ROOT / "examples" / "rulebooks" / "functional-safety-template.yaml"
 WAREHOUSE = REPO_ROOT / "examples" / "warehouse"
 DECLARED = {
-    "emergency_stop_performance_level": "d",
-    "protective_stop_performance_level": "d",
-    "speed_monitoring_performance_level": "d",
+    "emergency_stop_safety_level": "PLd",
+    "protective_stop_safety_level": "SIL2",
+    "speed_monitoring_safety_level": "PLe",
     "safety_validation_record": "VAL-2026-017",
 }
+#: Test values: levels meeting a PLr of d, or a required SIL 2.
+ALLOWED = ["PLd", "PLe", "SIL2", "SIL3"]
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -44,7 +47,7 @@ def _fill(value: Any, key: str = "") -> Any:
         return {k: _fill(v, k) for k, v in value.items()}
     if isinstance(value, list):
         if value == ["FILL_IN"]:
-            return ["d", "e"]  # a required performance level of d, for the test
+            return list(ALLOWED)
         return [_fill(v, key) for v in value]
     if value == "FILL_IN":
         return {"rulebook_id": "cell_7_safety", "reviewed": "2026-11-24"}[key]
@@ -100,8 +103,13 @@ def test_with_every_function_declared_the_program_runs() -> None:
     assert result.accepted
 
 
-def test_a_level_below_the_requirement_refuses_the_program() -> None:
-    result = _run(_fill(_load(TEMPLATE)), _deployment(**{**DECLARED, "emergency_stop_performance_level": "c"}))
+@pytest.mark.parametrize(
+    ("key", "level"),
+    [("emergency_stop_safety_level", "PLc"), ("protective_stop_safety_level", "SIL1")],
+    ids=["iso13849", "iec62061"],
+)
+def test_a_level_below_the_requirement_refuses_the_program(key: str, level: str) -> None:
+    result = _run(_fill(_load(TEMPLATE)), _deployment(**{**DECLARED, key: level}))
     assert _issues(result) == [("rule.declaration_missing", "error")]
     assert not result.accepted
 
