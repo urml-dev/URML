@@ -244,6 +244,8 @@ jobs:
         if: always()
         run: |
           set +e
+          # Each step is a fresh shell: load ROS or `ros2` is not found.
+          . /opt/ros/jazzy/setup.sh
           cp -r "$HOME/.ros/log" "$HOME/e2e-logs/ros-log" 2>/dev/null || true
           ros2 node list > "$HOME/e2e-logs/node-list.txt" 2>&1 || true
           ros2 action list > "$HOME/e2e-logs/action-list.txt" 2>&1 || true
