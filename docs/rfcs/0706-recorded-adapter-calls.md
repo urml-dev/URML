@@ -2,7 +2,7 @@
 rfc: 0706
 title: The conformance harness records adapter calls
 author: Ido Yahalomi (greenvh@gmail.com)
-state: Draft
+state: Implemented
 created: 2026-11-24
 updated: 2026-11-24
 supersedes: —
@@ -142,6 +142,8 @@ One pull request after this RFC is accepted, on top of PR #17:
 5. Re-run `gazebo-e2e` on the live TurtleBot 4 sim, where `home/nav_patrol_positive` should pass with the audit check active.
 
 The founder merges. A `urml-conformance` release follows.
+
+**Status, 2026-11-24.** Implemented in PR #31 (merge commit 6d780c0), with the spec as `spec/conformance/v0.2.1.md`. Items 1 to 4 shipped. Item 5 has not run yet: the next `gazebo-e2e` run is the first live check with the audit comparison active. The `urml-conformance` release has not been cut.
 
 ## Self-review (Phase 0)
 
