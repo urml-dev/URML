@@ -1,0 +1,32 @@
+# Hall 2's safety envelope: a speed and payload limit, the hall's geofence and
+# the break area people use. Example input for the evidence report.
+
+envelope_version: '0.1'
+deployment_id: warehouse_hall_2
+description: 'Hall 2: the robots stay inside the hall and out of the break area.'
+max_velocity: 1.0
+max_payload: 50.0
+geofences:
+- name: hall_2
+  frame: site
+  vertices:
+  - - -5.0
+    - -20.0
+  - - 40.0
+    - -20.0
+  - - 40.0
+    - 40.0
+  - - -5.0
+    - 40.0
+people_occupancy_zones:
+- name: break_area
+  frame: site
+  vertices:
+  - - 18.0
+    - 18.0
+  - - 22.0
+    - 18.0
+  - - 22.0
+    - 22.0
+  - - 18.0
+    - 22.0

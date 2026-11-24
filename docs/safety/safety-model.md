@@ -305,3 +305,18 @@ with `--rulebook` ([`examples/rulebooks/`](../../examples/rulebooks/)). Rules
 no static check can see, such as visual line of sight and weather minima, are
 listed as obligations in every report. A rulebook refusal is not a legal
 compliance determination.
+
+## Evidence reports
+
+The checks above are spread over five files: manifest, envelope, policy,
+rulebooks and declarations. An evidence report
+([RFC-0707](../rfcs/0707-evidence-report.md), Draft) puts them on one page for
+someone who has never used URML: `urml evidence build` marks every item
+`checked`, `declared`, `runtime`, `missing` or `outside`, lists the gaps
+first, regroups rules by the standard they cite, and always states what URML
+cannot see. It gives no score and no verdict. The same files and `--as-of`
+date give the same bytes, so a reader can rebuild a report instead of
+trusting its author; `--redact` removes site geometry before sharing, and
+`urml evidence verify` checks a Licensor signature offline. A worked example
+written for auditors is in
+[`examples/evidence-report/`](../../examples/evidence-report/).

@@ -1012,7 +1012,7 @@ def cmd_evidence_build(args: argparse.Namespace) -> int:
     print(
         f"urml: evidence report for {report.subject['robot_id']}: "
         + ", ".join(f"{n} {status}" for status, n in counts.by_status.items())
-        + f"; {counts.failed_checks} failed checks.",
+        + f"; {counts.failed_checks} failed check{'' if counts.failed_checks == 1 else 's'}.",
         file=sys.stderr,
     )
     return 0 if counts.gaps == 0 else 1
