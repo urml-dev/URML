@@ -43,14 +43,17 @@ from urml_conformance.fixtures import (
     resolve_policy,
     rulebook_kwargs,
 )
+from urml_conformance.recording import RecordingAdapter
 from urml_conformance.report import DEFAULT_ADAPTER, CaseResult, ConformanceReport
 
 AdapterFactory = Callable[[], ROSAdapter]
 """Construct a fresh ROSAdapter per fixture case.
 
 Use a factory rather than a single adapter instance so each case starts
-with a clean call_log / clean topic subscriptions / clean action-client
-state. The default factory returns ``MockROSAdapter()``.
+with clean topic subscriptions / clean action-client state. The runner
+wraps each adapter in a ``RecordingAdapter`` (RFC-0706), so an adapter
+need not keep its own record of calls. The default factory returns
+``MockROSAdapter()``.
 """
 
 # ---------------------------------------------------------------------------
@@ -152,13 +155,11 @@ def _diag_validation(case: FixtureCase, result: Any) -> list[str]:
     return diagnostics
 
 
-def _diag_execution(
-    case: FixtureCase, result: Any, audit_log: list[dict[str, Any]] | None
-) -> list[str]:
+def _diag_execution(case: FixtureCase, result: Any, called: list[str]) -> list[str]:
     """Compare RuntimeResult against expected_execution.
 
-    ``audit_log`` is None when the adapter keeps no call log; the
-    audit-method check is then skipped rather than compared with nothing.
+    ``called`` is the method names the harness recorded on the adapter, in
+    order (RFC-0706). It does not come from the runtime or the adapter.
     """
     expected = case.expected_execution
     if expected is None:
@@ -170,11 +171,9 @@ def _diag_execution(
         diagnostics.append(
             f"steps_executed={result.steps_executed}, expected={expected.steps_executed}"
         )
-    if expected.audit_methods is not None and audit_log is not None:
-        actual = [entry["method"] for entry in audit_log]
-        if actual != expected.audit_methods:
-            diagnostics.append(
-                f"audit methods do not match: actual={actual!r}, "
+    if expected.audit_methods is not None and called != expected.audit_methods:
+        diagnostics.append(
+            f"audit methods do not match: actual={called!r}, "
                 f"expected={expected.audit_methods!r}"
             )
     if expected.bindings_contains is not None:
@@ -201,8 +200,14 @@ def _diag_execution(
     return diagnostics
 
 
-def _diag_fleet_execution(case: FixtureCase, result: Any) -> list[str]:
-    """Compare a FleetRuntimeResult against expected_execution (RFC-0286)."""
+def _diag_fleet_execution(
+    case: FixtureCase, result: Any, called: dict[str, list[str]]
+) -> list[str]:
+    """Compare a FleetRuntimeResult against expected_execution (RFC-0286).
+
+    ``called`` maps each member to the method names the harness recorded on
+    that member's adapter (RFC-0706).
+    """
     expected = case.expected_execution
     if expected is None:
         return []
@@ -215,11 +220,10 @@ def _diag_fleet_execution(case: FixtureCase, result: Any) -> list[str]:
         )
     if expected.per_member_audit is not None:
         for member, expected_methods in expected.per_member_audit.items():
-            log = result.per_member_audit.get(member)
-            if log is None:
+            actual = called.get(member)
+            if actual is None:
                 diagnostics.append(f"per_member_audit missing member {member!r}")
                 continue
-            actual = [entry["method"] for entry in log]
             if actual != expected_methods:
                 diagnostics.append(
                     f"member {member!r} audit methods do not match: actual={actual!r}, "
@@ -321,7 +325,10 @@ class ConformanceRunner:
         # adapters get their behavior from the live substrate.
         if isinstance(adapter, MockROSAdapter):
             _apply_overrides(adapter, case.adapter_overrides)
-        runtime = URMLRuntime(adapter)
+        # The harness, not the adapter, records what the runtime asked the
+        # substrate to do (RFC-0706).
+        recorder = RecordingAdapter(adapter)
+        runtime = URMLRuntime(recorder)
         try:
             # The runtime re-validates with the fixture's policy, manifest dir
             # and rulebooks, exactly as the validation pass above did.
@@ -338,12 +345,8 @@ class ConformanceRunner:
             diagnostics.append(f"runtime raised: {type(exc).__name__}: {exc}")
             return CaseResult(name=case.name, passed=False, diagnostics=diagnostics)
 
-        # Audit-log assertions only run against adapters that keep a
-        # call_log (the mock). A real adapter has none, so it is judged on
-        # success, steps and bindings; an empty default here would fail
-        # every real run on audit_methods.
-        call_log = getattr(adapter, "call_log", None)
-        diagnostics.extend(_diag_execution(case, runtime_result, call_log))
+        called = [call.method for call in recorder.calls]
+        diagnostics.extend(_diag_execution(case, runtime_result, called))
 
         return CaseResult(
             name=case.name,
@@ -378,12 +381,13 @@ class ConformanceRunner:
             return CaseResult(name=case.name, passed=not diagnostics, diagnostics=diagnostics)
 
         try:
-            adapters: dict[str, ROSAdapter] = {name: self._adapter_factory() for name in members}
+            recorders = {name: RecordingAdapter(self._adapter_factory()) for name in members}
         except Exception as exc:
             diagnostics.append(f"adapter factory raised: {type(exc).__name__}: {exc}")
             return CaseResult(name=case.name, passed=False, diagnostics=diagnostics)
         try:
             # Sequential for byte-stable per-member audits in conformance.
+            adapters: dict[str, ROSAdapter] = dict(recorders)
             fleet_result = FleetRuntime(adapters, sequential=True).execute(
                 roster,
                 members,
@@ -397,7 +401,8 @@ class ConformanceRunner:
             diagnostics.append(f"fleet runtime raised: {type(exc).__name__}: {exc}")
             return CaseResult(name=case.name, passed=False, diagnostics=diagnostics)
 
-        diagnostics.extend(_diag_fleet_execution(case, fleet_result))
+        called = {name: [call.method for call in r.calls] for name, r in recorders.items()}
+        diagnostics.extend(_diag_fleet_execution(case, fleet_result, called))
         return CaseResult(name=case.name, passed=not diagnostics, diagnostics=diagnostics)
 
 

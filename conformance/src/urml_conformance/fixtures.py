@@ -358,7 +358,8 @@ class ExpectedExecution(BaseModel):
     audit_methods: list[str] | None = Field(
         None,
         description=(
-            "If set, the adapter's call_log methods must match this list "
+            "If set, the methods the runtime called on the adapter, as "
+            "recorded by the harness (RFC-0706), must match this list "
             "exactly in order."
         ),
     )
@@ -376,8 +377,9 @@ class ExpectedExecution(BaseModel):
     per_member_audit: dict[str, list[str]] | None = Field(
         None,
         description=(
-            "Fleet (RFC-0286) only. If set, each member's adapter call_log "
-            "methods must match the listed sequence exactly, in order."
+            "Fleet (RFC-0286) only. If set, the methods the runtime called "
+            "on each member's adapter, as recorded by the harness (RFC-0706), "
+            "must match the listed sequence exactly, in order."
         ),
     )
 

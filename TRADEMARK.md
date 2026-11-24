@@ -49,7 +49,7 @@ Anyone whose runtime is one exact version of a distribution the public can insta
 
 ### The criteria
 
-The criteria are in [`spec/conformance/v0.2.0.md`](spec/conformance/v0.2.0.md) section 3, and the registry checker enforces all but the attestation:
+The criteria are in [`spec/conformance/v0.2.1.md`](spec/conformance/v0.2.1.md) section 3, and the registry checker enforces all but the attestation:
 
 1. A self-report: the full suite for each claimed profile, run with the runtime's own adapter, every fixture passed.
 2. A reproduction: the Licensor installs that exact version from its public source into a clean environment, turns the network off, runs the same suite with the same adapter, and gets a pass on every fixture over the same fixture set.

@@ -130,7 +130,7 @@ The `registry-check` workflow runs the checker and the registry tests on the pul
 Certification is free and follows [RFC-0705](../rfcs/0705-urml-certified.md). It needs everything the self-reported tier needs (step 3), plus:
 
 - `runtime.package` is a distribution anyone can install and `runtime.version` is one exact release. The URML project's own `urml-*` runtimes cannot be certified.
-- In the entry, set `compatibility.tier: certified` and add a `certification` block with `conformance_spec: "0.2.0"` and an `attestation`: your statement that the runtime meets the six clauses of the [conformance contract](../../spec/conformance/v0.2.0.md), in particular that no path actuates without validation. Leave `certified_on`, `expires` and `reproduction` to the Licensor.
+- In the entry, set `compatibility.tier: certified` and add a `certification` block with `conformance_spec: "0.2.1"` and an `attestation`: your statement that the runtime meets the six clauses of the [conformance contract](../../spec/conformance/v0.2.0.md), in particular that no path actuates without validation. Leave `certified_on`, `expires` and `reproduction` to the Licensor.
 - Open the pull request and say in it that you are applying for URML-Certified.
 
 The Licensor then installs that exact version from its public source in a clean environment, turns the network off, runs the same suite with your adapter, and commits the reproduction report and the dates to your pull request:
