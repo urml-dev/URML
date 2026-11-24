@@ -1,0 +1,150 @@
+# Template: a rulebook that keeps programs from running until the site has
+# declared its safety functions, shaped after ISO 13849-1:2023 and
+# ISO 13849-2.
+#
+# Read this first. URML is not a safety-related part of a control system.
+# The validator is not safety-rated, a refusal is not a safety function, and
+# nothing in URML counts toward a performance level (PL). ISO 13849 applies
+# to the robot's own safety-related control: its emergency stop, protective
+# stop, speed and separation monitoring, power and force limiting. Those are
+# designed, built and validated outside URML.
+#
+# What this rulebook does is narrower and still useful: it refuses programs
+# until the operator has put on record, in a deployment rulebook, the
+# performance level each safety function reached, and that level meets what
+# the risk assessment requires. URML checks that the declaration exists and
+# is high enough. It does not check that the declaration is true.
+#
+# This file carries no values. ISO standards are copyrighted, and the
+# required performance level of each function (PLr) comes from the
+# machine's risk assessment and a licensed copy of the standard, not from
+# this repository. Every FILL_IN is deliberately invalid: a validator
+# refuses to load this file (rule.rulebook_invalid) until each one is
+# replaced, so an unfilled template never runs.
+#
+# How to use it:
+#   1. Copy the file. Give it your own rulebook_id, title, issuer and
+#      reviewed date. Delete the rules for safety functions the machine does
+#      not have.
+#   2. For each rule, list in `allowed` the performance levels that meet the
+#      function's PLr: for a PLr of d, that is [d, e].
+#   3. Have the operator file a deployment rulebook that declares each key,
+#      from the integrator's validation records, for example:
+#
+#        rulebook_version: "0.1"
+#        rulebook_id: cell_7_safety_declarations
+#        title: Cell 7 safety function declarations
+#        issuer: {kind: deployment, name: Example Integrator}
+#        source_status: deployment_declaration
+#        declarations:
+#          emergency_stop_performance_level: d
+#          protective_stop_performance_level: d
+#          speed_monitoring_performance_level: d
+#          safety_validation_record: "VAL-2026-017"
+#
+#   4. Load both with --rulebook. With the deployment rulebook loaded, a
+#      missing or insufficient declaration refuses every program
+#      (rule.declaration_missing). With no deployment rulebook loaded, the
+#      same finding is a warning, as the rulebook format specifies.
+#
+# Editions checked on 2026-11-24: ISO 13849-1:2023 (Safety of machinery,
+# Safety-related parts of control systems, Part 1: General principles for
+# design), fourth edition, published 2023-04. ISO 13849-2 (Part 2:
+# Validation) was last published in 2012; check the ISO catalogue for a
+# newer edition before citing it.
+#
+# Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702).
+
+rulebook_version: "0.1"
+rulebook_id: FILL_IN
+title: "FILL_IN (for example: Cell 7 safety functions on record before any program runs)"
+issuer:
+  kind: organization
+  name: "FILL_IN (the integrator or the site operator)"
+source_status: organization_policy
+reviewed: FILL_IN
+description: >-
+  Programs run only after the operator has declared, from the integrator's
+  validation records, the performance level each safety function reached.
+  URML checks the declaration, not the safety function.
+
+rules:
+  - id: emergency_stop_declared
+    title: The emergency stop's performance level is declared and meets its PLr
+    cite:
+      text: "ISO 13849-1:2023, clause FILL_IN; the machine's risk assessment"
+    note: >-
+      List the performance levels that meet the emergency stop's required
+      performance level from the risk assessment.
+    require_declared:
+      key: emergency_stop_performance_level
+      allowed: [FILL_IN]
+
+  - id: protective_stop_declared
+    title: The protective stop's performance level is declared and meets its PLr
+    cite:
+      text: "ISO 13849-1:2023, clause FILL_IN; the machine's risk assessment"
+    note: >-
+      The stop triggered by safeguards such as scanners, light curtains and
+      interlocked doors.
+    require_declared:
+      key: protective_stop_performance_level
+      allowed: [FILL_IN]
+
+  - id: speed_monitoring_declared
+    title: Safety-rated speed monitoring is declared and meets its PLr
+    cite:
+      text: "ISO 13849-1:2023, clause FILL_IN; the machine's risk assessment"
+    note: >-
+      For machines that rely on safety-rated speed or separation monitoring
+      near people. Delete this rule if the machine has no such function.
+    require_declared:
+      key: speed_monitoring_performance_level
+      allowed: [FILL_IN]
+
+  - id: safety_validation_on_record
+    title: The safety functions' validation is on record
+    cite:
+      text: "ISO 13849-2, clause FILL_IN"
+    note: >-
+      The declared value is the reference of the integrator's validation
+      record, so a reader can find it. Any value satisfies the rule.
+    require_declared:
+      key: safety_validation_record
+
+obligations:
+  - id: urml_is_not_a_safety_function
+    title: Nothing in URML counts toward a performance level
+    text: >-
+      The URML validator and runtimes are not safety-related parts of the
+      control system. They are left out of every performance level
+      calculation, and no safety function depends on them.
+    cite:
+      text: "ISO 13849-1:2023, clause FILL_IN"
+
+  - id: safety_functions_designed
+    title: Each safety function is designed to its required performance level
+    text: >-
+      Each safety function the risk assessment calls for is specified,
+      designed and implemented in safety-related control to reach its
+      required performance level.
+    cite:
+      text: "ISO 13849-1:2023, clauses FILL_IN"
+
+  - id: safety_functions_validated
+    title: Each safety function is validated
+    text: >-
+      The safety functions are validated before use, and again after any
+      change to the safety-related control, and the validation record is
+      kept.
+    cite:
+      text: "ISO 13849-2, clauses FILL_IN"
+
+  - id: declarations_kept_true
+    title: The declarations match the validation records
+    text: >-
+      The operator keeps the deployment rulebook's declarations in line with
+      the current validation records, and updates them when the safety
+      functions or their validation change.
+    cite:
+      text: "ISO 13849-2, clause FILL_IN; the site's own procedures"
