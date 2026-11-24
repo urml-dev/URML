@@ -48,6 +48,15 @@ jobs:
     container:
       image: ros:jazzy-ros-base
     timeout-minutes: 20
+    env:
+      # The ROS image auto-loads launch_testing's pytest plugin. Under
+      # pytest >= 8 its pytest_pycollect_makemodule hook turns
+      # tests/__init__.py into a Package that collects all of tests/, so
+      # a module-level importorskip in any sibling file (for example
+      # test_nl_partners_capstone.py) skips the whole package and the
+      # file we asked for is never collected ("found no collectors",
+      # exit 4). Our tests use no ROS pytest plugin, so turn autoload off.
+      PYTEST_DISABLE_PLUGIN_AUTOLOAD: "1"
     steps:
       - uses: actions/checkout@v4
 
