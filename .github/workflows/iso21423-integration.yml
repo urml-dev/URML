@@ -1,0 +1,85 @@
+# Gated ISO 21423 (mobile robot interoperability) integration workflow.
+#
+# Gated to manual dispatch + weekly cron, the same cadence as the other
+# per-runtime integration lanes.
+#
+#   iso21423-live-broker: lint, mypy --strict, the hermetic suite, then the
+#   live tests with the adapter and a simulated ISO 21423 robot on separate
+#   paho-mqtt connections to a real Mosquitto broker: real QoS 2, retained
+#   identity and requests, asynchronous delivery on paho's network thread,
+#   and the broker publishing a killed client's Last Will. It is not a
+#   hardware run: the robot on the other side is
+#   urml_iso21423_runtime.SimulatedImr.
+#
+# The broker starts with `docker run` rather than a service container:
+# Mosquitto 2 listens on localhost only unless given its no-auth config,
+# and service containers cannot pass a command.
+#
+# LICENSING NOTE: paho-mqtt is EPL-2.0 OR EDL-1.0 (BSD-3-Clause); it is an
+# OPTIONAL [mqtt] extra imported lazily, never at module load. In-repo
+# code is BSL 1.1.
+#
+# STATUS: the runtime is built from public material based on the ISO/FDIS
+# 21423 draft; validation against the published standard is in progress.
+# The cross-check step downloads OpenRobOps' Apache-2.0 schemas at a pinned
+# commit; they are not copied into this repository.
+
+name: iso21423-integration
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Mondays 16:00 UTC (staggered after the other integration lanes).
+    - cron: '0 16 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  iso21423-live-broker:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Start Mosquitto
+        run: |
+          docker run -d --name mosquitto -p 1883:1883 eclipse-mosquitto:2.0.20 \
+            mosquitto -c /mosquitto-no-auth.conf
+          for i in $(seq 1 20); do
+            (echo > /dev/tcp/127.0.0.1/1883) 2>/dev/null && exit 0
+            sleep 1
+          done
+          docker logs mosquitto
+          exit 1
+
+      - name: Install URML packages + paho-mqtt
+        run: |
+          python -m pip install -U pip
+          python -m pip install \
+            -e reference/validator \
+            -e reference/ros2-runtime \
+            -e "reference/iso21423-runtime[mqtt,dev]" \
+            -e conformance
+
+      - name: Lint and type-check
+        run: |
+          cd reference/iso21423-runtime
+          ruff check src tests
+          mypy
+
+      - name: Hermetic suite, live broker test, OpenRobOps schema cross-check
+        env:
+          URML_ISO21423_BROKER: "127.0.0.1:1883"
+          URML_ISO21423_SCHEMA_CHECK: "1"
+        run: |
+          cd reference/iso21423-runtime
+          python -m pytest tests/ -v
+
+      - name: Broker log on failure
+        if: failure()
+        run: docker logs mosquitto
