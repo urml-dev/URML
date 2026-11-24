@@ -1,7 +1,7 @@
 """The conformance report says what ran: adapter, versions, fixture set, filter.
 
 A registry entry links a report as the evidence for a self-reported
-URML-compatible claim (spec/conformance/v0.1.0.md section 3), so the report
+URML-compatible claim (spec/conformance/v0.2.0.md section 3), so the report
 must name the adapter it ran against and pin the fixtures, and its summary
 (all_passed, passed, failed) must be written out and agree with its results.
 """

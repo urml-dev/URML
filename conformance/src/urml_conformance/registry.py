@@ -14,11 +14,14 @@ checker that keeps entries honest::
 - every repository path it names exists, and every sha256 it pins matches the
   bytes of the file;
 - the robot's manifest parses as a URML capability manifest;
-- a compatibility claim (the self-reported tier of
-  ``spec/conformance/v0.1.0.md`` section 3) points at a
+- a compatibility claim (``spec/conformance/v0.2.0.md`` section 3) points at a
   ``urml.conformance-report/1`` report in which every fixture passed, run with
   the entry's own adapter (not the mock) and this repository's
   urml-conformance version, running every fixture of each claimed profile;
+- a URML-Certified claim (``tier: certified``, RFC-0705) also carries the
+  Licensor's reproduction report, held to the same rules and run over the same
+  fixture set, for one exact version of a public, third-party package, with a
+  certification that has not expired;
 - every validation record replays: the validator, run again on the recorded
   program against the declared inputs, reaches the same verdict with the same
   error codes (``urml_validator.evidence.reverify``);
@@ -28,8 +31,9 @@ checker that keeps entries honest::
 Withdrawn entries stay in the export. They are checked for shape, paths,
 digests and wording; their records and reports are not replayed.
 
-A listing records facts and evidence. It grants no mark and says nothing about
-fitness for any purpose (``TRADEMARK.md``).
+A listing records facts and evidence and says nothing about fitness for any
+purpose. Only a listed entry with ``tier: certified`` that passes this check
+carries the URML-Certified mark (``TRADEMARK.md``).
 """
 
 from __future__ import annotations
@@ -82,9 +86,10 @@ SCHEMA_PATH = "registry/entry.schema.json"
 # conformance/src/urml_conformance/registry.py: parents[3] is the repository root.
 _REPO_ROOT = Path(__file__).resolve().parents[3]
 
-#: Words a listing never uses. TRADEMARK.md reserves "URML-Certified" for a
-#: program run outside this repository, and a listing implies no review of
-#: the robot by URML. Matched in any case, with their inflections.
+#: Words a listing never uses in its prose. A certification is stated by the
+#: ``tier: certified`` field alone, never in free text (TRADEMARK.md), and a
+#: listing implies no review of the robot's fitness by URML. Matched in any
+#: case, with their inflections.
 BANNED_WORDS = re.compile(r"\b(certif\w*|approv\w*|endors\w*|audit\w*|guarant\w*)\b", re.IGNORECASE)
 
 #: No contact capture (GOVERNANCE.md): an entry names people and projects,
@@ -96,6 +101,16 @@ _SHA256 = r"^[0-9a-f]{64}$"
 _ADAPTER_SPEC = r"^[A-Za-z_][A-Za-z0-9_.]*:[A-Za-z_][A-Za-z0-9_.]*$"
 _PROFILE = r"^[a-z][a-z0-9_]*$"
 _DISTRIBUTION = r"^[A-Za-z0-9](?:[A-Za-z0-9._-]*[A-Za-z0-9])?$"
+#: One exact release, as an installer pins it: no ranges, wildcards or spaces.
+_EXACT_VERSION = r"^[0-9]+(?:\.[0-9]+)*(?:[-.+]?[A-Za-z0-9]+(?:\.[A-Za-z0-9]+)*)?$"
+
+#: The conformance specification a certification is granted against.
+CERTIFIED_SPEC: Literal["0.2.0"] = "0.2.0"
+#: The longest a certification runs before it must be renewed (RFC-0705).
+MAX_CERTIFICATION_DAYS = 366
+#: Distributions the URML project publishes. The Licensor does not certify its
+#: own runtimes (RFC-0705), so these stay at the self-reported tier.
+FIRST_PARTY_PREFIX = "urml-"
 
 
 # ---------------------------------------------------------------------------
@@ -213,14 +228,66 @@ class FileRef(_Model):
     sha256: Sha256
 
 
-class Compatibility(_Model):
-    """The self-reported URML-compatible tier (spec/conformance/v0.1.0.md section 3)."""
+class Reproduction(_Model):
+    """The Licensor's own run of the suite, from the public package (RFC-0705)."""
 
-    tier: Literal["self_reported"]
+    report: FileRef = Field(..., description="The urml.conformance-report/1 JSON report of the reproduction.")
+    by: Text = Field(..., description="Who reproduced the run: the Licensor, never an email address.")
+    date: IsoDate
+    environment: Text = Field(
+        ...,
+        description="How it ran: where the package was installed from, the platform, and that the network "
+        "was off after installation.",
+    )
+
+
+class Certification(_Model):
+    """The URML-Certified grant on top of a self-report (RFC-0705)."""
+
+    conformance_spec: Literal["0.2.0"] = Field(..., description="The conformance specification version.")
+    certified_on: IsoDate
+    expires: IsoDate = Field(..., description=f"At most {MAX_CERTIFICATION_DAYS} days after certified_on.")
+    attestation: Text = Field(
+        ...,
+        description="The submitter's statement that the runtime meets the six clauses of the conformance "
+        "contract, in particular that no path actuates without validation.",
+    )
+    reproduction: Reproduction
+
+
+class Compatibility(_Model):
+    """A compatibility claim (spec/conformance/v0.2.0.md section 3).
+
+    ``self_reported``: the runtime's authors ran the suite. ``certified``: the
+    Licensor also reproduced the run from the public package (URML-Certified).
+    """
+
+    tier: Literal["self_reported", "certified"]
     profiles: list[Profile] = Field(
         ..., min_length=1, description="The profiles whose fixtures pass with the runtime's own adapter."
     )
     report: FileRef = Field(..., description="The urml.conformance-report/1 JSON report.")
+    certification: Certification | None = Field(None, description="Required when tier is certified, else absent.")
+
+    @model_validator(mode="after")
+    def _tier_matches(self) -> Compatibility:
+        if self.tier == "certified" and self.certification is None:
+            raise ValueError("tier certified needs a certification block (RFC-0705)")
+        if self.tier == "self_reported" and self.certification is not None:
+            raise ValueError("a certification block belongs to tier certified only")
+        cert = self.certification
+        if cert is not None:
+            if cert.reproduction.report.path == self.report.path:
+                raise ValueError("the reproduction report is a separate file from the self-report")
+            if not cert.reproduction.date <= cert.certified_on <= cert.expires:
+                raise ValueError("dates must run reproduction.date <= certified_on <= expires")
+            span = dt.date.fromisoformat(cert.expires) - dt.date.fromisoformat(cert.certified_on)
+            if span.days > MAX_CERTIFICATION_DAYS:
+                raise ValueError(
+                    f"a certification runs at most {MAX_CERTIFICATION_DAYS} days; expires is {span.days} days "
+                    "after certified_on"
+                )
+        return self
 
 
 class FieldEvidence(_Model):
@@ -289,6 +356,25 @@ class Entry(_Model):
                     "a compatibility claim needs runtime.adapter: the report must come from "
                     "the runtime's own adapter"
                 )
+            cert = self.compatibility.certification
+            if cert is not None:
+                package = self.runtime.package
+                if "/" in package:
+                    raise ValueError(
+                        "a certified runtime is a public distribution anyone can install, not a repository path"
+                    )
+                if package.lower().startswith(FIRST_PARTY_PREFIX):
+                    raise ValueError(
+                        f"{package} is published by the URML project; the Licensor does not certify its own "
+                        "runtimes (RFC-0705), so it stays at tier self_reported"
+                    )
+                if not re.match(_EXACT_VERSION, self.runtime.version):
+                    raise ValueError(
+                        f"runtime.version {self.runtime.version!r} is not one exact release; certification "
+                        "attaches to a single version"
+                    )
+                if self.last_verified < cert.certified_on:
+                    raise ValueError("last_verified is earlier than certification.certified_on")
         if self.validation_records is not None and self.validation_records.inputs.manifest != self.robot.manifest:
             raise ValueError("validation_records.inputs.manifest must be the robot's manifest")
         if self.status == "listed" and not (
@@ -384,6 +470,11 @@ def _reader_text(entry: Entry) -> Iterator[tuple[str, str]]:
         yield f"field_evidence[{index}].summary", evidence.summary
     if entry.validation_records is not None:
         yield "validation_records.summary", entry.validation_records.summary
+    cert = entry.compatibility.certification if entry.compatibility is not None else None
+    if cert is not None:
+        yield "compatibility.certification.attestation", cert.attestation
+        yield "compatibility.certification.reproduction.by", cert.reproduction.by
+        yield "compatibility.certification.reproduction.environment", cert.reproduction.environment
     for index, limit in enumerate(entry.limits):
         yield f"limits[{index}]", limit
 
@@ -406,9 +497,10 @@ def _pydantic_problems(exc: PydanticValidationError) -> Iterator[str]:
 class _EntryCheck:
     """The checks for one entry file."""
 
-    def __init__(self, path: Path, root: Path) -> None:
+    def __init__(self, path: Path, root: Path, today: dt.date) -> None:
         self.path = path
         self.root = root
+        self.today = today
         self.rel = path.relative_to(root).as_posix()
         self.result = CheckedEntry(path=path, entry=None)
 
@@ -516,49 +608,76 @@ class _EntryCheck:
     def check_compatibility(self, entry: Entry) -> None:
         assert entry.compatibility is not None
         claim = entry.compatibility
-        target = self.pinned_file(claim.report.path, claim.report.sha256, "compatibility.report")
-        if target is None:
+        report = self.check_report(entry, claim.report, "compatibility.report", "a self-report")
+        self.result.report = report
+        cert = claim.certification
+        if cert is None:
             return
+        reproduction = self.check_report(
+            entry, cert.reproduction.report, "certification.reproduction.report", "a reproduction"
+        )
+        if entry.status != "listed":
+            return
+        if (
+            report is not None
+            and reproduction is not None
+            and report.fixtures_sha256 != reproduction.fixtures_sha256
+        ):
+            self.fail(
+                "certification.reproduction.report ran a different fixture set from compatibility.report "
+                "(fixtures_sha256 differs); both must run the same suite"
+            )
+        if dt.date.fromisoformat(cert.expires) < self.today:
+            self.fail(
+                f"the certification expired on {cert.expires}: renew it (RFC-0705) or set tier to "
+                "self_reported and remove the certification block"
+            )
+
+    def check_report(
+        self, entry: Entry, ref: FileRef, what: str, kind: str
+    ) -> ConformanceReport | None:
+        """One conformance report: pinned, parsed, all passed, own adapter, whole profiles."""
+        assert entry.compatibility is not None
+        claim = entry.compatibility
+        target = self.pinned_file(ref.path, ref.sha256, what)
+        if target is None:
+            return None
         try:
             report = ConformanceReport.model_validate_json(target.read_bytes())
         except PydanticValidationError as exc:
-            self.fail(f"compatibility.report is not a urml.conformance-report/1 report: {exc.errors()[0]['msg']}")
-            return
-        self.result.report = report
+            self.fail(f"{what} is not a urml.conformance-report/1 report: {exc.errors()[0]['msg']}")
+            return None
         if entry.status != "listed":
-            return
+            return report
         if not report.results:
-            self.fail("compatibility.report holds no results")
-            return
+            self.fail(f"{what} holds no results")
+            return report
         if not report.all_passed:
-            self.fail(
-                f"compatibility.report: all_passed is false ({report.failed} of "
-                f"{len(report.results)} fixtures failed)"
-            )
+            self.fail(f"{what}: all_passed is false ({report.failed} of {len(report.results)} fixtures failed)")
         if report.adapter is None:
             self.fail(
-                "compatibility.report does not name the adapter it ran against; produce it "
+                f"{what} does not name the adapter it ran against; produce it "
                 "with `urml conformance run --adapter ... --output`"
             )
         elif _is_mock(report.adapter):
             self.fail(
-                "compatibility.report was run against the mock adapter; a self-report "
-                "runs the suite with the runtime's own adapter (--adapter)"
+                f"{what} was run against the mock adapter; {kind} runs the suite with the "
+                "runtime's own adapter (--adapter)"
             )
         elif report.adapter != entry.runtime.adapter:
             self.fail(
-                f"compatibility.report was run with {report.adapter!r}, not the entry's "
-                f"runtime.adapter {entry.runtime.adapter!r}"
+                f"{what} was run with {report.adapter!r}, not the entry's runtime.adapter "
+                f"{entry.runtime.adapter!r}"
             )
         if report.urml_conformance_version != _conformance_version:
             self.fail(
-                f"compatibility.report comes from urml-conformance "
-                f"{report.urml_conformance_version}; re-run it with {_conformance_version}"
+                f"{what} comes from urml-conformance {report.urml_conformance_version}; "
+                f"re-run it with {_conformance_version}"
             )
         if report.fixtures_sha256 is None or not re.match(_SHA256, report.fixtures_sha256):
-            self.fail("compatibility.report does not record the sha256 of its fixture set")
+            self.fail(f"{what} does not record the sha256 of its fixture set")
         if report.fixture_count != len(report.results):
-            self.fail("compatibility.report: fixture_count does not match its results")
+            self.fail(f"{what}: fixture_count does not match its results")
         suite = profile_fixtures(self.root)
         ran = {result.name for result in report.results}
         for profile in claim.profiles:
@@ -570,11 +689,12 @@ class _EntryCheck:
             if missing:
                 shown = ", ".join(missing[:5]) + (", ..." if len(missing) > 5 else "")
                 self.fail(
-                    f"compatibility.report does not run every {profile!r} fixture: "
+                    f"{what} does not run every {profile!r} fixture: "
                     f"{len(missing)} of {len(expected)} are missing ({shown}). A claim covers "
                     f"the whole profile: run `urml conformance run --adapter ... --profile "
                     f"{profile} --output ...`"
                 )
+        return report
 
     def check_records(self, entry: Entry) -> None:
         assert entry.validation_records is not None
@@ -677,8 +797,13 @@ def profile_fixtures(root: Path) -> dict[str, set[str]]:
     return by_profile
 
 
-def check_registry(root: Path | None = None) -> CheckResult:
-    """Check every entry under ``registry/entries/``."""
+def check_registry(root: Path | None = None, *, today: dt.date | None = None) -> CheckResult:
+    """Check every entry under ``registry/entries/``.
+
+    ``today`` decides whether a certification has expired; it defaults to the
+    current UTC date.
+    """
+    on = today or dt.datetime.now(dt.UTC).date()
     base = (root or default_root()).resolve()
     entries_dir = base / ENTRIES_DIR
     result = CheckResult(root=base, entries=[])
@@ -694,7 +819,7 @@ def check_registry(root: Path | None = None) -> CheckResult:
                 f"{ENTRIES_DIR}/{path.name}: an entry is a .yaml file named after its id"
             )
             continue
-        result.entries.append(_EntryCheck(path, base).run())
+        result.entries.append(_EntryCheck(path, base, on).run())
     return result
 
 
@@ -733,7 +858,21 @@ def _export_entry(root: Path, checked: CheckedEntry) -> dict[str, Any]:
             "fixtures_run": report.fixture_count if report is not None else None,
             "filter": report.filter if report is not None else None,
             "report_url": _url(root, entry.compatibility.report.path),
+            "certification": None,
         }
+        cert = entry.compatibility.certification
+        if cert is not None:
+            compatibility["certification"] = {
+                "mark": "URML-Certified",
+                "conformance_spec": cert.conformance_spec,
+                "certified_on": cert.certified_on,
+                "expires": cert.expires,
+                "attestation": cert.attestation,
+                "reproduced_by": cert.reproduction.by,
+                "reproduced_on": cert.reproduction.date,
+                "environment": cert.reproduction.environment,
+                "reproduction_url": _url(root, cert.reproduction.report.path),
+            }
     records: dict[str, Any] | None = None
     if entry.validation_records is not None and checked.records is not None:
         summary = checked.records
