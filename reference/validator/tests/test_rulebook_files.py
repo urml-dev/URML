@@ -86,9 +86,10 @@ ALL_FILES = [
     ("example-deployment.yaml", lambda: _example("example-deployment.yaml")),
     ("industrial-template.yaml", lambda: _example("industrial-template.yaml")),
     ("amr-template.yaml", lambda: _example("amr-template.yaml")),
+    ("home-template.yaml", lambda: _example("home-template.yaml")),
 ]
 FILLED_FILES = ALL_FILES[:3]  # the templates are invalid on purpose until filled in
-TEMPLATES = ["industrial-template.yaml", "amr-template.yaml"]
+TEMPLATES = ["industrial-template.yaml", "amr-template.yaml", "home-template.yaml"]
 
 
 def test_the_faa_rulebook_ships_as_package_data() -> None:
