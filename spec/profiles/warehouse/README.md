@@ -41,7 +41,7 @@ The industrial profile is the sibling: an industrial cell is enclosed and operat
 - **Multi-level rack ASRS.** Automated storage and retrieval systems with vertical lifters and high-rack interfaces use substrates URML has not adapted yet. Plausibly its own profile if the substrate need arises.
 - **Autonomous forklifts.** Heavy-payload counterbalanced forklifts share aisle space with AMRs but carry different mass and stopping-distance assumptions. Their safety envelope is a strict superset of the warehouse profile's; their inclusion is a future scope decision, not v0.1.
 - **Voice UI in the aisle.** `speak` and `listen` are reserved (not rejected) but no warehouse fixture exercises them in v0.1.
-- **Mixed-vendor fleet orchestration spec.** The profile assumes a single fleet-management layer above the warehouse AMRs (Open-RMF, vendor-specific, or custom). The orchestration protocol itself is out of scope; URML programs receive coordination events through `wait_for` rather than encoding the fleet protocol.
+- **Mixed-vendor fleet orchestration spec.** The profile assumes a single fleet-management layer above the warehouse AMRs (Open-RMF, vendor-specific, or custom). The orchestration protocol itself is out of scope; URML programs receive coordination events through `wait_for` rather than encoding the fleet protocol. For vehicles that speak VDA 5050, the reference adapter is [`vda5050-runtime`](../../../reference/vda5050-runtime/); it changes nothing in this profile.
 
 ## Profile-required Layer-1 manifest fields
 

@@ -45,6 +45,7 @@ hardware claim; see the [claims audit](launch/claims-audit.md).
 | [`ardupilot-runtime`](../reference/ardupilot-runtime/) | ArduPilot ArduCopter / MAVLink (`pymavlink`, no ROS) | Bench run on a Pixhawk-class board, propellers off, and a local ArduCopter SITL run, both 2026-08-29; no flight claimed. In the [registry](../registry/entries/ardupilot-arducopter-pixhawk.yaml). |
 | [`marine-runtime`](../reference/marine-runtime/) | BlueROV2 / ArduSub (MAVLink) | The zero-ROS underwater sibling. |
 | [`opcua-runtime`](../reference/opcua-runtime/) | OPC UA Robotics (zero ROS) | Factory-floor companion spec via `asyncua`. |
+| [`vda5050-runtime`](../reference/vda5050-runtime/) | VDA 5050 AMRs / AGVs over MQTT (zero ROS) | Plays fleet control for one vehicle: steps become VDA 5050 3.0.0 orders. Tested against a simulated vehicle, locally and over a real Mosquitto broker; no vendor vehicle run yet. |
 | [`mujoco-runtime`](../reference/mujoco-runtime/) | MuJoCo simulator (zero ROS) | The purest substrate-neutrality proof: a sim with no robot, no middleware. |
 | [`isaac-runtime`](../reference/isaac-runtime/) | NVIDIA Isaac Sim / Lab | RTX-host simulator substrate. |
 | [`chrono-runtime`](../reference/chrono-runtime/) | Project Chrono (PyChrono) | High-fidelity multibody **validation**; primitive to driver-input, dynamics as evidence (RFC-0328). |

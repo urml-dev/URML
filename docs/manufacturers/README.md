@@ -51,7 +51,7 @@ A component you document with those fields, ideally with a CycloneDX 1.7 HBOM yo
 
 In Phase 0, "launch partner" means exactly one thing: an early entry in the [manufacturer directory](directory.md), optionally noted in an early-adopters section of that page. That is the whole offer.
 
-There is no paid program, no mark, no fee, no priority placement, no service-level commitment, and no contact form or lead capture. The full launch-partner and certification program is Phase 4 and lives outside this repository (see [COMMERCIAL.md](../../COMMERCIAL.md) and [TRADEMARK.md](../../TRADEMARK.md)). If a future commercial program offers more, it will say so in its own terms, not here.
+The directory has no paid program, no mark, no fee, no priority placement, no service-level commitment, and no contact form or lead capture. Separately, makers of VDA 5050 vehicles can buy a vehicle validation: a validation run of the vehicle against URML and a written report, which is not a certification and does not affect directory placement ([COMMERCIAL.md](../../COMMERCIAL.md#vehicle-validation-amr-and-agv-makers)). The full launch-partner and certification program is Phase 4 and lives outside this repository (see [COMMERCIAL.md](../../COMMERCIAL.md) and [TRADEMARK.md](../../TRADEMARK.md)). If a future commercial program offers more, it will say so in its own terms, not here.
 
 ## What this is and is not
 
