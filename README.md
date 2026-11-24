@@ -35,7 +35,7 @@ URML is a **specification** and a set of **reference implementations**, not a ro
 
 ## Try it in three commands
 
-The validator and the LLM bridge are on PyPI at 0.5.0, and they are all this needs. The remaining runtimes reach PyPI over the next few days, as PyPI's limit of about four new projects a day allows; until then they install from source (below). Install, scaffold a starter project, validate it. About 30 seconds; no API key, no robot.
+The validator and the LLM bridge are on PyPI at 0.5.1, and they are all this needs. Most runtimes are on PyPI too; the isaac, legged, marine, mujoco and opcua runtimes follow as PyPI's limit of about four new projects a day allows, and until then they install from source (below). Install, scaffold a starter project, validate it. About 30 seconds; no API key, no robot.
 
 ```bash
 python3 -m venv .venv && . .venv/bin/activate   # recommended; required on PEP 668 systems (Ubuntu 26.04, Debian 12+)
@@ -65,7 +65,7 @@ urml --version    # confirm the new version
   <sub>The sentence-to-motion loop, animated. One English sentence becomes a validated URML program, rehearsed in simulation before anything moves: the gate blocks a speed-cap violation, then the declared motion profile passes and the trace executes on a hermetic mock (no actuator moved). Every line above is real <code>urml</code> output (asserted in CI). <a href="docs/demos/sentence-to-motion.md">full walkthrough</a>.</sub>
 </p>
 
-`pip install` brings down the validator CLI and the LLM bridge. The hermetic mock runtime (in `urml-ros2-runtime`) and most other reference runtimes are not on PyPI yet; they install from source (below), and the PyPI builds predate the work on `main` listed in the [CHANGELOG](CHANGELOG.md). `urml init` scaffolds a minimal project on disk (manifest, envelope, sample program with its natural-language prompt, Makefile). `urml validate` runs all five passes (argument typing → capability → safety envelope → variable bindings → compliance policy), with the rulebook check (RFC-0702) between the envelope and binding passes. The bundled US-federal default policy is on by default; pass `--no-policy` to skip it, or `--policy <your_file.yaml>` to use your own.
+`pip install` brings down the validator CLI and the LLM bridge. The hermetic mock runtime is in `urml-ros2-runtime`, and the conformance suite is `urml-conformance`; both install with `pip`, and `python -m urml_conformance` runs the suite from the installed package. `urml init` scaffolds a minimal project on disk (manifest, envelope, sample program with its natural-language prompt, Makefile). `urml validate` runs all five passes (argument typing → capability → safety envelope → variable bindings → compliance policy), with the rulebook check (RFC-0702) between the envelope and binding passes. The bundled US-federal default policy is on by default; pass `--no-policy` to skip it, or `--policy <your_file.yaml>` to use your own.
 
 `--profile home`, `--profile drone`, `--profile industrial`, and `--profile warehouse` are all supported by `urml init`. See [`docs/demos/sentence-to-motion.md`](docs/demos/sentence-to-motion.md) for the full sentence-to-execution walkthrough behind the animation above, and [`docs/demos/compliance-walkthrough.md`](docs/demos/compliance-walkthrough.md) for a 90-second walkthrough that shows the compliance pass rejecting a covered-foreign-country component manifest, and the override path.
 

@@ -20,6 +20,10 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+## [0.5.1] - 2026-11-24
+
+`urml-conformance` 0.5.1 records adapter calls in the harness (RFC-0706, conformance spec v0.2.1) and runs from an installed wheel. The rest of the family is rebuilt at 0.5.1 in lockstep.
+
 ### Added
 
 - `urml-vda5050-runtime` (`reference/vda5050-runtime`): drives AMRs and AGVs that speak VDA 5050 3.0.0 over MQTT, with no ROS. URML acts as fleet control for each vehicle; every dispatch step becomes one VDA 5050 order, and a step succeeds only when the vehicle's state reports it finished. Implements the mapping proposed in [RFC-0297](docs/rfcs/0297-vda5050-outreach.md). Tested against a simulated vehicle, with every message validated against the official VDA 5050 schemas, and over a real Mosquitto broker in the gated `vda5050-integration` workflow. Not yet tested on a vendor's vehicle. Known gaps are in `reference/vda5050-runtime/SPEC-GAPS.md`. On PyPI at the family version (0.5.0) since 2026-11-24: `pip install urml-vda5050-runtime`.
@@ -35,7 +39,7 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 - The conformance harness records adapter calls ([RFC-0706](docs/rfcs/0706-recorded-adapter-calls.md)). `ConformanceRunner` wraps every adapter, single-robot and each fleet member, in `RecordingAdapter` and checks `audit_methods` and `per_member_audit` against what it recorded. Before this, the runner read a `call_log` only the mock keeps, so a real adapter (`RclpyAdapter`, a vendor SDK) failed 102 of the 103 fixtures that check execution. An adapter no longer keeps or vouches for its own log. `RecordingAdapter` moves to `urml_conformance.recording`; the old import paths still work.
 - Conformance specification [v0.2.1](spec/conformance/v0.2.1.md): clause 6 says the suite records the calls. No obligation on a runtime changes. Registry certifications may name `conformance_spec: "0.2.1"`.
-- The family is bumped in lockstep to 0.5.1 ([`RELEASING.md`](RELEASING.md#version-coherence)) so `urml-conformance` can ship both changes. Only the conformance package's code changed since 0.5.0; the other packages are rebuilt at the new version unchanged. Not on PyPI until the gated publish runs.
+- The family is bumped in lockstep to 0.5.1 ([`RELEASING.md`](RELEASING.md#version-coherence)) so `urml-conformance` can ship both changes. Only the conformance package's code changed since 0.5.0; the other packages are rebuilt at the new version unchanged. On PyPI since 2026-11-24, except the isaac, legged, marine, mujoco and opcua runtimes, which wait on PyPI's new-project limit.
 
 ### Fixed
 
