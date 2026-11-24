@@ -30,7 +30,7 @@ grant is in TRADEMARK.md.
 
 ## Trademark acknowledgement
 
-- [ ] I have read [TRADEMARK.md](https://github.com/urml-dev/URML/blob/main/TRADEMARK.md). A listing does not grant a license to the URML or URML-Certified marks beyond the factual descriptor use it describes. I will not describe the robot or the runtime as "URML-Certified", and I will not imply URML endorsement, sponsorship, or affiliation.
+- [ ] I have read [TRADEMARK.md](https://github.com/urml-dev/URML/blob/main/TRADEMARK.md). A listing does not grant a license to the URML or URML-Certified marks beyond the factual descriptor use it describes. I will not describe the robot or the runtime as "URML-Certified" unless this entry is certified under TRADEMARK.md and RFC-0705, and I will not imply URML endorsement, sponsorship, or affiliation.
 
 ## Keeping it current
 

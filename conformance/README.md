@@ -22,9 +22,9 @@ The **freely runnable** set of tests that determines whether a runtime is **URML
 
 A sibling sub-suite, [`conformance/llm-bridge/`](./llm-bridge/), scores `(model, backend, profile)` triples for the on-device LLM bridge introduced by [RFC-0021](../docs/rfcs/0021-on-device-llm-bridge.md). The runtime sub-suite below answers "does this runtime execute URML correctly"; the LLM-bridge sub-suite answers "how reliably does this model emit URML the validator accepts."
 
-The conformance suite is licensed under the Business Source License 1.1 (see [`LICENSING.md`](../LICENSING.md)). Running it to test a runtime is non-production use and is free. The eventual *certification program* — the trademark *URML-Certified* — may be paid; the *tests themselves* remain free, public, and runnable by anyone. This separation is deliberate: it lets URML's compatibility claim be honest (anyone can verify it) while preserving a commercial moat in the surround (the mark is licensed, not the tests).
+The conformance suite is licensed under the Business Source License 1.1 (see [`LICENSING.md`](../LICENSING.md)). Running it to test a runtime is non-production use and is free. The *URML-Certified* mark is free too ([RFC-0705](../docs/rfcs/0705-urml-certified.md)): the Manifesto rules out selling certification. The tests are public and runnable by anyone, and every certification rests on reports anyone can re-run.
 
-The **normative, human-readable contract** this suite enforces — the six clauses a runtime must satisfy, the two tiers, and the spec-gap loop — is [`spec/conformance/v0.1.0.md`](../spec/conformance/v0.1.0.md) ([RFC-0014](../docs/rfcs/0014-substrate-conformance.md)). This suite is its executable form (clause 6); that document is its written form.
+The **normative, human-readable contract** this suite enforces (the six clauses a runtime must satisfy, the two tiers, and the spec-gap loop) is [`spec/conformance/v0.2.0.md`](../spec/conformance/v0.2.0.md) ([RFC-0014](../docs/rfcs/0014-substrate-conformance.md), [RFC-0705](../docs/rfcs/0705-urml-certified.md)). This suite is its executable form (clause 6); that document is its written form.
 
 ## How conformance is structured
 
@@ -76,7 +76,7 @@ A runtime that *executes* one of these programs has a critical conformance bug. 
 Two paths:
 
 1. **Self-reported conformance.** A runtime developer runs the suite against their runtime, records the result, and publishes the report. This is what the open ecosystem looks like. Self-reporting is honest because anyone can re-run the suite and verify.
-2. **Certified conformance** (future, Phase 3+). The URML organization (or its successor foundation) operates a paid program that issues the **URML-Certified** mark to runtimes that pass the suite. The mark is the commercial product; the test is the open standard.
+2. **Certified conformance.** The Licensor (or a successor foundation) reproduces a self-reported run from the public package and, if it passes, grants the **URML-Certified** mark through the registry. Free, on the public criteria in [`spec/conformance/v0.2.0.md`](../spec/conformance/v0.2.0.md) section 3.
 
 ## How tests are added
 

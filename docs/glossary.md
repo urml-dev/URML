@@ -80,7 +80,7 @@ When in doubt about a definition, the precedence order is the same as the rest o
 
 **URML** — Universal Robot Language. Working name; subject to finalization in Phase 0 (see `MANIFESTO.md` Appendix B, Question 1).
 
-**URML-Certified** — The (future) trademark / conformance mark granted to runtimes that pass the conformance suite. The mark is the commercial moat; the tests are the open core.
+**URML-Certified**: the conformance mark for one exact version of a third-party runtime that passed the conformance suite for named profiles, with the run reproduced by the Licensor. Free, on public criteria ([RFC-0705](rfcs/0705-urml-certified.md)). It certifies conformance, not safety or compliance.
 
 **URML program** — An instance of the URML language: a YAML (canonical) or JSON-LD document containing a single behavior. Statically verified before execution.
 

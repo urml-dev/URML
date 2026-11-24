@@ -12,74 +12,95 @@
 
 ---
 
-# URML Trademark Policy (Stub)
+# URML Trademark Policy
 
-Status: stub, non-binding interim statement of intent.
-Established: Phase 0.
+Status: policy. The URML-Certified sections are in force from [RFC-0705](docs/rfcs/0705-urml-certified.md) (2026-11-24); the rest is the interim policy from Phase 0.
 Authority: refines [GOVERNANCE.md §Trademark Policy](GOVERNANCE.md#trademark-policy). Licensing terms are in [LICENSE](LICENSE) and [LICENSING.md](LICENSING.md).
-
-## What this is
-
-A stub trademark policy, just enough for Phase 0. It exists so that public-facing surfaces of URML (the [Compatible Runtimes registry](docs/compatible-runtimes.md), the README, outbound communications) have a written boundary to point at.
-
-The full policy, with formal definitions, dispute procedures, and revocation mechanics, ships in Phase 4 alongside the URML-Certified conformance program (see [MANIFESTO.md](MANIFESTO.md) phase roadmap).
 
 ## The marks
 
-URML maintains two marks.
+URML has two marks.
 
-The word mark **URML** identifies the open specification and its reference implementations.
+The word mark **URML** identifies the specification and its reference implementations.
 
-The conformance mark **URML-Certified** is reserved for the future Phase 4 certification program. It is not in use yet, and no party may claim it during Phase 0.
+The conformance mark **URML-Certified** says that one exact version of a runtime passed the public conformance suite for named profiles, and that the Licensor reproduced the result. It is granted free, on public criteria, through the [registry](registry/README.md). It says nothing about safety, regulatory compliance, or fitness for any purpose.
 
 ## Ownership
 
-Both marks are filed in the founder's name during Phase 0. They are assignable to the URML Foundation once that entity exists (Phase 3+). The maintainer commits to not making decisions during Phase 0 that would block this assignment.
+Both marks are held by Yahalomik Ltd., the URML Licensor ([RFC-0704](docs/rfcs/0704-licensor-yahalomik.md)). Neither is registered yet. They stay assignable to a future URML foundation, and no decision here may block that assignment.
 
 ## What anyone can do
 
-Use the word "URML" as a factual descriptor. Statements like "this library implements the URML specification" or "URML is an open standard for natural-language robot control" are fine. You don't need permission.
+Use the word "URML" as a factual descriptor. Statements like "this library implements the URML specification" or "URML is a specification for natural-language robot control" are fine. You don't need permission.
 
-Describe a runtime, library, or tool as "URML-compatible" if it passes the public [conformance test suite](conformance/) against the URML spec versions it claims to support.
+Describe a runtime, library, or tool as "URML-compatible" if it passes the unmodified, current public [conformance test suite](conformance/) for the profiles and URML spec versions it claims.
 
-Submit your runtime for listing in the Compatible Runtimes registry by following [docs/registry/SUBMISSION.md](docs/registry/SUBMISSION.md). Listing reflects a factual record of submission, not an endorsement.
+Submit a robot and its runtime to the [registry](registry/README.md) by following [docs/registry/SUBMISSION.md](docs/registry/SUBMISSION.md). A listing is a factual record of the evidence submitted, not an endorsement.
 
-Submit a robot or product for listing in the [Manufacturer & Product Directory](docs/manufacturers/directory.md) by following [docs/manufacturers/SUBMISSION.md](docs/manufacturers/SUBMISSION.md). Same posture as the runtime registry: a factual record of submission, not an endorsement.
+Submit a robot or product for listing in the [Manufacturer & Product Directory](docs/manufacturers/directory.md) by following [docs/manufacturers/SUBMISSION.md](docs/manufacturers/SUBMISSION.md). Same posture: a factual record, not an endorsement.
 
-State, factually, that a specific manifest "validates clean under URML's open US-federal default compliance policy at URML commit `<hash>`" if it does and you pin the commit. This is a reproducible self-report, not a certification. The exact permitted and forbidden phrasing is in [docs/manufacturers/FEDERAL-VALIDATION-SELF-REPORT.md](docs/manufacturers/FEDERAL-VALIDATION-SELF-REPORT.md); "URML-Certified" and "NDAA compliant by URML" remain off limits (see below).
+State, factually, that a specific manifest "validates clean under URML's open US-federal default compliance policy at URML commit `<hash>`" if it does and you pin the commit. This is a reproducible self-report, not a certification. The exact permitted and forbidden phrasing is in [docs/manufacturers/FEDERAL-VALIDATION-SELF-REPORT.md](docs/manufacturers/FEDERAL-VALIDATION-SELF-REPORT.md).
+
+## URML-Certified
+
+### Who can get it
+
+Anyone whose runtime is one exact version of a distribution the public can install. The Licensor does not certify runtimes the URML project publishes itself (the `urml-*` packages and the in-repository examples); they stay at the self-reported tier.
+
+### The criteria
+
+The criteria are in [`spec/conformance/v0.2.0.md`](spec/conformance/v0.2.0.md) section 3, and the registry checker enforces all but the attestation:
+
+1. A self-report: the full suite for each claimed profile, run with the runtime's own adapter, every fixture passed.
+2. A reproduction: the Licensor installs that exact version from its public source into a clean environment, turns the network off, runs the same suite with the same adapter, and gets a pass on every fixture over the same fixture set.
+3. An attestation by the submitter that the runtime meets the six clauses of the conformance contract, in particular that no path actuates without validation.
+
+### Cost and order
+
+Certification is free. Requests are handled in the order they arrive. No fee, license, or paid service affects whether or when certification is granted. A paid validation engagement ([COMMERCIAL.md](COMMERCIAL.md#validation-services)) can help a team prepare; it does not grant the mark or move a request forward.
+
+### How long it lasts
+
+At most 366 days from the grant, and never past the next urml-conformance release. After either, the registry check fails for the entry until it is renewed or moved back to the self-reported tier.
+
+### Using the mark
+
+Use "URML-Certified" only:
+
+- while the registry entry is listed with `tier: certified` and the registry check passes for it;
+- together with its scope, in this form or one that carries the same facts: "URML-Certified (conformance 0.2.0): profiles warehouse; acme-urml-runtime 1.2.0", with a link to the registry entry;
+- for the certified version, not for later versions, other products, or the company as a whole.
+
+Never use it to claim, or in a way that suggests, safety certification, regulatory compliance (including "NDAA compliant by URML"), or fitness for any purpose. Never alter the mark or combine it with another word to make a new mark.
+
+### Withdrawal
+
+The Licensor withdraws a certification when the registry check fails for it, when a later reproduction fails, when the attestation proves false, or when the mark is used outside these rules. Withdrawal is a public commit to the registry entry that states the reason. No right to use the mark survives it.
 
 ## What is off limits
 
-Using the term "URML-Certified" in any form. Reserved until the Phase 4 program launches.
+Using "URML-Certified" for anything that is not a currently certified registry entry, or outside the rules above.
 
-Implying URML endorsement, sponsorship, or affiliation when none exists. Being listed in the registry does not grant a license to imply URML has audited, endorsed, or sponsored the listed runtime.
+Implying URML endorsement, sponsorship, or affiliation when none exists. Neither a listing nor a certification is an endorsement of the product.
 
 Using the URML name in a product name that suggests official status (e.g., "URML Pro", "URML Cloud", "URML Enterprise") without written permission. Product names that make the relationship factual (e.g., "Foo Robotics URML Adapter") are fine.
 
-Modifying the URML conformance suite and continuing to claim conformance against the modified suite. "URML-compatible" means passing the unmodified, current-version public suite.
+Modifying the URML conformance suite and continuing to claim conformance against the modified suite. "URML-compatible" and "URML-Certified" both mean passing the unmodified suite.
 
-## What listing in the registry does not grant
+## What listing does not grant
 
-Listing in [docs/compatible-runtimes.md](docs/compatible-runtimes.md) does not grant any license to use the URML or URML-Certified marks beyond the factual descriptor use above. It does not indicate URML has audited, endorsed, sponsored, or assumed responsibility for the listed runtime. It does not indicate the listed runtime is fit for production, safety-critical, or regulated deployment. The conformance suite tests specification conformance, not fitness for any particular purpose. If a listing is later removed (failed update, withdrawal, delisting), no rights persist.
+A listing in the registry, [docs/compatible-runtimes.md](docs/compatible-runtimes.md), or the [Manufacturer & Product Directory](docs/manufacturers/directory.md) grants no license to use the URML or URML-Certified marks beyond the factual descriptor use above. It does not indicate URML has audited, endorsed, sponsored, or assumed responsibility for the listed product, and it does not indicate fitness for production, safety-critical, or regulated deployment. The conformance suite tests specification conformance, not fitness for any particular purpose. A validator passing a manifest under the bundled default policy is a reproducible factual result, not a certification or a compliance determination. No rights persist after delisting.
 
-The same applies to the [Manufacturer & Product Directory](docs/manufacturers/directory.md). Listing there, and any federal-validation self-report linked from it, does not grant any mark license beyond factual descriptor use, does not indicate URML has audited, endorsed, sponsored, or assumed responsibility for the product, does not indicate fitness for production, safety-critical, or regulated deployment, and is not a compliance determination. A validator passing a manifest under the bundled default policy is a reproducible factual result, not a certification. No rights persist after delisting.
+## Still to come
 
-## Phase 4: the full policy
-
-When the URML-Certified program launches, this stub will be replaced by a full TRADEMARK.md covering:
-
-- Formal definitions of mark categories
-- The URML-Certified policy: who can apply, what audit confirms it, how often re-certification is required, fees if any
-- A dispute-resolution procedure for trademark misuse
-- A revocation procedure for the URML-Certified mark
-- Foundation-level governance of the marks (assumes the Phase 3+ foundation exists)
-
-Until then, this stub is the operative public statement.
+- Registration of the marks, starting with URML-Certified as a certification mark. Trademark counsel reviews this policy before the first certification is granted.
+- A formal dispute-resolution procedure for trademark misuse.
+- Hand-over of the Licensor's certification role to a foundation or steering committee once one exists.
 
 ## Reporting trademark concerns
 
-During Phase 0, open an issue in the URML repository or contact the maintainer per [CONTRIBUTING.md](CONTRIBUTING.md). The maintainer commits to responding within 30 days.
+Open an issue in the URML repository or contact the maintainer per [CONTRIBUTING.md](CONTRIBUTING.md). The maintainer commits to responding within 30 days.
 
 ## Changing this document
 
-Material changes follow the RFC process in [docs/rfcs/0001-rfc-process.md](docs/rfcs/0001-rfc-process.md). Typo and clarification fixes go through ordinary PRs. The full Phase 4 trademark policy will land as its own RFC and replace this document at that time.
+Material changes follow the RFC process in [docs/rfcs/0001-rfc-process.md](docs/rfcs/0001-rfc-process.md). Typo and clarification fixes go through ordinary PRs.

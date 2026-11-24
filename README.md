@@ -238,7 +238,7 @@ Critique of the primitive vocabulary, the layer boundaries, and the strategic po
 
 ## Compatible Runtimes
 
-If you build a runtime that translates URML into a substrate (ROS 2, PX4, vendor SDK, anything else), you can self-report compatibility by running the public conformance suite and opening a PR. See [`docs/registry/SUBMISSION.md`](docs/registry/SUBMISSION.md) for the five-step flow, [`docs/compatible-runtimes.md`](docs/compatible-runtimes.md) for the current entries, and [`TRADEMARK.md`](TRADEMARK.md) for what listing does and does not grant. The registry is free and opt-in. There is no URML-Certified mark in use yet; that is a Phase 4 program.
+If you build a runtime that translates URML into a substrate (ROS 2, PX4, vendor SDK, anything else), you can self-report compatibility by running the public conformance suite and opening a PR. See [`docs/registry/SUBMISSION.md`](docs/registry/SUBMISSION.md) for the five-step flow, [`docs/compatible-runtimes.md`](docs/compatible-runtimes.md) for the current entries, and [`TRADEMARK.md`](TRADEMARK.md) for what listing does and does not grant. The registry is free and opt-in. A runtime can also become **URML-Certified**, free, when the Licensor reproduces its conformance run from the public package ([RFC-0705](docs/rfcs/0705-urml-certified.md)). It certifies conformance, not safety.
 
 If instead you **make robots or parts** rather than runtimes, see [`docs/manufacturers/README.md`](docs/manufacturers/README.md). It covers the integration path, an optional factual federal-validation self-report, and the self-reported [manufacturer directory](docs/manufacturers/directory.md). Same posture: free, opt-in, no mark, not a certification.
 
