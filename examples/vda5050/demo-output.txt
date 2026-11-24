@@ -1,0 +1,17 @@
+validate: accepted (profile warehouse, default policy)
+vehicle: vda5050/v3/ExampleAMR/amr-0001  (VDA 5050 3.0.0, simulated)
+
+1. shelf_a3
+  order: N-CHG1 -> N-HUB -> N-A3   maximumSpeed 1, 1.2 m/s
+2. shelf_a3
+  order: N-A3   actions: detectObject(objectType=tote)
+3. shelf_a3
+  order: N-A3   actions: pick(loadType=tote, stationName=A3, stationType=rack)
+4. conveyor_a
+  order: N-A3 -> N-HUB -> N-CVA   maximumSpeed 1.2 m/s
+5. conveyor_a
+  order: N-CVA   actions: drop(stationName=conveyor_a, stationType=passive_conveyor)
+
+program: success, 3 URML steps
+orders sent: 5
+vehicle at: N-CVA, loads: none
