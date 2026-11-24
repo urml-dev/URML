@@ -43,7 +43,7 @@ SCENARIOS = sorted(p.name for p in FIXTURES.iterdir() if (p / "scenario.yaml").i
 SCHEMA = REPO_ROOT / "spec" / "evidence" / "v0.1.0" / "report.schema.json"
 TEMPLATES = [
     REPO_ROOT / "examples" / "rulebooks" / f"{name}-template.yaml"
-    for name in ("industrial", "amr", "home", "functional-safety")
+    for name in ("industrial", "amr", "home", "functional-safety", "cybersecurity")
 ]
 FIXED_OUTSIDE = [
     "outside.safety_control",
