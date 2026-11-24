@@ -72,7 +72,7 @@ with Vda5050Adapter(config) as amr:          # connects to config.broker_host
 
 ## Scope
 
-One order per dispatch step, fully released, no horizon. That is enough to drive a vehicle through a URML program; it is not traffic management. Multi-vehicle deconfliction, horizon streaming and order updates belong to a fleet manager (openTCS, Open-RMF, a vendor fleet manager). URML's own cross-robot checks (RFC-0286, RFC-0291) run in the validator before anything is sent. Open questions are recorded in [`SPEC-GAPS.md`](SPEC-GAPS.md).
+One order per dispatch step, fully released, no horizon. That is enough to drive a vehicle through a URML program; it is not traffic management. Multi-vehicle deconfliction, horizon streaming and order updates belong to a fleet manager (openTCS, Open-RMF, a vendor fleet manager). URML's own cross-robot checks (RFC-0286, RFC-0291) run in the validator before anything is sent, and a site's mobile-robot rules (after ISO 3691-4 and ANSI/A3 R15.08) load as a rulebook: start from [`examples/rulebooks/amr-template.yaml`](../../examples/rulebooks/amr-template.yaml). Open questions are recorded in [`SPEC-GAPS.md`](SPEC-GAPS.md).
 
 **ISO 21423:2026** (industrial mobile robot communications and interoperability) is the likely next protocol here. All VDA 5050 field names live in `messages.py`, so a second protocol would add a sibling module rather than change the adapter. It is not implemented: the standard's text is not publicly available, and nothing in this package claims conformance to it.
 
