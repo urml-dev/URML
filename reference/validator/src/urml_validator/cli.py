@@ -822,6 +822,16 @@ def build_parser() -> argparse.ArgumentParser:
     p_evidence_build.add_argument(
         "--out", "-o", type=Path, default=None, metavar="PATH", help="Write the report to PATH instead of stdout."
     )
+    p_evidence_build.add_argument(
+        "--format",
+        dest="report_format",
+        choices=("json", "md", "html"),
+        default="json",
+        help=(
+            "json (the default) is the canonical report; md and html render it for people. "
+            "html is one static file with no scripts."
+        ),
+    )
     p_evidence_build.set_defaults(func=cmd_evidence_build)
 
     return parser
@@ -948,7 +958,16 @@ def cmd_evidence_build(args: argparse.Namespace) -> int:
     except (_CLILoadError, EvidenceInputError) as exc:
         print(f"urml: {exc}", file=sys.stderr)
         return 2
-    text = render_json(report)
+    if args.report_format == "md":
+        from urml_validator.evidence_render import render_markdown
+
+        text = render_markdown(report)
+    elif args.report_format == "html":
+        from urml_validator.evidence_render import render_html
+
+        text = render_html(report)
+    else:
+        text = render_json(report)
     if args.out is None:
         sys.stdout.write(text)
     else:

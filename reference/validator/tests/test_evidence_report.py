@@ -516,3 +516,11 @@ def test_cli_exits_2_on_a_conformance_report_that_is_not_json(tmp_path: Path) ->
     bad = tmp_path / "report.json"
     bad.write_text("not json", encoding="utf-8")
     assert main([*_cli_args("home-helper"), "--conformance-report", str(bad)]) == 2
+
+
+def test_without_provenance_the_policy_rules_are_not_shown_as_passed() -> None:
+    items = _items(_build("drone-parcel"))
+    assert not any(i.startswith("policy_rule.") for i in items)
+    absent = items["provenance.absent"]
+    assert absent.status == "missing"
+    assert "covered_vendor_denylist" in absent.detail["unchecked_rules"]

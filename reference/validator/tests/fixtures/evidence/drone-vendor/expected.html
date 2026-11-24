@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evidence report: arducopter_delivery_quad</title>
+<style>:root{--bg:#fbfaf7;--fg:#1d1d1b;--muted:#5d5d57;--rule:#dcd9d0;--card:#ffffff;
+--checked:#1f6f43;--declared:#7a5a00;--runtime:#2a5a9e;--missing:#b3261e;--outside:#5d5d57}
+@media (prefers-color-scheme:dark){:root{--bg:#161614;--fg:#ecebe6;--muted:#a3a29b;--rule:#3a3934;
+--card:#1f1f1c;--checked:#6fcf97;--declared:#e2b93b;--runtime:#7fb0f0;--missing:#ff8a80;--outside:#a3a29b}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.55 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1040px;margin:0 auto;padding:32px 16px 64px}
+h1{font-size:26px;margin:0 0 12px}h2{font-size:19px;margin:36px 0 10px;border-bottom:1px solid var(--rule);
+padding-bottom:6px}
+.notice{border-left:4px solid var(--missing);background:var(--card);padding:10px 14px;margin:0 0 12px;font-weight:600}
+.sub,.note{color:var(--muted)}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+th,td{text-align:left;vertical-align:top;padding:7px 10px;border-bottom:1px solid var(--rule)}
+th{font-size:13px;color:var(--muted);font-weight:600}
+td.id,code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;overflow-wrap:break-word}
+a{color:var(--runtime)}
+.s{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;font-weight:600;border:1px solid;
+white-space:nowrap}
+.s-checked{color:var(--checked)}.s-declared{color:var(--declared)}.s-runtime{color:var(--runtime)}
+.s-missing{color:var(--missing)}.s-outside{color:var(--outside)}.s-fail{color:var(--missing)}
+.wrap{overflow-x:auto}
+@media (max-width:640px){td.id{max-width:140px}}</style>
+</head>
+<body>
+<main>
+<h1>Evidence report: arducopter_delivery_quad</h1>
+<p class="notice">Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.</p>
+<p class="sub">As of 2026-11-24 · urml-validator VERSION · profiles: drone · policy: bundled</p>
+<h2>Summary</h2>
+<div class="wrap"><table><thead><tr><th>Status</th><th>Items</th><th>Meaning</th></tr></thead><tbody>
+<tr><td><span class="s s-checked">checked</span></td><td>14</td><td>The validator checks this before a program runs.</td></tr>
+<tr><td><span class="s s-declared">declared</span></td><td>2</td><td>Someone states this; URML records who and does not verify it.</td></tr>
+<tr><td><span class="s s-runtime">runtime</span></td><td>6</td><td>The runtime must enforce this while a program runs.</td></tr>
+<tr><td><span class="s s-missing">missing</span></td><td>4</td><td>Something a rule, the policy or the envelope needs is absent.</td></tr>
+<tr><td><span class="s s-outside">outside</span></td><td>12</td><td>URML cannot see this; someone else must cover it.</td></tr>
+</tbody></table></div>
+<p><strong>Gaps: 5 (4 missing, 1 failed check).</strong></p>
+<h2>Gaps</h2>
+<ul>
+<li><a href="#provenance.absent"><code>provenance.<wbr>absent</code></a> (Provenance, <span class="s s-missing">missing</span>): The manifest declares no provenance, so no component origin is on record and the policy&#x27;s provenance rules (critical_country_denylist, critical_final_assembly_denylist, covered_vendor_denylist, hbom_required_for_critical, attestation_floor) have nothing to check.</li>
+<li><a href="#rule.us_faa_part107.remote_identification"><code>rule.<wbr>us_faa_part107.<wbr>remote_identification</code></a> (Rules, <span class="s s-missing">missing</span>): Remote identification by one of the means of 14 CFR Part 89. The deployment declares no remote_id; every program is refused until it does.</li>
+<li><a href="#validated.too-high"><code>validated.<wbr>too-high</code></a> (Programs, <span class="s s-fail">checked, fail</span>): Program too-high.urml.yaml is refused, 2 errors. envelope.altitude_exceeded: move_to.pose.z (80.0 m) exceeds the strictest altitude cap (60.0 m); envelope.geofence_violation: move_to.pose (50.0, 40.0, alt=80.0) is inside the footprint of a declared geofence but outside its altitude band ([&#x27;delivery_corridor&#x27;]).</li>
+<li><a href="#conformance.failures"><code>conformance.<wbr>failures</code></a> (Conformance, <span class="s s-missing">missing</span>): 1 fixture failed: drone/return_to_home_on_link_loss.</li>
+<li><a href="#registry.tier"><code>registry.<wbr>tier</code></a> (Conformance, <span class="s s-missing">missing</span>): URML-Certified for drone expired on 2026-06-30. It certifies conformance to URML, not safety or compliance.</li>
+</ul>
+<h2 id="section-robot">Robot</h2>
+<div class="wrap"><table><thead><tr><th>Status</th><th>Item</th><th>What the report knows</th></tr></thead><tbody>
+<tr id="capability.mobility"><td><span class="s s-checked">checked</span></td><td class="id">capability.<wbr>mobility</td><td>Mobility (multirotor), up to 10 m/s. The validator refuses steps faster than this or the envelope&#x27;s limit. No evidence tag: the claim&#x27;s source is not recorded.</td></tr>
+<tr id="capability.sensor.battery"><td><span class="s s-checked">checked</span></td><td class="id">capability.<wbr>sensor.<wbr>battery</td><td>Sensor battery (voltage). No evidence tag: the claim&#x27;s source is not recorded.</td></tr>
+</tbody></table></div>
+<h2 id="section-provenance">Provenance</h2>
+<div class="wrap"><table><thead><tr><th>Status</th><th>Item</th><th>What the report knows</th></tr></thead><tbody>
+<tr id="provenance.absent"><td><span class="s s-missing">missing</span></td><td class="id">provenance.<wbr>absent</td><td>The manifest declares no provenance, so no component origin is on record and the policy&#x27;s provenance rules (critical_country_denylist, critical_final_assembly_denylist, covered_vendor_denylist, hbom_required_for_critical, attestation_floor) have nothing to check.</td></tr>
+</tbody></table></div>
+<h2 id="section-envelope">Envelope</h2>
+<div class="wrap"><table><thead><tr><th>Status</th><th>Item</th><th>What the report knows</th></tr></thead><tbody>
+<tr id="limit.max_velocity"><td><span class="s s-checked">checked</span></td><td class="id">limit.<wbr>max_velocity</td><td>The envelope limits speed to 10 m/s. The manifest allows 10 m/s; the stricter, 10 m/s, applies.</td></tr>
+<tr id="limit.max_altitude"><td><span class="s s-checked">checked</span></td><td class="id">limit.<wbr>max_altitude</td><td>The envelope limits altitude to 60 m. The manifest allows 120 m; the stricter, 60 m, applies.</td></tr>
+<tr id="limit.max_payload"><td><span class="s s-checked">checked</span></td><td class="id">limit.<wbr>max_payload</td><td>The envelope limits payload to 1.5 kg. The manifest allows 1.5 kg; the stricter, 1.5 kg, applies.</td></tr>
+<tr id="limit.max_drop_height"><td><span class="s s-checked">checked</span></td><td class="id">limit.<wbr>max_drop_height</td><td>The envelope limits drop height to 5 m.</td></tr>
+<tr id="geofence.delivery_corridor"><td><span class="s s-checked">checked</span></td><td class="id">geofence.<wbr>delivery_corridor</td><td>Geofence delivery_corridor (frame agl, 4 vertices). Every place a program names must lie inside a declared geofence.</td></tr>
+<tr id="people_zone.footpath"><td><span class="s s-checked">checked</span></td><td class="id">people_zone.<wbr>footpath</td><td>People-occupancy zone footpath (frame agl). Programs may not target places inside it.</td></tr>
+<tr id="weather"><td><span class="s s-runtime">runtime</span></td><td class="id">weather</td><td>Weather limits are on record. The validator cannot see the weather; the runtime or the operator must check conditions before and during a run.</td></tr>
+<tr id="link_loss.0"><td><span class="s s-runtime">runtime</span></td><td class="id">link_loss.<wbr>0</td><td>On losing the command_link link, the robot must return_to_home. The validator checks the policy against the declared links; acting on a loss happens at run time.</td></tr>
+<tr id="runtime.start_position"><td><span class="s s-runtime">runtime</span></td><td class="id">runtime.<wbr>start_position</td><td>Where the robot starts. The runtime must not start a program while the robot is outside every geofence, or inside a people-occupancy zone that does not allow an override.</td></tr>
+<tr id="runtime.paths"><td><span class="s s-runtime">runtime</span></td><td class="id">runtime.<wbr>paths</td><td>The path between two checked places. The runtime must keep it inside the geofences and out of the people-occupancy zones.</td></tr>
+<tr id="runtime.unstated_speed"><td><span class="s s-runtime">runtime</span></td><td class="id">runtime.<wbr>unstated_speed</td><td>The speed of a step that states none. The runtime must keep it at or below the strictest speed limit.</td></tr>
+<tr id="runtime.emergency_stop"><td><span class="s s-runtime">runtime</span></td><td class="id">runtime.<wbr>emergency_stop</td><td>On an emergency stop reported by the substrate, the runtime must stop dispatching and stop every motion it commands. The emergency stop itself is a function of the machine.</td></tr>
+</tbody></table></div>
+<h2 id="section-rules">Rules</h2>
+<div class="wrap"><table><thead><tr><th>Status</th><th>Item</th><th>What the report knows</th></tr></thead><tbody>
+<tr id="rule.us_faa_part107.altitude_400ft_agl"><td><span class="s s-checked">checked</span></td><td class="id">rule.<wbr>us_faa_part107.<wbr>altitude_400ft_agl</td><td>Maximum altitude 400 feet (121.92 m) above ground level. Checked against every program (cap).</td></tr>
+<tr id="rule.us_faa_part107.groundspeed_100mph"><td><span class="s s-checked">checked</span></td><td class="id">rule.<wbr>us_faa_part107.<wbr>groundspeed_100mph</td><td>Maximum groundspeed 87 knots (100 miles per hour); the stricter 44.704 m/s is used. Checked against every program (cap).</td></tr>
+<tr id="rule.us_faa_part107.over_human_beings"><td><span class="s s-checked">checked</span></td><td class="id">rule.<wbr>us_faa_part107.<wbr>over_human_beings</td><td>No flight over human beings unless the operation meets a Subpart D category. Checked against every program (forbid_over_people).</td></tr>
+<tr id="rule.us_faa_part107.one_aircraft_per_pilot"><td><span class="s s-checked">checked</span></td><td class="id">rule.<wbr>us_faa_part107.<wbr>one_aircraft_per_pilot</td><td>One unmanned aircraft at a time per remote pilot in command. Checked against every program (max_concurrent_aircraft).</td></tr>
+<tr id="rule.us_faa_part107.remote_identification"><td><span class="s s-missing">missing</span></td><td class="id">rule.<wbr>us_faa_part107.<wbr>remote_identification</td><td>Remote identification by one of the means of 14 CFR Part 89. The deployment declares no remote_id; every program is refused until it does.</td></tr>
+<tr id="obligation.us_faa_part107.remote_pilot_certificate"><td><span class="s s-outside">outside</span></td><td class="id">obligation.<wbr>us_faa_part107.<wbr>remote_pilot_certificate</td><td>A remote pilot certificate with a small UAS rating. The remote pilot in command holds a remote pilot certificate with a small UAS rating. Anyone else at the flight controls is under the direct supervision of that pilot, who can take direct control immediately.</td></tr>
+<tr id="obligation.us_faa_part107.visual_line_of_sight"><td><span class="s s-outside">outside</span></td><td class="id">obligation.<wbr>us_faa_part107.<wbr>visual_line_of_sight</td><td>Visual line of sight for the whole flight. The remote pilot in command, the person at the controls and any visual observer are able to see the aircraft throughout the flight with vision unaided by any device other than corrective lenses, and either the two pilots or a visual observer keep watching it.</td></tr>
+<tr id="obligation.us_faa_part107.night_and_twilight_lighting"><td><span class="s s-outside">outside</span></td><td class="id">obligation.<wbr>us_faa_part107.<wbr>night_and_twilight_lighting</td><td>Anti-collision lighting at night and in civil twilight. At night, the remote pilot in command has completed an initial knowledge test or training under 107.65 after April 6, 2021, and the aircraft shows lighted anti-collision lighting visible for at least 3 statute miles. The same lighting is required during civil twilight.</td></tr>
+<tr id="obligation.us_faa_part107.controlled_airspace_authorization"><td><span class="s s-outside">outside</span></td><td class="id">obligation.<wbr>us_faa_part107.<wbr>controlled_airspace_authorization</td><td>ATC authorization in controlled airspace. Operations in Class B, Class C or Class D airspace, or within the lateral boundaries of the surface area of Class E airspace designated for an airport, have prior authorization from Air Traffic Control.</td></tr>
+<tr id="obligation.us_faa_part107.flight_visibility"><td><span class="s s-outside">outside</span></td><td class="id">obligation.<wbr>us_faa_part107.<wbr>flight_visibility</td><td>Flight visibility of at least 3 statute miles. The minimum flight visibility, observed from the control station, is at least 3 statute miles.</td></tr>
+<tr id="obligation.us_faa_part107.cloud_clearance"><td><span class="s s-outside">outside</span></td><td class="id">obligation.<wbr>us_faa_part107.<wbr>cloud_clearance</td><td>At least 500 feet below and 2,000 feet horizontally from clouds. The aircraft stays at least 500 feet below clouds and at least 2,000 feet horizontally from them.</td></tr>
+<tr id="obligation.us_faa_part107.people_outside_declared_zones"><td><span class="s s-outside">outside</span></td><td class="id">obligation.<wbr>us_faa_part107.<wbr>people_outside_declared_zones</td><td>People and flight paths the validator cannot see. URML checks flight targets against the people-occupancy zones the deployment declares. People outside those zones, and the path the aircraft flies between targets, are for the remote pilot in command to watch.</td></tr>
+</tbody></table></div>
+<h2 id="section-programs">Programs</h2>
+<div class="wrap"><table><thead><tr><th>Status</th><th>Item</th><th>What the report knows</th></tr></thead><tbody>
+<tr id="validated.parcel-delivery"><td><span class="s s-checked">checked, pass</span></td><td class="id">validated.<wbr>parcel-delivery</td><td>Program parcel-delivery.urml.yaml is accepted. 1 warning: rule.declaration_missing.</td></tr>
+<tr id="validated.too-high"><td><span class="s s-fail">checked, fail</span></td><td class="id">validated.<wbr>too-high</td><td>Program too-high.urml.yaml is refused, 2 errors. envelope.altitude_exceeded: move_to.pose.z (80.0 m) exceeds the strictest altitude cap (60.0 m); envelope.geofence_violation: move_to.pose (50.0, 40.0, alt=80.0) is inside the footprint of a declared geofence but outside its altitude band ([&#x27;delivery_corridor&#x27;]).</td></tr>
+</tbody></table></div>
+<h2 id="section-conformance">Conformance</h2>
+<div class="wrap"><table><thead><tr><th>Status</th><th>Item</th><th>What the report knows</th></tr></thead><tbody>
+<tr id="conformance.run"><td><span class="s s-declared">declared</span></td><td class="id">conformance.<wbr>run</td><td>The conformance report says adapter example_vendor_runtime:ExampleAdapter ran 3 fixtures: 2 passed, 1 failed.</td></tr>
+<tr id="conformance.failures"><td><span class="s s-missing">missing</span></td><td class="id">conformance.<wbr>failures</td><td>1 fixture failed: drone/return_to_home_on_link_loss.</td></tr>
+<tr id="registry.entry"><td><span class="s s-declared">declared</span></td><td class="id">registry.<wbr>entry</td><td>Registry entry example-vendor-quadrotor (listed) lists example-vendor-runtime 1.2.0 for profiles drone, last verified 2025-07-01.</td></tr>
+<tr id="registry.tier"><td><span class="s s-missing">missing</span></td><td class="id">registry.<wbr>tier</td><td>URML-Certified for drone expired on 2026-06-30. It certifies conformance to URML, not safety or compliance.</td></tr>
+</tbody></table></div>
+<h2 id="section-outside">Outside URML</h2>
+<div class="wrap"><table><thead><tr><th>Status</th><th>Item</th><th>What the report knows</th></tr></thead><tbody>
+<tr id="outside.safety_control"><td><span class="s s-outside">outside</span></td><td class="id">outside.<wbr>safety_control</td><td>The robot&#x27;s safety-related control and its safety functions (stops, speed and separation monitoring, power and force limiting), designed and validated outside URML.</td></tr>
+<tr id="outside.below_substrate"><td><span class="s s-outside">outside</span></td><td class="id">outside.<wbr>below_substrate</td><td>Firmware, controllers and drivers below the substrate.</td></tr>
+<tr id="outside.site"><td><span class="s s-outside">outside</span></td><td class="id">outside.<wbr>site</td><td>Wiring, guarding and the physical site.</td></tr>
+<tr id="outside.declarations"><td><span class="s s-outside">outside</span></td><td class="id">outside.<wbr>declarations</td><td>Whether any declared item in this report is true.</td></tr>
+<tr id="outside.unmediated"><td><span class="s s-outside">outside</span></td><td class="id">outside.<wbr>unmediated</td><td>Anything a program does through a path that does not pass through a URML runtime.</td></tr>
+</tbody></table></div>
+<h2>By standard</h2>
+<div class="wrap"><table><thead><tr><th>Standard</th><th>checked</th><th>declared</th><th>runtime</th><th>missing</th><th>outside</th></tr></thead><tbody>
+<tr><td>14 CFR Part 107</td><td>4</td><td>0</td><td>0</td><td>0</td><td>7</td></tr>
+<tr><td>14 CFR Part 89</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+</tbody></table></div>
+<h2>Inputs</h2>
+<div class="wrap"><table><thead><tr><th>Role</th><th>Id</th><th>File</th><th>Digest</th></tr></thead><tbody>
+<tr><td>manifest</td><td>arducopter_delivery_quad</td><td>parcel-delivery.manifest.yaml</td><td class="id">sha256:2be728c3130b9a6a210fed037964bbf39901bb673c9e9c2fb8287d6428a85383</td></tr>
+<tr><td>envelope</td><td>parcel_delivery_test</td><td>parcel-delivery.envelope.yaml</td><td class="id">sha256:35081612e6f9ddde40144f5a918c64f248a7f89d9bd8946ea04b86a5342a5c01</td></tr>
+<tr><td>policy</td><td>urml_us_federal_default</td><td>bundled</td><td class="id">sha256:281e91ec5795a8d27cf029bb641704642eb8fb9e6dbb258ebbe2879ff960c4aa</td></tr>
+<tr><td>rulebook</td><td>us_faa_part107</td><td>bundled</td><td class="id">sha256:031f6907896cf0f898826e21636fe071e8c88f2e78b3d4b7a8191b16c4d563f1</td></tr>
+<tr><td>program</td><td></td><td>parcel-delivery.urml.yaml</td><td class="id">sha256:eaa34c716aa5fea7afd850335ee302504e3968f19078ff958a8ffb031900a8ee</td></tr>
+<tr><td>program</td><td></td><td>too-high.urml.yaml</td><td class="id">sha256:5aa895e48e03f4276cc59ccf4642882e366330dd1662f0de680aca18f58c0424</td></tr>
+<tr><td>conformance_report</td><td>example_vendor_runtime:ExampleAdapter</td><td>conformance-report.json</td><td class="id">sha256:b902c8e6947bec44a3389363679d4186a0863ac5c4b23acc8d034248f3977c21</td></tr>
+<tr><td>registry_entry</td><td>example-vendor-quadrotor</td><td>registry-entry.yaml</td><td class="id">sha256:704d862df5761d12d503c2511efeea3930ff98761e38fe3d2d3560c75eee21a5</td></tr>
+</tbody></table></div>
+<p class="note">Rebuild this report from the same files with <code>urml evidence build</code> and the same <code>--as-of</code> date, and compare digests.</p>
+</main>
+</body>
+</html>
