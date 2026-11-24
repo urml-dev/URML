@@ -17,7 +17,7 @@
 > Project context for AI-assisted development sessions (Claude Code, Claude chat, IDE integrations).
 > Loaded automatically by Claude Code at the start of every session in this repository.
 > See [`AGENTS.md`](AGENTS.md) for the operational handbook (writing style, chat style, tactical workflow rules).
-> Last updated: 2026-05-23
+> Last updated: 2026-11-24
 
 ---
 
@@ -40,7 +40,7 @@ The long-term goal is a **venture-scale company**. This is not incidental. It sh
 
 **The standard is the product.** Since RFC-0703 (2026-11-22), URML is source-available under the Business Source License 1.1. Research, teaching, evaluation, development, testing, simulation and personal use are free; production use needs a commercial license (sales@urml.dev); each release converts to Apache 2.0 two years after it ships. Releases up to v0.4.x stay Apache 2.0. Keep the source public and the free tier generous: adoption by engineers is what makes production licenses sell.
 
-**Revenue.** Production licenses (Startup, Enterprise, OEM; see [`COMMERCIAL.md`](COMMERCIAL.md)) are the primary revenue. Further commercial surfaces: the *URML-Certified* program, audited policy files, hosted services (validation, LLM bridge, simulation), fleet tooling and training. Hosted services and fleet tooling live outside this repository. Keep them mentally separate, but design so they remain *possible* later: clean APIs, well-defined extension points, no architectural choices that would make a hosted product harder to build.
+**Revenue.** Production licenses (Startup, Enterprise, OEM; see [`COMMERCIAL.md`](COMMERCIAL.md)) are the primary revenue. Further commercial surfaces: validation engagements for fleets and vehicles, audited policy files, hosted services (validation, LLM bridge, simulation), fleet tooling and training. Hosted services and fleet tooling live outside this repository. Keep them mentally separate, but design so they remain *possible* later: clean APIs, well-defined extension points, no architectural choices that would make a hosted product harder to build. The *URML-Certified* mark is not a revenue line: the Manifesto forbids selling certification, so it is granted free on public criteria ([RFC-0705](docs/rfcs/0705-urml-certified.md), [`TRADEMARK.md`](TRADEMARK.md)).
 
 **Licensing, in writing.** [`LICENSE`](LICENSE) (BSL 1.1) is binding; [`LICENSING.md`](LICENSING.md) is the plain-language summary. [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) is superseded and kept only as a record. Never describe current URML as "open source" or "Apache 2.0"; say "source-available, free for non-production use".
 

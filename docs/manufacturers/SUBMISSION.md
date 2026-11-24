@@ -18,7 +18,7 @@ This page is for robot and product manufacturers who want a product listed in [d
 
 The directory is self-reported. You validate your product's capability manifest with the open URML validator, optionally publish a federal-validation self-report from your own repo, and open a PR adding a row. The maintainer reviews the PR for completeness and merges it.
 
-Before you start, read [TRADEMARK.md](../../TRADEMARK.md) and [FEDERAL-VALIDATION-SELF-REPORT.md](FEDERAL-VALIDATION-SELF-REPORT.md). The short version: listing does not grant a license to the URML or `URML-Certified` marks. Saying your manifest "validates under URML" is fine if it does. Saying your product is "URML-Certified" or "NDAA compliant by URML" is not, and will not be until the Phase 4 program launches.
+Before you start, read [TRADEMARK.md](../../TRADEMARK.md) and [FEDERAL-VALIDATION-SELF-REPORT.md](FEDERAL-VALIDATION-SELF-REPORT.md). The short version: listing does not grant a license to the URML or `URML-Certified` marks. Saying your manifest "validates under URML" is fine if it does. Saying your product is "NDAA compliant by URML" is not, ever. "URML-Certified" applies only to a runtime version certified through the registry ([RFC-0705](../rfcs/0705-urml-certified.md)), used as [TRADEMARK.md](../../TRADEMARK.md) describes.
 
 ## The five steps
 

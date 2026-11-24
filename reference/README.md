@@ -54,6 +54,6 @@ Phase 0. Every subdirectory holds a `README.md` describing what the component wi
 
 ## How to add a new reference implementation
 
-Adding a *third-party* runtime does not require touching this directory — anyone can write a URML-compatible runtime under any license and demonstrate conformance via the conformance suite (and, when the trademark program exists, apply for the URML-Certified mark).
+Adding a *third-party* runtime does not require touching this directory. Anyone can write a URML-compatible runtime under any license and demonstrate conformance via the conformance suite (and apply for the free URML-Certified mark, [RFC-0705](../docs/rfcs/0705-urml-certified.md)).
 
 Adding a *reference* implementation maintained by the URML organization is a different decision: it expands what the Core Commitment covers. That requires an RFC (RFC-0001 process), and the RFC must include a maintenance commitment — who will keep this code working, against which spec versions, on what cadence. A reference implementation is a long-lived dependency on a real human's time; adding one without a maintenance commitment is rejected.

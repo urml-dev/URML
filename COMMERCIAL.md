@@ -85,13 +85,14 @@ For a maker whose vehicle speaks VDA 5050. We run your vehicle, or your VDA 5050
 - a written report of which URML primitives your vehicle carries out and where it diverges from VDA 5050 as URML uses it;
 - the URML manifest for the vehicle, which you can ship to your customers.
 
-This is a validation run and a report, not a certification. The **URML-Certified** mark is reserved for the Phase 4 program ([`TRADEMARK.md`](TRADEMARK.md)) and is not granted by this engagement.
+This is a validation run and a report. It does not grant the **URML-Certified** mark. Certification is free, on public criteria, through the registry ([`TRADEMARK.md`](TRADEMARK.md), [RFC-0705](docs/rfcs/0705-urml-certified.md)); an engagement can help you prepare for it but never decides or speeds it.
 
 A validation report records what was tested on the dates it was tested. It is not a safety assessment or a compliance determination; site safety stays with the integrator and its risk assessment.
 
 ## Other commercial offerings
 
-- **URML-Certified** conformance program and mark (planned; see [`TRADEMARK.md`](TRADEMARK.md)).
+The **URML-Certified** mark is not one of them. It is free ([RFC-0705](docs/rfcs/0705-urml-certified.md)).
+
 - **Audited policy files** with third-party legal attestation, kept current.
 - **Hosted services**: validation, LLM bridge, simulation. URML always runs fully offline; hosting is optional.
 - **Training and certification** for teams.

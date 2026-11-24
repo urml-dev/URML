@@ -23,8 +23,8 @@ This page lists the **first-party reference runtimes** the URML project
 maintains and verifies in-repo. Robots and runtimes maintained outside the
 project, and the evidence behind each one, are in the
 [URML registry](../registry/README.md). Neither list grants a mark or says
-anything about fitness for a purpose, and the `URML-Certified` mark is reserved
-for a separate, future program (Phase 4) that is not in use today. See
+anything about fitness for a purpose. The `URML-Certified` mark is granted only
+to third-party runtimes in the registry, never to these first-party ones. See
 [TRADEMARK.md](../TRADEMARK.md) for what a listing does and does not grant.
 
 If you make **robots or parts** rather than runtimes, the parallel surface is the

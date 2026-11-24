@@ -18,7 +18,7 @@ Robots and products listed here have been self-reported by their manufacturer as
 
 This is a **self-reported** directory. URML does not certify, audit, or endorse listed products. Listing reflects only that the manufacturer submitted the entry. See [TRADEMARK.md](../../TRADEMARK.md) for what listing does and does not grant.
 
-The `URML-Certified` conformance mark is a separate, future program (Phase 4). It is not in use today, and nothing on this page should be read as a certification claim. A federal-validation self-report, where present, is a factual reproducible statement, not a compliance determination; see [FEDERAL-VALIDATION-SELF-REPORT.md](FEDERAL-VALIDATION-SELF-REPORT.md).
+The `URML-Certified` conformance mark is granted separately, through the [registry](../../registry/README.md) ([RFC-0705](../rfcs/0705-urml-certified.md)). Nothing on this page should be read as a certification claim. A federal-validation self-report, where present, is a factual reproducible statement, not a compliance determination; see [FEDERAL-VALIDATION-SELF-REPORT.md](FEDERAL-VALIDATION-SELF-REPORT.md).
 
 ## Relationship to the Compatible Runtimes registry
 
