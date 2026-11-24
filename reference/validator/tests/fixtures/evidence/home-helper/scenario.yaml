@@ -1,0 +1,8 @@
+description: A personal care robot under the home template, with no envelope.
+as_of: '2026-11-24'
+profiles:
+- home
+manifest: manifest.yaml
+envelope: null
+rulebooks:
+- home-rules.yaml

@@ -1,0 +1,103 @@
+# Generated input for the evidence-report golden tests (RFC-0707).
+# examples/rulebooks/industrial-template.yaml, filled as its test fills it.
+# Test values, not requirements from any standard.
+
+rulebook_version: '0.1'
+rulebook_id: cell_a1_rules
+title: '5.2 (for example: Cell 7 robot rules, from the 2026 risk assessment)'
+issuer:
+  kind: organization
+  name: 5.2 (the integrator or the plant)
+source_status: organization_policy
+reviewed: '2026-11-24'
+description: Operating rules for one robot cell, taken from the cell's risk assessment and the ISO 10218
+  series. Every value comes from the integrator's licensed copy of the standard named in its cite.
+rules:
+- id: collaborative_speed
+  title: Maximum robot speed in the collaborative application
+  cite:
+    text: ISO 10218-2:2025, clause 5.2; the cell's risk assessment
+    standard: ISO 10218-2:2025
+  note: 'The speed the risk assessment allows where people and the robot share the workspace. A global
+    cap: v0.1 has no zone-scoped caps. Speed and separation monitoring stays in the safety-rated controller.'
+  cap:
+    quantity: speed_m_per_s
+    max: 0.25
+- id: gripper_contact_force
+  title: Maximum gripper force where a hand can be caught
+  cite:
+    text: ISO/TS 15066:2016 or ISO 10218-2:2025, clause 5.2; the cell's risk assessment
+    standard:
+    - ISO 10218-2:2025
+    - ISO/TS 15066:2016
+  note: Derived from the quasi-static contact limit for the hand and fingers in the licensed standard,
+    with the integrator's own margin. URML compares the force a program requests. Force limiting during
+    contact stays in the safety-rated controller.
+  cap:
+    quantity: grip_force_n
+    max: 10.0
+- id: validated_programs_only
+  title: Only controller programs covered by the risk assessment run
+  cite:
+    text: ISO 10218-2:2025, clause 5.2; the cell's risk assessment
+    standard: ISO 10218-2:2025
+  note: call_program is opaque to URML. List the controller programs the risk assessment covered.
+  forbid_primitive:
+    primitives:
+    - call_program
+    except_names:
+    - pick_place_cycle
+- id: safety_outputs_untouched
+  title: Programs never write safety-related output lines
+  cite:
+    text: ISO 10218-2:2025, clause 5.2; the cell's risk assessment
+    standard: ISO 10218-2:2025
+  note: Name the output lines the risk assessment marks safety-related, such as a muting or bypass signal.
+  forbid_primitive:
+    primitives:
+    - set_output
+    names:
+    - door_mute
+- id: outside_cell_layout
+  title: The robot never targets a place outside the validated cell layout
+  cite:
+    text: ISO 10218-2:2025, clause 5.2; the cell layout
+    standard: ISO 10218-2:2025
+  note: Name the floor areas the cell layout keeps the robot out of, and declare them in the manifest's
+    declared_areas.
+  forbid_zone_entry:
+    zones:
+    - operator_zone
+obligations:
+- id: risk_assessment
+  title: A current risk assessment for the robot application
+  text: The cell has a risk assessment that covers every task these programs perform, repeated whenever
+    the cell changes.
+  cite:
+    text: ISO 10218-2:2025, clause 5.2
+    standard: ISO 10218-2:2025
+- id: safety_rated_functions
+  title: Stop functions in safety-rated control
+  text: Emergency stop, protective stop, and any speed and separation monitoring or power and force limiting
+    run in safety-rated hardware and software, not in URML.
+  cite:
+    text: ISO 10218-1:2025 and ISO 10218-2:2025, clauses 5.2
+    standard:
+    - ISO 10218-1:2025
+    - ISO 10218-2:2025
+- id: contact_verification
+  title: Measured contact forces for power and force limiting
+  text: Where the application relies on power and force limiting, contact forces and pressures are measured
+    in the installed cell and stay within the limits the risk assessment sets.
+  cite:
+    text: ISO/TS 15066:2016 or ISO 10218-2:2025, clause 5.2
+    standard:
+    - ISO 10218-2:2025
+    - ISO/TS 15066:2016
+- id: cell_validation
+  title: The installed cell is validated before production use
+  text: The integrator verifies and validates the safety functions of the installed cell before it runs
+    production programs.
+  cite:
+    text: ISO 10218-2:2025, clause 5.2
+    standard: ISO 10218-2:2025

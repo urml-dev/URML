@@ -104,6 +104,36 @@ class RulebookPassResult:
     reports: list[RulebookReport] = field(default_factory=list)
 
 
+@dataclass(frozen=True)
+class InventoryEntry:
+    """One loaded rulebook in an inventory: in scope, applied or switched off."""
+
+    book: Rulebook
+    bundled: bool
+    applied: bool
+    reason: str | None
+
+
+@dataclass
+class RulebookInventory:
+    """The rulebooks that apply to a robot, judged without a program (RFC-0707).
+
+    `entries` lists every in-scope rulebook and every deployment rulebook in load
+    order. `declarations` is the merged set the deployment rulebooks declare, with
+    `declared_by` naming the rulebook each came from. `exceptions` maps
+    (rulebook_id, rule_id) to (deployment rulebook id, exception). `errors` and
+    `warnings` carry what the pass would report regardless of the program: invalid
+    rulebooks, missing declarations, bundled rulebooks switched off.
+    """
+
+    entries: list[InventoryEntry]
+    declarations: dict[str, str | int | bool]
+    declared_by: dict[str, str]
+    exceptions: dict[tuple[str, str], tuple[str, RuleException]]
+    errors: list[ValidationError]
+    warnings: list[ValidationError]
+
+
 # ---------------------------------------------------------------------------
 # Loading
 # ---------------------------------------------------------------------------
@@ -197,8 +227,13 @@ class _Robot:
 
     @property
     def aircraft(self) -> bool:
-        mobility = self.manifest.mobility
-        return mobility is not None and mobility.drive_type in _AERIAL_DRIVE_TYPES
+        return is_aircraft(self.manifest)
+
+
+def is_aircraft(manifest: CapabilityManifest) -> bool:
+    """Whether the manifest describes an aircraft, by its drive type."""
+    mobility = manifest.mobility
+    return mobility is not None and mobility.drive_type in _AERIAL_DRIVE_TYPES
 
 
 @dataclass(frozen=True)
@@ -661,7 +696,7 @@ class _Exception:
 class _RulebookPass:
     def __init__(
         self,
-        program: URMLProgram,
+        program: URMLProgram | None,
         robots: Mapping[str | None, _Robot],
         *,
         fleet: bool,
@@ -674,13 +709,14 @@ class _RulebookPass:
         self.fleet = fleet
         self.sole_member = sole_member
         self.as_of = as_of
-        active = [*program.profiles, *profiles]
+        active = [*(program.profiles if program is not None else ()), *profiles]
         self.profiles = list(dict.fromkeys(active))
         self.drive_types = {
             r.manifest.mobility.drive_type for r in robots.values() if r.manifest.mobility is not None
         }
         self.result = RulebookPassResult()
         self.declarations: dict[str, str | int | bool] = {}
+        self.declared_by: dict[str, str] = {}
         self.deployments: list[Rulebook] = []
         self.exceptions: dict[tuple[str, str], _Exception] = {}
         self._seen: set[tuple[object, ...]] = set()
@@ -724,6 +760,52 @@ class _RulebookPass:
                 judge = getattr(self, f"_judge_{rule.kind}")
                 judge(book, rule)
         return self.result
+
+    def inventory(
+        self, rulebooks: SequenceABC[Mapping[str, Any] | Rulebook], default_rulebooks: bool
+    ) -> RulebookInventory:
+        """Load, merge and scope the rulebooks without a program (RFC-0707).
+
+        Runs everything in `run` that does not depend on a program's steps: loading,
+        the deployment rulebooks' declarations and exceptions, scope and switch-off,
+        and the `require_declared` rules, which judge declarations only.
+        """
+        bundled = list(_bundled_sources())
+        caller = [
+            _parse(data, label=None if isinstance(data, Rulebook) else self._caller_label(data, i), bundled=False)
+            for i, data in enumerate(rulebooks)
+        ]
+        loaded = self._load([*bundled, *caller] if default_rulebooks else caller)
+        self._deployment_data(loaded)
+        entries: list[InventoryEntry] = []
+        for src in loaded:
+            book = src.book
+            assert book is not None
+            if book.issuer.kind == "deployment":
+                entries.append(InventoryEntry(book, bundled=src.bundled, applied=True, reason=None))
+                continue
+            if not self._in_scope(book):
+                continue
+            switch = self._holding(book.applies_to.unless_declared if book.applies_to else None)
+            reason = None if switch is None else self._switch_reason(switch)
+            entries.append(InventoryEntry(book, bundled=src.bundled, applied=switch is None, reason=reason))
+            if switch is None:
+                for rule in book.rules:
+                    if rule.kind == "require_declared":
+                        self._judge_require_declared(book, rule)
+        if not default_rulebooks:
+            loaded_ids = {src.book.rulebook_id for src in loaded if src.book is not None}
+            for src in bundled:
+                if src.book is not None and src.book.rulebook_id not in loaded_ids and self._in_scope(src.book):
+                    self._defaults_disabled(src.book)
+        return RulebookInventory(
+            entries=entries,
+            declarations=dict(self.declarations),
+            declared_by=dict(self.declared_by),
+            exceptions={key: (e.deployment_id, e.exception) for key, e in self.exceptions.items()},
+            errors=list(self.result.errors),
+            warnings=list(self.result.warnings),
+        )
 
     @staticmethod
     def _caller_label(data: object, index: int) -> str:
@@ -780,8 +862,10 @@ class _RulebookPass:
                 if key not in self.declarations:
                     self.declarations[key] = value
                     declared_by[key] = book.rulebook_id
+                    self.declared_by[key] = book.rulebook_id
                 elif not _same(self.declarations[key], value):
                     first = self.declarations.pop(key)
+                    self.declared_by.pop(key, None)
                     conflicted.add(key)
                     problem = (
                         f"deployment rulebooks {declared_by[key]} and {book.rulebook_id} declare "
@@ -1120,6 +1204,7 @@ class _RulebookPass:
     def infos(self) -> list[_StepInfo]:
         """Every step in execution order, with its robot, targets and current place."""
         if self._infos is None:
+            assert self.program is not None, "step judgements need a program"
             self._infos = []
             self._walk(self.program.behavior, {}, None, ("behavior",))
         return self._infos
@@ -1555,6 +1640,7 @@ class _RulebookPass:
                 if key in aircraft and key is not None and key not in first and name in _FLIGHT_STEPS:
                     first[key] = name
             initial = frozenset(key for key, name in first.items() if name != "take_off")
+            assert self.program is not None, "step judgements need a program"
             _, peak, peak_set, _ = self._air_walk(self.program.behavior, initial, None)
             self._air = (peak, peak_set)
         return self._air
@@ -1659,4 +1745,33 @@ def run_rulebook_pass(
     return judge.run(rulebooks, default_rulebooks)
 
 
-__all__ = ["BUNDLED_PACKAGE", "RulebookPassResult", "bundled_rulebooks", "run_rulebook_pass"]
+def rulebook_inventory(
+    manifest: CapabilityManifest,
+    envelope: SafetyEnvelope | None,
+    *,
+    profiles: SequenceABC[str] = (),
+    rulebooks: SequenceABC[Mapping[str, Any] | Rulebook] = (),
+    default_rulebooks: bool = True,
+    as_of: date | None = None,
+) -> RulebookInventory:
+    """The rulebooks in force for one robot, and what they need declared, with no program.
+
+    Scope uses `profiles` and the manifest's drive type, as a validation would
+    with a program in those profiles.
+    """
+    robot = _Robot(None, manifest, envelope, {f.name: f for f in manifest.frames})
+    today = as_of if as_of is not None else datetime.now(UTC).date()
+    judge = _RulebookPass(None, {None: robot}, fleet=False, sole_member=None, profiles=profiles, as_of=today)
+    return judge.inventory(rulebooks, default_rulebooks)
+
+
+__all__ = [
+    "BUNDLED_PACKAGE",
+    "InventoryEntry",
+    "RulebookInventory",
+    "RulebookPassResult",
+    "bundled_rulebooks",
+    "is_aircraft",
+    "rulebook_inventory",
+    "run_rulebook_pass",
+]

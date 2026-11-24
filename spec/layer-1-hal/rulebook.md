@@ -67,7 +67,7 @@ applies_to:                        # optional; not allowed on a deployment ruleb
   unless_declared:
     - key: <identifier>
       allowed: [<scalar>, ...]
-      cite: {text: <string>, url: <string>}   # optional
+      cite: {text: <string>, url: <string>, standard: <string or list>}   # optional
 
 rules: [<rule>, ...]               # optional; not allowed on a deployment rulebook
 obligations: [<obligation>, ...]   # optional; not allowed on a deployment rulebook
@@ -110,10 +110,22 @@ Every rule has these fields:
 |---|---|---|
 | `id` | yes | an identifier, unique within the rulebook |
 | `title` | yes | a short statement of the rule; messages quote it |
-| `cite` | government rulebooks | `{text, url}`: the source the rule encodes, such as `14 CFR 107.51(b)` |
+| `cite` | government rulebooks | `{text, url, standard}`: the source the rule encodes, such as `14 CFR 107.51(b)`. `standard` is optional (see below) |
 | `exceptable` | no (default `false`) | whether a deployment rulebook may declare an exception to this rule |
 | `note` | no | informational: how a number was derived, what the rule cannot see |
 | one kind key | yes | exactly one of `cap`, `forbid_primitive`, `forbid_zone_entry`, `forbid_over_people`, `require_declared`, `max_concurrent_aircraft` |
+
+### The `standard` field of a cite
+
+A `cite` may add `standard`: the standard or regulation it draws on, with its edition, and nothing else, as one string or a list of distinct strings.
+
+```yaml
+cite:
+  text: "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause 6.2"
+  standard: ["ISO 13849-1:2023", "IEC 62061:2021", "IEC 61508:2010"]
+```
+
+The field changes no validation result and does not appear in validation output. An evidence report ([RFC-0707](../../docs/rfcs/0707-evidence-report.md)) groups rules and obligations by it, so two rulebooks that write one standard differently in `text` still land in one group. Write the identifier the way the standards body does, edition included.
 
 ### `cap`
 
@@ -179,7 +191,7 @@ forbid_over_people:
   unless_declared:                         # optional
     - key: <identifier>
       allowed: [<scalar>, ...]
-      cite: {text: <string>, url: <string>}   # optional
+      cite: {text: <string>, url: <string>, standard: <string or list>}   # optional
 ```
 
 The rule judges steps executed by an aircraft: a robot whose manifest declares `mobility.drive_type` `multirotor`, `fixed_wing` or `vtol`. Every target such a step names is judged against every people-occupancy zone the robot's envelope declares, including the zones the envelope marks with `allow_override: true`. An operator's override accepts a physical risk; it does not change the law. A point target in a zone, or an area target that shares any point with one, violates the rule: `rule.over_people`.
@@ -233,7 +245,7 @@ obligations:
   - id: <identifier>
     title: <string>
     text: <string>                          # optional
-    cite: {text: <string>, url: <string>}   # required, with url, in government rulebooks
+    cite: {text: <string>, url: <string>, standard: <string or list>}   # required, with url, in government rulebooks
 ```
 
 An obligation is a rule a static check cannot judge: visual line of sight, night lighting, weather, a pilot's certificate. The validator does not check obligations. It lists the obligations of every applied rulebook in the report of every validation, accepted or refused.

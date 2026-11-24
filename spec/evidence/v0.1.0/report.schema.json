@@ -1,0 +1,367 @@
+{
+  "$defs": {
+    "Counts": {
+      "additionalProperties": false,
+      "properties": {
+        "by_section": {
+          "additionalProperties": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object"
+          },
+          "title": "By Section",
+          "type": "object"
+        },
+        "by_status": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "By Status",
+          "type": "object"
+        },
+        "failed_checks": {
+          "title": "Failed Checks",
+          "type": "integer"
+        },
+        "gaps": {
+          "description": "Missing items plus failed checks. 0 means none.",
+          "title": "Gaps",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "by_status",
+        "by_section",
+        "failed_checks",
+        "gaps"
+      ],
+      "title": "Counts",
+      "type": "object"
+    },
+    "InputRef": {
+      "additionalProperties": false,
+      "description": "One input the report was built from, by content digest.",
+      "properties": {
+        "bundled": {
+          "default": false,
+          "title": "Bundled",
+          "type": "boolean"
+        },
+        "digest": {
+          "description": "sha256 over canonical JSON, as in validation records.",
+          "title": "Digest",
+          "type": "string"
+        },
+        "id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "robot_id, policy_id or rulebook_id.",
+          "title": "Id"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "The file name as given, without its directory.",
+          "title": "Name"
+        },
+        "role": {
+          "enum": [
+            "manifest",
+            "envelope",
+            "policy",
+            "rulebook"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "digest"
+      ],
+      "title": "InputRef",
+      "type": "object"
+    },
+    "Inputs": {
+      "additionalProperties": false,
+      "properties": {
+        "default_rulebooks": {
+          "title": "Default Rulebooks",
+          "type": "boolean"
+        },
+        "files": {
+          "items": {
+            "$ref": "#/$defs/InputRef"
+          },
+          "title": "Files",
+          "type": "array"
+        },
+        "policy": {
+          "enum": [
+            "bundled",
+            "file",
+            "off"
+          ],
+          "title": "Policy",
+          "type": "string"
+        },
+        "profiles": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Profiles",
+          "type": "array"
+        },
+        "validator": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Validator",
+          "type": "object"
+        }
+      },
+      "required": [
+        "files",
+        "profiles",
+        "policy",
+        "default_rulebooks",
+        "validator"
+      ],
+      "title": "Inputs",
+      "type": "object"
+    },
+    "Item": {
+      "additionalProperties": false,
+      "description": "One thing the report knows about the deployment, and how it knows it.",
+      "properties": {
+        "detail": {
+          "additionalProperties": true,
+          "title": "Detail",
+          "type": "object"
+        },
+        "id": {
+          "description": "Unique within the report.",
+          "title": "Id",
+          "type": "string"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "enum": [
+                "pass",
+                "fail"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "For a `checked` item judged without a program: pass or fail.",
+          "title": "Result"
+        },
+        "source": {
+          "$ref": "#/$defs/ItemSource"
+        },
+        "status": {
+          "enum": [
+            "checked",
+            "declared",
+            "runtime",
+            "missing",
+            "outside"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "text": {
+          "description": "One plain sentence or two, for a human reader.",
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "status",
+        "text",
+        "source"
+      ],
+      "title": "Item",
+      "type": "object"
+    },
+    "ItemSource": {
+      "additionalProperties": false,
+      "description": "Where an item came from: an input role and a field path in it.",
+      "properties": {
+        "field": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Dotted path to the field, when there is one.",
+          "title": "Field"
+        },
+        "input": {
+          "description": "manifest, envelope, policy, rulebook:<id>, or urml.",
+          "title": "Input",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input"
+      ],
+      "title": "ItemSource",
+      "type": "object"
+    },
+    "Section": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/Item"
+          },
+          "title": "Items",
+          "type": "array"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "items"
+      ],
+      "title": "Section",
+      "type": "object"
+    },
+    "StandardGroup": {
+      "additionalProperties": false,
+      "description": "The items one cited standard accounts for, by status.",
+      "properties": {
+        "items": {
+          "additionalProperties": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "description": "Status to item ids.",
+          "title": "Items",
+          "type": "object"
+        },
+        "keyed_by": {
+          "description": "`standard` when grouped on cite.standard, `text` on the cite text.",
+          "enum": [
+            "standard",
+            "text"
+          ],
+          "title": "Keyed By",
+          "type": "string"
+        },
+        "standard": {
+          "title": "Standard",
+          "type": "string"
+        }
+      },
+      "required": [
+        "standard",
+        "keyed_by",
+        "items"
+      ],
+      "title": "StandardGroup",
+      "type": "object"
+    }
+  },
+  "$id": "https://urml.dev/schemas/evidence/v0.1.0/report.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "An evidence report (RFC-0707).",
+  "properties": {
+    "as_of": {
+      "title": "As Of",
+      "type": "string"
+    },
+    "by_standard": {
+      "items": {
+        "$ref": "#/$defs/StandardGroup"
+      },
+      "title": "By Standard",
+      "type": "array"
+    },
+    "counts": {
+      "$ref": "#/$defs/Counts"
+    },
+    "format": {
+      "const": "urml.evidence-report/0.1",
+      "default": "urml.evidence-report/0.1",
+      "title": "Format",
+      "type": "string"
+    },
+    "inputs": {
+      "$ref": "#/$defs/Inputs"
+    },
+    "notice": {
+      "default": "Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.",
+      "title": "Notice",
+      "type": "string"
+    },
+    "sections": {
+      "items": {
+        "$ref": "#/$defs/Section"
+      },
+      "title": "Sections",
+      "type": "array"
+    },
+    "subject": {
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "title": "Subject",
+      "type": "object"
+    }
+  },
+  "required": [
+    "as_of",
+    "subject",
+    "inputs",
+    "sections",
+    "by_standard",
+    "counts"
+  ],
+  "title": "EvidenceReport",
+  "type": "object"
+}

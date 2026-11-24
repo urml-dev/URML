@@ -66,6 +66,7 @@ applies_to:
       allowed: [true]
       cite:
         text: "FAA: Part 107 would not apply to operations conducted indoors"
+        standard: "14 CFR Part 107"
         url: "https://www.faa.gov/faq/do-faa-rules-and-regulations-apply-commercial-uas-or-drone-operations-conducted-indoors-only"
 
 rules:
@@ -73,6 +74,7 @@ rules:
     title: Maximum altitude 400 feet (121.92 m) above ground level
     cite:
       text: "14 CFR 107.51(b)"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.51#p-107.51(b)"
     exceptable: true
     note: >-
@@ -89,6 +91,7 @@ rules:
     title: Maximum groundspeed 87 knots (100 miles per hour); the stricter 44.704 m/s is used
     cite:
       text: "14 CFR 107.51(a)"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.51#p-107.51(a)"
     exceptable: true
     note: >-
@@ -103,6 +106,7 @@ rules:
     title: No flight over human beings unless the operation meets a Subpart D category
     cite:
       text: "14 CFR 107.39"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.39"
     exceptable: true
     note: >-
@@ -119,12 +123,14 @@ rules:
           allowed: [category_1, category_2, category_3, category_4]
           cite:
             text: "14 CFR 107.39(c) and Part 107 Subpart D"
+            standard: "14 CFR Part 107"
             url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-D"
 
   - id: one_aircraft_per_pilot
     title: One unmanned aircraft at a time per remote pilot in command
     cite:
       text: "14 CFR 107.35"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.35"
     exceptable: true
     note: >-
@@ -139,6 +145,7 @@ rules:
     title: Remote identification by one of the means of 14 CFR Part 89
     cite:
       text: "14 CFR 89.105, 89.110 and 89.115"
+      standard: "14 CFR Part 89"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-89/subpart-B/section-89.105"
     exceptable: true
     note: >-
@@ -161,6 +168,7 @@ obligations:
       supervision of that pilot, who can take direct control immediately.
     cite:
       text: "14 CFR 107.12"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.12"
 
   - id: visual_line_of_sight
@@ -172,6 +180,7 @@ obligations:
       pilots or a visual observer keep watching it.
     cite:
       text: "14 CFR 107.31"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.31"
 
   - id: night_and_twilight_lighting
@@ -183,6 +192,7 @@ obligations:
       same lighting is required during civil twilight.
     cite:
       text: "14 CFR 107.29"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.29"
 
   - id: controlled_airspace_authorization
@@ -193,6 +203,7 @@ obligations:
       airport, have prior authorization from Air Traffic Control.
     cite:
       text: "14 CFR 107.41"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.41"
 
   - id: flight_visibility
@@ -202,6 +213,7 @@ obligations:
       least 3 statute miles.
     cite:
       text: "14 CFR 107.51(c)"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.51#p-107.51(c)"
 
   - id: cloud_clearance
@@ -211,6 +223,7 @@ obligations:
       horizontally from them.
     cite:
       text: "14 CFR 107.51(d)"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.51#p-107.51(d)"
 
   - id: people_outside_declared_zones
@@ -222,4 +235,5 @@ obligations:
       watch.
     cite:
       text: "14 CFR 107.39"
+      standard: "14 CFR Part 107"
       url: "https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-107/subpart-B/section-107.39"

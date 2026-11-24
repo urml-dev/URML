@@ -1,0 +1,10 @@
+description: 'An industrial cell with no envelope and no deployment declarations:
+  the report shows the gaps.'
+as_of: '2026-11-24'
+profiles:
+- industrial
+manifest: manifest.yaml
+envelope: null
+rulebooks:
+- industrial-rules.yaml
+- functional-safety.yaml

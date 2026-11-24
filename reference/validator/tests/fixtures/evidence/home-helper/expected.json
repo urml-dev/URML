@@ -1,0 +1,674 @@
+{
+  "as_of": "2026-11-24",
+  "by_standard": [
+    {
+      "items": {
+        "checked": [
+          "rule.home_helper_rules.max_travel_speed",
+          "rule.home_helper_rules.max_grip_force",
+          "rule.home_helper_rules.hazard_zones",
+          "rule.home_helper_rules.no_handling_in_zones",
+          "rule.home_helper_rules.validated_programs_only"
+        ],
+        "outside": [
+          "obligation.home_helper_rules.risk_assessment",
+          "obligation.home_helper_rules.safety_rated_functions",
+          "obligation.home_helper_rules.environment_checked",
+          "obligation.home_helper_rules.users_informed"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "ISO 13482:2014"
+    }
+  ],
+  "counts": {
+    "by_section": {
+      "envelope": {
+        "checked": 2,
+        "declared": 0,
+        "missing": 1,
+        "outside": 0,
+        "runtime": 4
+      },
+      "outside": {
+        "checked": 0,
+        "declared": 0,
+        "missing": 0,
+        "outside": 5,
+        "runtime": 0
+      },
+      "provenance": {
+        "checked": 5,
+        "declared": 4,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 0
+      },
+      "robot": {
+        "checked": 3,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 0
+      },
+      "rules": {
+        "checked": 5,
+        "declared": 0,
+        "missing": 0,
+        "outside": 4,
+        "runtime": 0
+      }
+    },
+    "by_status": {
+      "checked": 15,
+      "declared": 4,
+      "missing": 1,
+      "outside": 9,
+      "runtime": 4
+    },
+    "failed_checks": 0,
+    "gaps": 1
+  },
+  "format": "urml.evidence-report/0.1",
+  "inputs": {
+    "default_rulebooks": true,
+    "files": [
+      {
+        "bundled": false,
+        "digest": "sha256:28412f57325b3cc119d2a4d1cd9e1e33b14b1b04caae7dc7b022c566e081bd48",
+        "id": "turtlebot4_patient_fetch",
+        "name": "manifest.yaml",
+        "role": "manifest"
+      },
+      {
+        "bundled": true,
+        "digest": "sha256:281e91ec5795a8d27cf029bb641704642eb8fb9e6dbb258ebbe2879ff960c4aa",
+        "id": "urml_us_federal_default",
+        "name": null,
+        "role": "policy"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:2659a91bff8773c9ab7f44962e30b81afbf724a00766faeb094680594228f3dd",
+        "id": "home_helper_rules",
+        "name": "home-rules.yaml",
+        "role": "rulebook"
+      }
+    ],
+    "policy": "bundled",
+    "profiles": [
+      "home"
+    ],
+    "validator": {
+      "name": "urml-validator",
+      "version": "VERSION"
+    }
+  },
+  "notice": "Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.",
+  "sections": [
+    {
+      "id": "robot",
+      "items": [
+        {
+          "detail": {
+            "drive_type": "differential",
+            "evidence": null,
+            "max_velocity": 0.46
+          },
+          "id": "capability.mobility",
+          "result": null,
+          "source": {
+            "field": "mobility",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "Mobility (differential), up to 0.46 m/s. The validator refuses steps faster than this or the envelope's limit. No evidence tag: the claim's source is not recorded."
+        },
+        {
+          "detail": {
+            "evidence": null,
+            "force_max_n": 5.0,
+            "force_min_n": 0.5,
+            "kind": "servo_electric"
+          },
+          "id": "capability.gripper.claw_demo",
+          "result": null,
+          "source": {
+            "field": "manipulation.grippers.claw_demo",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "Gripper claw_demo (servo_electric), 0.5 to 5 N. The validator refuses grasps above the maximum or the envelope's limit. No evidence tag: the claim's source is not recorded."
+        },
+        {
+          "detail": {
+            "evidence": null,
+            "movable": false
+          },
+          "id": "capability.camera.oakd_rgb",
+          "result": null,
+          "source": {
+            "field": "perception.cameras.oakd_rgb",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "Camera oakd_rgb. Capture steps must name a declared camera. No evidence tag: the claim's source is not recorded."
+        }
+      ],
+      "title": "Robot"
+    },
+    {
+      "id": "provenance",
+      "items": [
+        {
+          "detail": {
+            "attestation_uri": "https://example.com/attestations/turtlebot4_patient_fetch.signed",
+            "manifest_attestation": "self_declared"
+          },
+          "id": "provenance.attestation",
+          "result": null,
+          "source": {
+            "field": "provenance.manifest_attestation",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Manifest attestation: self_declared."
+        },
+        {
+          "detail": {
+            "country_of_final_assembly": "US",
+            "country_of_origin": "US",
+            "hbom": true,
+            "role": "critical",
+            "vendor": "example_drive_vendor"
+          },
+          "id": "component.drive_controller",
+          "result": null,
+          "source": {
+            "field": "provenance.components.drive_controller",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Component drive_controller (critical): vendor example_drive_vendor, origin US, final assembly US."
+        },
+        {
+          "detail": {
+            "country_of_final_assembly": "US",
+            "country_of_origin": "US",
+            "hbom": true,
+            "role": "critical",
+            "vendor": "example_camera_vendor"
+          },
+          "id": "component.depth_camera",
+          "result": null,
+          "source": {
+            "field": "provenance.components.depth_camera",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Component depth_camera (critical): vendor example_camera_vendor, origin US, final assembly US."
+        },
+        {
+          "detail": {
+            "country_of_final_assembly": "US",
+            "country_of_origin": "JP",
+            "hbom": true,
+            "role": "critical",
+            "vendor": "example_gripper_vendor"
+          },
+          "id": "component.claw_servo",
+          "result": null,
+          "source": {
+            "field": "provenance.components.claw_servo",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Component claw_servo (critical): vendor example_gripper_vendor, origin JP, final assembly US."
+        },
+        {
+          "detail": {
+            "codes": [],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.critical_country_denylist",
+          "result": "pass",
+          "source": {
+            "field": "rules.critical_country_denylist",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule critical_country_denylist: passed."
+        },
+        {
+          "detail": {
+            "codes": [],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.critical_final_assembly_denylist",
+          "result": "pass",
+          "source": {
+            "field": "rules.critical_final_assembly_denylist",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule critical_final_assembly_denylist: passed."
+        },
+        {
+          "detail": {
+            "codes": [],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.covered_vendor_denylist",
+          "result": "pass",
+          "source": {
+            "field": "rules.covered_vendor_denylist",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule covered_vendor_denylist: passed."
+        },
+        {
+          "detail": {
+            "codes": [],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.hbom_required_for_critical",
+          "result": "pass",
+          "source": {
+            "field": "rules.hbom_required_for_critical",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule hbom_required_for_critical: passed."
+        },
+        {
+          "detail": {
+            "codes": [
+              "policy.attestation_insufficient"
+            ],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.attestation_floor",
+          "result": "pass",
+          "source": {
+            "field": "rules.attestation_floor",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule attestation_floor: 1 finding (warning). Self-declared provenance accepted in v0.1 but flagged. v0.2 will promote this to an error; deployments should arrange third-party attestation now."
+        }
+      ],
+      "title": "Provenance"
+    },
+    {
+      "id": "envelope",
+      "items": [
+        {
+          "detail": {},
+          "id": "envelope.absent",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "envelope"
+          },
+          "status": "missing",
+          "text": "No safety envelope was given: the site's own limits are not on record, and only the manifest's limits apply."
+        },
+        {
+          "detail": {
+            "effective": 0.46,
+            "envelope": null,
+            "manifest": 0.46,
+            "unit": "m/s"
+          },
+          "id": "limit.max_velocity",
+          "result": null,
+          "source": {
+            "field": "mobility.max_velocity",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "The envelope sets no speed limit; the manifest's 0.46 m/s applies."
+        },
+        {
+          "detail": {
+            "effective": 5.0,
+            "envelope": null,
+            "manifest": 5.0,
+            "unit": "N"
+          },
+          "id": "limit.max_grip_force_n",
+          "result": null,
+          "source": {
+            "field": "manipulation.grippers.force_max_n",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "The envelope sets no grip force limit; the manifest's 5 N applies."
+        },
+        {
+          "detail": {},
+          "id": "runtime.start_position",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "Where the robot starts. The runtime must not start a program while the robot is outside every geofence, or inside a people-occupancy zone that does not allow an override."
+        },
+        {
+          "detail": {},
+          "id": "runtime.paths",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "The path between two checked places. The runtime must keep it inside the geofences and out of the people-occupancy zones."
+        },
+        {
+          "detail": {},
+          "id": "runtime.unstated_speed",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "The speed of a step that states none. The runtime must keep it at or below the strictest speed limit."
+        },
+        {
+          "detail": {},
+          "id": "runtime.emergency_stop",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "On an emergency stop reported by the substrate, the runtime must stop dispatching and stop every motion it commands. The emergency stop itself is a function of the machine."
+        }
+      ],
+      "title": "Envelope"
+    },
+    {
+      "id": "rules",
+      "items": [
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13482:2014"
+              ],
+              "text": "ISO 13482:2014, clause 5.1; the robot's risk assessment",
+              "url": null
+            },
+            "kind": "cap",
+            "rule": {
+              "max": 0.3,
+              "quantity": "speed_m_per_s"
+            }
+          },
+          "id": "rule.home_helper_rules.max_travel_speed",
+          "result": null,
+          "source": {
+            "field": "rules.max_travel_speed",
+            "input": "rulebook:home_helper_rules"
+          },
+          "status": "checked",
+          "text": "Maximum travel speed a program may request. Checked against every program (cap)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13482:2014"
+              ],
+              "text": "ISO 13482:2014, clause 5.1; the robot's risk assessment",
+              "url": null
+            },
+            "kind": "cap",
+            "rule": {
+              "max": 2.0,
+              "quantity": "grip_force_n"
+            }
+          },
+          "id": "rule.home_helper_rules.max_grip_force",
+          "result": null,
+          "source": {
+            "field": "rules.max_grip_force",
+            "input": "rulebook:home_helper_rules"
+          },
+          "status": "checked",
+          "text": "Maximum gripper force where a person can be touched. Checked against every program (cap)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13482:2014"
+              ],
+              "text": "ISO 13482:2014, clause 5.1; the robot's risk assessment",
+              "url": null
+            },
+            "kind": "forbid_zone_entry",
+            "rule": {
+              "zones": [
+                "stairwell"
+              ]
+            }
+          },
+          "id": "rule.home_helper_rules.hazard_zones",
+          "result": null,
+          "source": {
+            "field": "rules.hazard_zones",
+            "input": "rulebook:home_helper_rules"
+          },
+          "status": "checked",
+          "text": "Programs never send the robot into a hazard zone. Checked against every program (forbid_zone_entry)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13482:2014"
+              ],
+              "text": "ISO 13482:2014, clause 5.1; the robot's risk assessment",
+              "url": null
+            },
+            "kind": "forbid_primitive",
+            "rule": {
+              "in_zones": [
+                "cooktop_area"
+              ],
+              "primitives": [
+                "grasp",
+                "release"
+              ]
+            }
+          },
+          "id": "rule.home_helper_rules.no_handling_in_zones",
+          "result": null,
+          "source": {
+            "field": "rules.no_handling_in_zones",
+            "input": "rulebook:home_helper_rules"
+          },
+          "status": "checked",
+          "text": "No grasping or releasing in zones the risk assessment excludes. Checked against every program (forbid_primitive)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13482:2014"
+              ],
+              "text": "ISO 13482:2014, clause 5.1; the robot's risk assessment",
+              "url": null
+            },
+            "kind": "forbid_primitive",
+            "rule": {
+              "except_names": [
+                "tidy_up"
+              ],
+              "primitives": [
+                "call_program"
+              ]
+            }
+          },
+          "id": "rule.home_helper_rules.validated_programs_only",
+          "result": null,
+          "source": {
+            "field": "rules.validated_programs_only",
+            "input": "rulebook:home_helper_rules"
+          },
+          "status": "checked",
+          "text": "Only robot programs covered by the risk assessment run. Checked against every program (forbid_primitive)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13482:2014"
+              ],
+              "text": "ISO 13482:2014, clause 5.1",
+              "url": null
+            }
+          },
+          "id": "obligation.home_helper_rules.risk_assessment",
+          "result": null,
+          "source": {
+            "field": "obligations.risk_assessment",
+            "input": "rulebook:home_helper_rules"
+          },
+          "status": "outside",
+          "text": "A current risk assessment for the robot in its setting. The robot has a risk assessment that covers the people it works near, including children, older people and anyone with limited mobility, and every task these programs perform. It is repeated when the setting or the tasks change."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13482:2014"
+              ],
+              "text": "ISO 13482:2014, clauses 5.1",
+              "url": null
+            }
+          },
+          "id": "obligation.home_helper_rules.safety_rated_functions",
+          "result": null,
+          "source": {
+            "field": "obligations.safety_rated_functions",
+            "input": "rulebook:home_helper_rules"
+          },
+          "status": "outside",
+          "text": "Stopping, speed and force limits in safety-rated control. Protective stop, emergency stop, and the limits on speed and contact force near people run in safety-rated hardware and software, at the performance levels the standard requires, not in URML."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13482:2014"
+              ],
+              "text": "ISO 13482:2014, clause 5.1",
+              "url": null
+            }
+          },
+          "id": "obligation.home_helper_rules.environment_checked",
+          "result": null,
+          "source": {
+            "field": "obligations.environment_checked",
+            "input": "rulebook:home_helper_rules"
+          },
+          "status": "outside",
+          "text": "The setting is checked for the robot's travel. Floors, thresholds, slopes, stairs and obstacles in the home or facility are checked against the robot's stability and travel limits, and the declared_areas in its manifest match the hazards found."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13482:2014"
+              ],
+              "text": "ISO 13482:2014, clause 5.1",
+              "url": null
+            }
+          },
+          "id": "obligation.home_helper_rules.users_informed",
+          "result": null,
+          "source": {
+            "field": "obligations.users_informed",
+            "input": "rulebook:home_helper_rules"
+          },
+          "status": "outside",
+          "text": "The people the robot serves are informed and instructed. The people who live or work with the robot, and their carers, receive the information for use, including how to stop the robot and what it must not be asked to do."
+        }
+      ],
+      "title": "Rules"
+    },
+    {
+      "id": "outside",
+      "items": [
+        {
+          "detail": {},
+          "id": "outside.safety_control",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "The robot's safety-related control and its safety functions (stops, speed and separation monitoring, power and force limiting), designed and validated outside URML."
+        },
+        {
+          "detail": {},
+          "id": "outside.below_substrate",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Firmware, controllers and drivers below the substrate."
+        },
+        {
+          "detail": {},
+          "id": "outside.site",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Wiring, guarding and the physical site."
+        },
+        {
+          "detail": {},
+          "id": "outside.declarations",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Whether any declared item in this report is true."
+        },
+        {
+          "detail": {},
+          "id": "outside.unmediated",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Anything a program does through a path that does not pass through a URML runtime."
+        }
+      ],
+      "title": "Outside URML"
+    }
+  ],
+  "subject": {
+    "description": "TurtleBot 4 home-service robot with a claw, camera, and speech output.",
+    "robot_id": "turtlebot4_patient_fetch"
+  }
+}

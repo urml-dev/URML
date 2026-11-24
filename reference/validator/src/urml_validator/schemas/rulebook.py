@@ -166,6 +166,8 @@ def _iso_date(value: object) -> object:
 
 #: An ISO-8601 calendar date, written as a quoted YAML string.
 IsoDate = Annotated[StrictStr, BeforeValidator(_iso_date)]
+#: A standard or regulation with its edition: non-empty, no surrounding whitespace.
+StandardId = Annotated[StrictStr, Field(min_length=1, pattern=r"^\S(.*\S)?$")]
 
 
 class _Strict(BaseModel):
@@ -179,6 +181,30 @@ class Cite(_Strict):
 
     text: StrictStr = Field(..., min_length=1, description="Citation text, for example `14 CFR 107.51(b)`.")
     url: StrictStr | None = Field(None, description="Where the cited text can be read.")
+    standard: StandardId | list[StandardId] | None = Field(
+        None,
+        description=(
+            "RFC-0707: the standard or regulation the cite draws on, with its edition, "
+            "for example `ISO 3691-4:2023` or `14 CFR Part 107`; a list when it draws on "
+            "several. Groups rules by standard in an evidence report; changes no validation result."
+        ),
+    )
+
+    @field_validator("standard")
+    @classmethod
+    def _standards_distinct(cls, value: str | list[str] | None) -> str | list[str] | None:
+        if isinstance(value, list):
+            if not value:
+                raise ValueError("standard, as a list, names at least one standard")
+            if len(set(value)) != len(value):
+                raise ValueError("standard lists a standard more than once")
+        return value
+
+    def standards(self) -> list[str]:
+        """The cited standards as a list, empty when the field is absent."""
+        if self.standard is None:
+            return []
+        return [self.standard] if isinstance(self.standard, str) else list(self.standard)
 
 
 class Condition(_Strict):

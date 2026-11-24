@@ -1,0 +1,1088 @@
+{
+  "as_of": "2026-11-24",
+  "by_standard": [
+    {
+      "items": {
+        "outside": [
+          "obligation.cell_7_safety.urml_cannot_interfere"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "IEC 61508-3:2010"
+    },
+    {
+      "items": {
+        "missing": [
+          "rule.cell_7_safety.emergency_stop_declared",
+          "rule.cell_7_safety.protective_stop_declared",
+          "rule.cell_7_safety.speed_monitoring_declared",
+          "rule.cell_7_safety.safety_validation_on_record"
+        ],
+        "outside": [
+          "obligation.cell_7_safety.urml_is_not_a_safety_function",
+          "obligation.cell_7_safety.safety_functions_designed",
+          "obligation.cell_7_safety.safety_functions_validated",
+          "obligation.cell_7_safety.declarations_kept_true"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "IEC 61508:2010"
+    },
+    {
+      "items": {
+        "missing": [
+          "rule.cell_7_safety.emergency_stop_declared",
+          "rule.cell_7_safety.protective_stop_declared",
+          "rule.cell_7_safety.speed_monitoring_declared",
+          "rule.cell_7_safety.safety_validation_on_record"
+        ],
+        "outside": [
+          "obligation.cell_7_safety.urml_is_not_a_safety_function",
+          "obligation.cell_7_safety.safety_functions_designed",
+          "obligation.cell_7_safety.safety_functions_validated",
+          "obligation.cell_7_safety.declarations_kept_true"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "IEC 62061:2021"
+    },
+    {
+      "items": {
+        "outside": [
+          "obligation.cell_a1_rules.safety_rated_functions"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "ISO 10218-1:2025"
+    },
+    {
+      "items": {
+        "checked": [
+          "rule.cell_a1_rules.collaborative_speed",
+          "rule.cell_a1_rules.gripper_contact_force",
+          "rule.cell_a1_rules.validated_programs_only",
+          "rule.cell_a1_rules.safety_outputs_untouched",
+          "rule.cell_a1_rules.outside_cell_layout"
+        ],
+        "outside": [
+          "obligation.cell_a1_rules.risk_assessment",
+          "obligation.cell_a1_rules.safety_rated_functions",
+          "obligation.cell_a1_rules.contact_verification",
+          "obligation.cell_a1_rules.cell_validation"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "ISO 10218-2:2025"
+    },
+    {
+      "items": {
+        "missing": [
+          "rule.cell_7_safety.emergency_stop_declared",
+          "rule.cell_7_safety.protective_stop_declared",
+          "rule.cell_7_safety.speed_monitoring_declared"
+        ],
+        "outside": [
+          "obligation.cell_7_safety.urml_is_not_a_safety_function",
+          "obligation.cell_7_safety.safety_functions_designed"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "ISO 13849-1:2023"
+    },
+    {
+      "items": {
+        "missing": [
+          "rule.cell_7_safety.safety_validation_on_record"
+        ],
+        "outside": [
+          "obligation.cell_7_safety.safety_functions_validated",
+          "obligation.cell_7_safety.declarations_kept_true"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "ISO 13849-2"
+    },
+    {
+      "items": {
+        "checked": [
+          "rule.cell_a1_rules.gripper_contact_force"
+        ],
+        "outside": [
+          "obligation.cell_a1_rules.contact_verification"
+        ]
+      },
+      "keyed_by": "standard",
+      "standard": "ISO/TS 15066:2016"
+    }
+  ],
+  "counts": {
+    "by_section": {
+      "envelope": {
+        "checked": 2,
+        "declared": 0,
+        "missing": 1,
+        "outside": 0,
+        "runtime": 4
+      },
+      "outside": {
+        "checked": 0,
+        "declared": 0,
+        "missing": 0,
+        "outside": 5,
+        "runtime": 0
+      },
+      "provenance": {
+        "checked": 5,
+        "declared": 5,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 0
+      },
+      "robot": {
+        "checked": 4,
+        "declared": 2,
+        "missing": 0,
+        "outside": 0,
+        "runtime": 0
+      },
+      "rules": {
+        "checked": 5,
+        "declared": 0,
+        "missing": 4,
+        "outside": 9,
+        "runtime": 0
+      }
+    },
+    "by_status": {
+      "checked": 16,
+      "declared": 7,
+      "missing": 5,
+      "outside": 14,
+      "runtime": 4
+    },
+    "failed_checks": 0,
+    "gaps": 5
+  },
+  "format": "urml.evidence-report/0.1",
+  "inputs": {
+    "default_rulebooks": true,
+    "files": [
+      {
+        "bundled": false,
+        "digest": "sha256:978971e38d59016340efae425ca6122c569f342a437a7dabbe4faa468729da8c",
+        "id": "cell_a1_demo",
+        "name": "manifest.yaml",
+        "role": "manifest"
+      },
+      {
+        "bundled": true,
+        "digest": "sha256:281e91ec5795a8d27cf029bb641704642eb8fb9e6dbb258ebbe2879ff960c4aa",
+        "id": "urml_us_federal_default",
+        "name": null,
+        "role": "policy"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:ea3e448620cdf7029a5a0026b9f3f72c68fc01216bec3effaf25a521798aa04a",
+        "id": "cell_a1_rules",
+        "name": "industrial-rules.yaml",
+        "role": "rulebook"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:8a6edae46e1b352365ed7334c119252d8f608debe5edee39a215197c6e1f9214",
+        "id": "cell_7_safety",
+        "name": "functional-safety.yaml",
+        "role": "rulebook"
+      }
+    ],
+    "policy": "bundled",
+    "profiles": [
+      "industrial"
+    ],
+    "validator": {
+      "name": "urml-validator",
+      "version": "VERSION"
+    }
+  },
+  "notice": "Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.",
+  "sections": [
+    {
+      "id": "robot",
+      "items": [
+        {
+          "detail": {
+            "drive_type": "manipulator_base",
+            "evidence": null,
+            "max_velocity": 0.5
+          },
+          "id": "capability.mobility",
+          "result": null,
+          "source": {
+            "field": "mobility",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "Mobility (manipulator_base), up to 0.5 m/s. The validator refuses steps faster than this or the envelope's limit. No evidence tag: the claim's source is not recorded."
+        },
+        {
+          "detail": {
+            "evidence": null,
+            "force_max_n": 25.0,
+            "force_min_n": 1.0,
+            "kind": "pneumatic"
+          },
+          "id": "capability.gripper.pneumatic_2_finger",
+          "result": null,
+          "source": {
+            "field": "manipulation.grippers.pneumatic_2_finger",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "Gripper pneumatic_2_finger (pneumatic), 1 to 25 N. The validator refuses grasps above the maximum or the envelope's limit. No evidence tag: the claim's source is not recorded."
+        },
+        {
+          "detail": {
+            "evidence": null,
+            "movable": true
+          },
+          "id": "capability.camera.wrist_rgb",
+          "result": null,
+          "source": {
+            "field": "perception.cameras.wrist_rgb",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "Camera wrist_rgb. Capture steps must name a declared camera. No evidence tag: the claim's source is not recorded."
+        },
+        {
+          "detail": {
+            "evidence": null,
+            "measurement_type": "pressure"
+          },
+          "id": "capability.sensor.tcp_force",
+          "result": null,
+          "source": {
+            "field": "perception.sensors.tcp_force",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "Sensor tcp_force (pressure). No evidence tag: the claim's source is not recorded."
+        },
+        {
+          "detail": {
+            "declared_intent": false
+          },
+          "id": "program.pick_place_cycle",
+          "result": null,
+          "source": {
+            "field": "programs.pick_place_cycle",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Opaque program pick_place_cycle. The validator checks a call to it against its declared arguments; what the program does inside is the robot's own code, which URML does not see."
+        },
+        {
+          "detail": {
+            "declared_intent": false
+          },
+          "id": "program.teach_mode_jog",
+          "result": null,
+          "source": {
+            "field": "programs.teach_mode_jog",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Opaque program teach_mode_jog. The validator checks a call to it against its declared arguments; what the program does inside is the robot's own code, which URML does not see."
+        }
+      ],
+      "title": "Robot"
+    },
+    {
+      "id": "provenance",
+      "items": [
+        {
+          "detail": {
+            "attestation_uri": "https://example.com/attestations/cell_a1_demo.signed",
+            "manifest_attestation": "self_declared"
+          },
+          "id": "provenance.attestation",
+          "result": null,
+          "source": {
+            "field": "provenance.manifest_attestation",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Manifest attestation: self_declared."
+        },
+        {
+          "detail": {
+            "country_of_final_assembly": "US",
+            "country_of_origin": "US",
+            "hbom": true,
+            "role": "critical",
+            "vendor": "example_arm_vendor"
+          },
+          "id": "component.arm_controller",
+          "result": null,
+          "source": {
+            "field": "provenance.components.arm_controller",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Component arm_controller (critical): vendor example_arm_vendor, origin US, final assembly US."
+        },
+        {
+          "detail": {
+            "country_of_final_assembly": "US",
+            "country_of_origin": "US",
+            "hbom": true,
+            "role": "critical",
+            "vendor": "example_camera_vendor"
+          },
+          "id": "component.wrist_camera",
+          "result": null,
+          "source": {
+            "field": "provenance.components.wrist_camera",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Component wrist_camera (critical): vendor example_camera_vendor, origin US, final assembly US."
+        },
+        {
+          "detail": {
+            "country_of_final_assembly": "US",
+            "country_of_origin": "DE",
+            "hbom": true,
+            "role": "critical",
+            "vendor": "example_gripper_vendor"
+          },
+          "id": "component.pneumatic_gripper",
+          "result": null,
+          "source": {
+            "field": "provenance.components.pneumatic_gripper",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Component pneumatic_gripper (critical): vendor example_gripper_vendor, origin DE, final assembly US."
+        },
+        {
+          "detail": {
+            "country_of_final_assembly": "US",
+            "country_of_origin": "US",
+            "hbom": true,
+            "role": "critical",
+            "vendor": "example_sensor_vendor"
+          },
+          "id": "component.tcp_force_sensor",
+          "result": null,
+          "source": {
+            "field": "provenance.components.tcp_force_sensor",
+            "input": "manifest"
+          },
+          "status": "declared",
+          "text": "Component tcp_force_sensor (critical): vendor example_sensor_vendor, origin US, final assembly US."
+        },
+        {
+          "detail": {
+            "codes": [],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.critical_country_denylist",
+          "result": "pass",
+          "source": {
+            "field": "rules.critical_country_denylist",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule critical_country_denylist: passed."
+        },
+        {
+          "detail": {
+            "codes": [],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.critical_final_assembly_denylist",
+          "result": "pass",
+          "source": {
+            "field": "rules.critical_final_assembly_denylist",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule critical_final_assembly_denylist: passed."
+        },
+        {
+          "detail": {
+            "codes": [],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.covered_vendor_denylist",
+          "result": "pass",
+          "source": {
+            "field": "rules.covered_vendor_denylist",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule covered_vendor_denylist: passed."
+        },
+        {
+          "detail": {
+            "codes": [],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.hbom_required_for_critical",
+          "result": "pass",
+          "source": {
+            "field": "rules.hbom_required_for_critical",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule hbom_required_for_critical: passed."
+        },
+        {
+          "detail": {
+            "codes": [
+              "policy.attestation_insufficient"
+            ],
+            "policy_id": "urml_us_federal_default"
+          },
+          "id": "policy_rule.attestation_floor",
+          "result": "pass",
+          "source": {
+            "field": "rules.attestation_floor",
+            "input": "policy"
+          },
+          "status": "checked",
+          "text": "Policy rule attestation_floor: 1 finding (warning). Self-declared provenance accepted in v0.1 but flagged. v0.2 will promote this to an error; deployments should arrange third-party attestation now."
+        }
+      ],
+      "title": "Provenance"
+    },
+    {
+      "id": "envelope",
+      "items": [
+        {
+          "detail": {},
+          "id": "envelope.absent",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "envelope"
+          },
+          "status": "missing",
+          "text": "No safety envelope was given: the site's own limits are not on record, and only the manifest's limits apply."
+        },
+        {
+          "detail": {
+            "effective": 0.5,
+            "envelope": null,
+            "manifest": 0.5,
+            "unit": "m/s"
+          },
+          "id": "limit.max_velocity",
+          "result": null,
+          "source": {
+            "field": "mobility.max_velocity",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "The envelope sets no speed limit; the manifest's 0.5 m/s applies."
+        },
+        {
+          "detail": {
+            "effective": 25.0,
+            "envelope": null,
+            "manifest": 25.0,
+            "unit": "N"
+          },
+          "id": "limit.max_grip_force_n",
+          "result": null,
+          "source": {
+            "field": "manipulation.grippers.force_max_n",
+            "input": "manifest"
+          },
+          "status": "checked",
+          "text": "The envelope sets no grip force limit; the manifest's 25 N applies."
+        },
+        {
+          "detail": {},
+          "id": "runtime.start_position",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "Where the robot starts. The runtime must not start a program while the robot is outside every geofence, or inside a people-occupancy zone that does not allow an override."
+        },
+        {
+          "detail": {},
+          "id": "runtime.paths",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "The path between two checked places. The runtime must keep it inside the geofences and out of the people-occupancy zones."
+        },
+        {
+          "detail": {},
+          "id": "runtime.unstated_speed",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "The speed of a step that states none. The runtime must keep it at or below the strictest speed limit."
+        },
+        {
+          "detail": {},
+          "id": "runtime.emergency_stop",
+          "result": null,
+          "source": {
+            "field": "RFC-0701 section 1.3",
+            "input": "urml"
+          },
+          "status": "runtime",
+          "text": "On an emergency stop reported by the substrate, the runtime must stop dispatching and stop every motion it commands. The emergency stop itself is a function of the machine."
+        }
+      ],
+      "title": "Envelope"
+    },
+    {
+      "id": "rules",
+      "items": [
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 10218-2:2025"
+              ],
+              "text": "ISO 10218-2:2025, clause 5.2; the cell's risk assessment",
+              "url": null
+            },
+            "kind": "cap",
+            "rule": {
+              "max": 0.25,
+              "quantity": "speed_m_per_s"
+            }
+          },
+          "id": "rule.cell_a1_rules.collaborative_speed",
+          "result": null,
+          "source": {
+            "field": "rules.collaborative_speed",
+            "input": "rulebook:cell_a1_rules"
+          },
+          "status": "checked",
+          "text": "Maximum robot speed in the collaborative application. Checked against every program (cap)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 10218-2:2025",
+                "ISO/TS 15066:2016"
+              ],
+              "text": "ISO/TS 15066:2016 or ISO 10218-2:2025, clause 5.2; the cell's risk assessment",
+              "url": null
+            },
+            "kind": "cap",
+            "rule": {
+              "max": 10.0,
+              "quantity": "grip_force_n"
+            }
+          },
+          "id": "rule.cell_a1_rules.gripper_contact_force",
+          "result": null,
+          "source": {
+            "field": "rules.gripper_contact_force",
+            "input": "rulebook:cell_a1_rules"
+          },
+          "status": "checked",
+          "text": "Maximum gripper force where a hand can be caught. Checked against every program (cap)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 10218-2:2025"
+              ],
+              "text": "ISO 10218-2:2025, clause 5.2; the cell's risk assessment",
+              "url": null
+            },
+            "kind": "forbid_primitive",
+            "rule": {
+              "except_names": [
+                "pick_place_cycle"
+              ],
+              "primitives": [
+                "call_program"
+              ]
+            }
+          },
+          "id": "rule.cell_a1_rules.validated_programs_only",
+          "result": null,
+          "source": {
+            "field": "rules.validated_programs_only",
+            "input": "rulebook:cell_a1_rules"
+          },
+          "status": "checked",
+          "text": "Only controller programs covered by the risk assessment run. Checked against every program (forbid_primitive)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 10218-2:2025"
+              ],
+              "text": "ISO 10218-2:2025, clause 5.2; the cell's risk assessment",
+              "url": null
+            },
+            "kind": "forbid_primitive",
+            "rule": {
+              "names": [
+                "door_mute"
+              ],
+              "primitives": [
+                "set_output"
+              ]
+            }
+          },
+          "id": "rule.cell_a1_rules.safety_outputs_untouched",
+          "result": null,
+          "source": {
+            "field": "rules.safety_outputs_untouched",
+            "input": "rulebook:cell_a1_rules"
+          },
+          "status": "checked",
+          "text": "Programs never write safety-related output lines. Checked against every program (forbid_primitive)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 10218-2:2025"
+              ],
+              "text": "ISO 10218-2:2025, clause 5.2; the cell layout",
+              "url": null
+            },
+            "kind": "forbid_zone_entry",
+            "rule": {
+              "zones": [
+                "operator_zone"
+              ]
+            }
+          },
+          "id": "rule.cell_a1_rules.outside_cell_layout",
+          "result": null,
+          "source": {
+            "field": "rules.outside_cell_layout",
+            "input": "rulebook:cell_a1_rules"
+          },
+          "status": "checked",
+          "text": "The robot never targets a place outside the validated cell layout. Checked against every program (forbid_zone_entry)."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 10218-2:2025"
+              ],
+              "text": "ISO 10218-2:2025, clause 5.2",
+              "url": null
+            }
+          },
+          "id": "obligation.cell_a1_rules.risk_assessment",
+          "result": null,
+          "source": {
+            "field": "obligations.risk_assessment",
+            "input": "rulebook:cell_a1_rules"
+          },
+          "status": "outside",
+          "text": "A current risk assessment for the robot application. The cell has a risk assessment that covers every task these programs perform, repeated whenever the cell changes."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 10218-1:2025",
+                "ISO 10218-2:2025"
+              ],
+              "text": "ISO 10218-1:2025 and ISO 10218-2:2025, clauses 5.2",
+              "url": null
+            }
+          },
+          "id": "obligation.cell_a1_rules.safety_rated_functions",
+          "result": null,
+          "source": {
+            "field": "obligations.safety_rated_functions",
+            "input": "rulebook:cell_a1_rules"
+          },
+          "status": "outside",
+          "text": "Stop functions in safety-rated control. Emergency stop, protective stop, and any speed and separation monitoring or power and force limiting run in safety-rated hardware and software, not in URML."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 10218-2:2025",
+                "ISO/TS 15066:2016"
+              ],
+              "text": "ISO/TS 15066:2016 or ISO 10218-2:2025, clause 5.2",
+              "url": null
+            }
+          },
+          "id": "obligation.cell_a1_rules.contact_verification",
+          "result": null,
+          "source": {
+            "field": "obligations.contact_verification",
+            "input": "rulebook:cell_a1_rules"
+          },
+          "status": "outside",
+          "text": "Measured contact forces for power and force limiting. Where the application relies on power and force limiting, contact forces and pressures are measured in the installed cell and stay within the limits the risk assessment sets."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 10218-2:2025"
+              ],
+              "text": "ISO 10218-2:2025, clause 5.2",
+              "url": null
+            }
+          },
+          "id": "obligation.cell_a1_rules.cell_validation",
+          "result": null,
+          "source": {
+            "field": "obligations.cell_validation",
+            "input": "rulebook:cell_a1_rules"
+          },
+          "status": "outside",
+          "text": "The installed cell is validated before production use. The integrator verifies and validates the safety functions of the installed cell before it runs production programs."
+        },
+        {
+          "detail": {
+            "allowed": [
+              "PLd",
+              "PLe",
+              "SIL2",
+              "SIL3",
+              "SIL4"
+            ],
+            "cite": {
+              "standard": [
+                "ISO 13849-1:2023",
+                "IEC 62061:2021",
+                "IEC 61508:2010"
+              ],
+              "text": "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause 6.2; the machine's risk assessment",
+              "url": null
+            },
+            "declared_value": null,
+            "key": "emergency_stop_safety_level",
+            "kind": "require_declared",
+            "rule": {
+              "allowed": [
+                "PLd",
+                "PLe",
+                "SIL2",
+                "SIL3",
+                "SIL4"
+              ],
+              "key": "emergency_stop_safety_level"
+            }
+          },
+          "id": "rule.cell_7_safety.emergency_stop_declared",
+          "result": null,
+          "source": {
+            "field": "rules.emergency_stop_declared",
+            "input": "rulebook:cell_7_safety"
+          },
+          "status": "missing",
+          "text": "The emergency stop's safety level is declared and meets its requirement. The deployment declares no emergency_stop_safety_level; every program is refused until it does."
+        },
+        {
+          "detail": {
+            "allowed": [
+              "PLd",
+              "PLe",
+              "SIL2",
+              "SIL3",
+              "SIL4"
+            ],
+            "cite": {
+              "standard": [
+                "ISO 13849-1:2023",
+                "IEC 62061:2021",
+                "IEC 61508:2010"
+              ],
+              "text": "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause 6.2; the machine's risk assessment",
+              "url": null
+            },
+            "declared_value": null,
+            "key": "protective_stop_safety_level",
+            "kind": "require_declared",
+            "rule": {
+              "allowed": [
+                "PLd",
+                "PLe",
+                "SIL2",
+                "SIL3",
+                "SIL4"
+              ],
+              "key": "protective_stop_safety_level"
+            }
+          },
+          "id": "rule.cell_7_safety.protective_stop_declared",
+          "result": null,
+          "source": {
+            "field": "rules.protective_stop_declared",
+            "input": "rulebook:cell_7_safety"
+          },
+          "status": "missing",
+          "text": "The protective stop's safety level is declared and meets its requirement. The deployment declares no protective_stop_safety_level; every program is refused until it does."
+        },
+        {
+          "detail": {
+            "allowed": [
+              "PLd",
+              "PLe",
+              "SIL2",
+              "SIL3",
+              "SIL4"
+            ],
+            "cite": {
+              "standard": [
+                "ISO 13849-1:2023",
+                "IEC 62061:2021",
+                "IEC 61508:2010"
+              ],
+              "text": "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause 6.2; the machine's risk assessment",
+              "url": null
+            },
+            "declared_value": null,
+            "key": "speed_monitoring_safety_level",
+            "kind": "require_declared",
+            "rule": {
+              "allowed": [
+                "PLd",
+                "PLe",
+                "SIL2",
+                "SIL3",
+                "SIL4"
+              ],
+              "key": "speed_monitoring_safety_level"
+            }
+          },
+          "id": "rule.cell_7_safety.speed_monitoring_declared",
+          "result": null,
+          "source": {
+            "field": "rules.speed_monitoring_declared",
+            "input": "rulebook:cell_7_safety"
+          },
+          "status": "missing",
+          "text": "Safety-rated speed monitoring is declared and meets its requirement. The deployment declares no speed_monitoring_safety_level; every program is refused until it does."
+        },
+        {
+          "detail": {
+            "allowed": null,
+            "cite": {
+              "standard": [
+                "ISO 13849-2",
+                "IEC 62061:2021",
+                "IEC 61508:2010"
+              ],
+              "text": "ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clause 6.2",
+              "url": null
+            },
+            "declared_value": null,
+            "key": "safety_validation_record",
+            "kind": "require_declared",
+            "rule": {
+              "key": "safety_validation_record"
+            }
+          },
+          "id": "rule.cell_7_safety.safety_validation_on_record",
+          "result": null,
+          "source": {
+            "field": "rules.safety_validation_on_record",
+            "input": "rulebook:cell_7_safety"
+          },
+          "status": "missing",
+          "text": "The safety functions' validation is on record. The deployment declares no safety_validation_record; every program is refused until it does."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13849-1:2023",
+                "IEC 62061:2021",
+                "IEC 61508:2010"
+              ],
+              "text": "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause 6.2",
+              "url": null
+            }
+          },
+          "id": "obligation.cell_7_safety.urml_is_not_a_safety_function",
+          "result": null,
+          "source": {
+            "field": "obligations.urml_is_not_a_safety_function",
+            "input": "rulebook:cell_7_safety"
+          },
+          "status": "outside",
+          "text": "Nothing in URML counts toward a performance level or a SIL. The URML validator and runtimes are not safety-related parts of the control system. They are left out of every performance level and safety integrity level calculation, and no safety function depends on them."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "IEC 61508-3:2010"
+              ],
+              "text": "IEC 61508-3:2010, clause 6.2",
+              "url": null
+            }
+          },
+          "id": "obligation.cell_7_safety.urml_cannot_interfere",
+          "result": null,
+          "source": {
+            "field": "obligations.urml_cannot_interfere",
+            "input": "rulebook:cell_7_safety"
+          },
+          "status": "outside",
+          "text": "URML cannot interfere with safety-related software. If URML runs on hardware that also runs safety-related software, the integrator shows that URML cannot interfere with it, or treats URML as safety-related, which URML does not support. The simpler design keeps URML on separate hardware."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13849-1:2023",
+                "IEC 62061:2021",
+                "IEC 61508:2010"
+              ],
+              "text": "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clauses 6.2",
+              "url": null
+            }
+          },
+          "id": "obligation.cell_7_safety.safety_functions_designed",
+          "result": null,
+          "source": {
+            "field": "obligations.safety_functions_designed",
+            "input": "rulebook:cell_7_safety"
+          },
+          "status": "outside",
+          "text": "Each safety function is designed to its required level. Each safety function the risk assessment calls for is specified, designed and implemented in safety-related control to reach its required performance level or safety integrity level."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13849-2",
+                "IEC 62061:2021",
+                "IEC 61508:2010"
+              ],
+              "text": "ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clauses 6.2",
+              "url": null
+            }
+          },
+          "id": "obligation.cell_7_safety.safety_functions_validated",
+          "result": null,
+          "source": {
+            "field": "obligations.safety_functions_validated",
+            "input": "rulebook:cell_7_safety"
+          },
+          "status": "outside",
+          "text": "Each safety function is validated. The safety functions are validated before use, and again after any change to the safety-related control, and the validation record is kept."
+        },
+        {
+          "detail": {
+            "cite": {
+              "standard": [
+                "ISO 13849-2",
+                "IEC 62061:2021",
+                "IEC 61508:2010"
+              ],
+              "text": "ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clause 6.2; the site's own procedures",
+              "url": null
+            }
+          },
+          "id": "obligation.cell_7_safety.declarations_kept_true",
+          "result": null,
+          "source": {
+            "field": "obligations.declarations_kept_true",
+            "input": "rulebook:cell_7_safety"
+          },
+          "status": "outside",
+          "text": "The declarations match the validation records. The operator keeps the deployment rulebook's declarations in line with the current validation records, and updates them when the safety functions or their validation change."
+        }
+      ],
+      "title": "Rules"
+    },
+    {
+      "id": "outside",
+      "items": [
+        {
+          "detail": {},
+          "id": "outside.safety_control",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "The robot's safety-related control and its safety functions (stops, speed and separation monitoring, power and force limiting), designed and validated outside URML."
+        },
+        {
+          "detail": {},
+          "id": "outside.below_substrate",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Firmware, controllers and drivers below the substrate."
+        },
+        {
+          "detail": {},
+          "id": "outside.site",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Wiring, guarding and the physical site."
+        },
+        {
+          "detail": {},
+          "id": "outside.declarations",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Whether any declared item in this report is true."
+        },
+        {
+          "detail": {},
+          "id": "outside.unmediated",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "urml"
+          },
+          "status": "outside",
+          "text": "Anything a program does through a path that does not pass through a URML runtime."
+        }
+      ],
+      "title": "Outside URML"
+    }
+  ],
+  "subject": {
+    "description": "Single-arm pick-and-place cell, US-compliant illustrative manifest.",
+    "robot_id": "cell_a1_demo"
+  }
+}

@@ -100,6 +100,7 @@ rules:
     title: The emergency stop's safety level is declared and meets its requirement
     cite:
       text: "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause FILL_IN; the machine's risk assessment"
+      standard: ["ISO 13849-1:2023", "IEC 62061:2021", "IEC 61508:2010"]
     note: >-
       List the levels that meet the emergency stop's required level from the
       risk assessment.
@@ -111,6 +112,7 @@ rules:
     title: The protective stop's safety level is declared and meets its requirement
     cite:
       text: "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause FILL_IN; the machine's risk assessment"
+      standard: ["ISO 13849-1:2023", "IEC 62061:2021", "IEC 61508:2010"]
     note: >-
       The stop triggered by safeguards such as scanners, light curtains and
       interlocked doors.
@@ -122,6 +124,7 @@ rules:
     title: Safety-rated speed monitoring is declared and meets its requirement
     cite:
       text: "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause FILL_IN; the machine's risk assessment"
+      standard: ["ISO 13849-1:2023", "IEC 62061:2021", "IEC 61508:2010"]
     note: >-
       For machines that rely on safety-rated speed or separation monitoring
       near people. Delete this rule if the machine has no such function.
@@ -133,6 +136,7 @@ rules:
     title: The safety functions' validation is on record
     cite:
       text: "ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clause FILL_IN"
+      standard: ["ISO 13849-2", "IEC 62061:2021", "IEC 61508:2010"]
     note: >-
       The declared value is the reference of the integrator's validation
       record, so a reader can find it. Any value satisfies the rule.
@@ -149,6 +153,7 @@ obligations:
       them.
     cite:
       text: "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause FILL_IN"
+      standard: ["ISO 13849-1:2023", "IEC 62061:2021", "IEC 61508:2010"]
 
   - id: urml_cannot_interfere
     title: URML cannot interfere with safety-related software
@@ -159,6 +164,7 @@ obligations:
       URML on separate hardware.
     cite:
       text: "IEC 61508-3:2010, clause FILL_IN"
+      standard: "IEC 61508-3:2010"
 
   - id: safety_functions_designed
     title: Each safety function is designed to its required level
@@ -168,6 +174,7 @@ obligations:
       required performance level or safety integrity level.
     cite:
       text: "ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clauses FILL_IN"
+      standard: ["ISO 13849-1:2023", "IEC 62061:2021", "IEC 61508:2010"]
 
   - id: safety_functions_validated
     title: Each safety function is validated
@@ -177,6 +184,7 @@ obligations:
       kept.
     cite:
       text: "ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clauses FILL_IN"
+      standard: ["ISO 13849-2", "IEC 62061:2021", "IEC 61508:2010"]
 
   - id: declarations_kept_true
     title: The declarations match the validation records
@@ -186,3 +194,4 @@ obligations:
       functions or their validation change.
     cite:
       text: "ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clause FILL_IN; the site's own procedures"
+      standard: ["ISO 13849-2", "IEC 62061:2021", "IEC 61508:2010"]

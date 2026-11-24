@@ -1,0 +1,130 @@
+# Generated input for the evidence-report golden tests (RFC-0707).
+# examples/rulebooks/functional-safety-template.yaml, filled as its test fills it.
+# Test values, not requirements from any standard.
+
+rulebook_version: '0.1'
+rulebook_id: cell_7_safety
+title: '6.2 (for example: Cell 7 safety functions on record before any program runs)'
+issuer:
+  kind: organization
+  name: 6.2 (the integrator or the site operator)
+source_status: organization_policy
+reviewed: '2026-11-24'
+description: Programs run only after the operator has declared, from the integrator's validation records,
+  the performance level or safety integrity level each safety function reached. URML checks the declaration,
+  not the safety function.
+rules:
+- id: emergency_stop_declared
+  title: The emergency stop's safety level is declared and meets its requirement
+  cite:
+    text: ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause 6.2; the machine's risk assessment
+    standard:
+    - ISO 13849-1:2023
+    - IEC 62061:2021
+    - IEC 61508:2010
+  note: List the levels that meet the emergency stop's required level from the risk assessment.
+  require_declared:
+    key: emergency_stop_safety_level
+    allowed:
+    - PLd
+    - PLe
+    - SIL2
+    - SIL3
+    - SIL4
+- id: protective_stop_declared
+  title: The protective stop's safety level is declared and meets its requirement
+  cite:
+    text: ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause 6.2; the machine's risk assessment
+    standard:
+    - ISO 13849-1:2023
+    - IEC 62061:2021
+    - IEC 61508:2010
+  note: The stop triggered by safeguards such as scanners, light curtains and interlocked doors.
+  require_declared:
+    key: protective_stop_safety_level
+    allowed:
+    - PLd
+    - PLe
+    - SIL2
+    - SIL3
+    - SIL4
+- id: speed_monitoring_declared
+  title: Safety-rated speed monitoring is declared and meets its requirement
+  cite:
+    text: ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause 6.2; the machine's risk assessment
+    standard:
+    - ISO 13849-1:2023
+    - IEC 62061:2021
+    - IEC 61508:2010
+  note: For machines that rely on safety-rated speed or separation monitoring near people. Delete this
+    rule if the machine has no such function.
+  require_declared:
+    key: speed_monitoring_safety_level
+    allowed:
+    - PLd
+    - PLe
+    - SIL2
+    - SIL3
+    - SIL4
+- id: safety_validation_on_record
+  title: The safety functions' validation is on record
+  cite:
+    text: ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clause 6.2
+    standard:
+    - ISO 13849-2
+    - IEC 62061:2021
+    - IEC 61508:2010
+  note: The declared value is the reference of the integrator's validation record, so a reader can find
+    it. Any value satisfies the rule.
+  require_declared:
+    key: safety_validation_record
+obligations:
+- id: urml_is_not_a_safety_function
+  title: Nothing in URML counts toward a performance level or a SIL
+  text: The URML validator and runtimes are not safety-related parts of the control system. They are left
+    out of every performance level and safety integrity level calculation, and no safety function depends
+    on them.
+  cite:
+    text: ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clause 6.2
+    standard:
+    - ISO 13849-1:2023
+    - IEC 62061:2021
+    - IEC 61508:2010
+- id: urml_cannot_interfere
+  title: URML cannot interfere with safety-related software
+  text: If URML runs on hardware that also runs safety-related software, the integrator shows that URML
+    cannot interfere with it, or treats URML as safety-related, which URML does not support. The simpler
+    design keeps URML on separate hardware.
+  cite:
+    text: IEC 61508-3:2010, clause 6.2
+    standard: IEC 61508-3:2010
+- id: safety_functions_designed
+  title: Each safety function is designed to its required level
+  text: Each safety function the risk assessment calls for is specified, designed and implemented in safety-related
+    control to reach its required performance level or safety integrity level.
+  cite:
+    text: ISO 13849-1:2023, IEC 62061:2021 or IEC 61508:2010, clauses 6.2
+    standard:
+    - ISO 13849-1:2023
+    - IEC 62061:2021
+    - IEC 61508:2010
+- id: safety_functions_validated
+  title: Each safety function is validated
+  text: The safety functions are validated before use, and again after any change to the safety-related
+    control, and the validation record is kept.
+  cite:
+    text: ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clauses 6.2
+    standard:
+    - ISO 13849-2
+    - IEC 62061:2021
+    - IEC 61508:2010
+- id: declarations_kept_true
+  title: The declarations match the validation records
+  text: The operator keeps the deployment rulebook's declarations in line with the current validation
+    records, and updates them when the safety functions or their validation change.
+  cite:
+    text: ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clause 6.2; the site's own procedures
+    standard:
+    - ISO 13849-2
+    - IEC 62061:2021
+    - IEC 61508:2010
