@@ -36,9 +36,9 @@ Each URML step becomes its own fully released order with no horizon. VDA 5050's 
 
 `supported_actions` is configured by hand from the vehicle's factsheet. The adapter could request the factsheet (`factsheetRequest`) and check the config against it, or a tool could generate the URML manifest's capability blocks from it. Not built yet.
 
-## Upstream: VDA 5050 3.0.0 schemas are not valid JSON
+## Upstream: VDA 5050 3.0.0 schemas (resolved)
 
-`order.schema`, `factsheet.schema` and `visualization.schema` at tag `3.0.0` contain trailing commas, so no JSON parser accepts them as published. The test copy of `order.schema` here removes the trailing commas and nothing else (see [`tests/vda5050_schemas/README.md`](tests/vda5050_schemas/README.md)). Worth reporting upstream at [`VDA5050/VDA5050`](https://github.com/VDA5050/VDA5050); not reported yet.
+The `order`, `factsheet` and `visualization` schemas at tag `3.0.0` contain trailing commas and do not parse. This was already reported upstream ([VDA5050/VDA5050#660](https://github.com/VDA5050/VDA5050/issues/660)) and fixed on `main` ([#599](https://github.com/VDA5050/VDA5050/pull/599)). The core team will not re-release the schemas: they live on the branch, not in releases. The test fixtures are therefore copied unmodified from `main` at a pinned commit ([`tests/vda5050_schemas/README.md`](tests/vda5050_schemas/README.md)).
 
 ## ISO 21423:2026
 
