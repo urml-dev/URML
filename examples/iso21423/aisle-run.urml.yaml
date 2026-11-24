@@ -1,0 +1,23 @@
+# Drive the warehouse example robot down the aisle to the shelf, on to the
+# conveyor, then back to charge, and report. Runs over ISO 21423 with
+# examples/iso21423/iso21423_adapter.yaml; validates against
+# examples/warehouse/pick-to-conveyor.manifest.yaml.
+
+profile: warehouse
+behavior:
+  type: sequence
+  on_error: abort_and_report
+  steps:
+    - move_to:
+        location: shelf_a3
+    - move_to:
+        location: conveyor_a
+    - dock:
+        at: charge_dock_1
+        service: dock
+    - report:
+        to: fleet_manager
+        facts:
+          run: aisle
+          result: ok
+        status: success
