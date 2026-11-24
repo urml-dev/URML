@@ -568,6 +568,15 @@ def test_only_one_exact_release_of_a_third_party_package_is_certified(
     assert any(fragment in p for p in _cert_problems(mini)), _cert_problems(mini)
 
 
+def test_a_certification_can_name_conformance_0_2_1(mini: Mini) -> None:
+    # v0.2.1 (RFC-0706) is the current contract; a grant names the version it was made against.
+    _certify(mini, conformance_spec="0.2.1")
+    assert _cert_problems(mini) == []
+    mini.write()
+    (entry,) = json.loads(render_export(mini.root))["entries"]
+    assert entry["compatibility"]["certification"]["conformance_spec"] == "0.2.1"
+
+
 @pytest.mark.parametrize(
     ("cert", "fragment"),
     [

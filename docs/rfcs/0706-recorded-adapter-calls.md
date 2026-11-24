@@ -63,7 +63,7 @@ What counts as a call is unchanged in practice: any public method the runtime in
 
 ### Spec changes
 
-- [`spec/conformance/v0.2.0.md`](../../spec/conformance/v0.2.0.md) §2, clause 6, gains one sentence: *"The suite records the calls the runtime makes on the adapter through a proxy, and compares them with the methods a fixture expects. An adapter is not required to keep its own record of calls."* Whether this lands as v0.2.1 or as an erratum to v0.2.0 is an unresolved question below.
+- A new conformance version, [`spec/conformance/v0.2.1.md`](../../spec/conformance/v0.2.1.md) (decided 2026-11-24, see question 1). §2, clause 6, gains a paragraph: *"The suite records the calls the runtime makes on the adapter through a proxy, and compares them with the methods a fixture expects. An adapter is not required to keep its own record of calls, and the suite does not read one if it does."* The registry accepts `conformance_spec: "0.2.1"` beside `"0.2.0"`, because a certification names the version it was granted against.
 - No Layer-1 to Layer-4 document changes. The substrate Protocol (clause 2) is untouched: it gains no method and no attribute.
 
 ### Validator changes
@@ -127,7 +127,7 @@ URML-Certified: RFC-0705 ends a certification when a new urml-conformance versio
 
 ## Unresolved questions
 
-1. **Spec version.** Does the clause-6 sentence ship as conformance v0.2.1, or as an erratum to v0.2.0? It describes how the suite already measures the goal line, and it removes no obligation, which argues for an erratum. It also changes which runtimes pass, which argues for a version.
+1. **Spec version.** *Resolved 2026-11-24: v0.2.1.* The change removes no obligation, which argued for an erratum. It changes which runtimes pass, and a certification names the version it was granted against, which decided it for a new version.
 2. **Arguments.** The proxy records arguments, not only method names. Should fixtures be able to pin arguments (for example, the navigation goal's pose)? This RFC compares names only, as today.
 3. **`RuntimeResult.audit_log` on real substrates.** `URMLRuntime` builds `audit_log` from `call_log`, so it is empty on every real adapter. Recording in the runtime would fix that for production users. That is a runtime-surface change and belongs in its own RFC, if wanted.
 

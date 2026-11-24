@@ -14,12 +14,13 @@
 
 # Substrate Conformance
 
-**Status:** Normative. The current specification is [`v0.2.0.md`](v0.2.0.md):
+**Status:** Normative. The current specification is [`v0.2.1.md`](v0.2.1.md):
 the six-clause contract a runtime MUST satisfy to be **URML-compatible**, the two
 conformance tiers (self-reported and URML-Certified), and the normative
 spec-gap loop. Specified by [RFC-0014](../../docs/rfcs/0014-substrate-conformance.md); the
-certified tier by [RFC-0705](../../docs/rfcs/0705-urml-certified.md). [`v0.1.0.md`](v0.1.0.md) is
-the previous version.
+certified tier by [RFC-0705](../../docs/rfcs/0705-urml-certified.md); the recorded adapter calls
+by [RFC-0706](../../docs/rfcs/0706-recorded-adapter-calls.md). [`v0.2.0.md`](v0.2.0.md) and
+[`v0.1.0.md`](v0.1.0.md) are the previous versions.
 
 ## Purpose
 
@@ -31,7 +32,7 @@ provable and the *URML-Certified* mark has a specification to certify against.
 
 ## The two halves
 
-- **The written contract** is [`v0.2.0.md`](v0.2.0.md) (this directory): the
+- **The written contract** is [`v0.2.1.md`](v0.2.1.md) (this directory): the
   rationale and the human-readable obligations.
 - **The executable contract** is the [conformance suite](../../conformance/):
   the freely runnable tests whose passing is clause 6 of the contract. Both are
