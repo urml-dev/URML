@@ -237,10 +237,10 @@ for its machine require, for example:
 
 - a hardwired emergency stop (ISO 13850:2015);
 - safety-rated control functions (ISO 13849-1:2023 or IEC 62061:2021). URML
-  is not part of them and counts toward no performance level; the rulebook
-  template
+  is not part of them and counts toward no performance level or safety
+  integrity level; the rulebook template
   [`examples/rulebooks/functional-safety-template.yaml`](../../examples/rulebooks/functional-safety-template.yaml)
-  only refuses programs until the operator has declared the levels the
+  only refuses programs until the operator has declared the PL or SIL the
   safety functions reached;
 - for industrial robots and robot cells, ISO 10218-1:2025 and ISO 10218-2:2025;
 - for collaborative operation, the limits of ISO/TS 15066, whose content
