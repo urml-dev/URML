@@ -18,9 +18,12 @@ Two independent gates, both required:
 
   - ``URML_GAZEBO_E2E=1`` — opt in to the heavy sim test. Distinct from
     ``URML_ROS2_INTEGRATION`` (which only needs rclpy, no simulator).
-  - The ``/navigate_to_pose`` action server must be reachable within a
-    short bound. If it isn't, the test fails fast with an actionable
-    message ("is the TB4 sim + Nav2 actually up?") rather than hanging.
+  - Nav2 must be up and active within a bound: the ``/navigate_to_pose``
+    action server answers and ``bt_navigator`` reports the lifecycle
+    state ``active``. If not, the test fails with that message rather
+    than as a conformance failure. The server exists as soon as
+    ``bt_navigator`` is configured, but it rejects every goal until the
+    node is active, which needs the robot's ``odom`` transform.
 
 The default ``pytest`` invocation skips this module entirely. The
 ``gazebo-e2e`` job in ``.github/workflows/ros2-integration.yml`` brings
@@ -52,25 +55,48 @@ pytestmark = pytest.mark.skipif(
 _ADAPTER_CONFIG = Path(__file__).parent / "adapter_nav_patrol.yaml"
 _FIXTURE_NAME = "home/nav_patrol_positive"
 
-# How long to wait for Nav2's action server to come up before declaring
-# the sim absent. Generous because a cold sim + Nav2 lifecycle bringup
-# is slow, but bounded so a missing sim fails fast-ish with a clear
-# message instead of an opaque hang.
-_NAV_SERVER_TIMEOUT_S = 60.0
+# How long to wait for Nav2 to be up and active before declaring the
+# sim absent. The CI job already waits for an active bt_navigator before
+# running this test; the bound covers a local run started too early.
+_NAV_SERVER_TIMEOUT_S = 120.0
 
 
 def _wait_for_nav2(timeout_s: float) -> bool:
-    """Return True once Nav2's /navigate_to_pose action server answers."""
+    """Return True once /navigate_to_pose answers and bt_navigator is active.
+
+    The action server exists from the moment bt_navigator is configured,
+    but an inactive bt_navigator rejects every goal. Checking only the
+    server let a half-started sim through on 2026-11-24, and the first
+    goal of the fixture was rejected.
+    """
+    import time
+
     import rclpy
     from rclpy.action import ActionClient
     from rclpy.node import Node
 
     probe: Node = rclpy.create_node("urml_e2e_nav2_probe")
     try:
+        from lifecycle_msgs.msg import State
+        from lifecycle_msgs.srv import GetState
         from nav2_msgs.action import NavigateToPose
 
+        # One shared budget: time spent waiting for the action server
+        # comes out of the time left for the lifecycle check.
+        deadline = time.monotonic() + timeout_s
         client = ActionClient(probe, NavigateToPose, "/navigate_to_pose")
-        return bool(client.wait_for_server(timeout_sec=timeout_s))
+        if not client.wait_for_server(timeout_sec=max(0.0, deadline - time.monotonic())):
+            return False
+        state = probe.create_client(GetState, "/bt_navigator/get_state")
+        while time.monotonic() < deadline:
+            if state.wait_for_service(timeout_sec=1.0):
+                future = state.call_async(GetState.Request())
+                rclpy.spin_until_future_complete(probe, future, timeout_sec=5.0)
+                result = future.result()
+                if result is not None and result.current_state.id == State.PRIMARY_STATE_ACTIVE:
+                    return True
+            time.sleep(2.0)
+        return False
     finally:
         probe.destroy_node()
 
@@ -87,10 +113,11 @@ def test_nav_patrol_fixture_runs_against_gazebo() -> None:
     try:
         # Fail fast + actionable if the simulator/Nav2 isn't actually up.
         assert _wait_for_nav2(_NAV_SERVER_TIMEOUT_S), (
-            "Nav2 /navigate_to_pose action server did not come up within "
-            f"{_NAV_SERVER_TIMEOUT_S:.0f}s. Is the TurtleBot 4 Ignition sim "
-            "running with Nav2 (headless)? See INTEGRATION.md for the local "
-            "WSL2 repro."
+            "Nav2 was not up and active within "
+            f"{_NAV_SERVER_TIMEOUT_S:.0f}s (/navigate_to_pose answering and "
+            "bt_navigator active). Is the TurtleBot 4 sim running with Nav2, "
+            "and is the robot publishing odom? See INTEGRATION.md for the "
+            "local WSL2 repro."
         )
 
         config = load_adapter_config(_ADAPTER_CONFIG)
