@@ -12,8 +12,9 @@
 #     using it, an issue, a citation). Install counts / listing views are
 #     VANITY and are NOT engagement. Do not massage them.
 #   - `submitted_at` / `posted_url` stay empty until the venue is actually live.
-#     Publishing is founder-action (needs maintainer PyPI / GitHub identity);
-#     nothing here is live yet. See:
+#     Publishing is founder-action (needs maintainer PyPI / GitHub identity).
+#     Live as of 2026-11-24: the MCP server on PyPI and on the official MCP
+#     registry. See:
 #       - Skill: .github/skills/SUBMISSIONS.md
 #       - MCP:   reference/mcp-server/SUBMISSIONS.md + RELEASING.md
 #
@@ -48,24 +49,24 @@
   response: none
   notes: "PR to agentskills/agentskills adding the showcase entry. Entry shape drafted in .github/skills/SUBMISSIONS.md."
 
-# --- MCP server track (blocked on the 0.2.0 PyPI release) -----------------
+# --- MCP server track (PyPI and the official registry live) -------------
 - slug: pypi-urml-mcp-server
   track: mcp
   venue: "PyPI (package urml-mcp-server)"
   artifact: "reference/mcp-server/"
-  submitted_at: ""
-  posted_url: ""
+  submitted_at: "2026-11-23"
+  posted_url: "https://pypi.org/project/urml-mcp-server/"
   response: none
-  notes: "First-ever publish; needs the full 0.2.0 core release first (validator, llm-bridge, ros2-runtime). See RELEASING.md."
+  notes: "First published at 0.5.0 on 2026-11-23 with the family release; 0.5.2 (2026-11-24) is the first version whose description carries the mcp-name line the registry checks."
 
 - slug: mcp-registry
   track: mcp
   venue: "Official MCP registry (name io.github.urml-dev/urml)"
   artifact: "reference/mcp-server/server.json"
-  submitted_at: ""
-  posted_url: ""
+  submitted_at: "2026-11-24"
+  posted_url: "https://registry.modelcontextprotocol.io/v0/servers?search=io.github.urml-dev/urml"
   response: none
-  notes: "mcp-publisher publish; GitHub login verifies the io.github.urml-dev namespace. Needs the PyPI package live first."
+  notes: "io.github.urml-dev/urml 0.5.2 published with mcp-publisher 1.8.16, logged in with an org Owner's token (the device flow cannot publish to org namespaces). Listing status active."
 
 - slug: smithery
   track: mcp
