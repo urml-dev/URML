@@ -1,0 +1,64 @@
+# Run the conformance suite from built wheels, outside the repository.
+#
+# The suite's fixtures name manifests, envelopes, policies and rulebooks
+# that live outside conformance/. urml-conformance 0.5.0 shipped without
+# them: installed from PyPI, it failed with FileNotFoundError before the
+# first fixture ran, while every in-repo check passed. This job builds the
+# three packages the way release.yml does (sdist, then the wheel from the
+# sdist), installs the wheels into a fresh venv, and runs the suite from a
+# directory with no checkout in it.
+
+name: conformance-wheel
+
+on:
+  pull_request:
+    paths:
+      - 'conformance/**'
+      - 'reference/validator/**'
+      - 'reference/ros2-runtime/**'
+      - 'examples/fleet/**'
+      - 'examples/rulebooks/**'
+      - '.github/workflows/conformance-wheel.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'conformance/**'
+      - 'reference/validator/**'
+      - 'reference/ros2-runtime/**'
+      - 'examples/fleet/**'
+      - 'examples/rulebooks/**'
+      - '.github/workflows/conformance-wheel.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conformance-wheel:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build sdists and wheels (as release.yml does)
+        run: |
+          set -eux
+          python -m pip install --quiet build
+          for p in reference/validator reference/ros2-runtime conformance; do
+            python -m build --outdir "$RUNNER_TEMP/dist" "$p"
+          done
+      - name: Install the wheels into a fresh venv
+        run: |
+          set -eux
+          python -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install --quiet "$RUNNER_TEMP"/dist/*.whl
+      - name: Run the suite from the installed wheels, outside the checkout
+        working-directory: ${{ runner.temp }}
+        run: |
+          set -eux
+          py="$RUNNER_TEMP/venv/bin/python -I"
+          $py -c "import urml_conformance.fixtures as f; assert f._DATA_ROOT.name == '_data', f._DATA_ROOT"
+          $py -m urml_conformance
+          $py -m urml_conformance --goal-line

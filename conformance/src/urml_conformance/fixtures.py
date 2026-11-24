@@ -40,11 +40,16 @@ from urml_ros2_runtime.substrate import (
 # conformance/src/urml_conformance/fixtures.py -> ../../../.. would be too many.
 # parents[0]=urml_conformance, [1]=src, [2]=conformance, [3]=URML repo root.
 _REPO_ROOT = Path(__file__).resolve().parents[3]
-_VALIDATOR_FIXTURES = _REPO_ROOT / "reference" / "validator" / "tests" / "fixtures"
+# An installed wheel carries the manifests, envelopes, policies and
+# rulebooks below under _data/, with their repository layout
+# (conformance/hatch_build.py). A source checkout reads the repository.
+_PACKAGE_DATA_ROOT = Path(__file__).resolve().parent / "_data"
+_DATA_ROOT = _PACKAGE_DATA_ROOT if _PACKAGE_DATA_ROOT.is_dir() else _REPO_ROOT
+_VALIDATOR_FIXTURES = _DATA_ROOT / "reference" / "validator" / "tests" / "fixtures"
 # RFC-0286: the fleet demo manifests are the canonical fleet members. The
 # conformance registry points at the single source in examples/fleet rather than
 # duplicating them, so there is one place to keep correct.
-_EXAMPLES_FLEET = _REPO_ROOT / "examples" / "fleet"
+_EXAMPLES_FLEET = _DATA_ROOT / "examples" / "fleet"
 
 #: Public registry: maps a short manifest name to its YAML path. Authors
 #: reference these by name in fixture files so the loader resolves them
@@ -298,7 +303,7 @@ POLICY_REGISTRY: dict[str, Path] = {
     "require_evidence_derived": _VALIDATOR_FIXTURES / "policies" / "require_evidence_derived.yaml",
 }
 
-_EXAMPLES_RULEBOOKS = _REPO_ROOT / "examples" / "rulebooks"
+_EXAMPLES_RULEBOOKS = _DATA_ROOT / "examples" / "rulebooks"
 
 #: Rulebooks (RFC-0702, Draft) a fixture can load by name, applied in the
 #: order the fixture lists them, after the bundled rulebooks. The test
