@@ -18,9 +18,9 @@ The report gives no score and no verdict, and never says "safe" or
 same bytes (`render_json`), so a reader can rebuild a report and compare
 digests instead of trusting its author.
 
-This module implements step 1 of the RFC: the Inputs, Robot, Provenance,
-Envelope, Rules, By standard, Outside URML and Counts parts. Programs,
-conformance, redaction, signing and the human forms come in later steps.
+This module implements steps 1 and 2 of the RFC: the Inputs, Robot,
+Provenance, Envelope, Rules, Programs, Conformance, By standard, Outside URML
+and Counts parts. Redaction, signing and the human forms come in later steps.
 
 Not to be confused with `urml_validator.evidence`, the validation-record log
 (`--evidence-log`), or with the per-capability `evidence` tags of RFC-0631,
@@ -48,7 +48,7 @@ from urml_validator.schemas.envelope import SafetyEnvelope
 from urml_validator.schemas.manifest import CapabilityManifest
 from urml_validator.schemas.policy import Policy
 from urml_validator.schemas.rulebook import Cite, Rule, Rulebook
-from urml_validator.validator import _resolve_policy
+from urml_validator.validator import _resolve_policy, validate
 
 #: The report format identifier, carried in every report.
 REPORT_FORMAT: Literal["urml.evidence-report/0.1"] = "urml.evidence-report/0.1"
@@ -64,7 +64,7 @@ STATUSES: tuple[Status, ...] = ("checked", "declared", "runtime", "missing", "ou
 Result = Literal["pass", "fail"]
 
 #: The section ids, in report order.
-SECTION_IDS = ("robot", "provenance", "envelope", "rules", "outside")
+SECTION_IDS = ("robot", "provenance", "envelope", "rules", "programs", "conformance", "outside")
 
 
 class EvidenceInputError(ValueError):
@@ -102,12 +102,13 @@ class Section(_Strict):
     id: str
     title: str
     items: list[Item]
+    note: str | None = Field(None, description="Why a section has no items, when it has none.")
 
 
 class InputRef(_Strict):
     """One input the report was built from, by content digest."""
 
-    role: Literal["manifest", "envelope", "policy", "rulebook"]
+    role: Literal["manifest", "envelope", "policy", "rulebook", "program", "conformance_report", "registry_entry"]
     id: str | None = Field(None, description="robot_id, policy_id or rulebook_id.")
     name: str | None = Field(None, description="The file name as given, without its directory.")
     bundled: bool = False
@@ -746,6 +747,277 @@ def _rules_section(inv: RulebookInventory, seen: set[str]) -> Section:
     return Section(id="rules", title="Rules", items=c.items)
 
 
+# ----- Programs -----
+
+
+def _issue_detail(issue: ValidationError) -> dict[str, Any]:
+    detail = issue.detail or {}
+    out: dict[str, Any] = {"code": str(issue.code), "severity": issue.severity, "message": issue.message}
+    for key in ("rulebook_id", "rule_id"):
+        if detail.get(key) is not None:
+            out[key] = detail[key]
+    return out
+
+
+def _programs_section(
+    programs: Sequence[tuple[str, Mapping[str, Any]]],
+    manifest: Mapping[str, Any] | CapabilityManifest,
+    envelope: Mapping[str, Any] | SafetyEnvelope | None,
+    *,
+    profiles: Sequence[str],
+    policy: Mapping[str, Any] | Policy | Literal["DEFAULT"] | None,
+    rulebooks: Sequence[Mapping[str, Any] | Rulebook],
+    default_rulebooks: bool,
+    manifest_base_dir: Path | None,
+    as_of: date,
+    seen: set[str],
+) -> Section:
+    c = _Collector(seen)
+    if not programs:
+        return Section(
+            id="programs",
+            title="Programs",
+            items=[],
+            note="No program was given, so this report judges none.",
+        )
+    used: dict[str, int] = {}
+    for name, program in programs:
+        stem = Path(name).name.split(".")[0] or "program"
+        used[stem] = used.get(stem, 0) + 1
+        item_id = f"validated.{stem}" if used[stem] == 1 else f"validated.{stem}-{used[stem]}"
+        result = validate(
+            dict(program),
+            manifest if isinstance(manifest, CapabilityManifest) else dict(manifest),
+            envelope if envelope is None or isinstance(envelope, SafetyEnvelope) else dict(envelope),
+            profiles=tuple(profiles),
+            policy=dict(policy) if isinstance(policy, Mapping) else policy,
+            manifest_base_dir=manifest_base_dir,
+            rulebooks=rulebooks,
+            default_rulebooks=default_rulebooks,
+            as_of=as_of,
+        )
+        errors = [i for i in result.all_issues if i.severity == "error"]
+        warnings = [i for i in result.all_issues if i.severity != "error"]
+        if result.accepted:
+            text = f"Program {name} is accepted."
+            if warnings:
+                codes = ", ".join(sorted({str(i.code) for i in warnings}))
+                text += f" {len(warnings)} warning{'s' if len(warnings) != 1 else ''}: {codes}."
+        else:
+            shown = "; ".join(f"{i.code}: {i.message.rstrip('.')}" for i in errors[:3])
+            more = f" (and {len(errors) - 3} more)" if len(errors) > 3 else ""
+            text = f"Program {name} is refused, {len(errors)} error{'s' if len(errors) != 1 else ''}. {shown}{more}."
+        c.add(
+            item_id,
+            "checked",
+            text,
+            f"program:{name}",
+            result="pass" if result.accepted else "fail",
+            detail={"accepted": result.accepted, "issues": [_issue_detail(i) for i in result.all_issues]},
+        )
+    return Section(id="programs", title="Programs", items=c.items)
+
+
+# ----- Conformance -----
+
+#: The hermetic mock adapter a conformance report names when no real adapter ran.
+_MOCK_ADAPTER = "urml_ros2_runtime:MockROSAdapter"
+
+
+def _is_mock(spec: str | None) -> bool:
+    if spec is None:
+        return True
+    module, _, attr = spec.partition(":")
+    return attr == "MockROSAdapter" and module.split(".")[0] == "urml_ros2_runtime"
+
+
+def _conformance_models() -> tuple[Any, Any]:
+    try:
+        from urml_conformance.registry import Entry  # type: ignore[import-not-found,unused-ignore]
+        from urml_conformance.report import ConformanceReport  # type: ignore[import-not-found,unused-ignore]
+    except ImportError as exc:  # pragma: no cover - depends on the install
+        raise EvidenceInputError(
+            "reading a conformance report or a registry entry needs the urml-conformance package "
+            "(pip install urml-conformance)"
+        ) from exc
+    return ConformanceReport, Entry
+
+
+def _conformance_section(
+    report_data: Mapping[str, Any] | None,
+    report_sha256: str | None,
+    entry_data: Mapping[str, Any] | None,
+    *,
+    profiles: Sequence[str],
+    as_of: date,
+    seen: set[str],
+) -> Section:
+    c = _Collector(seen)
+    if report_data is None and entry_data is None:
+        return Section(
+            id="conformance",
+            title="Conformance",
+            items=[],
+            note="No conformance report or registry entry was given.",
+        )
+    report_model, entry_model = _conformance_models()
+    if report_data is not None:
+        try:
+            report = report_model.model_validate(dict(report_data))
+        except PydanticValidationError as exc:
+            raise EvidenceInputError(f"the conformance report does not follow its format: {exc}") from exc
+        ran = len(report.results)
+        c.add(
+            "conformance.run",
+            "declared",
+            f"The conformance report says adapter {report.adapter or '(none named)'} ran {ran} fixtures: "
+            f"{report.passed} passed, {report.failed} failed.",
+            "conformance_report",
+            detail={
+                "adapter": report.adapter,
+                "fixture_count": report.fixture_count,
+                "fixtures_sha256": report.fixtures_sha256,
+                "filter": report.filter,
+                "profiles": report.profiles,
+                "passed": report.passed,
+                "failed": report.failed,
+                "urml_conformance_version": report.urml_conformance_version,
+                "urml_validator_version": report.urml_validator_version,
+                "file_sha256": report_sha256,
+            },
+        )
+        if _is_mock(report.adapter):
+            c.add(
+                "conformance.adapter",
+                "missing",
+                "The report comes from the hermetic mock adapter, or names no adapter, so it shows nothing "
+                "about this robot's own runtime.",
+                "conformance_report",
+                "adapter",
+                detail={"adapter": report.adapter},
+            )
+        failed = [r.name for r in report.results if not r.passed]
+        if failed:
+            c.add(
+                "conformance.failures",
+                "missing",
+                f"{len(failed)} fixture{'s' if len(failed) != 1 else ''} failed: "
+                + ", ".join(failed[:5])
+                + (f" (and {len(failed) - 5} more)." if len(failed) > 5 else "."),
+                "conformance_report",
+                "results",
+                detail={"failed": failed},
+            )
+        if report.filter:
+            c.add(
+                "conformance.filter",
+                "missing",
+                f"The run was filtered to fixtures whose name contains {report.filter!r}, so it is not the "
+                "whole suite for any profile.",
+                "conformance_report",
+                "filter",
+            )
+        if report.profiles is not None:
+            for profile in dict.fromkeys(profiles):
+                if profile not in report.profiles:
+                    c.add(
+                        f"conformance.profile.{profile}",
+                        "missing",
+                        f"The deployment runs profile {profile}, and the report's run did not select it.",
+                        "conformance_report",
+                        "profiles",
+                    )
+    if entry_data is not None:
+        try:
+            entry = entry_model.model_validate(dict(entry_data))
+        except PydanticValidationError as exc:
+            raise EvidenceInputError(f"the registry entry does not follow its format: {exc}") from exc
+        c.add(
+            "registry.entry",
+            "declared",
+            f"Registry entry {entry.id} ({entry.status}) lists {entry.runtime.package} {entry.runtime.version} "
+            f"for profiles {', '.join(entry.profiles)}, last verified {entry.last_verified}.",
+            "registry_entry",
+            detail={
+                "id": entry.id,
+                "status": entry.status,
+                "runtime": {"package": entry.runtime.package, "version": entry.runtime.version},
+                "profiles": list(entry.profiles),
+            },
+        )
+        if entry.status != "listed":
+            c.add(
+                "registry.withdrawn",
+                "missing",
+                f"The registry entry is {entry.status}: it no longer stands behind the runtime.",
+                "registry_entry",
+                "status",
+            )
+        compat = entry.compatibility
+        if compat is None:
+            c.add(
+                "registry.compatibility",
+                "declared",
+                "The entry makes no conformance claim; its evidence is field runs or validation records.",
+                "registry_entry",
+                "compatibility",
+            )
+        else:
+            pinned = compat.report.sha256
+            if report_sha256 is not None and report_sha256 != pinned:
+                c.add(
+                    "registry.report_pin",
+                    "missing",
+                    f"The entry pins a conformance report with sha256 {pinned}; the report given hashes to "
+                    f"{report_sha256}, so it is not the report the entry stands behind.",
+                    "registry_entry",
+                    "compatibility.report.sha256",
+                )
+            cert = compat.certification
+            if cert is None:
+                c.add(
+                    "registry.tier",
+                    "declared",
+                    f"Tier self_reported for {', '.join(compat.profiles)}: the runtime's authors ran the suite; "
+                    "nobody else has reproduced it.",
+                    "registry_entry",
+                    "compatibility.tier",
+                    detail={"tier": compat.tier, "profiles": list(compat.profiles)},
+                )
+            else:
+                expired = as_of > date.fromisoformat(cert.expires)
+                c.add(
+                    "registry.tier",
+                    "missing" if expired else "declared",
+                    (
+                        f"URML-Certified for {', '.join(compat.profiles)} expired on {cert.expires}."
+                        if expired
+                        else f"URML-Certified for {', '.join(compat.profiles)} until {cert.expires} (conformance "
+                        f"{cert.conformance_spec}), reproduced by {cert.reproduction.by} on {cert.reproduction.date}."
+                    )
+                    + " It certifies conformance to URML, not safety or compliance.",
+                    "registry_entry",
+                    "compatibility.certification",
+                    detail={
+                        "tier": compat.tier,
+                        "profiles": list(compat.profiles),
+                        "certified_on": cert.certified_on,
+                        "expires": cert.expires,
+                        "conformance_spec": cert.conformance_spec,
+                    },
+                )
+            for profile in dict.fromkeys(profiles):
+                if profile not in compat.profiles:
+                    c.add(
+                        f"registry.profile.{profile}",
+                        "missing",
+                        f"The deployment runs profile {profile}; the entry's conformance claim does not cover it.",
+                        "registry_entry",
+                        "compatibility.profiles",
+                    )
+    return Section(id="conformance", title="Conformance", items=c.items)
+
+
 # ----- Outside URML -----
 
 _OUTSIDE: tuple[tuple[str, str], ...] = (
@@ -852,6 +1124,12 @@ def build_evidence_report(
     envelope_name: str | None = None,
     policy_name: str | None = None,
     rulebook_names: Sequence[str | None] = (),
+    programs: Sequence[tuple[str, Mapping[str, Any]]] = (),
+    conformance_report: Mapping[str, Any] | None = None,
+    conformance_report_sha256: str | None = None,
+    conformance_report_name: str | None = None,
+    registry_entry: Mapping[str, Any] | None = None,
+    registry_entry_name: str | None = None,
 ) -> EvidenceReport:
     """Build the evidence report for one robot deployment.
 
@@ -866,9 +1144,15 @@ def build_evidence_report(
         manifest_base_dir: Where a component's relative HBOM reference resolves (RFC-0005).
         manifest_name, envelope_name, policy_name, rulebook_names: File names for the Inputs
             part, without directories. Optional; digests identify the inputs either way.
+        programs: (file name, program) pairs, each validated against the deployment.
+        conformance_report: A `urml.conformance-report/1` report of the robot's runtime.
+        conformance_report_sha256: The report file's own sha256 (hex), to compare with a registry pin.
+        registry_entry: The runtime's URML registry entry (registry/entries/<id>.yaml).
+        conformance_report_name, registry_entry_name: File names for the Inputs part.
 
     Raises:
-        EvidenceInputError: the manifest, envelope or policy does not follow its schema.
+        EvidenceInputError: the manifest, envelope, policy, conformance report or registry entry
+            does not follow its schema, or the last two are given without urml-conformance installed.
     """
     manifest_model: CapabilityManifest = _model("manifest", CapabilityManifest, manifest)
     envelope_model: SafetyEnvelope | None = None if envelope is None else _model("envelope", SafetyEnvelope, envelope)
@@ -892,6 +1176,26 @@ def build_evidence_report(
         _provenance_section(manifest_model, policy_model, manifest_base_dir, seen),
         _envelope_section(manifest_model, envelope_model, seen),
         _rules_section(inv, seen),
+        _programs_section(
+            programs,
+            manifest_model,
+            envelope_model,
+            profiles=profiles,
+            policy=policy,
+            rulebooks=rulebooks,
+            default_rulebooks=default_rulebooks,
+            manifest_base_dir=manifest_base_dir,
+            as_of=as_of,
+            seen=seen,
+        ),
+        _conformance_section(
+            conformance_report,
+            conformance_report_sha256,
+            registry_entry,
+            profiles=profiles,
+            as_of=as_of,
+            seen=seen,
+        ),
         _outside_section(seen),
     ]
 
@@ -934,6 +1238,27 @@ def build_evidence_report(
                 name=name,
                 bundled=entry.bundled,
                 digest=content_digest(supplied),
+            )
+        )
+
+    for name, program in programs:
+        files.append(InputRef(role="program", name=Path(name).name, digest=content_digest(program)))
+    if conformance_report is not None:
+        files.append(
+            InputRef(
+                role="conformance_report",
+                id=conformance_report.get("adapter"),
+                name=conformance_report_name,
+                digest=content_digest(conformance_report),
+            )
+        )
+    if registry_entry is not None:
+        files.append(
+            InputRef(
+                role="registry_entry",
+                id=registry_entry.get("id"),
+                name=registry_entry_name,
+                digest=content_digest(registry_entry),
             )
         )
 

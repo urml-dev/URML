@@ -9,3 +9,5 @@ rulebooks:
 - amr-rules.yaml
 - functional-safety.yaml
 - declarations.yaml
+programs:
+- ../../../../../../examples/warehouse/pick-to-conveyor.urml.yaml

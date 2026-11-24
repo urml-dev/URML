@@ -1,0 +1,46 @@
+# A FICTIONAL registry entry for the evidence-report tests (RFC-0707).
+# No such runtime exists. It is certified, and the certification expired
+# before the scenario's --as-of date, so the report shows the gap.
+
+registry_version: "1"
+id: example-vendor-quadrotor
+title: Example vendor quadrotor through a fictional vendor runtime
+status: listed
+listed: "2025-06-30"
+last_verified: "2025-07-01"
+submitted_by: Example Vendor (fictional)
+
+robot:
+  name: Example quadrotor (fictional)
+  class: multirotor aircraft
+  manifest: examples/drone/parcel-delivery.manifest.yaml
+
+runtime:
+  package: example-vendor-runtime
+  version: "1.2.0"
+  adapter: example_vendor_runtime:ExampleAdapter
+  substrate: a fictional vendor autopilot SDK
+
+profiles: [drone]
+
+compatibility:
+  tier: certified
+  profiles: [drone]
+  report:
+    path: registry/evidence/example-vendor-quadrotor/conformance-report.json
+    sha256: "77e2bb3a8f496095f9661cd78923f62369b52464c1b409bf421b21bfee3a95d3"
+  certification:
+    conformance_spec: "0.2.0"
+    certified_on: "2025-07-01"
+    expires: "2026-06-30"
+    attestation: Fictional attestation for test data.
+    reproduction:
+      report:
+        path: registry/evidence/example-vendor-quadrotor/reproduction-report.json
+        sha256: "1111111111111111111111111111111111111111111111111111111111111111"
+      by: Yahalomik Ltd.
+      date: "2025-06-28"
+      environment: Fictional test data.
+
+limits:
+  - Fictional entry for the evidence-report tests; it describes no real runtime.

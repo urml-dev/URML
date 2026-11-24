@@ -34,6 +34,13 @@
   ],
   "counts": {
     "by_section": {
+      "conformance": {
+        "checked": 0,
+        "declared": 1,
+        "missing": 2,
+        "outside": 0,
+        "runtime": 0
+      },
       "envelope": {
         "checked": 6,
         "declared": 0,
@@ -46,6 +53,13 @@
         "declared": 0,
         "missing": 0,
         "outside": 5,
+        "runtime": 0
+      },
+      "programs": {
+        "checked": 1,
+        "declared": 0,
+        "missing": 0,
+        "outside": 0,
         "runtime": 0
       },
       "provenance": {
@@ -71,14 +85,14 @@
       }
     },
     "by_status": {
-      "checked": 17,
-      "declared": 0,
-      "missing": 2,
+      "checked": 18,
+      "declared": 1,
+      "missing": 4,
       "outside": 12,
       "runtime": 6
     },
     "failed_checks": 0,
-    "gaps": 2
+    "gaps": 4
   },
   "format": "urml.evidence-report/0.1",
   "inputs": {
@@ -111,6 +125,20 @@
         "id": "us_faa_part107",
         "name": null,
         "role": "rulebook"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:eaa34c716aa5fea7afd850335ee302504e3968f19078ff958a8ffb031900a8ee",
+        "id": null,
+        "name": "parcel-delivery.urml.yaml",
+        "role": "program"
+      },
+      {
+        "bundled": false,
+        "digest": "sha256:cf7b313103eb68158f164d4f0e0ac8b2eee075ed453eecc7eb959de33e4bf4ab",
+        "id": "urml_ros2_runtime:MockROSAdapter",
+        "name": "conformance-report.json",
+        "role": "conformance_report"
       }
     ],
     "policy": "bundled",
@@ -157,6 +185,7 @@
           "text": "Sensor battery (voltage). No evidence tag: the claim's source is not recorded."
         }
       ],
+      "note": null,
       "title": "Robot"
     },
     {
@@ -244,6 +273,7 @@
           "text": "Policy rule attestation_floor: passed."
         }
       ],
+      "note": null,
       "title": "Provenance"
     },
     {
@@ -451,6 +481,7 @@
           "text": "On an emergency stop reported by the substrate, the runtime must stop dispatching and stop every motion it commands. The emergency stop itself is a function of the machine."
         }
       ],
+      "note": null,
       "title": "Envelope"
     },
     {
@@ -734,7 +765,90 @@
           "text": "People and flight paths the validator cannot see. URML checks flight targets against the people-occupancy zones the deployment declares. People outside those zones, and the path the aircraft flies between targets, are for the remote pilot in command to watch."
         }
       ],
+      "note": null,
       "title": "Rules"
+    },
+    {
+      "id": "programs",
+      "items": [
+        {
+          "detail": {
+            "accepted": true,
+            "issues": [
+              {
+                "code": "rule.declaration_missing",
+                "message": "14 CFR 89.105, 89.110 and 89.115: remote identification by one of the means of 14 CFR Part 89. No deployment rulebook is loaded, so nothing declares remote_id; a deployment rulebook must declare it (allowed: standard_remote_id, broadcast_module, faa_recognized_identification_area).",
+                "rule_id": "remote_identification",
+                "rulebook_id": "us_faa_part107",
+                "severity": "warning"
+              }
+            ]
+          },
+          "id": "validated.parcel-delivery",
+          "result": "pass",
+          "source": {
+            "field": null,
+            "input": "program:parcel-delivery.urml.yaml"
+          },
+          "status": "checked",
+          "text": "Program parcel-delivery.urml.yaml is accepted. 1 warning: rule.declaration_missing."
+        }
+      ],
+      "note": null,
+      "title": "Programs"
+    },
+    {
+      "id": "conformance",
+      "items": [
+        {
+          "detail": {
+            "adapter": "urml_ros2_runtime:MockROSAdapter",
+            "failed": 0,
+            "file_sha256": "673d9580d1e0df94e25409590a89d7594b81b0138479a77204aaaefbdd48c013",
+            "filter": "flight_only",
+            "fixture_count": 1,
+            "fixtures_sha256": "9769e21aab835ea73c879f8a0ec269da57752cef3dc882271d27236ee3dc6d99",
+            "passed": 1,
+            "profiles": null,
+            "urml_conformance_version": "0.5.1",
+            "urml_validator_version": "0.5.1"
+          },
+          "id": "conformance.run",
+          "result": null,
+          "source": {
+            "field": null,
+            "input": "conformance_report"
+          },
+          "status": "declared",
+          "text": "The conformance report says adapter urml_ros2_runtime:MockROSAdapter ran 1 fixtures: 1 passed, 0 failed."
+        },
+        {
+          "detail": {
+            "adapter": "urml_ros2_runtime:MockROSAdapter"
+          },
+          "id": "conformance.adapter",
+          "result": null,
+          "source": {
+            "field": "adapter",
+            "input": "conformance_report"
+          },
+          "status": "missing",
+          "text": "The report comes from the hermetic mock adapter, or names no adapter, so it shows nothing about this robot's own runtime."
+        },
+        {
+          "detail": {},
+          "id": "conformance.filter",
+          "result": null,
+          "source": {
+            "field": "filter",
+            "input": "conformance_report"
+          },
+          "status": "missing",
+          "text": "The run was filtered to fixtures whose name contains 'flight_only', so it is not the whole suite for any profile."
+        }
+      ],
+      "note": null,
+      "title": "Conformance"
     },
     {
       "id": "outside",
@@ -795,6 +909,7 @@
           "text": "Anything a program does through a path that does not pass through a URML runtime."
         }
       ],
+      "note": null,
       "title": "Outside URML"
     }
   ],
