@@ -166,11 +166,11 @@ CI gating: the `gazebo-e2e` job in [`.github/workflows/ros2-integration.yml`](..
 sudo apt-get install -y ros-jazzy-turtlebot4-simulator \
   ros-jazzy-turtlebot4-navigation ros-jazzy-nav2-bringup
 
-# Terminal 1 — bring up the sim + Nav2 (headless; drop headless:=true for the GUI):
+# Terminal 1: bring up the Gazebo Harmonic sim + Nav2 in the depot world:
 source /opt/ros/jazzy/setup.bash
 export LIBGL_ALWAYS_SOFTWARE=1   # only needed on a GPU-less box
-ros2 launch turtlebot4_ignition_bringup turtlebot4_ignition.launch.py \
-  nav2:=true slam:=true rviz:=false headless:=true
+ros2 launch turtlebot4_gz_bringup turtlebot4_gz.launch.py \
+  nav2:=true slam:=true rviz:=false world:=depot
 
 # Terminal 2 — once /navigate_to_pose is up, run the e2e:
 source /opt/ros/jazzy/setup.bash
