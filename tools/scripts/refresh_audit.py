@@ -50,6 +50,8 @@ SUITES: list[tuple[str, Path]] = [
     ("humanoid-runtime", REPO / "reference" / "humanoid-runtime"),
     ("mobile-runtime", REPO / "reference" / "mobile-runtime"),
     ("opcua-runtime", REPO / "reference" / "opcua-runtime"),
+    ("vda5050-runtime", REPO / "reference" / "vda5050-runtime"),
+    ("iso21423-runtime", REPO / "reference" / "iso21423-runtime"),
     ("cobot-runtime", REPO / "reference" / "cobot-runtime"),
     ("mujoco-runtime", REPO / "reference" / "mujoco-runtime"),
     ("embedded-runtime", REPO / "reference" / "embedded-runtime"),

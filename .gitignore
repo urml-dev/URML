@@ -112,3 +112,6 @@ tools/.outreach.db
 # Local Claude Code settings (per-machine; permission rules, etc.). Not committed.
 .claude/settings.json
 .claude/settings.local.json
+
+# Claude Code session worktrees (`claude -w <name>`); see AGENTS.md "Parallel sessions".
+.claude/worktrees/

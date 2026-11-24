@@ -44,6 +44,8 @@ When in doubt about a definition, the precedence order is the same as the rest o
 
 **Intent primitive** — See *Primitive*.
 
+**ISO 8373**: ISO 8373:2021, the international robotics vocabulary. [`iso-8373-alignment.md`](iso-8373-alignment.md) maps URML's words onto its terms, including two differences: URML's validator does what ISO calls verification, and "operator" has a second, organizational sense in URML documents.
+
 **Layer** — One of the five horizontal slices of URML. Layer 1 (HAL), Layer 2 (primitives), Layer 3 (composition), Layer 4 (NL interface), plus Layer 0 (substrate, not part of URML). See [`architecture.md`](architecture.md).
 
 **LLM bridge** — The provider-agnostic glue that takes natural language, prompts an LLM with the URML contract and the active robot's capability manifest, validates the LLM's structured output, and surfaces revision feedback when validation fails. Free for non-production use under BSL 1.1. Lives in [`/reference/llm-bridge`](../reference/llm-bridge/).
@@ -80,7 +82,7 @@ When in doubt about a definition, the precedence order is the same as the rest o
 
 **URML** — Universal Robot Language. Working name; subject to finalization in Phase 0 (see `MANIFESTO.md` Appendix B, Question 1).
 
-**URML-Certified** — The (future) trademark / conformance mark granted to runtimes that pass the conformance suite. The mark is the commercial moat; the tests are the open core.
+**URML-Certified**: the conformance mark for one exact version of a third-party runtime that passed the conformance suite for named profiles, with the run reproduced by the Licensor. Free, on public criteria ([RFC-0705](rfcs/0705-urml-certified.md)). It certifies conformance, not safety or compliance.
 
 **URML program** — An instance of the URML language: a YAML (canonical) or JSON-LD document containing a single behavior. Statically verified before execution.
 

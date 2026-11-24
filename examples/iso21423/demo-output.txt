@@ -1,0 +1,10 @@
+validate: accepted (profile warehouse, default policy)
+robot: simulated IMR on /ISO_21423/v1/IMR/<uuid> (ISO 21423 runtime, draft-based; see README)
+
+request 1: move to (6, -2)  -> SUCCEEDED
+request 2: move to (0, 4)  -> SUCCEEDED
+request 3: dock to (-4, 0) with CHARGE  -> SUCCEEDED
+
+program: success, 4 URML steps
+requests sent: 3
+robot at: (-4, 0), battery 100%

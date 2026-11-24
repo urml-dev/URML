@@ -1,0 +1,49 @@
+# Deployment config for Vda5050Adapter, for the warehouse pick-to-conveyor
+# example (examples/warehouse/). Fictional vehicle and site.
+#
+# VDA 5050 leaves the route graph to the fleet control, so this file is
+# where the URML location names in the manifest meet the node ids the
+# vehicle knows. Nothing here changes the URML program or manifest.
+
+manufacturer: ExampleAMR
+serial_number: amr-0001
+interface_name: vda5050      # topic prefix: vda5050/v3/ExampleAMR/amr-0001/...
+protocol_version: "3.0.0"
+broker_host: 127.0.0.1
+broker_port: 1883
+
+map_id: warehouse-1
+
+# URML location name -> VDA 5050 node. Positions in the map frame, metres.
+nodes:
+  charge_dock_1: { node_id: N-CHG1, x: -4.0, y: 0.0, theta: 0.0 }
+  aisle_hub:     { node_id: N-HUB,  x: 0.0,  y: 0.0 }
+  shelf_a3:      { node_id: N-A3,   x: 6.0,  y: -2.0, station_type: rack, station_name: A3 }
+  conveyor_a:    { node_id: N-CVA,  x: 0.0,  y: 4.0,  station_type: passive_conveyor }
+
+# Traversable edges. The adapter routes over these (shortest path).
+edges:
+  - { start: charge_dock_1, end: aisle_hub, max_speed: 1.0 }
+  - { start: aisle_hub, end: shelf_a3, max_speed: 1.2 }
+  - { start: aisle_hub, end: conveyor_a, max_speed: 1.2 }
+
+primary_dock: charge_dock_1
+
+# The vehicle's action set, copied from its factsheet (protocolFeatures.agvActions).
+supported_actions:
+  - cancelOrder
+  - startPause
+  - stopPause
+  - stateRequest
+  - pick
+  - drop
+  - detectObject
+  - startCharging
+  - stopCharging
+
+dock_services:
+  charge: startCharging
+  park: null
+
+order_timeout_seconds: 300
+state_timeout_seconds: 10

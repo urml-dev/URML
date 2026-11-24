@@ -25,7 +25,7 @@
 
 **One vocabulary for robot intent. Every action checked against what the robot can actually do before it runs. On any substrate.**
 
-URML sits above existing robot operating systems (ROS 2, PX4, OPC UA Robotics, vendor SDKs) and gives humans, large language models, and robots one vocabulary for *what should happen*, independent of which motors, joints, or frames carry it out. Every URML program is statically checked against the robot's declared capabilities and the active safety envelope **before a single actuator moves**, so a command the robot cannot safely carry out, a 250 N grasp on a 100 N gripper or a waypoint outside the geofence, is refused on paper instead of attempted on hardware. The bundled US-federal compliance policy runs in the same pass, on by default and one flag away.
+URML sits above existing robot operating systems and interfaces (ROS 2, PX4, OPC UA Robotics, VDA 5050, vendor SDKs) and gives humans, large language models, and robots one vocabulary for *what should happen*, independent of which motors, joints, or frames carry it out. Every URML program is statically checked against the robot's declared capabilities and the active safety envelope **before a single actuator moves**, so a command the robot cannot safely carry out, a 250 N grasp on a 100 N gripper or a waypoint outside the geofence, is refused on paper instead of attempted on hardware. The bundled US-federal compliance policy runs in the same pass, on by default and one flag away.
 
 What the gate stops, what it cannot see, and the measured before-and-after numbers are in the [safety model](docs/safety/safety-model.md). In the [goalkeeper demo](examples/goalkeeper/), a scripted compromised model tried seven attacks on three robots, and URML sent zero commands for any of them.
 
@@ -35,7 +35,7 @@ URML is a **specification** and a set of **reference implementations**, not a ro
 
 ## Try it in three commands
 
-The validator and the LLM bridge are on PyPI at 0.5.0, and they are all this needs. The remaining runtimes reach PyPI by 2026-11-25; until then they install from source (below). Install, scaffold a starter project, validate it. About 30 seconds; no API key, no robot.
+The validator and the LLM bridge are on PyPI at 0.5.0, and they are all this needs. The remaining runtimes reach PyPI over the next few days, as PyPI's limit of about four new projects a day allows; until then they install from source (below). Install, scaffold a starter project, validate it. About 30 seconds; no API key, no robot.
 
 ```bash
 python3 -m venv .venv && . .venv/bin/activate   # recommended; required on PEP 668 systems (Ubuntu 26.04, Debian 12+)
@@ -100,7 +100,7 @@ Every `✅` below maps to a shipped file and a passing test or recorded CI run; 
 | **Real ROS 2 adapter** (`RclpyAdapter`): full ROSAdapter Protocol via `rclpy` (Nav2 / MoveIt 2 / vision_msgs) | ✅ Implemented; the `gazebo-e2e` job (live TurtleBot 4 + Nav2 sim) passed ×3 ([job-level, badge caveat explained](docs/launch/claims-audit.md)) |
 | **PX4 / MAVLink reference runtime** (`PX4Adapter`): full Protocol via `pymavlink`, no ROS dependency | ✅ Implemented; flew the `drone/flight_only_positive` program on PX4 v1.17.0 SITL, confirmed from telemetry by a listen-only witness ([run records](reference/px4-runtime/tests/integration/sitl-runs/); local, not CI, no hardware) |
 | **CompositeAdapter**: one URML program across two substrates: PX4 flight + a ROS 2 companion, per-method routing | ✅ Implemented |
-| **Fifteen further reference runtimes**:<br>`ardupilot` (ArduCopter over MAVLink, no ROS: Pixhawk bench with propellers off, SITL 3 of 3; no free flight on hardware), `av` (Autoware, RFC-0020 `plan_path` / `follow_trajectory`), `marine` (BlueROV2 / ArduSub), `industrial-arm` (ABB / FANUC / KUKA / YASKAWA / UR / Franka / Kawasaki / Stäubli / Comau / Mitsubishi / Denso / Hyundai / Nachi / Epson / Omron / Hanwha = 16 brands),<br>`legged` (Spot / ANYmal), `humanoid` (Digit), `mobile` (Husky / Jackal),<br>and the zero-ROS `opcua` (OPC UA Robotics), `cobot` (8 brands: UR / Franka / Doosan / Techman / Kinova / Mecademic / Neura / Kassow native SDKs), `mujoco` + `isaac` (NVIDIA Sim / Lab, local RTX host) + `chrono` sims, `embedded` (micro:bit / Arduino serial), `edu` (VEX V5 / LEGO SPIKE / Thymio / Robotical Marty / Petoi / CircuitPython / GoPiGo3 / Microduck / Reachy Mini), `autosar` (RFC-0019 scaffold) | ✅ Hermetic suites green; live e2e is gated CI (calibration-staged, **not** a hardware claim); see [audit](docs/launch/claims-audit.md). |
+| **Seventeen further reference runtimes**:<br>`ardupilot` (ArduCopter over MAVLink, no ROS: Pixhawk bench with propellers off, SITL 3 of 3; no free flight on hardware), `av` (Autoware, RFC-0020 `plan_path` / `follow_trajectory`), `marine` (BlueROV2 / ArduSub), `industrial-arm` (ABB / FANUC / KUKA / YASKAWA / UR / Franka / Kawasaki / Stäubli / Comau / Mitsubishi / Denso / Hyundai / Nachi / Epson / Omron / Hanwha = 16 brands),<br>`legged` (Spot / ANYmal), `humanoid` (Digit), `mobile` (Husky / Jackal),<br>and the zero-ROS `opcua` (OPC UA Robotics), `vda5050` (AMRs and AGVs over VDA 5050 / MQTT: simulated vehicle and a live Mosquitto broker; no vendor vehicle yet), `iso21423` (ISO 21423 mobile robot interoperability; built from the draft standard, validation against the published standard in progress), `cobot` (8 brands: UR / Franka / Doosan / Techman / Kinova / Mecademic / Neura / Kassow native SDKs), `mujoco` + `isaac` (NVIDIA Sim / Lab, local RTX host) + `chrono` sims, `embedded` (micro:bit / Arduino serial), `edu` (VEX V5 / LEGO SPIKE / Thymio / Robotical Marty / Petoi / CircuitPython / GoPiGo3 / Microduck / Reachy Mini), `autosar` (RFC-0019 scaffold) | ✅ Hermetic suites green; live e2e is gated CI (calibration-staged, **not** a hardware claim); see [audit](docs/launch/claims-audit.md). |
 | **Run on a real robot (community)**: the validated sentence-to-motion loop, executed on physical hardware by someone who is not us: English → local-LLM translation → validator → wheels, on a GoPiGo3 and a Raspberry Pi, fully offline | ✅ Reproducible: [`examples/gopigo3/`](examples/gopigo3/); the story is in the [field note](https://urml.dev/blog/field-notes-first-robot-runs-urml) |
 
 **In the wild.** The sentence-to-motion loop above runs on a hermetic mock in CI, deliberately, so it stays deterministic and honest. It has also been reproduced on a real robot: a community member ran a validated, LLM-translated URML program on a GoPiGo3 (Raspberry Pi, offline), with a local model doing the English-to-intent translation and the validator gating every action before a wheel turned. The [field note](https://urml.dev/blog/field-notes-first-robot-runs-urml) tells the story, including the actuation-safety bug it surfaced in our own demo and the same-day fix.
@@ -142,7 +142,7 @@ See [RFC-0003](docs/rfcs/0003-us-alignment.md) for the strategic decision and tr
 │  capability manifest + provenance + safety envelope               │
 ├──────────────────────────────────────────────────────────────────┤
 │  Layer 0: Substrate (NOT part of URML)                            │
-│  ROS 2 · PX4 / MAVLink · OPC UA · KUKA · ABB · IEC 61131-3 · ...  │
+│  ROS 2 · PX4 / MAVLink · OPC UA · VDA 5050 · IEC 61131-3 · ...    │
 └──────────────────────────────────────────────────────────────────┘
 
   Validation pipeline (runs before any actuator):
@@ -188,6 +188,10 @@ behavior:
 The point is not the syntax. It is what the validator rejects **before anything moves**: a command sent to a member whose manifest can't do it; two robots driven into the same declared location at the same instant with no `barrier` (`fleet.concurrent_shared_workspace`); a barrier whose members don't declare the `peer_link` role. That cross-robot collision class is the one no single SDK can catch, because no single SDK sees both robots.
 
 **Status (honest):** the cross-robot validator (`validate_fleet`), the reference `FleetRuntime`, and the conformance lane are shipped and tested; run the hermetic demo with `python examples/fleet/run_demo.py`. Workspace-collision checking is by declared-location *name* in v0.1; geometric volume overlap is named as future work in the RFC. Fleet-traffic management at building scale composes with Open-RMF ([RFC-0053](docs/rfcs/0053-open-rmf-multirobot-integration.md)), not URML. Walkthrough: [`docs/demos/fleet-coordination.md`](docs/demos/fleet-coordination.md).
+
+**AMR and AGV fleets on VDA 5050.** [`vda5050-runtime`](reference/vda5050-runtime/) drives mobile robots that speak [VDA 5050](https://github.com/VDA5050/VDA5050), the vendor-neutral fleet interface. URML acts as fleet control for each vehicle: after the validator accepts a program, every step becomes a VDA 5050 order, and the step counts as done only when the vehicle's own state says so. The warehouse example runs unchanged: `python examples/vda5050/run_demo.py`. Tested against a simulated vehicle, locally and over a real MQTT broker; not yet on a vendor's vehicle. Not on PyPI yet; install from source.
+
+The same robots can also be driven over **ISO 21423**, the 2026 interoperability standard for industrial mobile robots, through [`iso21423-runtime`](reference/iso21423-runtime/). It is built from public material based on the standard's final draft; we are validating it against the published standard and make no conformance claim until that is done. Demo: `python examples/iso21423/run_demo.py`.
 
 ---
 
@@ -236,7 +240,7 @@ Critique of the primitive vocabulary, the layer boundaries, and the strategic po
 
 ## Compatible Runtimes
 
-If you build a runtime that translates URML into a substrate (ROS 2, PX4, vendor SDK, anything else), you can self-report compatibility by running the public conformance suite and opening a PR. See [`docs/registry/SUBMISSION.md`](docs/registry/SUBMISSION.md) for the five-step flow, [`docs/compatible-runtimes.md`](docs/compatible-runtimes.md) for the current entries, and [`TRADEMARK.md`](TRADEMARK.md) for what listing does and does not grant. The registry is free and opt-in. There is no URML-Certified mark in use yet; that is a Phase 4 program.
+If you build a runtime that translates URML into a substrate (ROS 2, PX4, vendor SDK, anything else), you can self-report compatibility by running the public conformance suite and opening a PR. See [`docs/registry/SUBMISSION.md`](docs/registry/SUBMISSION.md) for the five-step flow, [`docs/compatible-runtimes.md`](docs/compatible-runtimes.md) for the current entries, and [`TRADEMARK.md`](TRADEMARK.md) for what listing does and does not grant. The registry is free and opt-in. A runtime can also become **URML-Certified**, free, when the Licensor reproduces its conformance run from the public package ([RFC-0705](docs/rfcs/0705-urml-certified.md)). It certifies conformance, not safety.
 
 If instead you **make robots or parts** rather than runtimes, see [`docs/manufacturers/README.md`](docs/manufacturers/README.md). It covers the integration path, an optional factual federal-validation self-report, and the self-reported [manufacturer directory](docs/manufacturers/directory.md). Same posture: free, opt-in, no mark, not a certification.
 
@@ -254,6 +258,7 @@ Business Source License 1.1. See [`LICENSE`](LICENSE) and the plain-language sum
 
 - **Free** for research, teaching, evaluation, development, testing, simulation and personal projects.
 - **Commercial license** for production use, products and hosted services: sales@urml.dev. See [`COMMERCIAL.md`](COMMERCIAL.md).
+- **Paid validation** for VDA 5050 fleets (operators, before go-live) and for AMR makers (a validation run of your vehicle): sales@urml.dev. See [`COMMERCIAL.md`](COMMERCIAL.md#validation-services).
 - Each release converts to **Apache 2.0** two years after it ships. Releases up to and including v0.4.x are Apache 2.0 already.
 
 Contributions require the [Contributor License Agreement](CLA.md) and a DCO sign-off (`git commit -s`). See [`CONTRIBUTING.md`](CONTRIBUTING.md).

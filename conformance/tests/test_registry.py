@@ -376,6 +376,7 @@ def test_a_self_report_from_the_runtimes_own_adapter_is_accepted(mini: Mini) -> 
         "fixtures_run": len(EDUCATIONAL),
         "filter": None,
         "report_url": f"https://github.com/urml-dev/URML/blob/main/{REPORT_REL}",
+        "certification": None,
     }
 
 
@@ -445,6 +446,151 @@ def test_a_compatibility_claim_needs_the_runtime_adapter(mini: Mini) -> None:
 # ---------------------------------------------------------------------------
 # Withdrawal, export and the command line
 # ---------------------------------------------------------------------------
+
+
+# ---------------------------------------------------------------------------
+# Compatibility: the certified tier (URML-Certified, RFC-0705)
+# ---------------------------------------------------------------------------
+
+REPRO_REL = "registry/evidence/bot/reproduction-report.json"
+CERT_DAY = date(2026, 10, 1)
+
+
+def _certify(mini: Mini, reproduction: dict[str, Any] | None = None, **cert: Any) -> None:
+    """Turn the mini entry into a certified claim with a passing self-report and reproduction."""
+    if "compatibility" not in mini.entry:
+        mini.add_report(_report())
+    path = mini.root / REPRO_REL
+    path.write_text(json.dumps(reproduction or _report(), indent=2) + "\n", encoding="utf-8", newline="\n")
+    certification: dict[str, Any] = {
+        "conformance_spec": "0.2.0",
+        "certified_on": "2026-09-27",
+        "expires": "2027-09-27",
+        "attestation": "The runtime meets the six clauses of the conformance contract; nothing actuates "
+        "without validation.",
+        "reproduction": {
+            "report": {"path": REPRO_REL, "sha256": _sha256(path)},
+            "by": "Yahalomik Ltd. (URML Licensor)",
+            "date": "2026-09-26",
+            "environment": "bot-runtime 1.0.0 from PyPI, Python 3.12 on Linux, network off after install.",
+        },
+    }
+    certification.update(cert)
+    mini.entry["compatibility"]["tier"] = "certified"
+    mini.entry["compatibility"]["certification"] = certification
+
+
+def _cert_problems(mini: Mini, today: date = CERT_DAY) -> list[str]:
+    mini.write()
+    return check_registry(mini.root, today=today).problems
+
+
+def test_a_reproduced_claim_is_certified(mini: Mini) -> None:
+    _certify(mini)
+    assert _cert_problems(mini) == []
+    mini.write()
+    (entry,) = json.loads(render_export(mini.root))["entries"]
+    cert = entry["compatibility"]["certification"]
+    assert entry["compatibility"]["tier"] == "certified"
+    assert cert["mark"] == "URML-Certified"
+    assert cert["conformance_spec"] == "0.2.0"
+    assert (cert["certified_on"], cert["expires"]) == ("2026-09-27", "2027-09-27")
+    assert cert["reproduction_url"] == f"https://github.com/urml-dev/URML/blob/main/{REPRO_REL}"
+
+
+def test_an_expired_certification_is_refused(mini: Mini) -> None:
+    _certify(mini)
+    _one(_cert_problems(mini, today=date(2027, 9, 28)), "the certification expired on 2027-09-27")
+
+
+def test_tier_certified_needs_the_certification_block(mini: Mini) -> None:
+    mini.add_report(_report())
+    mini.entry["compatibility"]["tier"] = "certified"
+    _one(_cert_problems(mini), "tier certified needs a certification block")
+
+
+def test_a_self_report_cannot_carry_a_certification_block(mini: Mini) -> None:
+    _certify(mini)
+    mini.entry["compatibility"]["tier"] = "self_reported"
+    _one(_cert_problems(mini), "belongs to tier certified only")
+
+
+def test_a_reproduction_over_another_fixture_set_is_refused(mini: Mini) -> None:
+    _certify(mini, reproduction=_report(fixtures_sha256="b" * 64))
+    _one(_cert_problems(mini), "ran a different fixture set")
+
+
+def test_a_reproduction_from_the_mock_is_refused(mini: Mini) -> None:
+    _certify(mini, reproduction=_report(adapter="urml_ros2_runtime:MockROSAdapter"))
+    _one(_cert_problems(mini), "a reproduction runs the suite with the runtime's own adapter")
+
+
+def test_a_failed_reproduction_is_refused(mini: Mini) -> None:
+    first = EDUCATIONAL[0]
+    failing = [{"name": n, "passed": n != first, "diagnostics": [] if n != first else ["x"]} for n in EDUCATIONAL]
+    _certify(mini, reproduction=_report(results=failing))
+    _one(_cert_problems(mini), "certification.reproduction.report: all_passed is false")
+
+
+def test_a_reproduction_that_skips_part_of_a_profile_is_refused(mini: Mini) -> None:
+    partial = _report(
+        fixture_count=len(EDUCATIONAL) - 1,
+        results=[{"name": n, "passed": True, "diagnostics": []} for n in EDUCATIONAL[1:]],
+    )
+    _certify(mini, reproduction=partial)
+    problems = _cert_problems(mini)
+    assert any("certification.reproduction.report does not run every 'educational' fixture" in p for p in problems)
+
+
+def test_the_reproduction_is_its_own_file(mini: Mini) -> None:
+    _certify(mini)
+    mini.entry["compatibility"]["certification"]["reproduction"]["report"] = dict(
+        mini.entry["compatibility"]["report"]
+    )
+    _one(_cert_problems(mini), "a separate file from the self-report")
+
+
+@pytest.mark.parametrize(
+    ("package", "version", "fragment"),
+    [
+        ("urml-bot-runtime", "1.0.0", "the Licensor does not certify its own runtimes"),
+        ("examples/bot/bot.manifest.yaml", "1.0.0", "not a repository path"),
+        ("bot-runtime", ">=1.0", "is not one exact release"),
+        ("bot-runtime", "1.0.*", "is not one exact release"),
+    ],
+)
+def test_only_one_exact_release_of_a_third_party_package_is_certified(
+    mini: Mini, package: str, version: str, fragment: str
+) -> None:
+    _certify(mini)
+    mini.entry["runtime"]["package"] = package
+    mini.entry["runtime"]["version"] = version
+    assert any(fragment in p for p in _cert_problems(mini)), _cert_problems(mini)
+
+
+@pytest.mark.parametrize(
+    ("cert", "fragment"),
+    [
+        ({"expires": "2027-09-29"}, "runs at most 366 days"),
+        ({"certified_on": "2026-09-25"}, "reproduction.date <= certified_on <= expires"),
+        ({"conformance_spec": "0.1.0"}, "conformance_spec"),
+    ],
+)
+def test_certification_dates_and_spec_are_checked(mini: Mini, cert: dict[str, Any], fragment: str) -> None:
+    _certify(mini, **cert)
+    assert any(fragment in p for p in _cert_problems(mini)), _cert_problems(mini)
+
+
+def test_last_verified_follows_the_certification(mini: Mini) -> None:
+    _certify(mini, certified_on="2026-09-27")
+    mini.entry["last_verified"] = "2026-09-20"
+    mini.entry["compatibility"]["certification"]["reproduction"]["date"] = "2026-09-19"
+    assert any("earlier than certification.certified_on" in p for p in _cert_problems(mini))
+
+
+def test_the_mark_is_never_claimed_in_prose(mini: Mini) -> None:
+    _certify(mini, attestation="We certify that the runtime meets the contract.")
+    _one(_cert_problems(mini), "'certify' is not used in a listing")
 
 
 def test_a_withdrawn_entry_stays_in_the_export_without_a_replay(mini: Mini) -> None:

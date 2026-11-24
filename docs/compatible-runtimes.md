@@ -23,8 +23,8 @@ This page lists the **first-party reference runtimes** the URML project
 maintains and verifies in-repo. Robots and runtimes maintained outside the
 project, and the evidence behind each one, are in the
 [URML registry](../registry/README.md). Neither list grants a mark or says
-anything about fitness for a purpose, and the `URML-Certified` mark is reserved
-for a separate, future program (Phase 4) that is not in use today. See
+anything about fitness for a purpose. The `URML-Certified` mark is granted only
+to third-party runtimes in the registry, never to these first-party ones. See
 [TRADEMARK.md](../TRADEMARK.md) for what a listing does and does not grant.
 
 If you make **robots or parts** rather than runtimes, the parallel surface is the
@@ -45,6 +45,8 @@ hardware claim; see the [claims audit](launch/claims-audit.md).
 | [`ardupilot-runtime`](../reference/ardupilot-runtime/) | ArduPilot ArduCopter / MAVLink (`pymavlink`, no ROS) | Bench run on a Pixhawk-class board, propellers off, and a local ArduCopter SITL run, both 2026-08-29; no flight claimed. In the [registry](../registry/entries/ardupilot-arducopter-pixhawk.yaml). |
 | [`marine-runtime`](../reference/marine-runtime/) | BlueROV2 / ArduSub (MAVLink) | The zero-ROS underwater sibling. |
 | [`opcua-runtime`](../reference/opcua-runtime/) | OPC UA Robotics (zero ROS) | Factory-floor companion spec via `asyncua`. |
+| [`vda5050-runtime`](../reference/vda5050-runtime/) | VDA 5050 AMRs / AGVs over MQTT (zero ROS) | Plays fleet control for one vehicle: steps become VDA 5050 3.0.0 orders. Tested against a simulated vehicle, locally and over a real Mosquitto broker; no vendor vehicle run yet. |
+| [`iso21423-runtime`](../reference/iso21423-runtime/) | ISO 21423 mobile robots over MQTT (zero ROS) | Sends each step as an ISO 21423 request. **Validation in progress:** built from public material based on the ISO/FDIS 21423 draft; not yet checked against the published ISO 21423:2026, and no conformance claim until it is. Tested against a simulated robot, locally and over a real broker. |
 | [`mujoco-runtime`](../reference/mujoco-runtime/) | MuJoCo simulator (zero ROS) | The purest substrate-neutrality proof: a sim with no robot, no middleware. |
 | [`isaac-runtime`](../reference/isaac-runtime/) | NVIDIA Isaac Sim / Lab | RTX-host simulator substrate. |
 | [`chrono-runtime`](../reference/chrono-runtime/) | Project Chrono (PyChrono) | High-fidelity multibody **validation**; primitive to driver-input, dynamics as evidence (RFC-0328). |

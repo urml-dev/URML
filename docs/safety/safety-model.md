@@ -236,11 +236,21 @@ makes no functional-safety claim. A deployment still needs what the standards
 for its machine require, for example:
 
 - a hardwired emergency stop (ISO 13850:2015);
-- safety-rated control functions (ISO 13849-1:2023 or IEC 62061:2021);
+- safety-rated control functions (ISO 13849-1:2023 or IEC 62061:2021). URML
+  is not part of them and counts toward no performance level or safety
+  integrity level; the rulebook template
+  [`examples/rulebooks/functional-safety-template.yaml`](../../examples/rulebooks/functional-safety-template.yaml)
+  only refuses programs until the operator has declared the PL or SIL the
+  safety functions reached;
 - for industrial robots and robot cells, ISO 10218-1:2025 and ISO 10218-2:2025;
 - for collaborative operation, the limits of ISO/TS 15066, whose content
   ISO 10218-2:2025 now incorporates;
-- for industrial mobile robots, ISO 3691-4:2023 and ANSI/A3 R15.08;
+- for industrial mobile robots, ISO 3691-4:2023 and ANSI/A3 R15.08 (an
+  integrator's rulebook template is in
+  [`examples/rulebooks/amr-template.yaml`](../../examples/rulebooks/amr-template.yaml));
+- for personal care robots, ISO 13482:2014, which ISO is revising (a
+  template for mobile servant robots is in
+  [`examples/rulebooks/home-template.yaml`](../../examples/rulebooks/home-template.yaml));
 - a risk assessment of the actual site.
 
 The editions above were checked on 2026-09-26. Check them again before relying

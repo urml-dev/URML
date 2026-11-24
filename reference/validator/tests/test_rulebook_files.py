@@ -85,8 +85,17 @@ ALL_FILES = [
     ("example-warehouse.yaml", lambda: _example("example-warehouse.yaml")),
     ("example-deployment.yaml", lambda: _example("example-deployment.yaml")),
     ("industrial-template.yaml", lambda: _example("industrial-template.yaml")),
+    ("amr-template.yaml", lambda: _example("amr-template.yaml")),
+    ("home-template.yaml", lambda: _example("home-template.yaml")),
+    ("functional-safety-template.yaml", lambda: _example("functional-safety-template.yaml")),
 ]
-FILLED_FILES = ALL_FILES[:3]  # the template is invalid on purpose until filled in
+FILLED_FILES = ALL_FILES[:3]  # the templates are invalid on purpose until filled in
+TEMPLATES = [
+    "industrial-template.yaml",
+    "amr-template.yaml",
+    "home-template.yaml",
+    "functional-safety-template.yaml",
+]
 
 
 def test_the_faa_rulebook_ships_as_package_data() -> None:
@@ -223,9 +232,10 @@ def test_the_warehouse_example_uses_the_organization_rule_kinds() -> None:
     assert rules["shared_aisle_speed"]["cap"] == {"quantity": "speed_m_per_s", "max": 1.5}
 
 
-def test_the_industrial_template_carries_no_values() -> None:
-    """ISO text is copyrighted: every limit and list stays FILL_IN, so an unfilled file fails to load."""
-    template = _example("industrial-template.yaml")
+@pytest.mark.parametrize("name", TEMPLATES)
+def test_a_template_carries_no_values(name: str) -> None:
+    """ISO and ANSI text is copyrighted: every limit and list stays FILL_IN, so an unfilled file fails to load."""
+    template = _example(name)
     assert template["rulebook_id"] == "FILL_IN"
     assert template["reviewed"] == "FILL_IN"
     for rule in template["rules"]:
@@ -233,8 +243,11 @@ def test_the_industrial_template_carries_no_values() -> None:
         body = rule[kind]
         if kind == "cap":
             assert body["max"] == "FILL_IN", rule["id"]
+        elif kind == "require_declared":
+            # The key is the template's own name; the allowed levels come from the risk assessment.
+            assert body.get("allowed", ["FILL_IN"]) == ["FILL_IN"], rule["id"]
         else:
-            lists = [v for k, v in body.items() if k in {"zones", "names", "except_names"}]
+            lists = [v for k, v in body.items() if k in {"zones", "in_zones", "names", "except_names"}]
             assert lists and all(v == ["FILL_IN"] for v in lists), rule["id"]
     for entry in template["rules"] + template["obligations"]:
         assert "FILL_IN" in entry["cite"]["text"], entry["id"]

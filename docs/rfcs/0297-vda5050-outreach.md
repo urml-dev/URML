@@ -106,7 +106,9 @@ For the VDA5050 maintainers:
 
 ## Implementation note
 
-RFC-0297 ships as a single RFC document PR. No adapter code in this PR. First Move #21 RFC. Ledger entry in [`examples/lighthouses/outreach-move21.yaml`](../../examples/lighthouses/outreach-move21.yaml).
+RFC-0297 ships as a single RFC document PR. No adapter code in this PR.
+
+**Follow-up (2026-11-24):** the master-control-side mapping is implemented in [`reference/vda5050-runtime/`](../../reference/vda5050-runtime/) against VDA 5050 3.0.0. The unresolved questions above are still open with the VDA5050 maintainers. First Move #21 RFC. Ledger entry in [`examples/lighthouses/outreach-move21.yaml`](../../examples/lighthouses/outreach-move21.yaml).
 
 ## Requested feedback
 

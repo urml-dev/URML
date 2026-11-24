@@ -240,5 +240,6 @@ Additional fixtures this spec will require when the profile reaches **Implemente
 - [`/docs/rfcs/0002-initial-primitive-vocabulary.md`](../../../docs/rfcs/0002-initial-primitive-vocabulary.md) — primitive vocabulary, including the §Profile-extensibility clause authorizing `speak`/`listen`.
 - [`/docs/rfcs/0004-compliance-policy.md`](../../../docs/rfcs/0004-compliance-policy.md) — compliance policy mechanism.
 - [`/examples/home/`](../../../examples/home/) — the runnable example pair for this profile.
+- [`/examples/rulebooks/home-template.yaml`](../../../examples/rulebooks/home-template.yaml): a rulebook template after ISO 13482:2014 for a robot maker, integrator or care provider to fill from the robot's risk assessment.
 - [`/conformance/fixtures/home/`](../../../conformance/fixtures/home/) — conformance fixtures.
 - [`MANIFESTO.md`](../../../MANIFESTO.md) §Motivating Scenarios — *Home: the multilingual grandparent*.

@@ -33,7 +33,7 @@ this dependency order (tiers; within a tier the order is free):
    `urml-humanoid-runtime`, `urml-industrial-arm-runtime`,
    `urml-isaac-runtime`, `urml-legged-runtime`, `urml-marine-runtime`,
    `urml-mobile-runtime`, `urml-mujoco-runtime`, `urml-opcua-runtime`,
-   `urml-px4-runtime` — each needs `urml-validator` + `urml-ros2-runtime`.
+   `urml-px4-runtime`, `urml-vda5050-runtime`; each needs `urml-validator` + `urml-ros2-runtime`.
 4. `urml-conformance` (needs validator + ros2-runtime + llm-bridge extra),
    `urml-mcp-server` (needs validator + llm-bridge + ros2-runtime).
 5. `urml-model` — needs `urml-validator`, `urml-llm-bridge`, `urml-conformance`.
@@ -111,7 +111,7 @@ PKGS="reference/validator \
       reference/edu-runtime reference/embedded-runtime reference/humanoid-runtime \
       reference/industrial-arm-runtime reference/isaac-runtime reference/legged-runtime \
       reference/marine-runtime reference/mobile-runtime reference/mujoco-runtime \
-      reference/opcua-runtime reference/px4-runtime \
+      reference/opcua-runtime reference/px4-runtime reference/vda5050-runtime \
       conformance reference/mcp-server \
       reference/model"
 
@@ -137,7 +137,7 @@ python -m venv /tmp/rel-verify && cd /tmp
   urml-edu-runtime urml-embedded-runtime urml-humanoid-runtime \
   urml-industrial-arm-runtime urml-isaac-runtime urml-legged-runtime \
   urml-marine-runtime urml-mobile-runtime urml-mujoco-runtime \
-  urml-opcua-runtime urml-px4-runtime \
+  urml-opcua-runtime urml-px4-runtime urml-vda5050-runtime \
   urml-conformance urml-mcp-server urml-model
 /tmp/rel-verify/bin/urml --version
 /tmp/rel-verify/bin/urml-mcp --help    # MCP server console script resolves
@@ -162,12 +162,22 @@ for p in $PKGS; do python -m twine upload "$p"/dist/*; done
 
 `.github/workflows/release.yml` does steps 1–3 (build, check, TestPyPI)
 on `workflow_dispatch`. Real-PyPI publish is a separate gated input
-behind a protected GitHub Environment so it cannot fire without explicit
-approval. **Both paths require Trusted Publisher configuration on
-(Test)PyPI per package — that is a one-time founder setup on the PyPI
-side (Account → Publishing → add `urml-dev/URML` + workflow), and
-cannot be done from this repository.** Until that is configured, use the
-manual `twine upload` path above with an API token.
+behind a protected GitHub Environment (`pypi-release`, required reviewer)
+so it cannot fire without explicit approval.
+
+The two indexes authenticate differently:
+
+- **Real PyPI** uses the `PYPI_API_TOKEN` repository secret, an
+  account-scoped token. It can create a project on first upload, so a new
+  package needs no setup on pypi.org. PyPI allows a personal account about
+  4 new projects a day; the workflow uploads packages already on PyPI
+  first, then new names in priority order, and ends green with a warning
+  listing what the limit held back. Re-run it 24 hours later.
+- **TestPyPI** uses Trusted Publishing. Each project needs a publisher on
+  test.pypi.org (a *pending* publisher before its first upload): owner
+  `urml-dev`, repository `URML`, workflow `release.yml`, environment
+  left blank. This is a one-time founder setup that cannot be
+  done from this repository.
 
 ## Rollback
 

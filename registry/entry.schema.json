@@ -1,10 +1,62 @@
 {
   "$comment": "Generated from urml_conformance.registry.Entry by `python -m urml_conformance.registry schema`. Do not edit by hand.",
   "$defs": {
+    "Certification": {
+      "additionalProperties": false,
+      "description": "The URML-Certified grant on top of a self-report (RFC-0705).",
+      "properties": {
+        "attestation": {
+          "description": "The submitter's statement that the runtime meets the six clauses of the conformance contract, in particular that no path actuates without validation.",
+          "minLength": 1,
+          "title": "Attestation",
+          "type": "string"
+        },
+        "certified_on": {
+          "description": "A quoted ISO date, YYYY-MM-DD.",
+          "title": "Certified On",
+          "type": "string"
+        },
+        "conformance_spec": {
+          "const": "0.2.0",
+          "description": "The conformance specification version.",
+          "title": "Conformance Spec",
+          "type": "string"
+        },
+        "expires": {
+          "description": "At most 366 days after certified_on.",
+          "title": "Expires",
+          "type": "string"
+        },
+        "reproduction": {
+          "$ref": "#/$defs/Reproduction"
+        }
+      },
+      "required": [
+        "conformance_spec",
+        "certified_on",
+        "expires",
+        "attestation",
+        "reproduction"
+      ],
+      "title": "Certification",
+      "type": "object"
+    },
     "Compatibility": {
       "additionalProperties": false,
-      "description": "The self-reported URML-compatible tier (spec/conformance/v0.1.0.md section 3).",
+      "description": "A compatibility claim (spec/conformance/v0.2.0.md section 3).\n\n``self_reported``: the runtime's authors ran the suite. ``certified``: the\nLicensor also reproduced the run from the public package (URML-Certified).",
       "properties": {
+        "certification": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Certification"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Required when tier is certified, else absent."
+        },
         "profiles": {
           "description": "The profiles whose fixtures pass with the runtime's own adapter.",
           "items": {
@@ -20,7 +72,10 @@
           "description": "The urml.conformance-report/1 JSON report."
         },
         "tier": {
-          "const": "self_reported",
+          "enum": [
+            "self_reported",
+            "certified"
+          ],
           "title": "Tier",
           "type": "string"
         }
@@ -147,6 +202,41 @@
         "manifest"
       ],
       "title": "RecordInputs",
+      "type": "object"
+    },
+    "Reproduction": {
+      "additionalProperties": false,
+      "description": "The Licensor's own run of the suite, from the public package (RFC-0705).",
+      "properties": {
+        "by": {
+          "description": "Who reproduced the run: the Licensor, never an email address.",
+          "minLength": 1,
+          "title": "By",
+          "type": "string"
+        },
+        "date": {
+          "description": "A quoted ISO date, YYYY-MM-DD.",
+          "title": "Date",
+          "type": "string"
+        },
+        "environment": {
+          "description": "How it ran: where the package was installed from, the platform, and that the network was off after installation.",
+          "minLength": 1,
+          "title": "Environment",
+          "type": "string"
+        },
+        "report": {
+          "$ref": "#/$defs/FileRef",
+          "description": "The urml.conformance-report/1 JSON report of the reproduction."
+        }
+      },
+      "required": [
+        "report",
+        "by",
+        "date",
+        "environment"
+      ],
+      "title": "Reproduction",
       "type": "object"
     },
     "Robot": {

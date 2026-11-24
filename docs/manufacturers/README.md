@@ -16,7 +16,7 @@
 
 This page is for two audiences, in order: companies that build whole robots, and companies that build the parts inside them. It explains what URML gives you, how to integrate it, and how to list a product so buyers can find it.
 
-Listing in the directory is free. There is no fee here, no contract, and nothing to sign. Shipping URML in a commercial product needs a license; see [LICENSING.md](../../LICENSING.md). The paid `URML-Certified` program is a separate Phase-4 surface that does not exist yet; nothing on this page is a certification, an audit, or an endorsement. See [TRADEMARK.md](../../TRADEMARK.md).
+Listing in the directory is free. There is no fee here, no contract, and nothing to sign. Shipping URML in a commercial product needs a license; see [LICENSING.md](../../LICENSING.md). The `URML-Certified` mark is granted separately, free, through the [registry](../../registry/README.md) ([RFC-0705](../rfcs/0705-urml-certified.md)); nothing on this page is a certification, an audit, or an endorsement. See [TRADEMARK.md](../../TRADEMARK.md).
 
 ## Why this is worth your time
 
@@ -51,7 +51,7 @@ A component you document with those fields, ideally with a CycloneDX 1.7 HBOM yo
 
 In Phase 0, "launch partner" means exactly one thing: an early entry in the [manufacturer directory](directory.md), optionally noted in an early-adopters section of that page. That is the whole offer.
 
-There is no paid program, no mark, no fee, no priority placement, no service-level commitment, and no contact form or lead capture. The full launch-partner and certification program is Phase 4 and lives outside this repository (see [COMMERCIAL.md](../../COMMERCIAL.md) and [TRADEMARK.md](../../TRADEMARK.md)). If a future commercial program offers more, it will say so in its own terms, not here.
+The directory has no paid program, no mark, no fee, no priority placement, no service-level commitment, and no contact form or lead capture. Separately, makers of VDA 5050 vehicles can buy a vehicle validation: a validation run of the vehicle against URML and a written report, which does not grant the URML-Certified mark and does not affect directory placement ([COMMERCIAL.md](../../COMMERCIAL.md#vehicle-validation-amr-and-agv-makers)). The full launch-partner and certification program is Phase 4 and lives outside this repository (see [COMMERCIAL.md](../../COMMERCIAL.md) and [TRADEMARK.md](../../TRADEMARK.md)). If a future commercial program offers more, it will say so in its own terms, not here.
 
 ## What this is and is not
 

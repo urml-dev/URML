@@ -16,7 +16,7 @@
 
 This page is for anyone who wants a robot listed in the [URML registry](../../registry/README.md): a robot maker, a runtime author, or a user with a recorded run. URML is in Phase 1 and takes outside contributions ([CONTRIBUTING.md](../../CONTRIBUTING.md)). A submission is one pull request that adds one entry file and one evidence folder.
 
-Read [TRADEMARK.md](../../TRADEMARK.md) first. A listing grants no mark. You may call a runtime "URML-compatible" only if it passes the unmodified, current public conformance suite, and you may never call anything "URML-Certified": that mark is reserved for a future program run outside this repository.
+Read [TRADEMARK.md](../../TRADEMARK.md) first. A listing grants no mark. You may call a runtime "URML-compatible" only if it passes the unmodified, current public conformance suite, and "URML-Certified" only once the entry is certified ([Applying for URML-Certified](#applying-for-urml-certified), below).
 
 ## What an entry needs
 
@@ -124,6 +124,39 @@ Sign off every commit (`git commit -s`, the DCO), push, and open a pull request 
 ## What happens next
 
 The `registry-check` workflow runs the checker and the registry tests on the pull request. The maintainer then reviews for completeness only: the check passes, the sources open and say what the summary says, the limits are stated, and the acknowledgements are ticked. The maintainer does not re-run your hardware, run your runtime, or judge your robot.
+
+## Applying for URML-Certified
+
+Certification is free and follows [RFC-0705](../rfcs/0705-urml-certified.md). It needs everything the self-reported tier needs (step 3), plus:
+
+- `runtime.package` is a distribution anyone can install and `runtime.version` is one exact release. The URML project's own `urml-*` runtimes cannot be certified.
+- In the entry, set `compatibility.tier: certified` and add a `certification` block with `conformance_spec: "0.2.0"` and an `attestation`: your statement that the runtime meets the six clauses of the [conformance contract](../../spec/conformance/v0.2.0.md), in particular that no path actuates without validation. Leave `certified_on`, `expires` and `reproduction` to the Licensor.
+- Open the pull request and say in it that you are applying for URML-Certified.
+
+The Licensor then installs that exact version from its public source in a clean environment, turns the network off, runs the same suite with your adapter, and commits the reproduction report and the dates to your pull request:
+
+```yaml
+compatibility:
+  tier: certified
+  profiles: [home]
+  report:
+    path: registry/evidence/acme-rover-ros2/conformance-report.json
+    sha256: <sha256 of your report>
+  certification:
+    conformance_spec: "0.2.0"
+    certified_on: "2026-12-01"
+    expires: "2027-12-01"
+    attestation: The runtime meets the six clauses of the conformance contract; nothing actuates without validation.
+    reproduction:
+      report:
+        path: registry/evidence/acme-rover-ros2/reproduction-report.json
+        sha256: <sha256 of the reproduction>
+      by: Yahalomik Ltd. (URML Licensor)
+      date: "2026-11-30"
+      environment: acme-urml-runtime 1.2.0 from PyPI, Python 3.12 on Linux, network off after install.
+```
+
+When the registry check passes, the pull request merges and the entry is certified. Requests are handled in the order they arrive; no fee or paid service changes that. The certification lasts at most 366 days and ends earlier at the next urml-conformance release. Renew it with a new self-report and reproduction. Free text in an entry never says "certified": the `tier` field says it.
 
 ## Keeping an entry current
 

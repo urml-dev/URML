@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "urml-vda5050-runtime"
+version = "0.5.0"
+description = "VDA 5050 fleet-control reference runtime for URML: AMRs and AGVs over MQTT, zero ROS."
+readme = "README.md"
+license = { text = "BUSL-1.1" }
+requires-python = ">=3.11"
+authors = [{ name = "URML Maintainers" }]
+keywords = ["robotics", "vda5050", "amr", "agv", "fleet", "mqtt", "intralogistics", "urml", "runtime"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: Other/Proprietary License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = [
+  "pydantic>=2.6,<3",
+  "PyYAML>=6.0,<7",
+  "urml-validator>=0.5.0",
+  "urml-ros2-runtime>=0.5.0",
+]
+
+[project.optional-dependencies]
+# VDA 5050 rides MQTT. paho-mqtt (Eclipse, EPL-2.0 OR BSD-3-Clause via
+# EDL-1.0) is imported lazily through this extra, never at module load,
+# so the package imports and the hermetic suite runs without it.
+mqtt = [
+  "paho-mqtt>=2.0,<3",
+]
+dev = [
+  "jsonschema>=4.18",
+  "pytest>=8",
+  "pytest-cov>=5",
+  "ruff>=0.5",
+  "mypy>=1.10",
+  "types-PyYAML",
+]
+
+[project.urls]
+Homepage = "https://github.com/urml-dev/URML"
+Repository = "https://github.com/urml-dev/URML"
+Issues = "https://github.com/urml-dev/URML/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/urml_vda5050_runtime"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N", "ANN", "RUF"]
+ignore = ["ANN401"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["ANN"]
+
+[tool.mypy]
+strict = true
+python_version = "3.11"
+plugins = ["pydantic.mypy"]
+mypy_path = "src"
+packages = ["urml_vda5050_runtime"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = ["-q", "--strict-markers"]

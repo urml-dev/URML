@@ -64,9 +64,35 @@ Both are a signed contract rather than an order form. Email sales@urml.dev with 
 
 OEM pricing depends on the product and the volume. Email sales@urml.dev with the product that will ship URML and the number of units you expect to ship each year.
 
+## Validation services
+
+Paid engagements, priced per engagement. Email sales@urml.dev with your site or vehicle and we send a scope and a quote.
+
+### Fleet validation (operators)
+
+For a site that will run AMRs or AGVs over VDA 5050. Before go-live we validate the deployment against URML:
+
+- your URML programs against each robot's manifest, safety envelope and the active policy, including the cross-robot checks;
+- the route graph and station mapping in the adapter config against the vehicles' factsheets;
+- a run of the programs through `urml-vda5050-runtime` against your vehicles or your vendor's VDA 5050 simulator.
+
+You receive a written validation report: what was checked, what passed, what was refused and why, pinned to the URML commit and the config files used. Running URML on those robots in production afterwards needs a production license; the engagement does not include one.
+
+### Vehicle validation (AMR and AGV makers)
+
+For a maker whose vehicle speaks VDA 5050. We run your vehicle, or your VDA 5050 simulator, against `urml-vda5050-runtime` and the conformance suite and give you:
+
+- a written report of which URML primitives your vehicle carries out and where it diverges from VDA 5050 as URML uses it;
+- the URML manifest for the vehicle, which you can ship to your customers.
+
+This is a validation run and a report. It does not grant the **URML-Certified** mark. Certification is free, on public criteria, through the registry ([`TRADEMARK.md`](TRADEMARK.md), [RFC-0705](docs/rfcs/0705-urml-certified.md)); an engagement can help you prepare for it but never decides or speeds it.
+
+A validation report records what was tested on the dates it was tested. It is not a safety assessment or a compliance determination; site safety stays with the integrator and its risk assessment.
+
 ## Other commercial offerings
 
-- **URML-Certified** conformance program and mark (planned; see [`TRADEMARK.md`](TRADEMARK.md)).
+The **URML-Certified** mark is not one of them. It is free ([RFC-0705](docs/rfcs/0705-urml-certified.md)).
+
 - **Audited policy files** with third-party legal attestation, kept current.
 - **Hosted services**: validation, LLM bridge, simulation. URML always runs fully offline; hosting is optional.
 - **Training and certification** for teams.
