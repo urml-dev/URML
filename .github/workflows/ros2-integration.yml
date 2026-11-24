@@ -288,7 +288,9 @@ jobs:
           ros2 lifecycle get /bt_navigator > "$HOME/e2e-logs/bt-navigator-state.txt" 2>&1 || true
           # Gazebo's own logs, and what it fetched from Fuel, to tell a
           # slow model download from a slow server start.
-          cp -r "$HOME/.gz/sim/log" "$HOME/e2e-logs/gz-log" 2>/dev/null || true
+          # Tarred: Gazebo names log directories by timestamp, and
+          # upload-artifact rejects the colons in them.
+          tar -czf "$HOME/e2e-logs/gz-log.tar.gz" -C "$HOME/.gz/sim" log 2>/dev/null || true
           { du -sh "$HOME/.gz/fuel"; find "$HOME/.gz/fuel" -maxdepth 4 -type d; } \
             > "$HOME/e2e-logs/gz-fuel-cache.txt" 2>&1 || true
 
