@@ -1,0 +1,192 @@
+# Template: a rulebook that keeps programs from running until the site has
+# put its industrial cybersecurity on record, shaped after IEC 62443-3-2:2020
+# and IEC 62443-3-3:2013 (ISA/IEC 62443).
+#
+# Read this first. URML is not a security control. The validator decides
+# whether a program stays inside declared limits; it does not authenticate who
+# sent the program, encrypt anything, or detect an intrusion, and it counts
+# toward no security level (SL). IEC 62443 applies to the whole industrial
+# automation and control system: the network, its zones and conduits, the
+# robot controller, the host URML runs on, and the people and procedures
+# around them. Those are designed, built and assessed outside URML.
+#
+# What this rulebook does is narrower and still useful: it refuses programs
+# until the site operator has put on record, in a deployment rulebook, the
+# security level reached by the zone that holds the robot controller and by
+# the zone that holds the URML host, and the references of the zone and
+# conduit model and of the security risk assessment. URML checks that each
+# declaration exists and that a level is high enough. It does not check that
+# a declaration is true.
+#
+# Security levels are written SL1, SL2, SL3, SL4. Declare the level the zone
+# achieved (SL-A, after IEC 62443-3-3), and list in `allowed` the levels that
+# meet the target the risk assessment set (SL-T, after IEC 62443-3-2): for an
+# SL-T of 2, [SL2, SL3, SL4].
+#
+# See docs/security/iec-62443.md for where URML stands under IEC 62443, what
+# it contributes to the foundational requirements, and what it does not do.
+# In particular, the VDA 5050 and ISO 21423 reference runtimes connect to
+# their MQTT broker without TLS or broker authentication today, so the conduit
+# that carries their traffic must be protected by the network.
+#
+# This file carries no values. IEC standards are copyrighted, and the target
+# level of each zone comes from the site's security risk assessment and a
+# licensed copy of the standard, not from this repository. Every FILL_IN is
+# deliberately invalid: a validator refuses to load this file
+# (rule.rulebook_invalid) until each one is replaced, so an unfilled template
+# never runs.
+#
+# How to use it:
+#   1. Copy the file. Give it your own rulebook_id, title, issuer and reviewed
+#      date.
+#   2. For each zone rule, list in `allowed` the levels that meet the zone's
+#      target from the risk assessment.
+#   3. Have the operator file a deployment rulebook that declares each key,
+#      from the site's security records, for example:
+#
+#        rulebook_version: "0.1"
+#        rulebook_id: hall_2_security_declarations
+#        title: Hall 2 security declarations
+#        issuer: {kind: deployment, name: Example Operator}
+#        source_status: deployment_declaration
+#        declarations:
+#          robot_zone_security_level: SL2
+#          urml_zone_security_level: SL2
+#          zones_and_conduits_record: "ZCR-2026-004"
+#          security_risk_assessment_record: "SRA-2026-011"
+#
+#   4. Load both with --rulebook. With the deployment rulebook loaded, a
+#      missing or insufficient declaration refuses every program
+#      (rule.declaration_missing). With no deployment rulebook loaded, the
+#      same finding is a warning, as the rulebook format specifies.
+#
+# Editions checked on 2026-11-24:
+#   - IEC 62443-3-3:2013 (System security requirements and security levels),
+#     edition 1.0, published 2013-08-07, with the corrigendum of April 2014,
+#     on the IEC webstore.
+#   - IEC 62443-3-2:2020 (Security risk assessment for system design), from
+#     ISA's list of the identical ANSI/ISA-62443-3-2-2020.
+#   - IEC 62443-2-1:2024 (security program requirements for asset owners),
+#     IEC 62443-4-1:2018 (secure product development lifecycle) and
+#     IEC 62443-4-2 (technical security requirements for components; ISA
+#     lists ANSI/ISA-62443-4-2-2018), from ISA's list. Check the IEC
+#     catalogue for the edition and any amendment before relying on a year.
+#
+# Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702).
+
+rulebook_version: "0.1"
+rulebook_id: FILL_IN
+title: "FILL_IN (for example: Hall 2 security on record before any program runs)"
+issuer:
+  kind: organization
+  name: "FILL_IN (the asset owner or the integrator)"
+source_status: organization_policy
+reviewed: FILL_IN
+description: >-
+  Programs run only after the site operator has declared, from the site's
+  security records, the security level the robot's zone and the URML host's
+  zone achieved, and where the zone model and the risk assessment are. URML
+  checks the declarations, not the security.
+
+rules:
+  - id: robot_zone_level_declared
+    title: The robot controller's zone has a declared security level that meets its target
+    cite:
+      text: "IEC 62443-3-3:2013 and IEC 62443-3-2:2020, clause FILL_IN; the site's security risk assessment"
+      standard: ["IEC 62443-3-3:2013", "IEC 62443-3-2:2020"]
+    note: >-
+      The zone that holds the robot controller and its safety-related control.
+    require_declared:
+      key: robot_zone_security_level
+      allowed: [FILL_IN]
+
+  - id: urml_zone_level_declared
+    title: The URML host's zone has a declared security level that meets its target
+    cite:
+      text: "IEC 62443-3-3:2013 and IEC 62443-3-2:2020, clause FILL_IN; the site's security risk assessment"
+      standard: ["IEC 62443-3-3:2013", "IEC 62443-3-2:2020"]
+    note: >-
+      The zone that holds the host running the URML validator and runtime: the
+      zone that sends commands to the robot. It may be the robot's zone.
+    require_declared:
+      key: urml_zone_security_level
+      allowed: [FILL_IN]
+
+  - id: zones_and_conduits_on_record
+    title: The zone and conduit model is on record
+    cite:
+      text: "IEC 62443-3-2:2020, clause FILL_IN"
+      standard: "IEC 62443-3-2:2020"
+    note: >-
+      The declared value is the reference of the zone and conduit model,
+      including the conduit between the URML host and the robot controller.
+      Any value satisfies the rule.
+    require_declared:
+      key: zones_and_conduits_record
+
+  - id: security_risk_assessment_on_record
+    title: The security risk assessment is on record
+    cite:
+      text: "IEC 62443-3-2:2020, clause FILL_IN"
+      standard: "IEC 62443-3-2:2020"
+    note: >-
+      The declared value is the reference of the security risk assessment that
+      set each zone's target level. Any value satisfies the rule.
+    require_declared:
+      key: security_risk_assessment_record
+
+obligations:
+  - id: urml_is_not_a_security_control
+    title: URML is not a security control and counts toward no security level
+    text: >-
+      The URML validator restricts what a program may ask a robot to do. It
+      does not identify or authenticate who sent the program, control access,
+      encrypt traffic or detect intrusions. Those requirements are met by the
+      system around URML, and no zone's achieved level depends on URML.
+    cite:
+      text: "IEC 62443-3-3:2013, clause FILL_IN"
+      standard: "IEC 62443-3-3:2013"
+
+  - id: conduit_to_the_robot_protected
+    title: The conduit from the URML host to the robot is protected
+    text: >-
+      Traffic between the URML host and the robot controller, its fleet
+      manager or its broker is authenticated and protected to the conduit's
+      target level. Where a URML runtime connects without transport security
+      (the VDA 5050 and ISO 21423 reference runtimes use plain MQTT today),
+      the network provides it.
+    cite:
+      text: "IEC 62443-3-3:2013 and IEC 62443-3-2:2020, clauses FILL_IN"
+      standard: ["IEC 62443-3-3:2013", "IEC 62443-3-2:2020"]
+
+  - id: program_sources_controlled
+    title: Who may submit programs is controlled
+    text: >-
+      Only identified, authorized people and systems can submit programs to
+      the URML host, and the operator pins the manifest, envelope and
+      rulebooks so a program's author cannot replace them. Natural-language
+      requests and model output are untrusted input: they reach the robot only
+      through the validator.
+    cite:
+      text: "IEC 62443-3-3:2013, clauses FILL_IN"
+      standard: "IEC 62443-3-3:2013"
+
+  - id: urml_kept_patched
+    title: URML is kept patched and its advisories are followed
+    text: >-
+      The URML packages on the host are kept at a supported version, updates
+      are tested before deployment, and the project's security advisories
+      (SECURITY.md) are followed.
+    cite:
+      text: "IEC 62443-2-1:2024, clause FILL_IN"
+      standard: "IEC 62443-2-1:2024"
+
+  - id: decisions_logged
+    title: The validator's decisions are logged
+    text: >-
+      Validation records are switched on (--evidence-log) and kept with the
+      site's other security event logs, so every accepted and refused program
+      can be traced.
+    cite:
+      text: "IEC 62443-3-3:2013, clause FILL_IN"
+      standard: "IEC 62443-3-3:2013"
