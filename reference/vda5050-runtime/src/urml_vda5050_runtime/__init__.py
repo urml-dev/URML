@@ -15,12 +15,14 @@ from __future__ import annotations
 
 from urml_vda5050_runtime._version import __version__
 from urml_vda5050_runtime.adapter import Vda5050Adapter
+from urml_vda5050_runtime.broker import BrokerTls
 from urml_vda5050_runtime.config import ActionSpec, EdgeSpec, NodeSpec, Vda5050Config, load_vda5050_config
 from urml_vda5050_runtime.sim import SimulatedVehicle
 from urml_vda5050_runtime.transport import InMemoryBroker, PahoTransport, Transport
 
 __all__ = [
     "ActionSpec",
+    "BrokerTls",
     "EdgeSpec",
     "InMemoryBroker",
     "NodeSpec",

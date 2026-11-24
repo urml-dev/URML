@@ -48,6 +48,23 @@ Returned as not supported, with a reason: `wait_for` (the vehicle interface carr
 
 Node ids, edges, stations and the vehicle's action set are deployment facts, so they live in a `vda5050_adapter.yaml` next to the URML artifacts, not in the program or manifest. See [`examples/vda5050/vda5050_adapter.yaml`](../../examples/vda5050/vda5050_adapter.yaml) for a commented example. `supported_actions` is the vehicle factsheet's `protocolFeatures.agvActions`; an action outside it is refused before anything is sent.
 
+### Broker security
+
+To reach a broker that is not on this machine, give the connection TLS and credentials in the adapter config:
+
+```yaml
+broker_host: broker.site.example
+broker_port: 8883
+broker_tls:
+  ca_file: certs/broker-ca.pem       # omit to trust the system store
+  client_cert_file: certs/urml.pem   # optional: mutual TLS, give both or neither
+  client_key_file: certs/urml.key
+broker_username: urml-fleet
+broker_password_env: URML_BROKER_PASSWORD   # the variable that holds the password
+```
+
+TLS is 1.2 or newer, and the broker's certificate and host name are always checked; there is no switch to turn either off. The password is read from the named environment variable when the adapter connects and never appears in the config. Relative certificate paths resolve against the config file's folder. The adapter connects only once the broker accepts: a wrong password or a failed certificate check is a `ConnectionError` at connect, not a later timeout. Without `broker_tls`, a connection to a broker on another host still works, in clear text, with a warning. Where this fits in a site's IEC 62443 zones and conduits: [`docs/security/iec-62443.md`](../../docs/security/iec-62443.md).
+
 ## Install and run
 
 ```bash
@@ -68,6 +85,7 @@ with Vda5050Adapter(config) as amr:          # connects to config.broker_host
 
 - **Hermetic suite** (`tests/`): the adapter against `SimulatedVehicle` on an `InMemoryBroker`. Every message either side publishes is validated against the official VDA 5050 JSON schemas for 3.0.0, as upstream maintains them on its `main` branch ([`tests/vda5050_schemas/`](tests/vda5050_schemas/), MIT, pinned to a commit). Includes the repository's unchanged warehouse example run end to end through the validator and `URMLRuntime`, and a validator rejection that sends nothing to the vehicle.
 - **Live broker** (`tests/integration/`, `URML_VDA5050_BROKER=host:port`): adapter and simulated vehicle on separate `paho-mqtt` connections to a real Mosquitto 2.0 broker. Run weekly by [`vda5050-integration.yml`](../../.github/workflows/vda5050-integration.yml).
+- **TLS broker** (`tests/integration/test_tls_broker.py`, `URML_MQTT_TLS_DIR`): against a broker with TLS and a password and with client certificates: a message round trip, a wrong password refused at connect, a broker signed by another CA refused, a host name the certificate does not carry refused, mutual TLS with and without a client certificate. Run by the same workflow, with certificates from [`mqtt_tls_fixture.sh`](../../tools/scripts/mqtt_tls_fixture.sh).
 - **Not yet:** a real vendor vehicle, or a vendor's VDA 5050 simulator. The vehicle on the other side of every test is this package's own simulator, which follows the protocol rules a fleet control depends on but is not a vehicle model.
 
 ## Scope

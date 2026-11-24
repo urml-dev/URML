@@ -62,6 +62,7 @@ from urml_ros2_runtime.substrate.base import (
     WaitResult,
 )
 
+from urml_vda5050_runtime.broker import password_from_env
 from urml_vda5050_runtime.config import EdgeSpec, Vda5050Config
 from urml_vda5050_runtime.messages import (
     Action,
@@ -135,10 +136,14 @@ class Vda5050Adapter:
         if self._connected:
             return
         if self._transport is None:
+            c = self._config
             self._transport = PahoTransport(
-                self._config.broker_host,
-                self._config.broker_port,
-                client_id=f"urml-fleet-{self._config.serial_number}",
+                c.broker_host,
+                c.broker_port,
+                client_id=f"urml-fleet-{c.serial_number}",
+                tls=c.broker_tls.context() if c.broker_tls is not None else None,
+                username=c.broker_username,
+                password=password_from_env(c.broker_password_env),
             )
         self._transport.subscribe(self._topic("state"), self._on_state)
         self._transport.subscribe(self._topic("connection"), self._on_connection)
