@@ -741,10 +741,49 @@ def test_the_reproduce_command_writes_the_grant(
 
     argv = [str(mini.entry_path), "--root", str(mini.root), "--python", sys.executable, "--date", "2026-09-30"]
     assert reproduce.main([*argv, "--write"]) == 0
-    assert "reproduced:" in capsys.readouterr().out
+    out = capsys.readouterr().out
+    assert "reproduced:" in out
+    assert "timing: plan " in out
     assert check_registry(mini.root, today=CERT_DAY).problems == []
     entry = yaml.safe_load(mini.entry_path.read_text(encoding="utf-8"))
     assert entry["last_verified"] == entry["compatibility"]["certification"]["certified_on"] == "2026-09-30"
+    # The report the entry pins carries the step times. --python skipped the install, so it has none.
+    pinned = entry["compatibility"]["certification"]["reproduction"]["report"]["path"]
+    report = json.loads((mini.root / pinned).read_text(encoding="utf-8"))
+    assert [step["step"] for step in report["timing"]] == ["plan", "run", "check"]
+    assert all(step["seconds"] >= 0 for step in report["timing"])
+
+
+def test_the_reproduce_command_times_the_install(
+    mini: Mini, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """Without --python the tool builds the environment itself, and the install is timed as its own step."""
+    import os
+    import sys
+
+    from urml_conformance import reproduce
+
+    package_dir = tmp_path / "bot_pkg"
+    package_dir.mkdir()
+    (package_dir / "bot_runtime.py").write_text(BOT_ADAPTER, encoding="utf-8")
+    monkeypatch.syspath_prepend(str(package_dir))
+    mini.add_report(json.loads(run_suite("bot_runtime:BotAdapter", profiles=["educational"]).model_dump_json()))
+    mini.entry["compatibility"]["tier"] = "certified"
+    mini.entry["compatibility"]["certification"] = {
+        "conformance_spec": "0.2.2",
+        "attestation": "The runtime meets the six clauses of the conformance contract.",
+    }
+    mini.write()
+    path = os.pathsep.join([str(package_dir), *sys.path])
+    monkeypatch.setattr(reproduce, "clean_env", lambda extra=None: {**os.environ, "PYTHONPATH": path})
+    monkeypatch.setattr(reproduce, "create_environment", lambda *args, **kwargs: Path(sys.executable))
+
+    output = tmp_path / "reproduction-report.json"
+    argv = [str(mini.entry_path), "--root", str(mini.root), "--output", str(output), "--date", "2026-09-30"]
+    assert reproduce.main(argv) == 0
+    capsys.readouterr()
+    report = json.loads(output.read_text(encoding="utf-8"))
+    assert [step["step"] for step in report["timing"]] == ["plan", "install", "run", "check"]
 
 
 def test_the_reproduce_command_refuses_a_first_party_runtime(mini: Mini, capsys: pytest.CaptureFixture[str]) -> None:

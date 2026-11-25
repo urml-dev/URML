@@ -20,6 +20,10 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+### Added: conformance
+
+- The reproduction run (`python -m urml_conformance.reproduce`) records how long each step took (`plan`, `install`, `run`, `check`) in the reproduction report's new optional `timing` field, and prints the times. RFC-0708 defers a published certification fee until runs show what one costs; this is the measurement. A report without `timing`, such as every self-report, still parses.
+
 ### Changed: MCP server
 
 - `urml-mcp-server` is ready for the official MCP Registry. Its README carries the `mcp-name: io.github.urml-dev/urml` line the registry uses to verify PyPI ownership, and `server.json` uses the 2025-12-11 schema and a description within the registry's 100-character limit. `server.json` had stayed at version 0.2.0; `tools/scripts/bump_version.py` now moves it with the family. The family is bumped in lockstep to 0.5.2 so a published version carries the ownership line; no other code changed.
