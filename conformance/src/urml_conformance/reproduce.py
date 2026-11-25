@@ -25,7 +25,10 @@ anyone can see, and repeat, exactly what the Licensor does:
 4. **Check.** The reproduction must pass every fixture, name the entry's
    adapter, and run the same fixture set (equal ``fixtures_sha256``) as the
    self-report.
-5. **Record.** Write the reproduction report (pinned by sha256) and print the
+5. **Record.** Add the time each step took to the reproduction report
+   (``timing``, wall-clock seconds), so the cost of a run by scope is
+   measured rather than guessed (RFC-0708). Then pin the report by sha256
+   and print the
    ``certified_on``, ``expires`` and ``reproduction`` fields for the entry;
    ``--write`` puts them into the entry's ``certification`` block and sets
    ``last_verified`` to the reproduction day.
@@ -49,6 +52,7 @@ import shlex
 import subprocess
 import sys
 import tempfile
+import time
 import venv
 from collections.abc import Mapping, Sequence
 from pathlib import Path
@@ -69,7 +73,7 @@ from urml_conformance.registry import (
     _is_mock,
     default_root,
 )
-from urml_conformance.report import ConformanceReport
+from urml_conformance.report import ConformanceReport, ReproductionStep, StepTime
 
 __all__ = [
     "LICENSOR",
@@ -82,6 +86,7 @@ __all__ = [
     "create_environment",
     "insert_certification",
     "plan_reproduction",
+    "record_timing",
     "run_offline",
     "set_last_verified",
 ]
@@ -358,6 +363,39 @@ def check_reproduction(plan: Plan, reproduction: ConformanceReport) -> list[str]
     return problems
 
 
+class StepClock:
+    """Wall-clock seconds for each step of a run, in the order the steps ran."""
+
+    def __init__(self) -> None:
+        self.steps: list[StepTime] = []
+        self._step: ReproductionStep | None = None
+        self._started = 0.0
+
+    def start(self, step: ReproductionStep) -> None:
+        self.stop()
+        self._step = step
+        self._started = time.perf_counter()
+
+    def stop(self) -> None:
+        if self._step is not None:
+            seconds = round(time.perf_counter() - self._started, 2)
+            self.steps.append(StepTime(step=self._step, seconds=seconds))
+            self._step = None
+
+
+def record_timing(report_path: Path, steps: Sequence[StepTime]) -> ConformanceReport:
+    """Write the step times into the reproduction report, replacing any already there. Returns the report."""
+    report = ConformanceReport.model_validate_json(report_path.read_bytes())
+    report = report.model_copy(update={"timing": list(steps)})
+    report_path.write_text(report.model_dump_json(indent=2) + "\n", encoding="utf-8", newline="\n")
+    return report
+
+
+def _render_timing(steps: Sequence[StepTime]) -> str:
+    parts = [f"{step.step} {step.seconds:.2f}s" for step in steps]
+    return f"timing: {', '.join(parts)}; total {sum(step.seconds for step in steps):.2f}s"
+
+
 def certification_fields(
     *,
     report_path: str,
@@ -504,6 +542,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     root = (args.root or default_root()).resolve()
+    clock = StepClock()
+    clock.start("plan")
     try:
         plan = plan_reproduction(args.entry, root)
     except ReproductionError as exc:
@@ -520,21 +560,29 @@ def main(argv: list[str] | None = None) -> int:
 
     with tempfile.TemporaryDirectory(prefix="urml-reproduce-") as scratch:
         workdir = Path(scratch)
-        try:
-            python = args.python or create_environment(
-                plan, workdir / "env", index_url=args.index_url, conformance_source=args.conformance_source
-            )
-        except ReproductionError as exc:
-            print(f"  {exc}", file=sys.stderr)
-            return 1
+        python = args.python
+        if python is None:
+            clock.start("install")
+            try:
+                python = create_environment(
+                    plan, workdir / "env", index_url=args.index_url, conformance_source=args.conformance_source
+                )
+            except ReproductionError as exc:
+                print(f"  {exc}", file=sys.stderr)
+                return 1
+        clock.start("run")
         code = run_offline(plan, python, output, workdir, run_prefix=run_prefix)
 
     if not output.is_file():
         print(f"the suite wrote no report (exit {code}); nothing to record", file=sys.stderr)
         return 1
+    clock.start("check")
     reproduction = ConformanceReport.model_validate_json(output.read_bytes())
-    print(f"wrote {output}")
     problems = check_reproduction(plan, reproduction)
+    clock.stop()
+    record_timing(output, clock.steps)
+    print(f"wrote {output}")
+    print(_render_timing(clock.steps))
     if problems:
         for problem in problems:
             print(f"  {problem}", file=sys.stderr)

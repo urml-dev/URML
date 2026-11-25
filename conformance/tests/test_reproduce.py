@@ -20,7 +20,7 @@ import pytest
 import yaml
 
 from urml_conformance import __version__ as conformance_version
-from urml_conformance.report import ConformanceReport
+from urml_conformance.report import ConformanceReport, StepTime
 from urml_conformance.reproduce import (
     LICENSOR,
     OFFLINE_GUARD,
@@ -30,6 +30,7 @@ from urml_conformance.reproduce import (
     check_reproduction,
     insert_certification,
     plan_reproduction,
+    record_timing,
 )
 
 REPORT_REL = "registry/evidence/bot/conformance-report.json"
@@ -248,3 +249,36 @@ def test_filling_the_entry_replaces_old_fields_and_keeps_the_rest() -> None:
 def test_an_entry_without_a_certification_block_cannot_be_filled() -> None:
     with pytest.raises(ReproductionError, match="no certification"):
         insert_certification("id: bot\n", {"certified_on": "2026-12-01"})
+
+
+def test_the_step_times_go_into_the_reproduction_report(tmp_path: Path) -> None:
+    """RFC-0708: the cost of a run is measured, so each step's time is in the report it pins."""
+    path = tmp_path / "reproduction-report.json"
+    path.write_text(json.dumps(_report()) + "\n", encoding="utf-8")
+    steps = [
+        StepTime(step="plan", seconds=0.01),
+        StepTime(step="install", seconds=9.5),
+        StepTime(step="run", seconds=0.6),
+    ]
+    record_timing(path, steps)
+    again = record_timing(path, steps[:1])  # a second write replaces the first, it does not append
+    assert [step.step for step in again.timing or []] == ["plan"]
+    stored = json.loads(path.read_text(encoding="utf-8"))
+    assert stored["timing"] == [{"step": "plan", "seconds": 0.01}]
+    assert stored["results"] == _report()["results"]
+    assert check_reproduction(_plan(tmp_path), ConformanceReport.model_validate(stored)) == []
+
+
+@pytest.mark.parametrize(
+    "timing",
+    [[{"step": "review", "seconds": 1.0}], [{"step": "run", "seconds": -1.0}], [{"step": "run"}]],
+    ids=["unknown-step", "negative", "no-seconds"],
+)
+def test_a_report_refuses_timing_it_cannot_mean(timing: list[dict[str, Any]]) -> None:
+    with pytest.raises(ValueError):
+        ConformanceReport.model_validate(_report(timing=timing))
+
+
+def test_a_report_without_timing_still_parses() -> None:
+    """A self-report, or a reproduction written before timing existed, carries none."""
+    assert ConformanceReport.model_validate(_report()).timing is None

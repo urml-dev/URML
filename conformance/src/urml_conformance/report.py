@@ -3,7 +3,9 @@
 A report serializes as ``urml.conformance-report/1``. Alongside the per-case
 ``results`` it names the adapter the suite ran against, the urml-conformance
 and urml-validator versions, the fixture set (a count and a sha256 over the
-fixture files) and the ``--filter``, if one was given. ``all_passed``,
+fixture files) and the ``--filter``, if one was given. A reproduction
+report (``python -m urml_conformance.reproduce``) also records ``timing``: how
+long each step of the Licensor's run took. ``all_passed``,
 ``passed`` and ``failed`` are computed from ``results`` and written out with
 them; a report read back must agree with its own results.
 
@@ -64,6 +66,19 @@ def _outcome(result: Any) -> Any:
     return getattr(result, "passed", None)
 
 
+#: The steps of a reproduction run, in order (``urml_conformance.reproduce``).
+ReproductionStep = Literal["plan", "install", "run", "check"]
+
+
+class StepTime(BaseModel):
+    """How long one step of a reproduction run took, in wall-clock seconds."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    step: ReproductionStep
+    seconds: float = Field(..., ge=0)
+
+
 class ConformanceReport(BaseModel):
     """A report covering an entire fixture run."""
 
@@ -94,6 +109,14 @@ class ConformanceReport(BaseModel):
         description=(
             "The --profile selection, if one was given: every fixture that lists any "
             "of these profiles ran."
+        ),
+    )
+    timing: list[StepTime] | None = Field(
+        None,
+        description=(
+            "A reproduction report only: wall-clock seconds for each step of the Licensor's run "
+            "(plan, install, run, check), measured on the Licensor's machine. `install` is absent "
+            "when the run used an environment prepared outside the tool. Staff time is not in it."
         ),
     )
     results: list[CaseResult] = Field(default_factory=list)

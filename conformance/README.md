@@ -85,6 +85,8 @@ Two paths:
 
    It installs exactly `<package>==<version>` and the matching urml-conformance into a fresh virtual environment, runs the claimed profiles with the entry's adapter while refusing every network connection and lookup except loopback, and checks the reproduction passed every fixture with the same adapter and the same fixture set (`fixtures_sha256`) as the self-report. The guard covers the suite's own process; `--run-prefix "unshare -rn"` (Linux) adds an OS-level sandbox for adapters that start their own processes. A failed run keeps its report as the record and grants nothing.
 
+   The reproduction report also records `timing`: wall-clock seconds for each step of the run (`plan`, `install`, `run`, `check`) on the Licensor's machine. These numbers are what the certification fee schedule will be built from ([RFC-0708](../docs/rfcs/0708-paid-certification.md)). They cover machine time only; the review of the entry and the attestation is not in them.
+
 ## How tests are added
 
 A spec change (RFC) that affects observable behavior must land with the corresponding conformance-suite changes in the same release. A spec change without conformance updates is incomplete and is sent back. This rule is what keeps the spec and the suite from drifting.
