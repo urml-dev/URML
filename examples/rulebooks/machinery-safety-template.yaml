@@ -2,9 +2,9 @@
 # the machine's basic safety on record, shaped after the machinery safety
 # standards every robot cell builds on: ISO 12100 (risk assessment),
 # ISO 13850 (emergency stop), ISO 13855 (positioning of safeguards),
-# ISO 14119 (interlocking guards), IEC 60204-1 (electrical equipment) and
+# ISO 14119 (interlocking guards), IEC 60204-1 (electrical equipment),
 # IEC 61496 (electro-sensitive protective equipment: light curtains, laser
-# scanners).
+# scanners) and IEC 61800-5-1 (electrical safety of the drives).
 #
 # Read this first. URML is not part of any of these safety measures. The
 # emergency stop, the guards, their interlocks, the light curtains and
@@ -82,6 +82,10 @@
 #   - IEC 61496-1:2020 (electro-sensitive protective equipment, general),
 #     edition 4.0, and IEC 61496-3:2025 (laser scanners and other diffuse
 #     reflection devices), edition 4.0, replacing :2018.
+#   - IEC 61800-5-1:2022 (adjustable speed electrical power drive systems,
+#     safety requirements, electrical, thermal and energy), edition 3.0,
+#     replacing :2007 and its Amendment 1:2016; check which corrigenda your
+#     copy includes. Checked on 2026-11-25.
 #
 # Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702).
 
@@ -232,3 +236,15 @@ obligations:
     cite:
       text: "ISO 14119:2024, clause FILL_IN"
       standard: "ISO 14119:2024"
+
+  - id: drives_meet_their_electrical_safety_standard
+    title: The robot's drives meet their electrical safety standard
+    text: >-
+      The drives and servo amplifiers are designed to IEC 61800-5-1 for
+      electrical, thermal, fire and energy hazards, installed as their maker's
+      instructions require, and covered by the machine's electrical
+      verification. Their safety functions are a separate matter (IEC
+      61800-5-2, in the functional-safety template).
+    cite:
+      text: "IEC 61800-5-1:2022, clause FILL_IN; the drive maker's declaration"
+      standard: "IEC 61800-5-1:2022"

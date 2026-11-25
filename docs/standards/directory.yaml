@@ -361,6 +361,35 @@ groups:
           links:
           - label: machinery-safety-template.yaml
             url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml
+      - id: iec-61800-5-1
+        name: IEC 61800-5-1:2022
+        title: Electrical safety of drives
+        kind: standard
+        area: Drives and servo amplifiers
+        who_short: Drive makers, and anyone building drives into a machine
+        what: The product safety standard for adjustable speed drives and servo amplifiers, covering electrical,
+          thermal, fire, mechanical and energy hazards. Edition 3.0, harmonised with UL 61800-5-1 and CSA C22.2
+          No. 274.
+        why: The drives carry the robot's highest voltages and currents, and their electrical safety is a condition
+          for the machine's.
+        who: Makers of drives and servo amplifiers; integrators rely on their declaration when wiring the machine.
+        how: Drive makers design and test to it and declare conformity, often with a third-party certificate; the
+          integrator installs the drives as instructed and includes them in the machine's electrical verification.
+        text:
+        - label: IEC 61800-5-1 at IEC
+          url: https://webstore.iec.ch/publication/62103
+        assess:
+          text: Drive makers, often with certification by bodies such as TÜV SÜD, TÜV Rheinland or UL Solutions.
+          links: []
+        urml:
+          support:
+          - template
+          - evidence
+          text: The machinery-safety template lists it as an obligation, next to the electrical verification it feeds.
+            URML touches nothing electrical; the drives' safety functions are IEC 61800-5-2.
+          links:
+          - label: machinery-safety-template.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml
       - id: iec-61496
         name: IEC 61496-1:2020, -3:2025
         title: Electro-sensitive protective equipment
@@ -502,7 +531,8 @@ groups:
         area: Service robots near people
         who_short: Makers of service robots that work near people
         what: 'The safety requirements for robots that work close to people outside industry: mobile servants,
-          physical assistants, person carriers. A second edition is in the last stage before publication.'
+          physical assistants, person carriers. A second edition, retitled for service robots, was under publication
+          (ISO stage 60.00) on 2026-11-25 and is not yet published.'
         why: It is the main international reference for service robots in homes, care and public spaces.
         who: Makers of personal care and service robots.
         how: Identify the hazards of the robot in its intended use, assess the risk, then apply the protective

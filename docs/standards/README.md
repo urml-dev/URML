@@ -76,6 +76,7 @@ URML is never a safety function, a security control or a certifier for anything 
 | [ISO 13855:2024](#iso-13855) | Standard | Machine safety, all machines | Anyone placing light curtains, scanners or guards | Rulebook template, Evidence report |
 | [ISO 14119:2024](#iso-14119) | Standard | Machine safety, all machines | Anyone fitting interlocked doors and guards | Rulebook template, Evidence report |
 | [IEC 60204-1:2016](#iec-60204-1) | Standard | Machine safety, all machines | Anyone building or wiring a machine | Rulebook template, Evidence report |
+| [IEC 61800-5-1:2022](#iec-61800-5-1) | Standard | Drives and servo amplifiers | Drive makers, and anyone building drives into a machine | Rulebook template, Evidence report |
 | [IEC 61496-1:2020, -3:2025](#iec-61496) | Standard | Machine safety, all machines | Makers and users of light curtains and safety scanners | Rulebook template, Evidence report |
 | [ISO 10218-1 and -2:2025, ANSI/A3 R15.06-2025](#iso-10218) | Standard | Industrial robot safety | Robot makers, integrators, users of industrial robots | Rulebook template, Evidence report |
 | [ISO/TS 15066:2016](#iso-ts-15066) | Standard | Collaborative robots | Anyone running robots alongside people | Rulebook template, Evidence report |
@@ -172,6 +173,20 @@ The standards every machine, robots included, builds on: how to assess risk, how
 - **Who assesses it.** Verified by the maker; certification bodies and NRTLs assess it as part of product certification.
 - **What URML gives you.** The machinery-safety template refuses programs until the electrical verification is on record. URML touches nothing electrical. [machinery-safety-template.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml)
 
+<a id="iec-61800-5-1"></a>
+
+### IEC 61800-5-1:2022: Electrical safety of drives
+
+*Standard · Drives and servo amplifiers*
+
+- **What it is.** The product safety standard for adjustable speed drives and servo amplifiers, covering electrical, thermal, fire, mechanical and energy hazards. Edition 3.0, harmonised with UL 61800-5-1 and CSA C22.2 No. 274.
+- **Why it matters.** The drives carry the robot's highest voltages and currents, and their electrical safety is a condition for the machine's.
+- **Who needs it.** Makers of drives and servo amplifiers; integrators rely on their declaration when wiring the machine.
+- **How to meet it.** Drive makers design and test to it and declare conformity, often with a third-party certificate; the integrator installs the drives as instructed and includes them in the machine's electrical verification.
+- **Where to get the text.** [IEC 61800-5-1 at IEC](https://webstore.iec.ch/publication/62103)
+- **Who assesses it.** Drive makers, often with certification by bodies such as TÜV SÜD, TÜV Rheinland or UL Solutions.
+- **What URML gives you.** The machinery-safety template lists it as an obligation, next to the electrical verification it feeds. URML touches nothing electrical; the drives' safety functions are IEC 61800-5-2. [machinery-safety-template.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml)
+
 <a id="iec-61496"></a>
 
 ### IEC 61496-1:2020, -3:2025: Electro-sensitive protective equipment
@@ -238,7 +253,7 @@ The machine-specific standards for industrial, collaborative, mobile and persona
 
 *Standard · Service robots near people*
 
-- **What it is.** The safety requirements for robots that work close to people outside industry: mobile servants, physical assistants, person carriers. A second edition is in the last stage before publication.
+- **What it is.** The safety requirements for robots that work close to people outside industry: mobile servants, physical assistants, person carriers. A second edition, retitled for service robots, was under publication (ISO stage 60.00) on 2026-11-25 and is not yet published.
 - **Why it matters.** It is the main international reference for service robots in homes, care and public spaces.
 - **Who needs it.** Makers of personal care and service robots.
 - **How to meet it.** Identify the hazards of the robot in its intended use, assess the risk, then apply the protective measures and validation the standard calls for.
