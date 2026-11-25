@@ -73,10 +73,10 @@
   track: mcp
   venue: "Anthropic Claude directory / Claude Marketplace (claude.ai/directory/manage)"
   artifact: "reference/mcp-server/server.json"
-  submitted_at: ""
+  submitted_at: "2026-11-25"
   posted_url: ""
   response: none
-  notes: "Bundle built 2026-11-25 at plugins/urml (marketplace at repo root; installable now via /plugin marketplace add urml-dev/URML). Submission is founder action: claude.ai/directory/manage, type Plugin bundle, path plugins/urml. Expect the standard reviewer hold for uvx launchers. Playbook: reference/mcp-server/SUBMISSIONS.md Channel 3."
+  notes: "Submitted 2026-11-25 via claude.ai/directory/manage (type Plugin bundle, repo urml-dev/URML, path plugins/urml). In review; expect the standard reviewer hold for uvx launchers. posted_url stays empty until the directory listing is live. Bundle at plugins/urml, installable meanwhile via /plugin marketplace add urml-dev/URML. Playbook: reference/mcp-server/SUBMISSIONS.md Channel 3."
 
 - slug: smithery
   track: mcp
