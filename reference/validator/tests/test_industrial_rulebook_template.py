@@ -1,4 +1,4 @@
-"""The industrial rulebook template (ISO 10218-1/-2:2025, ISO/TS 15066:2016, UL 1740).
+"""The industrial rulebook template (ISO 10218-1/-2:2025, ANSI/A3 R15.06-2025, ISO/TS 15066:2016, UL 1740).
 
 Two guarantees, as for the other templates. As shipped it carries no values
 and refuses to load. Filled in, it loads, and each of its rules refuses the
@@ -131,7 +131,8 @@ def test_the_filled_template_loads() -> None:
         "listing_standard_declared",
         "listing_on_record",
     ]
-    assert len(book.obligations) == 6
+    assert len(book.obligations) == 8
+    assert {"cell_used_as_validated", "people_trained_for_the_cell"} <= {o.id for o in book.obligations}
     assert "urml_not_part_of_the_listing" in {o.id for o in book.obligations}
 
 

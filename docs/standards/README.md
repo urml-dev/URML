@@ -77,7 +77,7 @@ URML is never a safety function, a security control or a certifier for anything 
 | [ISO 14119:2024](#iso-14119) | Standard | Machine safety, all machines | Anyone fitting interlocked doors and guards | Rulebook template, Evidence report |
 | [IEC 60204-1:2016](#iec-60204-1) | Standard | Machine safety, all machines | Anyone building or wiring a machine | Rulebook template, Evidence report |
 | [IEC 61496-1:2020, -3:2025](#iec-61496) | Standard | Machine safety, all machines | Makers and users of light curtains and safety scanners | Rulebook template, Evidence report |
-| [ISO 10218-1 and -2:2025](#iso-10218) | Standard | Industrial robot safety | Robot makers, integrators, users of industrial robots | Rulebook template, Evidence report |
+| [ISO 10218-1 and -2:2025, ANSI/A3 R15.06-2025](#iso-10218) | Standard | Industrial robot safety | Robot makers, integrators, users of industrial robots | Rulebook template, Evidence report |
 | [ISO/TS 15066:2016](#iso-ts-15066) | Standard | Collaborative robots | Anyone running robots alongside people | Rulebook template, Evidence report |
 | [ISO 3691-4:2023, ANSI/A3 R15.08](#iso-3691-4) | Standard | Mobile robots, AGVs | Makers and sites running AMRs and AGVs | Rulebook template, Runtime, Evidence report |
 | [ISO 13482:2014](#iso-13482) | Standard | Service robots near people | Makers of service robots that work near people | Rulebook template, Evidence report |
@@ -189,7 +189,7 @@ The machine-specific standards for industrial, collaborative, mobile and persona
 
 <a id="iso-10218"></a>
 
-### ISO 10218-1 and -2:2025: Industrial robots
+### ISO 10218-1 and -2:2025, ANSI/A3 R15.06-2025: Industrial robots
 
 *Standard · Industrial robot safety*
 
@@ -199,7 +199,7 @@ The machine-specific standards for industrial, collaborative, mobile and persona
 - **How to meet it.** Risk-assess the cell, design the safeguards and safety functions it calls for, validate them and keep the technical file. Makers usually declare conformance, often backed by a third-party assessment.
 - **Where to get the text.** [ISO 10218-1 at ISO](https://www.iso.org/standard/73933.html), [ISO 10218-2 at ISO](https://www.iso.org/standard/73934.html), [R15.06-2025 at ANSI](https://webstore.ansi.org/standards/ria/ansia3r15062025), [A3](https://www.automate.org)
 - **Who assesses it.** Certification bodies such as TÜV SÜD, TÜV Rheinland, UL Solutions or SGS.
-- **What URML gives you.** The industrial template: speed and force caps, a program allowlist, untouched safety outputs, the cell layout, the robot's UL 1740 listing on record, and the obligations URML cannot check. [industrial-template.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/industrial-template.yaml)
+- **What URML gives you.** The industrial template: speed and force caps, a program allowlist, untouched safety outputs, the cell layout, the robot's UL 1740 listing on record, and the obligations URML cannot check. Every citation names ISO 10218 and R15.06-2025 together, and two obligations come from R15.06-3 for the people who run the cell: run it as validated, with changes assessed, and train everyone who works with it. [industrial-template.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/industrial-template.yaml)
 
 <a id="iso-ts-15066"></a>
 
