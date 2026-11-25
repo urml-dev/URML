@@ -193,6 +193,11 @@
         "what": "Checks that ship in the validator and are on by default."
       },
       {
+        "id": "registry",
+        "name": "Registry check",
+        "what": "The registry checker enforces a mark's criteria on every entry, and the reproduction run that grants it is public code anyone can repeat."
+      },
+      {
         "id": "evidence",
         "name": "Evidence report",
         "what": "urml evidence build lists, for one deployment, what URML checks for each cited standard and what it leaves to others."
@@ -1071,9 +1076,20 @@
             ]
           },
           "urml": {
-            "support": [],
-            "text": "This is URML's own program.",
-            "links": []
+            "support": [
+              "registry"
+            ],
+            "text": "URML's own program. The registry checker enforces every criterion except the attestation, and the Licensor's certification run is public code: run python -m urml_conformance.reproduce on your entry before you apply and see exactly what the Licensor will see.",
+            "links": [
+              {
+                "label": "Reproduction run (conformance README)",
+                "url": "https://github.com/urml-dev/URML/blob/main/conformance/README.md"
+              },
+              {
+                "label": "How to apply",
+                "url": "https://github.com/urml-dev/URML/blob/main/docs/registry/SUBMISSION.md#applying-for-urml-certified"
+              }
+            ]
           }
         },
         {
