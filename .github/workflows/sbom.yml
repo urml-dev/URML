@@ -1,0 +1,38 @@
+# One CycloneDX SBOM per URML package (EU Cyber Resilience Act, Annex I,
+# Part II, point (1)), from the same build list the release uses.
+#
+# Runs after every successful release run, on the commit that release
+# built, and on demand. Read-only: it builds wheels, records each package's
+# installed environment with cyclonedx-py, and uploads the SBOMs as the
+# `sboms` artifact. It publishes nothing and never touches release.yml.
+
+name: sbom
+
+on:
+  workflow_dispatch:
+  workflow_run:
+    workflows: [release]
+    types: [completed]
+
+permissions:
+  contents: read
+
+jobs:
+  sbom:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install build "cyclonedx-bom==7.6.0"
+      - name: Build wheels and write one SBOM per package
+        run: python tools/scripts/build_sboms.py --out sbom
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sboms
+          path: sbom/
+          retention-days: 90
