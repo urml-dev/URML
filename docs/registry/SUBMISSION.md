@@ -130,8 +130,8 @@ The `registry-check` workflow runs the checker and the registry tests on the pul
 Certification follows [RFC-0705](../rfcs/0705-urml-certified.md) and is a paid certification run ([RFC-0708](../rfcs/0708-paid-certification.md), [COMMERCIAL.md](../../COMMERCIAL.md#urml-certified-runtime-makers)). It needs everything the self-reported tier needs (step 3), plus:
 
 - `runtime.package` is a distribution anyone can install and `runtime.version` is one exact release. The URML project's own `urml-*` runtimes cannot be certified.
-- In the entry, set `compatibility.tier: certified` and add a `certification` block with `conformance_spec: "0.2.2"` and an `attestation`: your statement that the runtime meets the six clauses of the [conformance contract](../../spec/conformance/v0.2.2.md), in particular that no path actuates without validation. Leave `certified_on`, `expires` and `reproduction` to the Licensor.
-- Email sales@urml.dev for a quote for the run, then open the pull request and say in it that you are applying for URML-Certified.
+- In the entry, set `compatibility.tier: certified` and add a `certification` block with `conformance_spec: "0.2.3"` and an `attestation`: your statement that the runtime meets the six clauses of the [conformance contract](../../spec/conformance/v0.2.3.md), in particular that no path actuates without validation. Leave `certified_on`, `expires` and `reproduction` to the Licensor.
+- Email sales@urml.dev for a quote for the run (free for a non-commercial runtime: one not sold, not licensed for a fee and not part of a paid product or service), then open the pull request and say in it that you are applying for URML-Certified.
 
 The Licensor then installs that exact version from its public source in a clean environment, turns the network off, runs the same suite with your adapter, and commits the reproduction report and the dates to your pull request. The run is public code, `python -m urml_conformance.reproduce registry/entries/<id>.yaml`, so you can run it yourself first and see exactly what the Licensor will see:
 
@@ -143,7 +143,7 @@ compatibility:
     path: registry/evidence/acme-rover-ros2/conformance-report.json
     sha256: <sha256 of your report>
   certification:
-    conformance_spec: "0.2.2"
+    conformance_spec: "0.2.3"
     certified_on: "2026-12-01"
     expires: "2027-12-01"
     attestation: The runtime meets the six clauses of the conformance contract; nothing actuates without validation.
@@ -156,7 +156,7 @@ compatibility:
       environment: acme-urml-runtime 1.2.0 from PyPI, Python 3.12 on Linux, network off after install.
 ```
 
-When the registry check passes, the pull request merges and the entry is certified. Paid requests are run in the order they are paid. The fee pays for the run, never for the result: a run that fails keeps its fee and the entry stays self-reported. The certification lasts at most 366 days and ends earlier at the next urml-conformance release. Renew it with a new self-report and reproduction. Free text in an entry never says "certified": the `tier` field says it.
+When the registry check passes, the pull request merges and the entry is certified. Requests are run in the order they are paid or waived. The fee pays for the run, never for the result: a run that fails keeps its fee and the entry stays self-reported. The certification lasts at most 366 days and ends earlier at the next urml-conformance release. Renew it with a new self-report and reproduction. Free text in an entry never says "certified": the `tier` field says it.
 
 ## Keeping an entry current
 
