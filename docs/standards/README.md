@@ -68,21 +68,21 @@ URML is never a safety function, a security control or a certifier for anything 
 
 | Entry | Kind | Area | Who needs it | URML support |
 |---|---|---|---|---|
-| [ISO 12100:2010](#iso-12100) | Standard | Machine safety, all machines | Every machine maker and integrator | Rulebook template |
+| [ISO 12100:2010](#iso-12100) | Standard | Machine safety, all machines | Every machine maker and integrator | Rulebook template, Evidence report |
 | [ISO 13850:2015](#iso-13850) | Standard | Machine safety, all machines | Every machine with an emergency stop | Rulebook template, Evidence report |
-| [ISO 13855:2024](#iso-13855) | Standard | Machine safety, all machines | Anyone placing light curtains, scanners or guards | Rulebook template |
-| [ISO 14119:2024](#iso-14119) | Standard | Machine safety, all machines | Anyone fitting interlocked doors and guards | Rulebook template |
-| [IEC 60204-1:2016](#iec-60204-1) | Standard | Machine safety, all machines | Anyone building or wiring a machine | Rulebook template |
-| [IEC 61496-1:2020, -3:2025](#iec-61496) | Standard | Machine safety, all machines | Makers and users of light curtains and safety scanners | Rulebook template |
+| [ISO 13855:2024](#iso-13855) | Standard | Machine safety, all machines | Anyone placing light curtains, scanners or guards | Rulebook template, Evidence report |
+| [ISO 14119:2024](#iso-14119) | Standard | Machine safety, all machines | Anyone fitting interlocked doors and guards | Rulebook template, Evidence report |
+| [IEC 60204-1:2016](#iec-60204-1) | Standard | Machine safety, all machines | Anyone building or wiring a machine | Rulebook template, Evidence report |
+| [IEC 61496-1:2020, -3:2025](#iec-61496) | Standard | Machine safety, all machines | Makers and users of light curtains and safety scanners | Rulebook template, Evidence report |
 | [ISO 10218-1 and -2:2025](#iso-10218) | Standard | Industrial robot safety | Robot makers, integrators, users of industrial robots | Rulebook template, Evidence report |
-| [ISO/TS 15066:2016](#iso-ts-15066) | Standard | Collaborative robots | Anyone running robots alongside people | Rulebook template |
-| [ISO 3691-4:2023, ANSI/A3 R15.08](#iso-3691-4) | Standard | Mobile robots, AGVs | Makers and sites running AMRs and AGVs | Rulebook template, Runtime |
-| [ISO 13482:2014](#iso-13482) | Standard | Service robots near people | Makers of service robots that work near people | Rulebook template |
-| [ISO 13849-1:2023, -2:2012](#iso-13849) | Standard | Functional safety of machinery | Anyone designing safety functions | Rulebook template |
-| [IEC 62061:2021](#iec-62061) | Standard | Functional safety of machinery | Designers of electrical safety control | Rulebook template |
-| [IEC 61508:2010](#iec-61508) | Standard | Functional safety, all sectors | Makers of safety components and safety software | Rulebook template, Position page |
-| [IEC 62443](#iec-62443) | Standard | Industrial cybersecurity | Asset owners, integrators, makers of control products | Rulebook template, Position page |
-| [UL 1740, UL 3100, UL 3300](#ul-robots) | Listing or mark | US product safety | Makers selling robots into US workplaces and public spaces | Rulebook template |
+| [ISO/TS 15066:2016](#iso-ts-15066) | Standard | Collaborative robots | Anyone running robots alongside people | Rulebook template, Evidence report |
+| [ISO 3691-4:2023, ANSI/A3 R15.08](#iso-3691-4) | Standard | Mobile robots, AGVs | Makers and sites running AMRs and AGVs | Rulebook template, Runtime, Evidence report |
+| [ISO 13482:2014](#iso-13482) | Standard | Service robots near people | Makers of service robots that work near people | Rulebook template, Evidence report |
+| [ISO 13849-1:2023, -2:2012](#iso-13849) | Standard | Functional safety of machinery | Anyone designing safety functions | Rulebook template, Evidence report |
+| [IEC 62061:2021](#iec-62061) | Standard | Functional safety of machinery | Designers of electrical safety control | Rulebook template, Evidence report |
+| [IEC 61508:2010](#iec-61508) | Standard | Functional safety, all sectors | Makers of safety components and safety software | Rulebook template, Position page, Evidence report |
+| [IEC 62443](#iec-62443) | Standard | Industrial cybersecurity | Asset owners, integrators, makers of control products | Rulebook template, Position page, Evidence report |
+| [UL 1740, UL 3100, UL 3300](#ul-robots) | Listing or mark | US product safety | Makers selling robots into US workplaces and public spaces | Rulebook template, Evidence report |
 | [ISO 8373:2021](#iso-8373) | Standard | Vocabulary | Anyone writing about robots precisely | Position page |
 | [VDA 5050 3.0.0](#vda-5050) | Standard | Fleet interface | Fleet operators and vehicle makers | Runtime |
 | [ISO 21423:2026](#iso-21423) | Standard | Fleet interface | Fleet operators and robot makers | Runtime |
