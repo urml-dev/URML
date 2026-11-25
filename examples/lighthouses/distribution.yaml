@@ -94,7 +94,7 @@
   submitted_at: ""
   posted_url: ""
   response: none
-  notes: "Auto-indexes GitHub; claim the listing via GitHub OAuth under greenvh@gmail.com."
+  notes: "Checked 2026-11-25: not in Glama's index yet (subfolder server; registry entry one day old). Wait ~a week for auto-ingest, then follow the playbook in reference/mcp-server/SUBMISSIONS.md Channel 4 (sign-in add flow, support@glama.ai fallback)."
 
 - slug: pulsemcp
   track: mcp
