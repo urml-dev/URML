@@ -28,6 +28,12 @@
 # on 2026-11-25 against the Official Journal text from the Publications
 # Office of the European Union.
 #
+# Regulation (EU) 2026/1744 (the Digital Omnibus on AI) amended this
+# regulation in Articles 8, 20 and 47, so AI requirements can be added to
+# Annex III by delegated acts that apply by 2 August 2028. None of the
+# provisions cited below changed. For a robot whose programs an AI system
+# proposes, load eu-ai-act.yaml as well.
+#
 # Where this sits under RFC-0003: URML's default rules follow US federal law.
 # This file is not a default; an operator loads it with --rulebook.
 #

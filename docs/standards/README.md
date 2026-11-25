@@ -91,6 +91,7 @@ URML is never a safety function, a security control or a certifier for anything 
 | [VDA 5050 3.0.0](#vda-5050) | Standard | Fleet interface | Fleet operators and vehicle makers | Runtime |
 | [ISO 21423:2026](#iso-21423) | Standard | Fleet interface | Fleet operators and robot makers | Runtime |
 | [Regulation (EU) 2023/1230](#eu-machinery-regulation) | Regulation | Machinery and robots, EU | Anyone placing a robot on the EU market or putting one into service there | Ready rulebook, Evidence report |
+| [Regulation (EU) 2024/1689](#eu-ai-act) | Regulation | AI systems, EU | Anyone in the EU whose robot takes its programs from an AI system | Ready rulebook, Evidence report |
 | [14 CFR Part 107 and Part 89](#faa-part-107) | Regulation | Small drones, US | Anyone flying a drone for work in the US | Bundled rules |
 | [NDAA Section 889, FCC Covered List, DCMA Blue List](#us-procurement) | Procurement list | Supply chain, US government | Vendors to the US government and its contractors | Bundled rules |
 | [URML-Certified](#urml-certified) | Certification | URML conformance | Makers of third-party URML runtimes | Registry check |
@@ -388,7 +389,7 @@ Shared words, and the protocols that let one controller drive robots from many m
 
 ## Regulation and procurement
 
-US law for drones, the EU law for machinery, and the supply-chain rules for selling to the US government.
+US law for drones, the EU law for machinery and for AI, and the supply-chain rules for selling to the US government.
 
 <a id="eu-machinery-regulation"></a>
 
@@ -403,6 +404,20 @@ US law for drones, the EU law for machinery, and the supply-chain rules for sell
 - **Where to get the text.** [Regulation (EU) 2023/1230 (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2023/1230/oj), [European Commission, machinery](https://single-market-economy.ec.europa.eu/sectors/mechanical-engineering/machinery_en), [EU-OSHA summary](https://osha.europa.eu/en/legislation/directive/regulation-20231230eu-machinery)
 - **Who assesses it.** The maker alone for most machinery (module A); a notified body for Annex I, Part A categories and, by choice, for others. National market surveillance authorities enforce it. [Notified bodies](https://single-market-economy.ec.europa.eu/single-market/goods/building-blocks/notified-bodies_en), [CE marking](https://single-market-economy.ec.europa.eu/single-market/ce-marking_en)
 - **What URML gives you.** A ready EU rulebook with the regulation's own citations: programs wait until the risk assessment, the substantial-modification check, the conformity procedure, the declaration, the technical file and the safety-software inventory are on record. Its obligations say why URML is not a safety component (Annex II, point 18) and never prevents a stop. Combine it with the machinery-safety template for the harmonised standards. URML takes no part in the conformity assessment. [eu-machinery-regulation.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-machinery-regulation.yaml), [machinery-safety-template.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml)
+
+<a id="eu-ai-act"></a>
+
+### Regulation (EU) 2024/1689: The EU AI Act
+
+*Regulation · AI systems, EU*
+
+- **What it is.** The EU law for AI systems, as amended by the Digital Omnibus on AI (Regulation (EU) 2026/1744). For robots, machinery is now in Section B of its Annex I, so a high-risk AI safety component is assessed through the Machinery Regulation, with AI requirements added to its Annex III by 2 August 2028. AI literacy, the prohibited practices and the duty to tell people they deal with an AI system already apply.
+- **Why it matters.** A robot that takes instructions in plain language through a language model is an AI system in the EU. Whether that model is a safety component decides whether the robot's AI is high-risk.
+- **Who needs it.** Integrators and operators of robots driven by AI systems, and the providers of the models.
+- **How to meet it.** Assess whether the AI system is a safety component (Article 6(1a) and (1b)). If it is, assess it in the machine's conformity assessment under the Machinery Regulation. Either way, tell people they deal with an AI system, support your staff's AI literacy and avoid the prohibited practices.
+- **Where to get the text.** [Regulation (EU) 2024/1689 (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), [Regulation (EU) 2026/1744, the Digital Omnibus on AI (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2026/1744/oj), [European Commission, AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
+- **Who assesses it.** No AI Act certificate for robots. A high-risk AI safety component goes through the machine's conformity assessment, with a notified body where the Machinery Regulation requires one. The EU AI Office and national authorities oversee the rest. [EU AI Office](https://digital-strategy.ec.europa.eu/en/policies/ai-office)
+- **What URML gives you.** A ready EU rulebook with the Act's own citations, for a robot whose programs a model proposes through the LLM bridge: programs wait until the safety-component assessment, how people are told they deal with an AI system, and the AI literacy measures are on record. A robot with no AI system declares so and the rulebook switches off. Every program a model proposes passes the validator before it runs, which is the argument the integrator's assessment rests on. [eu-ai-act.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-ai-act.yaml), [eu-machinery-regulation.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-machinery-regulation.yaml)
 
 <a id="faa-part-107"></a>
 
