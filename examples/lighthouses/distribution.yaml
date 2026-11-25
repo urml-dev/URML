@@ -76,7 +76,7 @@
   submitted_at: ""
   posted_url: ""
   response: none
-  notes: "Separate from the open registry: registry publish does NOT list a server in Claude. Stdio servers are listable only inside a Claude Code plugin bundle (connector listings are remote-only; MCPB deprecated). Founder action, paid claude.ai plan; community listing by default. Playbook: reference/mcp-server/SUBMISSIONS.md Channel 3."
+  notes: "Bundle built 2026-11-25 at plugins/urml (marketplace at repo root; installable now via /plugin marketplace add urml-dev/URML). Submission is founder action: claude.ai/directory/manage, type Plugin bundle, path plugins/urml. Expect the standard reviewer hold for uvx launchers. Playbook: reference/mcp-server/SUBMISSIONS.md Channel 3."
 
 - slug: smithery
   track: mcp

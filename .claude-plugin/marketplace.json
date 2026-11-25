@@ -1,0 +1,12 @@
+{
+  "name": "urml-dev",
+  "description": "Plugins for URML, the universal robot language",
+  "owner": { "name": "urml-dev", "url": "https://github.com/urml-dev" },
+  "plugins": [
+    {
+      "name": "urml",
+      "source": "./plugins/urml",
+      "description": "Describe robot intent in plain English, validate it against the robot's declared capabilities and safety envelope, and only then execute."
+    }
+  ]
+}
