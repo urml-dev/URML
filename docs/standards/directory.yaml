@@ -826,7 +826,7 @@ groups:
         status: Validation in progress
   - id: regulation
     title: Regulation and procurement
-    intro: US law for drones, the EU law for machinery, and the supply-chain rules for selling to the US government.
+    intro: US law for drones, the EU law for machinery and for AI, and the supply-chain rules for selling to the US government.
     entries: 
       - id: eu-machinery-regulation
         name: Regulation (EU) 2023/1230
@@ -878,6 +878,54 @@ groups:
             url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-machinery-regulation.yaml
           - label: machinery-safety-template.yaml
             url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml
+      - id: eu-ai-act
+        name: Regulation (EU) 2024/1689
+        title: The EU AI Act
+        kind: regulation
+        area: AI systems, EU
+        who_short: Anyone in the EU whose robot takes its programs from an AI system
+        what: The EU law for AI systems, as amended by the Digital Omnibus on AI (Regulation (EU) 2026/1744). For
+          robots, machinery is now in Section B of its Annex I, so a high-risk AI safety component is assessed
+          through the Machinery Regulation, with AI requirements added to its Annex III by 2 August 2028. AI
+          literacy, the prohibited practices and the duty to tell people they deal with an AI system already
+          apply.
+        why: A robot that takes instructions in plain language through a language model is an AI system in the
+          EU. Whether that model is a safety component decides whether the robot's AI is high-risk.
+        who: Integrators and operators of robots driven by AI systems, and the providers of the models.
+        how: Assess whether the AI system is a safety component (Article 6(1a) and (1b)). If it is, assess it in
+          the machine's conformity assessment under the Machinery Regulation. Either way, tell people they deal
+          with an AI system, support your staff's AI literacy and avoid the prohibited practices.
+        text:
+        - label: Regulation (EU) 2024/1689 (EUR-Lex)
+          url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+        - label: Regulation (EU) 2026/1744, the Digital Omnibus on AI (EUR-Lex)
+          url: https://eur-lex.europa.eu/eli/reg/2026/1744/oj
+        - label: European Commission, AI Act
+          url: https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai
+        assess:
+          text: No AI Act certificate for robots. A high-risk AI safety component goes through the machine's
+            conformity assessment, with a notified body where the Machinery Regulation requires one. The EU AI Office
+            and national authorities oversee the rest.
+          links:
+          - label: EU AI Office
+            url: https://digital-strategy.ec.europa.eu/en/policies/ai-office
+        urml:
+          support:
+          - rulebook
+          - evidence
+          text: >-
+            A ready EU rulebook with the Act's own citations, for a robot whose programs a
+            model proposes through the LLM bridge: programs wait until the
+            safety-component assessment, how people are told they deal with an AI system,
+            and the AI literacy measures are on record. A robot with no AI system declares
+            so and the rulebook switches off. Every program a model proposes passes the
+            validator before it runs, which is the argument the integrator's assessment
+            rests on.
+          links:
+          - label: eu-ai-act.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-ai-act.yaml
+          - label: eu-machinery-regulation.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-machinery-regulation.yaml
       - id: faa-part-107
         name: 14 CFR Part 107 and Part 89
         title: Small drones in the US

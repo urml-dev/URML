@@ -85,12 +85,13 @@ ALL_FILES = [
     ("example-warehouse.yaml", lambda: _example("example-warehouse.yaml")),
     ("example-deployment.yaml", lambda: _example("example-deployment.yaml")),
     ("eu-machinery-regulation.yaml", lambda: _example("eu-machinery-regulation.yaml")),
+    ("eu-ai-act.yaml", lambda: _example("eu-ai-act.yaml")),
     ("industrial-template.yaml", lambda: _example("industrial-template.yaml")),
     ("amr-template.yaml", lambda: _example("amr-template.yaml")),
     ("home-template.yaml", lambda: _example("home-template.yaml")),
     ("functional-safety-template.yaml", lambda: _example("functional-safety-template.yaml")),
 ]
-FILLED_FILES = ALL_FILES[:4]  # the templates are invalid on purpose until filled in
+FILLED_FILES = ALL_FILES[:5]  # the templates are invalid on purpose until filled in
 TEMPLATES = [
     "industrial-template.yaml",
     "amr-template.yaml",

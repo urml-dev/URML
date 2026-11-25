@@ -1,0 +1,175 @@
+# Government rulebook: the EU Artificial Intelligence Act, Regulation (EU)
+# 2024/1689, as amended by Regulation (EU) 2026/1744 (the Digital Omnibus on
+# AI), for a robot whose programs an AI system proposes, such as a language
+# model working through the URML LLM bridge.
+#
+# Like the EU Machinery Regulation rulebook beside it, this file cites the
+# law itself and needs no FILL_IN: EU legislation is free to reuse. It loads
+# as it is. Load it together with eu-machinery-regulation.yaml.
+#
+# Where URML stands. The LLM bridge turns a sentence into a URML program; the
+# validator then checks every program, from a model or a person, before it
+# runs. Whether the AI system is a safety component of the robot (Article 3,
+# point (14), and Article 6(1a) and (1b), added by Regulation 2026/1744) is
+# the integrator's assessment, made with the machine's risk assessment. URML
+# is built so the model's output never reaches an actuator without the
+# validator, which is the argument the integrator can make. It does not make
+# the argument for them.
+#
+# What changed in 2026. Regulation (EU) 2026/1744 moved machinery (Regulation
+# (EU) 2023/1230) from Section A to Section B of the AI Act's Annex I. For an
+# AI system that is high-risk because it is a safety component of machinery,
+# only Article 6(1), Article 60a and Articles 102 to 112 of the AI Act apply
+# (Article 2(2), as amended); the AI requirements reach the machine through
+# the Machinery Regulation's Annex III, by delegated acts that apply by
+# 2 August 2028 (Article 8 of Regulation 2023/1230, as amended). The
+# obligations below that apply now are AI literacy (Article 4, as amended),
+# the prohibited practices (Article 5, from 2 February 2025) and the
+# transparency duty when people interact with the system (Article 50(1),
+# from 2 August 2026).
+#
+# A robot whose programs no AI system proposes does not need this file. Its
+# operator declares ai_system_in_use: false, and the rulebook is switched off
+# with that reason in the report.
+#
+# Dates. Regulation (EU) 2024/1689 was published in the OJ L series on
+# 12.7.2024; Regulation (EU) 2026/1744 on 24.7.2026, in force from 27.7.2026.
+# Checked on 2026-11-25 against the Official Journal texts from the
+# Publications Office of the European Union.
+#
+# Where this sits under RFC-0003: URML's default rules follow US federal law.
+# This file is not a default; an operator loads it with --rulebook.
+#
+# Example declarations, in the operator's deployment rulebook:
+#
+#   declarations:
+#     ai_system_in_use: true
+#     ai_safety_component_assessment: not_a_safety_component
+#     ai_interaction_disclosure: people_informed
+#     ai_literacy_measures: "TRN-2026-04, operator AI training"
+#
+# Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702).
+
+rulebook_version: "0.1"
+rulebook_id: eu_ai_act_2024_1689
+title: Regulation (EU) 2024/1689 (AI Act), for robots whose programs an AI system proposes
+issuer:
+  kind: government
+  name: European Parliament and Council of the European Union
+  jurisdiction: EU
+maintained_by: URML maintainers
+source_status: enacted_statute
+effective: "2026-08-02"
+reviewed: "2026-11-25"
+description: >-
+  The AI Act duties that reach a robot whose programs an AI system proposes,
+  as amended by the Digital Omnibus on AI: the safety-component assessment,
+  telling people they are dealing with an AI system, AI literacy, and the
+  prohibited practices. URML validates every program the model proposes and
+  takes no part in any conformity assessment.
+
+applies_to:
+  unless_declared:
+    - key: ai_system_in_use
+      allowed: [false]
+      cite:
+        text: "Regulation (EU) 2024/1689, Article 2(1): the Regulation applies to AI systems"
+        url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+        standard: "Regulation (EU) 2024/1689"
+
+rules:
+  - id: safety_component_assessed
+    title: Whether the AI system is a safety component of the robot is assessed and on record
+    cite:
+      text: "Regulation (EU) 2024/1689, Article 3, point (14), and Article 6(1), (1a) and (1b), as amended by Regulation (EU) 2026/1744"
+      url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+      standard: "Regulation (EU) 2024/1689"
+    note: >-
+      An AI system used only for automation, user assistance or convenience is
+      not a safety component (Article 6(1a)); one whose failure or malfunction
+      would endanger health and safety is (Article 6(1b)). Declare the outcome:
+      not_a_safety_component, or safety_component when the machine's
+      conformity assessment treats it as one.
+    require_declared:
+      key: ai_safety_component_assessment
+      allowed: [not_a_safety_component, safety_component]
+
+  - id: people_told_they_deal_with_ai
+    title: People who interact with the robot's AI system are told so
+    cite:
+      text: "Regulation (EU) 2024/1689, Article 50(1)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+      standard: "Regulation (EU) 2024/1689"
+    note: >-
+      For a robot people talk to or instruct in their own words. Declare
+      people_informed, obvious_from_context (the exception in Article 50(1)),
+      or no_direct_interaction when only the integrator's staff write the
+      sentences, for example in a programming tool.
+    require_declared:
+      key: ai_interaction_disclosure
+      allowed: [people_informed, obvious_from_context, no_direct_interaction]
+
+  - id: ai_literacy_on_record
+    title: The measures for the staff's AI literacy are on record
+    cite:
+      text: "Regulation (EU) 2024/1689, Article 4, as amended by Regulation (EU) 2026/1744"
+      url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+      standard: "Regulation (EU) 2024/1689"
+    note: >-
+      What the operator does so the people who run the robot understand the AI
+      system they use, such as training. The declared value names the record.
+    require_declared:
+      key: ai_literacy_measures
+
+obligations:
+  - id: every_proposed_program_is_validated
+    title: No program from the AI system runs without the validator
+    text: >-
+      Every program the AI system proposes passes the URML validator against
+      the manifest, envelope, policy and rulebooks before it runs, and there is
+      no path from the model to an actuator that skips it. The integrator's
+      safety-component assessment relies on this; if the design adds such a
+      path, the assessment is redone.
+    cite:
+      text: "Regulation (EU) 2024/1689, Article 6(1a) and (1b), as amended by Regulation (EU) 2026/1744"
+      url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+      standard: "Regulation (EU) 2024/1689"
+
+  - id: high_risk_through_the_machinery_route
+    title: A high-risk AI safety component is assessed through the Machinery Regulation
+    text: >-
+      If the AI system is a safety component of machinery that needs a
+      third-party conformity assessment, it is high-risk under Article 6(1).
+      Machinery is in Annex I, Section B, so of the AI Act only Article 6(1),
+      Article 60a and Articles 102 to 112 apply; the AI requirements come
+      through the Machinery Regulation's Annex III, by delegated acts that
+      apply by 2 August 2028, and are assessed in the machine's conformity
+      assessment.
+    cite:
+      text: "Regulation (EU) 2024/1689, Article 2(2), Article 113, third paragraph, point (c)(ii), and Annex I, Section B, point 21, as amended by Regulation (EU) 2026/1744; Regulation (EU) 2023/1230, Article 8"
+      url: https://eur-lex.europa.eu/eli/reg/2026/1744/oj
+      standard: ["Regulation (EU) 2024/1689", "Regulation (EU) 2023/1230"]
+
+  - id: no_emotion_inference_at_work
+    title: The robot's AI does not infer the emotions of people at work or in education
+    text: >-
+      Cameras and microphones on a robot make this easy to add by accident. Do
+      not use the AI system to infer the emotions of people in a workplace or
+      an education institution, except for medical or safety reasons. Check
+      the other practices Article 5 prohibits as well.
+    cite:
+      text: "Regulation (EU) 2024/1689, Article 5(1), point (f)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+      standard: "Regulation (EU) 2024/1689"
+
+  - id: model_provider_obligations_stay_with_the_provider
+    title: The model's provider meets the obligations for general-purpose AI models
+    text: >-
+      URML embeds no model. The obligations for providers of general-purpose
+      AI models fall on whoever provides the model the LLM bridge uses. An
+      integrator who modifies or fine-tunes that model checks whether that
+      makes it a provider.
+    cite:
+      text: "Regulation (EU) 2024/1689, Article 53"
+      url: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
+      standard: "Regulation (EU) 2024/1689"
