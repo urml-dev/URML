@@ -13,6 +13,7 @@ from pathlib import Path
 from types import ModuleType
 
 import pytest
+import yaml
 
 ROOT = Path(__file__).resolve().parents[3]
 SCRIPT = ROOT / "tools" / "scripts" / "gen_standards_doc.py"
@@ -57,6 +58,30 @@ def test_every_template_the_directory_names_exists() -> None:
                     name = url.split(marker, 1)[1]
                     assert (TEMPLATES / name).is_file(), f"{entry['id']}: {name} does not exist"
 
+
+
+def test_every_template_entry_shows_the_evidence_report() -> None:
+    """An evidence report groups a deployment's rules by the standard each cites (RFC-0707).
+
+    So every entry with a template also has the evidence badge, and every
+    template it links cites a standard the report can group by.
+    """
+    data = _gen().load()
+    marker = "/examples/rulebooks/"
+    for group in data["groups"]:
+        for entry in group["entries"]:
+            support = entry["urml"].get("support", [])
+            if "template" not in support:
+                continue
+            assert "evidence" in support, f"{entry['id']}: has a template but no evidence badge"
+            for link in entry["urml"].get("links", []):
+                if marker not in link["url"]:
+                    continue
+                book = yaml.safe_load((TEMPLATES / link["url"].split(marker, 1)[1]).read_text(encoding="utf-8"))
+                items = (book.get("rules") or []) + (book.get("obligations") or [])
+                assert any((item.get("cite") or {}).get("standard") for item in items), (
+                    f"{entry['id']}: {link['url']} cites no standard, so its evidence report has nothing to group"
+                )
 
 def test_a_broken_link_is_refused(tmp_path: Path) -> None:
     gen = _gen()

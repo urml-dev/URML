@@ -212,6 +212,7 @@ groups:
         urml:
           support:
           - template
+          - evidence
           text: The machinery-safety template refuses programs until the risk assessment's reference is on record,
             and lists keeping it current as an obligation.
           links:
@@ -273,6 +274,7 @@ groups:
         urml:
           support:
           - template
+          - evidence
           text: The machinery-safety template refuses programs until the safeguard distance calculation is on
             record, and lists re-verifying it after changes as an obligation. Lowering a speed limit in the
             envelope does not change a stopping time URML cannot measure.
@@ -301,6 +303,7 @@ groups:
         urml:
           support:
           - template
+          - evidence
           text: The machinery-safety template refuses programs until the interlocking record is on file, keeps
             programs off the outputs that drive guard locks and interlocks, and lists not defeating interlocks
             as an obligation.
@@ -332,6 +335,7 @@ groups:
         urml:
           support:
           - template
+          - evidence
           text: The machinery-safety template refuses programs until the electrical verification is on record.
             URML touches nothing electrical.
           links:
@@ -362,6 +366,7 @@ groups:
         urml:
           support:
           - template
+          - evidence
           text: The machinery-safety template refuses programs until the protective devices' IEC 61496 type
             is declared and allowed. URML never reads a safety sensor.
           links:
@@ -430,6 +435,7 @@ groups:
         urml:
           support:
           - template
+          - evidence
           text: The force and speed caps in the industrial template; the values come from your licensed copy.
           links:
           - label: industrial-template.yaml
@@ -460,6 +466,7 @@ groups:
           support:
           - template
           - runtime
+          - evidence
           text: The AMR template (travel-speed cap, forbidden zones, load handling only at stations, a program
             allowlist), and the VDA 5050 and ISO 21423 runtimes.
           links:
@@ -486,6 +493,7 @@ groups:
         urml:
           support:
           - template
+          - evidence
           text: 'The home template: speed and grip-force caps, hazard zones, no handling in excluded zones.
             Check its cites when the new edition is out.'
           links:
@@ -520,6 +528,7 @@ groups:
         urml:
           support:
           - template
+          - evidence
           text: 'The functional-safety template: programs wait until each safety function''s achieved level
             is declared and meets the requirement. URML counts toward no PL.'
           links:
@@ -548,6 +557,7 @@ groups:
         urml:
           support:
           - template
+          - evidence
           text: The same functional-safety template, which takes SILs.
           links:
           - label: functional-safety-template.yaml
@@ -575,6 +585,7 @@ groups:
           support:
           - template
           - position
+          - evidence
           text: 'The functional-safety template (SIL 1 to 4) and a position page: URML is outside the safety-related
             system and has no SIL.'
           links:
@@ -617,6 +628,7 @@ groups:
           support:
           - template
           - position
+          - evidence
           text: The cybersecurity template and a position page mapping URML against the foundational requirements.
             The VDA 5050 and ISO 21423 runtimes protect their broker conduit with TLS, mutual TLS and broker
             credentials. URML is not a security control and claims no SL.
@@ -658,7 +670,7 @@ groups:
           - label: OSHA list of NRTLs
             url: https://www.osha.gov/nationally-recognized-testing-laboratory-program/current-list-of-nrtls
         urml:
-          support: [template]
+          support: [template, evidence]
           text: >-
             For UL 1740, the industrial template, for robot cells. For UL 3100, the AMR
             template, for mobile robots at an industrial site. For UL 3300, the service-robot
