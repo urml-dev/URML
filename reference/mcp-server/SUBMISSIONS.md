@@ -88,7 +88,32 @@ Skill in a plugin and submit that. Founder action; track in the ledger.
 Directory landscape as of 2026-11 (re-verified during the LLM-citability
 research, notes in `research_notes/` and the maintainer's report):
 
-- **Glama**: auto-indexes GitHub; claim the listing via GitHub OAuth.
+- **Glama**: auto-indexes GitHub, but checked 2026-11-25: URML is NOT in
+  its index (the expected listing URLs 404, search finds nothing), and the
+  "Add Server" flow sits behind sign-in with no public form or documented
+  claim process. Likely cause: the server lives in a subfolder of a large
+  repo (`reference/mcp-server/`), the shape GitHub crawlers miss, and the
+  registry entry is a day old. Playbook:
+  1. Wait a week for auto-ingest from the official registry first;
+     re-check `https://glama.ai/mcp/servers?query=urml`.
+  2. If still absent: sign in at glama.ai with the `ido-beamdesk` GitHub
+     account, use the Add Server button, point it at
+     `https://github.com/urml-dev/URML` (server in `reference/mcp-server/`).
+  3. If the add flow rejects a subfolder server, email `support@glama.ai`
+     from `greenvh@gmail.com`:
+
+     > Subject: Listing request: URML MCP server
+     >
+     > Hi, could you add our MCP server to the directory? It is in the
+     > official MCP registry as io.github.urml-dev/urml (PyPI package
+     > urml-mcp-server), and the source lives in a subfolder of our main
+     > repo: https://github.com/urml-dev/URML/tree/main/reference/mcp-server.
+     > Listing metadata is below. I maintain the project and can verify
+     > ownership through the urml-dev GitHub org.
+
+     Append the listing metadata block below.
+  4. Once listed, claim it while signed in, then fill `submitted_at` /
+     `posted_url` in the ledger and refresh the outreach mirror.
 - **mcp.so**: web form submission.
 - **PulseMCP**: submissions frozen; it re-ingests from the official registry,
   so Channel 2 covers it. No action.
