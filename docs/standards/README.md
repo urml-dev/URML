@@ -84,6 +84,7 @@ URML is never a safety function, a security control or a certifier for anything 
 | [ISO 13849-1:2023, -2:2012](#iso-13849) | Standard | Functional safety of machinery | Anyone designing safety functions | Rulebook template, Evidence report |
 | [IEC 62061:2021](#iec-62061) | Standard | Functional safety of machinery | Designers of electrical safety control | Rulebook template, Evidence report |
 | [IEC 61508:2010](#iec-61508) | Standard | Functional safety, all sectors | Makers of safety components and safety software | Rulebook template, Position page, Evidence report |
+| [IEC 61800-5-2:2016](#iec-61800-5-2) | Standard | Functional safety of drives | Drive makers, and integrators who use a drive's safety functions | Rulebook template, Evidence report |
 | [IEC 62443](#iec-62443) | Standard | Industrial cybersecurity | Asset owners, integrators, makers of control products | Rulebook template, Position page, Evidence report |
 | [UL 1740, UL 3100, UL 3300](#ul-robots) | Listing or mark | US product safety | Makers selling robots into US workplaces and public spaces | Rulebook template, Evidence report |
 | [ISO 8373:2021](#iso-8373) | Standard | Vocabulary | Anyone writing about robots precisely | Position page |
@@ -288,6 +289,20 @@ How the safety functions themselves are designed and rated.
 - **Where to get the text.** [IEC 61508-1 at IEC](https://webstore.iec.ch/en/publication/5515)
 - **Who assesses it.** Bodies such as TÜV SÜD, TÜV Rheinland, exida or UL Solutions.
 - **What URML gives you.** The functional-safety template (SIL 1 to 4) and a position page: URML is outside the safety-related system and has no SIL. [functional-safety-template.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/functional-safety-template.yaml), [URML and IEC 61508](https://github.com/urml-dev/URML/blob/main/docs/safety/iec-61508.md)
+
+<a id="iec-61800-5-2"></a>
+
+### IEC 61800-5-2:2016: Safety functions of drives
+
+*Standard · Functional safety of drives*
+
+- **What it is.** The functional-safety standard for adjustable speed drives. It names the safety functions a drive can carry out itself, such as safe torque off (STO), safe stop 1 and 2 (SS1, SS2) and safely limited speed (SLS), and rates them in the IEC 61508 and IEC 62061 vocabulary. UL 61800-5-2 is the US version.
+- **Why it matters.** Most robot stops and speed limits end in the drives. A safety function the drive performs itself is often simpler and faster than one built around it, and its rating feeds the machine's PL or SIL.
+- **Who needs it.** Makers of drives and servo amplifiers, and integrators who use a drive's safety functions in the machine's safety design.
+- **How to meet it.** Drive makers design and certify the drive's safety functions to it and publish a safety manual. The integrator configures and validates them in the machine, within the limits that manual sets.
+- **Where to get the text.** [IEC 61800-5-2 at IEC](https://webstore.iec.ch/en/publication/24556)
+- **Who assesses it.** Drive makers usually have their drives certified by bodies such as TÜV SÜD, TÜV Rheinland or exida; the integrator validates the configured functions.
+- **What URML gives you.** The functional-safety template: the stop function the drives perform is on record, a speed cap keeps every program below the drives' safely limited speed so none trips it, and programs never write the drives' safety inputs. The drive enforces SLS; URML only avoids asking for more. [functional-safety-template.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/functional-safety-template.yaml)
 
 ## Security
 
