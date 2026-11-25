@@ -133,7 +133,7 @@ Certification follows [RFC-0705](../rfcs/0705-urml-certified.md) and is a paid c
 - In the entry, set `compatibility.tier: certified` and add a `certification` block with `conformance_spec: "0.2.2"` and an `attestation`: your statement that the runtime meets the six clauses of the [conformance contract](../../spec/conformance/v0.2.2.md), in particular that no path actuates without validation. Leave `certified_on`, `expires` and `reproduction` to the Licensor.
 - Email sales@urml.dev for a quote for the run, then open the pull request and say in it that you are applying for URML-Certified.
 
-The Licensor then installs that exact version from its public source in a clean environment, turns the network off, runs the same suite with your adapter, and commits the reproduction report and the dates to your pull request:
+The Licensor then installs that exact version from its public source in a clean environment, turns the network off, runs the same suite with your adapter, and commits the reproduction report and the dates to your pull request. The run is public code, `python -m urml_conformance.reproduce registry/entries/<id>.yaml`, so you can run it yourself first and see exactly what the Licensor will see:
 
 ```yaml
 compatibility:

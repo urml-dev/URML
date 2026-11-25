@@ -59,6 +59,7 @@ It is a starting point, not advice. Which documents apply to a machine depends o
 | **Runtime** | A URML runtime that speaks the protocol. |
 | **Position page** | Says where URML stands under the standard and what it does not claim. |
 | **Bundled rules** | Checks that ship in the validator and are on by default. |
+| **Registry check** | The registry checker enforces a mark's criteria on every entry, and the reproduction run that grants it is public code anyone can repeat. |
 | **Evidence report** | urml evidence build lists, for one deployment, what URML checks for each cited standard and what it leaves to others. |
 
 URML is never a safety function, a security control or a certifier for anything in this directory. It refuses programs that break declared limits and records what was declared. Certificates come from the bodies named in each entry.
@@ -87,7 +88,7 @@ URML is never a safety function, a security control or a certifier for anything 
 | [ISO 21423:2026](#iso-21423) | Standard | Fleet interface | Fleet operators and robot makers | Runtime |
 | [14 CFR Part 107 and Part 89](#faa-part-107) | Regulation | Small drones, US | Anyone flying a drone for work in the US | Bundled rules |
 | [NDAA Section 889, FCC Covered List, DCMA Blue List](#us-procurement) | Procurement list | Supply chain, US government | Vendors to the US government and its contractors | Bundled rules |
-| [URML-Certified](#urml-certified) | Certification | URML conformance | Makers of third-party URML runtimes | None yet |
+| [URML-Certified](#urml-certified) | Certification | URML conformance | Makers of third-party URML runtimes | Registry check |
 | [Evidence reports](#evidence-reports) | Self-declaration | Evidence for all of the above | Integrators, auditors, buyers | Evidence report |
 
 ## Machine safety basics
@@ -414,7 +415,7 @@ What the URML project itself offers. Neither is a safety or compliance certifica
 - **How to meet it.** Pass the full conformance suite with your own adapter, publish the package, order a certification run, and the Licensor reproduces the run offline from the public package.
 - **Where to get the text.** [RFC-0705](https://github.com/urml-dev/URML/blob/main/docs/rfcs/0705-urml-certified.md), [RFC-0708 (the fee)](https://github.com/urml-dev/URML/blob/main/docs/rfcs/0708-paid-certification.md)
 - **Who assesses it.** The Licensor, Yahalomik Ltd., through the URML registry, as a paid validation service quoted per run. A failed run keeps its fee and grants nothing. It certifies conformance only, never safety, security or compliance. [Registry](https://urml.dev/registry), [Order a certification run](https://github.com/urml-dev/URML/blob/main/COMMERCIAL.md#urml-certified-runtime-makers)
-- **What URML gives you.** This is URML's own program.
+- **What URML gives you.** URML's own program. The registry checker enforces every criterion except the attestation, and the Licensor's certification run is public code: run python -m urml_conformance.reproduce on your entry before you apply and see exactly what the Licensor will see. [Reproduction run (conformance README)](https://github.com/urml-dev/URML/blob/main/conformance/README.md), [How to apply](https://github.com/urml-dev/URML/blob/main/docs/registry/SUBMISSION.md#applying-for-urml-certified)
 
 <a id="evidence-reports"></a>
 

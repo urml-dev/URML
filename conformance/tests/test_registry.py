@@ -644,3 +644,116 @@ def test_the_check_command_reports_problems(mini: Mini, capsys: pytest.CaptureFi
     mini.write()
     assert main(["--root", str(mini.root), "check"]) == 1
     assert "problem(s) found" in capsys.readouterr().err
+
+
+# ---------------------------------------------------------------------------
+# The Licensor's reproduction run, end to end (urml_conformance.reproduce)
+# ---------------------------------------------------------------------------
+
+BOT_ADAPTER = '''\
+"""A third-party adapter for the test: the hermetic mock under the runtime's own name."""
+from urml_ros2_runtime import MockROSAdapter
+
+
+class BotAdapter(MockROSAdapter):
+    pass
+'''
+
+
+def test_a_reproduction_run_fills_an_entry_the_check_accepts(
+    mini: Mini, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Submitted entry -> plan -> offline run in a separate interpreter -> check -> filled entry -> registry check."""
+    import os
+    import sys
+
+    from urml_conformance.reproduce import (
+        certification_fields,
+        check_reproduction,
+        insert_certification,
+        plan_reproduction,
+        run_offline,
+        set_last_verified,
+    )
+
+    package_dir = tmp_path / "bot_pkg"
+    package_dir.mkdir()
+    (package_dir / "bot_runtime.py").write_text(BOT_ADAPTER, encoding="utf-8")
+    monkeypatch.syspath_prepend(str(package_dir))
+    # The submitter's self-report, from the runtime's own adapter.
+    mini.add_report(json.loads(run_suite("bot_runtime:BotAdapter", profiles=["educational"]).model_dump_json()))
+    mini.entry["compatibility"]["tier"] = "certified"
+    mini.entry["compatibility"]["certification"] = {
+        "conformance_spec": "0.2.2",
+        "attestation": "The runtime meets the six clauses of the conformance contract; nothing actuates "
+        "without validation.",
+    }
+    mini.write()
+
+    plan = plan_reproduction(mini.entry_path, mini.root)
+    output = mini.root / REPRO_REL
+    work = tmp_path / "work"
+    work.mkdir()
+    # The test stands in for the fresh environment with this interpreter and the adapter on its path.
+    env = {**os.environ, "PYTHONPATH": os.pathsep.join([str(package_dir), *sys.path])}
+    assert run_offline(plan, Path(sys.executable), output, work, env=env) == 0
+    reproduction = json.loads(output.read_text(encoding="utf-8"))
+    assert reproduction["adapter"] == "bot_runtime:BotAdapter"
+
+    from urml_conformance.report import ConformanceReport
+
+    assert check_reproduction(plan, ConformanceReport.model_validate(reproduction)) == []
+    fields = certification_fields(
+        report_path=REPRO_REL,
+        report_sha256=_sha256(output),
+        reproduced_on=date(2026, 9, 30),
+        environment="bot-runtime 1.0.0 from PyPI, network off after install except loopback.",
+    )
+    text = insert_certification(mini.entry_path.read_text(encoding="utf-8"), fields)
+    mini.entry_path.write_text(set_last_verified(text, fields["certified_on"]), encoding="utf-8", newline="\n")
+    assert check_registry(mini.root, today=CERT_DAY).problems == []
+    (entry,) = json.loads(render_export(mini.root))["entries"]
+    assert entry["compatibility"]["tier"] == "certified"
+
+
+def test_the_reproduce_command_writes_the_grant(
+    mini: Mini, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """The command line: `--python` stands in for the fresh environment, `--write` fills the entry."""
+    import os
+    import sys
+
+    from urml_conformance import reproduce
+
+    package_dir = tmp_path / "bot_pkg"
+    package_dir.mkdir()
+    (package_dir / "bot_runtime.py").write_text(BOT_ADAPTER, encoding="utf-8")
+    monkeypatch.syspath_prepend(str(package_dir))
+    mini.add_report(json.loads(run_suite("bot_runtime:BotAdapter", profiles=["educational"]).model_dump_json()))
+    mini.entry["compatibility"]["tier"] = "certified"
+    mini.entry["compatibility"]["certification"] = {
+        "conformance_spec": "0.2.2",
+        "attestation": "The runtime meets the six clauses of the conformance contract.",
+    }
+    mini.write()
+    path = os.pathsep.join([str(package_dir), *sys.path])
+    monkeypatch.setattr(reproduce, "clean_env", lambda extra=None: {**os.environ, "PYTHONPATH": path})
+
+    argv = [str(mini.entry_path), "--root", str(mini.root), "--python", sys.executable, "--date", "2026-09-30"]
+    assert reproduce.main([*argv, "--write"]) == 0
+    assert "reproduced:" in capsys.readouterr().out
+    assert check_registry(mini.root, today=CERT_DAY).problems == []
+    entry = yaml.safe_load(mini.entry_path.read_text(encoding="utf-8"))
+    assert entry["last_verified"] == entry["compatibility"]["certification"]["certified_on"] == "2026-09-30"
+
+
+def test_the_reproduce_command_refuses_a_first_party_runtime(mini: Mini, capsys: pytest.CaptureFixture[str]) -> None:
+    from urml_conformance import reproduce
+
+    mini.add_report(_report())
+    mini.entry["runtime"]["package"] = "urml-bot-runtime"
+    mini.entry["compatibility"]["tier"] = "certified"
+    mini.entry["compatibility"]["certification"] = {"conformance_spec": "0.2.2", "attestation": "Six clauses met."}
+    mini.write()
+    assert reproduce.main([str(mini.entry_path), "--root", str(mini.root)]) == 2
+    assert "does not certify its own runtimes" in capsys.readouterr().err

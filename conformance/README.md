@@ -76,7 +76,14 @@ A runtime that *executes* one of these programs has a critical conformance bug. 
 Two paths:
 
 1. **Self-reported conformance.** A runtime developer runs the suite against their runtime, records the result, and publishes the report. This is what the open ecosystem looks like. Self-reporting is honest because anyone can re-run the suite and verify.
-2. **Certified conformance.** The Licensor (or a successor foundation) reproduces a self-reported run from the public package and, if it passes, grants the **URML-Certified** mark through the registry. On the public criteria in [`spec/conformance/v0.2.2.md`](../spec/conformance/v0.2.2.md) section 3; the run is a paid validation service ([`COMMERCIAL.md`](../COMMERCIAL.md#urml-certified-runtime-makers)).
+2. **Certified conformance.** The Licensor (or a successor foundation) reproduces a self-reported run from the public package and, if it passes, grants the **URML-Certified** mark through the registry. On the public criteria in [`spec/conformance/v0.2.2.md`](../spec/conformance/v0.2.2.md) section 3; the run is a paid validation service ([`COMMERCIAL.md`](../COMMERCIAL.md#urml-certified-runtime-makers)). The run itself is public code, so anyone can repeat it:
+
+   ```bash
+   python -m urml_conformance.reproduce registry/entries/<id>.yaml           # install, run offline, check
+   python -m urml_conformance.reproduce registry/entries/<id>.yaml --write   # and fill the entry
+   ```
+
+   It installs exactly `<package>==<version>` and the matching urml-conformance into a fresh virtual environment, runs the claimed profiles with the entry's adapter while refusing every network connection and lookup except loopback, and checks the reproduction passed every fixture with the same adapter and the same fixture set (`fixtures_sha256`) as the self-report. The guard covers the suite's own process; `--run-prefix "unshare -rn"` (Linux) adds an OS-level sandbox for adapters that start their own processes. A failed run keeps its report as the record and grants nothing.
 
 ## How tests are added
 
