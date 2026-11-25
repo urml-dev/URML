@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "urml-av-runtime"
-version = "0.5.2"
+version = "0.5.3"
 description = "Autonomous-vehicle reference runtime for URML — Autoware AD API via rclpy."
 readme = "README.md"
 license = { text = "BUSL-1.1" }
@@ -24,8 +24,8 @@ classifiers = [
 dependencies = [
   "pydantic>=2.6,<3",
   "PyYAML>=6.0,<7",
-  "urml-validator>=0.5.2",
-  "urml-ros2-runtime>=0.5.2",
+  "urml-validator>=0.5.3",
+  "urml-ros2-runtime>=0.5.3",
 ]
 
 [project.optional-dependencies]

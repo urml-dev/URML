@@ -13,6 +13,7 @@ import copy
 import hashlib
 import json
 import os
+import re
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -111,8 +112,13 @@ def _cli_args(name: str) -> list[str]:
 
 
 def _golden_form(text: str) -> str:
-    """The report with the validator version masked, so a version bump does not stale the golden files."""
-    return text.replace(f'"version": "{__version__}"', '"version": "VERSION"')
+    """The report with the validator version masked, so a version bump does not stale the golden files.
+
+    A redacted report's ``full_report_sha256`` hashes the full report, version included, so it is masked
+    too; ``test_evidence_sign`` checks that digest against the full report directly.
+    """
+    text = text.replace(f'"version": "{__version__}"', '"version": "VERSION"')
+    return re.sub(r'"full_report_sha256": "[0-9a-f]{64}"', '"full_report_sha256": "SHA256"', text)
 
 
 def _items(report: EvidenceReport) -> dict[str, Any]:

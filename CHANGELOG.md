@@ -20,6 +20,16 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+## [0.5.3] - 2026-11-26
+
+The family is bumped in lockstep to 0.5.3 so the work merged since 0.5.2 reaches PyPI: the evidence report's Markdown, HTML, redacted and signed forms, the EU and UL rulebooks, the certification reproduction tool and its fee rules, and the release SBOMs. 0.5.2 on PyPI was built from the v0.5.2 tag, and a re-run skips versions that already exist, so none of it could ship without a new version.
+
+### Changed: release
+
+- The Claude Code plugin bundle (`plugins/urml`) pins `urml-mcp-server==0.5.3`, in lockstep with `server.json`. Until 0.5.3 is on PyPI, a plugin installed from `main` cannot start its server, so the release run follows the merge.
+- `registry/registry.json` and the committed evidence report example are regenerated: both record the validator version.
+- The evidence report golden test masks a redacted report's `full_report_sha256` along with the version. That digest hashes the full report, version included, so every bump staled the golden file; `test_evidence_sign` still checks the digest against the full report.
+
 ### Added: conformance
 
 - The reproduction run (`python -m urml_conformance.reproduce`) records how long each step took (`plan`, `install`, `run`, `check`) in the reproduction report's new optional `timing` field, and prints the times. RFC-0708 defers a published certification fee until runs show what one costs; this is the measurement. A report without `timing`, such as every self-report, still parses.

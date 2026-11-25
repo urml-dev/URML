@@ -1,3 +1,3 @@
 """Package version. Bumped per release."""
 
-__version__ = "0.5.2"
+__version__ = "0.5.3"
