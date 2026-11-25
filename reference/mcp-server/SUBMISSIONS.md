@@ -80,8 +80,40 @@ submission at [claude.ai/directory/manage](https://claude.ai/directory/manage)
 during review; submissions are auto-scanned). Connector listings are
 remote-only; a local stdio server like ours reaches the directory only inside
 a Claude Code **plugin bundle** (desktop extensions / MCPB are deprecated).
-Practical path: wrap the server (`uvx urml-mcp-server` style) plus the Agent
-Skill in a plugin and submit that. Founder action; track in the ledger.
+
+**The bundle exists**: [`plugins/urml/`](../../plugins/urml/), with the repo
+root as its marketplace (`.claude-plugin/marketplace.json`). It wraps the MCP
+server (stdio via `uvx --from urml-mcp-server==<release> urml-mcp`, pinned)
+and the `urml-robot-intent` Agent Skill.
+`conformance/tests/test_claude_plugin_bundle.py` keeps the bundled skill
+byte-identical to `.github/skills/` and the two version sites (plugin.json,
+.mcp.json pin) in lockstep with `server.json`; bump them with the family.
+Anyone can install without the directory:
+`/plugin marketplace add urml-dev/URML` then `/plugin install urml@urml-dev`.
+Local check before submitting: `claude plugin validate ./plugins/urml`
+(passes with four warnings about directory-only plugin.json fields, which
+Claude Code ignores at load time; `--strict` fails on exactly those four).
+
+**Submission steps** (founder, paid claude.ai plan, GitHub connected with
+push access):
+1. claude.ai/directory/manage, Submit new, choose **Plugin bundle** (not MCP
+   connector).
+2. Source: repository `urml-dev/URML`, plugin path `plugins/urml`, default
+   branch.
+3. Validate; fix any Blocks findings in the repo and re-validate. Listing
+   details are read from plugin.json and the plugin README; edit the files,
+   not the portal.
+4. Data handling: the server collects nothing, calls no LLM, and runs
+   offline; answer accordingly. Compliance contact: `greenvh@gmail.com`.
+5. Submit for review. Expect a reviewer hold labeled "Runs a pinned npx or
+   uvx package": every uvx launcher gets one, pinned or not. That hold is
+   normal, not a rejection; if it becomes a block, the fallback is vendoring
+   the server code into the plugin and launching via
+   `${CLAUDE_PLUGIN_ROOT}`.
+6. Updates ship by merging to main and bumping the version sites (the
+   lockstep test fails if a release forgets them).
+
+Track in the ledger once submitted.
 
 ## Channel 4: MCP directories (Glama, mcp.so; Smithery and PulseMCP need no action)
 
