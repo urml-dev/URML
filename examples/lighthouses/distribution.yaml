@@ -25,8 +25,9 @@
 # see reference/mcp-server/README.md "Install"), and the Agent Skill is indexed
 # from the repo. A documented, working install path is AVAILABILITY,
 # not adoption. It does NOT move any row off `response: none` on its own; only a
-# real user / issue / citation does. The mcp-skill-ci.yml gate keeps that install
-# path and the Skill's commands from silently rotting.
+# real user / issue / citation does. The mcp-skill-ci.yml gate keeps the
+# server's code and the Skill's commands from silently rotting; it installs from
+# the checkout, not from PyPI or the git URLs.
 #
 # response enum: none | acked | engaged | declined  (mirrors the outreach enum).
 
