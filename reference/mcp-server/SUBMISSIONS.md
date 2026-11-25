@@ -114,7 +114,30 @@ research, notes in `research_notes/` and the maintainer's report):
      Append the listing metadata block below.
   4. Once listed, claim it while signed in, then fill `submitted_at` /
      `posted_url` in the ledger and refresh the outreach mirror.
-- **mcp.so**: web form submission.
+- **mcp.so**: checked 2026-11-25: URML is not listed (search returns 0
+  results, every plausible `/servers/<slug>` URL 404s). Submission is a
+  form at `https://mcp.so/submit?type=server`: one required field,
+  Repository URL; the site then fetches name, description, config and
+  tools for review before submitting. Two tiers: free (goes live "after
+  review", no timeframe published) and a one-time $39 paid tier
+  (immediate publish, verified badge, featured placement, dofollow
+  link). Playbook:
+  1. Sign in at mcp.so (method undocumented; expect GitHub or email),
+     open the submit form, enter
+     `https://github.com/urml-dev/URML` as the Repository URL. If the
+     fetched details come out wrong because the server lives in
+     `reference/mcp-server/`, retry with the subfolder URL
+     `https://github.com/urml-dev/URML/tree/main/reference/mcp-server`;
+     the form does not document whether subfolders are accepted, so
+     this is a live test.
+  2. Review the fetched name/description against the listing metadata
+     block below before submitting; fix drift in the form, not by
+     accepting whatever it scraped.
+  3. Use the FREE tier. The $39 tier buys placement and a badge, which
+     is directory vanity, not adoption; paying for priority placement
+     is off-ethos unless the founder decides otherwise.
+  4. Once live, fill `submitted_at` / `posted_url` in the ledger and
+     refresh the outreach mirror.
 - **PulseMCP**: submissions frozen; it re-ingests from the official registry,
   so Channel 2 covers it. No action.
 - **Smithery**: proxy/CLI hosting shut down 2026-10-31; the directory
