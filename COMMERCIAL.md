@@ -85,13 +85,23 @@ For a maker whose vehicle speaks VDA 5050. We run your vehicle, or your VDA 5050
 - a written report of which URML primitives your vehicle carries out and where it diverges from VDA 5050 as URML uses it;
 - the URML manifest for the vehicle, which you can ship to your customers.
 
-This is a validation run and a report. It does not grant the **URML-Certified** mark. Certification is free, on public criteria, through the registry ([`TRADEMARK.md`](TRADEMARK.md), [RFC-0705](docs/rfcs/0705-urml-certified.md)); an engagement can help you prepare for it but never decides or speeds it.
+This is a validation run and a report. It does not grant the **URML-Certified** mark, which is its own service below.
+
+### URML-Certified (runtime makers)
+
+For a maker who ships a URML runtime as a public package and wants the **URML-Certified** mark for it ([RFC-0705](docs/rfcs/0705-urml-certified.md), [RFC-0708](docs/rfcs/0708-paid-certification.md)). One certification run:
+
+- we install the exact version you name from its public source, in a clean environment, and turn the network off;
+- we run the full conformance suite for the profiles you claim, with your adapter, and commit the reproduction report to your registry entry;
+- we review the entry and your attestation against the public criteria in [`spec/conformance/v0.2.2.md`](spec/conformance/v0.2.2.md) section 3.
+
+If every criterion is met and the registry check passes, the entry merges as certified, for at most 366 days. Priced per certification, from the scope of the run (the number of profiles, and whether it runs against a simulator, a recorded substrate or your hardware). You do not need a commercial license to apply.
+
+The fee pays for the run, never for the result. A run that fails keeps its fee and grants nothing. Requests are run in the order they are paid; there is no expedited tier. A renewal or a new runtime version is a new run. The mark certifies conformance to the URML specification only; its use is governed by [`TRADEMARK.md`](TRADEMARK.md). The conformance suite and the self-reported tier stay free.
 
 A validation report records what was tested on the dates it was tested. It is not a safety assessment or a compliance determination; site safety stays with the integrator and its risk assessment.
 
 ## Other commercial offerings
-
-The **URML-Certified** mark is not one of them. It is free ([RFC-0705](docs/rfcs/0705-urml-certified.md)).
 
 - **Audited policy files** with third-party legal attestation, kept current.
 - **Hosted services**: validation, LLM bridge, simulation. URML always runs fully offline; hosting is optional.

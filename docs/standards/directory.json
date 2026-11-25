@@ -1043,22 +1043,30 @@
           "kind": "certification",
           "area": "URML conformance",
           "who_short": "Makers of third-party URML runtimes",
-          "what": "A free certification that a third-party runtime conforms to the URML specification for its profiles (RFC-0705), for at most 366 days.",
+          "what": "A certification that a third-party runtime conforms to the URML specification for its profiles (RFC-0705), for at most 366 days. The Licensor charges for the certification run, never for the result (RFC-0708).",
           "why": "A buyer can tell that a runtime's conformance claim was reproduced by someone other than its authors.",
           "who": "Makers of URML runtimes for their robots or substrates.",
-          "how": "Pass the full conformance suite with your own adapter, publish the package, and the Licensor reproduces the run offline from the public package.",
+          "how": "Pass the full conformance suite with your own adapter, publish the package, order a certification run, and the Licensor reproduces the run offline from the public package.",
           "text": [
             {
               "label": "RFC-0705",
               "url": "https://github.com/urml-dev/URML/blob/main/docs/rfcs/0705-urml-certified.md"
+            },
+            {
+              "label": "RFC-0708 (the fee)",
+              "url": "https://github.com/urml-dev/URML/blob/main/docs/rfcs/0708-paid-certification.md"
             }
           ],
           "assess": {
-            "text": "The Licensor, Yahalomik Ltd., through the URML registry. Free. It certifies conformance only, never safety, security or compliance.",
+            "text": "The Licensor, Yahalomik Ltd., through the URML registry, as a paid validation service quoted per run. A failed run keeps its fee and grants nothing. It certifies conformance only, never safety, security or compliance.",
             "links": [
               {
                 "label": "Registry",
                 "url": "https://urml.dev/registry"
+              },
+              {
+                "label": "Order a certification run",
+                "url": "https://github.com/urml-dev/URML/blob/main/COMMERCIAL.md#urml-certified-runtime-makers"
               }
             ]
           },

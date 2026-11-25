@@ -207,7 +207,7 @@ The robot does not execute words. It executes verified, typed, statically checke
 
 ## Non-Goals
 
-URML will never become a general-purpose programming language. It will never aim to replace ROS, PX4, or AUTOSAR. It will never embed a specific LLM. It will never require cloud connectivity to execute a validated program. It will never sell certification — it will offer it, and the certification process will be public.
+URML will never become a general-purpose programming language. It will never aim to replace ROS, PX4, or AUTOSAR. It will never embed a specific LLM. It will never require cloud connectivity to execute a validated program. Its certification will always run on public criteria. The Licensor charges for the certification run, never for the result, and no payment changes a verdict ([RFC-0708](docs/rfcs/0708-paid-certification.md)).
 
 ## Governance
 
