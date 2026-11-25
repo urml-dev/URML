@@ -69,6 +69,15 @@
   response: none
   notes: "io.github.urml-dev/urml 0.5.2 published with mcp-publisher 1.8.16, logged in with an org Owner's token (the device flow cannot publish to org namespaces). Listing status active."
 
+- slug: claude-directory
+  track: mcp
+  venue: "Anthropic Claude directory / Claude Marketplace (claude.ai/directory/manage)"
+  artifact: "reference/mcp-server/server.json"
+  submitted_at: ""
+  posted_url: ""
+  response: none
+  notes: "Separate from the open registry: registry publish does NOT list a server in Claude. Stdio servers are listable only inside a Claude Code plugin bundle (connector listings are remote-only; MCPB deprecated). Founder action, paid claude.ai plan; community listing by default. Playbook: reference/mcp-server/SUBMISSIONS.md Channel 3."
+
 - slug: smithery
   track: mcp
   venue: "Smithery (MCP directory)"
@@ -76,7 +85,7 @@
   submitted_at: ""
   posted_url: ""
   response: none
-  notes: "Claim listing under greenvh@gmail.com after the registry entry is live."
+  notes: "No action as of 2026-11: Smithery proxy/CLI hosting shut down 2026-10-31; directory continues under Arcade.dev with no documented submission path."
 
 - slug: glama
   track: mcp
@@ -85,7 +94,7 @@
   submitted_at: ""
   posted_url: ""
   response: none
-  notes: "Claim listing under greenvh@gmail.com."
+  notes: "Auto-indexes GitHub; claim the listing via GitHub OAuth under greenvh@gmail.com."
 
 - slug: pulsemcp
   track: mcp
@@ -94,7 +103,7 @@
   submitted_at: ""
   posted_url: ""
   response: none
-  notes: "Claim listing under greenvh@gmail.com."
+  notes: "No action as of 2026-11: submissions frozen; PulseMCP re-ingests from the official registry, which already lists us."
 
 - slug: mcp-so
   track: mcp
@@ -103,4 +112,4 @@
   submitted_at: ""
   posted_url: ""
   response: none
-  notes: "Claim listing under greenvh@gmail.com."
+  notes: "Web form submission under greenvh@gmail.com."

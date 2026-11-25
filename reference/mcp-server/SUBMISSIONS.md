@@ -71,11 +71,32 @@ live first.
 
 ---
 
-## Channel 3: MCP directories (Smithery, Glama, PulseMCP, mcp.so)
+## Channel 3: the Claude directory (separate from the registry)
 
-These crawl the ecosystem and let you claim ownership of the listing. After the
-registry entry is live, submit / claim each under `greenvh@gmail.com`. They are
-directory listings, not the source of truth; [`server.json`](server.json) is.
+Publishing to the open registry does NOT list the server in Claude; Anthropic
+says so explicitly. The Claude directory / Claude Marketplace is one separate
+submission at [claude.ai/directory/manage](https://claude.ai/directory/manage)
+(any paid plan, community listing by default, Verified decided by Anthropic
+during review; submissions are auto-scanned). Connector listings are
+remote-only; a local stdio server like ours reaches the directory only inside
+a Claude Code **plugin bundle** (desktop extensions / MCPB are deprecated).
+Practical path: wrap the server (`uvx urml-mcp-server` style) plus the Agent
+Skill in a plugin and submit that. Founder action; track in the ledger.
+
+## Channel 4: MCP directories (Glama, mcp.so; Smithery and PulseMCP need no action)
+
+Directory landscape as of 2026-11 (re-verified during the LLM-citability
+research, notes in `research_notes/` and the maintainer's report):
+
+- **Glama**: auto-indexes GitHub; claim the listing via GitHub OAuth.
+- **mcp.so**: web form submission.
+- **PulseMCP**: submissions frozen; it re-ingests from the official registry,
+  so Channel 2 covers it. No action.
+- **Smithery**: proxy/CLI hosting shut down 2026-10-31; the directory
+  continues under Arcade.dev with no documented submission path. No action.
+
+They are directory listings, not the source of truth;
+[`server.json`](server.json) is. Claim under `greenvh@gmail.com`.
 
 **Listing metadata:**
 - **Name:** URML MCP server (`urml-mcp-server`)
