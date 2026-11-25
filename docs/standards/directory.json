@@ -463,7 +463,7 @@
       "entries": [
         {
           "id": "iso-10218",
-          "name": "ISO 10218-1 and -2:2025",
+          "name": "ISO 10218-1 and -2:2025, ANSI/A3 R15.06-2025",
           "title": "Industrial robots",
           "kind": "standard",
           "area": "Industrial robot safety",
@@ -499,7 +499,7 @@
               "template",
               "evidence"
             ],
-            "text": "The industrial template: speed and force caps, a program allowlist, untouched safety outputs, the cell layout, the robot's UL 1740 listing on record, and the obligations URML cannot check.",
+            "text": "The industrial template: speed and force caps, a program allowlist, untouched safety outputs, the cell layout, the robot's UL 1740 listing on record, and the obligations URML cannot check. Every citation names ISO 10218 and R15.06-2025 together, and two obligations come from R15.06-3 for the people who run the cell: run it as validated, with changes assessed, and train everyone who works with it.",
             "links": [
               {
                 "label": "industrial-template.yaml",

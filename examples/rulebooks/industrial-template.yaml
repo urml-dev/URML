@@ -1,5 +1,6 @@
 # Template: an integrator's rulebook for an industrial robot cell, shaped
-# after ISO 10218-1:2025, ISO 10218-2:2025 and ISO/TS 15066:2016, with the
+# after ISO 10218-1:2025, ISO 10218-2:2025 and ISO/TS 15066:2016, their US
+# adoption ANSI/A3 R15.06-2025 with its user part R15.06-3-2025, and with the
 # robot's UL 1740 product listing on record.
 #
 # This file carries no values. ISO standards are copyrighted, and a cell's
@@ -24,6 +25,13 @@
 # 2025-02, and ISO/TS 15066:2016 (Robots and robotic devices, Collaborative
 # robots), which ISO lists as current (last confirmed in 2022). Check which
 # edition your contract names.
+#
+# In the US, ANSI/A3 R15.06-2025 adopts ISO 10218-1:2025 and ISO 10218-2:2025
+# in full and replaces ANSI/RIA R15.06-2012, so every clause cited below is the
+# same clause there. ANSI/A3 R15.06-3-2025 (Part 3: Use of Industrial Robot
+# Cells) has no ISO counterpart: it sets requirements for the people who use
+# a cell over its lifecycle, and the last two obligations come from it. A3
+# publishes all three parts; checked on 2026-11-25.
 #
 # UL 1740 (robots and robotic equipment) is the US product safety standard a
 # Nationally Recognized Testing Laboratory (NRTL) lists an industrial robot
@@ -58,8 +66,8 @@ rules:
   - id: collaborative_speed
     title: Maximum robot speed in the collaborative application
     cite:
-      text: "ISO 10218-2:2025, clause FILL_IN; the cell's risk assessment"
-      standard: "ISO 10218-2:2025"
+      text: "ISO 10218-2:2025 or ANSI/A3 R15.06-2025, clause FILL_IN; the cell's risk assessment"
+      standard: ["ISO 10218-2:2025", "ANSI/A3 R15.06-2025"]
     note: >-
       The speed the risk assessment allows where people and the robot share
       the workspace. A global cap: v0.1 has no zone-scoped caps. Speed and
@@ -71,8 +79,8 @@ rules:
   - id: gripper_contact_force
     title: Maximum gripper force where a hand can be caught
     cite:
-      text: "ISO/TS 15066:2016 or ISO 10218-2:2025, clause FILL_IN; the cell's risk assessment"
-      standard: ["ISO 10218-2:2025", "ISO/TS 15066:2016"]
+      text: "ISO/TS 15066:2016, ISO 10218-2:2025 or ANSI/A3 R15.06-2025, clause FILL_IN; the cell's risk assessment"
+      standard: ["ISO 10218-2:2025", "ISO/TS 15066:2016", "ANSI/A3 R15.06-2025"]
     note: >-
       Derived from the quasi-static contact limit for the hand and fingers in
       the licensed standard, with the integrator's own margin. URML compares
@@ -85,8 +93,8 @@ rules:
   - id: validated_programs_only
     title: Only controller programs covered by the risk assessment run
     cite:
-      text: "ISO 10218-2:2025, clause FILL_IN; the cell's risk assessment"
-      standard: "ISO 10218-2:2025"
+      text: "ISO 10218-2:2025 or ANSI/A3 R15.06-2025, clause FILL_IN; the cell's risk assessment"
+      standard: ["ISO 10218-2:2025", "ANSI/A3 R15.06-2025"]
     note: >-
       call_program is opaque to URML. List the controller programs the risk
       assessment covered.
@@ -97,8 +105,8 @@ rules:
   - id: safety_outputs_untouched
     title: Programs never write safety-related output lines
     cite:
-      text: "ISO 10218-2:2025, clause FILL_IN; the cell's risk assessment"
-      standard: "ISO 10218-2:2025"
+      text: "ISO 10218-2:2025 or ANSI/A3 R15.06-2025, clause FILL_IN; the cell's risk assessment"
+      standard: ["ISO 10218-2:2025", "ANSI/A3 R15.06-2025"]
     note: >-
       Name the output lines the risk assessment marks safety-related, such as
       a muting or bypass signal.
@@ -109,8 +117,8 @@ rules:
   - id: outside_cell_layout
     title: The robot never targets a place outside the validated cell layout
     cite:
-      text: "ISO 10218-2:2025, clause FILL_IN; the cell layout"
-      standard: "ISO 10218-2:2025"
+      text: "ISO 10218-2:2025 or ANSI/A3 R15.06-2025, clause FILL_IN; the cell layout"
+      standard: ["ISO 10218-2:2025", "ANSI/A3 R15.06-2025"]
     note: >-
       Name the floor areas the cell layout keeps the robot out of, and declare
       them in the manifest's declared_areas.
@@ -147,8 +155,8 @@ obligations:
       The cell has a risk assessment that covers every task these programs
       perform, repeated whenever the cell changes.
     cite:
-      text: "ISO 10218-2:2025, clause FILL_IN"
-      standard: "ISO 10218-2:2025"
+      text: "ISO 10218-2:2025 or ANSI/A3 R15.06-2025, clause FILL_IN"
+      standard: ["ISO 10218-2:2025", "ANSI/A3 R15.06-2025"]
 
   - id: safety_rated_functions
     title: Stop functions in safety-rated control
@@ -157,8 +165,8 @@ obligations:
       or power and force limiting run in safety-rated hardware and software,
       not in URML.
     cite:
-      text: "ISO 10218-1:2025 and ISO 10218-2:2025, clauses FILL_IN"
-      standard: ["ISO 10218-1:2025", "ISO 10218-2:2025"]
+      text: "ISO 10218-1:2025 and ISO 10218-2:2025, or ANSI/A3 R15.06-2025, clauses FILL_IN"
+      standard: ["ISO 10218-1:2025", "ISO 10218-2:2025", "ANSI/A3 R15.06-2025"]
 
   - id: contact_verification
     title: Measured contact forces for power and force limiting
@@ -167,8 +175,8 @@ obligations:
       and pressures are measured in the installed cell and stay within the
       limits the risk assessment sets.
     cite:
-      text: "ISO/TS 15066:2016 or ISO 10218-2:2025, clause FILL_IN"
-      standard: ["ISO 10218-2:2025", "ISO/TS 15066:2016"]
+      text: "ISO/TS 15066:2016, ISO 10218-2:2025 or ANSI/A3 R15.06-2025, clause FILL_IN"
+      standard: ["ISO 10218-2:2025", "ISO/TS 15066:2016", "ANSI/A3 R15.06-2025"]
 
   - id: cell_validation
     title: The installed cell is validated before production use
@@ -176,8 +184,8 @@ obligations:
       The integrator verifies and validates the safety functions of the
       installed cell before it runs production programs.
     cite:
-      text: "ISO 10218-2:2025, clause FILL_IN"
-      standard: "ISO 10218-2:2025"
+      text: "ISO 10218-2:2025 or ANSI/A3 R15.06-2025, clause FILL_IN"
+      standard: ["ISO 10218-2:2025", "ANSI/A3 R15.06-2025"]
 
   - id: urml_not_part_of_the_listing
     title: URML is not part of the listing and changes nothing it covers
@@ -199,3 +207,24 @@ obligations:
     cite:
       text: "UL 1740, section FILL_IN; the robot's instructions"
       standard: "UL 1740"
+
+  - id: cell_used_as_validated
+    title: The user runs the cell as it was validated, and has changes assessed
+    text: >-
+      The user runs the cell only for the tasks, with the programs and under
+      the conditions the integrator validated. A change to the cell, to its
+      controller programs, or to the rulebooks, envelope or manifest URML
+      checks against is assessed before the cell returns to production.
+    cite:
+      text: "ANSI/A3 R15.06-3-2025, clause FILL_IN"
+      standard: "ANSI/A3 R15.06-3-2025"
+
+  - id: people_trained_for_the_cell
+    title: People who work with the cell are trained for their tasks
+    text: >-
+      Operators, maintainers and programmers are trained for the tasks they
+      perform in and around the cell, including that URML refuses programs
+      before they run and does not stop a robot that is already moving.
+    cite:
+      text: "ANSI/A3 R15.06-3-2025, clause FILL_IN"
+      standard: "ANSI/A3 R15.06-3-2025"
