@@ -1,6 +1,6 @@
 # Template: an integrator's rulebook for industrial mobile robots (AMRs and
 # AGVs) at one site, shaped after ISO 3691-4:2023 and the ANSI/A3 R15.08
-# series.
+# series, with the robot's UL 3100 product listing on record.
 #
 # This file carries no values. ISO and ANSI standards are copyrighted, and a
 # site's limits come from its risk assessment and the integrator's licensed
@@ -30,6 +30,17 @@
 # R15.08-2-2023 (Part 2: the system and its integration); and ANSI/A3
 # R15.08-3-2026 (Part 3: use). Check which editions your contract names; a
 # site may follow ISO 3691-4, R15.08, or both.
+#
+# UL 3100 (automated mobile platforms) is the US product safety standard a
+# Nationally Recognized Testing Laboratory (NRTL) lists a mobile robot to. The
+# listing is earned by the robot, not by URML: the last two rules only refuse
+# programs until the operator has put the listing on record (the standard it
+# is listed to, from the list the site accepts, and the NRTL's listing
+# reference). Delete both rules and their two obligations if the site does not
+# require a listing. UL 3100 edition 1, published 2021-05-26, latest revision
+# approved by ANSI and SCC on 2026-06-10, checked on 2026-11-24 on the UL
+# Standards & Engagement store; the OSHA list of NRTLs says which labs may
+# certify to it.
 #
 # A voluntary standard is not law, so an integrator who adopts one writes it
 # as an organization rulebook. The rules below are the statically checkable
@@ -117,6 +128,29 @@ rules:
       primitives: [set_output]
       names: [FILL_IN]
 
+  - id: listing_standard_declared
+    title: The robot's product listing standard is declared and accepted
+    cite:
+      text: "UL 3100, section FILL_IN; the site's purchasing requirements"
+      standard: "UL 3100"
+    note: >-
+      The standard the robot is listed to, as the NRTL's listing names it.
+      List the standards the site accepts, for example UL 3100.
+    require_declared:
+      key: listing_standard
+      allowed: [FILL_IN]
+
+  - id: listing_on_record
+    title: The NRTL listing is on record
+    cite:
+      text: "UL 3100, section FILL_IN; the NRTL's listing"
+      standard: "UL 3100"
+    note: >-
+      The declared value names the NRTL and its listing or file reference, so
+      a reader can look it up. Any value satisfies the rule.
+    require_declared:
+      key: nrtl_listing
+
 obligations:
   - id: risk_assessment
     title: A current risk assessment for the mobile robot system
@@ -167,3 +201,25 @@ obligations:
     cite:
       text: "ANSI/A3 R15.08-3-2026 or ISO 3691-4:2023, clause FILL_IN"
       standard: ["ISO 3691-4:2023", "ANSI/A3 R15.08-3-2026"]
+
+  - id: urml_not_part_of_the_listing
+    title: URML is not part of the listing and changes nothing it covers
+    text: >-
+      The NRTL did not evaluate URML. Integrating URML, or a fleet manager it
+      drives, does not change the robot's hardware, firmware, protective
+      functions or battery system. If an integration would, the site asks the
+      NRTL whether the listing still applies before the robot goes into
+      service.
+    cite:
+      text: "UL 3100, section FILL_IN; the NRTL's listing"
+      standard: "UL 3100"
+
+  - id: used_within_listing_conditions
+    title: The robot is used within its listing's conditions
+    text: >-
+      The robot works only in the environment, on the floors and slopes, with
+      the loads and the charging arrangement its listing and instructions
+      allow, and the site checks the listing stays in force.
+    cite:
+      text: "UL 3100, section FILL_IN; the robot's instructions"
+      standard: "UL 3100"

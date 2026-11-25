@@ -32,7 +32,10 @@ FILLED_LISTS = {
     "in_zones": ["travel_lane"],
     "except_names": ["wrap_pallet"],
     "names": ["door_interlock"],
+    "allowed": ["UL 3100"],
 }
+#: The operator's deployment rulebook: the robot's UL 3100 listing on record.
+LISTED = {"listing_standard": "UL 3100", "nrtl_listing": "Example NRTL, file E000000"}
 SPEED_LIMIT = 1.0
 
 
@@ -82,11 +85,21 @@ def _square(x: float, y: float, size: float = 4.0) -> list[dict[str, float]]:
     return [{"x": x, "y": y}, {"x": x + size, "y": y}, {"x": x + size, "y": y + size}, {"x": x, "y": y + size}]
 
 
-def _run(*steps: dict[str, Any]) -> ValidationResult:
+def _deployment(**declarations: Any) -> dict[str, Any]:
+    return {
+        "rulebook_version": "0.1",
+        "rulebook_id": "site_amr_declarations",
+        "title": "Site AMR listing on record",
+        "issuer": {"kind": "deployment", "name": "Example Site"},
+        "source_status": "deployment_declaration",
+        "declarations": declarations,
+    }
+
+
+def _run(*steps: dict[str, Any], listing: dict[str, Any] | None = LISTED) -> ValidationResult:
     program = {"profile": "warehouse", "behavior": {"type": "sequence", "steps": list(steps)}}
-    return validate(
-        program, _manifest(), None, profiles=("warehouse",), policy=None, rulebooks=[_filled()]
-    )
+    books = [_filled()] if listing is None else [_filled(), _deployment(**listing)]
+    return validate(program, _manifest(), None, profiles=("warehouse",), policy=None, rulebooks=books)
 
 
 def _rule_codes(result: ValidationResult) -> list[str]:
@@ -108,8 +121,11 @@ def test_the_filled_template_loads() -> None:
         "load_handling_at_stations_only",
         "validated_programs_only",
         "safety_outputs_untouched",
+        "listing_standard_declared",
+        "listing_on_record",
     }
-    assert len(book.obligations) == 5
+    assert len(book.obligations) == 7
+    assert "urml_not_part_of_the_listing" in {o.id for o in book.obligations}
 
 
 def test_a_program_inside_the_rules_is_accepted() -> None:
@@ -137,3 +153,24 @@ def test_load_handling_in_a_travel_lane_is_refused() -> None:
     result = _run({"pick_from": {"source": "lane_shelf", "object": "tote", "force": "gentle"}})
     assert "rule.primitive_forbidden" in _rule_codes(result)
     assert not result.accepted
+
+
+@pytest.mark.parametrize(
+    "listing",
+    [
+        {"nrtl_listing": "Example NRTL, file E000000"},
+        {**LISTED, "listing_standard": "UL 1740"},
+        {"listing_standard": "UL 3100"},
+    ],
+    ids=["no-standard", "standard-not-accepted", "no-listing"],
+)
+def test_a_missing_or_unaccepted_listing_refuses_every_program(listing: dict[str, Any]) -> None:
+    result = _run({"move_to": {"location": "shelf_a3", "speed": SPEED_LIMIT}}, listing=listing)
+    assert _rule_codes(result) == ["rule.declaration_missing"]
+    assert not result.accepted
+
+
+def test_with_no_deployment_rulebook_the_missing_listing_is_a_warning() -> None:
+    result = _run({"move_to": {"location": "shelf_a3", "speed": SPEED_LIMIT}}, listing=None)
+    assert _rule_codes(result) == ["rule.declaration_missing"] * 2
+    assert result.accepted

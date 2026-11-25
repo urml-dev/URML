@@ -806,11 +806,15 @@
             "support": [
               "template"
             ],
-            "text": "The service-robot template, after UL 3300, for robots in public and commercial spaces: speed and grip-force caps, hazard zones and a program allowlist, with programs refused until the listing standard and the NRTL listing are on record. The listing itself covers the robot's hardware and protective functions, which URML does not touch; URML is not part of what the NRTL evaluates.",
+            "text": "For UL 3300, the service-robot template, for robots in public and commercial spaces. For UL 3100, the AMR template, for mobile robots at an industrial site. Both keep programs within the site's limits and refuse them until the listing standard and the NRTL listing are on record. The listing itself covers the robot's hardware and protective functions, which URML does not touch; URML is not part of what the NRTL evaluates.",
             "links": [
               {
-                "label": "service-robot-template.yaml",
+                "label": "service-robot-template.yaml (UL 3300)",
                 "url": "https://github.com/urml-dev/URML/blob/main/examples/rulebooks/service-robot-template.yaml"
+              },
+              {
+                "label": "amr-template.yaml (UL 3100)",
+                "url": "https://github.com/urml-dev/URML/blob/main/examples/rulebooks/amr-template.yaml"
               }
             ]
           }
