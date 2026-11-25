@@ -20,10 +20,10 @@
 #
 # Contact on every listing: greenvh@gmail.com.
 #
-# USABLE NOW, EVEN WHILE THE VENUES ARE UNPUBLISHED: the MCP server runs today
-# straight from GitHub (a four-URL git+subdirectory pip install; see
-# reference/mcp-server/README.md "Use it now, from GitHub"), and the Agent Skill
-# is indexed from the repo. A documented, working install path is AVAILABILITY,
+# USABLE NOW: the MCP server installs with `pip install urml-mcp-server` (or
+# from GitHub with a four-URL git+subdirectory pip install for unreleased code;
+# see reference/mcp-server/README.md "Install"), and the Agent Skill is indexed
+# from the repo. A documented, working install path is AVAILABILITY,
 # not adoption. It does NOT move any row off `response: none` on its own; only a
 # real user / issue / citation does. The mcp-skill-ci.yml gate keeps that install
 # path and the Skill's commands from silently rotting.

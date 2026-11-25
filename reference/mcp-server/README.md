@@ -34,24 +34,30 @@ There is no `translate` tool by design. The agent calls `urml_get_contract`, emi
 
 Optionally point `URML_MCP_ADAPTER_CONFIG` at an adapter-config YAML. Every execute validates the program before it builds a runtime or an adapter, and the runtime re-validates before running; there is no path to an actuator that skips the validator.
 
-## Use it now, from GitHub (no PyPI needed)
+## Install
 
-The server runs today, straight from source. `urml-mcp-server` is not on PyPI yet, and the `urml-validator` 0.4.0 build on PyPI predates code the server imports (a mixed install fails with `No module named 'urml_validator.evidence'`). Install the server together with its three dependencies from their git subdirectories in a single `pip install`, so all four come from the same source:
+`urml-mcp-server` is on PyPI. It pulls in `urml-validator`, `urml-llm-bridge` and `urml-ros2-runtime` at the same version:
 
 ```bash
 python -m venv .urml-mcp
 . .urml-mcp/bin/activate                     # Windows: .urml-mcp\Scripts\activate
 
+pip install urml-mcp-server
+
+urml-mcp        # runs over stdio
+```
+
+`urml-ros2-runtime` carries the hermetic `mock` adapter, so `urml_execute` works with no ROS install and no hardware. The `px4` and `ardupilot` adapters need `pip install urml-px4-runtime` or `pip install urml-ardupilot-runtime` on top.
+
+To run unreleased code from `main` instead, install all four packages from GitHub in one `pip install`, so they come from the same commit:
+
+```bash
 pip install \
   "git+https://github.com/urml-dev/URML.git#subdirectory=reference/validator" \
   "git+https://github.com/urml-dev/URML.git#subdirectory=reference/llm-bridge" \
   "git+https://github.com/urml-dev/URML.git#subdirectory=reference/ros2-runtime" \
   "git+https://github.com/urml-dev/URML.git#subdirectory=reference/mcp-server"
-
-urml-mcp        # runs over stdio
 ```
-
-`urml-ros2-runtime` carries the hermetic `mock` adapter, so `urml_execute` works with no ROS install and no hardware.
 
 ### Register it with an MCP client
 
@@ -68,8 +74,6 @@ Point the client at the `urml-mcp` command (stdio transport), using the absolute
 ```
 
 Claude Desktop (`claude_desktop_config.json`) and Cursor (`.cursor/mcp.json`) take that shape as-is; VS Code (`.vscode/mcp.json`) uses the same fields under a top-level `servers` key instead of `mcpServers`. The agent then holds the five URML tools: it emits URML, the server validates and runs it.
-
-Once `urml-mcp-server` and a release that carries this code are on PyPI, the four git URLs collapse to `pip install urml-mcp-server`.
 
 ## Pin the deployment
 
@@ -141,7 +145,7 @@ The split is deliberate: `tools.py` has no MCP dependency, so the validate/execu
 
 ## Publishing to MCP registries (maintainer action)
 
-[`server.json`](server.json) is the registry manifest for the [official MCP Registry](https://registry.modelcontextprotocol.io). The full playbook (PyPI first, then `mcp-publisher`, then the Smithery/Glama/PulseMCP/mcp.so directory claims) lives in [`SUBMISSIONS.md`](SUBMISSIONS.md). It is gated on the 0.2.0 core release ([`RELEASING.md`](../../RELEASING.md)), since the registry resolves the package from PyPI.
+[`server.json`](server.json) is the registry manifest for the [official MCP Registry](https://registry.modelcontextprotocol.io). The full playbook (PyPI first, then `mcp-publisher`, then the Smithery/Glama/PulseMCP/mcp.so directory claims) lives in [`SUBMISSIONS.md`](SUBMISSIONS.md). The server is listed there as `io.github.urml-dev/urml` since 0.5.2. Each new listing version must already be on PyPI, since the registry resolves the package from there; [`RELEASING.md`](../../RELEASING.md) covers the release.
 
 Track each listing in [`examples/lighthouses/distribution.yaml`](../../examples/lighthouses/distribution.yaml) (`response: none` until real adoption signal). Do not cite install counts as engagement without corroboration.
 
