@@ -1,8 +1,8 @@
-"""The industrial rulebook template (ISO 10218-1/-2:2025, ISO/TS 15066:2016).
+"""The industrial rulebook template (ISO 10218-1/-2:2025, ISO/TS 15066:2016, UL 1740).
 
 Two guarantees, as for the other templates. As shipped it carries no values
-and refuses to load. Filled in, it loads, and each of its five rules refuses
-the programs it is meant to refuse, against the repository's own
+and refuses to load. Filled in, it loads, and each of its rules refuses the
+programs it is meant to refuse, against the repository's own
 simple pick-and-place cell. The example program itself stays accepted.
 
 The values used to fill it here are test values, not limits from the
@@ -32,7 +32,10 @@ FILLED_LISTS = {
     "except_names": ["pick_place_cycle"],
     "names": ["door_mute"],
     "zones": ["operator_zone"],
+    "allowed": ["UL 1740"],
 }
+#: The operator's deployment rulebook: the robot's UL 1740 listing on record.
+LISTED = {"listing_standard": "UL 1740", "nrtl_listing": "Example NRTL, file E000000"}
 
 
 def _load(path: Path) -> dict[str, Any]:
@@ -82,10 +85,22 @@ def _manifest() -> dict[str, Any]:
     return manifest
 
 
-def _run(program: dict[str, Any]) -> ValidationResult:
-    return validate(
-        program, _manifest(), None, profiles=("industrial",), policy=None, rulebooks=[_fill(_load(TEMPLATE))]
-    )
+def _deployment(**declarations: Any) -> dict[str, Any]:
+    return {
+        "rulebook_version": "0.1",
+        "rulebook_id": "cell_a1_declarations",
+        "title": "Cell A1 listing on record",
+        "issuer": {"kind": "deployment", "name": "Example Plant"},
+        "source_status": "deployment_declaration",
+        "declarations": declarations,
+    }
+
+
+def _run(program: dict[str, Any], listing: dict[str, Any] | None = LISTED) -> ValidationResult:
+    books = [_fill(_load(TEMPLATE))]
+    if listing is not None:
+        books.append(_deployment(**listing))
+    return validate(program, _manifest(), None, profiles=("industrial",), policy=None, rulebooks=books)
 
 
 def _program(*steps: dict[str, Any]) -> dict[str, Any]:
@@ -113,8 +128,11 @@ def test_the_filled_template_loads() -> None:
         "validated_programs_only",
         "safety_outputs_untouched",
         "outside_cell_layout",
+        "listing_standard_declared",
+        "listing_on_record",
     ]
-    assert len(book.obligations) == 4
+    assert len(book.obligations) == 6
+    assert "urml_not_part_of_the_listing" in {o.id for o in book.obligations}
 
 
 def test_the_example_program_is_accepted() -> None:
@@ -155,4 +173,25 @@ def test_the_listed_program_and_other_outputs_are_allowed() -> None:
         )
     )
     assert _rule_codes(result) == [], result.all_issues
+    assert result.accepted
+
+
+@pytest.mark.parametrize(
+    "listing",
+    [
+        {"nrtl_listing": "Example NRTL, file E000000"},
+        {**LISTED, "listing_standard": "UL 3100"},
+        {"listing_standard": "UL 1740"},
+    ],
+    ids=["no-standard", "standard-not-accepted", "no-listing"],
+)
+def test_a_missing_or_unaccepted_listing_refuses_every_program(listing: dict[str, Any]) -> None:
+    result = _run(_program({"move_to": {"location": "pick_bin"}}), listing=listing)
+    assert _rule_codes(result) == ["rule.declaration_missing"], result.all_issues
+    assert not result.accepted
+
+
+def test_with_no_deployment_rulebook_the_missing_listing_is_a_warning() -> None:
+    result = _run(_program({"move_to": {"location": "pick_bin"}}), listing=None)
+    assert _rule_codes(result) == ["rule.declaration_missing"] * 2
     assert result.accepted
