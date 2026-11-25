@@ -24,14 +24,6 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 - The reproduction run (`python -m urml_conformance.reproduce`) records how long each step took (`plan`, `install`, `run`, `check`) in the reproduction report's new optional `timing` field, and prints the times. RFC-0708 defers a published certification fee until runs show what one costs; this is the measurement. A report without `timing`, such as every self-report, still parses.
 
-### Changed: MCP server
-
-- `urml-mcp-server` is ready for the official MCP Registry. Its README carries the `mcp-name: io.github.urml-dev/urml` line the registry uses to verify PyPI ownership, and `server.json` uses the 2025-12-11 schema and a description within the registry's 100-character limit. `server.json` had stayed at version 0.2.0; `tools/scripts/bump_version.py` now moves it with the family. The family is bumped in lockstep to 0.5.2 so a published version carries the ownership line; no other code changed.
-
-## [0.5.1] - 2026-11-24
-
-`urml-conformance` 0.5.1 records adapter calls in the harness (RFC-0706, conformance spec v0.2.1) and runs from an installed wheel. The rest of the family is rebuilt at 0.5.1 in lockstep.
-
 ### Added
 
 - One CycloneDX SBOM per URML package: `tools/scripts/build_sboms.py` builds every wheel in the release's build list (read from `release.yml`, so the two cannot drift), installs each into a fresh environment with its dependencies, and records it with `cyclonedx-py`. The new `sbom` workflow runs it after every successful release run and on demand, read-only, and uploads the `sboms` artifact; `release.yml` is unchanged. SECURITY.md says where to find them. For robot makers listing URML in a product SBOM (EU Cyber Resilience Act, Annex I, Part II, point (1)).
@@ -58,9 +50,27 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 - `examples/evidence-report/` (RFC-0707, step 5): one warehouse deployment and its evidence report in all four forms (JSON, Markdown, HTML, redacted JSON), with a README written for an auditor who has never used URML: how to read each status, a walk through the example's one gap (a missing speed-monitoring declaration that refuses every program), how to rebuild the report and check its digests, and how to share it. A test fails when a committed report is stale. `docs/safety/safety-model.md` gains an Evidence reports section.
 - Redacted and signed evidence reports (RFC-0707, step 4). `urml evidence build --redact` writes a copy fit to share outside the site: geofence and zone geometry and program messages become `[redacted]` (a marker, not a hash, since a hash of a guessable coordinate can be reversed), everything else stays, and the full report's sha256 is recorded. `urml evidence verify` checks an OpenSSH signature (`ssh-keygen -Y sign -n evidence-report@urml.dev`) over a report's exact bytes, offline and in pure Python, against the Licensor keys shipped in the package; plain and FIDO hardware-backed Ed25519 keys, with validity dates judged on the report's `as_of`. No Licensor key is published yet. Procedure in `docs/evidence/signing.md`.
 - `urml evidence build --format md|html` (RFC-0707, step 3): the evidence report for people, as Markdown or one static HTML file (inline styles, no scripts, no external requests, readable on a phone). Each opens with the notice, lists the gaps first, and keeps every item, standard and input digest; a test fails if a form drops one. Also fixed: a manifest without provenance no longer lists the policy's provenance rules as passed; `provenance.absent` names them as having nothing to check.
+
+## [0.5.2] - 2026-11-24
+
+`urml-mcp-server` is ready for the official MCP Registry, and `urml evidence build` arrives (RFC-0707, steps 1 and 2). The family is bumped in lockstep to 0.5.2.
+
+### Added
+
 - `urml evidence build` takes programs and conformance evidence (RFC-0707, step 2). `--program` (repeatable) validates each program against the deployment and lists it as passed or refused with every issue; a refused program is a gap. `--conformance-report` and `--registry-entry` add a Conformance section read through `urml-conformance`: the adapter and fixture results, the registry tier, a certification's expiry against `--as-of`, and the report the entry pins. A mock-adapter run, a filtered run, a failed fixture, an uncovered profile, an expired certification, a withdrawn entry or an unpinned report is a gap.
 - `urml evidence build` (RFC-0707, Draft, step 1): an evidence report for one robot deployment. It reads the manifest, envelope, policy and rulebooks and marks every item `checked`, `declared`, `runtime`, `missing` or `outside`, in Robot, Provenance, Envelope, Rules and Outside URML sections, regroups rules and obligations by the standard each cites, and counts gaps (missing items plus failed checks). No score, no verdict; the first line says it is not a safety assessment, a certification or a compliance determination. Offline and deterministic: the same files and `--as-of` date give the same bytes. Format in `spec/evidence/`, golden reports for four deployments in the validator tests. Exit 0 without gaps, 1 with gaps, 2 on an unreadable input.
 - Rulebook cites take an optional `standard` field (RFC-0707): the standard or regulation a cite draws on, with its edition, as one identifier or a list. It changes no validation result. The bundled 14 CFR Part 107 rulebook and the four safety-standard templates carry it.
+
+### Changed: MCP server
+
+- `urml-mcp-server` is ready for the official MCP Registry. Its README carries the `mcp-name: io.github.urml-dev/urml` line the registry uses to verify PyPI ownership, and `server.json` uses the 2025-12-11 schema and a description within the registry's 100-character limit. `server.json` had stayed at version 0.2.0; `tools/scripts/bump_version.py` now moves it with the family. The family is bumped in lockstep to 0.5.2 so a published version carries the ownership line.
+
+## [0.5.1] - 2026-11-24
+
+`urml-conformance` 0.5.1 records adapter calls in the harness (RFC-0706, conformance spec v0.2.1) and runs from an installed wheel. The rest of the family is rebuilt at 0.5.1 in lockstep.
+
+### Added
+
 - `urml-vda5050-runtime` (`reference/vda5050-runtime`): drives AMRs and AGVs that speak VDA 5050 3.0.0 over MQTT, with no ROS. URML acts as fleet control for each vehicle; every dispatch step becomes one VDA 5050 order, and a step succeeds only when the vehicle's state reports it finished. Implements the mapping proposed in [RFC-0297](docs/rfcs/0297-vda5050-outreach.md). Tested against a simulated vehicle, with every message validated against the official VDA 5050 schemas, and over a real Mosquitto broker in the gated `vda5050-integration` workflow. Not yet tested on a vendor's vehicle. Known gaps are in `reference/vda5050-runtime/SPEC-GAPS.md`. On PyPI at the family version (0.5.0) since 2026-11-24: `pip install urml-vda5050-runtime`.
 - `examples/vda5050/`: the warehouse example run as VDA 5050 orders, with a byte-asserted recorded output.
 - [`COMMERCIAL.md`](COMMERCIAL.md#validation-services): paid fleet validation for operators and vehicle validation for AMR and AGV makers.
