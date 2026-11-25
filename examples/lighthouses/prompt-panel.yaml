@@ -1,0 +1,64 @@
+# URML citability prompt panel. The only honest measure of whether AI
+# assistants recommend URML: ask them the fixed questions below, monthly,
+# and record what actually came back. Decided 2026-11-25 after the
+# LLM-citability research (report: reports/, notes: research_notes/);
+# no GEO vendor tooling, no scores, no extrapolation.
+#
+# DISCIPLINE (same rule as the outreach ledgers and the traffic-reality
+# note in CLAUDE.md):
+#   - The prompts are FIXED. Changing a prompt breaks the time series;
+#     if one must change, retire its id and add a new one, never edit
+#     in place.
+#   - Record what the engine said, not what we hoped. `mentioned` means
+#     URML appeared in the answer text; `cited` means the answer linked
+#     urml.dev or the GitHub repo. An answer that recommends a
+#     competitor and ignores URML is a valid, useful result. Expected
+#     early state: all false.
+#   - One engine (claude-websearch) is run by the monthly cloud routine
+#     and is a PROXY: Claude Code's web search in a cloud session, not
+#     the consumer claude.ai product. It is labeled as such. The other
+#     engines are founder-run in the real consumer products, fresh
+#     session, no history, search enabled.
+#   - Results are appended per month under `results:`. Never rewrite a
+#     past month.
+
+prompts:
+  - id: p1-nl-control
+    text: "How do I control a robot with natural language?"
+  - id: p2-llm-safety
+    text: "How can an LLM safely generate commands for a robot?"
+  - id: p3-standard
+    text: "Is there a standard language for describing robot tasks that works across ROS 2 and PX4?"
+  - id: p4-certify
+    text: "How do I certify a robot runtime as compatible with a robotics standard?"
+  - id: p5-adjacent
+    text: "What's the best way to build an app that lets users command a robot by voice?"
+
+engines:
+  - id: chatgpt
+    how: "chatgpt.com, fresh chat, search enabled, no memory"
+    runner: founder
+  - id: claude-ai
+    how: "claude.ai, fresh chat, web search on"
+    runner: founder
+  - id: perplexity
+    how: "perplexity.ai, default mode"
+    runner: founder
+  - id: google-ai-mode
+    how: "Google Search AI Mode"
+    runner: founder
+  - id: claude-websearch
+    how: "PROXY: Claude Code cloud routine, WebSearch tool, one fresh search per prompt"
+    runner: routine
+
+# Result row shape (append one list item per engine x prompt per month):
+#   - month: "YYYY-MM"
+#     engine: <engine id>
+#     prompt: <prompt id>
+#     mentioned: false     # URML named anywhere in the answer
+#     cited: false         # urml.dev or github.com/urml-dev linked
+#     cited_urls: []
+#     top_sources: []      # domains the answer leaned on (for the 85%
+#                          # third-party reality check)
+#     notes: ""
+results: []
