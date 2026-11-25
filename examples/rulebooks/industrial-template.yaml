@@ -1,5 +1,6 @@
 # Template: an integrator's rulebook for an industrial robot cell, shaped
-# after ISO 10218-1:2025, ISO 10218-2:2025 and ISO/TS 15066:2016.
+# after ISO 10218-1:2025, ISO 10218-2:2025 and ISO/TS 15066:2016, with the
+# robot's UL 1740 product listing on record.
 #
 # This file carries no values. ISO standards are copyrighted, and a cell's
 # limits come from its risk assessment and the integrator's licensed copy of
@@ -23,6 +24,17 @@
 # 2025-02, and ISO/TS 15066:2016 (Robots and robotic devices, Collaborative
 # robots), which ISO lists as current (last confirmed in 2022). Check which
 # edition your contract names.
+#
+# UL 1740 (robots and robotic equipment) is the US product safety standard a
+# Nationally Recognized Testing Laboratory (NRTL) lists an industrial robot
+# to. The listing is earned by the robot, not by URML: the last two rules only
+# refuse programs until the operator has put the listing on record (the
+# standard it is listed to, from the list the site accepts, and the NRTL's
+# listing reference). Delete both rules and their two obligations if the site
+# does not require a listing. UL 1740 edition 4, published 2018-01-26 and
+# editorially revised since, checked on 2026-11-25; its requirements follow
+# the 2011 edition of ISO 10218, not 2025, so a cell can name both editions.
+# The OSHA list of NRTLs says which labs may certify to it.
 #
 # An ISO standard is not law, so an integrator who adopts one writes it as an
 # organization rulebook.
@@ -105,6 +117,29 @@ rules:
     forbid_zone_entry:
       zones: [FILL_IN]
 
+  - id: listing_standard_declared
+    title: The robot's product listing standard is declared and accepted
+    cite:
+      text: "UL 1740, section FILL_IN; the site's purchasing requirements"
+      standard: "UL 1740"
+    note: >-
+      The standard the robot is listed to, as the NRTL's listing names it.
+      List the standards the site accepts, for example UL 1740.
+    require_declared:
+      key: listing_standard
+      allowed: [FILL_IN]
+
+  - id: listing_on_record
+    title: The NRTL listing is on record
+    cite:
+      text: "UL 1740, section FILL_IN; the NRTL's listing"
+      standard: "UL 1740"
+    note: >-
+      The declared value names the NRTL and its listing or file reference, so
+      a reader can look it up. Any value satisfies the rule.
+    require_declared:
+      key: nrtl_listing
+
 obligations:
   - id: risk_assessment
     title: A current risk assessment for the robot application
@@ -143,3 +178,24 @@ obligations:
     cite:
       text: "ISO 10218-2:2025, clause FILL_IN"
       standard: "ISO 10218-2:2025"
+
+  - id: urml_not_part_of_the_listing
+    title: URML is not part of the listing and changes nothing it covers
+    text: >-
+      The NRTL did not evaluate URML. Integrating URML does not change the
+      robot's controller, firmware, safety-rated functions or electrical
+      equipment. If an integration would, the site asks the NRTL whether the
+      listing still applies before the robot goes into service.
+    cite:
+      text: "UL 1740, section FILL_IN; the NRTL's listing"
+      standard: "UL 1740"
+
+  - id: used_within_listing_conditions
+    title: The robot is used within its listing's conditions
+    text: >-
+      The robot works only with the end effectors, supply, environment and
+      installation its listing and instructions allow, and the site checks the
+      listing stays in force.
+    cite:
+      text: "UL 1740, section FILL_IN; the robot's instructions"
+      standard: "UL 1740"
