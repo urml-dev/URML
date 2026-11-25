@@ -1,0 +1,227 @@
+# Government rulebook: the EU Cyber Resilience Act, Regulation (EU)
+# 2024/2847, for a robot sold in the EU as a product with digital elements.
+#
+# Like the other EU rulebooks beside it, this file cites the law itself and
+# needs no FILL_IN: EU legislation is free to reuse. It loads as it is. Load
+# it together with eu-machinery-regulation.yaml; the Regulation's recital 126
+# says meeting its essential cybersecurity requirements can help meet the
+# Machinery Regulation's requirements on protection against corruption and
+# on the safety and reliability of control systems.
+#
+# What it does: programs are refused until the operator's deployment rulebook
+# declares the records the robot's maker keeps under the Regulation: the
+# product's class, the conformity assessment procedure, the cybersecurity
+# risk assessment, the software bill of materials, the end of the support
+# period, the vulnerability contact and the EU declaration of conformity.
+# Without a deployment rulebook the missing records are warnings. The
+# obligations list what URML cannot check, among them the 24-hour reporting
+# of actively exploited vulnerabilities.
+#
+# A robot is not itself a category in Annex III or IV, but a home or service
+# robot can have the core functionality of one, such as a smart home product
+# with security functionalities (Annex III, Class I, point 17) or an internet
+# connected toy with social interactive features (point 18). That decides the
+# conformity procedures open to it (Article 32).
+#
+# URML in the robot. A URML validator, runtime or LLM bridge built into the
+# robot is a third-party component, and belongs in its software bill of
+# materials with its version. The URML runtimes for MQTT (VDA 5050, ISO
+# 21423) support TLS and broker credentials and warn on plain MQTT to a
+# non-loopback host; the obligations below say to use them.
+#
+# Dates. Published in the OJ L series on 20.11.2024. It applies from
+# 11 December 2027; Article 14 (reporting) applies from 11 September 2026
+# and Chapter IV (notification of conformity assessment bodies) from
+# 11 June 2026 (Article 71). Checked on 2026-11-25 against the Official
+# Journal text from the Publications Office of the European Union.
+#
+# Where this sits under RFC-0003: URML's default rules follow US federal law.
+# This file is not a default; an operator loads it with --rulebook.
+#
+# Example declarations, in the operator's deployment rulebook:
+#
+#   declarations:
+#     cra_product_class: default
+#     cra_conformity_assessment_procedure: module_A
+#     cybersecurity_risk_assessment: "CRA-RA-2027-03"
+#     software_bill_of_materials: "SBOM-AMR-7 v4 (CycloneDX)"
+#     support_period_end: "2032-12"
+#     vulnerability_contact: "psirt@robot-maker.example"
+#     cra_eu_declaration_of_conformity: "DoC-AMR-7, with Regulation (EU) 2023/1230"
+#
+# Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702).
+
+rulebook_version: "0.1"
+rulebook_id: eu_cyber_resilience_act_2024_2847
+title: Regulation (EU) 2024/2847 (Cyber Resilience Act), the records before use
+issuer:
+  kind: government
+  name: European Parliament and Council of the European Union
+  jurisdiction: EU
+maintained_by: URML maintainers
+source_status: enacted_statute
+effective: "2027-12-11"
+reviewed: "2026-11-25"
+description: >-
+  The records the Cyber Resilience Act requires of a robot placed on the EU
+  market as a product with digital elements, as operator declarations a
+  program waits for, and the obligations URML cannot check. URML takes no
+  part in the conformity assessment.
+
+rules:
+  - id: product_class_declared
+    title: The robot's class under the Regulation is declared
+    cite:
+      text: "Regulation (EU) 2024/2847, Article 7 and Article 8, and Annexes III and IV"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+    note: >-
+      default for a product in no listed category; important_class_I or
+      important_class_II when its core functionality is a category in Annex
+      III; critical for Annex IV.
+    require_declared:
+      key: cra_product_class
+      allowed: [default, important_class_I, important_class_II, critical]
+
+  - id: conformity_assessment_procedure_declared
+    title: The conformity assessment procedure applied is declared
+    cite:
+      text: "Regulation (EU) 2024/2847, Article 32"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+    note: >-
+      Internal control (module A), EU-type examination with conformity to type
+      (module B and C), full quality assurance (module H), or a European
+      cybersecurity certification scheme. Module A is open to an important
+      Class I product only with the harmonised standards, common
+      specifications or schemes Article 32(2) names, and not to Class II or
+      critical products. The rule checks that a procedure is declared, not
+      that it was the right one.
+    require_declared:
+      key: cra_conformity_assessment_procedure
+      allowed: [module_A, module_B_C, module_H, eu_cybersecurity_certification]
+
+  - id: cybersecurity_risk_assessment_on_record
+    title: The cybersecurity risk assessment is on record
+    cite:
+      text: "Regulation (EU) 2024/2847, Article 13(2) to (4)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+    note: >-
+      Documented, updated during the support period and part of the technical
+      documentation. It covers the robot receiving programs over the network,
+      through URML or otherwise.
+    require_declared:
+      key: cybersecurity_risk_assessment
+
+  - id: software_bill_of_materials_on_record
+    title: The software bill of materials is on record
+    cite:
+      text: "Regulation (EU) 2024/2847, Annex I, Part II, point (1)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+    note: >-
+      In a commonly used, machine-readable format, covering at least the
+      top-level dependencies. Any URML package built into the robot is listed
+      with its version.
+    require_declared:
+      key: software_bill_of_materials
+
+  - id: support_period_declared
+    title: The end of the support period is declared
+    cite:
+      text: "Regulation (EU) 2024/2847, Article 13(8) and (19)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+    note: The month and year until which vulnerabilities are handled, as told to buyers.
+    require_declared:
+      key: support_period_end
+
+  - id: vulnerability_contact_declared
+    title: The single point of contact for vulnerabilities is declared
+    cite:
+      text: "Regulation (EU) 2024/2847, Article 13(17), and Annex I, Part II, point (5)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+    note: >-
+      Where users and researchers report vulnerabilities, under the maker's
+      coordinated vulnerability disclosure policy.
+    require_declared:
+      key: vulnerability_contact
+
+  - id: eu_declaration_of_conformity_on_record
+    title: The EU declaration of conformity is on record
+    cite:
+      text: "Regulation (EU) 2024/2847, Article 28"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+    note: >-
+      A product subject to more than one Union act that requires one, such as
+      the Machinery Regulation, has a single declaration covering all of them
+      (Article 28(3)).
+    require_declared:
+      key: cra_eu_declaration_of_conformity
+
+obligations:
+  - id: exploited_vulnerabilities_reported
+    title: Actively exploited vulnerabilities and severe incidents are reported
+    text: >-
+      The maker notifies the coordinating CSIRT and ENISA of an actively
+      exploited vulnerability, with an early warning within 24 hours of
+      becoming aware of it, and of severe incidents affecting the robot's
+      security. This has applied since 11 September 2026, before the rest of
+      the Regulation.
+    cite:
+      text: "Regulation (EU) 2024/2847, Article 14 and Article 71(2)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+
+  - id: urml_is_a_third_party_component
+    title: URML is integrated with due diligence and its vulnerabilities are reported upstream
+    text: >-
+      A URML package built into the robot is a third-party component. The
+      maker checks it does not compromise the robot's cybersecurity, keeps it
+      to a supported version, and reports a vulnerability it finds in URML to
+      the URML maintainers as SECURITY.md in the URML repository describes.
+    cite:
+      text: "Regulation (EU) 2024/2847, Article 13(5) and (6)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+
+  - id: connections_secure_by_default
+    title: Connections to the robot are authenticated and encrypted by default
+    text: >-
+      The robot ships with a secure default configuration, controls who can
+      send it commands, and protects the confidentiality and integrity of
+      commands, programs and configuration in transit. For URML, that means
+      running the MQTT runtimes with TLS and broker credentials, and keeping
+      the manifest, envelope and rulebooks the validator reads where only
+      authorised people can change them.
+    cite:
+      text: "Regulation (EU) 2024/2847, Annex I, Part I, point (2)(b), (d), (e) and (f)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+
+  - id: security_updates_delivered
+    title: Security updates reach the robot during the support period
+    text: >-
+      Vulnerabilities, including those in URML and other components, are
+      remediated without delay through security updates that are distributed
+      securely and kept available, and fixed vulnerabilities are disclosed
+      once an update is out.
+    cite:
+      text: "Regulation (EU) 2024/2847, Article 13(8) and (9), and Annex I, Part I, point (2)(c), and Part II, points (2), (4), (7) and (8)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"
+
+  - id: security_relevant_activity_recorded
+    title: Access to and changes of the robot's functions are recorded
+    text: >-
+      The robot records security-relevant internal activity, including access
+      to or modification of data, services or functions, with an opt-out for
+      the user. URML validation records and evidence reports can be part of
+      that record for programs; the robot's own logging is the maker's.
+    cite:
+      text: "Regulation (EU) 2024/2847, Annex I, Part I, point (2)(l)"
+      url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+      standard: "Regulation (EU) 2024/2847"

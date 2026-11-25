@@ -92,6 +92,7 @@ URML is never a safety function, a security control or a certifier for anything 
 | [ISO 21423:2026](#iso-21423) | Standard | Fleet interface | Fleet operators and robot makers | Runtime |
 | [Regulation (EU) 2023/1230](#eu-machinery-regulation) | Regulation | Machinery and robots, EU | Anyone placing a robot on the EU market or putting one into service there | Ready rulebook, Evidence report |
 | [Regulation (EU) 2024/1689](#eu-ai-act) | Regulation | AI systems, EU | Anyone in the EU whose robot takes its programs from an AI system | Ready rulebook, Evidence report |
+| [Regulation (EU) 2024/2847](#eu-cyber-resilience-act) | Regulation | Product cybersecurity, EU | Anyone selling a robot, or robot software, in the EU | Ready rulebook, Evidence report |
 | [14 CFR Part 107 and Part 89](#faa-part-107) | Regulation | Small drones, US | Anyone flying a drone for work in the US | Bundled rules |
 | [NDAA Section 889, FCC Covered List, DCMA Blue List](#us-procurement) | Procurement list | Supply chain, US government | Vendors to the US government and its contractors | Bundled rules |
 | [URML-Certified](#urml-certified) | Certification | URML conformance | Makers of third-party URML runtimes | Registry check |
@@ -389,7 +390,7 @@ Shared words, and the protocols that let one controller drive robots from many m
 
 ## Regulation and procurement
 
-US law for drones, the EU law for machinery and for AI, and the supply-chain rules for selling to the US government.
+US law for drones, the EU law for machinery, AI and product cybersecurity, and the supply-chain rules for selling to the US government.
 
 <a id="eu-machinery-regulation"></a>
 
@@ -418,6 +419,20 @@ US law for drones, the EU law for machinery and for AI, and the supply-chain rul
 - **Where to get the text.** [Regulation (EU) 2024/1689 (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2024/1689/oj), [Regulation (EU) 2026/1744, the Digital Omnibus on AI (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2026/1744/oj), [European Commission, AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
 - **Who assesses it.** No AI Act certificate for robots. A high-risk AI safety component goes through the machine's conformity assessment, with a notified body where the Machinery Regulation requires one. The EU AI Office and national authorities oversee the rest. [EU AI Office](https://digital-strategy.ec.europa.eu/en/policies/ai-office)
 - **What URML gives you.** A ready EU rulebook with the Act's own citations, for a robot whose programs a model proposes through the LLM bridge: programs wait until the safety-component assessment, how people are told they deal with an AI system, and the AI literacy measures are on record. A robot with no AI system declares so and the rulebook switches off. Every program a model proposes passes the validator before it runs, which is the argument the integrator's assessment rests on. [eu-ai-act.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-ai-act.yaml), [eu-machinery-regulation.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-machinery-regulation.yaml)
+
+<a id="eu-cyber-resilience-act"></a>
+
+### Regulation (EU) 2024/2847: The EU Cyber Resilience Act
+
+*Regulation · Product cybersecurity, EU*
+
+- **What it is.** The EU law for the cybersecurity of products with digital elements, robots and their software included. It sets essential cybersecurity requirements and vulnerability handling for a support period, and applies from 11 December 2027; reporting of actively exploited vulnerabilities has applied since 11 September 2026.
+- **Why it matters.** A connected robot sold in the EU needs it for its CE marking from December 2027, and its maker must already report exploited vulnerabilities within 24 hours.
+- **Who needs it.** Robot makers and importers, makers of software sold for robots, and anyone who integrates third-party software into a robot they sell.
+- **How to meet it.** Assess the cybersecurity risks, design to Annex I, draw up a software bill of materials, set and publish a support period, run a vulnerability disclosure process, apply the Article 32 conformity procedure (a notified body or a certification scheme for some important and all critical products), then sign the declaration of conformity, a single one with the Machinery Regulation.
+- **Where to get the text.** [Regulation (EU) 2024/2847 (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2024/2847/oj), [European Commission, Cyber Resilience Act](https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act)
+- **Who assesses it.** The maker for most products (module A); a notified body or a European cybersecurity certification scheme for important products that do not use harmonised standards and for critical ones. ENISA and national CSIRTs receive the vulnerability reports. [Notified bodies](https://single-market-economy.ec.europa.eu/single-market/goods/building-blocks/notified-bodies_en)
+- **What URML gives you.** A ready EU rulebook with the Regulation's own citations: programs wait until the product class, the conformity procedure, the cybersecurity risk assessment, the software bill of materials, the support period, the vulnerability contact and the declaration are on record. Its obligations cover 24-hour reporting, URML as a third-party component, and secure connections; the URML MQTT runtimes support TLS and broker credentials. [eu-cyber-resilience-act.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-cyber-resilience-act.yaml), [cybersecurity-template.yaml (IEC 62443)](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/cybersecurity-template.yaml)
 
 <a id="faa-part-107"></a>
 

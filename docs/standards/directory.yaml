@@ -826,7 +826,7 @@ groups:
         status: Validation in progress
   - id: regulation
     title: Regulation and procurement
-    intro: US law for drones, the EU law for machinery and for AI, and the supply-chain rules for selling to the US government.
+    intro: US law for drones, the EU law for machinery, AI and product cybersecurity, and the supply-chain rules for selling to the US government.
     entries: 
       - id: eu-machinery-regulation
         name: Regulation (EU) 2023/1230
@@ -926,6 +926,52 @@ groups:
             url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-ai-act.yaml
           - label: eu-machinery-regulation.yaml
             url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-machinery-regulation.yaml
+      - id: eu-cyber-resilience-act
+        name: Regulation (EU) 2024/2847
+        title: The EU Cyber Resilience Act
+        kind: regulation
+        area: Product cybersecurity, EU
+        who_short: Anyone selling a robot, or robot software, in the EU
+        what: The EU law for the cybersecurity of products with digital elements, robots and their software
+          included. It sets essential cybersecurity requirements and vulnerability handling for a support period,
+          and applies from 11 December 2027; reporting of actively exploited vulnerabilities has applied since
+          11 September 2026.
+        why: A connected robot sold in the EU needs it for its CE marking from December 2027, and its maker must
+          already report exploited vulnerabilities within 24 hours.
+        who: Robot makers and importers, makers of software sold for robots, and anyone who integrates third-party
+          software into a robot they sell.
+        how: Assess the cybersecurity risks, design to Annex I, draw up a software bill of materials, set and
+          publish a support period, run a vulnerability disclosure process, apply the Article 32 conformity
+          procedure (a notified body or a certification scheme for some important and all critical products), then
+          sign the declaration of conformity, a single one with the Machinery Regulation.
+        text:
+        - label: Regulation (EU) 2024/2847 (EUR-Lex)
+          url: https://eur-lex.europa.eu/eli/reg/2024/2847/oj
+        - label: European Commission, Cyber Resilience Act
+          url: https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act
+        assess:
+          text: The maker for most products (module A); a notified body or a European cybersecurity certification
+            scheme for important products that do not use harmonised standards and for critical ones. ENISA and
+            national CSIRTs receive the vulnerability reports.
+          links:
+          - label: Notified bodies
+            url: https://single-market-economy.ec.europa.eu/single-market/goods/building-blocks/notified-bodies_en
+        urml:
+          support:
+          - rulebook
+          - evidence
+          text: >-
+            A ready EU rulebook with the Regulation's own citations: programs wait until
+            the product class, the conformity procedure, the cybersecurity risk
+            assessment, the software bill of materials, the support period, the
+            vulnerability contact and the declaration are on record. Its obligations
+            cover 24-hour reporting, URML as a third-party component, and secure
+            connections; the URML MQTT runtimes support TLS and broker credentials.
+          links:
+          - label: eu-cyber-resilience-act.yaml
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-cyber-resilience-act.yaml
+          - label: cybersecurity-template.yaml (IEC 62443)
+            url: https://github.com/urml-dev/URML/blob/main/examples/rulebooks/cybersecurity-template.yaml
       - id: faa-part-107
         name: 14 CFR Part 107 and Part 89
         title: Small drones in the US
