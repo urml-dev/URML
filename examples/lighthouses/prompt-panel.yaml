@@ -61,4 +61,48 @@ engines:
 #     top_sources: []      # domains the answer leaned on (for the 85%
 #                          # third-party reality check)
 #     notes: ""
-results: []
+results:
+  # 2026-11: claude-websearch rows measured by the routine's test run
+  # (session 2026-11-25, cse_01YWjJSws951BppAniW6YYW5); the cloud
+  # environment lacked push access, so the maintainer's session
+  # transcribed the rows from the run log.
+  - month: "2026-11"
+    engine: claude-websearch
+    prompt: p1-nl-control
+    mentioned: false
+    cited: false
+    cited_urls: []
+    top_sources: [image-ppubs.uspto.gov, microsoft.com, par.nsf.gov, repositorio.iscte-iul.pt]
+    notes: "Results leaned on USPTO patents, Microsoft LaTTe and the Tellex et al. survey; no standard language named."
+  - month: "2026-11"
+    engine: claude-websearch
+    prompt: p2-llm-safety
+    mentioned: false
+    cited: false
+    cited_urls: []
+    top_sources: [arxiv.org]
+    notes: "Results recommended arXiv papers on pre-execution safety gates and formal guarantees for LLM-controlled robots."
+  - month: "2026-11"
+    engine: claude-websearch
+    prompt: p3-standard
+    mentioned: false
+    cited: false
+    cited_urls: []
+    top_sources: [physical-ai.ros.org, px4.io, researcher.watson.ibm.com]
+    notes: "Results pointed at the ROS 2 Physical AI working group and PX4 docs and said no adopted cross-substrate standard exists."
+  - month: "2026-11"
+    engine: claude-websearch
+    prompt: p4-certify
+    mentioned: false
+    cited: false
+    cited_urls: []
+    top_sources: [arxiv.org, epack.ebv.com]
+    notes: "Results recommended ISO 10218, ISO 13482 and IEC 62443 plus SGS testing services; nothing URML-shaped."
+  - month: "2026-11"
+    engine: claude-websearch
+    prompt: p5-adjacent
+    mentioned: false
+    cited: false
+    cited_urls: []
+    top_sources: [appinventor.mit.edu, aws.amazon.com]
+    notes: "Results recommended Alexa Skills Kit, Houndify and MIT App Inventor; consumer voice stacks, no robot-intent language."
