@@ -149,7 +149,7 @@ reference `FleetRuntime`. In code, call
 
 Passing the suite is a factual statement: this runtime reproduces the
 spec's behavior on the shared contract. It is the **self-reported** tier
-of [`spec/conformance/v0.2.2.md`](../spec/conformance/v0.2.2.md) section
+of [`spec/conformance/v0.2.3.md`](../spec/conformance/v0.2.3.md) section
 3: run it yourself, in your own CI, against your own runtime's adapter.
 To publish the result, add the JSON report to an entry in the
 [URML registry](../registry/README.md), whose checker refuses a report

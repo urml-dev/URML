@@ -1327,7 +1327,7 @@
             }
           ],
           "assess": {
-            "text": "The Licensor, Yahalomik Ltd., through the URML registry, as a paid validation service quoted per run. A failed run keeps its fee and grants nothing. It certifies conformance only, never safety, security or compliance.",
+            "text": "The Licensor, Yahalomik Ltd., through the URML registry, as a paid validation service quoted per run, free for non-commercial runtimes. A failed run keeps its fee and grants nothing. It certifies conformance only, never safety, security or compliance.",
             "links": [
               {
                 "label": "Registry",

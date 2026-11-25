@@ -45,7 +45,7 @@ Please do **not** open a public issue for an implementation vulnerability until 
 
 ## Conduct concerns
 
-For reports related to the [Code of Conduct](CODE_OF_CONDUCT.md), email `conduct@urml.example` <!-- TODO: fill in real address after GitHub org setup -->. Reports are handled confidentially by the maintainer (Phase 0) or the enforcement committee (Phase 1+).
+For reports related to the [Code of Conduct](CODE_OF_CONDUCT.md), email [sales@urml.dev](mailto:sales@urml.dev) with "Conduct" in the subject. Reports are handled confidentially by the maintainer (Phase 0) or the enforcement committee (Phase 1+).
 
 ## Compliance-data updates
 

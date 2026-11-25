@@ -24,7 +24,7 @@ A sibling sub-suite, [`conformance/llm-bridge/`](./llm-bridge/), scores `(model,
 
 The conformance suite is licensed under the Business Source License 1.1 (see [`LICENSING.md`](../LICENSING.md)). Running it to test a runtime is non-production use and is free. The *URML-Certified* mark rests on a paid certification run ([RFC-0705](../docs/rfcs/0705-urml-certified.md), [RFC-0708](../docs/rfcs/0708-paid-certification.md)): the fee pays for the Licensor's reproduction, never for the result. The tests are public and runnable by anyone, and every certification rests on reports anyone can re-run.
 
-The **normative, human-readable contract** this suite enforces (the six clauses a runtime must satisfy, the two tiers, and the spec-gap loop) is [`spec/conformance/v0.2.2.md`](../spec/conformance/v0.2.2.md) ([RFC-0014](../docs/rfcs/0014-substrate-conformance.md), [RFC-0705](../docs/rfcs/0705-urml-certified.md), [RFC-0706](../docs/rfcs/0706-recorded-adapter-calls.md)). This suite is its executable form (clause 6); that document is its written form.
+The **normative, human-readable contract** this suite enforces (the six clauses a runtime must satisfy, the two tiers, and the spec-gap loop) is [`spec/conformance/v0.2.3.md`](../spec/conformance/v0.2.3.md) ([RFC-0014](../docs/rfcs/0014-substrate-conformance.md), [RFC-0705](../docs/rfcs/0705-urml-certified.md), [RFC-0706](../docs/rfcs/0706-recorded-adapter-calls.md)). This suite is its executable form (clause 6); that document is its written form.
 
 ## How conformance is structured
 
@@ -76,7 +76,7 @@ A runtime that *executes* one of these programs has a critical conformance bug. 
 Two paths:
 
 1. **Self-reported conformance.** A runtime developer runs the suite against their runtime, records the result, and publishes the report. This is what the open ecosystem looks like. Self-reporting is honest because anyone can re-run the suite and verify.
-2. **Certified conformance.** The Licensor (or a successor foundation) reproduces a self-reported run from the public package and, if it passes, grants the **URML-Certified** mark through the registry. On the public criteria in [`spec/conformance/v0.2.2.md`](../spec/conformance/v0.2.2.md) section 3; the run is a paid validation service ([`COMMERCIAL.md`](../COMMERCIAL.md#urml-certified-runtime-makers)). The run itself is public code, so anyone can repeat it:
+2. **Certified conformance.** The Licensor (or a successor foundation) reproduces a self-reported run from the public package and, if it passes, grants the **URML-Certified** mark through the registry. On the public criteria in [`spec/conformance/v0.2.3.md`](../spec/conformance/v0.2.3.md) section 3; the run is a paid validation service ([`COMMERCIAL.md`](../COMMERCIAL.md#urml-certified-runtime-makers)). The run itself is public code, so anyone can repeat it:
 
    ```bash
    python -m urml_conformance.reproduce registry/entries/<id>.yaml           # install, run offline, check

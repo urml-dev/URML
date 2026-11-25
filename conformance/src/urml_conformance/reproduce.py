@@ -94,7 +94,7 @@ DEFAULT_VALIDITY_DAYS = 365
 #: ``conformance_spec`` and ``attestation``; the Licensor writes these.
 LICENSOR_FIELDS = ("certified_on", "expires", "reproduction")
 #: The spec versions a certification can be granted against, newest last.
-_SPECS = ("0.2.0", "0.2.1", "0.2.2")
+_SPECS = ("0.2.0", "0.2.1", "0.2.2", "0.2.3")
 
 #: Run as a script by the environment's interpreter: refuse every connection
 #: and name lookup that is not loopback, then run the suite. Kept stdlib-only.
