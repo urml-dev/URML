@@ -53,6 +53,10 @@ URML's bundled default compliance policy (`reference/validator/src/urml_validato
 
 If the bundled policy is *missing* a covered entity such that a real federal-procurement deployment would incorrectly pass URML validation — that *is* a security-relevant issue, and the implementation-vulnerability path above applies.
 
+## Software bill of materials
+
+After every release run, the `sbom` workflow writes one CycloneDX SBOM per URML package, from the same build list the release uses, and keeps them as the run's `sboms` artifact. To make them yourself: `python tools/scripts/build_sboms.py --out sbom` (needs `build` and `cyclonedx-bom`). A maker who builds a URML package into a product can use them for the product's own SBOM.
+
 ## Out of scope
 
 - **Substrate vulnerabilities** (ROS 2, PX4, AUTOSAR, OPC UA, vendor SDKs). Please report those to the substrate's own security process. URML cannot fix bugs in code it does not maintain.
