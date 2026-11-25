@@ -7,6 +7,7 @@ created: 2026-11-24
 updated: 2026-11-24
 amends: RFC-0014
 superseded-by: none
+amended-by: RFC-0708 (the certification run is paid)
 ---
 
 <p align="center">
@@ -29,7 +30,7 @@ Kind: Spec and governance. This RFC starts the URML-Certified program that [`MAN
 
 ## Summary
 
-A runtime earns **URML-Certified** for a set of profiles when it passes the full public conformance suite for those profiles with its own adapter, and the Licensor (Yahalomik Ltd., [RFC-0704](0704-licensor-yahalomik.md)) reproduces that result from the publicly released package in a clean, offline environment. Both reports are committed to the registry, pinned by sha256, and re-checked by `python -m urml_conformance.registry check` on every change. Certification is free. It certifies conformance to the URML specification and nothing else: not safety, not regulatory compliance, not fitness for any purpose.
+A runtime earns **URML-Certified** for a set of profiles when it passes the full public conformance suite for those profiles with its own adapter, and the Licensor (Yahalomik Ltd., [RFC-0704](0704-licensor-yahalomik.md)) reproduces that result from the publicly released package in a clean, offline environment. Both reports are committed to the registry, pinned by sha256, and re-checked by `python -m urml_conformance.registry check` on every change. Certification is free as accepted here; [RFC-0708](0708-paid-certification.md) makes the run paid, and the fee pays for the run, never for the result. It certifies conformance to the URML specification and nothing else: not safety, not regulatory compliance, not fitness for any purpose.
 
 ## Motivation
 

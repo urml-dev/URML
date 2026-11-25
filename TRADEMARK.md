@@ -23,7 +23,7 @@ URML has two marks.
 
 The word mark **URML** identifies the specification and its reference implementations.
 
-The conformance mark **URML-Certified** says that one exact version of a runtime passed the public conformance suite for named profiles, and that the Licensor reproduced the result. It is granted free, on public criteria, through the [registry](registry/README.md). It says nothing about safety, regulatory compliance, or fitness for any purpose.
+The conformance mark **URML-Certified** says that one exact version of a runtime passed the public conformance suite for named profiles, and that the Licensor reproduced the result. It is granted on public criteria, through the [registry](registry/README.md), after a paid certification run ([RFC-0708](docs/rfcs/0708-paid-certification.md)). It says nothing about safety, regulatory compliance, or fitness for any purpose.
 
 ## Ownership
 
@@ -49,7 +49,7 @@ Anyone whose runtime is one exact version of a distribution the public can insta
 
 ### The criteria
 
-The criteria are in [`spec/conformance/v0.2.1.md`](spec/conformance/v0.2.1.md) section 3, and the registry checker enforces all but the attestation:
+The criteria are in [`spec/conformance/v0.2.2.md`](spec/conformance/v0.2.2.md) section 3, and the registry checker enforces all but the attestation:
 
 1. A self-report: the full suite for each claimed profile, run with the runtime's own adapter, every fixture passed.
 2. A reproduction: the Licensor installs that exact version from its public source into a clean environment, turns the network off, runs the same suite with the same adapter, and gets a pass on every fixture over the same fixture set.
@@ -57,7 +57,7 @@ The criteria are in [`spec/conformance/v0.2.1.md`](spec/conformance/v0.2.1.md) s
 
 ### Cost and order
 
-Certification is free. Requests are handled in the order they arrive. No fee, license, or paid service affects whether or when certification is granted. A paid validation engagement ([COMMERCIAL.md](COMMERCIAL.md#validation-services)) can help a team prepare; it does not grant the mark or move a request forward.
+The Licensor charges a fee for each certification run, listed with the validation services in [COMMERCIAL.md](COMMERCIAL.md#urml-certified-runtime-makers). The fee pays for the run, never for the result: a run that fails keeps its fee and grants nothing. Paid requests are run in the order they are paid, with no expedited tier, and no fee, license or other service affects whether certification is granted.
 
 ### How long it lasts
 

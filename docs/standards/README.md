@@ -408,12 +408,12 @@ What the URML project itself offers. Neither is a safety or compliance certifica
 
 *Certification · URML conformance*
 
-- **What it is.** A free certification that a third-party runtime conforms to the URML specification for its profiles (RFC-0705), for at most 366 days.
+- **What it is.** A certification that a third-party runtime conforms to the URML specification for its profiles (RFC-0705), for at most 366 days. The Licensor charges for the certification run, never for the result (RFC-0708).
 - **Why it matters.** A buyer can tell that a runtime's conformance claim was reproduced by someone other than its authors.
 - **Who needs it.** Makers of URML runtimes for their robots or substrates.
-- **How to meet it.** Pass the full conformance suite with your own adapter, publish the package, and the Licensor reproduces the run offline from the public package.
-- **Where to get the text.** [RFC-0705](https://github.com/urml-dev/URML/blob/main/docs/rfcs/0705-urml-certified.md)
-- **Who assesses it.** The Licensor, Yahalomik Ltd., through the URML registry. Free. It certifies conformance only, never safety, security or compliance. [Registry](https://urml.dev/registry)
+- **How to meet it.** Pass the full conformance suite with your own adapter, publish the package, order a certification run, and the Licensor reproduces the run offline from the public package.
+- **Where to get the text.** [RFC-0705](https://github.com/urml-dev/URML/blob/main/docs/rfcs/0705-urml-certified.md), [RFC-0708 (the fee)](https://github.com/urml-dev/URML/blob/main/docs/rfcs/0708-paid-certification.md)
+- **Who assesses it.** The Licensor, Yahalomik Ltd., through the URML registry, as a paid validation service quoted per run. A failed run keeps its fee and grants nothing. It certifies conformance only, never safety, security or compliance. [Registry](https://urml.dev/registry), [Order a certification run](https://github.com/urml-dev/URML/blob/main/COMMERCIAL.md#urml-certified-runtime-makers)
 - **What URML gives you.** This is URML's own program.
 
 <a id="evidence-reports"></a>

@@ -20,7 +20,8 @@
           "description": "The conformance specification version the certification was granted against.",
           "enum": [
             "0.2.0",
-            "0.2.1"
+            "0.2.1",
+            "0.2.2"
           ],
           "title": "Conformance Spec",
           "type": "string"
@@ -46,7 +47,7 @@
     },
     "Compatibility": {
       "additionalProperties": false,
-      "description": "A compatibility claim (spec/conformance/v0.2.1.md section 3).\n\n``self_reported``: the runtime's authors ran the suite. ``certified``: the\nLicensor also reproduced the run from the public package (URML-Certified).",
+      "description": "A compatibility claim (spec/conformance/v0.2.2.md section 3).\n\n``self_reported``: the runtime's authors ran the suite. ``certified``: the\nLicensor also reproduced the run from the public package (URML-Certified).",
       "properties": {
         "certification": {
           "anyOf": [

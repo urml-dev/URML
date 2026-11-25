@@ -149,13 +149,14 @@ reference `FleetRuntime`. In code, call
 
 Passing the suite is a factual statement: this runtime reproduces the
 spec's behavior on the shared contract. It is the **self-reported** tier
-of [`spec/conformance/v0.2.1.md`](../spec/conformance/v0.2.1.md) section
+of [`spec/conformance/v0.2.2.md`](../spec/conformance/v0.2.2.md) section
 3: run it yourself, in your own CI, against your own runtime's adapter.
 To publish the result, add the JSON report to an entry in the
 [URML registry](../registry/README.md), whose checker refuses a report
 from the mock adapter or with a failed fixture. A published runtime can
-then apply for the free `URML-Certified` tier, where the Licensor
-reproduces the run from the public package (see
+then apply for the `URML-Certified` tier, where the Licensor
+reproduces the run from the public package in a paid certification run
+that pays for the run, never for the result (see
 [TRADEMARK.md](../TRADEMARK.md)).
 
 ## Privacy
