@@ -1,0 +1,229 @@
+# Government rulebook: Regulation (EU) 2023/1230 on machinery, for a robot
+# placed on the market or put into service in the European Union.
+#
+# Unlike the ISO templates beside it, this file carries real citations and
+# needs no FILL_IN: EU legislation is published free of charge and may be
+# reused, and the parts URML can check are records, not numbers. It loads as
+# it is. The regulation sets essential requirements, not limits; the speed
+# and force values a robot needs come from the risk assessment and from
+# harmonised standards (Article 20), which the machinery-safety, industrial
+# and functional-safety templates cover.
+#
+# What it does: programs are refused until the operator's deployment rulebook
+# declares the records the regulation requires before a machine is placed on
+# the market or put into service, and the outcome of the substantial-
+# modification check for integrating URML. Without a deployment rulebook the
+# missing records are warnings. The obligations list what URML cannot check,
+# including why URML is not a safety component (Annex II, point 18).
+#
+# A declaration states that a record exists. URML does not read the record,
+# judge it, or take any part in the conformity assessment. The manufacturer,
+# or the person who substantially modifies the machine (Article 18), stays
+# responsible for all of it.
+#
+# Dates. Published in OJ L 165 of 29.6.2023. The corrigendum in OJ L 169 of
+# 4.7.2023 sets the general date of application to 20 January 2027
+# (Article 54, as corrected); until then Directive 2006/42/EC applies, and a
+# machine placed on the market before that date is assessed under it. Checked
+# on 2026-11-25 against the Official Journal text from the Publications
+# Office of the European Union.
+#
+# Where this sits under RFC-0003: URML's default rules follow US federal law.
+# This file is not a default; an operator loads it with --rulebook.
+#
+# Example declarations, in the operator's deployment rulebook:
+#
+#   declarations:
+#     risk_assessment: "RA-2026-014, rev 3"
+#     substantial_modification_assessment: not_a_substantial_modification
+#     conformity_assessment_procedure: module_A
+#     eu_declaration_of_conformity: "DoC-ACME-AMR-7, 2027-02-01"
+#     technical_documentation: "TF-ACME-AMR-7"
+#     safety_software_inventory: "SW-INV-AMR-7, rev 2"
+#
+# Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702).
+
+rulebook_version: "0.1"
+rulebook_id: eu_machinery_regulation_2023_1230
+title: Regulation (EU) 2023/1230 on machinery, the records before use
+issuer:
+  kind: government
+  name: European Parliament and Council of the European Union
+  jurisdiction: EU
+maintained_by: URML maintainers
+source_status: enacted_statute
+effective: "2027-01-20"
+reviewed: "2026-11-25"
+description: >-
+  The records Regulation (EU) 2023/1230 requires for machinery placed on the
+  market or put into service in the EU, as operator declarations a program
+  waits for, and the obligations URML cannot check. URML is not part of the
+  conformity assessment.
+
+rules:
+  - id: risk_assessment_on_record
+    title: The machine's risk assessment is on record
+    cite:
+      text: "Regulation (EU) 2023/1230, Annex III, Part B, General principles, point 1"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+    note: >-
+      The manufacturer's risk assessment, which must also cover the robot
+      receiving programs through URML. The declared value names the record.
+    require_declared:
+      key: risk_assessment
+
+  - id: substantial_modification_assessed
+    title: Integrating URML was checked for a substantial modification
+    cite:
+      text: "Regulation (EU) 2023/1230, Article 3, point (16), and Article 18"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+    note: >-
+      Adding URML to a machine already placed on the market or put into
+      service can be a substantial modification if it creates a new hazard or
+      increases a risk in the way Article 3(16) describes. Whoever makes one
+      becomes the manufacturer (Article 18). The operator declares the outcome
+      of that check: not_a_substantial_modification, or
+      substantial_modification_reassessed when the conformity assessment was
+      carried out again. For a machine designed with URML from the start,
+      declare not_a_substantial_modification and record why.
+    require_declared:
+      key: substantial_modification_assessment
+      allowed: [not_a_substantial_modification, substantial_modification_reassessed]
+
+  - id: conformity_assessment_procedure_declared
+    title: The conformity assessment procedure applied is declared
+    cite:
+      text: "Regulation (EU) 2023/1230, Article 25"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+    note: >-
+      Module A is internal production control; module_B_C is EU
+      type-examination followed by conformity to type; module_H is full
+      quality assurance; module_G is unit verification. Module A is not
+      available for Annex I, Part A categories (Article 25(2)), and under Part
+      B only with the harmonised standards or common specifications Article
+      25(3) names. The rule checks that a procedure is declared, not that it
+      was the right one.
+    require_declared:
+      key: conformity_assessment_procedure
+      allowed: [module_A, module_B_C, module_H, module_G]
+
+  - id: eu_declaration_of_conformity_on_record
+    title: The EU declaration of conformity is on record
+    cite:
+      text: "Regulation (EU) 2023/1230, Article 10(2) and (8), Article 21 and Annex V, Part A"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+    note: The declared value names the declaration, so a reader can find it.
+    require_declared:
+      key: eu_declaration_of_conformity
+
+  - id: technical_documentation_on_record
+    title: The technical documentation is on record
+    cite:
+      text: "Regulation (EU) 2023/1230, Article 10(2) and (3) and Annex IV, Part A"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+    note: >-
+      The technical file, kept for at least 10 years. If the URML validator,
+      rulebooks or runtime play a part in the protective measures it
+      describes, the file says which versions.
+    require_declared:
+      key: technical_documentation
+
+  - id: safety_software_identified
+    title: The software the machine needs to operate safely is identified
+    cite:
+      text: "Regulation (EU) 2023/1230, Annex III, section 1.1.9, fourth paragraph"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+    note: >-
+      The machine identifies the software installed on it that is necessary
+      for it to operate safely. The declared value names that inventory. URML
+      belongs on it only if the design relies on URML for safety, which the
+      first obligation below advises against.
+    require_declared:
+      key: safety_software_inventory
+
+obligations:
+  - id: urml_is_not_a_safety_component
+    title: No safety function relies on URML
+    text: >-
+      Annex II lists software ensuring safety functions as a safety component.
+      URML refuses programs before they run; it does not stop a robot that is
+      already moving and is not designed or assessed as a safety component.
+      Emergency stop, protective stop, speed and separation monitoring and
+      force limiting stay in the machine's safety-related control. A design
+      that relies on URML for a safety function makes URML a safety component
+      of that machine, and assessing it is the manufacturer's task.
+    cite:
+      text: "Regulation (EU) 2023/1230, Annex II, point 18, and Annex III, section 1.2.1"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+
+  - id: self_evolving_behaviour_assessed
+    title: The manufacturer has assessed whether the machine has self-evolving behaviour
+    text: >-
+      Safety components, and machinery with embedded systems, with fully or
+      partially self-evolving behaviour using machine learning that ensure
+      safety functions are Annex I, Part A categories and need a notified
+      body. The URML validator is deterministic and does not learn; a language
+      model used through the URML LLM bridge only proposes programs, which the
+      validator then checks. Whether the whole machine has self-evolving
+      behaviour or logic, and whether it then stays within its defined task
+      and movement space, is the manufacturer's assessment, not URML's.
+    cite:
+      text: "Regulation (EU) 2023/1230, Annex I, Part A, points 5 and 6, and Annex III, section 1.2.1, third paragraph"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+
+  - id: rule_changes_go_through_the_risk_assessment
+    title: Changes to rulebooks, envelope and manifest go through the risk assessment
+    text: >-
+      The rulebooks, safety envelope and manifest are configuration. A change
+      to any of them that could lead to a hazardous situation is made only
+      through the risk assessment, and the machine keeps evidence of changes
+      to its software and configuration. URML validation records and evidence
+      reports name the validator version and the files used, and can be part
+      of that evidence; the machine's own logging is the manufacturer's.
+    cite:
+      text: "Regulation (EU) 2023/1230, Annex III, section 1.1.9, fifth paragraph, and section 1.2.1, second paragraph, points (d) and (f)"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+
+  - id: connections_do_not_create_hazards
+    title: A lost or corrupted connection does not lead to a hazard
+    text: >-
+      URML runtimes command robots over networks (for example MQTT for VDA
+      5050). An interruption or a corrupted connection must not lead to a
+      hazardous situation, and a connected device must not either; the robot
+      and its safety-related control handle that, not URML. Use authenticated,
+      encrypted connections where the runtime offers them.
+    cite:
+      text: "Regulation (EU) 2023/1230, Annex III, sections 1.1.9, first paragraph, 1.2.1, last paragraph, and 1.2.6"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+
+  - id: stopping_is_never_impeded
+    title: URML never prevents or delays a stop
+    text: >-
+      A stop command already given is never prevented, and automatic or
+      manual stopping is unimpeded. A URML runtime stops when the machine's
+      stop is triggered and does not resume by itself.
+    cite:
+      text: "Regulation (EU) 2023/1230, Annex III, section 1.2.1, fourth paragraph, points (d) and (f)"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"
+
+  - id: ce_marking_affixed
+    title: The CE marking is affixed before the machine is placed on the market or put into service
+    text: >-
+      With the notified body's identification number where the procedure
+      involves one. URML grants no marking and its URML-Certified mark is not
+      a CE marking or any part of one.
+    cite:
+      text: "Regulation (EU) 2023/1230, Article 24"
+      url: https://eur-lex.europa.eu/eli/reg/2023/1230/oj
+      standard: "Regulation (EU) 2023/1230"

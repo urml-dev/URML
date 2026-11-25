@@ -41,6 +41,7 @@ It is a starting point, not advice. Which documents apply to a machine depends o
 | **Certification body** | Assesses products, processes or people and issues certificates. The body that writes a standard usually does not certify to it. Named here as examples, not endorsements. | [TÜV SÜD](https://www.tuvsud.com), [TÜV Rheinland](https://www.tuv.com), [UL Solutions](https://www.ul.com), [SGS](https://www.sgs.com), [Intertek](https://www.intertek.com), [exida](https://www.exida.com) |
 | **NRTL** | Nationally Recognized Testing Laboratory: a lab OSHA recognizes to test and certify products to listed US safety standards. OSHA publishes which lab may certify to which standard. | [OSHA NRTL program](https://www.osha.gov/nationally-recognized-testing-laboratory-program) |
 | **Authority** | The agency that makes and enforces a regulation, such as the FAA for drones or the FCC for radio equipment. | [FAA drones](https://www.faa.gov/uas), [FCC Covered List](https://www.fcc.gov/supplychain/coveredlist) |
+| **Notified body** | In the EU, a conformity assessment body that a Member State has notified to the Commission for a given law. Some machinery, and anything listed in Annex I, Part A of the Machinery Regulation, cannot be assessed by the maker alone and needs one. | [Notified bodies (European Commission)](https://single-market-economy.ec.europa.eu/single-market/goods/building-blocks/notified-bodies_en), [Single Market Compliance Space (the list)](https://webgate.ec.europa.eu/single-market-compliance-space/) |
 
 ### Key terms
 
@@ -50,6 +51,7 @@ It is a starting point, not advice. Which documents apply to a machine depends o
 - **Stop categories.** How a machine stops: category 0 removes power at once, category 1 brings the machine to a controlled stop and then removes power, category 2 stops under control and keeps power. IEC 60204-1 defines them; an emergency stop uses category 0 or 1. See [iso-13850](#iso-13850).
 - **Safety function.** A function whose failure would raise a risk at once, such as an emergency stop, a protective stop on a light curtain or speed monitoring near people. It lives in the machine's safety-related control, never in URML. See [iso-13849](#iso-13849).
 - **Conformity assessment.** Showing that something meets a document: by the maker's own testing and declaration, by a certification body, or by an accredited lab's listing.
+- **CE marking.** The mark a maker affixes to show a product meets the EU laws that apply to it, after the conformity assessment those laws require. It is not a quality mark and not issued by URML or by a certification body. See [eu-machinery-regulation](#eu-machinery-regulation).
 
 ### What URML gives you
 
@@ -59,6 +61,7 @@ It is a starting point, not advice. Which documents apply to a machine depends o
 | **Runtime** | A URML runtime that speaks the protocol. |
 | **Position page** | Says where URML stands under the standard and what it does not claim. |
 | **Bundled rules** | Checks that ship in the validator and are on by default. |
+| **Ready rulebook** | A rulebook with the law's own citations and nothing to fill in, which you load with --rulebook. Off by default. |
 | **Registry check** | The registry checker enforces a mark's criteria on every entry, and the reproduction run that grants it is public code anyone can repeat. |
 | **Evidence report** | urml evidence build lists, for one deployment, what URML checks for each cited standard and what it leaves to others. |
 
@@ -86,6 +89,7 @@ URML is never a safety function, a security control or a certifier for anything 
 | [ISO 8373:2021](#iso-8373) | Standard | Vocabulary | Anyone writing about robots precisely | Position page |
 | [VDA 5050 3.0.0](#vda-5050) | Standard | Fleet interface | Fleet operators and vehicle makers | Runtime |
 | [ISO 21423:2026](#iso-21423) | Standard | Fleet interface | Fleet operators and robot makers | Runtime |
+| [Regulation (EU) 2023/1230](#eu-machinery-regulation) | Regulation | Machinery and robots, EU | Anyone placing a robot on the EU market or putting one into service there | Ready rulebook, Evidence report |
 | [14 CFR Part 107 and Part 89](#faa-part-107) | Regulation | Small drones, US | Anyone flying a drone for work in the US | Bundled rules |
 | [NDAA Section 889, FCC Covered List, DCMA Blue List](#us-procurement) | Procurement list | Supply chain, US government | Vendors to the US government and its contractors | Bundled rules |
 | [URML-Certified](#urml-certified) | Certification | URML conformance | Makers of third-party URML runtimes | Registry check |
@@ -369,7 +373,21 @@ Shared words, and the protocols that let one controller drive robots from many m
 
 ## Regulation and procurement
 
-US law for drones, and the supply-chain rules for selling to the US government.
+US law for drones, the EU law for machinery, and the supply-chain rules for selling to the US government.
+
+<a id="eu-machinery-regulation"></a>
+
+### Regulation (EU) 2023/1230: The EU Machinery Regulation
+
+*Regulation · Machinery and robots, EU*
+
+- **What it is.** The EU law for machinery, robots included, from 20 January 2027. It replaces the Machinery Directive 2006/42/EC and sets the essential health and safety requirements, the conformity assessment, the technical file, the EU declaration of conformity and the CE marking. It adds rules for software, protection against corruption and self-evolving behaviour.
+- **Why it matters.** Machinery sold or used in the EU must meet it. Without the conformity assessment, the declaration and the CE marking, a robot cannot be placed on the market or put into service there.
+- **Who needs it.** Robot makers and importers, and integrators. Whoever substantially modifies a machine already in service, for example by adding software that creates a new hazard, becomes its manufacturer (Article 18).
+- **How to meet it.** Carry out the risk assessment, meet the Annex III requirements (harmonised standards give a presumption of conformity), draw up the technical file, apply the conformity procedure Article 25 sets (a notified body for Annex I, Part A categories, including machine-learning safety functions), then sign the declaration and affix the CE marking. Until 20 January 2027 the Machinery Directive applies.
+- **Where to get the text.** [Regulation (EU) 2023/1230 (EUR-Lex)](https://eur-lex.europa.eu/eli/reg/2023/1230/oj), [European Commission, machinery](https://single-market-economy.ec.europa.eu/sectors/mechanical-engineering/machinery_en), [EU-OSHA summary](https://osha.europa.eu/en/legislation/directive/regulation-20231230eu-machinery)
+- **Who assesses it.** The maker alone for most machinery (module A); a notified body for Annex I, Part A categories and, by choice, for others. National market surveillance authorities enforce it. [Notified bodies](https://single-market-economy.ec.europa.eu/single-market/goods/building-blocks/notified-bodies_en), [CE marking](https://single-market-economy.ec.europa.eu/single-market/ce-marking_en)
+- **What URML gives you.** A ready EU rulebook with the regulation's own citations: programs wait until the risk assessment, the substantial-modification check, the conformity procedure, the declaration, the technical file and the safety-software inventory are on record. Its obligations say why URML is not a safety component (Annex II, point 18) and never prevents a stop. Combine it with the machinery-safety template for the harmonised standards. URML takes no part in the conformity assessment. [eu-machinery-regulation.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/eu-machinery-regulation.yaml), [machinery-safety-template.yaml](https://github.com/urml-dev/URML/blob/main/examples/rulebooks/machinery-safety-template.yaml)
 
 <a id="faa-part-107"></a>
 
