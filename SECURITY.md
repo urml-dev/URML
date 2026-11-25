@@ -28,7 +28,7 @@ If you are uncertain whether a problem is spec-level or implementation-level, op
 
 An *implementation* vulnerability is a flaw in a reference runtime (`reference/ros2-runtime/`, `reference/px4-runtime/`, `reference/validator/`, `reference/llm-bridge/`) or in tools (`tools/`) where the bug is in URML's own code, not in the specification. Examples: a validator that fails to reject an out-of-envelope program, an LLM-bridge prompt that allows injection, a runtime that doesn't honor a primitive's declared limits, the compliance-policy engine (RFC-0004) failing to apply a denylist rule, or the bundled default policy file having syntactically valid but semantically broken rules that accept manifests the rules should reject.
 
-**Report path:** email `security@urml.example` <!-- TODO: fill in real address after GitHub org setup -->. Please include:
+**Report path:** report it privately through GitHub: [**Report a vulnerability**](https://github.com/urml-dev/URML/security/advisories/new), also under the repository's **Security** tab. The report is visible only to you and the maintainers. This is the single point of contact for vulnerabilities in URML, including for makers who find one in a URML package built into their product. Please include:
 
 - A description of the issue, including which component is affected.
 - Steps to reproduce, or a minimal proof of concept.
@@ -41,7 +41,7 @@ An *implementation* vulnerability is a flaw in a reference runtime (`reference/r
 - A coordinated disclosure window of up to **90 days** by default. We will discuss and adjust this with the reporter based on severity and how widely the affected code is in use.
 - Credit in the fix's release notes, unless the reporter prefers to remain anonymous.
 
-Please do **not** open a public issue for an implementation vulnerability until a fix is available and we have agreed on a disclosure date.
+Please do **not** open a public issue for an implementation vulnerability until a fix is available and we have agreed on a disclosure date. The private report becomes a draft security advisory, where we work on the fix with you and agree on the disclosure date; GitHub can request a CVE for it when it is published.
 
 ## Conduct concerns
 
@@ -61,4 +61,4 @@ If the bundled policy is *missing* a covered entity such that a real federal-pro
 
 ## Public security log
 
-Once the first fix lands, a per-version `SECURITY-ADVISORIES.md` is added under `docs/` enumerating fixed issues, severities, and affected versions. Until then, this file is the canonical entry point.
+Published advisories, with their severities and affected versions, are listed at [github.com/urml-dev/URML/security/advisories](https://github.com/urml-dev/URML/security/advisories). This file stays the canonical entry point.
