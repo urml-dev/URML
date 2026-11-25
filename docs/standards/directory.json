@@ -742,6 +742,41 @@
               }
             ]
           }
+        },
+        {
+          "id": "iec-61800-5-2",
+          "name": "IEC 61800-5-2:2016",
+          "title": "Safety functions of drives",
+          "kind": "standard",
+          "area": "Functional safety of drives",
+          "who_short": "Drive makers, and integrators who use a drive's safety functions",
+          "what": "The functional-safety standard for adjustable speed drives. It names the safety functions a drive can carry out itself, such as safe torque off (STO), safe stop 1 and 2 (SS1, SS2) and safely limited speed (SLS), and rates them in the IEC 61508 and IEC 62061 vocabulary. UL 61800-5-2 is the US version.",
+          "why": "Most robot stops and speed limits end in the drives. A safety function the drive performs itself is often simpler and faster than one built around it, and its rating feeds the machine's PL or SIL.",
+          "who": "Makers of drives and servo amplifiers, and integrators who use a drive's safety functions in the machine's safety design.",
+          "how": "Drive makers design and certify the drive's safety functions to it and publish a safety manual. The integrator configures and validates them in the machine, within the limits that manual sets.",
+          "text": [
+            {
+              "label": "IEC 61800-5-2 at IEC",
+              "url": "https://webstore.iec.ch/en/publication/24556"
+            }
+          ],
+          "assess": {
+            "text": "Drive makers usually have their drives certified by bodies such as TÜV SÜD, TÜV Rheinland or exida; the integrator validates the configured functions.",
+            "links": []
+          },
+          "urml": {
+            "support": [
+              "template",
+              "evidence"
+            ],
+            "text": "The functional-safety template: the stop function the drives perform is on record, a speed cap keeps every program below the drives' safely limited speed so none trips it, and programs never write the drives' safety inputs. The drive enforces SLS; URML only avoids asking for more.",
+            "links": [
+              {
+                "label": "functional-safety-template.yaml",
+                "url": "https://github.com/urml-dev/URML/blob/main/examples/rulebooks/functional-safety-template.yaml"
+              }
+            ]
+          }
         }
       ]
     },

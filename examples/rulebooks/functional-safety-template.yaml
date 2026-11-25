@@ -1,6 +1,7 @@
 # Template: a rulebook that keeps programs from running until the site has
 # declared its safety functions, shaped after ISO 13849-1:2023 /
-# ISO 13849-2, IEC 62061:2021 and IEC 61508:2010.
+# ISO 13849-2, IEC 62061:2021 and IEC 61508:2010, with the robot's drive
+# safety functions after IEC 61800-5-2:2016.
 #
 # Read this first. URML is not a safety-related part of a control system.
 # The validator is not safety-rated, a refusal is not a safety function, and
@@ -28,6 +29,17 @@
 # controllers, drives with a safe torque off, safety-rated sensors) design
 # to. A SIL means the same thing under both, so the same SIL1..SIL3 values
 # serve either. IEC 62061 stops at SIL3; IEC 61508 also defines SIL4.
+#
+# IEC 61800-5-2 is the functional-safety standard for the robot's drives. It
+# names the safety functions a drive can carry out itself, among them safe
+# torque off (STO), safe stop 1 and safe stop 2 (SS1, SS2), and safely
+# limited speed (SLS). STO, SS1 and SS2 match stop categories 0, 1 and 2 of
+# IEC 60204-1. The last three rules use it: the stop function the drives perform
+# is on record, a speed cap keeps programs below the drives' SLS limit, and
+# programs never write the inputs that request a drive safety function. The
+# cap is a convenience, not protection: a program that asked for more would
+# only trip the drive. The SLS in the drive is the safety function. Delete
+# the three rules if the robot's drives have no safety functions.
 #
 # This file carries no values. ISO and IEC standards are copyrighted, and the
 # level each function requires (PLr, or the required SIL) comes from the
@@ -78,6 +90,10 @@
 #     edition 2.0; part 1 is dated 2010-04-30. Edition 3 is at the final
 #     draft stage, forecast for publication in 2027. Check the cites when it
 #     is out.
+#   - IEC 61800-5-2:2016 (Adjustable speed electrical power drive systems,
+#     Part 5-2: Safety requirements, Functional), edition 2.0, checked on
+#     2026-11-25 on the IEC webstore. UL 61800-5-2 is the US version; check
+#     its edition.
 #
 # Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702).
 
@@ -143,6 +159,45 @@ rules:
     require_declared:
       key: safety_validation_record
 
+  - id: drive_stop_function_declared
+    title: The stop function the robot's drives perform is declared and accepted
+    cite:
+      text: "IEC 61800-5-2:2016, clause FILL_IN; the drive's safety manual"
+      standard: "IEC 61800-5-2:2016"
+    note: >-
+      The drive safety function the emergency and protective stops use, as
+      the drive's safety manual names it. List the ones the risk assessment
+      accepts, for example STO or SS1.
+    require_declared:
+      key: drive_stop_function
+      allowed: [FILL_IN]
+
+  - id: below_safely_limited_speed
+    title: Programs stay below the drives' safely limited speed
+    cite:
+      text: "IEC 61800-5-2:2016, clause FILL_IN; the drive's SLS configuration"
+      standard: "IEC 61800-5-2:2016"
+    note: >-
+      Set this below the speed the drives' SLS function allows, converted
+      from the drive's axis speed to the speed a program commands, with a
+      margin, so no program asks for a speed the drive would stop on. URML
+      compares the speed a program requests; the drive enforces SLS.
+    cap:
+      quantity: speed_m_per_s
+      max: FILL_IN
+
+  - id: drive_safety_inputs_untouched
+    title: Programs never write the inputs that request a drive safety function
+    cite:
+      text: "IEC 61800-5-2:2016, clause FILL_IN; the drive's safety manual"
+      standard: "IEC 61800-5-2:2016"
+    note: >-
+      Name the output lines wired to the drives' safety inputs, such as an STO
+      or SS1 request.
+    forbid_primitive:
+      primitives: [set_output]
+      names: [FILL_IN]
+
 obligations:
   - id: urml_is_not_a_safety_function
     title: Nothing in URML counts toward a performance level or a SIL
@@ -195,3 +250,23 @@ obligations:
     cite:
       text: "ISO 13849-2, IEC 62061:2021 or IEC 61508:2010, clause FILL_IN; the site's own procedures"
       standard: ["ISO 13849-2", "IEC 62061:2021", "IEC 61508:2010"]
+
+  - id: drive_safety_functions_validated
+    title: The drives' safety functions are configured, protected and validated
+    text: >-
+      The drives' safety functions and their parameters, such as the SLS
+      limit, are set as the drive's safety manual requires, protected against
+      change, and validated in the installed machine. URML never writes a
+      drive safety parameter.
+    cite:
+      text: "IEC 61800-5-2:2016, clauses FILL_IN; the drive's safety manual"
+      standard: "IEC 61800-5-2:2016"
+
+  - id: speed_cap_follows_the_drive
+    title: The speed cap is rechecked when the drive's limits change
+    text: >-
+      When the SLS limit, the gearing or the kinematics change, the speed cap
+      in this rulebook is recalculated so it stays below the new limit.
+    cite:
+      text: "IEC 61800-5-2:2016, clause FILL_IN; the site's own procedures"
+      standard: "IEC 61800-5-2:2016"
