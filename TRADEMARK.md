@@ -49,7 +49,7 @@ Anyone whose runtime is one exact version of a distribution the public can insta
 
 ### The criteria
 
-The criteria are in [`spec/conformance/v0.2.2.md`](spec/conformance/v0.2.2.md) section 3, and the registry checker enforces all but the attestation:
+The criteria are in [`spec/conformance/v0.2.3.md`](spec/conformance/v0.2.3.md) section 3, and the registry checker enforces all but the attestation:
 
 1. A self-report: the full suite for each claimed profile, run with the runtime's own adapter, every fixture passed.
 2. A reproduction: the Licensor installs that exact version from its public source into a clean environment, turns the network off, runs the same suite with the same adapter, and gets a pass on every fixture over the same fixture set.
@@ -57,7 +57,7 @@ The criteria are in [`spec/conformance/v0.2.2.md`](spec/conformance/v0.2.2.md) s
 
 ### Cost and order
 
-The Licensor charges a fee for each certification run, listed with the validation services in [COMMERCIAL.md](COMMERCIAL.md#urml-certified-runtime-makers). The fee pays for the run, never for the result: a run that fails keeps its fee and grants nothing. Paid requests are run in the order they are paid, with no expedited tier, and no fee, license or other service affects whether certification is granted.
+The Licensor charges a fee for each certification run, listed with the validation services in [COMMERCIAL.md](COMMERCIAL.md#urml-certified-runtime-makers). The fee is waived for a non-commercial runtime, one that is not sold, not licensed for a fee and not part of a paid product or service. The fee pays for the run, never for the result: a run that fails keeps its fee and grants nothing. Requests are run in the order they are paid or waived, with no expedited tier, and no fee, license or other service affects whether certification is granted.
 
 ### How long it lasts
 

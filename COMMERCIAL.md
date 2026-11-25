@@ -93,11 +93,13 @@ For a maker who ships a URML runtime as a public package and wants the **URML-Ce
 
 - we install the exact version you name from its public source, in a clean environment, and turn the network off;
 - we run the full conformance suite for the profiles you claim, with your adapter, and commit the reproduction report to your registry entry;
-- we review the entry and your attestation against the public criteria in [`spec/conformance/v0.2.2.md`](spec/conformance/v0.2.2.md) section 3.
+- we review the entry and your attestation against the public criteria in [`spec/conformance/v0.2.3.md`](spec/conformance/v0.2.3.md) section 3.
 
 If every criterion is met and the registry check passes, the entry merges as certified, for at most 366 days. Priced per certification, from the scope of the run (the number of profiles, and whether it runs against a simulator, a recorded substrate or your hardware). You do not need a commercial license to apply.
 
-The fee pays for the run, never for the result. A run that fails keeps its fee and grants nothing. Requests are run in the order they are paid; there is no expedited tier. A renewal or a new runtime version is a new run. The mark certifies conformance to the URML specification only; its use is governed by [`TRADEMARK.md`](TRADEMARK.md). The conformance suite and the self-reported tier stay free.
+**Waived for non-commercial runtimes.** The run is free for a runtime that is not sold, not licensed for a fee and not part of a paid product or service, such as a university research group's runtime or a teaching platform's. Say so when you apply. The waiver follows the runtime, not who submits it, and changes nothing else: the same criteria, the same queue, the same verdict. A runtime that later goes commercial pays from its next run.
+
+The fee pays for the run, never for the result. A run that fails keeps its fee and grants nothing. Requests are run in the order they are paid or waived; there is no expedited tier. A renewal or a new runtime version is a new run. The mark certifies conformance to the URML specification only; its use is governed by [`TRADEMARK.md`](TRADEMARK.md). The conformance suite and the self-reported tier stay free.
 
 A validation report records what was tested on the dates it was tested. It is not a safety assessment or a compliance determination; site safety stays with the integrator and its risk assessment.
 

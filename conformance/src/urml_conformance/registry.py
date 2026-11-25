@@ -14,7 +14,7 @@ checker that keeps entries honest::
 - every repository path it names exists, and every sha256 it pins matches the
   bytes of the file;
 - the robot's manifest parses as a URML capability manifest;
-- a compatibility claim (``spec/conformance/v0.2.2.md`` section 3) points at a
+- a compatibility claim (``spec/conformance/v0.2.3.md`` section 3) points at a
   ``urml.conformance-report/1`` report in which every fixture passed, run with
   the entry's own adapter (not the mock) and this repository's
   urml-conformance version, running every fixture of each claimed profile;
@@ -244,7 +244,7 @@ class Reproduction(_Model):
 class Certification(_Model):
     """The URML-Certified grant on top of a self-report (RFC-0705)."""
 
-    conformance_spec: Literal["0.2.0", "0.2.1", "0.2.2"] = Field(
+    conformance_spec: Literal["0.2.0", "0.2.1", "0.2.2", "0.2.3"] = Field(
         ..., description="The conformance specification version the certification was granted against."
     )
     certified_on: IsoDate
@@ -258,7 +258,7 @@ class Certification(_Model):
 
 
 class Compatibility(_Model):
-    """A compatibility claim (spec/conformance/v0.2.2.md section 3).
+    """A compatibility claim (spec/conformance/v0.2.3.md section 3).
 
     ``self_reported``: the runtime's authors ran the suite. ``certified``: the
     Licensor also reproduced the run from the public package (URML-Certified).

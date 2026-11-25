@@ -4,7 +4,7 @@ title: URML-Certified becomes a paid validation service, on public criteria
 author: Ido Yahalomi
 state: Accepted
 created: 2026-11-25
-updated: 2026-11-25
+updated: 2026-11-25 (open question 1 resolved)
 amends: RFC-0705, MANIFESTO.md (Non-Goals)
 superseded-by: none
 ---
@@ -109,7 +109,7 @@ None changes. A URML-Certified runtime is no more NDAA-compliant than an uncerti
 
 ## Open questions
 
-1. **Fee waivers.** Should runs for university research groups, teaching platforms and non-commercial runtimes be waived or reduced, to keep the free tier generous where adoption starts?
+1. **Fee waivers.** *Resolved 2026-11-25 by the founder: waived for non-commercial runtimes.* The run is free for a runtime that is not sold, not licensed for a fee and not part of a paid product or service, such as a university research group's or a teaching platform's. The waiver is keyed to the runtime, not the submitter, so the rule above that the quote never depends on who the submitter is still holds. It changes nothing else: same criteria, same queue (in the order requests are paid or waived), same verdict. It is written into [`spec/conformance/v0.2.3.md`](../../spec/conformance/v0.2.3.md) section 3 and [`COMMERCIAL.md`](../../COMMERCIAL.md#urml-certified-runtime-makers).
 2. **Published price.** When the first certifications are done, publish a fee schedule by scope in `COMMERCIAL.md`.
 3. **Registration.** As in RFC-0705: register URML-Certified as a certification mark before the first grant. A paid mark makes this more pressing, because a mark that earns money is a mark worth copying.
 4. **Hand-over.** When a foundation exists, the reproduction role and its fee move to it together.
