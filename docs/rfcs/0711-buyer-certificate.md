@@ -52,7 +52,7 @@ The program was designed from the runtime maker's side. Read from a buyer's side
 
 **The unit is a package.** A certification attaches to a runtime package, a version, an adapter, a profile set and a conformance specification version. A purchasing department compares robot models and software releases. Nothing on the certificate tells it whether the robot on the quote is the thing that was tested.
 
-**The run can happen without a robot.** The suite records what the runtime asked the adapter to do, and the specification says that this "does not show that the robot moved" ([`spec/conformance/v0.2.3.md`](../../spec/conformance/v0.2.3.md), clause 6). A reproduction against a recorded substrate and one against the robot lead to the same grant, and a buyer will assume the robot was there.
+**The run can happen without a robot.** The suite records what the runtime asked the adapter to do, and the specification says that this "does not show that the robot moved" ([`spec/conformance/v0.2.3.md`](../../spec/conformance/v0.2.3.md), clause 6). A reproduction against a recorded substrate and one against the robot lead to the same grant, and a buyer will assume the robot was there. A conformance report names the adapter and says nothing about what stood behind it.
 
 **The refusal is not in the certified run.** The main run stops a rejected fixture at the validator. Only the goal-line lane ([`conformance/CONFORMANCE_KIT.md`](../../conformance/CONFORMANCE_KIT.md)) hands rejected programs to the runtime and checks that the adapter saw zero calls. That lane writes no report and is not a criterion. The claim a buyer cares about most is the one a certificate supports with an attestation only.
 
@@ -196,6 +196,8 @@ Two robots can both be certified against different suite versions. The certifica
 
 A yearly fee that includes several runs commits the Licensor to work it has not measured yet. The quote caps the number of runs for that reason.
 
+For a package that uses the reference runtime, the goal-line result is a property of the reference runtime in the certified configuration: that runtime refuses before it touches any adapter. The lane says most when a package ships a runtime of its own.
+
 The Licensor is paid to certify and now also signs the certificate. The conflict that RFC-0708 recorded is unchanged: the fee is owed whatever the result, the criteria are public, and every report is committed where anyone can re-run it.
 
 ## Alternatives considered
@@ -234,7 +236,7 @@ None changes. A certificate is not a declaration of conformity under the EU Mach
 
 ## Open questions
 
-1. **Can a real robot hold a whole profile?** A claim covers every fixture that lists a profile, and no registry entry carries even a self-report today. The reference runtimes' own tests run chosen subsets with real adapters. Before this RFC is accepted, one package from outside the project is taken through a whole profile on a simulator. If a real robot cannot meet the whole-profile rule, the scope of a claim gets its own RFC first, because a certificate nobody can earn helps no buyer.
+1. **A real robot cannot hold a whole profile today.** A claim covers every fixture that lists a profile, and no registry entry carries even a self-report. Measured on 2026-11-27 at commit 6fd8f24: apart from the mock, no adapter passes a whole profile on a real backend. The two passes found are empty ones: `research`, whose one fixture never reaches the adapter, and `av`, with one executing fixture, on a fake. With every fixture location mapped and the mock standing in for perception, the UR adapter reaches 71 of 77 industrial fixtures and the PX4 adapter 48 of 49 drone fixtures, both on fakes. Three things stand in the way by design. Most executing fixtures need perception that an arm or an autopilot does not have. Fixtures name places that exist only in the fixture world. Fleet fixtures need other robots. The measurement also showed that an adapter which fails every call still passes 27 of the 77 industrial fixtures, because those stop at the validator. The scope of a claim therefore gets its own RFC before this one is accepted, because a certificate nobody can earn helps no buyer.
 2. **Closed builds.** Alternative 2. The proposal keeps the public package as the only route.
 3. **The model's own limits.** Alternative 6. Should the run also hand the runtime refused programs written against the model's manifest?
 4. **Runs per year.** How many runs the yearly fee includes, to be set with the price after the first three certifications.
