@@ -20,6 +20,10 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+### Changed: license
+
+- The BSL Change Date moves from two years to four for new versions ([RFC-0709](docs/rfcs/0709-change-date-four-years.md)). A version first publicly released after this change converts to Apache 2.0 four years after its release. Versions 0.5.0, 0.5.1 and 0.5.2, and source published from 2026-11-22 until this change, keep two years. The Additional Use Grant, the Change License and the prices are unchanged.
+
 ### Added: conformance
 
 - The reproduction run (`python -m urml_conformance.reproduce`) records how long each step took (`plan`, `install`, `run`, `check`) in the reproduction report's new optional `timing` field, and prints the times. RFC-0708 defers a published certification fee until runs show what one costs; this is the measurement. A report without `timing`, such as every self-report, still parses.

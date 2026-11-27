@@ -17,7 +17,7 @@
 > Project context for AI-assisted development sessions (Claude Code, Claude chat, IDE integrations).
 > Loaded automatically by Claude Code at the start of every session in this repository.
 > See [`AGENTS.md`](AGENTS.md) for the operational handbook (writing style, chat style, tactical workflow rules).
-> Last updated: 2026-11-25
+> Last updated: 2026-11-27
 
 ---
 
@@ -38,7 +38,7 @@ Phase 1 is the current phase as of v0.1.0 (2026-05-22, PR #126). `pip install ur
 
 The long-term goal is a **venture-scale company**. This is not incidental. It shapes technical decisions. Encode the following in any architectural choice.
 
-**The standard is the product.** Since RFC-0703 (2026-11-22), URML is source-available under the Business Source License 1.1. Research, teaching, evaluation, development, testing, simulation and personal use are free; production use needs a commercial license (sales@urml.dev); each release converts to Apache 2.0 two years after it ships. Releases up to v0.4.x stay Apache 2.0. Keep the source public and the free tier generous: adoption by engineers is what makes production licenses sell.
+**The standard is the product.** Since RFC-0703 (2026-11-22), URML is source-available under the Business Source License 1.1. Research, teaching, evaluation, development, testing, simulation and personal use are free; production use needs a commercial license (sales@urml.dev); each release converts to Apache 2.0 four years after it ships ([RFC-0709](docs/rfcs/0709-change-date-four-years.md); 0.5.0 to 0.5.2 keep two years). Releases up to v0.4.x stay Apache 2.0. Keep the source public and the free tier generous: adoption by engineers is what makes production licenses sell.
 
 **Revenue.** Production licenses (Startup, Enterprise, OEM; see [`COMMERCIAL.md`](COMMERCIAL.md)) are the primary revenue. Further commercial surfaces: validation engagements for fleets and vehicles, URML-Certified runs, audited policy files, hosted services (validation, LLM bridge, simulation), fleet tooling and training. Hosted services and fleet tooling live outside this repository. Keep them mentally separate, but design so they remain *possible* later: clean APIs, well-defined extension points, no architectural choices that would make a hosted product harder to build. The *URML-Certified* run is paid since [RFC-0708](docs/rfcs/0708-paid-certification.md): the fee pays for the Licensor's reproduction, never for the result, and the criteria stay public ([RFC-0705](docs/rfcs/0705-urml-certified.md), [`TRADEMARK.md`](TRADEMARK.md)). Never sell a verdict, an expedited slot, or a certification that skips the reproduction.
 

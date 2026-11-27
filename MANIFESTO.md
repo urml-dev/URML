@@ -222,7 +222,7 @@ The governance file (`GOVERNANCE.md`) describes the current state honestly. It w
 
 ## License Direction
 
-> Updated 2026-11-22 by [RFC-0703](docs/rfcs/0703-bsl-relicense.md): versions after v0.4.x ship under the **Business Source License 1.1**, free for non-production use and converting to Apache 2.0 two years after each release. See [`LICENSING.md`](LICENSING.md). The original direction follows for the record.
+> Updated 2026-11-22 by [RFC-0703](docs/rfcs/0703-bsl-relicense.md): versions after v0.4.x ship under the **Business Source License 1.1**, free for non-production use and converting to Apache 2.0 two years after each release. Updated 2026-11-27 by [RFC-0709](docs/rfcs/0709-change-date-four-years.md): four years for versions released from then on. See [`LICENSING.md`](LICENSING.md). The original direction follows for the record.
 
 The specification, reference implementations, and conformance suite ship under **Apache License 2.0**. This license is permissive enough to enable broad adoption, includes an explicit patent grant to protect against ambush, and is compatible with the licenses of the systems URML targets (ROS 2 under Apache 2.0; PX4 under BSD-3-Clause).
 

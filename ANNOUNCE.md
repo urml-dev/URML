@@ -16,6 +16,8 @@
 
 Starting with v0.5.0, URML is licensed under the Business Source License 1.1, with a commercial license for production use. The source stays public. Learning, research, evaluation, development and simulation stay free. Running URML on robots in production now needs a commercial license, which starts at $4 per robot per month.
 
+> Update, 2026-11-27: new versions now convert to Apache 2.0 four years after release, not two ([RFC-0709](docs/rfcs/0709-change-date-four-years.md)). Versions 0.5.0 to 0.5.2 keep two years. The text below is the announcement as published.
+
 ## What URML is
 
 URML is a small, human-readable language for robot intent. You write down what should happen, and URML checks the program against what the robot can actually do before anything moves. Ask a 100 N gripper for a 250 N grasp, or send a waypoint outside the geofence, and the program is refused on paper. The error that comes back is specific enough for a language model to fix its own program.

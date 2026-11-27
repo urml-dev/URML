@@ -33,7 +33,7 @@ This directory holds the **reference implementations** maintained by the URML or
 
 Every component in this directory follows the same rules:
 
-- **Source available.** Business Source License 1.1: free for non-production use, commercial license for production, and each release converts to Apache 2.0 two years after it ships. See [`LICENSING.md`](../LICENSING.md).
+- **Source available.** Business Source License 1.1: free for non-production use, commercial license for production, and each release converts to Apache 2.0 four years after it ships (two for 0.5.0 to 0.5.2). See [`LICENSING.md`](../LICENSING.md).
 - **No vendor coupling.** The LLM bridge does not embed Anthropic, OpenAI, or any other specific provider. The ROS 2 runtime targets upstream ROS 2; the PX4 runtime targets upstream PX4.
 - **Offline-first.** A validated URML program executes fully offline. The reference runtimes do not require cloud connectivity at execution time. Hosted services — fleet management, telemetry, observability — are a separate, commercial concern and live outside this repository.
 

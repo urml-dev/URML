@@ -259,7 +259,7 @@ Business Source License 1.1. See [`LICENSE`](LICENSE) and the plain-language sum
 - **Free** for research, teaching, evaluation, development, testing, simulation and personal projects.
 - **Commercial license** for production use, products and hosted services: sales@urml.dev. See [`COMMERCIAL.md`](COMMERCIAL.md).
 - **Paid validation** for VDA 5050 fleets (operators, before go-live) and for AMR makers (a validation run of your vehicle): sales@urml.dev. See [`COMMERCIAL.md`](COMMERCIAL.md#validation-services).
-- Each release converts to **Apache 2.0** two years after it ships. Releases up to and including v0.4.x are Apache 2.0 already.
+- Each release converts to **Apache 2.0** four years after it ships; 0.5.0 to 0.5.2 convert after two. Releases up to and including v0.4.x are Apache 2.0 already.
 
 Contributions require the [Contributor License Agreement](CLA.md) and a DCO sign-off (`git commit -s`). See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
