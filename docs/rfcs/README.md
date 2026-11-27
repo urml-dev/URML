@@ -27,7 +27,7 @@ The **Kind** column says what a document changes.
 
 ### Where the outreach RFCs went
 
-Until 2026-11-27 this directory also held 597 documents of a third kind, Outreach: requests for comment that URML sent to other projects, each proposing a mapping from URML to that project's adapter, manifest or API. None of them changed the specification. [RFC-0710](0710-outreach-records-leave-the-repository.md) moved them out of this repository, together with the ledgers that tracked them, into a private archive kept by the Licensor. They were correspondence, not decisions about URML, and they outnumbered the decisions six to one. The numbers they used, all between 0023 and 0697, are retired and are not reused, so the index below has gaps. An RFC that cites one of them keeps the number as plain text.
+Until 2026-11-27 this directory also held 597 documents of a third kind, Outreach: requests for comment that URML sent to other projects, each proposing a mapping from URML to that project's adapter, manifest or API. None of them changed the specification. [RFC-0710](0710-outreach-records-leave-the-repository.md) moved them out of this repository, together with the ledgers that tracked them, into a private archive kept by the Licensor. They were correspondence, not decisions about URML, and they outnumbered the decisions about six to one. The numbers they used, all between 0023 and 0697, are retired and are not reused, so the index below has gaps. An RFC that cites one of them keeps the number as plain text.
 
 ## Index
 
