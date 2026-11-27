@@ -143,7 +143,7 @@ Pre-v1.0. Additive. No migration required.
 
 ## Prior art
 
-- [RFC-0211 (Stella VSLAM outreach)](0211-stella-vslam-outreach.md) — the outreach RFC that surfaced this field.
+- RFC-0211 (Stella VSLAM outreach) — the outreach RFC that surfaced this field.
 - [RFC-0252 (perception.slam_substrate)](0252-perception-slam-substrate.md) — parent Spec RFC; this RFC extends `slam_options`.
 - OpenVSLAM archive history (referenced in RFC-0211).
 

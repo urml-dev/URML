@@ -208,8 +208,8 @@ Pre-v1.0. Additive. Existing per-substrate asset-path sub-fields (e.g., `percept
 ## Prior art
 
 - [RFC-0252 (slam_substrate)](0252-perception-slam-substrate.md) — surfaced ORB vocabulary as deferred-question.
-- [RFC-0206 (ORB-SLAM3 outreach)](0206-orb-slam3-outreach.md) — surfaced vocabulary-file path concern.
-- [RFC-0202 (MoveIt 2 outreach)](0202-moveit2-outreach.md) — URDF / SRDF asset patterns.
+- RFC-0206 (ORB-SLAM3 outreach) — surfaced vocabulary-file path concern.
+- RFC-0202 (MoveIt 2 outreach) — URDF / SRDF asset patterns.
 - [RFC-0260 (language engines)](0260-language-engine-classes.md), [RFC-0277 (hf:// URI)](0277-language-huggingface-uri-scheme.md) — model-weight asset patterns.
 - [RFC-0262 (licensing.boundary)](0262-licensing-boundary.md) — sibling Spec RFC for license declarations.
 - [RFC-0269 (simulation.substrate)](0269-simulation-substrate.md) — world-file asset patterns.

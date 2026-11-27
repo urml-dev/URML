@@ -14,7 +14,7 @@
 
 # urml-ardupilot-runtime
 
-**ArduPilot / MAVLink reference runtime for URML.** Flies ArduCopter (a Pixhawk-class board running ArduPilot, or ArduCopter SITL) from a validated URML program over [pymavlink](https://github.com/ArduPilot/pymavlink). No ROS 2 dependency. This is the package [RFC-0041](../../docs/rfcs/0041-ardupilot-integration.md) proposed; Copter ships first, Plane and Rover are follow-ups.
+**ArduPilot / MAVLink reference runtime for URML.** Flies ArduCopter (a Pixhawk-class board running ArduPilot, or ArduCopter SITL) from a validated URML program over [pymavlink](https://github.com/ArduPilot/pymavlink). No ROS 2 dependency. This is the package RFC-0041 proposed; Copter ships first, Plane and Rover are follow-ups.
 
 `ArduCopterAdapter` subclasses the PX4 reference adapter ([urml-px4-runtime](../px4-runtime/)). The MAVLink command set is shared; what this package adds is the firmware behaviour ArduPilot needs around those commands and PX4 does not.
 

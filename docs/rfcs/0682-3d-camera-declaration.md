@@ -38,7 +38,7 @@ Validation is pydantic constraints plus one coherence rule (`mount.frame` must b
 
 ## Motivation
 
-[RFC-0035](0035-zivid-integration.md) asked Zivid how URML should declare a 3D camera. Espen Holmbakken (Principal Engineering Manager, Zivid) answered on 2026-05-27, and the answers are this RFC's design inputs rather than suggestions:
+RFC-0035 asked Zivid how URML should declare a 3D camera. Espen Holmbakken (Principal Engineering Manager, Zivid) answered on 2026-05-27, and the answers are this RFC's design inputs rather than suggestions:
 
 - Zivid cameras output 3D color point clouds (XYZ, RGBA, SNR, normals) as the primary product, not 2D images. The v0.1 `Camera` block (photo, video, stream, a free-form resolution) cannot say that; the repo's own Zivid fixture declared the camera as a 5 MP photo device, which is honest about the schema and wrong about the camera.
 - A single `accuracy_mm` misrepresents the product: dimension trueness, point precision, and working distance interact and are documented per model. Resolved with a clear no; the manifest points at the datasheet instead.
@@ -46,7 +46,7 @@ Validation is pydantic constraints plus one coherence rule (`mount.frame` must b
 - Surface normals and SNR are standard output; a pick-quality score is an application-layer construct. `pick_from` gains no vision-source field ([RFC-0615](0615-world-model-areas-and-detection.md) `object_detection` already links object classes to a declared camera).
 - Hand-eye calibration was left to URML.
 
-The same gap is queued in six other perception-vendor threads that cite RFC-0035 by name: RealSense ([RFC-0109](0109-intel-realsense-outreach.md)), ZED ([RFC-0110](0110-stereolabs-zed-outreach.md)), MultiSense ([RFC-0111](0111-carnegie-multisense-outreach.md)), Roboception ([RFC-0112](0112-roboception-outreach.md)), ifm ([RFC-0115](0115-ifm-effector-outreach.md), per-point amplitude), and Velodyne ([RFC-0130](0130-velodyne-via-ros-drivers-outreach.md)). One RFC closes all of them. [RFC-0039](0039-sensor-schema-v0-2-iteration.md) did the lidar side and named a parallel `Camera` iteration as its follow-up (its Drawback 5 and open question); this is that iteration.
+The same gap is queued in six other perception-vendor threads that cite RFC-0035 by name: RealSense (RFC-0109), ZED (RFC-0110), MultiSense (RFC-0111), Roboception (RFC-0112), ifm (RFC-0115, per-point amplitude), and Velodyne (RFC-0130). One RFC closes all of them. [RFC-0039](0039-sensor-schema-v0-2-iteration.md) did the lidar side and named a parallel `Camera` iteration as its follow-up (its Drawback 5 and open question); this is that iteration.
 
 ## Detailed design
 
@@ -111,7 +111,7 @@ Additive and optional. No existing manifest, program, fixture, or runtime change
 
 ## Alternatives considered
 
-- **A new `measurement_type: color_point_cloud` on `Sensor`** (the shape [RFC-0109](0109-intel-realsense-outreach.md) floated). Rejected: it would move 3D cameras out of the block that declares movable, capture modes, and mount, and would fork `point_cloud` into two types for one attribute.
+- **A new `measurement_type: color_point_cloud` on `Sensor`** (the shape RFC-0109 floated). Rejected: it would move 3D cameras out of the block that declares movable, capture modes, and mount, and would fork `point_cloud` into two types for one attribute.
 - **A scalar `accuracy_mm`.** Rejected by the vendor whose product it would describe.
 - **A calibration file schema.** Rejected: hand-eye calibration outputs are tool-specific and the geometry URML needs already has a home (RFC-0290 frame transforms). A pointer plus topology is the honest minimum.
 - **Unify lidar and camera point clouds under one block.** Rejected: beams and timing versus color and organization are different declarations, and RFC-0039 deployments would have to migrate.

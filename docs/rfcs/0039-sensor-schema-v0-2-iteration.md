@@ -41,7 +41,7 @@ The RFC also formalizes URML's posture on the capability-vs-configuration line: 
 
 ## Motivation
 
-This RFC is the spec-side response to the Ouster maintainer feedback on [RFC-0032](0032-ouster-integration.md). On 2026-05-22 Samahu (`@Samahu`) replied to our request-for-comment issue (`ouster-lidar/ouster-sdk#711`) with substantive technical answers on all five expressibility gaps we raised. The conversation is captured verbatim in the outreach log (`C:\Users\Ido\.claude\plans\outreach\log.md`).
+This RFC is the spec-side response to the Ouster maintainer feedback on RFC-0032. On 2026-05-22 Samahu (`@Samahu`) replied to our request-for-comment issue (`ouster-lidar/ouster-sdk#711`) with substantive technical answers on all five expressibility gaps we raised. The conversation is captured verbatim in the outreach log (`C:\Users\Ido\.claude\plans\outreach\log.md`).
 
 His specific guidance, by gap:
 

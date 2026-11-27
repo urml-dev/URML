@@ -39,7 +39,7 @@ to the right surface.
 
 The field set comes directly from a request-for-comment exchange with
 STMicroelectronics engineers on
-[STM32CubeF4#203](https://github.com/STMicroelectronics/STM32CubeF4/issues/203),
+STM32CubeF4#203,
 who spelled out what an STM32 firmware description should carry and argued it should
 be **per-series**, not a single umbrella. This RFC generalizes their four fields to
 any MCU vendor (STM32 is the motivating instance, not the only one) and files them
@@ -56,7 +56,7 @@ what a runtime can honestly dispatch. Today a manifest either omits that entirel
 smuggles it into free-text `description`, which the conformance suite cannot check.
 
 The concrete driver is a real vendor's read of the problem. On
-[STM32CubeF4#203](https://github.com/STMicroelectronics/STM32CubeF4/issues/203),
+STM32CubeF4#203,
 STMicroelectronics engineers, asked what a URML capability declaration should carry
 for an STM32 firmware, answered with a specific list and a scope decision:
 
@@ -204,7 +204,7 @@ capability half this identity half composes with), RFC-0017 (`set_output`, the v
 those nodes use), RFC-0006 (declare-an-abstract-capability precedent), RFC-0308
 (micro-ROS, the MCU-transport tier this pairs with). External source: the
 request-for-comment exchange with STMicroelectronics engineers on
-[STM32CubeF4#203](https://github.com/STMicroelectronics/STM32CubeF4/issues/203).
+STM32CubeF4#203.
 
 ## Unresolved questions
 

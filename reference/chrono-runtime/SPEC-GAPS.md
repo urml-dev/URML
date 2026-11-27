@@ -33,7 +33,7 @@ them under the unchanged program, manifest, and validator.
 
 The Chrono **mapping** surfaced two *manifest* gaps. Neither is bolted
 on here; both are queued as Spec RFCs for maintainer decision, exactly
-as flagged in [RFC-0328](../../docs/rfcs/0328-project-chrono-outreach.md):
+as flagged in RFC-0328:
 
 1. **Terrain / terramechanics fidelity hint.** URML's manifest declares
    capability, not the terrain a deployment runs over. An optional

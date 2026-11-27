@@ -1050,8 +1050,7 @@ class IpcSubstrate(BaseModel):
       a global config named by `config_path`, and `runtime_name` does not apply.
 
     Surfaced by the engaged iceoryx / iceoryx2 thread
-    ([RFC-0210](../../../docs/rfcs/0210-iceoryx-outreach.md) /
-    [RFC-0305](../../../docs/rfcs/0305-iceoryx2-outreach.md)).
+    (RFC-0210 / RFC-0305).
     """
 
     model_config = ConfigDict(extra="forbid")

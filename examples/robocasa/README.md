@@ -1,6 +1,6 @@
 # URML as an eval lens over RoboCasa instructions
 
-On [robocasa/robocasa#200](https://github.com/robocasa/robocasa/issues/200) the
+On robocasa/robocasa#200 the
 maintainer made a sharp point: RoboCasa learns policies end to end in sim and
 defines tasks by the environment plus a success checker, so there is no actuation
 gate to refuse a request. A validated intent layer is more relevant to a

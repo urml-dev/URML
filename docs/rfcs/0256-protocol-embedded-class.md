@@ -189,8 +189,8 @@ Pre-v1.0. Additive at the field level. Existing drone manifests that didn't decl
 
 ## Prior art
 
-- [RFC-0197 (MAVLink outreach)](0197-mavlink-outreach.md), [RFC-0199 (DroneCAN libcanard outreach)](0199-dronecan-libcanard-outreach.md) — the outreach RFCs that surfaced this field.
-- [RFC-0229 (Crazyflie outreach)](0229-crazyflie-outreach.md) — Move-18 CRTP engagement; adds the `crtp` value.
+- RFC-0197 (MAVLink outreach), RFC-0199 (DroneCAN libcanard outreach) — the outreach RFCs that surfaced this field.
+- RFC-0229 (Crazyflie outreach) — Move-18 CRTP engagement; adds the `crtp` value.
 - [RFC-0250 (substrate.autopilot_class)](0250-substrate-autopilot-class.md) — sibling Spec RFC; declares the autopilot stack that runs above the embedded-network protocol.
 - [RFC-0008 (drone profile)](0008-drone-profile.md) — URML's drone profile that consumes this field.
 

@@ -1,6 +1,6 @@
 # A URDF's own limits as a capability-manifest source
 
-For [clemense/yourdfpy#69](https://github.com/clemense/yourdfpy/issues/69) (the liburdf JSON-emission thread).
+For clemense/yourdfpy#69 (the liburdf JSON-emission thread).
 
 A URDF already carries, per joint, the numbers a validate-before-actuate check
 needs: effort, velocity, and position limits. This example reads a real URDF with

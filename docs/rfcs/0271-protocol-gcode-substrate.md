@@ -192,8 +192,8 @@ Pre-v1.0. Additive. Existing manifests that don't declare `motion_class: fabrica
 
 ## Prior art
 
-- [Move-18 RFC-0227 (Klipper outreach)](0227-klipper-outreach.md) — the outreach RFC that surfaced this field.
-- [Move-18 RFC-0231 (Marlin), RFC-0233 (LinuxCNC)](0231-marlin-outreach.md) — staged in user's Move-18 batches; pairs with this RFC's enum values.
+- Move-18 RFC-0227 (Klipper outreach) — the outreach RFC that surfaced this field.
+- Move-18 RFC-0231 (Marlin), RFC-0233 (LinuxCNC) — staged in user's Move-18 batches; pairs with this RFC's enum values.
 - [RFC-0266 (mobility.motion_class)](0266-mobility-motion-class.md) — parent Spec RFC; this RFC closes the fabrication-protocol-declaration deferral.
 - [RFC-0256 (protocol.embedded_class)](0256-protocol-embedded-class.md) — sibling Spec RFC; this RFC mirrors the list-valued + per-protocol options pattern.
 

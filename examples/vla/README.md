@@ -15,7 +15,7 @@
 # URML as the validated-intent gate for a vision-language model
 
 A worked example answering the question @TangmereCottage asked on
-[OpenMind/OM1#2587](https://github.com/OpenMind/OM1/issues/2587): **how does URML
+OpenMind/OM1#2587: **how does URML
 coexist with world models / vision-language models?**
 
 It does not compete with them. The model is the front end; URML is the gate.

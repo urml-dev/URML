@@ -140,9 +140,9 @@ Pre-v1.0. Additive: missing field defaults to `production`, which is the implici
 
 ## Prior art
 
-- [RFC-0209 (Eclipse Zenoh outreach)](0209-zenoh-outreach.md) — the surface that surfaced this field.
-- [RFC-0210 (iceoryx outreach)](0210-iceoryx-outreach.md) — sibling; iceoryx2 is the sub-stable successor.
-- [RFC-0211 (Stella VSLAM outreach)](0211-stella-vslam-outreach.md) — sibling; license-clarification-pending Tier B substrate.
+- RFC-0209 (Eclipse Zenoh outreach) — the surface that surfaced this field.
+- RFC-0210 (iceoryx outreach) — sibling; iceoryx2 is the sub-stable successor.
+- RFC-0211 (Stella VSLAM outreach) — sibling; license-clarification-pending Tier B substrate.
 - [RFC-0251 (substrate.rmw_implementation)](0251-substrate-rmw-implementation.md) — the field that accepts `rmw_zenoh_cpp` as a value; this RFC complements with the maturity declaration.
 - [RFC-0014 (substrate conformance)](0014-substrate-conformance.md) — the conformance framework this RFC adds a warning category to.
 

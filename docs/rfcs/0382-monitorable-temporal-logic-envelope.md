@@ -145,7 +145,7 @@ Pre-v1.0. Additive: `monitorable_properties` is optional, every existing envelop
 ## Prior art
 
 - Signal Temporal Logic (Maler & Nickovic) and MTL; STREL (Bartocci et al.) for the spatial extension.
-- [RFC-0362 (RTAMT)](0362-rtamt-outreach.md), [RFC-0363 (Reelay)](0363-reelay-outreach.md), [RFC-0364 (Copilot)](0364-copilot-rv-outreach.md), [RFC-0365 (Ogma)](0365-ogma-outreach.md), [RFC-0371 (MoonLight)](0371-moonlight-outreach.md), the Move #28 monitor backends this declaration targets.
+- RFC-0362 (RTAMT), RFC-0363 (Reelay), RFC-0364 (Copilot), RFC-0365 (Ogma), RFC-0371 (MoonLight), the Move #28 monitor backends this declaration targets.
 - [RFC-0006 (link-loss policy)](0006-link-loss-policy.md), the existing structured-envelope precedent (replacing a free-form string with a validated list), the same move this RFC makes for temporal properties.
 - [RFC-0291 (operational-clearance volumes)](0291-operational-clearance-volumes.md), the spatial concept STREL properties would reference for fleet separation.
 - [RFC-0004 (compliance policy)](0004-compliance-policy.md), the other "declared, checked, pluggable" mechanism in URML; this RFC mirrors its posture.

@@ -1,6 +1,6 @@
 # A MOVE_MATERIAL task as a validated URML program, lowered to UR
 
-For [mtconnect/cppagent Discussion #615](https://github.com/orgs/mtconnect/discussions/615)
+For mtconnect/cppagent Discussion #615
 (making MTConnect's Task model robot-agnostic).
 
 MTConnect's Task model gives a `TaskType` such as `MOVE_MATERIAL`: it says *what* to

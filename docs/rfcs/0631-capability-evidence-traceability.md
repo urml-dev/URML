@@ -54,7 +54,7 @@ settled design).
 ## Motivation
 
 The motivation is a specific, high-quality outside review. On
-[isaac-sim/IsaacSim#649](https://github.com/isaac-sim/IsaacSim/issues/649),
+isaac-sim/IsaacSim#649,
 an NVIDIA Isaac engineer reviewed URML's mapping onto Isaac Sim and made the same
 point twice, as the design's most important gap:
 
