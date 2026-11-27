@@ -33,9 +33,11 @@ URML is source-available under the **Business Source License 1.1** (BSL). The bi
 
 Commercial licenses are granted by Yahalomik Ltd., URML's Licensor: **sales@urml.dev**
 
-## Every release opens up after two years
+## Every release opens up after four years
 
-Each version of URML converts automatically to the **Apache License 2.0** two years after it is first publicly released. The BSL applies only during that window.
+Each version of URML converts automatically to the **Apache License 2.0** four years after it is first publicly released. The BSL applies only during that window. Four years is the longest window the BSL allows.
+
+Versions released with a two-year window keep it. That covers 0.5.0, 0.5.1 and 0.5.2, and all source published in this repository from 2026-11-22 until the window changed: each becomes Apache 2.0 two years after it was first published. The change and its reasons are in [RFC-0709](docs/rfcs/0709-change-date-four-years.md).
 
 ## Earlier releases stay Apache 2.0
 
