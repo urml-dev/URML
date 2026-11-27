@@ -26,8 +26,7 @@ No code. No integration. One YAML file you write and own.
   published manifest is a capability declaration, nothing more.
 - **Not a certification or a compatibility mark.** Those are separate, later, and earned.
 - **Not "engaged."** Claiming a name does not make you a partner or imply a relationship.
-  URML's outreach ledger tracks real engagement separately and honestly; a claim is just a
-  claim.
+  A claim is just a claim.
 - **Not us naming your product for you.** We never list a robot a vendor has not published
   themselves. The claim is yours to make and yours to revoke.
 
