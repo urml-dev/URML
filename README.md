@@ -91,7 +91,7 @@ Every `✅` below maps to a shipped file and a passing test or recorded CI run; 
 |---|---|
 | **Six-pass static validator**: argument typing, capability checks, safety-envelope tightening (incl. geofence, 3D altitude bands, people-occupancy zones), rulebooks for government and company rules (RFC-0702; FAA Part 107 bundled, on by default for drones), variable-binding + cross-primitive type analysis, compliance policy | ✅ Implemented, 1214 unit tests |
 | **28 primitives**: the 12 core (`move_to`, `dock`, `hover`, `wait`, `wait_for`, `grasp`, `release`, `detect`, `scan`, `measure`, `capture`, `report`)<br>plus profile / extension verbs: home (`speak`, `listen`), social (`look_at`, `gesture`, RFC-0698), educational (`drive`, `turn`, RFC-0630), drone (`take_off`, `land`, `return_to_home`), industrial (`pick_from`, `place_at`, `swap_tool`), `bimanual` (RFC-0010), `set_output` (RFC-0017), and the `av` pair `plan_path` / `follow_trajectory` (RFC-0020) | ✅ Validator + reference-runtime executors for all 28 |
-| **Compliance enforcement**: provenance schema on the manifest, a pluggable YAML policy DSL, and a bundled US-federal default policy (NDAA §889 / FY26, FCC Covered List, EO 14307, ASRA) | ✅ Implemented; `--no-policy` opt-out |
+| **Compliance enforcement**: provenance schema on the manifest, a pluggable YAML policy DSL, and a bundled US-federal default policy (a provenance screen built on Department of Defense procurement law, the DoD list of Chinese military companies and the FCC Covered List) | ✅ Implemented; `--no-policy` opt-out |
 | **LLM bridge**: provider-agnostic (Anthropic + OpenAI + Ollama + llama.cpp + EchoProvider, all first-class in the CLI); RFC-0670 speech front-end (`--audio`, whisper.cpp default); revision loop with policy-error short-circuit; home / drone / industrial / fleet few-shots | ✅ 282 unit tests |
 | **Conformance suite**: declarative YAML fixtures any URML-compatible runtime must pass; runnable via `urml conformance run`; the runtime contract is normatively defined in [RFC-0014](docs/rfcs/0014-substrate-conformance.md) | ✅ 269 fixtures (home, drone, industrial, biped, quadruped, mobile, warehouse, marine, educational, research, fleet, flexbe, av, manipulation, actuation, language, translation, licensing, compliance, deployment, social, programs, rulebook) |
 | **CLI**: `urml validate`, `urml execute`, `urml schema`, `urml translate`, `urml run`, `urml bench`, `urml emit-prompt`, `urml init`, `urml conformance run` | ✅ All nine subcommands |
@@ -110,12 +110,13 @@ The [URML registry](registry/README.md) lists each robot with recorded runs, the
 
 ## Regulatory alignment
 
-URML's default validator policy aligns with **United States federal robotics and uncrewed-systems regulation**:
+URML's default validator policy is a provenance screen built on **United States federal robotics and uncrewed-systems regulation**:
 
-- NDAA Section 889 and FY26 NDAA procurement restrictions
-- FCC Covered List (DJI, Autel, etc.) effective 2025-12-23
-- Executive Order 14307 ("Unleashing American Drone Dominance")
-- The American Security Robotics Act once enacted
+- Department of Defense procurement restrictions on unmanned aircraft and LiDAR from China, Russia, Iran and North Korea (section 848 of the FY2020 NDAA and section 164 of the FY2025 NDAA, both as amended)
+- The Department of Defense list of Chinese military companies (section 1260H of the FY2021 NDAA), which names DJI, Autel, Hesai and Unitree
+- The FCC Covered List, which has carried DJI and Autel equipment since 2025-12-22
+
+The bundled rules reach further than these sources: they apply to every critical component of every robot, for any buyer. A finding is a screen result, not a legal determination. The policy file's header lists each source and its limits. Executive Order 14307 ("Unleashing American Drone Dominance") is tracked and not encoded. The American Security Robotics Act is a pending bill and becomes a source only if it is enacted.
 
 Deployments outside the US can override the default with `urml validate --policy <file.yaml>`, or disable the compliance pass entirely with `--no-policy`. The mechanism is regulation-neutral; the bundled default is US-aligned by design.
 

@@ -1,43 +1,96 @@
-# URML default compliance policy — US federal robotics regulation.
+# URML default compliance policy: a provenance screen built on US federal law.
 #
 # Ratified by RFC-0003 (URML aligns with US federal regulation) and
 # RFC-0004 (Compliance Policy Enforcement). Loaded automatically by
 # urml_validator.validate() when the caller does not pass `--policy` /
 # `policy=...` explicitly.
 #
-# Sources, by rule:
+# Sources, by rule. Every citation below was read in the primary text on
+# 2026-11-27. Each note also says where the rule reaches further than its
+# source. Before citing a new source, read it, write the citation in the
+# form used here, and add it to tests/test_default_policy_sources.py.
 #
-# - critical_country_denylist:    NDAA Section 889 (FAR 4.21); FY26 NDAA
-#                                 expansions extending to all federal
-#                                 agencies, contractors, and grant recipients;
-#                                 DoD Chinese Military Companies list.
-# - covered_vendor_denylist:      FCC Covered List entries effective
-#                                 2025-12-23 (DJI, Autel); Hesai per the
-#                                 FY26 NDAA §164 LiDAR restriction; Unitree
-#                                 per the American Security Robotics Act
-#                                 (Cotton/Schumer, March 2026).
-# - hbom_required_for_critical:   NIST SP 800-218 / IR 8425 alignment for
-#                                 federal procurement.
-# - attestation_floor:            Warning in v0.1; promotion to error scheduled
-#                                 for v0.2 once third-party-attestation tooling
-#                                 has been audited for at least one deployment.
+# - critical_country_denylist, critical_final_assembly_denylist
+#     The country list (CN, RU, IR, KP) is the "covered foreign country"
+#     list of two Department of Defense procurement statutes:
+#       1. Unmanned aircraft systems and their flight controllers, radios,
+#          data transmission devices, cameras and gimbals: section 848 of
+#          the FY2020 NDAA (Pub. L. 116-92), as amended by section 817 of
+#          the FY2023 NDAA (Pub. L. 117-263).
+#       2. LiDAR, in effect since 2026-06-30: section 164 of the FY2025
+#          NDAA (Pub. L. 118-159), as amended by section 162 of the FY2026
+#          NDAA (Pub. L. 119-60).
+#     The same four countries are the "covered nations" of 10 U.S.C. 4872.
+#     Both statutes bind the Department of Defense and cover the products
+#     they name. These two rules apply the list to every critical component
+#     of every robot, for any buyer. Beyond those products and that buyer
+#     the rules are URML's own screen and no statute is claimed for them.
+#     Section 889 of the FY2019 NDAA (Pub. L. 115-232; FAR subpart 4.21) is
+#     not a source. It covers telecommunications and video surveillance
+#     equipment from named Chinese companies and says nothing about robots.
+#
+# - covered_vendor_denylist
+#     All four vendors are on the Department of Defense list of Chinese
+#     military companies kept under section 1260H of the FY2021 NDAA
+#     (Pub. L. 116-283). The list published on 2026-06-10 (91 FR 35189)
+#     names DJI, Autel Robotics, Hesai Group and Hangzhou Yushu Technology
+#     (Unitree).
+#     Further sources by vendor:
+#       dji, autel  On the FCC Covered List since 2025-12-22 (FCC DA
+#                   25-1086), for the equipment named in section 1709 of
+#                   the FY2025 NDAA (Pub. L. 118-159).
+#       hesai       Named in section 164 of the FY2025 NDAA.
+#       unitree     None. The FCC Covered List entry of 2026-07-28 for
+#                   foreign-produced advanced robotic devices (FCC DA
+#                   26-786) covers a class by place of production. It
+#                   names no company.
+#     What a listing does in law is narrower than this rule. Section 805 of
+#     the FY2024 NDAA (Pub. L. 118-31), as amended by section 845 of the
+#     FY2026 NDAA, bars Department of Defense contracts with listed
+#     companies from 2026-06-30 and contracts for goods that include their
+#     goods from 2027-06-30. It exempts components. An FCC Covered List
+#     entry blocks new equipment authorizations and is not a procurement
+#     rule. This rule rejects any component from a listed vendor, for any
+#     buyer.
+#
+# - hbom_required_for_critical
+#     URML's own requirement. It lets the provenance a manifest declares be
+#     checked against a parts list. No statute is cited for it.
+#
+# - attestation_floor
+#     URML's own requirement. Warning in v0.1; promotion to error scheduled
+#     for v0.2 once third-party-attestation tooling has been audited for at
+#     least one deployment.
+#
+# Read, and not encoded in any rule:
+#     * The American Security Drone Act of 2023: sections 1821 to 1833 of
+#       the FY2024 NDAA (Pub. L. 118-31; FAR 40.202). It bars federal
+#       procurement and operation of unmanned aircraft made or assembled by
+#       covered foreign entities.
+#     * Executive Order 14307 (90 FR 24727).
+#     * The FCC Covered List entries for foreign-produced unmanned aircraft
+#       (2025-12-22) and advanced robotic devices (2026-07-28). They cover
+#       classes by place of production, which a vendor list cannot express.
+# Pending bills are not sources.
 #
 # THIS FILE IS NOT LEGAL ADVICE. Deployers must consult counsel for any
 # binding compliance determination. Audited and certified policy files
 # carrying third-party legal attestation are a separate commercial surface
-# (see CORE_COMMITMENT.md, "What This Commitment Does Not Cover").
+# (see COMMERCIAL.md).
 
 policy_version: "0.1"
 policy_id: urml_us_federal_default
 description: |
-  Default policy bundled with URML v0.1, encoding US federal procurement
-  rules for robotic and uncrewed systems. Mirrors NDAA Section 889 / FY26,
-  the FCC Covered List, EO 14307, and the American Security Robotics Act.
-  Not legal advice; see CORE_COMMITMENT.md for the certified-policy
-  commercial surface.
+  Default policy bundled with the URML validator. It screens the hardware
+  provenance a manifest declares against two lists taken from US federal
+  law: the covered foreign countries of the Department of Defense
+  procurement statutes for unmanned aircraft and LiDAR, and the Department
+  of Defense list of Chinese military companies. The rules reach further
+  than those sources; the comments at the top of the file say where. Not
+  legal advice. See COMMERCIAL.md for audited policy files.
 
 issued_by: urml_core
-issued_at: "2026-05-13"
+issued_at: "2026-11-27"
 
 rules:
   - id: critical_country_denylist
@@ -47,9 +100,11 @@ rules:
     on_violation:
       code: policy.country_denied
       message: >-
-        Critical component from covered foreign country (NDAA Section 889 /
-        FY26 NDAA). Federal procurement of this robot is prohibited under
-        US federal law.
+        Critical component from a covered foreign country (CN, RU, IR, KP).
+        The list comes from US defense procurement law for unmanned
+        aircraft and LiDAR (section 848 of the FY2020 NDAA and section 164
+        of the FY2025 NDAA, both as amended). This rule applies it to every
+        critical component as a screen. It is not a legal determination.
 
   - id: critical_final_assembly_denylist
     applies_to: { component_role: critical }
@@ -59,7 +114,11 @@ rules:
       code: policy.country_denied
       message: >-
         Critical component with final assembly in a covered foreign country
-        (NDAA Section 889 / FY26 NDAA).
+        (CN, RU, IR, KP). The list comes from US defense procurement law
+        for unmanned aircraft and LiDAR (section 848 of the FY2020 NDAA and
+        section 164 of the FY2025 NDAA, both as amended). This rule applies
+        it to every critical component as a screen. It is not a legal
+        determination.
 
   - id: covered_vendor_denylist
     applies_to: { component_role: any }
@@ -68,8 +127,10 @@ rules:
     on_violation:
       code: policy.vendor_denied
       message: >-
-        Vendor named in the FCC Covered List, the DoD Chinese Military
-        Companies list, or the American Security Robotics Act.
+        Vendor on the Department of Defense list of Chinese military
+        companies (section 1260H of the FY2021 NDAA; list published
+        2026-06-10, 91 FR 35189). This rule rejects any component from a
+        listed vendor as a screen. It is not a legal determination.
 
   - id: hbom_required_for_critical
     applies_to: { component_role: critical }
@@ -79,7 +140,8 @@ rules:
       code: policy.hbom_missing
       message: >-
         Critical components must declare a hardware bill-of-materials
-        reference (`hbom_ref`) for federal procurement.
+        reference (`hbom_ref`). This is URML's own requirement. It does not
+        come from a statute.
 
   - id: attestation_floor
     applies_to: { scope: manifest }
@@ -94,19 +156,20 @@ rules:
         attestation now.
 
 # -----------------------------------------------------------------------------
-# RFC-0005 — structured HBOM-content rules (NOT active in v0.1.5).
+# RFC-0005: structured HBOM-content rules (NOT active in v0.1.5).
 #
 # The rules above gate on the manifest's *declared* provenance facts. A board
 # can declare country_of_origin: US and still carry a covered part inside its
 # Hardware Bill of Materials. The rules below read the parsed CycloneDX HBOM a
 # component's hbom_ref points at and walk its pedigree, so a covered part is
-# caught at any depth (NDAA §889 vendor-of-vendor). They are dependency-free
-# (the validator parses the CycloneDX JSON subset with the standard library).
+# caught at any depth. They are dependency-free (the validator parses the
+# CycloneDX JSON subset with the standard library).
 #
 # Left COMMENTED-OUT on purpose: v0.1's procurement floor is the manifest-
 # declared facts plus an integrity-hashed HBOM-by-reference. Uncomment to
 # enforce the deeper content check; v0.2 may activate it by default after a
-# comment window. Aligns with NIST SP 800-218 / IR 8425 HBOM-content guidance.
+# comment window. Their sources and their limits are those of the country and
+# vendor rules above.
 #
 #  - id: critical_hbom_no_covered_country_components
 #    applies_to: { component_role: critical }
@@ -116,8 +179,9 @@ rules:
 #      code: policy.hbom_component_country_denied
 #      message: >-
 #        A critical component's HBOM declares a part (at some pedigree depth)
-#        from a covered foreign country, even though the manifest's top-level
-#        provenance does not. NDAA Section 889 / FY26 NDAA.
+#        from a covered foreign country (CN, RU, IR, KP), even though the
+#        manifest's top-level provenance does not. A screen, not a legal
+#        determination.
 #
 #  - id: critical_hbom_no_covered_vendor_components
 #    applies_to: { component_role: critical }
@@ -126,5 +190,6 @@ rules:
 #    on_violation:
 #      code: policy.hbom_component_vendor_denied
 #      message: >-
-#        A critical component's HBOM declares a part supplied by a vendor named
-#        in the FCC Covered List / American Security Robotics Act.
+#        A critical component's HBOM declares a part supplied by a vendor on
+#        the Department of Defense list of Chinese military companies. A
+#        screen, not a legal determination.
