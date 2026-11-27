@@ -168,7 +168,7 @@ Pre-v1.0. Additive. No migration required.
 
 ## Prior art
 
-- [Move-11 RFC-0143 (smolagents)](0143-smolagents-outreach.md), [Move-11 RFC-0145 (Gemini Robotics SDK)](0145-gemini-robotics-sdk-outreach.md), [Move-12 RFC-0164 (LangGraph)](0164-langgraph-outreach.md) — the outreach RFCs that surfaced this field.
+- Move-11 RFC-0143 (smolagents), Move-11 RFC-0145 (Gemini Robotics SDK), Move-12 RFC-0164 (LangGraph) — the outreach RFCs that surfaced this field.
 - [RFC-0260 (language engine classes)](0260-language-engine-classes.md) — sibling Spec RFC; language engines may be invoked by orchestrated agents.
 - URML Layer-2 primitive set — the function inventory orchestrated agents target.
 - URML LLM bridge prompt contracts (in `reference/llm-bridge/`) — the per-framework contract this RFC's `framework` field selects.

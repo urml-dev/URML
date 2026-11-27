@@ -147,5 +147,5 @@ The split is deliberate: `tools.py` has no MCP dependency, so the validate/execu
 
 [`server.json`](server.json) is the registry manifest for the [official MCP Registry](https://registry.modelcontextprotocol.io). The full playbook (PyPI first, then `mcp-publisher`, then the Smithery/Glama/PulseMCP/mcp.so directory claims) lives in [`SUBMISSIONS.md`](SUBMISSIONS.md). The server is listed there as `io.github.urml-dev/urml` since 0.5.2. Each new listing version must already be on PyPI, since the registry resolves the package from there; [`RELEASING.md`](../../RELEASING.md) covers the release.
 
-Track each listing in [`examples/lighthouses/distribution.yaml`](../../examples/lighthouses/distribution.yaml) (`response: none` until real adoption signal). Do not cite install counts as engagement without corroboration.
+The record of where the server is listed is the maintainer's working data and is not kept in this repository ([RFC-0710](../../docs/rfcs/0710-outreach-records-leave-the-repository.md)). Do not cite install counts as engagement without corroboration.
 

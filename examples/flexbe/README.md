@@ -19,7 +19,7 @@ the operator-in-the-loop hierarchical state machine engine for ROS 2. A FlexBE
 state dispatches a validated URML program through a ROS 2 action; URML validates
 it against the robot's capability manifest and safety envelope before anything
 actuates, and the verdict surfaces to the operator. This is the seam proposed in
-[RFC-0474](../../docs/rfcs/0474-flexbe-outreach.md) and the one David Conner
+RFC-0474 and the one David Conner
 (CHRISLab, Christopher Newport University) suggested: give FlexBE a ROS 2 action
 to call, and write the FlexBE states for it.
 

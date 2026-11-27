@@ -1,6 +1,6 @@
 # Selecting the camera a capture shoots with, checked before dispatch
 
-For the rai-opensource spot_ros2 conversation ([Discussion #805](https://github.com/rai-opensource/spot_ros2/discussions/805)).
+For the rai-opensource spot_ros2 conversation (Discussion #805).
 
 A Boston Dynamics Spot carries five fixed body fisheyes and one movable hand
 camera. A program that says "photograph that valve" means the hand camera: a

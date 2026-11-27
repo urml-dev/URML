@@ -33,7 +33,7 @@ superseded-by: —
 
 ## Motivation
 
-The gap became concrete on the rai-opensource `spot_ros2` conversation ([Discussion #805](https://github.com/rai-opensource/spot_ros2/discussions/805)). A Boston Dynamics Spot with the Spot Arm declares five fixed body fisheyes (photo-only) and one movable hand camera (`hand_color`, photo and video). A program that means "photograph that valve" means the hand camera: a fixed fisheye cannot be pointed at a subject. Today `capture(media: photo, target: $valve)` on that robot validates, because the validator only asks whether *some* declared camera is movable, and `hand_color` is. A program that named the wrong camera, or meant a specific one, passes the static gate. This was carried into the Spot Arm manifest as an honest caveat.
+The gap became concrete on the rai-opensource `spot_ros2` conversation (Discussion #805). A Boston Dynamics Spot with the Spot Arm declares five fixed body fisheyes (photo-only) and one movable hand camera (`hand_color`, photo and video). A program that means "photograph that valve" means the hand camera: a fixed fisheye cannot be pointed at a subject. Today `capture(media: photo, target: $valve)` on that robot validates, because the validator only asks whether *some* declared camera is movable, and `hand_color` is. A program that named the wrong camera, or meant a specific one, passes the static gate. This was carried into the Spot Arm manifest as an honest caveat.
 
 The fix is small and already has a precedent in the vocabulary: `scan` and `measure` name a source with an optional `sensor` field. `capture`'s source is always a camera, so the field is named `camera` and resolves against `perception.cameras[].name`.
 

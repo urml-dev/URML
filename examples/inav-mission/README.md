@@ -6,7 +6,7 @@ constraints, and compile the result into an INAV waypoint mission. URML does the
 declaring and the checking; INAV does the flying.
 
 This example comes from the
-[iNavFlight/inav engagement](https://github.com/iNavFlight/inav/issues/11651),
+iNavFlight/inav engagement,
 where the maintainer restated the role exactly: a human or LLM states the goal
 and the constraints (geofence, limits), URML checks the aircraft's capabilities,
 and compiles to an INAV mission. He also pointed at two things a real check

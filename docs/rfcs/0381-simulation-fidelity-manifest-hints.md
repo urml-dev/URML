@@ -29,7 +29,7 @@ superseded-by: —
 
 URML validates a program statically against a capability manifest and a safety envelope, then a simulator can exercise the same validated intent before real deployment. URML v0.1 has no way to record two facts that the simulation layer needs and that a reader of a fixture wants to know: what terrain class the deployment runs over, and what fidelity tier the intent was validated against. This RFC adds an optional Layer-1 manifest block, `validation`, with two closed-enum fields, `terrain_fidelity` and `simulator_target_class`. Both are advisory metadata. The validator checks enum membership and surfaces the values in its report; it does not simulate dynamics. No primitive changes. Backward compatible (additive optional block).
 
-The surface that demanded this RFC is the Move #24 simulation wave, and [RFC-0328](0328-project-chrono-outreach.md) (Project Chrono) explicitly queued both fields as future Spec RFCs. The shipped `reference/chrono-runtime/` (RFC-0328 follow-up) records the same two gaps in its `SPEC-GAPS.md`.
+The surface that demanded this RFC is the Move #24 simulation wave, and RFC-0328 (Project Chrono) explicitly queued both fields as future Spec RFCs. The shipped `reference/chrono-runtime/` (RFC-0328 follow-up) records the same two gaps in its `SPEC-GAPS.md`.
 
 ## Motivation
 
@@ -143,9 +143,9 @@ Pre-v1.0. Purely additive: the `validation` block is optional, every existing ma
 
 ## Prior art
 
-- [RFC-0328 (Project Chrono outreach)](0328-project-chrono-outreach.md), queued both fields explicitly; the shipped `reference/chrono-runtime/` is the motivating consumer.
+- RFC-0328 (Project Chrono outreach), queued both fields explicitly; the shipped `reference/chrono-runtime/` is the motivating consumer.
 - [RFC-0250 (substrate.autopilot_class)](0250-substrate-autopilot-class.md), the additive optional-manifest-field pattern and the closed-enum discipline this RFC mirrors.
-- Sibling Move #24 simulation RFCs: [RFC-0322 (Genesis)](0322-genesis-outreach.md), [RFC-0323 (Isaac Sim)](0323-nvidia-isaac-sim-outreach.md), [RFC-0325 (CARLA)](0325-carla-outreach.md), [RFC-0059 (Drake)](0059-drake-model-based-robotics.md), [RFC-0060 (MuJoCo)](0060-mujoco-integration.md).
+- Sibling Move #24 simulation RFCs: RFC-0322 (Genesis), RFC-0323 (Isaac Sim), RFC-0325 (CARLA), RFC-0059 (Drake), RFC-0060 (MuJoCo).
 - [RFC-0014 (substrate conformance)](0014-substrate-conformance.md), the conformance framework the new fixture-tier check extends.
 
 ## Unresolved questions

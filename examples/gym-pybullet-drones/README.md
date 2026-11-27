@@ -1,7 +1,7 @@
 # gym-pybullet-drones: a validate-before-actuate gate
 
 A worked example for
-[learnsyslab/gym-pybullet-drones#312](https://github.com/learnsyslab/gym-pybullet-drones/discussions/312).
+learnsyslab/gym-pybullet-drones#312.
 
 @JacopoPan noted the repo's design driver is KISS, so this is deliberately frugal
 and **adds nothing to gym-pybullet-drones**: it imports nothing from that repo,

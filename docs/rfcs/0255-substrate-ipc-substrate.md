@@ -142,10 +142,10 @@ Pre-v1.0. Additive: missing field defaults to no IPC declaration. No migration r
 
 ## Prior art
 
-- [RFC-0210 (Eclipse iceoryx outreach)](0210-iceoryx-outreach.md) — the outreach RFC that surfaced this field.
+- RFC-0210 (Eclipse iceoryx outreach) — the outreach RFC that surfaced this field.
 - [RFC-0251 (substrate.rmw_implementation)](0251-substrate-rmw-implementation.md) — the RMW field that pairs with this IPC field.
 - [RFC-0254 (substrate.maturity_tier)](0254-substrate-maturity-tier.md) — classifies iceoryx2 as substrate-emerging at validate time.
-- [RFC-0200 (ROS 2 core outreach)](0200-ros2-core-outreach.md) — parent ROS 2 substrate engagement.
+- RFC-0200 (ROS 2 core outreach) — parent ROS 2 substrate engagement.
 
 ## Unresolved questions
 

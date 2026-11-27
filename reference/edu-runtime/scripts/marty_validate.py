@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """URML-provided validation script for real Marty v1 / v2 hardware.
 
-Origin: round-4 follow-up on https://github.com/robotical/martypy/issues/52.
+Origin: round-4 follow-up on robotical/martypy#52.
 NikTheGeek1 (Robotical contributor) offered to run a URML-provided
 validation script against real Marty hardware and share the output. URML
 owns this script and the RoboticalMartyAdapter; Robotical runs the

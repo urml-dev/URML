@@ -89,11 +89,10 @@ A change that touches multiple layers is suspect. The layers are designed to evo
   /llm-bridge
   /cobot-runtime, /industrial-arm-runtime, /humanoid-runtime, ...
 /tools              CLI, linter, simulator hooks
-/examples           Runnable demos per profile, plus the outreach ledgers
-  /lighthouses      Move #1 and Move #2 outreach state
+/examples           Runnable demos per profile
 /conformance        Conformance test suite
 /docs               Website source, tutorials, glossary
-  /rfcs             Numbered RFC documents (Spec and Outreach kinds, see below)
+  /rfcs             Numbered RFC documents (Spec and Governance kinds, see below)
 /governance         Charter, decision log, working group docs (when they exist)
 /.github            CI, issue templates, PR templates
 MANIFESTO.md
@@ -145,21 +144,18 @@ Not all directories exist yet. Create them as needed; do not create empty direct
 
 **Two kinds of RFC live in `docs/rfcs/`.** A `Kind` column in [`docs/rfcs/README.md`](docs/rfcs/README.md) distinguishes them:
 
-- **Spec RFCs** (currently 0001 through 0022, plus 0039): changes to URML's normative surface (Layer-1 through Layer-4 schemas, new primitives, the policy mechanism, profiles, the Core Commitment).
-- **Outreach RFCs** (currently 0023 through 0038, plus 0040 onward): per-target request-for-comment documents. Each one explicitly states "No spec change is proposed here" and proposes a mapping from URML v0.1 to an existing target's adapter, manifest, or API. They live in the RFC directory for ergonomic discoverability and are tracked operationally in the ledgers under [`examples/lighthouses/`](examples/lighthouses/).
+- **Spec RFCs** change URML's normative surface: the Layer-1 through Layer-4 schemas, primitives, the policy mechanism, profiles, conformance.
+- **Governance RFCs** change the license, the Licensor, certification terms or what this repository contains. They change no schema and no primitive.
 
-Outreach RFCs are not a quiet expansion of URML's spec surface. A reader scanning the index can tell them apart at a glance.
+Until [RFC-0710](docs/rfcs/0710-outreach-records-leave-the-repository.md) the directory also held 597 Outreach RFCs, requests for comment sent to other projects. They are gone from the tree and their numbers are not reused. Do not file an RFC for a proposal to another project: that is correspondence, not a decision about URML.
 
-### Outreach ledgers and the listening side
+### No outreach or distribution state in this repository
 
-Two ledger files under [`examples/lighthouses/`](examples/lighthouses/):
+Since RFC-0710 this repository holds no ledger, no post draft, no target list and no record of where a package was submitted. Those records live in the Licensor's private archive, with the dashboard and the scripts that read them. Do not add any of it back here, under `examples/`, `docs/launch/`, `tools/` or anywhere else. If a task needs those records and the session cannot see the archive, ask the founder.
 
-- `outreach.yaml` (Move #1, RFCs 0023 through 0038): the 16 Tier-1 robot OEMs and component vendors. Parity-locked to `examples/lighthouses/demo.py::LIGHTHOUSES` by `conformance/tests/test_outreach_ledger.py`. Do not add a row without updating both, or the test fails.
-- `outreach-move2.yaml` (Move #2 onward, RFC 0040+): the AI / ML layer and substrate follow-ons. Mirroring schema, no parity test (different audience, not every target has an in-repo manifest).
+Contact with a maintainer or a company is one message at a time, sent by the founder. No batches. An AI assistant does not open or answer a thread on another project's tracker. The rules for a draft the founder asks for are in [`AGENTS.md`](AGENTS.md).
 
-Response enum: `none | acked | engaged | declined | wontfix`. Default state for fresh outreach is `none` with `last_touch == sent_at`. Do not massage state to look more engaged than reality. When state changes, edit the ledger first; everything else (the demo runner, the outreach dashboard, the claims-audit) reads from it.
-
-The outreach dashboard (RFC-0275) reads a SQLite mirror at `tools/outreach.db`, not the YAML directly. The mirror is a derived view: regenerated on demand by `python tools/scripts/refresh_outreach_db.py`, deterministic, and never committed. Do not hand-edit the `.db`, and keep it out of git. YAML stays the single source of truth. **Always refresh the mirror after any ledger change** (a post, a response, a deferral) so the dashboard reflects reality. The rebuild deletes and rewrites the file, so it fails while a dashboard process holds it open; stop the dashboard first, then refresh.
+A page of this project names a company as a partner, adopter or program member only when that company has agreed in writing. The vendor-shaped manifests in the conformance suite are test inputs the project wrote from public documentation; wherever they are shown, say so.
 
 ### Public commitments are deferred until measured
 
@@ -213,13 +209,12 @@ The founder prefers direct, opinionated engagement. The detailed rules (terse pr
 ## Reference documents
 
 - [`MANIFESTO.md`](MANIFESTO.md): project vision, scope, principles, roadmap. The constitution.
-- [`AGENTS.md`](AGENTS.md): operational handbook for AI assistants (writing style, chat style, outreach verification, ledger discipline, merge specifics, audit and hero discipline).
+- [`AGENTS.md`](AGENTS.md): operational handbook for AI assistants (writing style, chat style, contact with other projects, merge specifics, audit and hero discipline).
 - [`VIBE.md`](VIBE.md): authoring posture. URML is the invention of Ido Yahalomi; the prose is AI-assisted (vibe-coded), under the maintainer's direction and review. Not hidden, not transitional.
 - [`GOVERNANCE.md`](GOVERNANCE.md): how decisions are made.
 - [`CONTRIBUTING.md`](CONTRIBUTING.md): how to contribute (Phase 1, open).
 - [`LICENSING.md`](LICENSING.md): what is free and what needs a commercial license. [`CORE_COMMITMENT.md`](CORE_COMMITMENT.md) is superseded (RFC-0703).
 - [`docs/rfcs/`](docs/rfcs/): numbered RFC documents, the decision history.
-- [`examples/lighthouses/`](examples/lighthouses/): outreach ledgers (Move #1 and Move #2).
 - [`LICENSE`](LICENSE): Business Source License 1.1.
 
 **Precedence order**, when in doubt about a decision in this repository:

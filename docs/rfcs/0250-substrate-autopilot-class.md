@@ -135,8 +135,8 @@ The drone-profile fixture in `examples/profiles/drone/` is updated to declare th
 ## Prior art
 
 - [RFC-0008 (drone profile)](0008-drone-profile.md) — the URML drone profile that consumes this field.
-- [RFC-0196 (PX4 outreach)](0196-px4-autopilot-outreach.md) — the outreach RFC that surfaced the field.
-- [RFC-0197 (MAVLink outreach)](0197-mavlink-outreach.md), [RFC-0198 (MAVSDK outreach)](0198-mavsdk-outreach.md) — sibling drone-protocol and SDK engagements.
+- RFC-0196 (PX4 outreach) — the outreach RFC that surfaced the field.
+- RFC-0197 (MAVLink outreach), RFC-0198 (MAVSDK outreach) — sibling drone-protocol and SDK engagements.
 - [RFC-0014 (substrate conformance)](0014-substrate-conformance.md) — the conformance framework this RFC extends with a new test case.
 - [RFC-0003 (US alignment)](0003-us-alignment.md) — relevant because some autopilot enum values (custom, vendor-specific) interact with the default-policy file's procurement-gating posture.
 

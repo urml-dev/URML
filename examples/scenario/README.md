@@ -17,7 +17,7 @@
 A worked example: export a **validated** URML navigation program to an ASAM
 OpenSCENARIO (`.xosc`) run, where the URML-governed agent is the controlled
 entity. This is the concrete first cut from the esmini engagement
-([esmini/esmini#816](https://github.com/esmini/esmini/issues/816)); the esmini
+(esmini/esmini#816); the esmini
 maintainer (@eknabevcc) confirmed that OpenSCENARIO's road-user action model
 lines up with URML's mobility layer.
 
@@ -76,5 +76,5 @@ the controller during the scenario) is the deeper integration and is left for
 later. The `AnimationAction`-to-joints/limbs idea @eknabevcc raised is URML's
 manipulation / whole-body side and is out of scope while esmini has no animation
 support. The probabilistic-scenario counterpart is the Scenic engagement
-([RFC-0366](../../docs/rfcs/0366-scenic-outreach.md)); the OpenSCENARIO target is
-[RFC-0370](../../docs/rfcs/0370-esmini-outreach.md).
+(RFC-0366); the OpenSCENARIO target is
+RFC-0370.

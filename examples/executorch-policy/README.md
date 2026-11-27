@@ -14,7 +14,7 @@
 
 # A learned policy's envelope travels with the model, and two checks gate it
 
-Built for the ExecuTorch review on [pytorch/executorch#20268](https://github.com/pytorch/executorch/issues/20268), which described the clean integration in four steps and asked for exactly this example. No ExecuTorch change is requested or needed.
+Built for the ExecuTorch review on pytorch/executorch#20268, which described the clean integration in four steps and asked for exactly this example. No ExecuTorch change is requested or needed.
 
 1. **Export the policy and its URML envelope together.** The manifest's `learned_policy` block (RFC-0383: trained command ranges, terrain classes, payload range) is written as a named blob under the key `urml/learned_policy.yaml` next to the `.pte`. ExecuTorch's named-data mechanism (`.pte`/`.ptd`, `NamedDataMap`) stores and returns those bytes; it attaches no robot meaning to them.
 2. **Load and run with ExecuTorch.** The blob is read back by key and merged into the manifest.

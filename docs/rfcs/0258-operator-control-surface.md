@@ -136,7 +136,7 @@ Pre-v1.0. Additive. No migration required.
 
 ## Prior art
 
-- [RFC-0208 (QGroundControl outreach)](0208-qgroundcontrol-outreach.md) — the outreach RFC that surfaced this field.
+- RFC-0208 (QGroundControl outreach) — the outreach RFC that surfaced this field.
 - [RFC-0250 (substrate.autopilot_class)](0250-substrate-autopilot-class.md) — sibling Spec RFC; declares the autopilot stack the operator-UI composes against.
 - [RFC-0256 (protocol.embedded_class)](0256-protocol-embedded-class.md) — sibling Spec RFC; declares the MAVLink layer the operator-UI consumes.
 - [RFC-0008 (drone profile)](0008-drone-profile.md) — URML's drone profile, which consumes this field.

@@ -44,7 +44,7 @@ manifest without these fields validates unchanged.
 ## Motivation
 
 Surfaced directly by an engagement. On
-[legubiao/quadruped_ros2_control#65](https://github.com/legubiao/quadruped_ros2_control/issues/65)
+legubiao/quadruped_ros2_control#65
 the maintainer explained how the stack actually operates:
 
 > The stack abstracts the quadruped as an omnidirectional mobile base at the

@@ -52,7 +52,7 @@ so every existing manifest, program, fixture, and runtime is unaffected.
 ## Motivation
 
 The gap was surfaced by real engagement. The Move #27 manipulation wave reached
-the LEAP Hand ([RFC-0357](0357-leap-hand-outreach.md)) and Shadow Robot
+the LEAP Hand (RFC-0357) and Shadow Robot
 maintainers, and the honest question that came back was: what would a multi-DoF
 hand declaration need? A dexterous hand differs from a parallel-jaw gripper in
 two ways a manifest should capture: it has many articulated degrees of freedom

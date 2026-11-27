@@ -37,7 +37,7 @@ The output is deterministic and byte-asserted in
 `reference/validator/tests/test_evidence_example.py`.
 
 Motivated by NVIDIA Isaac's review on
-[isaac-sim/IsaacSim#649](https://github.com/isaac-sim/IsaacSim/issues/649): a
+isaac-sim/IsaacSim#649: a
 USD-derivation tool stamps `source: derived` with the originating prim path; a
 smoke-test harness stamps `source: verified`; a hand-authored field stays honest
 as `declared`.
