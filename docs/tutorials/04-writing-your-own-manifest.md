@@ -205,7 +205,7 @@ Core URML reserves `park` and `charge`. Other services (`swap_battery`, `swap_to
 
 ## Exercise 6: Declare hardware provenance for compliance checks
 
-URML's v0.1 validator runs a fifth pass that checks a manifest's **hardware provenance** against a pluggable compliance policy (see [RFC-0004](../rfcs/0004-compliance-policy.md)). The default policy mirrors US federal procurement rules (NDAA Section 889 / FY26, the FCC Covered List, etc.); deployers outside the US override with `urml validate --policy <file.yaml>`, and `--no-policy` skips Pass 5 entirely.
+URML's v0.1 validator runs a fifth pass that checks a manifest's **hardware provenance** against a pluggable compliance policy (see [RFC-0004](../rfcs/0004-compliance-policy.md)). The default policy is a provenance screen built on US federal law (Department of Defense procurement restrictions for unmanned aircraft and LiDAR, the Department of Defense list of Chinese military companies, the FCC Covered List); deployers outside the US override with `urml validate --policy <file.yaml>`, and `--no-policy` skips Pass 5 entirely.
 
 Manifests **without** a `provenance:` block trigger no Pass 5 errors — policy enforcement is opt-in at the manifest level. Add a `provenance:` block when your deployment needs to *prove* compliance:
 

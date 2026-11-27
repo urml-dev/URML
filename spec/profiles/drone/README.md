@@ -54,7 +54,7 @@ A drone-profile-conformant capability manifest **must** declare:
 
 A drone-profile manifest **should** declare:
 
-- **`provenance:`** per [RFC-0004](../../../docs/rfcs/0004-compliance-policy.md). **The drone profile is the most directly exposed to US federal regulation** — DJI and Autel are on the FCC Covered List effective 2025-12-23; Hesai LiDAR is restricted by FY26 NDAA §164. A drone manifest without provenance can still validate technically, but the deployer cannot claim NDAA-compliance for any federal-procurement context.
+- **`provenance:`** per [RFC-0004](../../../docs/rfcs/0004-compliance-policy.md). **The drone profile is the most directly exposed to US federal regulation**: DJI and Autel equipment has been on the FCC Covered List since 2025-12-22, and section 164 of the FY2025 NDAA restricts Hesai LiDAR for the Department of Defense. A drone manifest without provenance can still validate technically, but the deployer cannot claim NDAA-compliance for any federal-procurement context.
 - **`mobility.endurance`** (battery time at hover and at cruise) when known — informational; the envelope's `max_flight_duration` cross-checks against it.
 
 A drone-profile manifest **must not** declare:
@@ -242,8 +242,8 @@ Abort current flight intent and return the drone to its declared home location, 
 
 **The drone profile is the most directly exposed to US federal compliance enforcement.** Several reasons:
 
-- **FCC Covered List entries are drone-heavy.** DJI and Autel — the two largest civilian drone vendors — were added effective 2025-12-23 and block new equipment authorizations. A manifest declaring `vendor: dji` on any component will reject under the bundled default policy with `policy.vendor_denied`.
-- **FY26 NDAA §164 named Hesai LiDAR specifically.** Drone-mounted LiDAR for mapping and inspection is a common configuration; manifests declaring `vendor: hesai` on a LiDAR component reject.
+- **FCC Covered List entries are drone-heavy.** Equipment from DJI and Autel, the two largest civilian drone vendors, was added on 2025-12-22, together with unmanned aircraft and their critical components produced in a foreign country (the list carries exceptions). A listing blocks new equipment authorizations. A manifest declaring `vendor: dji` on any component will reject under the bundled default policy with `policy.vendor_denied`.
+- **Section 164 of the FY2025 NDAA names Hesai Technology.** It bars the Department of Defense from buying or operating covered LiDAR from 2026-06-30, and section 162 of the FY2026 NDAA amended it. Drone-mounted LiDAR for mapping and inspection is a common configuration; manifests declaring `vendor: hesai` on a LiDAR component reject.
 - **Blue UAS / Green UAS lists.** The DIU maintains positive allow-lists of NDAA-compliant drones (~50 platforms as of early 2026). Future RFC may add a `urml_us_federal_blueuas.yaml` policy file that enforces explicit allow-list membership; v0.1 ships the deny-side only.
 
 Deployments outside the US should override the default with their own policy. The EU AI Act conformity regime applies to AI-enabled drones; an `eu_ai_act_drone.yaml` overlay is a future RFC.

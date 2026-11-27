@@ -3,7 +3,8 @@
 # (RFC-0004 covered_vendor_denylist: [dji, autel, hesai, unitree]).
 #
 # Test-only. The vendor string `hesai` is used as a regulatory marker
-# (Hesai appears on the FCC Covered List), exactly as
+# (Hesai is on the Department of Defense list of Chinese military companies
+# and is named in section 164 of the FY2025 NDAA), exactly as
 # turtlebot4_home_dji_vendor.yaml uses `dji`. This pushes the
 # denylisted-vendor check down to the *component* ("part") granularity:
 # a compliant robot becomes non-compliant solely because one declared

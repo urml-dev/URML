@@ -1,9 +1,10 @@
 # Fixture: a quadruped manifest whose critical component vendor is on
-# the bundled US-federal default policy's denylist (FCC Covered List /
-# RFC-0004 covered_vendor_denylist: [dji, autel, hesai, unitree]).
+# the bundled US-federal default policy's denylist (RFC-0004
+# covered_vendor_denylist: [dji, autel, hesai, unitree]).
 #
 # Test-only. The vendor string `unitree` is used here as a regulatory
-# marker (it appears on the FCC Covered List), exactly as
+# marker (Unitree is on the Department of Defense list of Chinese military
+# companies published on 2026-06-10), exactly as
 # turtlebot4_home_dji_vendor.yaml uses `dji`. This confirms Unitree is
 # treated identically to DJI under the default policy, consistent with
 # the founder's prior decision to treat denylisted vendors uniformly.
