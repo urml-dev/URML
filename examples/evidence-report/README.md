@@ -64,7 +64,7 @@ The fix is not in URML: the operator finds the speed-monitoring level in the int
 
 ## Checking the report yourself
 
-Do not trust this report because it is here. Rebuild it. `urml evidence build` ships in urml-validator 0.5.2 on PyPI (`pip install urml-validator`); run it from a checkout of this repository so the example files are there:
+Do not trust this report because it is here. Rebuild it. `urml evidence build` ships in urml-validator on PyPI (`pip install urml-validator==0.5.3`); run it from a checkout of this repository at the `v0.5.3` tag so the example files are there:
 
 ```bash
 cd examples/evidence-report
@@ -75,13 +75,13 @@ urml evidence build --manifest manifest.yaml --envelope envelope.yaml \
   --as-of 2026-11-24 --out rebuilt.json
 ```
 
-The command runs offline. With 0.5.2, `rebuilt.json` carries the same items, statuses and counts as `report.json` (21 checked, 9 declared, 4 runtime, 1 missing, 15 outside) but is not byte for byte the same file: `report.json` was built by the validator on `main`, which adds the `redaction` block that 0.5.2 does not write yet. Build from a checkout after `python bootstrap.py` and `rebuilt.json` is byte for byte `report.json`. The report's Inputs section lists a digest for every file, so you can also confirm you were given the files it describes. Exit code 1 means the report has gaps; 2 means a file could not be read.
+The command runs offline. With 0.5.3 from PyPI and the files of the `v0.5.3` tag, `rebuilt.json` is byte for byte `report.json` (21 checked, 9 declared, 4 runtime, 1 missing, 15 outside). On `main` between releases the committed report is built by the validator on `main`, which can be ahead of the release on PyPI; build from a checkout after `python bootstrap.py` to match that one byte for byte. The report's Inputs section lists a digest for every file, so you can also confirm you were given the files it describes. Exit code 1 means the report has gaps; 2 means a file could not be read.
 
-`--format md` and `--format html` write the human forms, and `python build.py` rebuilds all four committed files at once. Both need the validator on `main` until the next release; 0.5.2 writes JSON only.
+`--format md` and `--format html` write the human forms, and `python build.py` rebuilds all four committed files at once. Both work with 0.5.3 from PyPI; 0.5.2 wrote JSON only.
 
 ## Sharing it outside the site
 
-[`report.redacted.json`](report.redacted.json) is the copy to send to someone outside the site: `--redact` removes the hall's boundary, the break area's shape and the validator's messages on programs, which can quote coordinates. Every status, rule and count stays. (`--redact` and `urml evidence verify` below are on `main` until the next release.) Its `redaction` block records the sha256 of the full report, so if you are later shown the full report you can check it is the same one.
+[`report.redacted.json`](report.redacted.json) is the copy to send to someone outside the site: `--redact` removes the hall's boundary, the break area's shape and the validator's messages on programs, which can quote coordinates. Every status, rule and count stays. (`--redact` and `urml evidence verify` below ship from 0.5.3.) Its `redaction` block records the sha256 of the full report, so if you are later shown the full report you can check it is the same one.
 
 A report reviewed by the Licensor also comes with a signature file. `urml evidence verify report.json` checks it offline; see [`docs/evidence/signing.md`](../../docs/evidence/signing.md). A signature says the Licensor rebuilt and reviewed the report. It is not a certification.
 

@@ -111,7 +111,7 @@ The family is bumped in lockstep to 0.5.3 so the work merged since 0.5.2 reaches
 
 - The conformance harness records adapter calls ([RFC-0706](docs/rfcs/0706-recorded-adapter-calls.md)). `ConformanceRunner` wraps every adapter, single-robot and each fleet member, in `RecordingAdapter` and checks `audit_methods` and `per_member_audit` against what it recorded. Before this, the runner read a `call_log` only the mock keeps, so a real adapter (`RclpyAdapter`, a vendor SDK) failed 102 of the 103 fixtures that check execution. An adapter no longer keeps or vouches for its own log. `RecordingAdapter` moves to `urml_conformance.recording`; the old import paths still work.
 - Conformance specification [v0.2.1](spec/conformance/v0.2.1.md): clause 6 says the suite records the calls. No obligation on a runtime changes. Registry certifications may name `conformance_spec: "0.2.1"`.
-- The family is bumped in lockstep to 0.5.1 ([`RELEASING.md`](RELEASING.md#version-coherence)) so `urml-conformance` can ship both changes. Only the conformance package's code changed since 0.5.0; the other packages are rebuilt at the new version unchanged. On PyPI since 2026-11-24, except the isaac, legged, marine, mujoco and opcua runtimes, which waited on PyPI's new-project limit. The isaac, legged, mujoco and opcua runtimes were created at 0.5.2; the marine runtime still waits.
+- The family is bumped in lockstep to 0.5.1 ([`RELEASING.md`](RELEASING.md#version-coherence)) so `urml-conformance` can ship both changes. Only the conformance package's code changed since 0.5.0; the other packages are rebuilt at the new version unchanged. On PyPI since 2026-11-24, except the isaac, legged, marine, mujoco and opcua runtimes, which waited on PyPI's new-project limit. The isaac, legged, mujoco and opcua runtimes were created at 0.5.2, and the marine runtime at 0.5.3.
 
 ### Fixed
 
@@ -120,7 +120,7 @@ The family is bumped in lockstep to 0.5.3 so the work merged since 0.5.2 reaches
 
 ## [0.5.0] - 2026-11-22
 
-First release from the new home, [`urml-dev/URML`](https://github.com/urml-dev/URML). All twenty-two packages were built at 0.5.0. PyPI lets a personal account create only about 4 new projects a day, so they reach PyPI in batches: 17 were live by the afternoon of 2026-11-24 (with `urml-vda5050-runtime`, released alongside them). The isaac, legged, mujoco and opcua runtimes followed on 2026-11-25 at 0.5.2, making 21 of 22, and the marine runtime follows as the limit allows. Until a package is on PyPI it installs from source.
+First release from the new home, [`urml-dev/URML`](https://github.com/urml-dev/URML). All twenty-two packages were built at 0.5.0. PyPI lets a personal account create only about 4 new projects a day, so they reach PyPI in batches: 17 were live by the afternoon of 2026-11-24 (with `urml-vda5050-runtime`, released alongside them). The isaac, legged, mujoco and opcua runtimes followed on 2026-11-25 at 0.5.2, making 21 of 22, and the marine runtime followed on 2026-11-27 at 0.5.3. Until a package is on PyPI it installs from source.
 
 ### Changed: license
 

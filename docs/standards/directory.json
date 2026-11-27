@@ -1002,7 +1002,7 @@
             "support": [
               "runtime"
             ],
-            "text": "urml-vda5050-runtime, on PyPI, with TLS and broker credentials on main for the next release, and paid fleet and vehicle validation.",
+            "text": "urml-vda5050-runtime, on PyPI, with TLS and broker credentials from 0.5.3, and paid fleet and vehicle validation.",
             "links": [
               {
                 "label": "urml-vda5050-runtime",
