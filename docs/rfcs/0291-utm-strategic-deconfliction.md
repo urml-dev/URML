@@ -62,7 +62,7 @@ UTM solves exactly this problem for unmanned aircraft and is the natural model. 
 unit is the **Volume4D**: a lateral outline + an altitude band [lower, upper] + a time
 window [start, end]. Two operations are **strategically deconflicted** iff their
 Volume4Ds do not intersect. The same logic generalizes to ground (AGV/AMR fleet
-traffic management, e.g. Open-RMF per [RFC-0053](0053-open-rmf-multirobot-integration.md))
+traffic management, e.g. Open-RMF per RFC-0053)
 and water (maritime / MASS traffic management). URML names the concept
 domain-neutrally and credits UTM as the model.
 
@@ -169,7 +169,7 @@ temporal axis. Named as future work.
 - **FAA / NASA UTM ConOps** and **ASTM F3548-21** (UAS Service Supplier
   interoperability; strategic conflict detection over Volume4D operational intents) —
   the model this RFC adopts.
-- **Open-RMF** ([RFC-0053](0053-open-rmf-multirobot-integration.md)) — the ground
+- **Open-RMF** (RFC-0053) — the ground
   AGV/AMR fleet-traffic analog URML composes with at building scale.
 - **Maritime MASS / IMO e-navigation** — the emerging water analog.
 - Prior URML RFCs: RFC-0286 (the fleet surface this refines), RFC-0006 (the optional

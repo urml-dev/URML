@@ -79,7 +79,7 @@ same instant — because no single SDK sees both robots.
 - **Execution is deterministic and sequential**, like the single-robot runtime. A `barrier`
   is a rendezvous marker under sequential execution; its teeth are in the validator.
 - **Building-scale fleet traffic** (lift queues, aisle reservation) is Open-RMF's job
-  ([RFC-0053](../rfcs/0053-open-rmf-multirobot-integration.md)), not URML's.
+  (RFC-0053), not URML's.
 
 ## See also
 

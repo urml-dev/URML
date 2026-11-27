@@ -383,5 +383,4 @@ outcome into `docs/launch/claims-audit.md`.
 ## Related reading
 
 - [sentence-to-flight.md](sentence-to-flight.md): the PX4 SITL version.
-- [RFC-0041](../rfcs/0041-ardupilot-integration.md): the ArduPilot runtime proposal this page implements.
 - [RFC-0250](../rfcs/0250-substrate-autopilot-class.md): why drone manifests declare `substrate.autopilot_class`.

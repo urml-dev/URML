@@ -150,7 +150,7 @@ Pre-v1.0. Additive: existing manifests with only deployment-wide QoS unchanged. 
 ## Prior art
 
 - [RFC-0251 (substrate.rmw_implementation)](0251-substrate-rmw-implementation.md) — parent Spec RFC; this RFC closes the deferred per-topic-QoS question.
-- [Move-16 RFC-0200 (ROS 2 core outreach)](0200-ros2-core-outreach.md) — surfaced QoS as a manifest concern.
+- Move-16 RFC-0200 (ROS 2 core outreach) — surfaced QoS as a manifest concern.
 - ROS 2 QoS documentation (cross-cite, not reproduce).
 
 ## Unresolved questions

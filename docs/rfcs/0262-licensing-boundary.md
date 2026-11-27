@@ -173,7 +173,7 @@ Pre-v1.0. Additive. No migration required.
 
 ## Prior art
 
-- [Move-12 RFC-0166 (Piper)](0166-piper1-gpl-outreach.md), [Move-12 RFC-0167 (fairseq / NLLB)](0167-fairseq-outreach.md), [Move-12 RFC-0168 (LibreTranslate)](0168-libretranslate-outreach.md), [Move-16 RFC-0206 (ORB-SLAM3)](0206-orb-slam3-outreach.md) — outreach RFCs that surfaced the license-boundary question.
+- Move-12 RFC-0166 (Piper), Move-12 RFC-0167 (fairseq / NLLB), Move-12 RFC-0168 (LibreTranslate), Move-16 RFC-0206 (ORB-SLAM3) — outreach RFCs that surfaced the license-boundary question.
 - [RFC-0252 (slam_substrate)](0252-perception-slam-substrate.md) — sibling Spec RFC; the existing `slam_options.license_bind` is the substrate-specific shorthand that this RFC's unified `licensing` block supersedes for deployment-wide declaration.
 - [RFC-0253 (provenance.slsa_level)](0253-provenance-slsa-level.md) — sibling Spec RFC; provenance complements license-boundary for the federal-procurement narrative.
 - [RFC-0003 (US alignment)](0003-us-alignment.md) — the default-policy file this RFC extends with optional `licensing_max_restrictiveness`.

@@ -100,6 +100,5 @@ Business Source License 1.1: free for non-production use, commercial license for
 
 ## Related
 
-- [RFC-0297](../../docs/rfcs/0297-vda5050-outreach.md): the URML to VDA 5050 mapping this runtime implements.
 - [RFC-0022](../../docs/rfcs/0022-warehouse-domain-profile.md): the warehouse profile; no new primitives were needed.
 - [`/reference/opcua-runtime/`](../opcua-runtime/): the zero-ROS sibling whose structure this mirrors.

@@ -142,7 +142,7 @@ Pre-v1.0. Additive: bare model names continue to validate. `hf://` is recommende
 
 ## Prior art
 
-- [Move-12 RFC-0157 (Helsinki-NLP OPUS-MT-train outreach)](0157-opus-mt-train-outreach.md) — the outreach RFC that surfaced this convention.
+- Move-12 RFC-0157 (Helsinki-NLP OPUS-MT-train outreach) — the outreach RFC that surfaced this convention.
 - [RFC-0260 (language engine classes)](0260-language-engine-classes.md), [RFC-0261 (orchestration.framework)](0261-orchestration-framework.md), [RFC-0276 (wake-word substrate)](0276-language-wake-word-substrate.md) — sibling Spec RFCs whose model-reference fields adopt this convention.
 - [RFC-0262 (licensing.boundary)](0262-licensing-boundary.md) — sibling Spec RFC; license_query parameter cross-references the licensing.components[] entries.
 - Hugging Face Hub URL conventions (cross-cite, not reproduce).

@@ -1,7 +1,7 @@
 # URML on Isaac Sim: a USD-derived manifest, validated, then driven (RFC-0631)
 
 The worked example NVIDIA Isaac asked for on
-[isaac-sim/IsaacSim#649](https://github.com/isaac-sim/IsaacSim/issues/649): not a
+isaac-sim/IsaacSim#649: not a
 conceptual mapping, but the real flow that earns a conformance listing.
 
 The three concerns, kept separate exactly as the reviewer described them:

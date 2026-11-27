@@ -1,6 +1,6 @@
 # A declared actuator envelope, checked before dispatch
 
-For [gatech-epic-power/epically-powerful#32](https://github.com/gatech-epic-power/epically-powerful/issues/32).
+For gatech-epic-power/epically-powerful#32.
 
 [Epically Powerful](https://github.com/gatech-epic-power/epically-powerful) (Georgia
 Tech EPIC Lab) commands quasi-direct-drive actuators (CubeMars AK, RobStride,

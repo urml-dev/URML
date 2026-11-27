@@ -169,8 +169,8 @@ Pre-v1.0. Additive. No migration required.
 
 ## Prior art
 
-- [Move-12 RFC-0160 (BehaviorTree.CPP)](0160-behaviortree-cpp-outreach.md), [Move-12 RFC-0161 (py_trees)](0161-py-trees-outreach.md), [Move-12 RFC-0162 (MoveIt Task Constructor)](0162-moveit-task-constructor-outreach.md), [Move-12 RFC-0163 (SkiROS2)](0163-skiros2-outreach.md) — the outreach RFCs that surfaced these fields.
-- [Move-16 RFC-0202 (MoveIt 2 outreach)](0202-moveit2-outreach.md) — sibling industrial-manipulation engagement; MoveIt Task Constructor is the high-level layer above MoveIt 2.
+- Move-12 RFC-0160 (BehaviorTree.CPP), Move-12 RFC-0161 (py_trees), Move-12 RFC-0162 (MoveIt Task Constructor), Move-12 RFC-0163 (SkiROS2) — the outreach RFCs that surfaced these fields.
+- Move-16 RFC-0202 (MoveIt 2 outreach) — sibling industrial-manipulation engagement; MoveIt Task Constructor is the high-level layer above MoveIt 2.
 - URML Layer-3 behavior composition spec (in `spec/layer-3-behavior/`) — the composition layer this RFC declares substrates for.
 
 ## Unresolved questions

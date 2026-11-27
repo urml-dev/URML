@@ -146,7 +146,7 @@ Pre-v1.0. Additive. The new enum value and the new optional list do not affect e
 
 ## Prior art
 
-- [RFC-0167 (fairseq / NLLB-200 outreach)](0167-fairseq-outreach.md) — the outreach RFC whose engagement produced this design input. The NLLB-200 maintainer, replying on the live successor surface (`facebookresearch/seamless_communication`, issue 578), confirmed CC-BY-NC 4.0 is the only NLLB-200 license and recommended permissive open LLMs (the Qwen and Gemma families) for a commercial translation path. This RFC turns that guidance into manifest structure.
+- RFC-0167 (fairseq / NLLB-200 outreach) — the outreach RFC whose engagement produced this design input. The NLLB-200 maintainer, replying on the live successor surface (`facebookresearch/seamless_communication`, issue 578), confirmed CC-BY-NC 4.0 is the only NLLB-200 license and recommended permissive open LLMs (the Qwen and Gemma families) for a commercial translation path. This RFC turns that guidance into manifest structure.
 - [RFC-0260 (language engine classes)](0260-language-engine-classes.md) — owner of the `language` block and the base `translation_engine_class` enum this RFC extends.
 - [RFC-0262 (licensing boundary)](0262-licensing-boundary.md) — owner of `licensing.components` and `commercial_use_gate`, the license-side declaration this RFC's `commercial_eligible` flag pairs with.
 - [RFC-0268 (deployment.commercial_use)](0268-deployment-commercial-use-flag.md) — owner of the commercial-deployment flag whose hard failure this RFC converts into a fork when an alternative is declared.

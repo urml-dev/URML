@@ -1,7 +1,7 @@
 # URML on a Robotiq Hand-E (declare a force envelope, refuse a grasp that breaks it)
 
 The worked example promised to [@macmacal](https://github.com/macmacal) on
-[AGH-CEAI/robotiq_hande_driver#44](https://github.com/AGH-CEAI/robotiq_hande_driver/issues/44),
+AGH-CEAI/robotiq_hande_driver#44,
 where he confirmed a system-level admissibility layer "could indeed be useful"
 and that a Hand-E's parameters map onto a capability manifest cleanly.
 

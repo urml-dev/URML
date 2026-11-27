@@ -197,7 +197,7 @@ Pre-v1.0. Additive: existing measurement_type values unchanged. New values exten
 
 ## Prior art
 
-- [Move-10 RFC-0135 (Cerulean Sonar)](0135-cerulean-sonar-outreach.md) — the outreach RFC that surfaced sonar-return-array and water-column-profile types.
+- Move-10 RFC-0135 (Cerulean Sonar) — the outreach RFC that surfaced sonar-return-array and water-column-profile types.
 - Move-10 RFC-0133 (u-blox GNSS, vendor-archived; community side referenced) — surfaced gnss_rtk type.
 - URML Layer-1 HAL spec (in `spec/layer-1-hal/`) — defines the existing measurement_type enum.
 - [RFC-0014 (substrate conformance)](0014-substrate-conformance.md) — conformance framework this RFC extends with new test cases.

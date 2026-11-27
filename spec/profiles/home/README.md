@@ -51,7 +51,7 @@ A home-profile-conformant capability manifest **must** declare:
 
 A home-profile manifest **should** declare:
 
-- **`provenance:`** per [RFC-0004](../../../docs/rfcs/0004-compliance-policy.md). Home deployments inside the US can claim NDAA/FY26 compliance only if every critical component's provenance is declared and validated against the bundled default policy. Manifests without provenance still validate; they just do not gain the compliance posture.
+- **`provenance:`** per [RFC-0004](../../../docs/rfcs/0004-compliance-policy.md). Home deployments inside the US get the bundled default policy's provenance screen only if every critical component's provenance is declared. A clean result is a screen result, not a compliance determination. Manifests without provenance still validate; they are not screened.
 
 A home-profile manifest **must not** declare:
 

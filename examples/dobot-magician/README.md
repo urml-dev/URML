@@ -6,7 +6,7 @@
 
 A worked example of URML driving a Dobot Magician, the 4-axis desktop arm, through
 the [magician_ros2](https://github.com/jkaniuka/magician_ros2) ROS 2 driver. It
-came out of [magician_ros2#11](https://github.com/jkaniuka/magician_ros2/issues/11).
+came out of magician_ros2#11.
 
 A request like "pick up the block and put it on the dropoff spot" becomes a typed
 URML program. The validator checks it against the Dobot's declared manifest, its

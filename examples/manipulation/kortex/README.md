@@ -18,7 +18,7 @@ A worked example: validate a URML manipulation program against a Kinova Gen3
 capability manifest, then show how each validated primitive maps onto the
 **existing ros2_kortex ROS 2 interfaces**. This is the concrete example a Kinova
 engineer asked for on
-[Kinovarobotics/ros2_kortex#413](https://github.com/Kinovarobotics/ros2_kortex/issues/413).
+Kinovarobotics/ros2_kortex#413.
 
 ## What it does
 

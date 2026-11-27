@@ -29,7 +29,7 @@ The policy file is to the validator what the safety envelope is: a pluggable, de
 
 **A policy file passing the validator is not a legal compliance determination.** This specification defines a mechanism. Whether a particular policy file *correctly encodes* a regulatory regime — and whether a deployment that passes its rules is *actually compliant* under the law — is a matter for counsel, not for URML. URML records what the deployer declares; URML does not certify.
 
-The default policy bundled with the URML validator (`us_federal_default.yaml`) mirrors enacted US federal procurement rules at the time of shipping. Deployers must verify the bundled rules against current statute before relying on them, and must consult counsel for binding determinations.
+The default policy bundled with the URML validator (`us_federal_default.yaml`) is a screen built on enacted US federal procurement law at the time of shipping, and its rules reach further than the statutes they draw on. Deployers must verify the bundled rules against current statute before relying on them, and must consult counsel for binding determinations.
 
 ## File format
 
@@ -161,7 +161,7 @@ The `remediation_hint` field lets the LLM bridge exit revision loops fast: the L
 
 ## The default policy
 
-The reference validator ships with a default policy at `urml_validator/policies/us_federal_default.yaml`. It is loaded automatically when no `--policy` flag is passed. Per [RFC-0003](../../docs/rfcs/0003-us-alignment.md), this default mirrors US federal procurement rules: NDAA Section 889 / FY26, the FCC Covered List, EO 14307, and the American Security Robotics Act (once enacted).
+The reference validator ships with a default policy at `urml_validator/policies/us_federal_default.yaml`. It is loaded automatically when no `--policy` flag is passed. Per [RFC-0003](../../docs/rfcs/0003-us-alignment.md), this default is a provenance screen built on US federal law. Its country list is the covered foreign country list of the Department of Defense procurement statutes for unmanned aircraft and LiDAR (section 848 of the FY2020 NDAA and section 164 of the FY2025 NDAA, both as amended). Its vendor list is drawn from the Department of Defense list of Chinese military companies (section 1260H of the FY2021 NDAA). The header of the file lists every source and says where a rule reaches further than its source.
 
 The default policy file is licensed under BSL 1.1 with the rest of URML (see [`LICENSING.md`](../../LICENSING.md)). *Audited* or *certified* policy files carrying third-party legal attestation are a separate commercial surface.
 

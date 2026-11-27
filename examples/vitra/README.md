@@ -1,6 +1,6 @@
 # VITRA: one action, two robots, two verdicts
 
-A worked example for [microsoft/VITRA#41](https://github.com/microsoft/VITRA/issues/41).
+A worked example for microsoft/VITRA#41.
 
 VITRA is a vision-language-action model pretrained on human-activity video. Like
 any VLA, it emits a manipulation action for a target robot. What a human

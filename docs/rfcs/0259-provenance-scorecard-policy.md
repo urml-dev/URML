@@ -127,7 +127,7 @@ Pre-v1.0. Additive at the field level (extends RFC-0253's provenance block). Exi
 ## Prior art
 
 - [RFC-0253 (provenance.slsa_level)](0253-provenance-slsa-level.md) — the parent provenance-block RFC; this RFC extends it with Scorecard-side enforcement.
-- [RFC-0216 (OpenSSF Scorecard outreach)](0216-openssf-scorecard-outreach.md) — the outreach RFC that surfaced this field.
+- RFC-0216 (OpenSSF Scorecard outreach) — the outreach RFC that surfaced this field.
 - [RFC-0003 (US alignment)](0003-us-alignment.md) — the default-policy file this RFC extends with optional `provenance_scorecard_min`.
 - OpenSSF Scorecard checks: https://github.com/ossf/scorecard/blob/main/docs/checks.md.
 

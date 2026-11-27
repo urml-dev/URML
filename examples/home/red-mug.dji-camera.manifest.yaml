@@ -2,8 +2,8 @@
 #
 # Same robot as red-mug.manifest.yaml in every respect EXCEPT the
 # depth_camera component's `vendor` is `dji` — a string used here as a
-# regulatory marker (DJI appears on the actual FCC Covered List effective
-# 2025-12-23). The bundled US-federal default policy (RFC-0004) rejects this
+# regulatory marker (DJI equipment has been on the FCC Covered List since
+# 2025-12-22). The bundled US-federal default policy (RFC-0004) rejects this
 # with policy.vendor_denied. Used by docs/demos/compliance-walkthrough.md
 # to illustrate the vendor-denylist rejection path.
 #

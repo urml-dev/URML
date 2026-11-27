@@ -5,7 +5,7 @@ AutoAPMS maintainer proposed: validate a URML program, then lower it to a
 behavior tree that the AutoAPMS execution layer can run.
 
 It comes from the
-[AutoAPMS engagement](https://github.com/AutoAPMS/auto-apms/issues/22), where
+AutoAPMS engagement, where
 robin-mueller suggested an `auto_apms_urml` compatibility package implementing a
 [build-handler](https://autoapms.github.io/auto-apms-guide/concept/common-resources#behavior-build-handlers)
 plugin that validates and translates URML into AutoAPMS's behavior-tree

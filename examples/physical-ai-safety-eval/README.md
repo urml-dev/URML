@@ -35,7 +35,7 @@ Hermetic, a few seconds, no model and no device. The committed `safety-eval-repo
 
 ## The MhsAdapter scaffold
 
-`mhs_adapter.py` is the shape of the adapter URML ships when the MHS specification is open: validated primitives lower onto `read(key)` / `write(key, value)` over an injectable transport, with the key map as deployment configuration. **The key names and value encodings are placeholders**, not the specification. Promotion to a real `urml-mhs-runtime` with RFC-0014 conformance fixtures waits for the open spec ([RFC-0683](../../docs/rfcs/0683-model-hardware-standard-outreach.md)).
+`mhs_adapter.py` is the shape of the adapter URML ships when the MHS specification is open: validated primitives lower onto `read(key)` / `write(key, value)` over an injectable transport, with the key map as deployment configuration. **The key names and value encodings are placeholders**, not the specification. Promotion to a real `urml-mhs-runtime` with RFC-0014 conformance fixtures waits for the open spec.
 
 ## Extending the corpus
 

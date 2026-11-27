@@ -218,7 +218,7 @@ Pre-v1.0. Additive. Existing 2 / 3-axis manifests continue to validate. RFC-0266
 
 - [RFC-0266 (motion_class)](0266-mobility-motion-class.md) — parent Spec RFC; closed deferral on axis_count > 3.
 - [RFC-0271 (protocol.fabrication_class)](0271-protocol-gcode-substrate.md) — sibling Spec RFC; closed deferral on spindle / coolant / thermal envelope at the protocol layer.
-- [Move-18 RFC-0227 (Klipper)](0227-klipper-outreach.md) — fabrication outreach.
+- Move-18 RFC-0227 (Klipper) — fabrication outreach.
 - Cross-references to LinuxCNC (5-axis machining), industrial-arm-mounted-spindle case studies.
 
 ## Unresolved questions

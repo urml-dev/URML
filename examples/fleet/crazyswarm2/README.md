@@ -17,7 +17,7 @@
 A worked example: validate **one coordinated intent over a roster of Crazyflies**
 with `validate_fleet`, then map each per-UAV primitive onto the real Crazyswarm2
 interfaces. This is the concrete example from the Crazyswarm2 engagement
-([IMRCLab/crazyswarm2#864](https://github.com/IMRCLab/crazyswarm2/discussions/864));
+(IMRCLab/crazyswarm2#864);
 @whoenig confirmed Crazyswarm2 supports per-UAV position/velocity control and that
 capabilities vary per drone, per area, and per swarm size, which is exactly what
 URML's fleet model carries.

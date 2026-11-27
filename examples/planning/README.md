@@ -7,7 +7,7 @@ envelope before dispatch, and when an action is inadmissible it returns
 structured feedback the planner consumes to replan.
 
 This example comes from the
-[ROSPlan engagement](https://github.com/KCL-Planning/ROSPlan/issues/330), where
+ROSPlan engagement, where
 @gerardcanal asked the three questions it answers:
 
 ```
