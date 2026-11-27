@@ -25,6 +25,8 @@ superseded-by: —
 
 # RFC-0004: Compliance Policy Enforcement
 
+> **Correction (2026-11-27).** The legal citations in this RFC's example policy and in its prior-art list are wrong in four places. The text below is kept as written; the shipped policy file no longer uses these citations. Section 889 of the FY2019 NDAA (FAR subpart 4.21) covers telecommunications and video surveillance equipment and is not the source of the country rules. "FY26 NDAA" is not the source of the drone or LiDAR restrictions (see the correction in [RFC-0003](0003-us-alignment.md)). The American Security Robotics Act is not enacted. NIST SP 800-218 is the Secure Software Development Framework and NIST IR 8425 is a baseline for consumer IoT products; neither sets a hardware bill of materials requirement. The shipped rules also reach further than the statutes they draw on, and their messages now say so. The sources that were checked are listed in the header of [`us_federal_default.yaml`](../../reference/validator/src/urml_validator/policies/us_federal_default.yaml).
+
 ## Summary
 
 This RFC specifies the technical mechanism that [RFC-0003](0003-us-alignment.md) authorizes: a way for URML capability manifests to declare hardware provenance, and a way for the URML validator to enforce pluggable policy files against that provenance before any program is accepted for execution.
