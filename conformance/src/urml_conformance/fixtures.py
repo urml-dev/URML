@@ -230,13 +230,13 @@ MANIFEST_REGISTRY: dict[str, Path] = {
     "neo_biped": _VALIDATOR_FIXTURES / "manifests" / "neo_biped.yaml",
     # RFC-0022: warehouse domain profile.
     "warehouse_cell": _VALIDATOR_FIXTURES / "manifests" / "warehouse_cell.yaml",
-    # RFC-0023: Yaskawa / MotoROS2 integration (Move #1 lighthouse).
+    # Vendor-shaped cell: Yaskawa / MotoROS2.
     "yaskawa_cell": _VALIDATOR_FIXTURES / "manifests" / "yaskawa_cell.yaml",
-    # RFC-0024: Universal Robots integration (Move #1 lighthouse — dual adapter).
+    # Vendor-shaped cell: Universal Robots (dual adapter).
     "ur_cell": _VALIDATOR_FIXTURES / "manifests" / "ur_cell.yaml",
-    # RFC-0025: KUKA integration (Move #1 lighthouse).
+    # Vendor-shaped cell: KUKA.
     "kuka_cell": _VALIDATOR_FIXTURES / "manifests" / "kuka_cell.yaml",
-    # RFC-0028: FANUC integration (Move #1 lighthouse) — closes original-six gap.
+    # Vendor-shaped cell: FANUC.
     "fanuc_cell": _VALIDATOR_FIXTURES / "manifests" / "fanuc_cell.yaml",
     # RFC-0286: fleet demo members (canonical source lives in examples/fleet).
     "husky_amr": _EXAMPLES_FLEET / "husky_amr.manifest.yaml",

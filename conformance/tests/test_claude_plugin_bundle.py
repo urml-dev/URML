@@ -1,6 +1,6 @@
 """Guards for the Claude Code plugin bundle (plugins/urml/).
 
-Two invariants, same spirit as the outreach-ledger parity test:
+Two invariants:
 
 1. The skill bundled in the plugin is byte-identical to the canonical
    Agent Skill under .github/skills/. One source of truth; the plugin
