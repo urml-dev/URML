@@ -74,5 +74,3 @@ Anthropic's stated gate before open-sourcing MHS is "safety evaluations and best
 - A real `MhsAdapter` runtime (RFC-0014 conformance) lowering URML primitives onto MHS read/write. The harness ships a labeled scaffold with an injectable transport; its wire format is a placeholder.
 - Conformance fixtures for MHS-driven devices, starting with the two partners URML already has adapters for.
 - Any manifest schema change. None is proposed against an unpublished schema.
-
-Tracked in [RFC-0683](../rfcs/0683-model-hardware-standard-outreach.md).

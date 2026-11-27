@@ -7,9 +7,8 @@
 # the human writes. Matches the project's "report drift, don't silently
 # rewrite" discipline.
 #
-# Cadence: Mondays 09:00 UTC. The Move-#1 outreach window and the
-# per-runtime gated CI cadence both align to weekly; this rides the
-# same beat.
+# Cadence: Mondays 09:00 UTC. The per-runtime gated CI cadence is
+# weekly; this rides the same beat.
 #
 # Scope honesty: this workflow installs the five canonical packages
 # editable. The twelve further reference runtimes (marine /

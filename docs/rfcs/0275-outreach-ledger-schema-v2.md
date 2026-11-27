@@ -2,9 +2,9 @@
 rfc: 0275
 title: Outreach ledger schema v2 — structured tier, country, sector, plus per-row comments and Claude directives
 author: Ido Yahalomi (greenvh@gmail.com)
-state: Draft
+state: Withdrawn
 created: 2026-05-29
-updated: 2026-05-30
+updated: 2026-11-27
 supersedes: —
 superseded-by: —
 ---
@@ -24,6 +24,8 @@ superseded-by: —
 ---
 
 # RFC-0275: Outreach ledger schema v2 — structured tier, country, sector, plus per-row comments and Claude directives
+
+> **Status note, 2026-11-27.** Withdrawn from this repository. The ledgers, the migration script, the SQLite mirror and the dashboard this RFC describes moved to the Licensor's private archive under [RFC-0710](0710-outreach-records-leave-the-repository.md). The text below is kept as a record of the schema. Paths and commands in it no longer exist here.
 
 ## Summary
 
@@ -184,7 +186,7 @@ No external consumer of URML depends on the outreach ledger schema. The audit ri
 
 ## Prior art
 
-- [`conformance/tests/test_outreach_ledger.py`](../../conformance/tests/test_outreach_ledger.py). The existing Move-1 parity test that this RFC extends in shape (schema-assertion test) to Move-2-through-Move-18.
+- `conformance/tests/test_outreach_ledger.py`. The existing Move-1 parity test that this RFC extends in shape (schema-assertion test) to Move-2-through-Move-18.
 - [`tools/scripts/refresh_audit.py`](../../tools/scripts/refresh_audit.py). The existing read-only re-measurer pattern that `tools/scripts/refresh_outreach_db.py` mirrors. The discipline (regenerate on demand, no auto-edit of human-maintained files) carries over.
 - [RFC-0014 (substrate conformance)](0014-substrate-conformance.md). The precedent for writing down a contract that already exists implicitly. RFC-0014 wrote down what makes a runtime URML-compatible; this RFC writes down what an outreach ledger row contains.
 - [RFC-0003 (US-federal alignment)](0003-us-alignment.md) and [RFC-0004 (compliance policy)](0004-compliance-policy.md). The source of the provenance / origin discipline that `country` operationalizes.

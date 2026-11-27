@@ -125,8 +125,8 @@ Pre-v1.0. Additive: all fields optional. Existing manifests pass unchanged. The 
 
 ## Prior art
 
-- [RFC-0215 (OpenSSF SLSA outreach)](0215-openssf-slsa-outreach.md) — the outreach RFC that surfaced this field.
-- [RFC-0216 (OpenSSF Scorecard outreach)](0216-openssf-scorecard-outreach.md) — sibling outreach for `scorecard_min_score`.
+- RFC-0215 (OpenSSF SLSA outreach) — the outreach RFC that surfaced this field.
+- RFC-0216 (OpenSSF Scorecard outreach) — sibling outreach for `scorecard_min_score`.
 - [RFC-0003 (US alignment)](0003-us-alignment.md) — the default-policy file this RFC extends.
 - [RFC-0014 (substrate conformance)](0014-substrate-conformance.md) — the conformance framework this RFC adds a test category to.
 - SLSA Levels v1.0 spec: https://slsa.dev/spec/v1.0/levels (URML doesn't embed; we cross-cite).

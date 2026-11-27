@@ -21,7 +21,7 @@ Authority: [RFC-0703](docs/rfcs/0703-bsl-relicense.md), [RFC-0704](docs/rfcs/070
 
 Any organization that uses URML in production. That means operating robots with URML in a commercial or business setting, shipping URML inside a product, or offering it as a service.
 
-Research, teaching, evaluation, development, testing, simulation and personal projects are free under the [Business Source License 1.1](LICENSE). Each release converts to Apache 2.0 two years after it ships.
+Research, teaching, evaluation, development, testing, simulation and personal projects are free under the [Business Source License 1.1](LICENSE). Each release converts to Apache 2.0 four years after it ships; 0.5.0 to 0.5.2 convert after two ([`LICENSING.md`](LICENSING.md#every-release-opens-up-after-four-years)).
 
 ## What a commercial license includes
 

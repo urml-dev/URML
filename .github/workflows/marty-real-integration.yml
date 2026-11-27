@@ -12,8 +12,7 @@
 # This is the API-surface gate, not the hardware-in-the-loop gate.
 # The hardware loop (a URML program executing on a real Marty over
 # USB / Wi-Fi) stays as a separate future ticket since URML doesn't
-# have hardware access today; that ticket is recorded in
-# `docs/launch/outreach-commitments.md` under the Marty section.
+# have hardware access today.
 #
 # Triggers:
 # - workflow_dispatch — manual run for one-off verification.
@@ -151,7 +150,7 @@ jobs:
           # edu-board-e2e / cobot-controller-e2e / marine-sitl-e2e
           # honesty conventions across URML's integration workflows.
           echo "Marty hardware-in-the-loop is the documented next gate;"
-          echo "see docs/launch/outreach-commitments.md (Marty section)."
+          echo "it is not wired yet."
           exit 1
 
       - name: Upload diagnostics

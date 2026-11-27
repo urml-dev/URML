@@ -42,7 +42,7 @@ manifest without `substrate.clock` is unaffected.
 ## Motivation
 
 Surfaced directly by an engagement. On
-[ICube-Robotics/ethercat_driver_ros2#224](https://github.com/ICube-Robotics/ethercat_driver_ros2/issues/224)
+ICube-Robotics/ethercat_driver_ros2#224
 (RFC-0320 outreach), the driver's maintainer (yguel) wrote:
 
 > at some point clock mechanisms cannot be hidden: this happens when the bus

@@ -7,6 +7,7 @@ created: 2026-11-22
 updated: 2026-11-22
 supersedes: CORE_COMMITMENT.md, RFC-0672
 superseded-by: none
+amended-by: RFC-0709 (the Change Date is four years for new versions)
 ---
 
 <p align="center">

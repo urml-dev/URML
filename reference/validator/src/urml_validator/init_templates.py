@@ -557,9 +557,9 @@ outputs:
 
 # Hardware provenance (RFC-0004). Optional: when present, the validator's
 # Pass 5 checks the bundled US-federal compliance policy against this block.
-# Civilian drones are explicitly covered by FCC entity-list rules and NDAA
-# §889 procurement restrictions; the provenance block lets URML enforce
-# that statically before any flight.
+# Civilian drones are covered by the FCC Covered List and by the American
+# Security Drone Act of 2023 (FY2024 NDAA); the provenance block lets URML
+# screen for covered parts statically before any flight.
 #
 # TODO: fill in real provenance before any deployment that claims compliance.
 # The placeholder values below are illustrative; they are not a certification

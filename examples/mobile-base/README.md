@@ -9,7 +9,7 @@ public interface, the right place for URML is not the whole-body manifest
 plus an intermediary node that validates intent before it becomes a `Twist`.
 
 This example comes from the
-[quadruped_ros2_control engagement](https://github.com/legubiao/quadruped_ros2_control/issues/65),
+quadruped_ros2_control engagement,
 where the maintainer described exactly this: the stack abstracts the quadruped as
 an omnidirectional base, the controllers have no unified declarative capability
 validation (an invalid velocity command can fail silently or destabilise the

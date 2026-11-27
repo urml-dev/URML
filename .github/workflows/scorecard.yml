@@ -18,7 +18,7 @@ name: scorecard
 # Scorecard scores one repository at a time and does not aggregate across repos.
 # Weekly cadence (Mondays 07:00 UTC) matches the repo's other scheduled
 # workflows; manual runs are available via `workflow_dispatch`. There is
-# deliberately no `push` trigger: `main` takes frequent ledger merges and a
+# deliberately no `push` trigger: `main` takes frequent small merges and a
 # per-merge scan would be wasteful, so the scheduled run on the default branch is
 # what refreshes the published score.
 

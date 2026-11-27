@@ -29,7 +29,7 @@ superseded-by: —
 
 A growing share of URML's substrate targets are learned locomotion and manipulation policies: a neural controller trained in simulation owns the gait or the grasp, and URML sits above it as the validated-intent layer. A learned policy is only valid inside the distribution it was trained on. A biped walk policy trained for commands up to 1.0 m/s over flat-to-mild terrain has undefined behavior at 2.5 m/s on stairs. URML's static gate is the natural place to refuse intent outside that distribution, but URML v0.1 has no way for a manifest to declare what the policy was trained for. This RFC adds an optional Layer-1 manifest block, `learned_policy`, declaring the training envelope: command ranges, terrain classes, and payload range the policy was trained and validated under. The validator rejects (or warns on) Layer-2 intent whose implied command exceeds the declared training envelope. How a training framework *exports* these limits is out of scope; URML defines the declaration and two separate checks against it: a static declaration check before any program is accepted, and a per-action runtime shield (RFC-0667) at dispatch. No primitive changes. Backward compatible (additive optional block).
 
-The surface that demanded this RFC is the recurring "learned-policy-as-substrate" framing across Move #28 and Move #29, and the specific question from the rsl_rl maintainer on [RFC-0377](0377-rsl-rl-outreach.md): could a trained policy export the limits it was trained under? Sibling threads: [RFC-0380 (rl_games)](0380-rl-games-outreach.md), [RFC-0376 (legged_gym)](0376-legged-gym-outreach.md), [RFC-0373 (Open Duck Mini)](0373-open-duck-mini-outreach.md), [RFC-0369 (OmniSafe)](0369-omnisafe-outreach.md), [RFC-0360 (robomimic)](0360-robomimic-outreach.md).
+The surface that demanded this RFC is the recurring "learned-policy-as-substrate" framing across Move #28 and Move #29, and the specific question from the rsl_rl maintainer on RFC-0377: could a trained policy export the limits it was trained under? Sibling threads: RFC-0380 (rl_games), RFC-0376 (legged_gym), RFC-0373 (Open Duck Mini), RFC-0369 (OmniSafe), RFC-0360 (robomimic).
 
 ## Motivation
 
@@ -91,7 +91,7 @@ The validator does **not** load, run, or introspect the policy. `policy_ref` is 
 
 ### Two checks, not one
 
-This RFC and RFC-0667 together describe **two separate mechanisms**, and earlier text here read as if there were one. Stated plainly (amended 2026-08-20, prompted by the ExecuTorch maintainers' review on [pytorch/executorch#20268](https://github.com/pytorch/executorch/issues/20268)):
+This RFC and RFC-0667 together describe **two separate mechanisms**, and earlier text here read as if there were one. Stated plainly (amended 2026-08-20, prompted by the ExecuTorch maintainers' review on pytorch/executorch#20268):
 
 1. **Check 1, static, this RFC.** `_check_learned_policy` runs in Pass 3 before any program is accepted. It reads only declarations: the trained `command_ranges`, `terrain_classes`, and `payload_range` against the deployment's admissible ceilings (the strictest of `mobility.max_velocity`, the safety envelope's caps, and `validation.terrain_fidelity`). It catches a *deployment* that could ask the policy for more than it was trained for. It never sees a policy output.
 2. **Check 2, runtime, RFC-0667.** The shield gates each action the policy proposes at dispatch and observes the telemetry stream; an out-of-envelope output is vetoed even when every declaration was coherent. It catches a *policy* that emits more than the deployment allows, which a static check cannot, because the output does not exist until the policy runs.
@@ -134,9 +134,9 @@ Pre-v1.0. Additive: the `learned_policy` block is optional, every existing manif
 
 ## Prior art
 
-- [RFC-0377 (rsl_rl)](0377-rsl-rl-outreach.md), the maintainer question that surfaced this; training-limits metadata exported alongside the policy.
-- [RFC-0380 (rl_games)](0380-rl-games-outreach.md), [RFC-0376 (legged_gym)](0376-legged-gym-outreach.md), [RFC-0373 (Open Duck Mini)](0373-open-duck-mini-outreach.md), sibling learned-policy-as-substrate engagements.
-- [RFC-0369 (OmniSafe)](0369-omnisafe-outreach.md), [RFC-0360 (robomimic)](0360-robomimic-outreach.md), safe-RL and imitation-learning peers at the same boundary.
+- RFC-0377 (rsl_rl), the maintainer question that surfaced this; training-limits metadata exported alongside the policy.
+- RFC-0380 (rl_games), RFC-0376 (legged_gym), RFC-0373 (Open Duck Mini), sibling learned-policy-as-substrate engagements.
+- RFC-0369 (OmniSafe), RFC-0360 (robomimic), safe-RL and imitation-learning peers at the same boundary.
 - [RFC-0381 (simulation-fidelity manifest hints)](0381-simulation-fidelity-manifest-hints.md), the `terrain_fidelity` enum this block reuses for `terrain_classes`.
 - [RFC-0009 (legged/humanoid mobility)](0009-legged-humanoid-mobility.md), the `biped`/`quadruped` drive types most learned-policy substrates use.
 - Distributional-shift and operational-design-domain (ODD) literature; the training envelope is URML's manifest-level ODD for a learned controller.

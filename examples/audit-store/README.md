@@ -8,7 +8,7 @@ is as valuable to record as a dispatched one: it is the audit trail of what the
 robot was asked to do and what the safety layer allowed.
 
 This example comes from the
-[ReductStore engagement](https://github.com/reductstore/reductstore/issues/1434),
+ReductStore engagement,
 where the maintainer confirmed ReductStore can store URML's audit messages.
 [ReductStore](https://www.reduct.store/) is a time-series database for
 unstructured robotics data, which is a clean fit: each URML audit record is a
@@ -66,7 +66,7 @@ intent in the last hour" or "all `envelope.*` rejections for this robot", which
 is exactly the audit question a time-series store answers well.
 
 The ReductStore founder confirmed this layout on the
-[engagement thread](https://github.com/reductstore/reductstore/issues/1434):
+engagement thread:
 one bucket with entry paths for logical grouping (a separate bucket only earns
 its keep when you need separate access, replication, or lifecycle policies), and
 when the dispatch rate is high, batch the records before writing rather than

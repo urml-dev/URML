@@ -44,7 +44,7 @@ these fields validates unchanged.
 ## Motivation
 
 Surfaced by an engagement. On
-[linorobot/linorobot2#223](https://github.com/linorobot/linorobot2/issues/223),
+linorobot/linorobot2#223,
 PaulBouchier relayed a Dallas Personal Robotics Group review. The recurring,
 multi-reviewer note (HR): "there seems to be some missing parts, such as how to
 define objects, rooms, etc. ... It does not define how objects will be detected."

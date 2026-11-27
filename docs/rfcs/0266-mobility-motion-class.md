@@ -172,8 +172,8 @@ Pre-v1.0. Additive at the field level. Existing manifests without `motion_class`
 
 ## Prior art
 
-- [Move-18 RFC-0227 (Klipper outreach)](0227-klipper-outreach.md) — surfaced fabrication motion drive_types.
-- [Move-18 RFC-0228 (WPILib outreach)](0228-wpilib-outreach.md) — surfaced swerve drive_type.
+- Move-18 RFC-0227 (Klipper outreach) — surfaced fabrication motion drive_types.
+- Move-18 RFC-0228 (WPILib outreach) — surfaced swerve drive_type.
 - [RFC-0008 (drone profile)](0008-drone-profile.md), [RFC-0009 (mobile-base profile)](0009-mobile-base-profile.md) — sibling profiles that consume drive_type.
 - [RFC-0250 (substrate.autopilot_class)](0250-substrate-autopilot-class.md) — sibling Spec RFC; this RFC's fabrication motion_class is incompatible with autopilot_class declarations.
 

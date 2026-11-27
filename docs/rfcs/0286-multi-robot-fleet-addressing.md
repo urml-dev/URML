@@ -180,7 +180,7 @@ The roster, the `on:`/`barrier:` operators, `validate_fleet`, and the reference
 management — is a commercial surround and stays out of this repository
 (`CLAUDE.md` lists "fleet management" among the eventual commercial surfaces).
 Large-scale, multi-site coordination routes to Open-RMF as an external layer
-([RFC-0053](0053-open-rmf-multirobot-integration.md)). This RFC defines the
+(RFC-0053). This RFC defines the
 *language*, not a management app.
 
 ## Backward compatibility

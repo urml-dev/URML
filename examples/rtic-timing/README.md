@@ -1,6 +1,6 @@
 # RTIC timing: a declared cyclic requirement, checked and mapped
 
-A worked example for [rtic-rs/rtic#1188](https://github.com/rtic-rs/rtic/issues/1188).
+A worked example for rtic-rs/rtic#1188.
 
 URML's RFC-0016 `realtime` block lets a robot's manifest declare the cyclic timing
 a control node runs under: a control-cycle period and a watchdog deadline that

@@ -176,9 +176,9 @@ Pre-v1.0. Additive: existing manifests with `ros2 / px4 / opc_ua_robotics / cust
 
 ## Prior art
 
-- [Move-13 RFC-0174 (CircuitPython outreach)](0174-circuitpython-outreach.md) — first MCU-substrate engagement, dhalbert engaged at Adafruit.
-- [Move-18 RFC-0229 (Crazyflie outreach)](0229-crazyflie-outreach.md) — nano-drone CRTP firmware, MCU substrate; pairs with this RFC's `circuitpython` or `freertos` values plus RFC-0256's `crtp` protocol.
-- [Move-18 RFC-0228 (WPILib outreach)](0228-wpilib-outreach.md) — FIRST Robotics RoboRIO; pairs with this RFC's `freertos` or `arduino` value plus RFC-0266's `swerve` drive_type.
+- Move-13 RFC-0174 (CircuitPython outreach) — first MCU-substrate engagement, dhalbert engaged at Adafruit.
+- Move-18 RFC-0229 (Crazyflie outreach) — nano-drone CRTP firmware, MCU substrate; pairs with this RFC's `circuitpython` or `freertos` values plus RFC-0256's `crtp` protocol.
+- Move-18 RFC-0228 (WPILib outreach) — FIRST Robotics RoboRIO; pairs with this RFC's `freertos` or `arduino` value plus RFC-0266's `swerve` drive_type.
 - [RFC-0256 (protocol.embedded_class)](0256-protocol-embedded-class.md) — sibling Spec RFC; CRTP value lives in `protocol.embedded_class`.
 - [RFC-0266 (motion_class)](0266-mobility-motion-class.md) — sibling Spec RFC; education-tier drive_types compose with MCU substrates.
 

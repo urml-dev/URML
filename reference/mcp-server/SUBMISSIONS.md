@@ -10,9 +10,9 @@ Ready-to-run playbook for publishing the URML MCP server to PyPI and the MCP
 directories. The in-repo [`server.json`](server.json) is the single source; the
 entries here point back to it. These steps need the maintainer's PyPI and GitHub
 identity, so they are drafted for the founder to run. Contact field everywhere:
-`greenvh@gmail.com`. Track progress in
-[`examples/lighthouses/distribution.yaml`](../../examples/lighthouses/distribution.yaml)
-(the `track: mcp` rows).
+`greenvh@gmail.com`. The record of what was submitted where is the
+maintainer's working data and is not kept in this repository
+([RFC-0710](../../docs/rfcs/0710-outreach-records-leave-the-repository.md)).
 
 Publishing is irreversible and outward-facing.
 
@@ -190,9 +190,8 @@ They are directory listings, not the source of truth;
 
 ## After publishing
 
-Track each venue in
-[`examples/lighthouses/distribution.yaml`](../../examples/lighthouses/distribution.yaml):
-fill `submitted_at` / `posted_url`, keep `response: none` until real adoption
-signal. Install counts and listing views are vanity, not engagement. Do not
-cite them without corroboration. Keep the server in lockstep with the `urml`
+Record each venue in the maintainer's distribution ledger (outside this
+repository): the submission date, the listing URL, and `response: none` until
+there is a real adoption signal. Install counts and listing views are vanity,
+not engagement. Do not cite them without corroboration. Keep the server in lockstep with the `urml`
 CLI; if the CLI changes, update the tools and re-publish.

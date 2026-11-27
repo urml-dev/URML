@@ -186,7 +186,7 @@ Pre-v1.0. Additive. Existing manifests unchanged. Default-policy file gains opti
 ## Prior art
 
 - [RFC-0261 (orchestration.framework)](0261-orchestration-framework.md) — parent Spec RFC; this RFC closes the deferred cost-budget and streaming-vs-batch questions.
-- [Move-11 RFC-0143 (smolagents)](0143-smolagents-outreach.md), [Move-11 RFC-0145 (Gemini Robotics SDK)](0145-gemini-robotics-sdk-outreach.md), [Move-12 RFC-0164 (LangGraph)](0164-langgraph-outreach.md) — outreach RFCs whose frameworks consume these declarations.
+- Move-11 RFC-0143 (smolagents), Move-11 RFC-0145 (Gemini Robotics SDK), Move-12 RFC-0164 (LangGraph) — outreach RFCs whose frameworks consume these declarations.
 - [RFC-0003 (US alignment)](0003-us-alignment.md) — default-policy file this RFC extends.
 
 ## Unresolved questions

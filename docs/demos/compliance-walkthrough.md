@@ -45,9 +45,9 @@ Expected:
 Validation passed: examples\home\red-mug.urml.yaml
 ```
 
-The `red-mug.manifest.yaml` declares three critical components — drive controller (US), depth camera (US), claw servo (JP/US). The bundled URML default policy (which mirrors NDAA Section 889 / FY26, the FCC Covered List, etc.) accepts all of them. The validator has run five passes — argument typing, capability checks, safety envelope, variable bindings, and compliance policy — and the program is cleared for execution.
+The `red-mug.manifest.yaml` declares three critical components: drive controller (US), depth camera (US), claw servo (JP/US). The bundled URML default policy (a provenance screen built on US defense procurement law and the Department of Defense list of Chinese military companies) accepts all of them. The validator has run five passes (argument typing, capability checks, safety envelope, variable bindings, and compliance policy) and the program is cleared for execution.
 
-No `--policy` flag was passed; the bundled US-federal default policy was loaded automatically. That is the design: by default, URML enforces US federal procurement rules. Deployers outside the US opt out via `--policy <their_file.yaml>` or `--no-policy`.
+No `--policy` flag was passed; the bundled US-federal default policy was loaded automatically. That is the design: by default, URML screens declared provenance against lists taken from US federal law. Deployers outside the US opt out via `--policy <their_file.yaml>` or `--no-policy`.
 
 ## Scene 2 — a covered foreign component
 
@@ -66,7 +66,7 @@ Validation failed: examples\home\red-mug.urml.yaml (2 error(s))
 
   ERROR [policy.country_denied] <manifest>/provenance/components/drive_controller
     field: country_of_origin
-    Critical component from covered foreign country (NDAA Section 889 / FY26 NDAA).
+    Critical component from a covered foreign country (CN, RU, IR, KP). The list comes from US defense procurement law for unmanned aircraft and LiDAR (section 848 of the FY2020 NDAA and section 164 of the FY2025 NDAA, both as amended). This rule applies it to every critical component as a screen. It is not a legal determination.
     rule_id: critical_country_denylist
     policy_id: urml_us_federal_default
     component_id: drive_controller
@@ -105,7 +105,7 @@ Validation failed: examples\home\red-mug.urml.yaml (1 error(s))
 
   ERROR [policy.vendor_denied] <manifest>/provenance/components/depth_camera
     field: vendor
-    Vendor named in the FCC Covered List, the DoD Chinese Military Companies list, or the American Security Robotics Act.
+    Vendor on the Department of Defense list of Chinese military companies (section 1260H of the FY2021 NDAA; list published 2026-06-10, 91 FR 35189). This rule rejects any component from a listed vendor as a screen. It is not a legal determination.
     rule_id: covered_vendor_denylist
     policy_id: urml_us_federal_default
     component_id: depth_camera
@@ -117,13 +117,13 @@ Validation failed: examples\home\red-mug.urml.yaml (1 error(s))
     denied_values: ['dji', 'autel', 'hesai', 'unitree']
 ```
 
-Different rule, same shape. The covered-vendor list ships in the bundled default policy file; each entry traces to an enacted statute or final agency list (FCC's covered-equipment action effective 2025-12-23 added DJI and Autel; the FY26 NDAA §164 named Hesai; the American Security Robotics Act targets Unitree).
+Different rule, same shape. The covered-vendor list ships in the bundled default policy file. All four entries are on the Department of Defense list of Chinese military companies published on 2026-06-10 (91 FR 35189). DJI and Autel equipment has also been on the FCC Covered List since 2025-12-22, and section 164 of the FY2025 NDAA names Hesai. The rule is a screen: it rejects any component from a listed vendor, which is broader than what those sources prohibit.
 
 The mechanism is the same as the country-denylist rule: declared facts on the manifest are matched against a denylist; matches emit structured errors before execution.
 
 ## Scene 4 — the override
 
-A deployer outside the US, or one with a specific exception (counterterrorism use; per ASRA §carve-outs), can disable Pass 5 entirely:
+A deployer outside the US, or one whose use falls under a statutory exemption, can disable Pass 5 entirely:
 
 ```bash
 urml validate examples/home/red-mug.urml.yaml \
@@ -155,7 +155,7 @@ URML supplies the mechanism. The rule set is a YAML file the deployer (or a thir
 
 In 90 seconds and three commands you saw:
 
-- The validator's fifth pass enforce a real regulatory regime on a real example.
+- The validator's fifth pass screen a real example against lists taken from US federal law.
 - Structured errors carry enough detail for an LLM (or a human) to understand exactly what failed and why.
 - The mechanism is generic; only the bundled defaults are US-specific.
 - Override is a single flag.

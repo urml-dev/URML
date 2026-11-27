@@ -9,7 +9,7 @@ one engagement thread: the maintainer raised the operation-mode distinction
 first, then the clock and ordering questions.
 
 This example comes from the
-[ethercat_driver_ros2 engagement](https://github.com/ICube-Robotics/ethercat_driver_ros2/issues/224)
+ethercat_driver_ros2 engagement
 (RFC-0320). The driver's maintainer put it precisely:
 
 > in a cyclic communication (PDOs) the answer from the bus is immediate, whereas
