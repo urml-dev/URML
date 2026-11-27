@@ -34,7 +34,7 @@ URML is a **specification** and a set of **reference implementations**, not a ro
 
 ## Try it in three commands
 
-The validator and the LLM bridge are on PyPI at 0.5.2, and they are all this needs. Every runtime is on PyPI too except two: the marine runtime, which follows when PyPI's limit of about four new projects a day allows, and the iso21423 runtime, which is not released yet. Both install from source (below). Install, scaffold a starter project, validate it. About 30 seconds; no API key, no robot.
+The validator and the LLM bridge are on PyPI at 0.5.3, and they are all this needs. Every runtime is on PyPI too except the iso21423 runtime, which is not released yet and installs from source (below). Install, scaffold a starter project, validate it. About 30 seconds; no API key, no robot.
 
 ```bash
 python3 -m venv .venv && . .venv/bin/activate   # recommended; required on PEP 668 systems (Ubuntu 26.04, Debian 12+)

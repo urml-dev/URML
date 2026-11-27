@@ -387,7 +387,7 @@ Shared words, and the protocols that let one controller drive robots from many m
 - **How to meet it.** Implement the messages and state machine, and test against the official schemas and the other side's implementation. The specification is free; we know of no formal certification scheme for it.
 - **Where to get the text.** [VDA 5050 on GitHub](https://github.com/VDA5050/VDA5050)
 - **Who assesses it.** No formal scheme we know of; integrators test vehicles against their fleet controller.
-- **What URML gives you.** urml-vda5050-runtime, on PyPI, with TLS and broker credentials on main for the next release, and paid fleet and vehicle validation. [urml-vda5050-runtime](https://github.com/urml-dev/URML/tree/main/reference/vda5050-runtime), [Validation services](https://urml.dev/pricing#validation)
+- **What URML gives you.** urml-vda5050-runtime, on PyPI, with TLS and broker credentials from 0.5.3, and paid fleet and vehicle validation. [urml-vda5050-runtime](https://github.com/urml-dev/URML/tree/main/reference/vda5050-runtime), [Validation services](https://urml.dev/pricing#validation)
 
 <a id="iso-21423"></a>
 
