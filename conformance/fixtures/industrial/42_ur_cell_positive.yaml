@@ -1,6 +1,6 @@
 name: industrial/ur_cell_positive
 description: >
-  Move #1 lighthouse fixture for RFC-0024 (Universal Robots integration).
+  Vendor-shaped cell fixture (Universal Robots).
   Brand-named UR manifest; passes against MockROSAdapter and is the same
   fixture shape exercised by UrAdapter (ROS 2 + ur_robot_driver) and
   UrRtdeAdapter (zero-ROS RTDE) in the gated integration lanes. The

@@ -1,6 +1,6 @@
 name: industrial/fanuc_cell_positive
 description: >
-  Move #1 lighthouse fixture for RFC-0028 (FANUC integration). Manifest
+  Vendor-shaped cell fixture (FANUC). Manifest
   ACCEPTED under bundled US-federal default policy. RFC-0013 pick_from/
   place_at happy path against MockROSAdapter; adapter-agnostic for
   FanucAdapter (composed over RclpyAdapter + FANUC-CORPORATION/fanuc_driver

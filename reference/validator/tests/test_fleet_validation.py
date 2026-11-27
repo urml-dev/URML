@@ -415,7 +415,7 @@ def test_temporal_barrier_deconflicts():
 
 
 def test_local_frame_not_compared_accepted():
-    # The engaged-partners case: three robots each with a private `floor` frame and
+    # The roll-call case: three robots each with a private `floor` frame and
     # a same-named `waypoint_a`. With no shared frame, they are never compared.
     def mover(rid):
         return _geo_manifest(rid, "differential", "floor", [_loc("waypoint_a", 0.3, 0.0, 0.0, "floor")], 0.5, 1.0)

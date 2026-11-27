@@ -1,6 +1,8 @@
-# URML v0.1 fleet mission — a synchronized roll-call of URML's engaged partners (RFC-0286).
+# URML v0.1 fleet mission: a synchronized roll-call of four robots (RFC-0286).
 #
-# Four heterogeneous real robots, named and synchronized in one program:
+# Four robots of different kinds, named and synchronized in one program.
+# The manifests are test inputs the URML project wrote.
+# A product name says which product a manifest is shaped like, not that its maker takes part in URML.
 #   marty   — Robotical Marty v2     (biped,        UK)   robotical/martypy#52
 #   petoi   — Petoi Bittle X         (quadruped,    CN)   PetoiCamp/OpenCat#113
 #   feather — Adafruit Feather RP2040 (differential, US)   adafruit/circuitpython#11035
@@ -8,8 +10,8 @@
 #
 # The choreography: each robot moves to a station, they rendezvous at a barrier,
 # take a SYNCHRONIZED sensor reading (the in-sync moment), rendezvous again, then
-# stand down. Validated against the four real partner manifests; run it with
-#   python run_partners_demo.py
+# stand down. Validated against the four manifests; run it with
+#   python run_roll_call_demo.py
 #
 # Note on the moves: the three mobile robots converge on `waypoint_a`. Each robot
 # declares that name in its OWN local `floor` frame, and this roster declares no
@@ -19,7 +21,7 @@
 # check; RFC-0291 removed that wart.)
 
 roster_version: "0.1"
-description: A synchronized roll-call of four engaged-partner robots.
+description: A synchronized roll-call of four robots of different kinds.
 members:
   - { name: marty,   manifest: robotical_marty_v2 }
   - { name: petoi,   manifest: petoi_bittle_x }

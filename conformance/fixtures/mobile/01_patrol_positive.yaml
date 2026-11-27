@@ -2,7 +2,7 @@ name: mobile/clearpath_patrol_positive
 description: >
   Navigation-only patrol on a Clearpath Husky manifest that declares
   compliant parts (Robotiq gripper, Intel RealSense camera, Clearpath
-  base — none on the FCC Covered List). Proves the AMR path validates
+  base, none on the default policy's vendor denylist). Proves the AMR path validates
   and executes, and that a richly-parted compliant manifest is
   accepted. Nav-only, so it runs hermetically against MockROSAdapter
   and adapter-agnostically against HuskyAdapter / JackalAdapter.

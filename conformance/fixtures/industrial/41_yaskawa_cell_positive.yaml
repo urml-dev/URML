@@ -1,6 +1,6 @@
 name: industrial/yaskawa_cell_positive
 description: >
-  Move #1 lighthouse fixture for RFC-0023 (Yaskawa / MotoROS2 integration).
+  Vendor-shaped cell fixture (Yaskawa / MotoROS2).
   Manifest ACCEPTED under the bundled US-federal default policy (JP allied
   origin; yaskawa not on the denylist). RFC-0013 pick_from/place_at happy
   path against MockROSAdapter; adapter-agnostic for YaskawaAdapter

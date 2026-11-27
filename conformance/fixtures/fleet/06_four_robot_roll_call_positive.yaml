@@ -1,10 +1,10 @@
-# RFC-0286 fleet conformance — positive: the engaged-partners roll-call validates
-# and executes across four real partner manifests (Marty, Petoi, CircuitPython,
-# Kawasaki). Mirrors examples/fleet/engaged_partners.fleet.yaml. policy: none
+# RFC-0286 fleet conformance, positive: a four-robot roll-call validates and
+# executes across four product-shaped manifests (Marty, Petoi, CircuitPython,
+# Kawasaki). Mirrors examples/fleet/four_robot_roll_call.fleet.yaml. policy: none
 # because Petoi's CN origin is an operator-context policy decision (RFC-0004).
-name: fleet/06_engaged_partners_choreography_positive
+name: fleet/06_four_robot_roll_call_positive
 description: >
-  Four heterogeneous engaged-partner robots move to stations, rendezvous at a
+  Four robots of different kinds move to stations, rendezvous at a
   barrier, take a synchronized sensor reading, rendezvous again, and stand down.
   Validated against each robot's real manifest; executed hermetically.
 
