@@ -1,6 +1,6 @@
 name: industrial/kuka_cell_positive
 description: >
-  Move #1 lighthouse fixture for RFC-0025 (KUKA integration). Manifest
+  Vendor-shaped cell fixture (KUKA). Manifest
   ACCEPTED under bundled US-federal default policy. RFC-0013 pick_from/
   place_at happy path against MockROSAdapter; adapter-agnostic for
   KukaAdapter (composed over RclpyAdapter + kroshu/kuka_drivers EKI/RSI/

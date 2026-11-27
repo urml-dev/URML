@@ -1,7 +1,7 @@
-"""Guard: the NL -> fleet capstone (examples/fleet/run_nl_partners_demo.py) runs.
+"""Guard: the NL -> fleet capstone (examples/fleet/run_nl_roll_call_demo.py) runs.
 
 The full RFC-0286 loop: an English sentence -> FleetBridge -> concurrent
-FleetRuntime over the four real partner robots. Skipped if the LLM bridge is not
+FleetRuntime over the four robots of the roll-call. Skipped if the LLM bridge is not
 installed in this environment (it lives in a separate package).
 """
 
@@ -14,11 +14,11 @@ import pytest
 
 pytest.importorskip("urml_llm_bridge", reason="capstone needs the urml_llm_bridge package")
 
-_DEMO = Path(__file__).resolve().parents[3] / "examples" / "fleet" / "run_nl_partners_demo.py"
+_DEMO = Path(__file__).resolve().parents[3] / "examples" / "fleet" / "run_nl_roll_call_demo.py"
 
 
 def _load_demo():
-    spec = importlib.util.spec_from_file_location("nl_partners_demo", _DEMO)
+    spec = importlib.util.spec_from_file_location("nl_roll_call_demo", _DEMO)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

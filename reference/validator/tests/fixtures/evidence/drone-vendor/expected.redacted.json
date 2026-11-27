@@ -166,7 +166,7 @@
   },
   "notice": "Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.",
   "redaction": {
-    "full_report_sha256": "149cc81df677550686578264eaa7adac8276cdbf3c1c592f63c9c06e20bc8ff5",
+    "full_report_sha256": "SHA256",
     "removed": [
       "envelope/geofence.delivery_corridor/detail/vertices",
       "envelope/geofence.delivery_corridor/detail/min_altitude",

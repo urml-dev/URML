@@ -2,7 +2,7 @@
   "mcpServers": {
     "urml": {
       "command": "uvx",
-      "args": ["--from", "urml-mcp-server==0.5.2", "urml-mcp"]
+      "args": ["--from", "urml-mcp-server==0.5.3", "urml-mcp"]
     }
   }
 }

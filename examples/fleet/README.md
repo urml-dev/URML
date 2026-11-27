@@ -50,29 +50,30 @@ The point is not the syntax — it is the cross-robot safety the validator enfor
 - **Synchronization is real.** Each `barrier` member must declare the `peer_link`
   connectivity role (`fleet.barrier_missing_peer_link`).
 
-## A second demo: the engaged-partners roll-call
+## A second demo: the four-robot roll-call
 
-[`run_partners_demo.py`](run_partners_demo.py) drives a fleet of the **real robots whose
-maintainers engaged with URML** — Robotical Marty (biped), Petoi Bittle (quadruped),
-Adafruit CircuitPython (differential), and a Kawasaki arm — named as one fleet and
+[`run_roll_call_demo.py`](run_roll_call_demo.py) drives a fleet of four robots of different
+kinds: a Robotical Marty (biped), a Petoi Bittle (quadruped), an Adafruit CircuitPython
+board (differential drive) and a Kawasaki arm. They are named as one fleet and
 synchronized: each moves to a station, they rendezvous at a barrier, take a synchronized
-sensor reading, and stand down. It validates against each robot's *real* capability
+sensor reading, and stand down. The mission validates against each robot's capability
 manifest and executes hermetically (mock adapters; swap in the real adapter on real
-hardware). Mission: [`engaged_partners.fleet.yaml`](engaged_partners.fleet.yaml).
+hardware). The manifests are test inputs the URML project wrote. A product name says which product a manifest is shaped like, not that its maker takes part in URML.
+Mission: [`four_robot_roll_call.fleet.yaml`](four_robot_roll_call.fleet.yaml).
 
 ```bash
-python run_partners_demo.py
+python run_roll_call_demo.py
 ```
 
 And the capstone — **one English sentence moves the whole fleet, in sync**:
-[`run_nl_partners_demo.py`](run_nl_partners_demo.py) runs the full loop, *natural
+[`run_nl_roll_call_demo.py`](run_nl_roll_call_demo.py) runs the full loop, *natural
 language → `FleetBridge` (LLM → validated multi-robot program) → concurrent
 `FleetRuntime`*. It uses `EchoProvider` for hermetic CI; swap in a real provider
 (Anthropic / OpenAI / on-device) and the same bridge translates a free-form
 sentence for real.
 
 ```bash
-python run_nl_partners_demo.py
+python run_nl_roll_call_demo.py
 ```
 
 ## Get your robot into a fleet

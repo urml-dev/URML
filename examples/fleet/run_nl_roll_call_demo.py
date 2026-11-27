@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Capstone: one English sentence moves the engaged-partners fleet, in sync (RFC-0286).
+"""Capstone: one English sentence moves the four-robot fleet, in sync (RFC-0286).
 
 The full loop, end to end and hermetic:
 
@@ -7,13 +7,13 @@ The full loop, end to end and hermetic:
         -> FleetBridge.translate   (LLM -> validated multi-robot program)
         -> FleetRuntime.execute     (the four robots dispatched concurrently)
 
-Run it:  python run_nl_partners_demo.py
+Run it:  python run_nl_roll_call_demo.py
 
 For hermetic, deterministic CI this uses EchoProvider — a stand-in that returns the
 target fleet program instead of calling a model. Swap in AnthropicProvider /
 OpenAIProvider (or any LLMProvider) and the same FleetBridge turns a free-form
 sentence into the program for real. Either way the program is validated across the
-four real partner manifests before any actuator is touched.
+four manifests before any actuator is touched.
 """
 
 from __future__ import annotations
@@ -29,7 +29,7 @@ from urml_ros2_runtime import FleetRuntime, FleetRuntimeResult, MockROSAdapter
 
 HERE = Path(__file__).resolve().parent
 _MANIFEST_DIR = HERE.parents[1] / "reference" / "validator" / "tests" / "fixtures" / "manifests"
-FLEET_FILE = HERE / "engaged_partners.fleet.yaml"
+FLEET_FILE = HERE / "four_robot_roll_call.fleet.yaml"
 
 SENTENCE = (
     "Have Marty, Petoi, and the CircuitPython board take their marks, then once "

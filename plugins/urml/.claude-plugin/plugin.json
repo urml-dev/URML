@@ -1,7 +1,7 @@
 {
   "name": "urml",
   "displayName": "URML",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Describe robot intent in plain English, validate it against the robot's declared capabilities and safety envelope, and only then execute. MCP tools plus an Agent Skill.",
   "author": { "name": "urml-dev", "url": "https://github.com/urml-dev" },
   "homepage": "https://urml.dev",

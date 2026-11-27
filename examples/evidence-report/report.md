@@ -2,7 +2,7 @@
 
 > Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.
 
-As of 2026-11-24 · urml-validator 0.5.2 · profiles: warehouse · policy: bundled
+As of 2026-11-24 · urml-validator 0.5.3 · profiles: warehouse · policy: bundled
 
 ## Summary
 

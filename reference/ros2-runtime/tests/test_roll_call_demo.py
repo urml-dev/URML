@@ -1,4 +1,4 @@
-"""Guard: the engaged-partners fleet demo (examples/fleet/run_partners_demo.py) runs.
+"""Guard: the four-robot fleet demo (examples/fleet/run_roll_call_demo.py) runs.
 
 Same don't-rot discipline as test_fleet_demo.py — a schema, runtime, or manifest
 change can never silently rot the four-real-robot choreography. Loaded by path.
@@ -9,11 +9,11 @@ from __future__ import annotations
 import importlib.util
 from pathlib import Path
 
-_DEMO = Path(__file__).resolve().parents[3] / "examples" / "fleet" / "run_partners_demo.py"
+_DEMO = Path(__file__).resolve().parents[3] / "examples" / "fleet" / "run_roll_call_demo.py"
 
 
 def _load_demo():
-    spec = importlib.util.spec_from_file_location("partners_run_demo", _DEMO)
+    spec = importlib.util.spec_from_file_location("roll_call_run_demo", _DEMO)
     assert spec and spec.loader
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -21,10 +21,10 @@ def _load_demo():
 
 
 def test_demo_file_present():
-    assert _DEMO.is_file(), f"partners demo not found at {_DEMO}"
+    assert _DEMO.is_file(), f"roll-call demo not found at {_DEMO}"
 
 
-def test_partners_demo_runs_hermetically():
+def test_roll_call_demo_runs_hermetically():
     result = _load_demo().main(verbose=False)
     assert result.success
     # 4 members x 3 primitives each = 12 steps (the barriers are not steps).

@@ -258,7 +258,7 @@
     ],
     "validator": {
       "name": "urml-validator",
-      "version": "0.5.2"
+      "version": "0.5.3"
     }
   },
   "notice": "Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.",

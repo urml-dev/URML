@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "urml-edu-runtime"
-version = "0.5.2"
+version = "0.5.3"
 description = "Educational-platform reference runtime for URML — VEX V5, LEGO Mindstorms/SPIKE, Thymio, Robotical Marty, Petoi Bittle / Nybble, zero ROS."
 readme = "README.md"
 license = { text = "BUSL-1.1" }
@@ -25,8 +25,8 @@ classifiers = [
 dependencies = [
   "pydantic>=2.6,<3",
   "PyYAML>=6.0,<7",
-  "urml-validator>=0.5.2",
-  "urml-ros2-runtime>=0.5.2",
+  "urml-validator>=0.5.3",
+  "urml-ros2-runtime>=0.5.3",
 ]
 
 [project.optional-dependencies]

@@ -20,6 +20,20 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+## [0.5.3] - 2026-11-27
+
+The family is bumped in lockstep to 0.5.3 so the work merged since 0.5.2 reaches PyPI: the evidence report's Markdown, HTML, redacted and signed forms, the EU and UL rulebooks, the certification reproduction tool and its fee rules, and the release SBOMs. 0.5.2 on PyPI was built from the v0.5.2 tag, and a re-run skips versions that already exist, so none of it could ship without a new version.
+
+0.5.3 is the first version under the four-year Change Date ([RFC-0709](docs/rfcs/0709-change-date-four-years.md)): it converts to Apache 2.0 four years after its release, where 0.5.0 to 0.5.2 convert after two. It carries the corrected legal sources of the default compliance policy, and it is the first version published since the outreach records left the repository ([RFC-0710](docs/rfcs/0710-outreach-records-leave-the-repository.md)). `urml-marine-runtime` reaches PyPI for the first time with this version; PyPI's limit on new projects held it back at 0.5.2.
+
+### Changed: release
+
+- The Claude Code plugin bundle (`plugins/urml`) pins `urml-mcp-server==0.5.3`, in lockstep with `server.json`. Until 0.5.3 is on PyPI, a plugin installed from `main` cannot start its server, so the release run follows the merge.
+- `registry/registry.json` and the committed evidence report example are regenerated: both record the validator version.
+- The evidence report golden test masks a redacted report's `full_report_sha256` along with the version. That digest hashes the full report, version included, so every bump staled the golden file; `test_evidence_sign` still checks the digest against the full report.
+- Every package now ships the license text it is released under. Wheels and source archives up to 0.5.2 carried only the identifier `BUSL-1.1` in their metadata, which does not state the Change Date or the Additional Use Grant. Each package directory now holds a copy of `LICENSE`, the build puts it into the wheel (`.dist-info/licenses/LICENSE`) and the source archive, and `conformance/tests/test_package_licenses.py` keeps the copies identical to the repository's file.
+- The fleet example and conformance fixture that were called "engaged partners" are renamed, the change [RFC-0710](docs/rfcs/0710-outreach-records-leave-the-repository.md) left for the next conformance release: `fleet/06_four_robot_roll_call_positive`, `examples/fleet/four_robot_roll_call.fleet.yaml`, `run_roll_call_demo.py` and `run_nl_roll_call_demo.py`. Four industrial fixture descriptions no longer name a "lighthouse" program, and three fixture descriptions no longer give the FCC Covered List as the source of the vendor denylist. No fixture changes what it tests; the suite hash (`fixtures_sha256`) changes with the text.
+
 ### Changed: repository
 
 - Outreach and distribution records left the repository ([RFC-0710](docs/rfcs/0710-outreach-records-leave-the-repository.md)). `docs/rfcs/` holds Spec and Governance RFCs only, and its index lists every one of them. `examples/lighthouses/` became `examples/vendor-manifests/`. The `make outreach-*` targets are gone. No schema, primitive, validator behavior or license term changes.

@@ -258,12 +258,12 @@
     ],
     "validator": {
       "name": "urml-validator",
-      "version": "0.5.2"
+      "version": "0.5.3"
     }
   },
   "notice": "Evidence of declared intent and its checks. Not a safety assessment, a certification or a compliance determination.",
   "redaction": {
-    "full_report_sha256": "12a18caebfcadd81b45d6e9d74da2589bb83c4c367b06cee3cdc16ff2941bbf1",
+    "full_report_sha256": "b5ad8d5d7d60438aa2295bf6ad5d350a6c97875f3ba3740b0615726505ffb896",
     "removed": [
       "envelope/geofence.hall_2/detail/vertices",
       "envelope/people_zone.break_area/detail/vertices",

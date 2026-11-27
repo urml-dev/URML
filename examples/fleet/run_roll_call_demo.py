@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Run the engaged-partners fleet roll-call hermetically (RFC-0286).
+"""Run the four-robot fleet roll-call hermetically (RFC-0286).
 
-Four real partner robots — Robotical Marty, Petoi Bittle, Adafruit CircuitPython,
-and a Kawasaki arm — named as one fleet and synchronized in a single program. The
-mission is validated against each robot's REAL capability manifest, then executed
+Four robots of different kinds (a Robotical Marty, a Petoi Bittle, an Adafruit
+CircuitPython board and a Kawasaki arm), named as one fleet and synchronized in a
+single program. The manifests are test inputs the URML project wrote: a product
+name says which product a manifest is shaped like, not that its maker takes part
+in URML. The mission is validated against each robot's manifest, then executed
 against one MockROSAdapter per member so it runs offline, any OS, no ROS, no cloud.
 
-    python run_partners_demo.py
+    python run_roll_call_demo.py
 
 On real hardware, swap each MockROSAdapter for the robot's real adapter
 (RoboticalMartyAdapter / PetoiAdapter / CircuitPythonAdapter / KawasakiAdapter) —
@@ -24,9 +26,9 @@ from urml_ros2_runtime import FleetRuntime, FleetRuntimeResult, MockROSAdapter
 
 HERE = Path(__file__).resolve().parent
 _REPO_ROOT = HERE.parents[1]
-# The engaged-partner robots are real fixtures, not generic demo manifests.
+# The four manifests are the validator's own test fixtures.
 _MANIFEST_DIR = _REPO_ROOT / "reference" / "validator" / "tests" / "fixtures" / "manifests"
-FLEET_FILE = HERE / "engaged_partners.fleet.yaml"
+FLEET_FILE = HERE / "four_robot_roll_call.fleet.yaml"
 
 
 def load_fleet() -> tuple[dict[str, Any], dict[str, dict[str, Any]], dict[str, Any]]:
@@ -41,7 +43,7 @@ def load_fleet() -> tuple[dict[str, Any], dict[str, dict[str, Any]], dict[str, A
 
 
 def main(verbose: bool = True) -> FleetRuntimeResult:
-    """Validate then execute the engaged-partners roll-call. Returns the result."""
+    """Validate then execute the four-robot roll-call. Returns the result."""
     roster_doc, members, program_doc = load_fleet()
 
     # --no-policy posture: the language is on stage; Petoi's CN origin is an
