@@ -154,7 +154,7 @@ Pre-v1.0. Additive. Existing manifests treated as hardware deployments by defaul
 
 ## Prior art
 
-- [Move-2 RFC-0037 (Gazebo)](0037-gazebo-outreach.md), [Move-2 RFC-0050 (Isaac Sim)](0050-isaac-sim-outreach.md), [Move-11 RFC-0144 (mujoco_playground)](0144-mujoco-playground-outreach.md) — outreach RFCs that surfaced these substrates.
+- Move-2 RFC-0037 (Gazebo), Move-2 RFC-0050 (Isaac Sim), Move-11 RFC-0144 (mujoco_playground) — outreach RFCs that surfaced these substrates.
 - Move-18 RFC-0234 (Webots; staged in batches 2-4) — adds Webots to the enum.
 - [RFC-0268 (deployment.commercial_use)](0268-deployment-commercial-use-flag.md) — sibling deployment metadata; may converge into shared deployment block in future.
 

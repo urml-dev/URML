@@ -16,12 +16,12 @@
 
 **URML is the invention of Ido Yahalomi** ([greenvh@gmail.com](mailto:greenvh@gmail.com)): the language, the layered architecture, the primitive vocabulary, the substrate-neutral framing, the open-core / closed-surround strategy. One human, one design.
 
-The authoring of the spec text, the four reference runtimes, the validator, the conformance suite, and the outreach RFC log is **AI-assisted (vibe-coded)**: drafted with Claude (Anthropic) under the maintainer's direction and review. This is not hidden, not a transitional state, not something a future contributor reorganization will reverse.
+The authoring of the spec text, the four reference runtimes, the validator, and the conformance suite is **AI-assisted (vibe-coded)**: drafted with Claude (Anthropic) under the maintainer's direction and review. This is not hidden, not a transitional state, not something a future contributor reorganization will reverse.
 
 URML's stance:
 
 - The invention is human. The keyboarding is shared.
-- A solo-maintainer project that ships a multi-layer spec, four runtimes, a conformance suite, and ~100 outreach RFCs in a single phase does not exist at this pace without AI assistance. URML chose to exist.
+- A solo-maintainer project that ships a multi-layer spec, four runtimes, and a conformance suite in a single phase does not exist at this pace without AI assistance. URML chose to exist.
 - Every technical claim in the repo is measured by `make audit` against real test runs, real fixture counts, real conformance results. AI prose does not get to bypass the audit.
 - Every external-facing post (issues, discussions, RFCs) is read by the maintainer before it ships. AI drafts; the maintainer approves.
 - Specs, schemas, and primitive definitions are checked-in artifacts whose correctness is enforced by tests and conformance fixtures, not by the eloquence of the prose around them.

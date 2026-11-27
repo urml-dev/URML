@@ -176,9 +176,9 @@ Pre-v1.0. Additive at the field level. Existing `ros2`-class manifests that don'
 
 ## Prior art
 
-- [RFC-0200 (ROS 2 core outreach)](0200-ros2-core-outreach.md) — surfaced the RMW-implementation field as URML's missing manifest layer.
-- [RFC-0203 (Fast DDS outreach)](0203-fast-dds-outreach.md), [RFC-0204 (Cyclone DDS outreach)](0204-cyclone-dds-outreach.md), [RFC-0209 (Zenoh outreach)](0209-zenoh-outreach.md) — per-implementation outreach RFCs.
-- [RFC-0210 (iceoryx outreach)](0210-iceoryx-outreach.md) — sibling IPC-sub-substrate engagement; `substrate.ipc_substrate` (separate future RFC) is the parallel field for intra-process zero-copy IPC declaration.
+- RFC-0200 (ROS 2 core outreach) — surfaced the RMW-implementation field as URML's missing manifest layer.
+- RFC-0203 (Fast DDS outreach), RFC-0204 (Cyclone DDS outreach), RFC-0209 (Zenoh outreach) — per-implementation outreach RFCs.
+- RFC-0210 (iceoryx outreach) — sibling IPC-sub-substrate engagement; `substrate.ipc_substrate` (separate future RFC) is the parallel field for intra-process zero-copy IPC declaration.
 - [RFC-0254 (substrate.maturity_tier)](0254-substrate-maturity-tier.md) — sibling Spec RFC that classifies `rmw_zenoh_cpp` as substrate-emerging.
 
 ## Unresolved questions

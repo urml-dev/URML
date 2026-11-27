@@ -179,8 +179,8 @@ Pre-v1.0. Additive: existing manifests without SLAM declaration continue to vali
 
 ## Prior art
 
-- [RFC-0205 (Cartographer outreach)](0205-cartographer-outreach.md), [RFC-0206 (ORB-SLAM3 outreach)](0206-orb-slam3-outreach.md), [RFC-0207 (RTAB-Map outreach)](0207-rtabmap-outreach.md), [RFC-0211 (Stella VSLAM outreach)](0211-stella-vslam-outreach.md) — the SLAM-substrate outreach quartet that surfaced this field.
-- [RFC-0200 (ROS 2 core outreach)](0200-ros2-core-outreach.md) — Cartographer / RTAB-Map / Stella VSLAM compose via ROS 2 binding adapters.
+- RFC-0205 (Cartographer outreach), RFC-0206 (ORB-SLAM3 outreach), RFC-0207 (RTAB-Map outreach), RFC-0211 (Stella VSLAM outreach) — the SLAM-substrate outreach quartet that surfaced this field.
+- RFC-0200 (ROS 2 core outreach) — Cartographer / RTAB-Map / Stella VSLAM compose via ROS 2 binding adapters.
 - Existing perception manifest in `spec/layer-1-hal/` — sensor declaration; this RFC extends the same perception block.
 
 ## Unresolved questions

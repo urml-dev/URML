@@ -18,9 +18,9 @@
 
 Project Chrono is an open high-fidelity multibody engine (Chrono::Vehicle ground dynamics, terramechanics for deformable terrain, Chrono::Sensor) from the University of Wisconsin-Madison and the University of Parma. This adapter mirrors `MujocoAdapter` / `PX4Adapter`: lazy `pychrono`, **no ROS 2 dependency**, a lazily-built cached `ChSystem`, failures returned not raised. Built against the frozen substrate Protocol per [RFC-0014](../../docs/rfcs/0014-substrate-conformance.md).
 
-Chrono's distinctive role for URML is **high-fidelity pre-deployment validation** ([RFC-0328](../../docs/rfcs/0328-project-chrono-outreach.md)): URML checks a program statically against the declared capability manifest and active safety envelope first, then drives the same validated intent through a short Chrono simulation segment so the dynamics come back as evidence. URML composes **above** Chrono; it never embeds it. The differentiator is the static capability-and-envelope check *before* the expensive multibody solver ever spins, so the high-fidelity run only ever exercises admissible programs.
+Chrono's distinctive role for URML is **high-fidelity pre-deployment validation** (RFC-0328): URML checks a program statically against the declared capability manifest and active safety envelope first, then drives the same validated intent through a short Chrono simulation segment so the dynamics come back as evidence. URML composes **above** Chrono; it never embeds it. The differentiator is the static capability-and-envelope check *before* the expensive multibody solver ever spins, so the high-fidelity run only ever exercises admissible programs.
 
-The primitive → driver-input altitude follows Project Chrono lead Dan Negrut's feedback on [issue #746](https://github.com/projectchrono/chrono/issues/746): align each manifest entry to a concrete `ChSystem` configuration at the level of Chrono's motion primitives and driver inputs.
+The primitive → driver-input altitude follows Project Chrono lead Dan Negrut's feedback on issue #746: align each manifest entry to a concrete `ChSystem` configuration at the level of Chrono's motion primitives and driver inputs.
 
 ## Method coverage
 
@@ -60,7 +60,7 @@ Without `pychrono` installed, `ChronoAdapter()` raises a clear error pointing at
 
 **v0.1 (this release):**
 - `ChronoAdapter` + `ChronoConfig` (PyChrono, no ROS). `chrono_vehicle_cell` manifest + `conformance/fixtures/home/21_chrono_vehicle_terrain_positive.yaml` verified through the runner (hermetic against `MockROSAdapter`; adapter-agnostic against `ChronoAdapter`).
-- **Terramechanics scene** (`scene: terramechanics`): a rig on Chrono SCM deformable terrain, selected by the manifest's `validation.terrain_fidelity: deformable` hint (RFC-0381). The validation-evidence payload gains **sinkage, peak contact force, and a tip-stability margin** alongside the base dynamics — the richer evidence Project Chrono lead Dan Negrut pointed at on [#746](https://github.com/projectchrono/chrono/issues/746). See [`terramechanics.py`](src/urml_chrono_runtime/terramechanics.py) and [`chrono_adapter.terramechanics.yaml`](chrono_adapter.terramechanics.yaml).
+- **Terramechanics scene** (`scene: terramechanics`): a rig on Chrono SCM deformable terrain, selected by the manifest's `validation.terrain_fidelity: deformable` hint (RFC-0381). The validation-evidence payload gains **sinkage, peak contact force, and a tip-stability margin** alongside the base dynamics — the richer evidence Project Chrono lead Dan Negrut pointed at on #746. See [`terramechanics.py`](src/urml_chrono_runtime/terramechanics.py) and [`chrono_adapter.terramechanics.yaml`](chrono_adapter.terramechanics.yaml).
 - Hermetic unit tests: navigation (configured + unmapped), the NSC/SMC system-type switch, measure (validation-evidence payload), scan (not supported), lifecycle, the not-supported / not-applicable-sim sentinels, the missing-`pychrono` (conda-pointing) error, the conformance hook, and the **terramechanics scene** (sinkage / contact-force / tip-margin evidence, driver-force application, bare-path regression); no pychrono install required (a fake `pychrono`, with a `vehicle`/SCM surface, is injected into `sys.modules`).
 - Gated `.github/workflows/chrono-integration.yml`: `chrono-smoke` (real pychrono from conda-forge + the hermetic suite + the live smoke) and `chrono-sitl-e2e` against a real Chrono::Vehicle scene (first run is a calibration run by design — the established px4 / mujoco / opcua convention). The live SCM scene is that calibration target: its physics reads are version-sensitive, so each degrades to an honest `unavailable` note rather than crashing.
 - [`SPEC-GAPS.md`](SPEC-GAPS.md): the two manifest gaps the mapping surfaced (terrain-fidelity + simulator-target-class hints) shipped as RFC-0381; the terramechanics scene now reads the terrain-fidelity hint.
@@ -74,6 +74,5 @@ Business Source License 1.1: free for non-production use, commercial license for
 ## Related documents
 
 - [`/reference/mujoco-runtime/`](../mujoco-runtime/) — the zero-ROS simulator sibling whose structure this mirrors.
-- [`/docs/rfcs/0328-project-chrono-outreach.md`](../../docs/rfcs/0328-project-chrono-outreach.md) — the engagement and mapping this implements.
 - [`/docs/rfcs/0014-substrate-conformance.md`](../../docs/rfcs/0014-substrate-conformance.md) — the conformance contract this is built against.
 - [`/conformance/`](../../conformance/) — the test suite that decides conformance.

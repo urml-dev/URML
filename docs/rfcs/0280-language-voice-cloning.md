@@ -189,7 +189,7 @@ Pre-v1.0. Additive. Existing manifests unchanged.
 
 ## Prior art
 
-- [Move-12 RFC-0156 (MyShell OpenVoice outreach)](0156-openvoice-outreach.md) — outreach RFC that surfaced voice-cloning capability.
+- Move-12 RFC-0156 (MyShell OpenVoice outreach) — outreach RFC that surfaced voice-cloning capability.
 - [RFC-0260 (language engine classes)](0260-language-engine-classes.md) — parent Spec RFC; this RFC closes the voice-cloning deferral.
 - [RFC-0277 (hf:// URI scheme)](0277-language-huggingface-uri-scheme.md) — sibling Spec RFC; voice_id uses the hf:// scheme.
 - [RFC-0268 (deployment.commercial_use)](0268-deployment-commercial-use-flag.md) — sibling deployment-metadata RFC; voice cloning may have commercial-context-specific consent requirements.

@@ -6,8 +6,8 @@
 
 A worked example of URML lowering a validated program onto OPC UA method calls
 on a robotics cell. It came out of the OPC UA engagements:
-[open62541#8077](https://github.com/open62541/open62541/issues/8077) (jpfr) and
-[UA-.NETStandard#3827](https://github.com/OPCFoundation/UA-.NETStandard/issues/3827)
+open62541#8077 (jpfr) and
+UA-.NETStandard#3827
 (marcschier, OPC Foundation).
 
 jpfr framed the modeling: OPC UA is object-orientation over the network. The cell

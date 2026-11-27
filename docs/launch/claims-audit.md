@@ -19,14 +19,6 @@ a passing test or recorded CI run. This document is the backing evidence. It
 exists so a reader can verify the front page is not overselling — and so the
 maintainer can re-check before each public update.
 
-The engagement-side companion to this dossier is
-[`outreach-commitments.md`](outreach-commitments.md), which lists every open
-public commitment URML has made to engaged outreach maintainers (Ouster,
-Kawasaki, Zivid, Marty, Spot, Maytronics, Clearpath). Claims audit measures
-what URML has shipped; outreach commitments tracks what URML has promised in
-public threads. Both are derivative views of `main`; both should be re-checked
-before any public update.
-
 **Measured 2026-09-28, on `chore/audit-refresh-openai-skip`** (`main` at
 `a191d75` plus this change), via
 [`tools/scripts/refresh_audit.py`](../../tools/scripts/refresh_audit.py)
@@ -74,6 +66,14 @@ fixtures) are in git history.
 | mcp-server | **100 passed, 1 skipped** (the skipped module needs the optional `mcp` SDK) |
 | **Total** | **3077 passed + 42 skipped** |
 
+> **Note, 2026-11-27 ([RFC-0710](../rfcs/0710-outreach-records-leave-the-repository.md)).**
+> The table above is the 2026-09-28 measurement and has not been re-transcribed.
+> Its `conformance` row counted the outreach-ledger tests. Those left the
+> repository with the ledgers: on 2026-11-27 they were 443 of the 1,210 tests
+> under `conformance/tests`, and the suite measures 786 after the move (767 that
+> were there before, plus 19 new ones for the vendor manifest demo). No other
+> suite changed. A full re-measurement is due before the next public update.
+
 No suite had a failure. The two `openai` base-URL tests in llm-bridge now run
 without the optional `openai` package, through a stand-in module, so the row
 counts them. The script now reports a suite with any failure as a failure, with
@@ -109,18 +109,17 @@ against `MockROSAdapter` (`urml conformance run`: 269/269 passed). The new bucke
 and 5 with the drive/turn and speak/listen coverage closure (916263d, 3 in
 `educational` and 2 in `home`).
 
-**Spec vs Outreach RFCs.** The `docs/rfcs/` dir mixes two kinds, distinguished
-by the Kind column in [`docs/rfcs/README.md`](../rfcs/README.md). **Spec RFCs**
-(63 as of 2026-09-29: 8 Accepted, 48 Implemented, 6 Draft, 1 Open) change
-URML's normative surface — Layer-N schemas, primitives, the policy mechanism,
-profiles. **Outreach RFCs** (the large remainder of the 693 total docs) are per-target
-request-for-comment documents that explicitly propose zero spec change ("No spec
-change is proposed here") and live in the RFC dir for discoverability. The
-shipped surface above is the Spec RFCs' result; Outreach RFCs add per-target
-manifest fixtures, not new primitives or schema. Several Spec RFCs were
-*surfaced by* outreach (e.g. RFC-0039 from Ouster, RFC-0304 from NLLB,
-RFC-0385 from iceoryx). Outreach state is tracked in the
-[`examples/lighthouses/`](../../examples/lighthouses/) ledgers.
+**Spec and Governance RFCs.** Since [RFC-0710](../rfcs/0710-outreach-records-leave-the-repository.md)
+(2026-11-27) `docs/rfcs/` holds two kinds, distinguished by the Kind column in
+[`docs/rfcs/README.md`](../rfcs/README.md). **Spec RFCs** (97 on `main` as of
+2026-11-27: 9 Accepted, 49 Implemented, 38 Draft, 1 Open) change URML's
+normative surface: Layer-N schemas, primitives, the policy mechanism, profiles,
+conformance. **Governance RFCs** (6: 5 Accepted, 1 Withdrawn) change the license,
+the Licensor, certification terms or the contents of the repository. The 597
+Outreach RFCs the directory held before that date, requests for comment sent
+to other projects, are no longer in the tree. The Spec count rose from 63 for
+two reasons: three Spec RFCs were filed after 2026-09-29, and 32 drafts that
+had never been indexed are counted now.
 
 ## Per-row backing
 
@@ -133,14 +132,19 @@ cross-primitive type check; Pass 5 compliance policy, including the opt-in
 evidence-traceability rules (RFC-0631). Evidence: validator suite 1214 passed. Which envelope check runs on which primitive is in
 [`docs/safety/envelope-coverage.md`](../safety/envelope-coverage.md).
 
-**24 primitives — validator + reference-runtime executors for all 24.** The 12
-core plus profile/extension verbs: home `speak`/`listen`; drone `take_off`/
+**28 primitives: validator + reference-runtime executors for all 28.** The 12
+core plus profile/extension verbs: home `speak`/`listen`; social `look_at`/
+`gesture` (RFC-0698); educational `drive`/`turn` (RFC-0630); drone `take_off`/
 `land`/`return_to_home`; industrial `pick_from`/`place_at`/`swap_tool`
 (RFC-0013); `bimanual` (RFC-0010); `set_output` (RFC-0017); and the `av`
-pair `plan_path`/`follow_trajectory` (RFC-0020) — all Implemented. `PRIMITIVE_MODELS`
-has **25** entries; the 25th, `call_program` (RFC-0015), is **Open**, not
-shipped, so the shipped count is **24**. Evidence: industrial- and av-primitive
-e2e tests; `industrial/`, `av/`, `manipulation/` conformance fixtures.
+pair `plan_path`/`follow_trajectory` (RFC-0020), all Implemented. Measured
+2026-11-27: the validator's frozen name list (`_PRIMITIVE_NAMES_FROZEN`) has
+**28** entries and the ROS 2 runtime's `PRIMITIVE_EXECUTORS` has **29**; the
+29th, `call_program` (RFC-0015), is **Open**, not shipped, so the shipped count
+is **28**. The count stood at 24 here until RFC-0710's pull request: `drive`,
+`turn`, `look_at` and `gesture` had shipped without the number moving.
+Evidence: industrial- and av-primitive e2e tests; `industrial/`, `av/`,
+`manipulation/`, `educational/`, `social/` conformance fixtures.
 
 **Compliance enforcement — `--no-policy` opt-out.**
 `reference/validator/src/urml_validator/policy.py` + bundled default policy
@@ -292,8 +296,7 @@ Mini (RFC-0698 expression, hermetic only),
 **`RoboticalMartyAdapter` graduated 2026-05-27 to production**: real-`martypy`
 API-surface CI gate in `.github/workflows/marty-real-integration.yml` +
 richer arg-passing dispatch via `EduSkillCall`; hardware-in-the-loop still
-the documented next gate per `docs/launch/outreach-commitments.md` —
-RFC-0011 educational flywheel; RFC-0073 the engagement record),
+the documented next gate; RFC-0011 educational flywheel),
 `isaac-runtime` (NVIDIA Isaac Sim/Lab — local
 RTX/Omniverse host, **not** cloud), `autosar-runtime` (AUTOSAR Adaptive
 scaffold, RFC-0019). **Honest scope:** each ships a hermetic unit suite

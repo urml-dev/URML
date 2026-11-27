@@ -167,7 +167,7 @@ Pre-v1.0. Additive. Existing manifests without wake-word declarations unchanged.
 
 ## Prior art
 
-- [Move-12 RFC-0165 (Picovoice Porcupine outreach)](0165-porcupine-outreach.md) — outreach RFC that surfaced this field.
+- Move-12 RFC-0165 (Picovoice Porcupine outreach) — outreach RFC that surfaced this field.
 - [RFC-0260 (language engine classes)](0260-language-engine-classes.md) — parent Spec RFC; `stt_engine_class: porcupine_handoff` value pairs with this RFC's `wake_word_substrate: porcupine`.
 - [RFC-0262 (licensing.boundary)](0262-licensing-boundary.md) — sibling Spec RFC; license_tier complements components-level license declaration.
 - [RFC-0268 (deployment.commercial_use)](0268-deployment-commercial-use-flag.md) — cross-check field for Porcupine commercial-tier validation.

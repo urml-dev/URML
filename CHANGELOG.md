@@ -20,6 +20,11 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+### Changed: repository
+
+- Outreach and distribution records left the repository ([RFC-0710](docs/rfcs/0710-outreach-records-leave-the-repository.md)). `docs/rfcs/` holds Spec and Governance RFCs only, and its index lists every one of them. `examples/lighthouses/` became `examples/vendor-manifests/`. The `make outreach-*` targets are gone. No schema, primitive, validator behavior or license term changes.
+- `README.md` states 28 primitives, measured from the validator. It said 24: `drive`, `turn`, `look_at` and `gesture` had shipped without the number moving. The RFC badge is removed, and the runtime row says what a brand name in it means.
+
 ### Changed: license
 
 - The BSL Change Date moves from two years to four for new versions ([RFC-0709](docs/rfcs/0709-change-date-four-years.md)). A version first publicly released after this change converts to Apache 2.0 four years after its release. Versions 0.5.0, 0.5.1 and 0.5.2, and source published from 2026-11-22 until this change, keep two years. The Additional Use Grant, the Change License and the prices are unchanged.
@@ -79,7 +84,7 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ### Added
 
-- `urml-vda5050-runtime` (`reference/vda5050-runtime`): drives AMRs and AGVs that speak VDA 5050 3.0.0 over MQTT, with no ROS. URML acts as fleet control for each vehicle; every dispatch step becomes one VDA 5050 order, and a step succeeds only when the vehicle's state reports it finished. Implements the mapping proposed in [RFC-0297](docs/rfcs/0297-vda5050-outreach.md). Tested against a simulated vehicle, with every message validated against the official VDA 5050 schemas, and over a real Mosquitto broker in the gated `vda5050-integration` workflow. Not yet tested on a vendor's vehicle. Known gaps are in `reference/vda5050-runtime/SPEC-GAPS.md`. On PyPI at the family version (0.5.0) since 2026-11-24: `pip install urml-vda5050-runtime`.
+- `urml-vda5050-runtime` (`reference/vda5050-runtime`): drives AMRs and AGVs that speak VDA 5050 3.0.0 over MQTT, with no ROS. URML acts as fleet control for each vehicle; every dispatch step becomes one VDA 5050 order, and a step succeeds only when the vehicle's state reports it finished. Implements the mapping proposed in RFC-0297. Tested against a simulated vehicle, with every message validated against the official VDA 5050 schemas, and over a real Mosquitto broker in the gated `vda5050-integration` workflow. Not yet tested on a vendor's vehicle. Known gaps are in `reference/vda5050-runtime/SPEC-GAPS.md`. On PyPI at the family version (0.5.0) since 2026-11-24: `pip install urml-vda5050-runtime`.
 - `examples/vda5050/`: the warehouse example run as VDA 5050 orders, with a byte-asserted recorded output.
 - [`COMMERCIAL.md`](COMMERCIAL.md#validation-services): paid fleet validation for operators and vehicle validation for AMR and AGV makers.
 - `urml-iso21423-runtime` (`reference/iso21423-runtime`): drives mobile robots that speak ISO 21423 (industrial mobile robot interoperability) over MQTT, with no ROS. Each dispatch step becomes one ISO 21423 request to the robot or its fleet manager, and a step succeeds only when the robot's request status reports every action SUCCEEDED. **Validation in progress:** built from public material based on the ISO/FDIS 21423 draft; we are validating it against the published ISO 21423:2026 and make no conformance claim until that is done. Tested against a simulated robot, over a real broker, and cross-checked against OpenRobOps' independently derived schemas. Not on PyPI. `examples/iso21423/` holds a config, a program and a byte-asserted demo.
@@ -260,7 +265,7 @@ Patch release. Phase 1 maintenance since v0.1.0: the first outreach-feedback-dri
 
 ### Added — Reference implementation
 
-- **`urml-edu-runtime`: `RoboticalMartyAdapter`.** New adapter for the Robotical Marty platform, scaffolded in response to early outreach feedback. Conformance fixtures stay hermetic against `MockROSAdapter`. RFC [0073](docs/rfcs/0073-robotical-marty-outreach.md); commit `d516535`.
+- **`urml-edu-runtime`: `RoboticalMartyAdapter`.** New adapter for the Robotical Marty platform, scaffolded in response to early outreach feedback. Conformance fixtures stay hermetic against `MockROSAdapter`. RFC 0073; commit `d516535`.
 
 ### Added — Docs & assets
 
@@ -314,7 +319,7 @@ Hermetic suites green; live e2e is gated CI (calibration-staged, **not** a hardw
 ### Added — Conformance & lighthouses
 
 - **101 conformance fixtures** under `conformance/fixtures/`, hermetic against `MockROSAdapter`: home 18, drone 14, industrial 44, biped 5, quadruped 4, mobile 2, warehouse 8, marine 1, educational 4, research 1. Auto-discovered.
-- **Move #1 lighthouse program.** Per-vendor request-for-comment RFCs to 16 Tier-1 vendors (RFCs [0023](docs/rfcs/0023-yaskawa-motoros2-integration.md)–[0038](docs/rfcs/0038-ros-industrial-consortium.md)): Yaskawa, Universal Robots, KUKA, Stäubli, Mitsubishi MELFA, FANUC, Kawasaki, Denso, SCHUNK, Ouster, SICK, Festo, Zivid, Hokuyo, OSRF / Gazebo Sim, ROS-Industrial Consortium. Per-vendor outreach state tracked in [`examples/lighthouses/outreach.yaml`](examples/lighthouses/outreach.yaml); the parameterized demo runner in `examples/lighthouses/demo.py` exercises any single vendor's conformance fixture hermetically.
+- **Move #1 lighthouse program.** Per-vendor request-for-comment RFCs to 16 Tier-1 vendors (RFCs 0023–0038): Yaskawa, Universal Robots, KUKA, Stäubli, Mitsubishi MELFA, FANUC, Kawasaki, Denso, SCHUNK, Ouster, SICK, Festo, Zivid, Hokuyo, OSRF / Gazebo Sim, ROS-Industrial Consortium. Per-vendor outreach state tracked in `examples/lighthouses/outreach.yaml`; the parameterized demo runner in `examples/lighthouses/demo.py` exercises any single vendor's conformance fixture hermetically.
 
 ### Added — Tooling & developer experience
 

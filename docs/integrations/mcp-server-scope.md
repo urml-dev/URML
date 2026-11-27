@@ -54,7 +54,7 @@ Once built, list it where agents discover MCP servers:
 - **Smithery**: install/CLI + optional hosted endpoint.
 - **Glama, PulseMCP, mcp.so**: directory listings (these crawl and let you claim ownership).
 
-These listings are outreach-ledger-trackable the same way GitHub targets are. Contact `greenvh@gmail.com`.
+Contact on every listing: `greenvh@gmail.com`.
 
 ## Effort estimate
 

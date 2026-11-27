@@ -191,7 +191,7 @@ Pre-v1.0. Additive. Existing manifests without bridges unchanged. RFC-0274's `mu
 ## Prior art
 
 - [RFC-0274 (multi_rmw)](0274-substrate-multi-rmw-deployment.md) — parent Spec RFC; this RFC closes the deferred MAVLink-DDS and G-code-DDS bridge questions.
-- [RFC-0197 (MAVLink outreach)](0197-mavlink-outreach.md), [RFC-0214 (OPC UA outreach)](0214-opc-foundation-ua-nodeset-outreach.md) — outreach RFCs that surfaced cross-substrate integration patterns.
+- RFC-0197 (MAVLink outreach), RFC-0214 (OPC UA outreach) — outreach RFCs that surfaced cross-substrate integration patterns.
 - [RFC-0250 (substrate.autopilot_class)](0250-substrate-autopilot-class.md), [RFC-0256 (protocol.embedded_class)](0256-protocol-embedded-class.md), [RFC-0271 (protocol.fabrication_class)](0271-protocol-gcode-substrate.md) — sibling Spec RFCs whose substrates this RFC's bridges connect.
 - mavros / mavros2 (ROS 2 community), Klipper Klippy UDS pattern (community-documented), mqtt_bridge / mqtt_client (ROS community).
 
