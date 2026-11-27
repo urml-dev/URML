@@ -25,7 +25,7 @@ superseded-by: none
 
 # RFC-0711: A URML-Certified certificate a buyer can ask for
 
-Kind: Governance and spec. This RFC amends [RFC-0705](0705-urml-certified.md) and [RFC-0708](0708-paid-certification.md) and publishes the change in a new conformance specification version, `conformance@0.3.0`. It adds fields to the registry entry, a certificate file and a public list of withdrawals. It changes no clause of the conformance contract and no fixture.
+Kind: Governance and spec. This RFC amends [RFC-0705](0705-urml-certified.md) and [RFC-0708](0708-paid-certification.md) and publishes the change in a new conformance specification version, `conformance@0.3.1`. It follows RFC-0712 ([pull request #116](https://github.com/urml-dev/URML/pull/116)), which defines what a compatibility claim covers and takes `conformance@0.3.0`. It adds fields to the registry entry, a certificate file and a public list of withdrawals. It changes no clause of the conformance contract and no fixture.
 
 This is a draft. The implementation listed at the end lands in the same pull request before the RFC is accepted.
 
@@ -78,7 +78,7 @@ A certified entry gains a `product` block under `certification`:
 - `maker` and `model`: the robot maker and the model name as they appear on a quote. One entry is one model with its manifest.
 - `controller`: the name and version of the software the adapter drives, as the robot or the simulator reported it during the reproduction.
 
-Entries that share a package, a version, an adapter, a profile set and one reproduction form a **product family** and carry the same certificate. The suite exercises the package and the adapter, which the models of a family share, so one run covers them. Each model keeps its own entry, manifest and validation records.
+Entries that share a package, a version, an adapter, a profile set and one reproduction form a **product family** and carry the same certificate. Under RFC-0712 each model's manifest selects the fixtures that apply to it, so one run for a family covers every fixture that applies to any of its models. Each model keeps its own entry, manifest, claim scope and validation records.
 
 The submitter and the maker can differ. A university lab can certify its adapter for a commercial arm. The certificate says who attests, and a buyer that wants the maker's own word asks for a certificate whose submitter is the maker. A certificate held by a third party is not a statement by the robot's maker.
 
@@ -90,7 +90,9 @@ The package stays public, as RFC-0705 requires. A maker whose controller firmwar
 
 - `hardware`: the Licensor's run drove the robot itself.
 - `simulator`: it drove a simulator of the robot or of its controller.
-- `recorded`: it drove recorded responses or a stand-in for the controller.
+- `recorded`: it drove responses captured earlier from the robot or from a simulator and replayed.
+
+These are the backend kinds of RFC-0712, which the submitter declares in the self-report and the Licensor's run confirms. A test double that answers without a model of the robot is none of the three, and RFC-0712 refuses a claim made on one.
 
 The values describe what happened. The registry does not rank them, as it does not rank the kinds of field evidence today. A buyer decides which it accepts, and the certificate, the scope line and the verify page all state the value.
 
@@ -120,7 +122,7 @@ The conformance report gains a `goal_line` section with its own counts and fixtu
 >
 > [Package] [version], published by [submitter], drives the [maker] [models] (controller [name and version]).
 >
-> It passed all [N] public URML conformance tests for the [profiles] profile (conformance [version]). All [M] programs that the specification says must be refused were refused, and nothing was sent to the robot.
+> It passed all [N] public URML conformance tests that apply to it in the [profiles] profile (conformance [version]): [the scope statement of RFC-0712, which says what the product served, what the test companion served and what did not apply]. All [M] programs that the specification says must be refused were refused, and nothing was sent to the robot.
 >
 > Yahalomik Ltd. repeated the run on [the robot itself, model X | a simulator | a recorded substrate] on [date].
 >
@@ -156,7 +158,7 @@ No price is published yet. RFC-0708 deferred it until the first certifications s
 
 The scope line that [`TRADEMARK.md`](../../TRADEMARK.md) requires gains the product, the substrate and the ID:
 
-> URML-Certified (conformance 0.3.0): Acme A6, controller AcmeOS 4.2.1, acme-urml-adapter 1.2.0, profile industrial, reproduced on hardware. Certificate URML-C-2027-0001, urml.dev/verify.
+> URML-Certified (conformance 0.3.1): Acme A6, controller AcmeOS 4.2.1, acme-urml-adapter 1.2.0, profile industrial, reproduced on hardware. Certificate URML-C-2027-0001, urml.dev/verify.
 
 Where space is short, such as a nameplate or a datasheet footer, "URML-Certified, certificate URML-C-2027-0001" is enough, because the ID leads to everything else.
 
@@ -182,7 +184,7 @@ Documents that help a buyer write this into a request for quotation are planned 
 
 ## Backward compatibility
 
-No certified entry exists, so no grant changes. `conformance_spec` gains the value `0.3.0`, and a certified entry names `0.3.0` or later. Self-reported entries and listings without a claim are unchanged. The conformance report format stays `urml.conformance-report/1`: the `goal_line` section is an optional addition that only a certified entry must carry. The registry entry format stays `registry_version: "1"`, with new optional fields.
+No certified entry exists, so no grant changes. `conformance_spec` gains the value `0.3.1`, and a certified entry names `0.3.1` or later. Self-reported entries and listings without a claim are unchanged. The conformance report format stays `urml.conformance-report/1`: the `goal_line` section is an optional addition that only a certified entry must carry. The registry entry format stays `registry_version: "1"`, with new optional fields.
 
 RFC-0708 said: "A renewal or a new version is a new run and a new fee." The first half stands. The yearly family fee replaces the second half.
 
@@ -220,7 +222,7 @@ The Licensor is paid to certify and now also signs the certificate. The conflict
 
 In the pull request that carries this RFC, before it is accepted:
 
-- `spec/conformance/v0.3.0.md`: section 3 as above. v0.2.3 and earlier stay as the record, and `spec/conformance/README.md` points to v0.3.0.
+- `spec/conformance/v0.3.1.md`: section 3 as above, on top of RFC-0712's v0.3.0. Earlier versions stay as the record, and `spec/conformance/README.md` points to v0.3.1.
 - `conformance/src/urml_conformance/`: the goal-line lane writes its section of the report (`goal_line.py`, `report.py`); the registry model gains `product`, `reproduction.substrate` and `observed`, `runtime.factory` and the certificate ID, plus the certificate export, the withdrawal list, the new validity rule and the per-release fixture digests (`registry.py`); the reproduction runs the goal line, records the substrate and the distribution digest, and lets the offline guard allow one robot address for a hardware run (`reproduce.py`). Tests for each, and the regenerated `registry/entry.schema.json`.
 - `docs/evidence/signing.md` and the validator's verifier: the `certificate@urml.dev` namespace.
 - `TRADEMARK.md`, `COMMERCIAL.md`, `registry/README.md`, `docs/registry/SUBMISSION.md`, `conformance/README.md`, `conformance/CONFORMANCE_KIT.md`, `docs/glossary.md`: the product scope, the substrate, the ID, the validity rule and the yearly fee.
@@ -236,7 +238,7 @@ None changes. A certificate is not a declaration of conformity under the EU Mach
 
 ## Open questions
 
-1. **A real robot cannot hold a whole profile today.** A claim covers every fixture that lists a profile, and no registry entry carries even a self-report. Measured on 2026-11-27 at commit 6fd8f24: apart from the mock, no adapter passes a whole profile on a real backend. The two passes found are empty ones: `research`, whose one fixture never reaches the adapter, and `av`, with one executing fixture, on a fake. With every fixture location mapped and the mock standing in for perception, the UR adapter reaches 71 of 77 industrial fixtures and the PX4 adapter 48 of 49 drone fixtures, both on fakes. Three things stand in the way by design. Most executing fixtures need perception that an arm or an autopilot does not have. Fixtures name places that exist only in the fixture world. Fleet fixtures need other robots. The measurement also showed that an adapter which fails every call still passes 27 of the 77 industrial fixtures, because those stop at the validator. The scope of a claim therefore gets its own RFC before this one is accepted, because a certificate nobody can earn helps no buyer.
+1. **A real robot cannot hold a whole profile today.** A claim covers every fixture that lists a profile, and no registry entry carries even a self-report. Measured on 2026-11-27 at commit 6fd8f24: apart from the mock, no adapter passes a whole profile on a real backend. The two passes found are empty ones: `research`, whose one fixture never reaches the adapter, and `av`, with one executing fixture, on a fake. With every fixture location mapped and the mock standing in for perception, the UR adapter reaches 71 of 77 industrial fixtures and the PX4 adapter 48 of 49 drone fixtures, both on fakes. Three things stand in the way by design. Most executing fixtures need perception that an arm or an autopilot does not have. Fixtures name places that exist only in the fixture world. Fleet fixtures need other robots. The measurement also showed that an adapter which fails every call still passes 27 of the 77 industrial fixtures, because those stop at the validator. The scope of a claim therefore gets its own RFC before this one is accepted, because a certificate nobody can earn helps no buyer. That RFC is RFC-0712, in draft as [pull request #116](https://github.com/urml-dev/URML/pull/116).
 2. **Closed builds.** Alternative 2. The proposal keeps the public package as the only route.
 3. **The model's own limits.** Alternative 6. Should the run also hand the runtime refused programs written against the model's manifest?
 4. **Runs per year.** How many runs the yearly fee includes, to be set with the price after the first three certifications.
