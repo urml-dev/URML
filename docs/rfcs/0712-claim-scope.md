@@ -33,7 +33,7 @@ This is a draft. RFC-0711 ([pull request #113](https://github.com/urml-dev/URML/
 
 A compatibility claim must pass every fixture that lists a profile, and no robot can. The fixtures of one profile ask for a camera, cell signals, output lines, named programs, a tool-change station and a second robot at once.
 
-This RFC replaces "the whole profile" with "every fixture that applies to the claimed manifest". The validator decides which fixtures apply, from the capabilities the manifest declares, so nobody picks fixtures by hand. A test companion owned by the harness may play the camera and the cell's signals, and the report says which calls it served. A claim counts only fixtures in which the product itself served a call. The report records what stood behind the adapter, and a claim made on a test double is refused. Fleet fixtures leave single-robot claims.
+This RFC replaces "the whole profile" with "every fixture that applies to the claimed manifest". The validator decides which fixtures apply, from the capabilities the manifest declares, so nobody picks fixtures by hand. A test companion owned by the harness may play the camera and the cell's signals, and the report says which calls it served. A claim counts only fixtures in which the product itself served a call. The report records what stood behind the adapter, and a claim made on a test double or on a replay of recorded responses is refused. Fleet fixtures leave single-robot claims.
 
 ## Motivation
 
@@ -110,7 +110,7 @@ A report names the adapter and nothing about what stood behind it. It gains `bac
 - `recorded`: responses captured earlier from one of those two and replayed.
 - `fake`: a test double that answers without a model of the robot.
 
-The registry refuses a claim whose backend is `fake`, as it already refuses the mock. The declaration is public and can be challenged. In a certified run the Licensor's reproduction confirms it (`reproduction.substrate` in RFC-0711).
+The registry refuses a claim whose backend is `fake` or `recorded`, as it already refuses the mock. A replay answers the calls it was recorded for and nothing else. It shows that the adapter worked once, and says nothing about the adapter as it is today. A self-reported claim is refused on a replay as a certified one is. The declaration is public and can be challenged. In a certified run the Licensor's reproduction confirms it (`reproduction.substrate` in RFC-0711).
 
 ### Fixture work the rule exposes
 
@@ -130,7 +130,7 @@ Before this RFC is accepted, one adapter holds a self-reported claim under the n
 
 **The product's own limits.** Fixtures run on the public test manifests. The claimed manifest only selects them.
 
-**The product's camera, where the scene is scripted.** That is 47 fixtures today.
+**The product's camera, where the scene is scripted.** That is 47 fixtures today. A later conformance version will require a product that declares a camera to detect objects by itself in a simulated scene. This RFC announces that requirement and does not define the test. Until it exists, a claim says in words that the test companion served detection.
 
 **That the manifest is true.** A maker who leaves `programs` out of the manifest drops the named-program fixtures. The claim lists what did not apply and why, and the manifest is public.
 
@@ -184,11 +184,13 @@ None changes.
 
 ## Open questions
 
-1. **The companion's list.** Perception and cell events. Should report sinks join it, or anything leave it?
-2. **Scripted scenes.** Should a product that declares a camera have to serve scripted detections in a simulated scene one day? Today 41 of a UR arm's 43 fixtures never touch its camera.
-3. **Numbers on a claim.** The specification says there are no scores. Is a count of tests and call sequences acceptable as a statement of scope?
-4. **`recorded` backends.** Accepted here for a self-reported claim. Should they be?
-5. **Fleet claims.** Left undefined. Does a buyer of a mixed fleet need one soon?
+The maintainer decided all five on 2026-11-28.
+
+1. **The companion's list.** *Resolved: as drafted.* Perception and cell events, and nothing else. The product sends its own reports.
+2. **Scripted scenes.** *Resolved: announced.* A later conformance version will require a product that declares a camera to detect objects by itself in a simulated scene. Today 41 of a UR arm's 43 fixtures never touch its camera.
+3. **Numbers on a claim.** *Resolved: accepted as scope.* The specification says there are no scores. A count of tests and call sequences says how much was tested and grades nothing.
+4. **`recorded` backends.** *Resolved: refused.* The first draft accepted them for a self-reported claim. A replay is now refused for every claim, like a fake.
+5. **Fleet claims.** *Resolved: their own RFC.* It is drafted after this RFC and RFC-0711 are settled.
 
 ## Process note
 
