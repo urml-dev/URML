@@ -208,7 +208,7 @@ so.
 [RFC-0713](../rfcs/0713-unlocatable-places-are-refused.md) closed the frame
 gap. A target in a frame that no transform relates to a declared geofence, or
 to a people-occupancy zone without `allow_override: true`, is refused with
-`envelope.frame_unresolved`. A scan region must name a declared place, and a
+`envelope.frame_unresolved`. A scan region must name a declared area, and a
 scan area given as literal coordinates is refused when the envelope's fences
 and zones use more than one frame. The three corpora were measured again on
 2026-11-28 ([`bench/results/2026-11-28/`](../../bench/results/2026-11-28/)): 0

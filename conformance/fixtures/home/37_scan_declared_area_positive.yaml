@@ -1,0 +1,32 @@
+name: home/scan_declared_area_positive
+description: >
+  A scan region names a declared area (RFC-0713). The living_room area
+  (x 0..3, y -1..2) lies inside the apartment fence, so the scan is judged as
+  a region, accepted and executed. Positive twin of the two rejected scan
+  region fixtures: drone/scan_undeclared_region_rejected, where the name is
+  not declared, and drone/scan_region_named_after_location_rejected, where
+  the name is a point.
+
+manifest: turtlebot4_home_areas
+envelope: home_with_geofence
+profiles: [home]
+
+program:
+  profile: home
+  behavior:
+    type: sequence
+    on_error: abort_and_report
+    steps:
+      - scan:
+          area:
+            named_region: living_room
+          store_as: survey
+
+expected_validation:
+  accepted: true
+
+expected_execution:
+  success: true
+  steps_executed: 1
+  audit_methods:
+    - run_scan

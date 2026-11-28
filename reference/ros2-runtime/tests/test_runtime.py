@@ -585,7 +585,10 @@ def test_scan_binding_is_threaded_to_runtime_result(home_manifest: dict[str, Any
             "steps": [
                 {
                     "scan": {
-                        "area": {"named_region": "kitchen"},
+                        # A literal area: the home manifest declares `kitchen`
+                        # as a point, and a scan region must be a declared area
+                        # (RFC-0713).
+                        "area": {"bounding_box": {"min_x": 0.0, "max_x": 2.0, "min_y": 0.0, "max_y": 2.0}},
                         "store_as": "kitchen_scan",
                     }
                 },

@@ -296,7 +296,8 @@ def validate(
     env_errors, _ = _walk_env(
         program_model.behavior, ["behavior"], manifest_model, envelope_model, _NavState()
     )
-    errors.extend(env_errors)
+    for issue in env_errors:
+        (warnings if issue.severity == "warning" else errors).append(issue)
     # RFC-0006: link-loss policy coherence is a whole-envelope check.
     errors.extend(_check_link_loss_coherence(manifest_model, envelope_model))
     # RFC-0382: monitorable temporal-logic properties parse + resolve signals.
@@ -998,7 +999,7 @@ def validate_fleet(
         env = envelopes.get(effective)
         for env_err in _check_envelope(step, manifest, env, path):
             env_err.detail = {**(env_err.detail or {}), "member": effective}
-            errors.append(env_err)
+            (warnings if env_err.severity == "warning" else errors).append(env_err)
 
     # ----- Barriers: declared-membership + peer_link role -----
     for path, barrier in _iter_barriers(program_model):
@@ -1501,6 +1502,14 @@ def _check_named_place(
             "or name a declared place.",
         )
     ]
+
+
+def _declared_area(manifest: CapabilityManifest, name: str) -> Any | None:
+    """The declared area called ``name`` (RFC-0615), or None."""
+    for area in manifest.declared_areas or []:
+        if area.name == name:
+            return area
+    return None
 
 
 def _frame_declared(manifest: CapabilityManifest, name: str) -> bool:
@@ -3043,9 +3052,28 @@ def _check_scan_caps(
                     suggestion=f"Declare {args.sensor!r} under manifest.perception.",
                 )
             )
-    # RFC-0713: a region the validator cannot place would skip every geofence
-    # and zone, so the name must resolve like any other place argument.
-    out.extend(_check_named_place("scan", args.area.named_region, manifest, path, "area.named_region"))
+    region = args.area.named_region
+    if region is not None and _declared_area(manifest, region) is None:
+        # RFC-0713: a region the validator cannot place would skip every
+        # geofence and zone, so the name must resolve to a declared area.
+        if any(loc.name == region for loc in manifest.declared_locations):
+            message = (
+                f"scan.area.named_region {region!r} names a declared location, which is a "
+                "point. A scan region must be a declared area."
+            )
+        else:
+            message = f"scan.area.named_region references undeclared area {region!r}."
+        out.append(
+            _err(
+                ErrorCode.CAPABILITY_MISSING_LOCATION,
+                "scan",
+                path,
+                message,
+                field="area.named_region",
+                suggestion=f"Add {region!r} to manifest.declared_areas with the polygon to "
+                "scan, or name a declared area.",
+            )
+        )
     return out
 
 
@@ -4252,10 +4280,10 @@ def _scan_targets(
     """The scan area as one region, judged against the geofences and zones.
 
     Returns nothing when the envelope declares neither; the scan altitude is
-    checked in _check_envelope_scan. A ``named_region`` resolves like any other
-    place name (RFC-0615): a declared area is judged as a region, a declared
-    point location at that point. Pass 2 refuses a name that is neither
-    (RFC-0713). A literal polygon or bounding box carries
+    checked in _check_envelope_scan. A ``named_region`` names a declared area
+    (RFC-0615) and is judged as that region. Pass 2 refuses a name that is not
+    a declared area, a point location included (RFC-0713). A literal polygon or
+    bounding box carries
     no frame, so it is read in the frame the envelope's geofences and occupancy
     zones share. When they use more than one frame the area cannot be placed,
     and the spatial checks refuse it (RFC-0713).
@@ -4265,32 +4293,20 @@ def _scan_targets(
     scan_z = float(args.altitude) if args.altitude is not None else None
     area = args.area
     if area.named_region is not None:
-        place = _resolve_place(area.named_region, manifest)
-        if place is None:
+        # The declared area, looked up directly: `_resolve_place` prefers a
+        # location of the same name, and a scan region is never a point.
+        declared = _declared_area(manifest, area.named_region)
+        if declared is None:
             return []
         label = f"scan.area.named_region {area.named_region!r}"
-        if not place.is_area:
-            # A point location named as a region is judged at that point
-            # (RFC-0713). What the robot covers around it is a path, and paths
-            # are the runtime's to keep inside the envelope.
-            return [
-                _SpatialTarget(
-                    label=label,
-                    field="area.named_region",
-                    frame=place.frame,
-                    points=((label, "area.named_region", place.vertices[0]),),
-                    z=scan_z,
-                    occupancy="point",
-                )
-            ]
         return [
             _SpatialTarget(
                 label=label,
                 field="area.named_region",
-                frame=place.frame,
+                frame=declared.frame,
                 points=tuple(
-                    (f"{label} vertex {i}", "area.named_region", vertex)
-                    for i, vertex in enumerate(place.vertices)
+                    (f"{label} vertex {i}", "area.named_region", (float(v.x), float(v.y)))
+                    for i, v in enumerate(declared.polygon)
                 ),
                 z=scan_z,
                 occupancy="overlap",
@@ -4547,6 +4563,37 @@ def _disk_in_any_geofence(
     return False, applicable
 
 
+def _overridden_zone_unrelated_warning(
+    name: str,
+    path: list[str],
+    target: _SpatialTarget,
+    zones: list[Any],
+) -> ValidationError:
+    """The warning for overridden zones the target cannot be related to (RFC-0713).
+
+    A zone marked ``allow_override: true`` is skipped either way, so nothing is
+    refused. The operator is told that the zone could not have been judged,
+    because an unconnected frame is often a mistake in the manifest.
+    """
+    listed = ", ".join(f"{z.name!r} in {z.frame!r}" for z in zones)
+    if target.frame == _UNFRAMED:
+        where = f"{target.label} gives literal coordinates and names no frame"
+    else:
+        where = f"{target.label} is in frame {target.frame!r}"
+    return ValidationError(
+        code=ErrorCode.ENVELOPE_FRAME_UNRESOLVED,
+        primitive=name,
+        path=path,
+        field=target.field,
+        message=f"{where}, and no transform relates it to the frame of people-occupancy zone "
+        f"{listed}. The zone is marked `allow_override: true` and is skipped either way, but "
+        "it could not have been judged.",
+        suggestion="Declare a `transform` in manifest.frames if the two frames are meant to be "
+        "connected.",
+        severity="warning",
+    )
+
+
 def _frame_unresolved_error(
     name: str,
     path: list[str],
@@ -4754,7 +4801,8 @@ def _check_envelope_occupancy_zones(
 
     A target in a frame that no transform relates to the frame of a zone
     without ``allow_override`` is refused with ``envelope.frame_unresolved``
-    (RFC-0713): a denylist that cannot judge a target does not clear it.
+    (RFC-0713): a denylist that cannot judge a target does not clear it. For a
+    zone with ``allow_override`` the same code is a warning.
 
     No-op when the envelope declares no occupancy zones.
     """
@@ -4776,6 +4824,14 @@ def _check_envelope_occupancy_zones(
         # when the envelope has geofences, here when it has only zones.
         if unrelated and not (target.frame == _UNFRAMED and envelope.geofences):
             out.append(_frame_unresolved_error(name, path, target, envelope, zones=unrelated))
+        overridden = [
+            zone
+            for zone in envelope.people_occupancy_zones
+            if zone.allow_override
+            and not _frames_related(target.frame, zone.frame, frames_by_name)
+        ]
+        if overridden:
+            out.append(_overridden_zone_unrelated_warning(name, path, target, overridden))
         if target.occupancy == "point":
             for label, field, point in target.points:
                 ok, zone_name = _check_point_in_any_occupancy_zone(

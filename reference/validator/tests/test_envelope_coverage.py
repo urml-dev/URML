@@ -687,37 +687,34 @@ class TestScanArea:
         result = validate(_scan(area), _drone_manifest(), _zoned(), policy=None)
         assert "envelope.occupancy_zone_intrusion" in _codes_for(result, "scan")
 
-    def test_named_region_that_names_no_declared_place_is_refused(self) -> None:
+    def test_named_region_that_is_not_a_declared_area_is_refused(self) -> None:
         # RFC-0713: a region the validator cannot place would skip every fence
-        # and zone, so the name must resolve, with or without an envelope.
-        for envelope in (_zoned(), _geofenced(), None):
-            result = validate(
-                _scan({"named_region": "somewhere_else"}), _drone_manifest(), envelope, policy=None,
-                default_rulebooks=False,
-            )
-            assert _codes_for(result, "scan") == {"capability.missing_location"}, envelope
-            (error,) = result.errors
-            assert error.field == "area.named_region"
+        # and zone, so the name must be a declared area, with or without an
+        # envelope. `roof` is a declared location: a point is not a region.
+        for region, words in (("somewhere_else", "undeclared area"), ("roof", "which is a point")):
+            for envelope in (_zoned(), _geofenced(), None):
+                result = validate(
+                    _scan({"named_region": region}), _drone_manifest(), envelope, policy=None,
+                    default_rulebooks=False,
+                )
+                assert _codes_for(result, "scan") == {"capability.missing_location"}, (region, envelope)
+                (error,) = result.errors
+                assert error.field == "area.named_region"
+                assert words in error.message
+                assert "declared_areas" in (error.suggestion or "")
 
-    def test_named_region_that_names_a_point_is_judged_at_that_point(self) -> None:
-        # roof is a declared location at (10, 5): inside the box, clear of the crowd.
-        clear = {**_geofenced(), **_zoned()}
-        result = validate(
-            _scan({"named_region": "roof"}), _drone_manifest(), clear, policy=None,
-            default_rulebooks=False,
+    def test_an_area_is_judged_even_when_a_location_shares_its_name(self) -> None:
+        # Other place arguments let a location win over an area of the same
+        # name. A scan region is the area: resolving the point would skip the
+        # overlap test and pass a scan that covers the crowd.
+        manifest = _drone_manifest()
+        manifest["declared_locations"].append(
+            {"name": "field", "pose": {"x": 20.0, "y": 5.0}, "frame": "agl"}
         )
-        assert result.accepted, result.codes()
-        # home is at (0, 0), inside the crowd zone; far is at (40, 20), outside the box.
         result = validate(
-            _scan({"named_region": "home"}), _drone_manifest(), _zoned(), policy=None,
-            default_rulebooks=False,
+            _scan({"named_region": "field"}), manifest, _zoned(), policy=None, default_rulebooks=False
         )
         assert _codes_for(result, "scan") == {"envelope.occupancy_zone_intrusion"}
-        result = validate(
-            _scan({"named_region": "far"}), _drone_manifest(), _geofenced(), policy=None,
-            default_rulebooks=False,
-        )
-        assert _codes_for(result, "scan") == {"envelope.geofence_violation"}
 
     def test_corner_labels_unchanged(self) -> None:
         area = {"bounding_box": {"min_x": 0.0, "max_x": 100.0, "min_y": 0.0, "max_y": 100.0}}
@@ -788,10 +785,38 @@ class TestUnresolvedFrames:
         assert error.field == "source"
         assert "allow_override" in (error.suggestion or "")
 
-    def test_zone_with_override_in_an_unrelated_frame_is_skipped(self) -> None:
+    def test_zone_with_override_in_an_unrelated_frame_is_skipped_with_a_warning(self) -> None:
         env = _zoned("cell", _TRAY_ZONE, allow_override=True)
         result = validate(_program(_PICK_ARM_REST), _arm_manifest(), env, policy=None)
         assert result.accepted, result.codes()
+        (warning,) = result.warnings
+        assert warning.code == ErrorCode.ENVELOPE_FRAME_UNRESOLVED
+        assert warning.severity == "warning" and warning.primitive == "pick_from"
+        assert "'crowd'" in warning.message and "allow_override" in warning.message
+        assert "could not have been judged" in warning.message
+
+    def test_zone_with_override_in_a_related_frame_gives_no_warning(self) -> None:
+        # pick_bin is in `cell`, like the zone. With a transform, so is arm_rest.
+        env = _zoned("cell", _TRAY_ZONE, allow_override=True)
+        program = _program({"pick_from": {"source": "pick_bin", "object": "widget"}})
+        result = validate(program, _arm_manifest(), env, policy=None)
+        assert result.accepted and not result.warnings, result.warnings
+        manifest = _arm_manifest({"translation": {"x": 0.2, "y": -0.2}})
+        result = validate(_program(_PICK_ARM_REST), manifest, env, policy=None)
+        assert result.accepted and not result.warnings, result.warnings
+
+    def test_a_refused_zone_and_an_overridden_zone_are_reported_apart(self) -> None:
+        env = {
+            "people_occupancy_zones": [
+                {"name": "walkway", "frame": "cell", "vertices": _TRAY_ZONE},
+                {"name": "storage", "frame": "cell", "vertices": _RACK_ZONE, "allow_override": True},
+            ]
+        }
+        result = validate(_program(_PICK_ARM_REST), _arm_manifest(), env, policy=None)
+        (error,) = _frame_errors(result, "pick_from")
+        assert "'walkway'" in error.message and "'storage'" not in error.message
+        (warning,) = result.warnings
+        assert "'storage'" in warning.message and "'walkway'" not in warning.message
 
     def test_a_declared_transform_lets_the_envelope_judge(self) -> None:
         # arm sits at cell (0.2, -0.2): inside the fence, clear of the tray zone.

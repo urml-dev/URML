@@ -52,7 +52,8 @@ declared area (RFC-0615), a docking station, or a scan area.
   frames, the check does not pass: a geofence that cannot judge a target does
   not admit it, and a zone without `allow_override: true` that cannot judge it
   does not clear it. The step is refused with `envelope.frame_unresolved`
-  (RFC-0713, which amends RFC-0290 on this point).
+  (RFC-0713, which amends RFC-0290 on this point). For a zone marked
+  `allow_override: true` the same code is a warning.
 
 The checks judge the targets a program names. The path between two targets is
 chosen by the runtime, and the validator does not see it
@@ -78,7 +79,7 @@ envelope field carries the limit yet.
 | `release` | Drop height within the envelope's `max_drop_height` (a winch's `height`, a latch's current altitude); the named `winch`/`latch` `payload_mechanisms` entry declared and matching the mode; for `hand_to_user`, the user location reachable ([spec L379-387](../../spec/layer-2-primitives/v0.1.0.md)) | `envelope.drop_height_exceeded`: [drone/37](../../conformance/fixtures/drone/37_drop_height_exceeded_rejected.yaml) | The `hand_to_user` user location inside the reachable workspace: depends on where the robot stands at run time ([spec L379-387](../../spec/layer-2-primitives/v0.1.0.md)).<br>The winch/latch release position's geofence and occupancy are now covered by the current-position target (RFC-0684). |
 | `bimanual` | Each side's grasp or release checks, per arm ([spec L915-922](../../spec/layer-2-primitives/v0.1.0.md)) | `envelope.force_exceeded`: [biped/15](../../conformance/fixtures/biped/15_bimanual_force_over_envelope_rejected.yaml) | A release side inherits the release gaps above ([spec L364-366](../../spec/layer-2-primitives/v0.1.0.md)). |
 | `detect` | Search region inside the operational area ([spec L423-427](../../spec/layer-2-primitives/v0.1.0.md)) | `envelope.geofence_violation`: [drone/29](../../conformance/fixtures/drone/29_detect_near_outside_geofence_rejected.yaml), [drone/33](../../conformance/fixtures/drone/33_detect_search_radius_outside_geofence_rejected.yaml) | `near: $reference`, or `within` with no `near`: the region centers on a pose known only at run time ([spec L386-387](../../spec/layer-2-primitives/v0.1.0.md)).<br>Detecting people over an occupancy zone: the drone profile plans a manifest override flag that does not exist yet ([drone profile L230](../../spec/profiles/drone/README.md)). |
-| `scan` | Area and pattern path inside the operational envelope; altitude within the ceiling and the active cap; no sample point in a people-occupancy zone ([spec L458-462](../../spec/layer-2-primitives/v0.1.0.md)) | `envelope.altitude_exceeded`: [drone/30](../../conformance/fixtures/drone/30_scan_altitude_exceeded_rejected.yaml)<br>`envelope.geofence_violation`: [drone/31](../../conformance/fixtures/drone/31_scan_area_outside_geofence_rejected.yaml)<br>`envelope.occupancy_zone_intrusion`: [drone/27](../../conformance/fixtures/drone/27_scan_area_contains_zone_rejected.yaml)<br>`envelope.frame_unresolved`: [drone/42](../../conformance/fixtures/drone/42_scan_literal_area_two_frame_envelope_rejected.yaml) | The pattern path: the substrate generates it at run time ([spec L435-438](../../spec/layer-2-primitives/v0.1.0.md)).<br>A `named_region` that names a declared point location is judged at that point; what the robot covers around it is a path (RFC-0713).<br>A literal polygon or bounding box has no frame field. It is read in the frame the envelope's geofences and zones share, and refused when they use more than one (RFC-0713); a frame field of its own is proposed in RFC-0701.<br>A geofence with a concave outline: the area is checked vertex by vertex (RFC-0615). |
+| `scan` | Area and pattern path inside the operational envelope; altitude within the ceiling and the active cap; no sample point in a people-occupancy zone ([spec L458-462](../../spec/layer-2-primitives/v0.1.0.md)) | `envelope.altitude_exceeded`: [drone/30](../../conformance/fixtures/drone/30_scan_altitude_exceeded_rejected.yaml)<br>`envelope.geofence_violation`: [drone/31](../../conformance/fixtures/drone/31_scan_area_outside_geofence_rejected.yaml)<br>`envelope.occupancy_zone_intrusion`: [drone/27](../../conformance/fixtures/drone/27_scan_area_contains_zone_rejected.yaml)<br>`envelope.frame_unresolved`: [drone/42](../../conformance/fixtures/drone/42_scan_literal_area_two_frame_envelope_rejected.yaml) | The pattern path: the substrate generates it at run time ([spec L435-438](../../spec/layer-2-primitives/v0.1.0.md)).<br>A literal polygon or bounding box has no frame field. It is read in the frame the envelope's geofences and zones share, and refused when they use more than one (RFC-0713); a frame field of its own is proposed in RFC-0701.<br>A geofence with a concave outline: the area is checked vertex by vertex (RFC-0615). |
 | `measure` | Target within the sensor's declared range ([spec L490-493](../../spec/layer-2-primitives/v0.1.0.md)) | none | The distance from the robot to the target exists only at run time ([spec L466](../../spec/layer-2-primitives/v0.1.0.md)). |
 | `capture` | Video duration within the storage and endurance budget; capture in a privacy-restricted zone needs a manifest override ([spec L524-532](../../spec/layer-2-primitives/v0.1.0.md)) | none | Storage budget and privacy-restricted zones: no manifest or envelope field declares either; needs spec text ([spec L505-508](../../spec/layer-2-primitives/v0.1.0.md), [drone profile L234](../../spec/profiles/drone/README.md)). |
 | `report` | None beyond destination validity ([spec L564-567](../../spec/layer-2-primitives/v0.1.0.md)) | none | none |
@@ -100,7 +101,8 @@ envelope field carries the limit yet.
 ## Named targets resolve first
 
 A spatial check needs coordinates. Every argument that names a place must
-resolve against the manifest at Pass 2, so an unknown name is refused instead
+resolve against the manifest at Pass 2 (a scan region against the declared
+areas only, because a point is not a region), so an unknown name is refused instead
 of skipping the checks above ([spec L82-83](../../spec/layer-2-primitives/v0.1.0.md)).
 
 | Argument | Code | Pinning fixture |
@@ -113,7 +115,7 @@ of skipping the checks above ([spec L82-83](../../spec/layer-2-primitives/v0.1.0
 | `land.at` | `capability.missing_location` | [drone/17](../../conformance/fixtures/drone/17_land_undeclared_location_rejected.yaml) |
 | `detect.where.near` | `capability.missing_location` | [drone/19](../../conformance/fixtures/drone/19_detect_near_undeclared_location_rejected.yaml) |
 | `release.at` | `capability.missing_location` | [home/32](../../conformance/fixtures/home/32_release_undeclared_location_rejected.yaml) |
-| `scan.area.named_region` | `capability.missing_location` | [drone/40](../../conformance/fixtures/drone/40_scan_undeclared_region_rejected.yaml) |
+| `scan.area.named_region` | `capability.missing_location` | [drone/40](../../conformance/fixtures/drone/40_scan_undeclared_region_rejected.yaml), [drone/41](../../conformance/fixtures/drone/41_scan_region_named_after_location_rejected.yaml) |
 
 A `$reference` in any of these is a runtime binding; the binding pass checks
 that it resolves to an object.
