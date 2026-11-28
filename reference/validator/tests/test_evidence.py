@@ -147,18 +147,23 @@ def test_records_hold_no_identifiers() -> None:
         "robot_id", "program", "program_digest", "manifest_digest", "envelope_digest",
         "policy", "rulebooks", "default_rulebooks", "as_of", "profiles", "codes",
         "warning_codes", "result", "request", "attempts", "attempt_codes",
+        # Format 2 (RFC-0715, Draft): the record's place in its log.
+        "seq", "prev",
     }
 
 
 def test_append_and_read_back(tmp_path: Path) -> None:
     log = tmp_path / "nested" / "evidence.jsonl"
     refused = _refused_record()
-    append_record(log, refused)
-    append_record(log, refused)
+    first = append_record(log, refused)
+    second = append_record(log, refused)
     lines = log.read_text(encoding="utf-8").splitlines()
     assert len(lines) == 2
-    assert lines[0] == canonical_json(refused.model_dump(mode="json"))
-    assert read_records(log) == [refused, refused]
+    # A line is the record plus its place in the log: seq and prev (RFC-0715, Draft).
+    assert lines[0] == canonical_json(first.model_dump(mode="json"))
+    assert first.model_copy(update={"seq": None, "prev": None}) == refused
+    assert (first.seq, second.seq) == (1, 2)
+    assert read_records(log) == [first, second]
 
 
 def test_read_names_the_bad_line(tmp_path: Path) -> None:
