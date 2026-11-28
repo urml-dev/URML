@@ -1,0 +1,102 @@
+# The test suites, on every pull request and on main.
+#
+# Until this workflow, no job ran the validator's own tests, the LLM bridge's,
+# the reference runtime's or the conformance package's on a pull request. The
+# pull-request workflows covered the MCP server, the registry check and the
+# conformance wheel, and the integration workflows run by hand or on a
+# schedule. A change to the validator could merge with every check green and
+# its unit tests failing.
+#
+# One job installs every package editable and runs each package's own suite
+# from its own directory, plus the one test file under tools/scripts that
+# `make test` runs. A package that fails does not stop the others: the job
+# lists every failing suite at the end, and the run summary has one row per
+# suite.
+#
+# Hermetic after the install step: the mock adapter and the echo provider.
+# No API key, no ROS, no simulator, no hardware. The live suites stay in the
+# *-integration workflows.
+#
+# Python 3.11: the packages' minimum, and the version the other workflows
+# pin. One runtime test fails on 3.12 and later
+# (test_shielded_adapter_satisfies_the_protocols), so a version matrix waits
+# for that fix.
+
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  suites:
+    name: every package's suite
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install every package editable
+        run: |
+          set -euo pipefail
+          python -m pip install -U pip
+          args=(-e conformance)
+          for dir in reference/*/; do
+            if [ -f "${dir}pyproject.toml" ]; then
+              args+=(-e "${dir%/}")
+            fi
+          done
+          python -m pip install --quiet "${args[@]}" "pytest>=8" pyyaml
+
+      - name: Run each suite
+        run: |
+          set -uo pipefail
+          failed=()
+          {
+            echo "## Test suites"
+            echo ""
+            echo "| Suite | Result |"
+            echo "|---|---|"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          run_suite() {
+            # $1: label, $2: directory to run from, rest: pytest arguments
+            local label="$1" where="$2"
+            shift 2
+            local status="passed"
+            echo "::group::$label"
+            if ! (cd "$where" && python -m pytest -p no:cacheprovider "$@" 2>&1 | tee "$RUNNER_TEMP/suite.txt"); then
+              status="FAILED"
+              failed+=("$label")
+            fi
+            echo "::endgroup::"
+            local last
+            last="$(tail -n 1 "$RUNNER_TEMP/suite.txt" | tr -d '=' | xargs)"
+            echo "| \`$label\` | $status: $last |" >> "$GITHUB_STEP_SUMMARY"
+          }
+
+          for dir in reference/*/ conformance/; do
+            dir="${dir%/}"
+            if [ -d "$dir/tests" ]; then
+              run_suite "$dir" "$dir"
+            fi
+          done
+          run_suite "tools/scripts/test_geocode_locations.py" "." tools/scripts/test_geocode_locations.py -q
+
+          if [ "${#failed[@]}" -gt 0 ]; then
+            echo "::error::failing suites: ${failed[*]}"
+            exit 1
+          fi
