@@ -1,0 +1,30 @@
+# Drone envelope whose geofence and people-occupancy zone use different frames
+# (RFC-0713). The geofence is in `agl`, the zone in `wgs84`. A scan area given
+# as literal coordinates names no frame, so it cannot be placed against this
+# envelope, and the validator refuses it with `envelope.frame_unresolved`.
+
+envelope_version: "0.1"
+deployment_id: drone_two_frame_site
+description: Drone envelope with a geofence in agl and a people-occupancy zone in wgs84.
+
+max_velocity: 10.0
+max_altitude: 120.0
+
+geofences:
+  - name: inspection_area
+    frame: agl
+    vertices:
+      - [-5.0, -5.0]
+      - [15.0, -5.0]
+      - [15.0, 15.0]
+      - [-5.0, 15.0]
+
+people_occupancy_zones:
+  - name: spectator_area
+    frame: wgs84
+    vertices:
+      - [-3.0, -3.0]
+      - [3.0, -3.0]
+      - [3.0, 3.0]
+      - [-3.0, 3.0]
+    allow_override: false

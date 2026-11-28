@@ -288,6 +288,9 @@ ENVELOPE_REGISTRY: dict[str, Path] = {
     # RFC-0702 (Draft): a people zone the operator overrode, which the FAA
     # rulebook still judges.
     "drone_override_zone": _VALIDATOR_FIXTURES / "envelopes" / "drone_override_zone.yaml",
+    # RFC-0713: a geofence and a people zone in two frames, so a literal scan
+    # area cannot be placed.
+    "drone_two_frame_site": _VALIDATOR_FIXTURES / "envelopes" / "drone_two_frame_site.yaml",
 }
 
 #: Compliance policies (RFC-0004). Names map to YAML files under

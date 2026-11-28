@@ -1,0 +1,31 @@
+name: drone/move_to_pose_in_unresolved_frame_rejected
+description: >
+  A geofence is an allowlist, and a geofence that cannot judge a target must
+  not admit it (RFC-0713). The aircraft declares `agl` with parent `wgs84` and
+  no transform, so nothing relates a pose named in `wgs84` to the inspection
+  geofence declared in `agl`. Pass 3 rejects with envelope.frame_unresolved
+  attributed to `move_to`. The same numbers named in `agl` lie inside the
+  fence, which covers (-5,-5) to (15,15). Before RFC-0713 the geofence check
+  abstained on this pose.
+
+manifest: drone_civilian
+envelope: drone_with_geofence
+profiles: [drone]
+
+program:
+  profile: drone
+  behavior:
+    type: sequence
+    on_error: abort_and_report
+    steps:
+      - take_off: { altitude: 30.0 }
+      - move_to:
+          pose: { x: 5.0, y: 5.0, z: 30.0 }
+          frame: wgs84
+      - return_to_home: {}
+      - land: {}
+
+expected_validation:
+  accepted: false
+  error_codes:
+    - envelope.frame_unresolved

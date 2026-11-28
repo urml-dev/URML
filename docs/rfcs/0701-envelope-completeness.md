@@ -27,6 +27,8 @@ superseded-by: —
 
 This is a Spec RFC. It changes normative text in Layer 2 (the per-primitive safety-envelope checks and the conformance section), in Layer 1 (the frame rule of [RFC-0290](0290-frame-transform-graph.md), plus a normative page for the envelope), and in the profile documents. It amends RFC-0290 on one point: a frame that cannot be resolved now fails closed. The change that files this RFC adds only this document and its index row. Spec text, schema, validator checks and fixtures land after acceptance, in the order the implementation plan gives.
 
+**Update, 2026-11-28.** [RFC-0713](0713-unlocatable-places-are-refused.md) takes up section 2 of this RFC, failing closed on an unresolved frame, and from section 4.2 the rule that `scan.area.named_region` must resolve. It does not add `scan.area.frame`, which stays proposed here. The rest of this RFC is unchanged and is still a Draft.
+
 ## Summary
 
 The Layer-2 spec gives every primitive a list of safety-envelope checks and says a conforming runtime must reject, before execution, every program that violates one ([Layer 2](../../spec/layer-2-primitives/v0.1.0.md) §1 L63-65 and §4 L1126-1127). Commit 949ce9b made the reference validator enforce every listed check it can check before execution with an existing error code. [`docs/safety/envelope-coverage.md`](../safety/envelope-coverage.md) records what is enforced and what is deferred, with a citation for each cell. This RFC settles the deferred part.
