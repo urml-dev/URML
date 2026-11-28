@@ -57,8 +57,10 @@ configured, exactly like ``urml translate``.
 The ``evidence_log`` node parameter (a file path; empty, the default, turns it
 off) makes the server append one validation record per verdict: the bridge's
 verdict for a sentence and the validator's verdict for every goal, accepted or
-refused, and the runtime's own refusals. It is operator configuration, like
-the pins; a goal cannot set it. See ``docs/evidence/validation-records.md``.
+refused, and the runtime's own refusals. A goal that runs also gets one
+execution record from the runtime: the steps dispatched and what the adapter
+reported back (RFC-0715, Draft). It is operator configuration, like the pins;
+a goal cannot set it. See ``docs/evidence/validation-records.md``.
 """
 
 from __future__ import annotations
@@ -198,7 +200,10 @@ def execute_request(
                   validator's for the program, is appended as a validation
                   record, and the runtime appends its own refusals. A record
                   that cannot be written refuses the goal before anything
-                  executes.
+                  executes. The runtime then appends one execution record
+                  for the run. If that one cannot be written the run has
+                  already happened: ``success`` stays what the run made it,
+                  and ``reason`` says the record is missing.
     """
     manifest: dict[str, Any]
     envelope: dict[str, Any] | None
@@ -356,9 +361,10 @@ def execute_request(
 
     # 3. Execute. The runtime re-validates with the same manifest, envelope,
     #    policy and rulebooks before its first adapter call (defense in depth),
-    #    and records a refusal of its own in the same evidence log.
+    #    and records a refusal of its own in the same evidence log. A run that
+    #    gets past that check ends with one execution record (RFC-0715, Draft).
     emit("executing", f"executing {len(program.get('behavior', {}).get('steps', []))} step(s)")
-    runtime = URMLRuntime(adapter, evidence_log=log)
+    runtime = URMLRuntime(adapter, evidence_log=log, evidence_surface="action_server")
     try:
         result = runtime.execute(
             program,
@@ -376,8 +382,16 @@ def execute_request(
         if isinstance(rejected, ValidationResult):
             return _refused(_render_verdict(rejected))
         return _refused(f"validation refused: {exc}")
-    emit("done", "execution complete" if result.success else "execution finished with failure")
-    return _serialize(result)
+    out = _serialize(result)
+    done = "execution complete" if result.success else "execution finished with failure"
+    if result.evidence_log_error is not None:
+        # The run happened, so `success` stands. The action result has no field
+        # of its own for this, so `reason` says the record is missing.
+        missing = f"the run finished, but its execution record is missing: {result.evidence_log_error}"
+        out["reason"] = f"{out['reason']}\n{missing}" if out["reason"] else missing
+        done += "; its execution record was not written"
+    emit("done", done)
+    return out
 
 
 # ---------------------------------------------------------------------------

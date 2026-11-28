@@ -93,3 +93,31 @@ def test_refusal_reaches_the_agent_as_a_tool_error(monkeypatch: pytest.MonkeyPat
     result = anyio.run(_call)
     assert result.isError is True
     assert "pinned" in result.content[0].text
+
+
+def test_a_missing_execution_record_reaches_the_agent_and_the_operator(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    """RFC-0715 (Draft): the run finished and its record could not be written.
+    The tool result keeps `success` and carries the reason; stderr tells the operator."""
+    from urml_ros2_runtime import execution_record
+
+    def _no_space(*args: Any, **kwargs: Any) -> Any:
+        raise OSError(28, "No space left on device")
+
+    log = tmp_path / "evidence.jsonl"
+    pins = tools.load_pinned({"URML_MCP_MANIFEST": str(MANIFEST), "URML_MCP_EVIDENCE_LOG": str(log)}, [])
+    monkeypatch.setattr(server, "_PINNED", pins)
+
+    out = server.urml_execute(program=_load(PROGRAM))
+    assert out["success"] is True and out["evidence_log_error"] is None
+    assert capsys.readouterr().err == ""
+
+    monkeypatch.setattr(execution_record, "append_record", _no_space)
+    out = server.urml_execute(program=_load(PROGRAM))
+    assert out["success"] is True
+    assert "No space left on device" in out["evidence_log_error"]
+    assert capsys.readouterr().err == (
+        "urml-mcp: a run finished, but its execution record is missing: "
+        f"the evidence log {pins.evidence_log} was not written: [Errno 28] No space left on device\n"
+    )
