@@ -241,6 +241,7 @@ class URMLRuntime:
         self._recorder = ExecutionRecorder(
             self._evidence_log,
             surface=self._evidence_surface,
+            adapter=self._adapter,
             program=program,
             manifest=manifest,
             envelope=envelope,

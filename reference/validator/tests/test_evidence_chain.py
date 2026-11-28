@@ -78,6 +78,7 @@ def _execution(**extra: Any) -> ExecutionRecord:
     fields: dict[str, Any] = {
         "surface": "runtime",
         "tool": RuntimeInfo(name="urml-ros2-runtime", version="0.0.0"),
+        "adapter": "urml_ros2_runtime.substrate.mock.MockROSAdapter",
         "robot_id": "turtlebot4_red_mug",
         "program_digest": content_digest(SAFE),
         "manifest_digest": content_digest(MANIFEST),
@@ -654,7 +655,7 @@ def test_read_log_names_the_bad_line(tmp_path: Path) -> None:
 def test_an_execution_record_holds_these_fields_and_no_others() -> None:
     record = _execution()
     assert set(record.model_dump()) == {
-        "format", "record_id", "recorded_at", "tool", "surface", "robot_id", "program_digest",
+        "format", "record_id", "recorded_at", "tool", "surface", "adapter", "robot_id", "program_digest",
         "manifest_digest", "envelope_digest", "outcome", "steps_executed", "steps", "error", "seq", "prev",
     }
     assert set(record.steps[0].model_dump()) == {"path", "primitive", "outcome", "error", "duration_s"}
@@ -663,6 +664,7 @@ def test_an_execution_record_holds_these_fields_and_no_others() -> None:
     assert build_execution_record(
         surface="runtime",
         tool=RuntimeInfo(name="urml-ros2-runtime", version="0.0.0"),
+        adapter="urml_ros2_runtime.substrate.mock.MockROSAdapter",
         robot_id=None,
         program_digest=content_digest(SAFE),
         manifest_digest=content_digest(MANIFEST),
@@ -684,6 +686,7 @@ def test_an_execution_record_id_is_the_run_not_the_moment() -> None:
         "format": EXECUTION_RECORD_FORMAT,
         "program_digest": base.program_digest,
         "manifest_digest": base.manifest_digest,
+        "adapter": "urml_ros2_runtime.substrate.mock.MockROSAdapter",
         "outcome": "completed",
         "steps": [{"path": ["behavior", "steps", "0"], "primitive": "move_to", "outcome": "ok", "error": None}],
     }

@@ -35,7 +35,7 @@ from urml_validator.evidence import (
 from urml_ros2_runtime._version import __version__
 from urml_ros2_runtime.primitives import PrimitiveOutcome
 
-__all__ = ["ExecutionRecorder", "validator_path"]
+__all__ = ["ExecutionRecorder", "adapter_name", "validator_path"]
 
 _NO_STEP_REASON = "the adapter reported failure and gave no reason"
 _NO_RUN_REASON = "the run failed and its last outcome gave no reason"
@@ -60,6 +60,12 @@ def validator_path(path: Sequence[str]) -> list[str]:
     return out
 
 
+def adapter_name(adapter: object) -> str:
+    """An adapter's class as `module.Class`, the form an execution record holds."""
+    cls = type(adapter)
+    return f"{cls.__module__}.{cls.__qualname__}"
+
+
 def _describe(exc: BaseException) -> str:
     text = str(exc)
     return f"{type(exc).__name__}: {text}" if text else type(exc).__name__
@@ -73,6 +79,7 @@ class ExecutionRecorder:
         log: Path | None,
         *,
         surface: Surface = "runtime",
+        adapter: object = None,
         program: Mapping[str, Any] | BaseModel | None = None,
         manifest: Mapping[str, Any] | BaseModel | None = None,
         envelope: Mapping[str, Any] | BaseModel | None = None,
@@ -84,6 +91,7 @@ class ExecutionRecorder:
         """
         self._log = log
         self._surface: Surface = surface
+        self._adapter = adapter_name(adapter)
         # One entry per dispatch: the runtime's path, the primitive, the error
         # (None for a step that came back ok), and the seconds it took.
         self._steps: list[tuple[list[str], str, str | None, float]] = []
@@ -151,6 +159,7 @@ class ExecutionRecorder:
             record = build_execution_record(
                 surface=self._surface,
                 tool=RuntimeInfo(name="urml-ros2-runtime", version=__version__),
+                adapter=self._adapter,
                 robot_id=self._robot_id,
                 program_digest=self._program_digest,
                 manifest_digest=self._manifest_digest,

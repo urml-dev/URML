@@ -85,7 +85,7 @@ urml execute red-mug.urml.yaml -m red-mug.manifest.yaml \
 It appends two lines. Line 2 is the acceptance, a validation record like the one above with `"verdict":"accepted"`. Line 3 is the execution record:
 
 ```json
-{"envelope_digest":"sha256:660c42e847de58644fe3767120097571adadb112f404ff888672e716898f466b","error":null,"format":"urml.execution-record/1","manifest_digest":"sha256:7227344fdec067d4a854f7f3ec87ebc631de132e33731b2f2b4568cf71117699","outcome":"completed","prev":"sha256:88dc48fc3455dab735b5c620c281c9e7d5fd4e0d63ad8457772b672835fcc502","program_digest":"sha256:855b8d1326e39a784cf6da3296b261a2501a8be630184894be57f81ba8225116","record_id":"sha256:35df4dbeeb670696ab88a6dfec6ca2d244c443690c133948f0a41308a6ab1413","recorded_at":"2026-11-28T10:09:53Z","robot_id":"turtlebot4_red_mug","seq":3,"steps":[{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","0"],"primitive":"move_to"},{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","1"],"primitive":"detect"},{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","2"],"primitive":"grasp"},{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","3"],"primitive":"move_to"},{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","4"],"primitive":"release"}],"steps_executed":5,"surface":"execute","tool":{"name":"urml-ros2-runtime","version":"0.5.3"}}
+{"adapter":"urml_ros2_runtime.substrate.mock.MockROSAdapter","envelope_digest":"sha256:660c42e847de58644fe3767120097571adadb112f404ff888672e716898f466b","error":null,"format":"urml.execution-record/1","manifest_digest":"sha256:7227344fdec067d4a854f7f3ec87ebc631de132e33731b2f2b4568cf71117699","outcome":"completed","prev":"sha256:88dc48fc3455dab735b5c620c281c9e7d5fd4e0d63ad8457772b672835fcc502","program_digest":"sha256:855b8d1326e39a784cf6da3296b261a2501a8be630184894be57f81ba8225116","record_id":"sha256:0f3e326498f9b6666a6e3dd58e55f247e5cd0c31ca467f23efb8c3fc9b7cbbb8","recorded_at":"2026-11-28T10:09:53Z","robot_id":"turtlebot4_red_mug","seq":3,"steps":[{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","0"],"primitive":"move_to"},{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","1"],"primitive":"detect"},{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","2"],"primitive":"grasp"},{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","3"],"primitive":"move_to"},{"duration_s":0.0,"error":null,"outcome":"ok","path":["behavior","steps","4"],"primitive":"release"}],"steps_executed":5,"surface":"execute","tool":{"name":"urml-ros2-runtime","version":"0.5.3"}}
 ```
 
 Its `prev` is the digest of line 2, and its `program_digest` is the one line 2 carries. The durations are zero because the mock adapter answers at once.
@@ -126,15 +126,16 @@ A content digest is `sha256:` over canonical JSON (sorted keys, no whitespace), 
 
 ## Execution record fields
 
-An execution record says what the runtime sent to the adapter and what the adapter reported back. It does not say what the robot physically did. An adapter can report success for a motion that slipped, stalled or never happened, and URML cannot see the difference. A run on the mock adapter writes the same kind of record as a run on a robot; the record does not name the adapter.
+An execution record says what the runtime sent to the adapter and what the adapter reported back. It does not say what the robot physically did. An adapter can report success for a motion that slipped, stalled or never happened, and URML cannot see the difference. A run on the mock adapter writes the same kind of record as a run on a robot. The `adapter` field tells them apart.
 
 | Field | Meaning |
 |---|---|
 | `format` | `urml.execution-record/1`. |
-| `record_id` | `sha256:` over the program digest, the manifest digest, the outcome and the steps without their durations. `recorded_at`, `seq` and `prev` are not part of it. |
+| `record_id` | `sha256:` over the program digest, the manifest digest, the adapter, the outcome and the steps without their durations. `recorded_at`, `seq` and `prev` are not part of it. |
 | `recorded_at` | UTC time the run ended and the record was written, to the second, by the host's clock. |
 | `tool` | The runtime's package name (`urml-ros2-runtime`) and version. |
 | `surface` | The entry point that called the runtime: `execute`, `run`, `mcp` or `action_server`. `runtime` when the runtime was not told, as when your own code drives it. |
+| `adapter` | The class of the adapter the runtime dispatched to, as `module.Class`. `urml_ros2_runtime.substrate.mock.MockROSAdapter` is the mock, which moves nothing. A wrapper around an adapter names itself, not what it wraps. |
 | `robot_id` | The manifest's `robot_id`. |
 | `program_digest` | Content digest of the program that ran. An accepted validation record earlier in the same log carries the same one. |
 | `manifest_digest` | Content digest of the manifest. |
@@ -168,7 +169,7 @@ Evidence log: evidence.jsonl
   records: 3 on 3 lines (2 validation, 1 execution)
   chain:   starts at line 1
   intact:  yes
-  head:    seq 3 sha256:a482585fd5c66db7123bc97a2cffd9266fcd5b488f6f020352f6bd76aada3b80
+  head:    seq 3 sha256:be7ca900c24af6b9475c2924da73597d334750e0cfb4dd373f8f19041defab35
   note:    an intact chain cannot show a cut-off end or a file rewritten as a whole; compare the head with one noted somewhere else
 ```
 

@@ -702,8 +702,10 @@ def test_the_documented_record_replays() -> None:
 def test_the_documented_execution_record_is_the_run_of_the_example() -> None:
     """The page's line 3: the run of red-mug.urml.yaml, linked to the page's other numbers."""
     text = DOC.read_text(encoding="utf-8")
-    line = _documented_line("envelope_digest")
+    line = _documented_line("adapter")
     record = ExecutionRecord.model_validate(json.loads(line))
+    # The example runs on the mock, and the record says so.
+    assert record.adapter == "urml_ros2_runtime.substrate.mock.MockROSAdapter"
     assert (record.format, record.surface, record.outcome, record.seq) == (
         "urml.execution-record/1", "execute", "completed", 3,
     )

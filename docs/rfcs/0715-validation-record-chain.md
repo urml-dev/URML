@@ -1,7 +1,7 @@
 ---
 rfc: 0715
 title: A chained evidence log, and a record of what ran
-author: Ido Yahalomi (ido@beamdesk.space)
+author: Ido Yahalomi (greenvh@gmail.com)
 state: Draft
 created: 2026-11-28
 updated: 2026-11-28
@@ -43,7 +43,7 @@ Format 1 records are still read and replayed, and a log an older version began i
 
 The validation record shipped in 0.5.0 with a user page ([`docs/evidence/validation-records.md`](../evidence/validation-records.md)) and no RFC. The registry replays committed records in CI, and the rulebooks for the EU Machinery Regulation and the EU Cyber Resilience Act name the records as something a manufacturer can put in its file of evidence ([`examples/rulebooks/eu-machinery-regulation.yaml`](../../examples/rulebooks/eu-machinery-regulation.yaml), obligation `rule_changes_go_through_the_risk_assessment`).
 
-A review of the log for that use, against the Machinery Regulation (Regulation (EU) 2023/1230), found three weaknesses.
+A review of the log for that use found three weaknesses.
 
 **A line can go missing without a trace.** The log was a plain file opened for append. Remove the refusal from last Tuesday, or change `refused` to `accepted` in it, and nothing in the file disagrees. A record that cannot show it was left alone is weak evidence that a gate held.
 
@@ -126,6 +126,7 @@ A writer always writes format 2. A record with format 1 that carries `seq` or `p
 | `recorded_at` | string | UTC time the run ended and the record was written, by the host's clock |
 | `tool` | object | The runtime's package `name` and `version` |
 | `surface` | string | The entry point that called the runtime, from the list above, or `runtime` when the runtime was not told |
+| `adapter` | string | The class of the adapter the runtime dispatched to, as `module.Class`. It tells a run on the mock adapter from a run on a robot. A wrapper names itself, not what it wraps |
 | `robot_id` | string or null | The manifest's `robot_id` |
 | `program_digest` | string | Content digest of the program that ran |
 | `manifest_digest` | string | Content digest of the manifest |
@@ -146,7 +147,7 @@ Each entry of `steps` has these fields.
 | `error` | string or null | Set for a failed step: the adapter's reason, or the exception. Null for an ok step |
 | `duration_s` | number | Seconds from the dispatch to the answer, to the millisecond |
 
-The identity is the format tag, `program_digest`, `manifest_digest`, `outcome`, and `steps` with each entry's `path`, `primitive`, `outcome` and `error`. Durations, the time and the chain fields are not part of it.
+The identity is the format tag, `program_digest`, `manifest_digest`, `adapter`, `outcome`, and `steps` with each entry's `path`, `primitive`, `outcome` and `error`. Durations, the time and the chain fields are not part of it.
 
 A step inside a `retry` is listed once for each attempt, under one path. A run that carried on after a failed step (`on_error: continue`) can be `completed` with a `failed` entry in its list. A step the envelope shield stopped before dispatch is not listed, since nothing was sent, and the shield's reason is the run's `error`.
 
@@ -258,7 +259,7 @@ Measured on the branch that implements this RFC.
 
 **Format 2 is refused by a 0.5.3 reader.** There is no way to add fields to a format whose readers refuse unknown fields without that.
 
-**A mock run and a real run write the same record.** The execution record does not name the adapter. `urml execute` says "HERMETIC MOCK" on the terminal and the log does not.
+**The adapter is named by its class, and a class name is not proof.** The record tells a mock run from a real one by the adapter's class. A wrapper around an adapter names itself, and code that drives the runtime can pass any object. The field says what the runtime was given, in the same way the rest of the record says what the adapter reported.
 
 **Every line now costs a lock and an `fsync`.** Measured on one macOS host, 0.14 ms per append against 0.05 ms for the 0.5.3 writer. `fsync` on macOS does not wait for the drive, so expect more on Linux.
 
@@ -295,7 +296,7 @@ Measured on the branch that implements this RFC.
 ## Unresolved questions
 
 1. **JSON Schema files.** The evidence report has a schema under `spec/evidence/`. The two record formats have none; this RFC defines them in prose and in the pydantic models. Should `spec/evidence/` hold `validation-record` and `execution-record` schemas, exported from the models and guarded for freshness like the registry schema?
-2. **The adapter in the execution record.** Should the record name the adapter that ran (its class, or `mock` against the rest), so a mock run cannot be read as a real one?
+2. **The adapter in the execution record.** *Resolved 2026-11-28: the record names the adapter's class.* A mock run would otherwise read as a real one.
 3. **The runtime's own acceptance.** Should `URMLRuntime` record an accepted re-validation, so the link rule holds for code that calls it directly?
 4. **Checking a noted head.** Should `urml evidence log` take the noted `seq` and digest and say whether the log still passes through them, in place of the `grep` on the user page?
 5. **A file with no chain.** `urml evidence log` exits 0 for a format 1 file. Should it exit 1 once format 1 logs are rare?
@@ -307,7 +308,7 @@ One pull request carries the formats, the writer, the runtime's record, the comm
 
 The validator's CLI passes a new keyword to the runtime, and the runtime imports new names from the validator. The next release raises the `urml-validator` floor in `urml-ros2-runtime`, `urml-mcp-server` and `urml-conformance` to that release, as the lockstep bump does.
 
-This RFC does not turn the log on anywhere, and adds no rule that requires it. A rulebook rule about the log is a separate proposal (RFC-0714).
+This RFC does not turn the log on anywhere, and adds no rule that requires it. The log stays off unless the operator names a file, as the maintainer confirmed on 2026-11-28. A rulebook rule that requires the log is not proposed here or in RFC-0714, which lists it as a question for later.
 
 Once this RFC is Accepted, the questions above are settled in follow-up changes that keep `urml.execution-record/1` if they add nothing a reader would refuse, and move to `/2` if they do.
 

@@ -259,15 +259,23 @@ class ExecutionRecord(BaseModel):
     record_id: str = Field(
         ...,
         description=(
-            "sha256 over the run's identity: program digest, manifest digest, outcome "
-            "and the steps without their durations. recorded_at, seq and prev are not "
-            "part of it."
+            "sha256 over the run's identity: program digest, manifest digest, adapter, "
+            "outcome and the steps without their durations. recorded_at, seq and prev "
+            "are not part of it."
         ),
     )
     recorded_at: str = Field(..., description="UTC time the run ended and was recorded, to the second.")
     tool: RuntimeInfo
     surface: Surface = Field(
         ..., description="The entry point that called the runtime, or `runtime` when the runtime was not told."
+    )
+    adapter: str = Field(
+        ...,
+        description=(
+            "The class of the adapter the runtime dispatched to, as `module.Class`. It tells "
+            "a run on a mock adapter from a run on a robot. A wrapper names itself, not "
+            "what it wraps."
+        ),
     )
     robot_id: str | None = None
     program_digest: str = Field(
@@ -388,6 +396,7 @@ def build_execution_record(
     *,
     surface: Surface,
     tool: RuntimeInfo,
+    adapter: str,
     robot_id: str | None,
     program_digest: str,
     manifest_digest: str,
@@ -408,6 +417,7 @@ def build_execution_record(
         "format": EXECUTION_RECORD_FORMAT,
         "program_digest": program_digest,
         "manifest_digest": manifest_digest,
+        "adapter": adapter,
         "outcome": outcome,
         "steps": [step.model_dump(mode="json", exclude={"duration_s"}) for step in step_list],
     }
@@ -416,6 +426,7 @@ def build_execution_record(
         recorded_at=recorded_at or _now(),
         tool=tool,
         surface=surface,
+        adapter=adapter,
         robot_id=robot_id,
         program_digest=program_digest,
         manifest_digest=manifest_digest,

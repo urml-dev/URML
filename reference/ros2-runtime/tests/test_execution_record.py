@@ -145,6 +145,30 @@ def test_the_runtime_names_the_surface_it_was_told(tmp_path: Path) -> None:
     assert _only_record(log).surface == "mcp"
 
 
+class _RenamedAdapter(MockROSAdapter):
+    """A second adapter class with the mock's behavior, to tell two classes apart."""
+
+
+def test_the_record_names_the_adapter_so_a_mock_run_reads_as_one(tmp_path: Path) -> None:
+    log = tmp_path / "evidence.jsonl"
+    URMLRuntime(MockROSAdapter(), evidence_log=log).execute(SAFE, MANIFEST, envelope=ENVELOPE, profiles=("home",))
+    mock = _only_record(log)
+    assert mock.adapter == "urml_ros2_runtime.substrate.mock.MockROSAdapter"
+    assert execution_record.adapter_name(MockROSAdapter()) == mock.adapter
+
+    other_log = tmp_path / "other.jsonl"
+    URMLRuntime(_RenamedAdapter(), evidence_log=other_log).execute(
+        SAFE, MANIFEST, envelope=ENVELOPE, profiles=("home",)
+    )
+    other = _only_record(other_log)
+    assert other.adapter.endswith("._RenamedAdapter")
+    # The same program, the same steps, a different adapter: a different run.
+    assert [s.model_dump(exclude={"duration_s"}) for s in other.steps] == [
+        s.model_dump(exclude={"duration_s"}) for s in mock.steps
+    ]
+    assert other.record_id != mock.record_id
+
+
 def test_a_program_without_an_envelope_records_none(tmp_path: Path) -> None:
     log = tmp_path / "evidence.jsonl"
     runtime = URMLRuntime(MockROSAdapter(), evidence_log=log)
