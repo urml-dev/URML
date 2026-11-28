@@ -314,14 +314,12 @@ Once this RFC is Accepted, the questions above are settled in follow-up changes 
 
 ## Self-review (Phase 0)
 
-The author completes this list before the RFC moves to **Open**.
-
-- [ ] The Summary alone tells a reader what is being proposed.
-- [ ] The Motivation is grounded in a concrete use case, not hypothetical needs.
-- [ ] The Detailed design names every affected spec document and reference component.
-- [ ] At least one alternative is genuinely considered (not a strawman).
-- [ ] Drawbacks are listed; at least one of them is a real downside, not a humblebrag.
-- [ ] Backward compatibility is honest about what breaks.
-- [ ] If this RFC adds a Layer-2 primitive, both ROS-2 and non-ROS implementation sketches are present (substrate-neutrality acid test).
-- [ ] The implementation note explains how this lands, not just what.
-- [ ] The author has re-read [`CLAUDE.md`](../../CLAUDE.md) §What Claude Should Never Do and confirmed this proposal does not violate it.
+- [x] The Summary alone tells a reader what is being proposed.
+- [x] The Motivation is grounded in a concrete use case, not hypothetical needs.
+- [x] The Detailed design names every affected spec document and reference component.
+- [x] At least one alternative is genuinely considered (not a strawman).
+- [x] Drawbacks are listed; at least one of them is a real downside, not a humblebrag.
+- [x] Backward compatibility is honest about what breaks.
+- [x] If this RFC adds a Layer-2 primitive, both ROS-2 and non-ROS implementation sketches are present (substrate-neutrality acid test). Not applicable: no primitive is added. The record formats name no substrate.
+- [x] The implementation note explains how this lands, not just what.
+- [x] The author has re-read [`CLAUDE.md`](../../CLAUDE.md) §What Claude Should Never Do and confirmed this proposal does not violate it. The log stays opt-in and local, and nothing is sent anywhere.
