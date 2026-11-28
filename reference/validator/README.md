@@ -154,7 +154,7 @@ Exit codes: **0** accepted, **1** validation failed, **2** usage error (missing 
 
 Add `--json` to emit the raw `ValidationResult` for machine consumers (LLM bridge revision flow, CI checks).
 
-Add `--evidence-log PATH` (on `validate`, `execute`, `translate` and `run`) to append one validation record per verdict to a local JSON Lines file. It is off by default and changes nothing the command prints. See [`docs/evidence/validation-records.md`](../../docs/evidence/validation-records.md).
+Add `--evidence-log PATH` (on `validate`, `execute`, `translate` and `run`) to append one validation record per verdict to a local JSON Lines file; `execute` and `run` also append one execution record per run. It is off by default and changes nothing the command prints. `urml evidence log PATH` checks the chain that links the file's lines. See [`docs/evidence/validation-records.md`](../../docs/evidence/validation-records.md).
 
 ### JSON Schema export
 

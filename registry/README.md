@@ -71,7 +71,7 @@ A listed entry carries at least one piece of evidence: a compatibility claim, a 
 
 ## Validation records
 
-A validation record (`urml.validation-record/1`, [`urml_validator/evidence.py`](../reference/validator/src/urml_validator/evidence.py)) is one verdict of the validator: the program it judged, sha256 content digests of the program, manifest, envelope, policy and rulebooks, the verdict, the error and warning codes, and the validator version. The check replays each one with `reverify()`: the inputs named in the entry must hash to the digests the record carries, and the validator, run again on the recorded program, must reach the same verdict with the same error codes. When a URML release changes a verdict, the check fails, and the entry's records are produced again for that release.
+A validation record (`urml.validation-record/1` in the files committed so far, `urml.validation-record/2` from a newer validator; [`urml_validator/evidence.py`](../reference/validator/src/urml_validator/evidence.py)) is one verdict of the validator: the program it judged, sha256 content digests of the program, manifest, envelope, policy and rulebooks, the verdict, the error and warning codes, and the validator version. The check replays each one with `reverify()`: the inputs named in the entry must hash to the digests the record carries, and the validator, run again on the recorded program, must reach the same verdict with the same error codes. When a URML release changes a verdict, the check fails, and the entry's records are produced again for that release.
 
 Records for a listing are made by validating each program against the listed manifest, with the same inputs the entry declares. From the command line, `--evidence-log` appends one record per verdict:
 

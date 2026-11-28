@@ -10,6 +10,7 @@ Subcommands:
   urml emit-prompt --manifest MANIFEST [...]
   urml init DIRECTORY [--profile NAME] [--force]
   urml conformance run [--adapter MODULE:ATTR] [--filter SUBSTR] [--output PATH]
+  urml evidence log FILE
 
 Exit codes:
 
@@ -17,7 +18,9 @@ Exit codes:
   1   command failed at the spec level (validation errors, conformance
       failures, a primitive failed at runtime)
   2   usage error (missing files, bad YAML, bad arguments, optional dep missing,
-      an --evidence-log file that cannot be written)
+      an --evidence-log file that cannot be written). A log that fails before
+      a run stops the command with nothing run. A log that fails after a run
+      leaves the printed result as it is and exits 2 as well.
   64  internal error (an unhandled exception bubbled out of validate())
   130 interrupted by the user (Ctrl-C / SIGINT)
 
@@ -44,7 +47,7 @@ import yaml
 from urml_validator import validate
 from urml_validator._version import __version__
 from urml_validator.errors import ValidationError, ValidationResult
-from urml_validator.evidence import Stage, Surface, append_record, build_record
+from urml_validator.evidence import Stage, Surface, append_record, build_record, verify_log
 from urml_validator.init_templates import PROJECT_TEMPLATES
 from urml_validator.rulebook_engine import bundled_rulebooks
 from urml_validator.schema_export import SCHEMA_REGISTRY, export_schema, write_schemas
@@ -740,11 +743,15 @@ def build_parser() -> argparse.ArgumentParser:
     # ---- urml evidence (RFC-0707, Draft) ----
     p_evidence = subparsers.add_parser(
         "evidence",
-        help="Build an evidence report: what URML checks for one deployment, and what it cannot see.",
+        help=(
+            "Build an evidence report: what URML checks for one deployment, and what it cannot see. "
+            "Or check an evidence log."
+        ),
         description=(
             "Evidence reports (RFC-0707, Draft). An evidence report marks every item of a "
             "deployment checked, declared, runtime, missing or outside. It is not a safety "
-            "assessment, a certification or a compliance determination."
+            "assessment, a certification or a compliance determination. `log` is a different "
+            "tool: it checks a file written with --evidence-log (RFC-0715, Draft)."
         ),
     )
     p_evidence_sub = p_evidence.add_subparsers(dest="evidence_command", required=True, metavar="SUBCOMMAND")
@@ -865,6 +872,22 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_evidence_verify.set_defaults(func=cmd_evidence_verify)
 
+    p_evidence_log = p_evidence_sub.add_parser(
+        "log",
+        help="Check an evidence log: count its records and check the chain that links its lines.",
+        description=(
+            "Read a file written with --evidence-log (validation and execution records, RFC-0715, "
+            "Draft) and check the chain that links its lines. Prints the record counts, where the "
+            "chain starts, whether it is intact, and the head: the last line's seq and digest. "
+            "Offline and read-only. Exit 0 when no break is found, 1 when one is, 2 when the file "
+            "cannot be read. An intact chain shows that no line before the head was removed, edited "
+            "or moved. It does not show that the end of the file is still there, or that the file "
+            "was not rewritten as a whole: compare the head with one noted somewhere else."
+        ),
+    )
+    p_evidence_log.add_argument("log", type=Path, metavar="FILE", help="The evidence log (JSON Lines).")
+    p_evidence_log.set_defaults(func=cmd_evidence_log)
+
     return parser
 
 
@@ -889,14 +912,16 @@ def main(argv: list[str] | None = None) -> int:
         return rc
     except SystemExit:
         raise
-    except KeyboardInterrupt:
+    except KeyboardInterrupt as exc:
         print("urml: interrupted", file=sys.stderr)
+        _print_notes(exc)
         return 130
     except _EvidenceLogError as exc:
         print(f"urml: {exc}", file=sys.stderr)
         return 2
     except Exception as exc:
         print(f"urml: internal error: {type(exc).__name__}: {exc}", file=sys.stderr)
+        _print_notes(exc)
         return 64
 
 
@@ -1043,6 +1068,63 @@ def cmd_evidence_verify(args: argparse.Namespace) -> int:
     return 1
 
 
+def cmd_evidence_log(args: argparse.Namespace) -> int:
+    """Implement `urml evidence log` (RFC-0715, Draft).
+
+    Reads one evidence log and checks its chain. Read-only and offline. Exit
+    0 when no break was found, 1 when one was, 2 when the file cannot be read.
+    A file with no chain (format 1 records only) has nothing to break, so it
+    exits 0 and the output says there is no chain.
+    """
+    log: Path = args.log
+    if not log.is_file():
+        print(f"urml: evidence log not found: {log}", file=sys.stderr)
+        return 2
+    try:
+        check = verify_log(log)
+    except OSError as exc:
+        print(f"urml: cannot read the evidence log {log}: {exc}", file=sys.stderr)
+        return 2
+
+    print(f"Evidence log: {log}")
+    print(
+        f"  records: {check.records} on {check.lines} line{'' if check.lines == 1 else 's'} "
+        f"({check.validation_records} validation, {check.execution_records} execution)"
+    )
+    if check.chain_start is None:
+        print("  chain:   none; no line carries seq, so the file cannot show a removed or edited line")
+    elif check.chain_start == 1:
+        print("  chain:   starts at line 1")
+    else:
+        before = "line 1 was" if check.chain_start == 2 else f"lines 1 to {check.chain_start - 1} were"
+        print(
+            f"  chain:   starts at line {check.chain_start}; {before} written before the chain, "
+            "so only their number and the last one's bytes are covered"
+        )
+    if not check.intact:
+        print(f"  intact:  no, {check.problem_count} problem{'' if check.problem_count == 1 else 's'}")
+        for problem in check.problems:
+            print(f"    {problem}")
+        if check.problem_count > len(check.problems):
+            print(f"    and {check.problem_count - len(check.problems)} more")
+    elif check.chain_start is None:
+        print("  intact:  nothing to check")
+    else:
+        print("  intact:  yes")
+    if check.head_digest is None:
+        print("  head:    none")
+    elif check.head_seq is None:
+        print(f"  head:    line {check.lines} (no seq) {check.head_digest}")
+    else:
+        print(f"  head:    seq {check.head_seq} {check.head_digest}")
+    if check.intact and check.chain_start is not None:
+        print(
+            "  note:    an intact chain cannot show a cut-off end or a file rewritten as a whole; "
+            "compare the head with one noted somewhere else"
+        )
+    return 0 if check.intact else 1
+
+
 def _load_conformance_report(path: Path | None) -> tuple[dict[str, Any] | None, str | None]:
     """Read a conformance report as JSON, with the sha256 of its bytes for a registry pin."""
     if path is None:
@@ -1143,7 +1225,9 @@ def _add_evidence_log_args(parser: argparse.ArgumentParser) -> None:
         metavar="PATH",
         help=(
             "Append one validation record per verdict, accepted or refused, to this "
-            "JSON Lines file. Opt-in and local. See docs/evidence/validation-records.md."
+            "JSON Lines file; `execute` and `run` also append one execution record per run. "
+            "Opt-in and local. Check the file with `urml evidence log`. "
+            "See docs/evidence/validation-records.md."
         ),
     )
 
@@ -1225,7 +1309,9 @@ class _Evidence:
             default_rulebooks=self.default_rulebooks,
             as_of=self.as_of,
             profiles=self.profiles,
-            request=self.request,
+            # The request is what the bridge was asked. A validator verdict on
+            # the same command has none.
+            request=self.request if stage == "bridge" else None,
             attempts=attempts,
             attempt_codes=attempt_codes,
         )
@@ -1233,6 +1319,32 @@ class _Evidence:
             append_record(self.path, record)
         except OSError as exc:
             raise _EvidenceLogError(f"cannot write the evidence log {self.path}: {exc}") from exc
+
+
+def _print_notes(exc: BaseException) -> None:
+    """Print what was attached to an exception on its way up, one line each.
+
+    The runtime attaches a note when a run raised, or was refused at its own
+    check, and the record of that could not be written. A missing record is
+    never silent, so every place that reports a runtime exception calls this.
+    """
+    for note in getattr(exc, "__notes__", ()):
+        print(f"urml: {note}", file=sys.stderr)
+
+
+def _run_exit_code(rr: Any) -> int:
+    """The exit code of a run that returned a result, after the result is printed.
+
+    0 or 1 by the result. 2 when an evidence log was set and the run's
+    execution record could not be written (RFC-0715, Draft): the run happened
+    and its printed result stands, and stderr says its record is missing.
+    """
+    missing = getattr(rr, "evidence_log_error", None)
+    if missing:
+        how = "success" if rr.success else "failure"
+        print(f"urml: the run finished ({how}), but its execution record is missing: {missing}", file=sys.stderr)
+        return 2
+    return 0 if rr.success else 1
 
 
 # ---------------------------------------------------------------------------
@@ -1611,8 +1723,10 @@ def cmd_execute(args: argparse.Namespace) -> int:
     command used, so ``--no-policy``, ``--policy``, ``--rulebook`` and
     ``--no-default-rulebooks`` mean the same thing at both checks. Skipping
     the validator is prohibited (CLAUDE.md). With ``--evidence-log``, the
-    first check's verdict is appended as a validation record, and the runtime
-    appends a record if its own check refuses.
+    first check's verdict is appended as a validation record, the runtime
+    appends a record if its own check refuses, and a run that starts ends
+    with one execution record (RFC-0715, Draft). If that last record cannot
+    be written, the result is printed as usual and the command exits 2.
     """
     try:
         from urml_ros2_runtime import (  # type: ignore[import-not-found,unused-ignore]
@@ -1699,8 +1813,9 @@ def cmd_execute(args: argparse.Namespace) -> int:
 
     # ----- Execute (the runtime re-validates first, with the same inputs) -----
     try:
-        # The runtime records its own refusals in the same evidence log.
-        runtime = URMLRuntime(adapter, evidence_log=args.evidence_log)
+        # The runtime records its own refusals in the same evidence log, and
+        # the run itself as one execution record.
+        runtime = URMLRuntime(adapter, evidence_log=args.evidence_log, evidence_surface="execute")
         try:
             rr = runtime.execute(
                 program,
@@ -1717,12 +1832,15 @@ def cmd_execute(args: argparse.Namespace) -> int:
             # Should not happen: the runtime re-validates the inputs this
             # command just accepted. Nothing was dispatched.
             print(f"urml: internal error: runtime rejected a pre-validated program: {exc}", file=sys.stderr)
+            _print_notes(exc)
             return 64
         except UnsupportedCompositionError as exc:
             print(f"urml: execution error: {exc}", file=sys.stderr)
+            _print_notes(exc)
             return 1
         except PrimitiveExecutionError as exc:
             print(f"urml: execution error: a primitive failed: {exc}", file=sys.stderr)
+            _print_notes(exc)
             return 1
     finally:
         for close in cleanup:
@@ -1736,7 +1854,7 @@ def cmd_execute(args: argparse.Namespace) -> int:
     else:
         _emit_execute_pretty(rr, args.adapter, program_path=args.program)
 
-    return 0 if rr.success else 1
+    return _run_exit_code(rr)
 
 
 def _warn_if_no_envelope(args: argparse.Namespace) -> None:
@@ -2163,10 +2281,12 @@ def cmd_run(args: argparse.Namespace) -> int:
     """Implement the `urml run` subcommand (RFC-0668).
 
     Sentence to motion in one verb: translate through the LLM bridge (the
-    bridge validates every emission with the chosen policy), optionally
-    rehearse the accepted program on a simulation backend, then execute.
-    A rehearsal-gate failure exits non-zero before any real adapter is
-    constructed.
+    bridge validates every emission with the chosen policy), validate the
+    accepted program as it will run, optionally rehearse it on a simulation
+    backend, then execute. A refusal at that validation or a rehearsal-gate
+    failure exits non-zero before any real adapter is constructed. With
+    ``--evidence-log`` the log gets the bridge's verdict, that validation's
+    verdict, and one execution record for the run (RFC-0715, Draft).
     """
     try:
         from urml_llm_bridge import (  # type: ignore[import-not-found,unused-ignore]
@@ -2316,6 +2436,36 @@ def cmd_run(args: argparse.Namespace) -> int:
         args.out.write_text(text + ("" if text.endswith("\n") else "\n"), encoding="utf-8")
         print(f"wrote {args.out}", file=sys.stderr)
 
+    # ----- Validate the program as it will run -----
+    # The bridge judged the model's emission. The program that runs also
+    # carries the request as its description, and this check reads the
+    # manifest's directory, which the bridge does not have, so HBOM-content
+    # rules are read here. The verdict is recorded, which gives the run's
+    # execution record an acceptance with the same program digest (RFC-0715,
+    # Draft). A refusal stops the command before a rehearsal runs or an
+    # adapter is built, as in `urml execute`.
+    check = validate(
+        program,
+        manifest,
+        envelope,
+        profiles=profiles,
+        policy=policy_arg,
+        manifest_base_dir=Path(args.manifest).parent,
+        rulebooks=rulebooks,
+        default_rulebooks=default_rulebooks,
+        as_of=as_of,
+    )
+    evidence.validation(check, program)
+    if not check.accepted:
+        print(
+            "urml: execution refused: the validator rejected the program as it would run. "
+            "Nothing was sent to the adapter.",
+            file=sys.stderr,
+        )
+        for issue in check.errors:
+            _render_issue(issue, stream=sys.stderr, severity_label="ERROR")
+        return 1
+
     # ----- Rehearsal gate (RFC-0668) -----
     if args.rehearse is not None:
         gate = _run_rehearsal(args, program, manifest, envelope, profiles)
@@ -2331,12 +2481,10 @@ def cmd_run(args: argparse.Namespace) -> int:
         print(f"urml: {exc}", file=sys.stderr)
         return 2
     try:
-        # The bridge validated with the chosen policy and rulebooks. The
-        # runtime re-validates with the same policy and rulebooks plus the
-        # manifest's directory, which the bridge does not have, so
-        # HBOM-content rules are read here. It records its own refusals in
-        # the same evidence log.
-        runtime = URMLRuntime(adapter, evidence_log=args.evidence_log)
+        # The runtime re-validates with the same inputs before its first
+        # adapter call (defense in depth). It records a refusal of its own in
+        # the same evidence log, and the run itself as one execution record.
+        runtime = URMLRuntime(adapter, evidence_log=args.evidence_log, evidence_surface="run")
         try:
             rr = runtime.execute(
                 program,
@@ -2357,12 +2505,15 @@ def cmd_run(args: argparse.Namespace) -> int:
             )
             for issue in getattr(exc.validation_result, "errors", []) or []:
                 _render_issue(issue, stream=sys.stderr, severity_label="ERROR")
+            _print_notes(exc)
             return 1
         except UnsupportedCompositionError as exc:
             print(f"urml: execution error: {exc}", file=sys.stderr)
+            _print_notes(exc)
             return 1
         except PrimitiveExecutionError as exc:
             print(f"urml: execution error: a primitive failed: {exc}", file=sys.stderr)
+            _print_notes(exc)
             return 1
     finally:
         for close in cleanup:
@@ -2375,7 +2526,7 @@ def cmd_run(args: argparse.Namespace) -> int:
         _emit_execute_json(rr, args.adapter)
     else:
         _emit_execute_pretty(rr, args.adapter, program_path=Path(f"<run: {args.request!r}>"))
-    return 0 if rr.success else 1
+    return _run_exit_code(rr)
 
 
 def cmd_translate(args: argparse.Namespace) -> int:

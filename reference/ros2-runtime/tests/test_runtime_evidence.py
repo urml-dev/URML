@@ -3,8 +3,10 @@
 `URMLRuntime.execute` re-validates before its first adapter call (defense in
 depth). With ``evidence_log`` set, a refusal at that check is appended as one
 validation record before ``ValidationRejectedError`` is raised, and the
-adapter still receives nothing. Accepted programs are left to the entry point
-that validated first. Hermetic: ``MockROSAdapter``, no ROS 2.
+adapter still receives nothing. The verdict on an accepted program is left to
+the entry point that validated first; the runtime records the run itself, as
+one execution record (``test_execution_record.py``). Hermetic:
+``MockROSAdapter``, no ROS 2.
 """
 
 from __future__ import annotations
@@ -15,7 +17,7 @@ from typing import Any
 
 import pytest
 import yaml
-from urml_validator.evidence import content_digest, read_records, reverify
+from urml_validator.evidence import ExecutionRecord, content_digest, read_log, read_records, reverify
 
 from urml_ros2_runtime import MockROSAdapter, URMLRuntime, ValidationRejectedError
 
@@ -55,13 +57,18 @@ def test_a_revalidation_refusal_is_recorded_and_nothing_moves(tmp_path: Path) ->
     assert check.reproduced, check.problems
 
 
-def test_an_accepted_program_is_not_recorded_by_the_runtime(tmp_path: Path) -> None:
+def test_the_runtime_records_the_run_and_not_the_acceptance(tmp_path: Path) -> None:
+    """The acceptance belongs to the entry point that validated first. Since
+    RFC-0715 (Draft) the runtime does write one line for an accepted program:
+    the execution record of the run."""
     log = tmp_path / "evidence.jsonl"
     result = URMLRuntime(MockROSAdapter(), evidence_log=str(log)).execute(
         SAFE, MANIFEST, ENVELOPE, ("home",), policy=None
     )
     assert result.success
-    assert not log.exists()
+    assert read_records(log) == []
+    (run,) = read_log(log)
+    assert isinstance(run, ExecutionRecord) and run.outcome == "completed"
 
 
 def test_no_log_means_no_record(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:

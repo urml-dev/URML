@@ -21,8 +21,9 @@ including the runtime's re-validation, uses them.
 The evidence log is operator configuration too (``URML_MCP_EVIDENCE_LOG`` or
 ``--evidence-log``). When it is set, ``validate_program`` and
 ``execute_program`` append one validation record per verdict to that local
-file, and the runtime appends its own refusals. No tool takes it as an
-argument, so an agent can neither turn it off nor point it elsewhere.
+file, and the runtime appends its own refusals and one execution record per
+run (RFC-0715, Draft). No tool takes it as an argument, so an agent can
+neither turn it off nor point it elsewhere.
 """
 
 from __future__ import annotations
@@ -577,7 +578,10 @@ def execute_program(
     ``RuntimeResult`` as a dict. Raises ``ValidationRejectedError`` when the
     validator rejects the program. With the operator's evidence log set, the
     first check's verdict is appended to it before anything is built, and the
-    runtime appends a record if its own check refuses.
+    runtime appends a record if its own check refuses. A run that gets past
+    both checks ends with one execution record. If that record cannot be
+    written the program has already run: the result is returned as it is,
+    with ``evidence_log_error`` saying why the record is missing.
     """
     pins = pinned if pinned is not None else Pinned()
     if adapter not in _ADAPTERS:
@@ -658,7 +662,8 @@ def _build_runtime(adapter: str, *, evidence_log: Path | None = None) -> tuple[A
     ``URML_MCP_ALLOW_REAL_EXECUTE`` and their respective runtime dependencies.
     ``execute_program`` also requires the operator's pinned manifest and
     envelope before it gets here. ``evidence_log`` is handed to the runtime,
-    which records its own refusals there.
+    which records its own refusals there and one execution record per run,
+    marked with this surface (``mcp``).
     """
     from urml_ros2_runtime import URMLRuntime  # local import: keeps tools import light
 
@@ -667,7 +672,7 @@ def _build_runtime(adapter: str, *, evidence_log: Path | None = None) -> tuple[A
     if adapter == "mock":
         from urml_ros2_runtime import MockROSAdapter
 
-        return URMLRuntime(MockROSAdapter(), evidence_log=evidence_log), cleanup
+        return URMLRuntime(MockROSAdapter(), evidence_log=evidence_log, evidence_surface="mcp"), cleanup
 
     if adapter not in {"ros2", "px4", "ardupilot", "autoware"}:
         raise ValueError(
@@ -698,7 +703,7 @@ def _build_runtime(adapter: str, *, evidence_log: Path | None = None) -> tuple[A
         cleanup.append(rclpy.shutdown)
         ros_adapter = RclpyAdapter(config)
         cleanup.append(ros_adapter.close)
-        return URMLRuntime(ros_adapter, evidence_log=evidence_log), cleanup
+        return URMLRuntime(ros_adapter, evidence_log=evidence_log, evidence_surface="mcp"), cleanup
 
     if adapter == "ardupilot":
         try:
@@ -717,7 +722,7 @@ def _build_runtime(adapter: str, *, evidence_log: Path | None = None) -> tuple[A
         ap_close = getattr(ap_adapter, "close", None)
         if callable(ap_close):
             cleanup.append(ap_close)
-        return URMLRuntime(ap_adapter, evidence_log=evidence_log), cleanup
+        return URMLRuntime(ap_adapter, evidence_log=evidence_log, evidence_surface="mcp"), cleanup
 
     if adapter == "autoware":
         try:
@@ -743,7 +748,7 @@ def _build_runtime(adapter: str, *, evidence_log: Path | None = None) -> tuple[A
         cleanup.append(rclpy.shutdown)
         av_adapter = AutowareAdapter(av_config)
         cleanup.append(av_adapter.close)
-        return URMLRuntime(av_adapter, evidence_log=evidence_log), cleanup
+        return URMLRuntime(av_adapter, evidence_log=evidence_log, evidence_surface="mcp"), cleanup
 
     # adapter == "px4"
     try:
@@ -762,7 +767,7 @@ def _build_runtime(adapter: str, *, evidence_log: Path | None = None) -> tuple[A
     close = getattr(px4_adapter, "close", None)
     if callable(close):
         cleanup.append(close)
-    return URMLRuntime(px4_adapter, evidence_log=evidence_log), cleanup
+    return URMLRuntime(px4_adapter, evidence_log=evidence_log, evidence_surface="mcp"), cleanup
 
 
 def list_profiles() -> dict[str, Any]:

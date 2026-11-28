@@ -78,8 +78,18 @@ def urml_execute(
     and the runtime re-validates before running; nothing reaches an actuator
     without passing the validator. If the operator pinned the manifest, envelope
     or profiles, omit them: the pinned values are used and a different value is
-    refused. The operator's rulebooks apply to both checks."""
-    return tools.execute_program(program, manifest, envelope, profiles, adapter, pinned=_PINNED)
+    refused. The operator's rulebooks apply to both checks. If the result has
+    evidence_log_error set, the program ran and only its record in the
+    operator's log is missing: report it, and do not run the program again
+    because of it."""
+    out = tools.execute_program(program, manifest, envelope, profiles, adapter, pinned=_PINNED)
+    if out.get("evidence_log_error"):
+        # The run happened. The agent sees the field; this line is for the operator.
+        print(
+            f"urml-mcp: a run finished, but its execution record is missing: {out['evidence_log_error']}",
+            file=sys.stderr,
+        )
+    return out
 
 
 @mcp.tool()
@@ -105,7 +115,8 @@ def main(argv: Sequence[str] | None = None) -> None:
     ``URML_MCP_*`` env vars; a flag wins over its env var. A pinned file that
     does not load stops the server before it serves a single call.
     ``--evidence-log`` / ``URML_MCP_EVIDENCE_LOG`` names the file that
-    receives one validation record per verdict.
+    receives one validation record per verdict and one execution record per
+    run.
     """
     global _PINNED
     try:

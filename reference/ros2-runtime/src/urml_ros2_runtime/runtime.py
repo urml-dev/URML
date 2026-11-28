@@ -28,6 +28,9 @@ Scope (Layer-3 v0.1.0 — see spec/layer-3-behavior/v0.1.0.md):
   Bypassing the validator at runtime is prohibited per CLAUDE.md. With an
   evidence log set, a refusal at that check is appended to it as a
   validation record (`urml_validator.evidence`) before the error is raised.
+- With an evidence log set, a run that got past that check ends with one
+  execution record: the steps dispatched and what the adapter reported back
+  (RFC-0715, Draft; `execution_record.py`).
 
 Substrate: the real `rclpy`-backed adapter ships alongside `MockROSAdapter`;
 both satisfy the substrate-neutral `ROSAdapter` Protocol. Variable bindings
@@ -44,7 +47,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 from urml_validator import Policy, ValidationResult, validate
-from urml_validator.evidence import append_record, build_record
+from urml_validator.evidence import Surface, append_record, build_record
 from urml_validator.schemas.composition import Branch, Parallel, Retry, Sequence, Step
 from urml_validator.schemas.program import URMLProgram
 
@@ -54,6 +57,7 @@ from urml_ros2_runtime.errors import (
     UnsupportedCompositionError,
     ValidationRejectedError,
 )
+from urml_ros2_runtime.execution_record import ExecutionRecorder
 from urml_ros2_runtime.primitives import PrimitiveOutcome, execute_step, manifest_max_velocity
 from urml_ros2_runtime.shield import Shield, ShieldViolationError
 from urml_ros2_runtime.substrate.base import ROSAdapter, TelemetryAdapter
@@ -65,7 +69,12 @@ class RuntimeResult(BaseModel):
     Carries enough information for the caller to know what happened: the
     success flag, the count of steps actually executed, the final variable
     bindings (useful for downstream consumers of the program's outputs),
-    and the full audit log from the adapter."""
+    and the full audit log from the adapter.
+
+    ``evidence_log_error`` is None unless an evidence log was set and the
+    run's execution record could not be written (RFC-0715, Draft). The run
+    happened either way and ``success`` says how it went; this field says
+    its record is missing, and why."""
 
     model_config = ConfigDict(extra="forbid", arbitrary_types_allowed=True)
 
@@ -74,6 +83,7 @@ class RuntimeResult(BaseModel):
     bindings: dict[str, Any] = Field(default_factory=dict)
     audit_log: list[dict[str, Any]] = Field(default_factory=list)
     last_outcome: PrimitiveOutcome | None = None
+    evidence_log_error: str | None = None
 
 
 class URMLRuntime:
@@ -86,6 +96,7 @@ class URMLRuntime:
         revalidate: bool = True,
         shield: Shield | None = None,
         evidence_log: Path | str | None = None,
+        evidence_surface: Surface = "runtime",
     ) -> None:
         """Construct a runtime bound to a substrate adapter.
 
@@ -114,13 +125,27 @@ class URMLRuntime:
                         appended to it as one validation record before
                         ``ValidationRejectedError`` is raised. Accepted
                         programs are not recorded here: the entry point that
-                        validated first records its own verdicts. See
+                        validated first records its own verdicts. A run that
+                        got past the re-validation ends with one execution
+                        record: the steps dispatched and what the adapter
+                        reported back, not what the robot physically did. A
+                        record that cannot be written leaves the result as
+                        it is and is reported in
+                        ``RuntimeResult.evidence_log_error``, or as a note on
+                        the exception when the run raised. See
                         ``docs/evidence/validation-records.md``.
+            evidence_surface: The entry point calling this runtime
+                        (``execute``, ``run``, ``mcp``, ``action_server``),
+                        written into the execution record. Left alone it is
+                        ``runtime``: the runtime was not told who called it.
         """
         self._adapter = adapter
         self._revalidate = revalidate
         self._shield = shield
         self._evidence_log = Path(evidence_log) if evidence_log else None
+        self._evidence_surface: Surface = evidence_surface
+        # Set per `execute` call: notes the steps of the run in progress.
+        self._recorder = ExecutionRecorder(None)
         # Set per `execute` call: the manifest maximum fraction speeds scale to.
         self._max_velocity: float | None = None
 
@@ -211,6 +236,16 @@ class URMLRuntime:
         bindings: dict[str, Any] = {}
         steps_executed = 0
         last_outcome: PrimitiveOutcome | None = None
+        # RFC-0715 (Draft): with an evidence log set, the steps dispatched
+        # from here on go into one execution record, however the run ends.
+        self._recorder = ExecutionRecorder(
+            self._evidence_log,
+            surface=self._evidence_surface,
+            adapter=self._adapter,
+            program=program,
+            manifest=manifest,
+            envelope=envelope,
+        )
 
         try:
             steps_executed, last_outcome = self._exec_behavior(
@@ -226,7 +261,13 @@ class URMLRuntime:
                 bindings=bindings,
                 audit_log=self._audit_snapshot(),
                 last_outcome=halt.last_outcome,
+                evidence_log_error=self._recorder.finished(success=False, reason=halt.last_outcome.reason),
             )
+        except BaseException as exc:
+            # The run raised, a Ctrl-C included. Record what was dispatched
+            # before it did, then let the exception go on as it was.
+            self._recorder.raised(exc)
+            raise
 
         # The composition executors (Branch / Parallel / Retry) may return a
         # failing outcome without raising — the runtime treats a non-success
@@ -239,6 +280,10 @@ class URMLRuntime:
             bindings=bindings,
             audit_log=self._audit_snapshot(),
             last_outcome=last_outcome,
+            evidence_log_error=self._recorder.finished(
+                success=overall_success,
+                reason=last_outcome.reason if last_outcome is not None else None,
+            ),
         )
 
     # ----- Internal -----
@@ -316,7 +361,11 @@ class URMLRuntime:
                     primitive=step.primitive_name,
                     path=path,
                 ) from veto
-        outcome = execute_step(step, self._adapter, bindings, max_velocity=self._max_velocity)
+        outcome = self._recorder.dispatch(
+            step.primitive_name,
+            path,
+            lambda: execute_step(step, self._adapter, bindings, max_velocity=self._max_velocity),
+        )
         steps_executed += 1
         # Merge any new bindings the step produced into the runtime scope.
         bindings.update(outcome.bindings)
