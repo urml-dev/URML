@@ -34,7 +34,7 @@ Research, teaching, evaluation, development, testing, simulation and personal pr
 
 | Tier | Price | Includes |
 |---|---|---|
-| **Production** | **$4 per robot per month** | Any company running URML on robots in production. Only robots in service count. Email support |
+| **Production** | **$4 per robot per month**, billed yearly ($48 per robot per year) or monthly | Any company running URML on robots in production. Only robots in service count. Email support |
 | **Enterprise lifetime** | **$225,000 one time**, plus **$10,000 per year** support | Perpetual license for up to 1,000 robots in service; extra robots $225 each, one time; every release while support is paid; audited policy files; priority email support |
 | **Enterprise half** | **$112,500 one time**, plus **$5,000 per year** support | The same, for up to 500 robots. On request. Upgrade to lifetime by paying the difference |
 | **OEM** | Per unit, on request | Robot and controller makers: redistribution rights in shipped products, directory listing |
@@ -47,14 +47,18 @@ What counts as production, and what counts as one robot, is in [`LICENSING.md`](
 
 **Not sure your use counts as production?** Email sales@urml.dev and describe it before you buy.
 
-**Online payment is coming soon.** Until then, email sales@urml.dev and we send you an order form and an invoice.
+**Online payment for the Production license is coming soon.** Until then, email sales@urml.dev and we send you an order form and an invoice. Online orders will be handled by our reseller Paddle.com under the [terms of sale](https://urml.dev/terms) and the [refund policy](https://urml.dev/refund).
+
+**Everything else is invoiced directly.** Enterprise and OEM licenses, validation services and URML-Certified runs are contracted under a signed agreement with Yahalomik Ltd., invoiced by Yahalomik Ltd. and paid by bank transfer. They are not sold through online checkout.
 
 ### Production
 
 1. Email sales@urml.dev with your company name, the number of robots that will run URML, and where they operate.
 2. You receive an order form under the URML Commercial License Agreement, naming your company and the number of robots it covers.
 3. Once both sides sign and the first payment is made, the license is active.
-4. When your fleet grows or shrinks, email the new count. You pay only for robots in service.
+4. Billing is yearly by default, paid in advance; monthly billing is available at the same rate.
+5. When your fleet grows, raise the count before the new robots go into production and pay a prorated charge for the rest of the period. When it shrinks, the lower count applies from your next renewal.
+6. You can cancel at any time; the license runs to the end of the paid period. A first payment is refunded in full if you ask within 14 days.
 
 ### Enterprise lifetime and Enterprise half
 
