@@ -133,7 +133,7 @@ Measured on 26d40f0 with the change applied, Python 3.11.
 
 The change adds. No rulebook that loads today changes meaning, and no program changes outcome unless its operator loads a rulebook that uses the new kind.
 
-A rulebook file that uses `require_envelope` does not load in a validator released before this change. That validator reports `rule.rulebook_invalid` and refuses the program, which is the safe direction. `rulebook_version` stays `"0.1"`; whether it should move is an open question below.
+A rulebook file that uses `require_envelope` does not load in a validator released before this change. That validator reports `rule.rulebook_invalid` and refuses the program, which is the safe direction. `rulebook_version` stays `"0.1"`, as the maintainer decided on 2026-11-28.
 
 `export_schema("rulebook")` gains the kind. Three tests that enumerate things by name were extended: the set of kind keys and the list of example files in `test_rulebook_files.py`, and the list of fixtures that rest on a caller's rulebook in `test_goal_line.py`.
 
@@ -166,7 +166,7 @@ A rulebook file that uses `require_envelope` does not load in a validator releas
 ## Unresolved questions
 
 1. **Which shipped rulebooks should use it.** This RFC adds the kind and a fictional company example. Adding a `require_envelope` rule to a government rulebook or a standards template changes what that file refuses and what it claims about a clause, so each one is a separate change with its own citation review.
-2. **`rulebook_version`.** A file that uses the new kind fails closed on an older validator. Is that enough, or should the format version move to `"0.2"` so the older validator can say why?
+2. **`rulebook_version`.** *Resolved 2026-11-28: it stays `"0.1"`.* A file that uses the new kind fails closed on an older validator, which is the safe direction, and a 0.x format may gain additions. Moving to `"0.2"` would give the older validator a clearer error and would mean supporting two format versions from now on.
 3. **Zones with an override.** A people-occupancy zone marked `allow_override: true` counts as declared. Should a rule be able to ask for a zone that is enforced?
 4. **Other deployment facts.** A rulebook might want to require things outside the envelope, such as the validation record being on. That is a different input and is not proposed here.
 
