@@ -58,7 +58,13 @@ from urml_validator.validator import _AERIAL_DRIVE_TYPES, _resolve_force, _segme
 BUNDLED_PACKAGE = "urml_validator.rulebooks"
 
 #: Codes whose fix is in the deployment, not the program.
-_FIX_DEPLOYMENT = frozenset({ErrorCode.RULE_DECLARATION_MISSING, ErrorCode.RULE_RULEBOOK_INVALID})
+_FIX_DEPLOYMENT = frozenset(
+    {
+        ErrorCode.RULE_DECLARATION_MISSING,
+        ErrorCode.RULE_LIMIT_MISSING,
+        ErrorCode.RULE_RULEBOOK_INVALID,
+    }
+)
 
 _UNITS: dict[str, str] = {"altitude_agl_m": "m", "speed_m_per_s": "m/s", "grip_force_n": "N"}
 
@@ -612,6 +618,16 @@ def _cap_values(info: _StepInfo, quantity: str) -> list[_Value]:
 # ---------------------------------------------------------------------------
 
 
+def _envelope_sets(envelope: SafetyEnvelope | None, name: str) -> bool:
+    """True iff the envelope sets the limit a `require_envelope` rule names."""
+    if envelope is None:
+        return False
+    value = getattr(envelope, name)
+    if isinstance(value, list):
+        return bool(value)
+    return value is not None
+
+
 def _fmt(value: object) -> str:
     """A value as a message shows it: YAML booleans, short floats."""
     if isinstance(value, bool):
@@ -768,7 +784,8 @@ class _RulebookPass:
 
         Runs everything in `run` that does not depend on a program's steps: loading,
         the deployment rulebooks' declarations and exceptions, scope and switch-off,
-        and the `require_declared` rules, which judge declarations only.
+        and the `require_declared` and `require_envelope` rules, which judge the
+        deployment's declarations and its safety envelope only.
         """
         bundled = list(_bundled_sources())
         caller = [
@@ -793,6 +810,8 @@ class _RulebookPass:
                 for rule in book.rules:
                     if rule.kind == "require_declared":
                         self._judge_require_declared(book, rule)
+                    elif rule.kind == "require_envelope":
+                        self._judge_require_envelope(book, rule)
         if not default_rulebooks:
             loaded_ids = {src.book.rulebook_id for src in loaded if src.book is not None}
             for src in bundled:
@@ -1585,6 +1604,34 @@ class _RulebookPass:
             },
             error=bool(self.deployments),
         )
+
+    def _judge_require_envelope(self, book: Rulebook, rule: Rule) -> None:
+        """Refuse when a robot's safety envelope does not set a listed limit (RFC-0714).
+
+        Judged once per robot that executes steps. A list field is set when it
+        has at least one entry, a number when it is given.
+        """
+        body = rule.require_envelope
+        assert body is not None
+        for robot in self._program_robots():
+            missing = [name for name in body.fields if not _envelope_sets(robot.envelope, name)]
+            if not missing:
+                continue
+            listed = ", ".join(missing)
+            whose = "" if robot.key is None else f" of {robot.key}"
+            if robot.envelope is None:
+                text = f"No safety envelope{whose} was given, so nothing sets {listed}"
+            else:
+                text = f"The safety envelope{whose} sets no {listed}"
+            self._violation(
+                ErrorCode.RULE_LIMIT_MISSING,
+                book=book,
+                rule=rule,
+                body=text,
+                suggestion=f"Set {listed} in the site's safety envelope and pass it to the validator.",
+                extra={"missing_fields": missing, "member": robot.key},
+                dedupe=(book.rulebook_id, rule.id, robot.key),
+            )
 
     def _judge_max_concurrent_aircraft(self, book: Rulebook, rule: Rule) -> None:
         if not self.fleet:

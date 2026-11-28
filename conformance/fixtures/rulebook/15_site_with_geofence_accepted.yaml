@@ -1,0 +1,30 @@
+name: rulebook/site_with_geofence_accepted
+description: >
+  The positive twin of site_without_geofence_rejected. This site's envelope
+  declares a geofence over aisles A1 to A3 and a speed limit, so both
+  require_envelope rules of the site standard are satisfied. dock_a at (1, 1)
+  lies inside the geofence and clear of the handoff crossing. Accepted, and
+  the runtime re-validates with the same rulebook and runs the program.
+
+manifest: warehouse_areas
+envelope: warehouse_aisles_a
+policy: none
+profiles: [warehouse]
+rulebooks: [example_site_standard]
+
+program:
+  profile: warehouse
+  behavior:
+    type: sequence
+    on_error: abort_and_report
+    steps:
+      - move_to: { location: dock_a }
+
+expected_validation:
+  accepted: true
+
+expected_execution:
+  success: true
+  steps_executed: 1
+  audit_methods:
+    - send_navigation_goal

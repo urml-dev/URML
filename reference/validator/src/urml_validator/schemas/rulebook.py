@@ -136,15 +136,28 @@ PrimitiveName = Literal[
 #: may filter: call_program (`name`), set_output (`output`), gesture (`name`).
 NAMED_PRIMITIVES: frozenset[str] = frozenset({"call_program", "set_output", "gesture"})
 
-#: The six rule kinds. A rule carries exactly one of these keys.
+#: The seven rule kinds. A rule carries exactly one of these keys.
 RULE_KINDS: tuple[str, ...] = (
     "cap",
     "forbid_primitive",
     "forbid_zone_entry",
     "forbid_over_people",
     "require_declared",
+    "require_envelope",
     "max_concurrent_aircraft",
 )
+
+#: The safety-envelope fields a `require_envelope` rule may name (RFC-0714):
+#: the limits the validator checks before a program runs.
+EnvelopeField = Literal[
+    "geofences",
+    "people_occupancy_zones",
+    "max_velocity",
+    "max_altitude",
+    "max_payload",
+    "max_grip_force_n",
+    "max_drop_height",
+]
 
 _ISO_DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 _RULE_REF = re.compile(r"^([a-z][a-z0-9_]{0,63})/([a-z][a-z0-9_]{0,63})$")
@@ -297,6 +310,18 @@ class RequireDeclaredBody(_Strict):
     allowed: list[Scalar] | None = None
 
 
+class RequireEnvelopeBody(_Strict):
+    """The site's safety envelope sets every listed field (RFC-0714)."""
+
+    fields: list[EnvelopeField] = Field(..., min_length=1)
+
+    @model_validator(mode="after")
+    def _distinct_fields(self) -> RequireEnvelopeBody:
+        if len(set(self.fields)) != len(self.fields):
+            raise ValueError("fields lists each envelope field once")
+        return self
+
+
 class MaxConcurrentAircraftBody(_Strict):
     """How many aircraft a fleet program may have airborne at once."""
 
@@ -324,6 +349,7 @@ class Rule(_Strict):
     forbid_zone_entry: ForbidZoneEntryBody | None = None
     forbid_over_people: ForbidOverPeopleBody | None = None
     require_declared: RequireDeclaredBody | None = None
+    require_envelope: RequireEnvelopeBody | None = None
     max_concurrent_aircraft: MaxConcurrentAircraftBody | None = None
 
     @model_validator(mode="before")

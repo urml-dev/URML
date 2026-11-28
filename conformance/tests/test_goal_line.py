@@ -41,6 +41,7 @@ _CALLER_RULEBOOK_FIXTURES = {
     "rulebook/policy_none_still_enforced_rejected",
     "rulebook/capture_at_unknown_place_rejected",
     "rulebook/call_program_not_allowlisted_rejected",
+    "rulebook/site_without_geofence_rejected",  # RFC-0714
 }
 
 

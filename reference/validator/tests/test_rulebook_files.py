@@ -43,6 +43,7 @@ RULE_KINDS = {
     "forbid_zone_entry",
     "forbid_over_people",
     "require_declared",
+    "require_envelope",
     "max_concurrent_aircraft",
 }
 RULE_COMMON_KEYS = {"id", "title", "cite", "exceptable", "note"}
@@ -87,12 +88,13 @@ ALL_FILES = [
     ("eu-machinery-regulation.yaml", lambda: _example("eu-machinery-regulation.yaml")),
     ("eu-ai-act.yaml", lambda: _example("eu-ai-act.yaml")),
     ("eu-cyber-resilience-act.yaml", lambda: _example("eu-cyber-resilience-act.yaml")),
+    ("example-site-standard.yaml", lambda: _example("example-site-standard.yaml")),
     ("industrial-template.yaml", lambda: _example("industrial-template.yaml")),
     ("amr-template.yaml", lambda: _example("amr-template.yaml")),
     ("home-template.yaml", lambda: _example("home-template.yaml")),
     ("functional-safety-template.yaml", lambda: _example("functional-safety-template.yaml")),
 ]
-FILLED_FILES = ALL_FILES[:6]  # the templates are invalid on purpose until filled in
+FILLED_FILES = ALL_FILES[:7]  # the templates are invalid on purpose until filled in
 TEMPLATES = [
     "industrial-template.yaml",
     "amr-template.yaml",

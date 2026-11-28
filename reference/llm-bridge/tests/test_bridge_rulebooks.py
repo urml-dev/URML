@@ -73,6 +73,20 @@ def test_a_deployment_problem_stops_the_loop_at_once() -> None:
     assert exc.value.last_program == json.loads(_flight(30.0))
 
 
+def test_a_limit_the_site_did_not_set_stops_the_loop_at_once() -> None:
+    # RFC-0714: a model cannot write a geofence into the site's envelope, so a
+    # require_envelope refusal is not sent back to it for another attempt.
+    site_standard = yaml.safe_load(
+        (REPO_ROOT / "examples" / "rulebooks" / "example-site-standard.yaml").read_text(encoding="utf-8")
+    )
+    provider = EchoProvider(scripted=[_flight(30.0), _flight(30.0)])
+    with pytest.raises(BridgeDeploymentViolation) as exc:
+        _bridge(provider, rulebooks=[site_standard]).translate("Take off.")
+    assert exc.value.attempts == 1 and len(provider.call_log) == 1
+    assert exc.value.attempt_codes == [["rule.limit_missing"]]
+    assert {e.detail["remediation_hint"] for e in exc.value.last_result.errors} == {"fix_deployment"}
+
+
 def test_an_invalid_rulebook_stops_the_loop_at_once() -> None:
     provider = EchoProvider(scripted=[_flight(30.0)])
     with pytest.raises(BridgeDeploymentViolation):
