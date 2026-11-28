@@ -238,10 +238,11 @@ def test_run_runtime_revalidates_with_the_chosen_policy(
     assert calls["execute"]["manifest_base_dir"] == MANIFEST.parent
 
 
-def test_run_refuses_when_the_runtime_check_rejects(tmp_path: Path, capsys) -> None:
+def test_run_refuses_when_the_check_before_execution_rejects(tmp_path: Path, capsys) -> None:
     """The bridge validates without the manifest's directory, so an HBOM-content
-    rule can only warn there. The runtime re-validates with the directory, reads
-    the HBOM, and refuses before any adapter call."""
+    rule can only warn there. `urml run` validates the program once more with
+    the directory before it builds an adapter (RFC-0715, Draft), reads the HBOM,
+    and refuses. The runtime would refuse the same program at its own check."""
     echo = tmp_path / "echo.json"
     echo.write_text(
         json.dumps(

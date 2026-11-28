@@ -20,6 +20,25 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+### Added: a chained evidence log and the execution record
+
+- Every line of an evidence log carries `seq`, its line number, and `prev`, the digest of the line before it ([RFC-0715](docs/rfcs/0715-validation-record-chain.md), Draft). This is validation record format 2. A removed, edited or moved line shows to anyone who holds a later line or the head digest. The chain holds no secret: it does not stop someone who rewrites the whole file, and a file whose end was cut off still checks, so the head is worth noting somewhere else. The log stays opt-in and no default changes.
+- The runtime writes one execution record (`urml.execution-record/1`) to the same log at the end of every run that got past its re-validation, whether the run completed, failed or raised: each step dispatched, its outcome, its error and its duration. It records what the runtime sent to the adapter and what the adapter reported back, not what the robot physically did. `urml execute`, `urml run`, the MCP server and the ROS 2 action server write it when their evidence log is set; fleet execution does not.
+- `urml evidence log FILE` checks a log: record counts by kind, where the chain starts, whether it is intact, and the head (the last line's `seq` and digest). Exit 0 when no break is found, 1 when one is, 2 when the file cannot be read. `verify_log` and `read_log` are the Python calls.
+- `append_record` takes an exclusive lock for each line (`flock` on POSIX, `msvcrt.locking` on Windows), calls `fsync` before it lets go, waits up to ten seconds for another writer, and returns the record as written. Two commands, or a server and a command, can share one log.
+
+### Changed: evidence log
+
+- Writers write `urml.validation-record/2`. Format 1 files, the committed registry evidence among them, read and replay as before, and a log an older version began is continued in place. A 0.5.3 reader refuses format 2 lines and execution records.
+- `urml run` validates the program as it will run (with the request copied into its `description`, and with the manifest's directory in view) before it builds an adapter, and records that verdict, so the run's execution record has an acceptance with the same program digest. A program the bridge accepted and this check refuses is now refused before a rehearsal runs or an adapter is built; the runtime refused it before, after both.
+- A run that finished while its execution record could not be written keeps its result. `urml execute` and `urml run` print it, say on stderr that the record is missing, and exit 2. `RuntimeResult` gains `evidence_log_error`, which the MCP server returns and the action server puts in `reason`.
+- An evidence log has to be a regular file on a file system that can lock one. A pipe or a device is refused.
+
+### Fixed: evidence log
+
+- `read_records` split a log with `str.splitlines`, which also breaks at U+2028, U+2029 and U+0085. A request holding one of them could be written and not read back. A line now ends at a newline and nowhere else.
+- The CLI dropped the note the runtime attaches when a refusal's record could not be written. It prints it.
+
 ## [0.5.3] - 2026-11-27
 
 The family is bumped in lockstep to 0.5.3 so the work merged since 0.5.2 reaches PyPI: the evidence report's Markdown, HTML, redacted and signed forms, the EU and UL rulebooks, the certification reproduction tool and its fee rules, and the release SBOMs. 0.5.2 on PyPI was built from the v0.5.2 tag, and a re-run skips versions that already exist, so none of it could ship without a new version.
