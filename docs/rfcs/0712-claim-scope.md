@@ -177,6 +177,7 @@ In the pull request that carries this RFC, before it is accepted:
 - `conformance/src/urml_conformance/`: a new `claim.py` (which fixtures apply, the companion, who served each call); `runner.py` and `__main__.py` take a claimed manifest, a binding file and a backend; `report.py` gains the optional claim block and per-fixture scope; `recording.py` binds the optional capabilities of a composed adapter; `registry.py` replaces the whole-profile check in `check_report` with the recomputed scope and refuses a `fake` backend; `fixtures.py` generates the world files.
 - `conformance/fixtures/`: the three fixture changes above.
 - `registry/README.md`, `docs/registry/SUBMISSION.md`, `conformance/README.md`, `conformance/CONFORMANCE_KIT.md`, `TRADEMARK.md`, `docs/glossary.md`: what "URML-compatible" covers.
+- `COMMERCIAL.md`: the URML-Certified paragraph prices a run "against a simulator, a recorded substrate or your hardware". The recorded substrate leaves that sentence, since a replay is refused for every claim.
 
 ## Regulatory alignment
 
