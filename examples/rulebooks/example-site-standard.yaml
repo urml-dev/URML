@@ -1,0 +1,62 @@
+# Example organization rulebook: the site standard of Example Logistics, a
+# fictional company.
+#
+# The validator checks a program against the limits a site's safety envelope
+# sets. A limit nobody set is not checked, and the program is accepted all the
+# same: an envelope with no geofence passes every place a program names.
+#
+# A require_envelope rule turns that silence into a refusal. This file says
+# every Example Logistics site states the area its robots may work in, and a
+# speed limit, before a robot runs there. Until the site's envelope sets both,
+# every program is refused with rule.limit_missing.
+#
+# The rules do not say what the limits should be. The site's risk assessment
+# decides that, and a cap rule can bound it (example-warehouse.yaml caps the
+# speed at 1.5 m/s). A manifest limit does not satisfy these rules: the
+# manifest says what the robot can do, and the envelope says what this site
+# allows.
+#
+# There is no applies_to block on purpose. When an operator loads this file
+# with --rulebook, it applies to every program.
+#
+# Draft: the format is specified in spec/layer-1-hal/rulebook.md (RFC-0702),
+# and the require_envelope kind in RFC-0714.
+
+rulebook_version: "0.1"
+rulebook_id: example_logistics_site_standard
+title: Example Logistics site standard for robot deployments (fictional)
+issuer:
+  kind: organization
+  name: Example Logistics (a fictional company)
+source_status: organization_policy
+effective: "2026-12-01"
+reviewed: "2026-11-28"
+description: >-
+  What every Example Logistics site puts on record before a robot runs there:
+  the area the robots may work in, and a speed limit. The company and its
+  standard are fictional; the file shows the require_envelope rule kind.
+
+rules:
+  - id: site_declares_its_work_area
+    title: Every site declares the area its robots may work in
+    cite:
+      text: "Example Logistics Site Standard, section 2.1 (fictional)"
+    note: >-
+      Satisfied when the site's safety envelope declares at least one
+      geofence. The validator then refuses any program that names a place
+      outside the declared geofences. It does not see the path between two
+      places, which stays with the robot's own navigation and safety system.
+    require_envelope:
+      fields: [geofences]
+
+  - id: site_sets_a_speed_limit
+    title: Every site sets a speed limit for its robots
+    cite:
+      text: "Example Logistics Site Standard, section 2.2 (fictional)"
+    exceptable: true
+    note: >-
+      Satisfied when the site's safety envelope sets max_velocity. Exceptable
+      for a commissioning run in an empty building; a deployment rulebook
+      names the commissioning plan as the exception's basis.
+    require_envelope:
+      fields: [max_velocity]

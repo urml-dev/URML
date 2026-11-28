@@ -318,6 +318,9 @@ RULEBOOK_REGISTRY: dict[str, Path] = {
     # be airborne at once under the bundled FAA rulebook (14 CFR 107.35).
     "example_warehouse": _EXAMPLES_RULEBOOKS / "example-warehouse.yaml",
     "example_deployment": _EXAMPLES_RULEBOOKS / "example-deployment.yaml",
+    # RFC-0714: a site standard that requires the envelope to declare a
+    # geofence and a speed limit.
+    "example_site_standard": _EXAMPLES_RULEBOOKS / "example-site-standard.yaml",
 }
 
 

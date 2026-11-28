@@ -282,6 +282,9 @@ class ErrorCode(StrEnum):
     # A `require_declared` rule is not satisfied (a warning when no deployment
     # rulebook is loaded).
     RULE_DECLARATION_MISSING = "rule.declaration_missing"
+    # A `require_envelope` rule names a limit the site's safety envelope does
+    # not set (RFC-0714).
+    RULE_LIMIT_MISSING = "rule.limit_missing"
     # A fleet program can have more aircraft airborne at once than the limit.
     RULE_CONCURRENCY_EXCEEDED = "rule.concurrency_exceeded"
     # A zone rule cannot place a step it must judge (fails closed).

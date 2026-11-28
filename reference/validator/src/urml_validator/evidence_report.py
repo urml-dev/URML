@@ -649,6 +649,16 @@ def _rules_section(inv: RulebookInventory, seen: set[str]) -> Section:
         for i in [*inv.errors, *inv.warnings]
         if str(i.code) == "rule.declaration_missing"
     }
+    # RFC-0714: limits a `require_envelope` rule names and the envelope does not
+    # set. Errors only: a violation an exception covers is a warning, and the
+    # rule is then reported with its exception below.
+    missing_limits = {
+        (str((i.detail or {}).get("rulebook_id")), str((i.detail or {}).get("rule_id"))): [
+            str(name) for name in (i.detail or {}).get("missing_fields") or []
+        ]
+        for i in inv.errors
+        if str(i.code) == "rule.limit_missing"
+    }
     for issue in [*inv.errors, *inv.warnings]:
         code = str(issue.code)
         detail = issue.detail or {}
@@ -729,6 +739,30 @@ def _rules_section(inv: RulebookInventory, seen: set[str]) -> Section:
                     )
                 continue
             exception = inv.exceptions.get((book.rulebook_id, rule.id))
+            if rule.kind == "require_envelope" and exception is None:
+                unset = missing_limits.get((book.rulebook_id, rule.id))
+                if unset:
+                    base["missing_fields"] = unset
+                    c.add(
+                        item_id,
+                        "missing",
+                        f"{_rule_text(rule)} The safety envelope sets no {', '.join(unset)}; every "
+                        "program is refused until it does.",
+                        src,
+                        f"rules.{rule.id}",
+                        detail=base,
+                    )
+                else:
+                    c.add(
+                        item_id,
+                        "checked",
+                        f"{_rule_text(rule)} The safety envelope sets every limit the rule names. "
+                        "Checked at every validation (require_envelope).",
+                        src,
+                        f"rules.{rule.id}",
+                        detail=base,
+                    )
+                continue
             if exception is not None:
                 base["exception"] = {"deployment": exception[0], "basis": exception[1].basis}
             c.add(

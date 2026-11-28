@@ -20,6 +20,10 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+### Added: rulebooks
+
+- A rulebook can require a site limit ([RFC-0714](docs/rfcs/0714-rulebook-requires-a-limit.md), Draft). The new rule kind `require_envelope` lists safety-envelope fields, such as `geofences` or `max_velocity`. A deployment that loads the rulebook and leaves a listed limit unset has every program refused with the new code `rule.limit_missing`. Without such a rule a limit nobody set is not checked and the program is accepted, which stays the default. The evidence report shows the rule as `checked` or `missing` under the standard it cites. `examples/rulebooks/example-site-standard.yaml` is a fictional company's site standard that uses it. No government rulebook or template gains a rule.
+
 ## [0.5.3] - 2026-11-27
 
 The family is bumped in lockstep to 0.5.3 so the work merged since 0.5.2 reaches PyPI: the evidence report's Markdown, HTML, redacted and signed forms, the EU and UL rulebooks, the certification reproduction tool and its fee rules, and the release SBOMs. 0.5.2 on PyPI was built from the v0.5.2 tag, and a re-run skips versions that already exist, so none of it could ship without a new version.

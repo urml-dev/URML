@@ -1,0 +1,27 @@
+name: rulebook/site_without_geofence_rejected
+description: >
+  A require_envelope rule (RFC-0714) turns an unset limit into a refusal. The
+  site standard requires the envelope to declare a geofence and a speed limit.
+  This site's envelope sets a speed limit and declares no geofence, so the
+  validator has no work area to judge dock_a against. The program is refused
+  with rule.limit_missing before any command is sent. Without the rulebook the
+  same program is accepted.
+
+manifest: warehouse_areas
+envelope: warehouse_default
+policy: none
+profiles: [warehouse]
+rulebooks: [example_site_standard]
+
+program:
+  profile: warehouse
+  behavior:
+    type: sequence
+    on_error: abort_and_report
+    steps:
+      - move_to: { location: dock_a }
+
+expected_validation:
+  accepted: false
+  error_codes:
+    - rule.limit_missing

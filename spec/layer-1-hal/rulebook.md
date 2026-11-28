@@ -80,7 +80,7 @@ An `<identifier>` matches `^[a-z][a-z0-9_]*$` and is at most 64 characters, the 
 
 The following constraints are **normative**:
 
-1. **No expression language.** A rule is one of the six fixed kinds below, with flat keys. There are no conditions, functions, regular expressions or arithmetic beyond what a kind defines.
+1. **No expression language.** A rule is one of the seven fixed kinds below, with flat keys. There are no conditions, functions, regular expressions or arithmetic beyond what a kind defines.
 2. **Unknown keys are rejected**, at every level of the document.
 3. **Issuer and source status agree.** A `government` rulebook has `source_status` `final_rule` or `enacted_statute`. An `organization` rulebook has `organization_policy`. A `deployment` rulebook has `deployment_declaration`. There is no status for a proposed rule, so no government rulebook can encode one.
 4. **A deployment rulebook carries declarations and exceptions only.** It MUST NOT carry `applies_to`, `rules` or `obligations`. Other rulebooks MUST NOT carry `declarations` or `exceptions`.
@@ -113,7 +113,7 @@ Every rule has these fields:
 | `cite` | government rulebooks | `{text, url, standard}`: the source the rule encodes, such as `14 CFR 107.51(b)`. `standard` is optional (see below) |
 | `exceptable` | no (default `false`) | whether a deployment rulebook may declare an exception to this rule |
 | `note` | no | informational: how a number was derived, what the rule cannot see |
-| one kind key | yes | exactly one of `cap`, `forbid_primitive`, `forbid_zone_entry`, `forbid_over_people`, `require_declared`, `max_concurrent_aircraft` |
+| one kind key | yes | exactly one of `cap`, `forbid_primitive`, `forbid_zone_entry`, `forbid_over_people`, `require_declared`, `require_envelope`, `max_concurrent_aircraft` |
 
 ### The `standard` field of a cite
 
@@ -214,6 +214,21 @@ Severity depends on whether the operator has declared a deployment at all:
 
 - With at least one deployment rulebook loaded, a violation is an **error**.
 - With none loaded, the validator knows nothing about the operation, and a violation is a **warning**. The program is not refused for a declaration no one has been asked to file, and the report says what the deployment must declare.
+
+### `require_envelope`
+
+```yaml
+require_envelope:
+  fields: [<envelope field>, ...]   # required, at least one, each once
+```
+
+The rule requires the site's safety envelope to set a limit. `fields` names envelope fields from a closed list: `geofences`, `people_occupancy_zones`, `max_velocity`, `max_altitude`, `max_payload`, `max_grip_force_n`, `max_drop_height`. These are the limits the validator checks before a program runs ([RFC-0714](../../docs/rfcs/0714-rulebook-requires-a-limit.md)).
+
+The rule is judged once per robot that executes steps. A list field is set when it has at least one entry. A number is set when it is given. When the robot has no envelope, or its envelope leaves a listed field unset, the rule is violated: `rule.limit_missing`. The violation is an error whether or not a deployment rulebook is loaded, because the envelope is an input of its own and the operator either passed one that sets the limit or did not.
+
+The rule does not judge the value. A geofence that covers the whole building satisfies it. What a limit should be comes from the risk assessment or from a `cap` rule. The rule only turns "nobody set this limit, so nothing was checked" into a refusal.
+
+A manifest limit does not satisfy the rule. The manifest says what the robot can do, and the envelope says what this site allows.
 
 ### `max_concurrent_aircraft`
 
@@ -379,6 +394,7 @@ A rule with no resolved zone judges nothing and never reports `rule.place_unknow
 | `rule.zone_forbidden` | error | a step's target is in a zone of a `forbid_zone_entry` rule |
 | `rule.over_people` | error | an aircraft's target is in a declared people-occupancy zone |
 | `rule.declaration_missing` | error; a warning when no deployment rulebook is loaded | a `require_declared` rule is not satisfied |
+| `rule.limit_missing` | error | a `require_envelope` rule names a limit the safety envelope does not set |
 | `rule.concurrency_exceeded` | error | more aircraft can be airborne at once than the limit |
 | `rule.place_unknown` | error | a zone rule cannot place a step it must judge |
 | `rule.zone_undeclared` | warning | a rule names a zone that resolves nowhere |
@@ -406,7 +422,7 @@ Every `rule.*` issue populates `ValidationError.detail`:
 ```
 
 - `exception`, when an exception exists for the rule: `{"rulebook_id", "basis", "limit", "expires", "expired", "exceeds_limit"}`, where `rulebook_id` names the deployment rulebook that declared it.
-- `remediation_hint` is `revise_program` when editing the program can resolve the issue, and `fix_deployment` when it cannot (`rule.declaration_missing`, `rule.rulebook_invalid`). The LLM bridge sends the first kind back to the model and stops on the second.
+- `remediation_hint` is `revise_program` when editing the program can resolve the issue, and `fix_deployment` when it cannot (`rule.declaration_missing`, `rule.limit_missing`, `rule.rulebook_invalid`). The LLM bridge sends the first kind back to the model and stops on the second.
 - Kind-specific fields: `quantity`, `value`, `limit` for caps; `primitive`, `used_by` (the step's own primitive when it differs), `name` and `zone` as they apply, for `forbid_primitive`; `zone` and `target` for zone entry and people zones; `key`, `declared_value`, `allowed_values` for declarations; `count`, `limit`, `aircraft`, `remote_pilots_in_command` for concurrency; `reason` for `rule.place_unknown`; `zone` for `rule.zone_undeclared`; `source` (the file, or the rulebook id when the file parsed) and `problems` (what is wrong) for `rule.rulebook_invalid`.
 - In a fleet validation, `member` names the robot, as it does for other passes.
 
