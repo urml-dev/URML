@@ -36,7 +36,7 @@ URML-Certified names a software package and a version. A company that buys robot
 This RFC keeps the one mark and the public criteria and changes six things:
 
 1. The certificate names the product: who submitted it, the robot maker and models, and the controller software the run met.
-2. It states where the Licensor repeated the run: on the robot, on a simulator or on a recorded substrate.
+2. It states where the Licensor repeated the run: on the robot or on a simulator.
 3. The certified run includes the goal-line lane, so "a refused program sends nothing" is tested and no longer rests on the attestation alone.
 4. Each certificate gets an ID, one fixed plain text, a file signed by the Licensor and a page at urml.dev/verify.
 5. A certificate stays valid for its term against the suite version it names.
@@ -86,13 +86,12 @@ The package stays public, as RFC-0705 requires. A maker whose controller firmwar
 
 ### The certificate says where the run happened
 
-`certification.reproduction` gains `substrate`, with one of three values:
+`certification.reproduction` gains `substrate`, with one of two values:
 
 - `hardware`: the Licensor's run drove the robot itself.
 - `simulator`: it drove a simulator of the robot or of its controller.
-- `recorded`: it drove responses captured earlier from the robot or from a simulator and replayed.
 
-These are the backend kinds of RFC-0712, which the submitter declares in the self-report and the Licensor's run confirms. A test double that answers without a model of the robot is none of the three, and RFC-0712 refuses a claim made on one.
+These are the backend kinds RFC-0712 accepts, which the submitter declares in the self-report and the Licensor's run confirms. RFC-0712 refuses the other two kinds for every claim: a replay of responses captured earlier, and a test double that answers without a model of the robot.
 
 The values describe what happened. The registry does not rank them, as it does not rank the kinds of field evidence today. A buyer decides which it accepts, and the certificate, the scope line and the verify page all state the value.
 
@@ -124,7 +123,7 @@ The conformance report gains a `goal_line` section with its own counts and fixtu
 >
 > It passed all [N] public URML conformance tests that apply to it in the [profiles] profile (conformance [version]): [the scope statement of RFC-0712, which says what the product served, what the test companion served and what did not apply]. All [M] programs that the specification says must be refused were refused, and nothing was sent to the robot.
 >
-> Yahalomik Ltd. repeated the run on [the robot itself, model X | a simulator | a recorded substrate] on [date].
+> Yahalomik Ltd. repeated the run on [the robot itself, model X | a simulator] on [date].
 >
 > [Submitter] attests that every command entering through URML is checked before the robot acts on it.
 >
@@ -206,7 +205,7 @@ The Licensor is paid to certify and now also signs the certificate. The conflict
 
 1. **A second mark or a product tier.** For example "URML-Certified Product", or levels for hardware and simulator. Rejected: the specification keeps two tiers on purpose, and a second mark is a second thing to register and police. One mark with a stated scope says the same with less.
 2. **Certify closed builds delivered privately.** It would fit controller firmware that never becomes public. Not now: a reproduction that nobody else can repeat rests on the Licensor's word, and avoiding that is what the mark was built for. The question comes back when a maker asks and a second party can reproduce.
-3. **Keep ending certificates at every urml-conformance release and re-run them all.** The Licensor could do that for simulator and recorded runs. It cannot for hardware runs, and the load grows with every certificate and every release.
+3. **Keep ending certificates at every urml-conformance release and re-run them all.** The Licensor could do that for simulator runs. It cannot for hardware runs, and the load grows with every certificate and every release.
 4. **Keep the fee per run.** A maker with quarterly firmware pays four times a year or stays uncertified for most of it. A yearly fee per family is a line a product manager can budget.
 5. **A hosted verification service.** Rejected: a static page and an offline signature check answer the same question with nothing to operate and nothing collected about who asks.
 6. **Refusal tests written against each model's own manifest.** The Licensor would hand the runtime programs that exceed that model's declared limits. It ties the certificate to the product's own numbers and needs new suite machinery. Left as an open question.
