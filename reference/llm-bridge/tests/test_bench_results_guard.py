@@ -54,6 +54,18 @@ SUPERSEDED: dict[str, str] = {
         "measured at a16a03f, before RFC-0684 added the people-zone check to "
         "release.at; gap_release_in_zone is now stopped"
     ),
+    "2026-09-26-echo-echo-adversarial-home-en-post-fix": (
+        "measured at a16a03f, before RFC-0713 made the envelope pass refuse a "
+        "target in a frame it cannot relate to the fence; gap_frame is now stopped"
+    ),
+    "2026-09-27-echo-echo-adversarial-drone-en-rulebook": (
+        "measured before RFC-0713; gap_wgs84 now carries envelope.frame_unresolved "
+        "from the envelope pass beside the rulebook's rule.place_unknown"
+    ),
+    "2026-09-27-echo-echo-adversarial-industrial-en-release-check": (
+        "measured at e87d2e9, before RFC-0713; gap_frame is now stopped, and the "
+        "corpus relabels gap_frame and gap_release_in_zone as envelope rows"
+    ),
 }
 
 #: Setup entries that pin an input file by sha256.

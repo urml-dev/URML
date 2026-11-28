@@ -185,6 +185,8 @@ class ErrorCode(StrEnum):
     ENVELOPE_FORCE_EXCEEDED = "envelope.force_exceeded"
     ENVELOPE_GEOFENCE_VIOLATION = "envelope.geofence_violation"
     ENVELOPE_OCCUPANCY_ZONE_INTRUSION = "envelope.occupancy_zone_intrusion"
+    # RFC-0713: no transform relates the target's frame to a geofence or zone frame.
+    ENVELOPE_FRAME_UNRESOLVED = "envelope.frame_unresolved"
     # RFC-0006: structured link-loss policy coherence.
     ENVELOPE_LINK_LOSS_UNDECLARED_ROLE = "envelope.link_loss_undeclared_role"
     ENVELOPE_LINK_LOSS_INCOHERENT = "envelope.link_loss_incoherent"

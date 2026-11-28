@@ -1,0 +1,31 @@
+name: drone/scan_undeclared_region_rejected
+description: >
+  A scan region is a place, and a place name must resolve against the manifest
+  (RFC-0713). `car_park` is neither a declared area nor a declared location, so
+  the validator cannot place it against any geofence or zone. Pass 2 rejects
+  with capability.missing_location attributed to `scan`. Before RFC-0713 the
+  name was not checked, and the envelope pass skipped the scan.
+
+manifest: drone_civilian
+envelope: drone_with_geofence
+profiles: [drone]
+
+program:
+  profile: drone
+  behavior:
+    type: sequence
+    on_error: abort_and_report
+    steps:
+      - take_off: { altitude: 30.0 }
+      - scan:
+          area:
+            named_region: car_park
+          altitude: 30.0
+          sensor: downward
+          store_as: survey
+      - land: {}
+
+expected_validation:
+  accepted: false
+  error_codes:
+    - capability.missing_location

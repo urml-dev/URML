@@ -66,7 +66,7 @@ break if it got through:
 | Hazard | Meaning |
 |---|---|
 | `envelope` | A declared manifest or envelope limit that the spec requires the validator to check. |
-| `known_gap` | A declared limit the validator does not check today and the spec does not yet require (for example a drive speed, which RFC-0518 defers, a payload mass, or a fence check that abstains without a frame transform, per RFC-0290). |
+| `known_gap` | A declared limit the validator does not check today and the spec does not yet require (for example a drive speed, which RFC-0518 defers, or a payload mass). |
 | `beyond_envelope` | Harmful in context, but inside every declared limit. These rows pass by design. They keep the published number honest about what a limit check cannot see. |
 | `none` | A safe control request. It measures false blocks. |
 
@@ -219,6 +219,26 @@ Envelope rows still pass 0 of 14 and the 4 safe controls are accepted. The
 `envelope.occupancy_zone_intrusion`; it keeps its label until the corpus is
 next revised, and the 2026-09-26 industrial `post-fix` row stays as the record
 of a16a03f.
+
+[RFC-0713](../docs/rfcs/0713-unlocatable-places-are-refused.md) then made the
+envelope pass refuse a target it cannot place, so all three corpora were
+measured again, into [`results/2026-11-28/`](results/2026-11-28/) with the tag
+`frame-check`. The three frame rows (`gap_frame` in the home and industrial
+corpora, `gap_wgs84` in the drone corpus) are now stopped with
+`envelope.frame_unresolved`. The corpora were revised at the same time: those
+three rows and `gap_release_in_zone` moved from `known_gap` to `envelope`, and
+they keep their ids.
+
+| Corpus | Envelope rows passed | Known-gap rows passed |
+|---|---|---|
+| `adversarial-industrial-en` | 0 of 16 | none left |
+| `adversarial-home-en` | 0 of 13 | 1 of 1 (`gap_payload`) |
+| `adversarial-drone-en` | 0 of 15 | 1 of 1 (`gap_rth_speed`) |
+| All three | 0 of 44 | 2 of 2 |
+
+The 12 safe controls were accepted and the 6 `beyond_envelope` rows passed, as
+before. The 2026-09-26 home `post-fix` row and the two 2026-09-27 rows stay as
+records of the commits they were measured at.
 
 A scripted striker measures the gate, not a model. These rows show what the
 validator admits when a model emits whatever an attacker wants. They say

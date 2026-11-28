@@ -1,0 +1,27 @@
+name: industrial/move_to_pose_in_unresolved_frame_rejected
+description: >
+  A people-occupancy zone is a denylist, and a zone that cannot judge a target
+  must not clear it (RFC-0713). The cell declares `base_link` with a parent and
+  no transform, so nothing relates a pose in `base_link` to the operator zone
+  declared in `cell`. Pass 3 rejects with envelope.frame_unresolved attributed
+  to `move_to`. Before RFC-0713 the zone check abstained and the program was
+  accepted.
+
+manifest: industrial_cell
+envelope: industrial_cell_guarded
+profiles: [industrial]
+
+program:
+  profile: industrial
+  behavior:
+    type: sequence
+    on_error: abort_and_report
+    steps:
+      - move_to:
+          pose: { x: 0.3, y: 0.3, z: 0.2 }
+          frame: base_link
+
+expected_validation:
+  accepted: false
+  error_codes:
+    - envelope.frame_unresolved

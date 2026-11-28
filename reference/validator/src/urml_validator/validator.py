@@ -296,7 +296,8 @@ def validate(
     env_errors, _ = _walk_env(
         program_model.behavior, ["behavior"], manifest_model, envelope_model, _NavState()
     )
-    errors.extend(env_errors)
+    for issue in env_errors:
+        (warnings if issue.severity == "warning" else errors).append(issue)
     # RFC-0006: link-loss policy coherence is a whole-envelope check.
     errors.extend(_check_link_loss_coherence(manifest_model, envelope_model))
     # RFC-0382: monitorable temporal-logic properties parse + resolve signals.
@@ -998,7 +999,7 @@ def validate_fleet(
         env = envelopes.get(effective)
         for env_err in _check_envelope(step, manifest, env, path):
             env_err.detail = {**(env_err.detail or {}), "member": effective}
-            errors.append(env_err)
+            (warnings if env_err.severity == "warning" else errors).append(env_err)
 
     # ----- Barriers: declared-membership + peer_link role -----
     for path, barrier in _iter_barriers(program_model):
@@ -1501,6 +1502,14 @@ def _check_named_place(
             "or name a declared place.",
         )
     ]
+
+
+def _declared_area(manifest: CapabilityManifest, name: str) -> Any | None:
+    """The declared area called ``name`` (RFC-0615), or None."""
+    for area in manifest.declared_areas or []:
+        if area.name == name:
+            return area
+    return None
 
 
 def _frame_declared(manifest: CapabilityManifest, name: str) -> bool:
@@ -3043,6 +3052,28 @@ def _check_scan_caps(
                     suggestion=f"Declare {args.sensor!r} under manifest.perception.",
                 )
             )
+    region = args.area.named_region
+    if region is not None and _declared_area(manifest, region) is None:
+        # RFC-0713: a region the validator cannot place would skip every
+        # geofence and zone, so the name must resolve to a declared area.
+        if any(loc.name == region for loc in manifest.declared_locations):
+            message = (
+                f"scan.area.named_region {region!r} names a declared location, which is a "
+                "point. A scan region must be a declared area."
+            )
+        else:
+            message = f"scan.area.named_region references undeclared area {region!r}."
+        out.append(
+            _err(
+                ErrorCode.CAPABILITY_MISSING_LOCATION,
+                "scan",
+                path,
+                message,
+                field="area.named_region",
+                suggestion=f"Add {region!r} to manifest.declared_areas with the polygon to "
+                "scan, or name a declared area.",
+            )
+        )
     return out
 
 
@@ -3974,7 +4005,9 @@ def _check_envelope_bimanual(
 #
 # A geofence or zone in another frame applies when the target resolves into
 # that frame through the manifest's frame graph (RFC-0290). When no transform
-# connects the frames, the check abstains, as RFC-0290 specifies.
+# connects the frames, the check does not pass: the step is refused with
+# `envelope.frame_unresolved` (RFC-0713). A geofence is an allowlist and a zone
+# is a denylist, and for both, declining to judge would admit the target.
 # docs/safety/envelope-coverage.md lists which checks apply to which verb.
 # =============================================================================
 
@@ -4020,6 +4053,17 @@ def _altitude_in_band(z: float | None, geofence: Any) -> bool:
     return True
 
 
+#: The frame of a literal scan area that cannot be placed (RFC-0713): the area
+#: names no frame, and the envelope's geofences and zones use more than one.
+#: An Identifier is never empty, so this never equals a declared frame.
+_UNFRAMED = ""
+
+
+def _frames_related(src: str, dst: str, frames: Mapping[str, Frame]) -> bool:
+    """True iff a point in ``src`` can be expressed in ``dst`` (RFC-0290)."""
+    return src == dst or transform_point_between((0.0, 0.0, 0.0), src, dst, frames) is not None
+
+
 def _check_point_in_any_geofence(
     point: tuple[float, float],
     frame: str,
@@ -4031,8 +4075,9 @@ def _check_point_in_any_geofence(
 
     A geofence applies when it is in the same frame OR the point can be resolved
     into the geofence's frame through the manifest's frame graph (RFC-0290). When
-    no geofence applies (frame mismatch with no connecting transform) the check
-    abstains. ``failure_reason`` is ``"footprint"`` or ``"altitude"`` as before.
+    no geofence applies (no transform relates the frames) the point is not
+    admitted: ``failure_reason`` is ``"frame"`` (RFC-0713). Otherwise it is
+    ``"footprint"`` or ``"altitude"``.
     """
     if envelope is None or not envelope.geofences:
         return True, [], None
@@ -4048,8 +4093,9 @@ def _check_point_in_any_geofence(
         if resolved is not None:
             applicable.append((g, (resolved[0], resolved[1]), resolved[2]))
     if not applicable:
-        # No geofence in this frame and none reachable — the check abstains.
-        return True, [], None
+        # No geofence in this frame and none reachable. An allowlist that cannot
+        # judge a point does not admit it (RFC-0713).
+        return False, [g.name for g in envelope.geofences], "frame"
     footprint_match = False
     for g, gpoint, gz in applicable:
         if _point_in_polygon(gpoint, g.vertices):
@@ -4234,39 +4280,42 @@ def _scan_targets(
     """The scan area as one region, judged against the geofences and zones.
 
     Returns nothing when the envelope declares neither; the scan altitude is
-    checked in _check_envelope_scan. A ``named_region`` resolves through the
-    declared areas (RFC-0615); a name that is not a declared area cannot be
-    judged here. A literal polygon or bounding box carries no frame, so it is
-    read in the frame of the first declared geofence, else of the first
-    occupancy zone.
+    checked in _check_envelope_scan. A ``named_region`` names a declared area
+    (RFC-0615) and is judged as that region. Pass 2 refuses a name that is not
+    a declared area, a point location included (RFC-0713). A literal polygon or
+    bounding box carries
+    no frame, so it is read in the frame the envelope's geofences and occupancy
+    zones share. When they use more than one frame the area cannot be placed,
+    and the spatial checks refuse it (RFC-0713).
     """
     if envelope is None or not (envelope.geofences or envelope.people_occupancy_zones):
         return []
     scan_z = float(args.altitude) if args.altitude is not None else None
     area = args.area
     if area.named_region is not None:
-        place = _resolve_place(area.named_region, manifest)
-        if place is None or not place.is_area:
+        # The declared area, looked up directly: `_resolve_place` prefers a
+        # location of the same name, and a scan region is never a point.
+        declared = _declared_area(manifest, area.named_region)
+        if declared is None:
             return []
         label = f"scan.area.named_region {area.named_region!r}"
         return [
             _SpatialTarget(
                 label=label,
                 field="area.named_region",
-                frame=place.frame,
+                frame=declared.frame,
                 points=tuple(
-                    (f"{label} vertex {i}", "area.named_region", vertex)
-                    for i, vertex in enumerate(place.vertices)
+                    (f"{label} vertex {i}", "area.named_region", (float(v.x), float(v.y)))
+                    for i, v in enumerate(declared.polygon)
                 ),
                 z=scan_z,
                 occupancy="overlap",
             )
         ]
-    frame = (
-        envelope.geofences[0].frame
-        if envelope.geofences
-        else envelope.people_occupancy_zones[0].frame
-    )
+    spatial_frames = {g.frame for g in envelope.geofences} | {
+        z.frame for z in envelope.people_occupancy_zones
+    }
+    frame = next(iter(spatial_frames)) if len(spatial_frames) == 1 else _UNFRAMED
     points: list[tuple[str, str, tuple[float, float]]] = []
     bbox = area.bounding_box
     if bbox is not None:
@@ -4492,7 +4541,8 @@ def _disk_in_any_geofence(
 
     A disk fits when its center is inside the polygon and no edge comes closer
     than ``radius``. Geofences in another frame apply through the frame graph
-    (RFC-0290); when none applies, the check abstains and returns True.
+    (RFC-0290). When none applies the disk does not fit (RFC-0713); the caller
+    reports the unresolved frame before it gets here.
     """
     applicable: list[str] = []
     for g in envelope.geofences:
@@ -4510,7 +4560,92 @@ def _disk_in_any_geofence(
             for i in range(len(vertices))
         ):
             return True, [g.name]
-    return not applicable, applicable
+    return False, applicable
+
+
+def _overridden_zone_unrelated_warning(
+    name: str,
+    path: list[str],
+    target: _SpatialTarget,
+    zones: list[Any],
+) -> ValidationError:
+    """The warning for overridden zones the target cannot be related to (RFC-0713).
+
+    A zone marked ``allow_override: true`` is skipped either way, so nothing is
+    refused. The operator is told that the zone could not have been judged,
+    because an unconnected frame is often a mistake in the manifest.
+    """
+    listed = ", ".join(f"{z.name!r} in {z.frame!r}" for z in zones)
+    if target.frame == _UNFRAMED:
+        where = f"{target.label} gives literal coordinates and names no frame"
+    else:
+        where = f"{target.label} is in frame {target.frame!r}"
+    return ValidationError(
+        code=ErrorCode.ENVELOPE_FRAME_UNRESOLVED,
+        primitive=name,
+        path=path,
+        field=target.field,
+        message=f"{where}, and no transform relates it to the frame of people-occupancy zone "
+        f"{listed}. The zone is marked `allow_override: true` and is skipped either way, but "
+        "it could not have been judged.",
+        suggestion="Declare a `transform` in manifest.frames if the two frames are meant to be "
+        "connected.",
+        severity="warning",
+    )
+
+
+def _frame_unresolved_error(
+    name: str,
+    path: list[str],
+    target: _SpatialTarget,
+    envelope: SafetyEnvelope,
+    zones: list[Any] | None = None,
+) -> ValidationError:
+    """The refusal for a target no geofence, or no listed zone, can judge (RFC-0713).
+
+    ``zones`` is the people-occupancy zones whose frame cannot be related to the
+    target's; ``None`` means the geofences are the ones that cannot judge it.
+    """
+    if target.frame == _UNFRAMED:
+        used = sorted(
+            {g.frame for g in envelope.geofences}
+            | {z.frame for z in envelope.people_occupancy_zones}
+        )
+        return _err(
+            ErrorCode.ENVELOPE_FRAME_UNRESOLVED,
+            name,
+            path,
+            f"{target.label} gives literal coordinates and names no frame, and the "
+            f"envelope's geofences and people-occupancy zones use more than one frame "
+            f"({used!r}). The area cannot be placed against them, so it is not admitted.",
+            field=target.field,
+            suggestion="Name a declared area with `named_region`, or declare the "
+            "envelope's geofences and people-occupancy zones in one frame.",
+        )
+    if zones is None:
+        against = "any declared geofence (" + ", ".join(
+            f"{g.name!r} in {g.frame!r}" for g in envelope.geofences
+        ) + ")"
+        fix = "or name the target in the geofence's frame."
+    else:
+        against = "people-occupancy zone " + ", ".join(
+            f"{z.name!r} in {z.frame!r}" for z in zones
+        )
+        fix = (
+            "name the target in the zone's frame, or mark the zone with "
+            "`allow_override: true` in the envelope if the deployment has accepted the risk."
+        )
+    return _err(
+        ErrorCode.ENVELOPE_FRAME_UNRESOLVED,
+        name,
+        path,
+        f"{target.label} is in frame {target.frame!r}, and no transform relates that "
+        f"frame to the frame of {against}. A target the envelope cannot judge is not "
+        "admitted.",
+        field=target.field,
+        suggestion=f"Declare a `transform` in manifest.frames that places {target.frame!r} "
+        f"in the other frame's tree, {fix}",
+    )
 
 
 def _check_envelope_place_altitude(
@@ -4566,6 +4701,10 @@ def _check_envelope_geofence(
     is inside but altitude is outside the band also reject, with a
     distinct ``failure_reason`` of ``"altitude"`` so authors know whether
     to move the target in plan, in altitude, or both.
+
+    A target in a frame that no transform relates to any geofence's frame is
+    refused once, with ``envelope.frame_unresolved`` (RFC-0713): an allowlist
+    that cannot judge a target does not admit it.
     """
     if envelope is None or not envelope.geofences:
         return []
@@ -4573,10 +4712,20 @@ def _check_envelope_geofence(
 
     frames_by_name = {f.name: f for f in manifest.frames}
     for target in targets:
+        if not any(
+            _frames_related(target.frame, g.frame, frames_by_name) for g in envelope.geofences
+        ):
+            out.append(_frame_unresolved_error(name, path, target, envelope))
+            continue
         for label, field, point in target.points:
             ok, applicable, reason = _check_point_in_any_geofence(
                 point, target.frame, envelope, frames_by_name, z=target.z
             )
+            if reason == "frame":
+                # Unreachable while the test above holds; kept so the point
+                # check can never admit a point it could not judge.
+                out.append(_frame_unresolved_error(name, path, target, envelope))
+                break
             if ok and target.radius:
                 # The point is inside; its search disk must fit inside too.
                 fits, fences = _disk_in_any_geofence(
@@ -4650,6 +4799,11 @@ def _check_envelope_occupancy_zones(
     ``allow_override: true`` are deployer-acknowledged risks and the
     validator abstains on them.
 
+    A target in a frame that no transform relates to the frame of a zone
+    without ``allow_override`` is refused with ``envelope.frame_unresolved``
+    (RFC-0713): a denylist that cannot judge a target does not clear it. For a
+    zone with ``allow_override`` the same code is a warning.
+
     No-op when the envelope declares no occupancy zones.
     """
     if envelope is None or not envelope.people_occupancy_zones:
@@ -4658,6 +4812,26 @@ def _check_envelope_occupancy_zones(
 
     frames_by_name = {f.name: f for f in manifest.frames}
     for target in targets:
+        if target.occupancy == "none":
+            continue
+        unrelated = [
+            zone
+            for zone in envelope.people_occupancy_zones
+            if not zone.allow_override
+            and not _frames_related(target.frame, zone.frame, frames_by_name)
+        ]
+        # An unplaceable literal area is reported once: by the geofence check
+        # when the envelope has geofences, here when it has only zones.
+        if unrelated and not (target.frame == _UNFRAMED and envelope.geofences):
+            out.append(_frame_unresolved_error(name, path, target, envelope, zones=unrelated))
+        overridden = [
+            zone
+            for zone in envelope.people_occupancy_zones
+            if zone.allow_override
+            and not _frames_related(target.frame, zone.frame, frames_by_name)
+        ]
+        if overridden:
+            out.append(_overridden_zone_unrelated_warning(name, path, target, overridden))
         if target.occupancy == "point":
             for label, field, point in target.points:
                 ok, zone_name = _check_point_in_any_occupancy_zone(

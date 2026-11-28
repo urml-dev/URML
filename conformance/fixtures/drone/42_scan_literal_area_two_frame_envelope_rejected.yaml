@@ -1,0 +1,32 @@
+name: drone/scan_literal_area_two_frame_envelope_rejected
+description: >
+  A scan area given as literal coordinates names no frame. It is read in the
+  frame the envelope's geofences and people-occupancy zones share (RFC-0713).
+  This envelope declares its geofence in `agl` and its spectator zone in
+  `wgs84`, so the area cannot be placed. Pass 3 rejects with
+  envelope.frame_unresolved attributed to `scan`. Against an envelope with one
+  frame the same area is judged (drone/28_scan_area_clear_of_zone_positive).
+
+manifest: drone_civilian
+envelope: drone_two_frame_site
+profiles: [drone]
+
+program:
+  profile: drone
+  behavior:
+    type: sequence
+    on_error: abort_and_report
+    steps:
+      - take_off: { altitude: 30.0 }
+      - scan:
+          area:
+            bounding_box: { min_x: 5.0, max_x: 14.0, min_y: 5.0, max_y: 10.0 }
+          altitude: 30.0
+          sensor: downward
+          store_as: survey
+      - land: {}
+
+expected_validation:
+  accepted: false
+  error_codes:
+    - envelope.frame_unresolved

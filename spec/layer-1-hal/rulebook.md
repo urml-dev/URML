@@ -358,7 +358,7 @@ Zone rules fail closed. A rule refuses a step with `rule.place_unknown` when it 
 - `forbid_zone_entry` and `forbid_over_people`, for a `$reference` target;
 - any zone rule, for a place that cannot be expressed in the zone's frame.
 
-A rule with no resolved zone judges nothing and never reports `rule.place_unknown`. (The envelope pass abstains when frames do not connect, as RFC-0290 specifies today. A rule that cannot see a place cannot say the step is allowed.)
+A rule with no resolved zone judges nothing and never reports `rule.place_unknown`. (The envelope pass refuses a target whose frame does not connect to a fence or zone frame, with `envelope.frame_unresolved`, since RFC-0713. A rule that cannot see a place cannot say the step is allowed.)
 
 ## Evaluation semantics
 

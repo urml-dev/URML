@@ -20,6 +20,10 @@ The format follows [Keep a Changelog 1.1.0](https://keepachangelog.com/en/1.1.0/
 
 ## [Unreleased]
 
+### Changed: validator
+
+- The safety-envelope pass no longer passes a target it cannot place ([RFC-0713](docs/rfcs/0713-unlocatable-places-are-refused.md), Draft). A target in a frame that no transform relates to a declared geofence, or to a people-occupancy zone without `allow_override: true`, is refused with the new code `envelope.frame_unresolved`. Before, the check abstained (RFC-0290), so a pose inside a people zone was accepted when it was named in a frame such as `base_link`. For a zone marked `allow_override: true`, which is skipped either way, the same code is a warning. A `scan` region must name a declared area (`capability.missing_location`): an undeclared name is refused, and so is the name of a point location, such as "scan the kitchen" on a manifest that declares the kitchen as a point. A scan area given as literal coordinates is refused when the envelope's geofences and zones use more than one frame. No conformance fixture changes outcome. Seven fixtures are added, which makes 276. The three frame rows of the adversarial bench are stopped, and it was measured again: 0 of 44 envelope rows pass (`bench/results/2026-11-28/`).
+
 ## [0.5.3] - 2026-11-27
 
 The family is bumped in lockstep to 0.5.3 so the work merged since 0.5.2 reaches PyPI: the evidence report's Markdown, HTML, redacted and signed forms, the EU and UL rulebooks, the certification reproduction tool and its fee rules, and the release SBOMs. 0.5.2 on PyPI was built from the v0.5.2 tag, and a re-run skips versions that already exist, so none of it could ship without a new version.

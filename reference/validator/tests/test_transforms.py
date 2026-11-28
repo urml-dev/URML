@@ -190,13 +190,30 @@ def test_geofence_cross_frame_outside_rejected():
     assert result.has(ErrorCode.ENVELOPE_GEOFENCE_VIOLATION)
 
 
-def test_geofence_no_transform_abstains():
-    # Same setup but base_link has no transform -> not resolvable -> geofence
-    # abstains -> no violation (backward-compatible with pre-RFC-0290).
+def test_geofence_no_transform_is_refused():
+    # Same setup but base_link has no transform -> not resolvable -> the
+    # geofence cannot judge the target, so it is not admitted (RFC-0713).
     manifest = {
         "robot_id": "rover",
         "frames": [{"name": "site"}, {"name": "base_link", "parent": "site"}],
         "mobility": {"drive_type": "differential", "max_velocity": 1.0},
     }
-    result = validate(_move_to_pose(15.0), manifest, _BOX_ENVELOPE, policy=None)
-    assert not result.has(ErrorCode.ENVELOPE_GEOFENCE_VIOLATION)
+    for x in (1.0, 15.0):  # inside or outside the box if it could be placed
+        result = validate(_move_to_pose(x), manifest, _BOX_ENVELOPE, policy=None)
+        assert result.has(ErrorCode.ENVELOPE_FRAME_UNRESOLVED)
+        assert not result.has(ErrorCode.ENVELOPE_GEOFENCE_VIOLATION)
+        assert not result.accepted
+
+
+def test_frame_unresolved_names_both_frames_and_the_fix():
+    manifest = {
+        "robot_id": "rover",
+        "frames": [{"name": "site"}, {"name": "base_link", "parent": "site"}],
+        "mobility": {"drive_type": "differential", "max_velocity": 1.0},
+    }
+    result = validate(_move_to_pose(1.0), manifest, _BOX_ENVELOPE, policy=None)
+    (error,) = [e for e in result.errors if e.code == ErrorCode.ENVELOPE_FRAME_UNRESOLVED]
+    assert "'base_link'" in error.message and "'site'" in error.message
+    assert "'box'" in error.message
+    assert error.field == "pose"
+    assert error.suggestion is not None and "transform" in error.suggestion

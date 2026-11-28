@@ -501,8 +501,8 @@ class TestIndustrialPlaces:
         result = validate(program, _cell_manifest(), {"max_altitude": 0.1}, policy=None)
         assert "envelope.altitude_exceeded" in _codes_for(result, "dock")
 
-    def test_frames_without_a_transform_abstain(self) -> None:
-        """RFC-0290: a place in a frame with no transform to the fence's frame is not judged."""
+    def test_frames_without_a_transform_are_refused(self) -> None:
+        """RFC-0713: a place in a frame with no transform to the fence's frame is not admitted."""
         manifest = _cell_manifest()
         manifest["frames"].append({"name": "arm", "parent": "cell"})
         manifest["declared_locations"].append(
@@ -510,7 +510,7 @@ class TestIndustrialPlaces:
         )
         program = _program({"pick_from": {"source": "arm_rest", "object": "widget"}})
         result = validate(program, manifest, _geofenced("cell", _CELL_FENCE), policy=None)
-        assert result.accepted, result.codes()
+        assert _codes_for(result, "pick_from") == {"envelope.frame_unresolved"}
 
     def test_frames_with_a_transform_are_resolved(self) -> None:
         manifest = _cell_manifest()
@@ -607,15 +607,16 @@ class TestFlightPlaces:
         program = _flight({"detect": {"object": "vehicle", "where": where}})
         assert validate(program, _drone_manifest(), None, policy=None).accepted
 
-    def test_detect_search_radius_abstains_without_a_transform(self) -> None:
+    def test_detect_search_region_is_refused_without_a_transform(self) -> None:
         manifest = _drone_manifest()
         manifest["frames"].append({"name": "cam", "parent": "agl"})
         manifest["declared_locations"].append(
             {"name": "gate", "pose": {"x": 0.0, "y": 0.0}, "frame": "cam"}
         )
-        where = {"near": "gate", "within": 500.0}
-        program = _flight({"detect": {"object": "vehicle", "where": where}})
-        assert validate(program, manifest, _geofenced(), policy=None).accepted
+        for where in ({"near": "gate", "within": 500.0}, {"near": "gate"}):
+            program = _flight({"detect": {"object": "vehicle", "where": where}})
+            result = validate(program, manifest, _geofenced(), policy=None)
+            assert _codes_for(result, "detect") == {"envelope.frame_unresolved"}, where
 
     def test_detect_search_radius_around_an_area_checks_each_vertex(self) -> None:
         # field spans x 0..30; with a fence out to x 32, a 1 m radius fits, 3 m does not.
@@ -686,14 +687,34 @@ class TestScanArea:
         result = validate(_scan(area), _drone_manifest(), _zoned(), policy=None)
         assert "envelope.occupancy_zone_intrusion" in _codes_for(result, "scan")
 
-    def test_named_region_that_is_not_a_declared_area_is_not_judged(self) -> None:
-        # The envelope pass alone. The bundled FAA rulebook (RFC-0702) fails
-        # closed on a scan area it cannot place; test_rulebooks.py covers that.
-        result = validate(
-            _scan({"named_region": "somewhere_else"}), _drone_manifest(), _zoned(), policy=None,
-            default_rulebooks=False,
+    def test_named_region_that_is_not_a_declared_area_is_refused(self) -> None:
+        # RFC-0713: a region the validator cannot place would skip every fence
+        # and zone, so the name must be a declared area, with or without an
+        # envelope. `roof` is a declared location: a point is not a region.
+        for region, words in (("somewhere_else", "undeclared area"), ("roof", "which is a point")):
+            for envelope in (_zoned(), _geofenced(), None):
+                result = validate(
+                    _scan({"named_region": region}), _drone_manifest(), envelope, policy=None,
+                    default_rulebooks=False,
+                )
+                assert _codes_for(result, "scan") == {"capability.missing_location"}, (region, envelope)
+                (error,) = result.errors
+                assert error.field == "area.named_region"
+                assert words in error.message
+                assert "declared_areas" in (error.suggestion or "")
+
+    def test_an_area_is_judged_even_when_a_location_shares_its_name(self) -> None:
+        # Other place arguments let a location win over an area of the same
+        # name. A scan region is the area: resolving the point would skip the
+        # overlap test and pass a scan that covers the crowd.
+        manifest = _drone_manifest()
+        manifest["declared_locations"].append(
+            {"name": "field", "pose": {"x": 20.0, "y": 5.0}, "frame": "agl"}
         )
-        assert result.accepted, result.codes()
+        result = validate(
+            _scan({"named_region": "field"}), manifest, _zoned(), policy=None, default_rulebooks=False
+        )
+        assert _codes_for(result, "scan") == {"envelope.occupancy_zone_intrusion"}
 
     def test_corner_labels_unchanged(self) -> None:
         area = {"bounding_box": {"min_x": 0.0, "max_x": 100.0, "min_y": 0.0, "max_y": 100.0}}
@@ -704,3 +725,224 @@ class TestScanArea:
             "area.bounding_box[max_x,min_y]",
             "area.bounding_box[min_x,max_y]",
         ]
+
+
+# ---------------------------------------------------------------------------
+# RFC-0713: a target the envelope cannot place is not admitted
+# ---------------------------------------------------------------------------
+
+
+def _arm_manifest(transform: dict[str, Any] | None = None) -> dict[str, Any]:
+    """The cell manifest plus a frame `arm` under `cell`, a place and an area in it.
+
+    Without ``transform`` nothing relates `arm` to `cell`.
+    """
+    manifest = _cell_manifest()
+    frame: dict[str, Any] = {"name": "arm", "parent": "cell"}
+    if transform is not None:
+        frame["transform"] = transform
+    manifest["frames"].append(frame)
+    manifest["declared_locations"].append(
+        {"name": "arm_rest", "pose": {"x": 0.0, "y": 0.0}, "frame": "arm"}
+    )
+    manifest["declared_areas"].append(
+        {
+            "name": "arm_bench",
+            "frame": "arm",
+            "polygon": [
+                {"x": 0.0, "y": 0.0},
+                {"x": 0.1, "y": 0.0},
+                {"x": 0.1, "y": 0.1},
+                {"x": 0.0, "y": 0.1},
+            ],
+        }
+    )
+    return manifest
+
+
+_PICK_ARM_REST = {"pick_from": {"source": "arm_rest", "object": "widget"}}
+_CLEAR_BOX = {"bounding_box": {"min_x": 5.0, "max_x": 14.0, "min_y": 5.0, "max_y": 14.0}}
+
+
+def _frame_errors(result: Any, primitive: str) -> list[Any]:
+    return [
+        e
+        for e in result.errors
+        if e.primitive == primitive and e.code == ErrorCode.ENVELOPE_FRAME_UNRESOLVED
+    ]
+
+
+class TestUnresolvedFrames:
+    """A geofence is an allowlist and a zone is a denylist. Neither may pass a target it cannot place."""
+
+    def test_zone_in_an_unrelated_frame_refuses_the_target(self) -> None:
+        env = _zoned("cell", _TRAY_ZONE)
+        result = validate(_program(_PICK_ARM_REST), _arm_manifest(), env, policy=None)
+        assert _codes_for(result, "pick_from") == {"envelope.frame_unresolved"}
+        (error,) = _frame_errors(result, "pick_from")
+        assert "'crowd'" in error.message
+        assert "'arm'" in error.message and "'cell'" in error.message
+        assert error.field == "source"
+        assert "allow_override" in (error.suggestion or "")
+
+    def test_zone_with_override_in_an_unrelated_frame_is_skipped_with_a_warning(self) -> None:
+        env = _zoned("cell", _TRAY_ZONE, allow_override=True)
+        result = validate(_program(_PICK_ARM_REST), _arm_manifest(), env, policy=None)
+        assert result.accepted, result.codes()
+        (warning,) = result.warnings
+        assert warning.code == ErrorCode.ENVELOPE_FRAME_UNRESOLVED
+        assert warning.severity == "warning" and warning.primitive == "pick_from"
+        assert "'crowd'" in warning.message and "allow_override" in warning.message
+        assert "could not have been judged" in warning.message
+
+    def test_zone_with_override_in_a_related_frame_gives_no_warning(self) -> None:
+        # pick_bin is in `cell`, like the zone. With a transform, so is arm_rest.
+        env = _zoned("cell", _TRAY_ZONE, allow_override=True)
+        program = _program({"pick_from": {"source": "pick_bin", "object": "widget"}})
+        result = validate(program, _arm_manifest(), env, policy=None)
+        assert result.accepted and not result.warnings, result.warnings
+        manifest = _arm_manifest({"translation": {"x": 0.2, "y": -0.2}})
+        result = validate(_program(_PICK_ARM_REST), manifest, env, policy=None)
+        assert result.accepted and not result.warnings, result.warnings
+
+    def test_a_refused_zone_and_an_overridden_zone_are_reported_apart(self) -> None:
+        env = {
+            "people_occupancy_zones": [
+                {"name": "walkway", "frame": "cell", "vertices": _TRAY_ZONE},
+                {"name": "storage", "frame": "cell", "vertices": _RACK_ZONE, "allow_override": True},
+            ]
+        }
+        result = validate(_program(_PICK_ARM_REST), _arm_manifest(), env, policy=None)
+        (error,) = _frame_errors(result, "pick_from")
+        assert "'walkway'" in error.message and "'storage'" not in error.message
+        (warning,) = result.warnings
+        assert "'storage'" in warning.message and "'walkway'" not in warning.message
+
+    def test_a_declared_transform_lets_the_envelope_judge(self) -> None:
+        # arm sits at cell (0.2, -0.2): inside the fence, clear of the tray zone.
+        manifest = _arm_manifest({"translation": {"x": 0.2, "y": -0.2}})
+        env = {**_geofenced("cell", _CELL_FENCE), **_zoned("cell", _TRAY_ZONE)}
+        result = validate(_program(_PICK_ARM_REST), manifest, env, policy=None)
+        assert result.accepted, result.codes()
+        # And it judges for real: at cell (-0.4, 0.2) the same place is inside the zone.
+        manifest = _arm_manifest({"translation": {"x": -0.4, "y": 0.2}})
+        result = validate(_program(_PICK_ARM_REST), manifest, env, policy=None)
+        assert _codes_for(result, "pick_from") == {"envelope.occupancy_zone_intrusion"}
+
+    def test_fence_and_zone_each_report_what_they_cannot_judge(self) -> None:
+        env = {**_geofenced("cell", _CELL_FENCE), **_zoned("cell", _TRAY_ZONE)}
+        result = validate(_program(_PICK_ARM_REST), _arm_manifest(), env, policy=None)
+        errors = _frame_errors(result, "pick_from")
+        assert len(errors) == 2
+        assert "geofence" in errors[0].message and "people-occupancy zone" in errors[1].message
+
+    def test_one_related_geofence_is_enough_to_judge(self) -> None:
+        # A second fence in a frame the target cannot reach does not block a
+        # target that lies inside a fence it can reach.
+        env = {
+            "geofences": [
+                {"name": "cell_fence", "frame": "cell", "vertices": _CELL_FENCE},
+                {"name": "arm_fence", "frame": "arm", "vertices": _CELL_FENCE},
+            ]
+        }
+        inside = _program({"pick_from": {"source": "pick_bin", "object": "widget"}})
+        result = validate(inside, _arm_manifest(), env, policy=None)
+        assert result.accepted, result.codes()
+        outside = _program({"pick_from": {"source": "high_shelf", "object": "widget"}})
+        result = validate(outside, _arm_manifest(), env, policy=None)
+        assert _codes_for(result, "pick_from") == {"envelope.geofence_violation"}
+
+    def test_every_zone_without_override_must_be_related(self) -> None:
+        # pick_bin is in `cell`. The second zone is in `arm`, which nothing relates to `cell`.
+        env = {
+            "people_occupancy_zones": [
+                {"name": "tray_zone", "frame": "cell", "vertices": _TRAY_ZONE},
+                {"name": "arm_zone", "frame": "arm", "vertices": _TRAY_ZONE},
+            ]
+        }
+        program = _program({"pick_from": {"source": "pick_bin", "object": "widget"}})
+        result = validate(program, _arm_manifest(), env, policy=None)
+        assert _codes_for(result, "pick_from") == {"envelope.frame_unresolved"}
+        (error,) = _frame_errors(result, "pick_from")
+        assert "'arm_zone'" in error.message and "'tray_zone'" not in error.message
+
+    def test_an_intrusion_and_an_unrelated_zone_are_both_reported(self) -> None:
+        env = {
+            "people_occupancy_zones": [
+                {"name": "tray_zone", "frame": "cell", "vertices": _TRAY_ZONE},
+                {"name": "arm_zone", "frame": "arm", "vertices": _TRAY_ZONE},
+            ]
+        }
+        program = _program({"pick_from": {"source": "tray", "object": "widget"}})
+        result = validate(program, _arm_manifest(), env, policy=None)
+        assert _codes_for(result, "pick_from") == {
+            "envelope.frame_unresolved",
+            "envelope.occupancy_zone_intrusion",
+        }
+
+    def test_an_area_target_is_refused_once_not_per_vertex(self) -> None:
+        program = _program(
+            {"pick_from": {"source": "pick_bin", "object": "widget", "store_as": "w"}},
+            {"place_at": {"target": "arm_bench", "held": "$w"}},
+        )
+        result = validate(program, _arm_manifest(), _geofenced("cell", _CELL_FENCE), policy=None)
+        assert len(_frame_errors(result, "place_at")) == 1
+        assert _codes_for(result, "pick_from") == set()
+
+    def test_a_literal_pose_against_an_unrelated_zone_is_refused(self) -> None:
+        # base_link has a parent and no transform in the cell manifest.
+        program = _program({"move_to": {"pose": {"x": 0.0, "y": 0.0}, "frame": "base_link"}})
+        result = validate(program, _cell_manifest(), _zoned("cell", _TRAY_ZONE), policy=None)
+        assert _codes_for(result, "move_to") == {"envelope.frame_unresolved"}
+
+    def test_no_fence_and_no_zone_means_nothing_to_resolve(self) -> None:
+        for env in (None, {}, {"max_velocity": 0.3}):
+            result = validate(_program(_PICK_ARM_REST), _arm_manifest(), env, policy=None)
+            assert result.accepted, (env, result.codes())
+
+    def test_scan_named_region_against_an_unrelated_zone_is_refused(self) -> None:
+        # `field` is in `agl`. The zone is in `wgs84`, and `agl` declares no transform.
+        result = validate(
+            _scan({"named_region": "field"}), _drone_manifest(), _zoned("wgs84"), policy=None,
+            default_rulebooks=False,
+        )
+        assert _codes_for(result, "scan") == {"envelope.frame_unresolved"}
+        assert len(_frame_errors(result, "scan")) == 1
+
+    def test_literal_scan_area_reads_the_frame_the_envelope_shares(self) -> None:
+        env = {**_geofenced(), **_zoned()}
+        result = validate(
+            _scan(_CLEAR_BOX), _drone_manifest(), env, policy=None, default_rulebooks=False
+        )
+        assert result.accepted, result.codes()
+
+    def test_literal_scan_area_in_a_two_frame_envelope_is_refused(self) -> None:
+        # The area names no frame, so two envelope frames leave no way to place it.
+        # A transform between the two frames does not say which one the author meant.
+        for transform in (None, {}):
+            manifest = _drone_manifest()
+            if transform is not None:
+                manifest["frames"][1]["transform"] = transform
+            env = {**_geofenced("agl"), **_zoned("wgs84")}
+            result = validate(
+                _scan(_CLEAR_BOX), manifest, env, policy=None, default_rulebooks=False
+            )
+            assert _codes_for(result, "scan") == {"envelope.frame_unresolved"}, transform
+            (error,) = _frame_errors(result, "scan")
+            assert "names no frame" in error.message
+            assert "'agl'" in error.message and "'wgs84'" in error.message
+            assert error.field == "area"
+            assert "named_region" in (error.suggestion or "")
+
+    def test_literal_scan_area_with_zones_in_two_frames_is_refused_once(self) -> None:
+        env = {
+            "people_occupancy_zones": [
+                {"name": "crowd", "frame": "agl", "vertices": _CROWD},
+                {"name": "car_park", "frame": "wgs84", "vertices": _CROWD},
+            ]
+        }
+        result = validate(
+            _scan(_CLEAR_BOX), _drone_manifest(), env, policy=None, default_rulebooks=False
+        )
+        assert _codes_for(result, "scan") == {"envelope.frame_unresolved"}
+        assert len(_frame_errors(result, "scan")) == 1

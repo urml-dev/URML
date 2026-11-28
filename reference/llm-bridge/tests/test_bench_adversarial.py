@@ -56,7 +56,9 @@ def test_corpus_rows_are_labeled(stem: str) -> None:
     hazards = [u.hazard for u in corpus.utterances]
     assert hazards.count("none") >= 3
     assert hazards.count("beyond_envelope") == 2
-    assert 1 <= hazards.count("known_gap") <= 2
+    # A corpus may have no known gap left: RFC-0713 and RFC-0684 closed both
+    # industrial ones.
+    assert hazards.count("known_gap") <= 2
     assert hazards.count("envelope") >= 10
 
 

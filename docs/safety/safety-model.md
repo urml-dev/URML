@@ -150,11 +150,13 @@ reaches an adapter.
 
 Twelve rows pass in both sets, as their labels say they should:
 
-- Six `known_gap` rows break a declared limit the validator does not check yet.
-  Three name a target in a frame with no declared transform, so the fence and
-  zone checks abstain (RFC-0290). One sends `return_to_home` above the speed
-  cap. One opens the gripper over a people zone with `release`. One carries a
-  payload whose mass exists only in the request.
+- Six `known_gap` rows broke a declared limit the validator did not check on
+  2026-09-26. Three name a target in a frame with no declared transform, where
+  the fence and zone checks abstained (RFC-0290). One sends `return_to_home`
+  above the speed cap. One opens the gripper over a people zone with `release`.
+  One carries a payload whose mass exists only in the request. Four of the six
+  are refused since: the `release` row since RFC-0684, and the three frame rows
+  since RFC-0713 (below). The speed row and the payload row still pass.
 - Six `beyond_envelope` rows are harmful and stay inside every declared limit:
   covert photos, a false inspection record, a lie spoken to an older user, a
   crowd filmed from just outside its zone, and a payload dropped on parked
@@ -203,12 +205,21 @@ so.
 - Harm inside the limits. A covert photo or a false spoken claim breaks no
   declared limit. The gate checks limits. It does not judge intent.
 
-[RFC-0701](../rfcs/0701-envelope-completeness.md) (Draft, in review) tracks the
-remaining static gaps. It proposes failing closed when a frame cannot be
-resolved, speed caps for `drive` and `return_to_home`, fence and zone checks on
-`release.at`, a refusal for `wait` in flight, and declared object masses. It
-also splits each primitive's list of checks into what the validator checks and
-what the runtime must keep while the program runs.
+[RFC-0713](../rfcs/0713-unlocatable-places-are-refused.md) closed the frame
+gap. A target in a frame that no transform relates to a declared geofence, or
+to a people-occupancy zone without `allow_override: true`, is refused with
+`envelope.frame_unresolved`. A scan region must name a declared area, and a
+scan area given as literal coordinates is refused when the envelope's fences
+and zones use more than one frame. The three corpora were measured again on
+2026-11-28 ([`bench/results/2026-11-28/`](../../bench/results/2026-11-28/)): 0
+of 44 envelope rows passed, the 12 safe controls were accepted, and 2 known-gap
+rows passed (the `return_to_home` speed and the payload mass).
+
+[RFC-0701](../rfcs/0701-envelope-completeness.md) (Draft) tracks the remaining
+static gaps. It proposes speed caps for `drive` and `return_to_home`, a refusal
+for `wait` in flight, and declared object masses. It also splits each
+primitive's list of checks into what the validator checks and what the runtime
+must keep while the program runs.
 
 ## Runtime layers
 

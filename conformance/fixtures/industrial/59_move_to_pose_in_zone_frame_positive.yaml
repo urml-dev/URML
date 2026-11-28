@@ -1,0 +1,29 @@
+name: industrial/move_to_pose_in_zone_frame_positive
+description: >
+  Positive twin of move_to_pose_in_unresolved_frame_rejected. The same pose
+  named in `cell`, the frame of the operator zone, can be judged: (0.3, 0.3)
+  lies outside the zone, which covers x -0.6..-0.2, y -0.4..0.0. Accepted and
+  executed.
+
+manifest: industrial_cell
+envelope: industrial_cell_guarded
+profiles: [industrial]
+
+program:
+  profile: industrial
+  behavior:
+    type: sequence
+    on_error: abort_and_report
+    steps:
+      - move_to:
+          pose: { x: 0.3, y: 0.3, z: 0.2 }
+          frame: cell
+
+expected_validation:
+  accepted: true
+
+expected_execution:
+  success: true
+  steps_executed: 1
+  audit_methods:
+    - send_navigation_goal

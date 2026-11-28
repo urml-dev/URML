@@ -1,0 +1,32 @@
+name: drone/scan_region_named_after_location_rejected
+description: >
+  A scan region is an area, and it must be a declared one (RFC-0713).
+  `roof_north` is a declared location: one point, with no extent the validator
+  could judge against the geofence. Pass 2 rejects with
+  capability.missing_location attributed to `scan`, and the message says the
+  name is a point. The positive twin is home/scan_declared_area_positive,
+  which scans a declared area.
+
+manifest: drone_civilian
+envelope: drone_with_geofence
+profiles: [drone]
+
+program:
+  profile: drone
+  behavior:
+    type: sequence
+    on_error: abort_and_report
+    steps:
+      - take_off: { altitude: 30.0 }
+      - scan:
+          area:
+            named_region: roof_north
+          altitude: 30.0
+          sensor: downward
+          store_as: survey
+      - land: {}
+
+expected_validation:
+  accepted: false
+  error_codes:
+    - capability.missing_location
